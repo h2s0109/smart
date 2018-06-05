@@ -341,7 +341,7 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
                 sort.copy_mcalmodule(self.copylist['service'], copypath['smodule'], True)
                 sort.copy_mcalmodule(self.copylist['modulebaic'], copypath['module'])
                 copypath['module'] = copypath['module'].replace('\\', '/')
-                copypath['smodule'] = copypath['module'].replace('\\', '/')
+                copypath['smodule'] = copypath['smodule'].replace('\\', '/')
                 includelist = self.Compiler_include(copypath['module'], copypath['smodule'])                
                 for k_list in includelist:
                     self.progresstxt_dest.appendPlainText(k_list)

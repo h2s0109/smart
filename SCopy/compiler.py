@@ -6,14 +6,18 @@ __all__ = ["Class_comiler_path"]
 # def fullmatch(pattern, string, flags=0):
 # def search(pattern, string, flags=0)
 # def sub(pattern, repl, string, count=0, flags=0):
+
+
 class Class_comiler_path:
     def __init__(self):
         super().__init__()
         return
+
     def __del__(self):
         return
+
     def hierachy_check(self, firstdir, seconddir):
-        match_result = [False,False]
+        match_result = [False, False]
         if re.fullmatch(firstdir, seconddir):
             # Fullmatch
             match_result[0] = True
@@ -32,7 +36,7 @@ class Class_comiler_path:
                 else:
                     # hierachy_check('C:/Testfolder','C:/Testfolderadd')
                     return match_result
-            elif re.match(seconddir, seconddir):     
+            elif re.match(seconddir, firstdir):
                 temp_seconddir = re.sub(seconddir, '', firstdir)
                 #('C:/Testfolder/add','C:/Testfolder')
                 #(/add)
@@ -50,14 +54,14 @@ class Class_comiler_path:
                 return match_result
 
     def Compiler_include(self, firstdir, seconddir):
-        hierachy_check_result = self.hierachy_check(firstdir, seconddir)  
+        hierachy_check_result = self.hierachy_check(firstdir, seconddir)
         if hierachy_check_result[0] is True:
             findresult = self._include_path(firstdir, seconddir, True)
         elif hierachy_check_result[1] is True:
             findresult = self._include_path(seconddir, firstdir, True)
         else:
-            findresult = self._include_path(firstdir, firstdir, False)
-        #DEBUG:
+            findresult = self._include_path(firstdir, seconddir, False)
+        # DEBUG:
         # print(len(findresult))
         return findresult
 
@@ -79,10 +83,10 @@ class Class_comiler_path:
                 for filelist in tmp_file:
                     # To avoid SchM.c \. is used.
                     if re.match('.*\.h', filelist):
-                        #DEBUG:              
+                        # DEBUG:
                         # print('{}{}{}'.format(
                         #     '${workspace_loc:/${ProjName}/{TEMPLETE}/', re.sub(delete_path, '', tmp_dir), '}'))
                         includelist.append(
-                            '"${workspace_loc:/${ProjName}/{TEMPLETE}/' + re.sub(delete_path, '', tmp_dir) + '}"')
+                            '"${workspace_loc:/${ProjName}/SourceCode/Mcal/' + re.sub(delete_path, '', tmp_dir) + '}"')
                         break
         return includelist
