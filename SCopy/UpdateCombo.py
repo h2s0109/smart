@@ -54,8 +54,8 @@ class Class_UpdateCombo:
         # If there is no same folder name add the folder name
         if comboboxname.findText(directory) == -1:
             comboboxname.addItem(directory)
+            tempfolder.insert(0, directory)
         comboboxname.setCurrentIndex(comboboxname.findText(directory))
-        tempfolder.insert(0, directory)
         # Delete the oldest folder name
         del tempfolder[self.MaxRecentFiles:]
         # Save Mcal.ini
