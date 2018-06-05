@@ -1,19 +1,19 @@
 from Mcalcopytab import Ui_Dialog
+from PyQt5 import QtCore
 from PyQt5.QtGui import QPainter, QFont, QStandardItemModel, QStandardItem
-from PyQt5.QtWidget import QDialog, QStyledItemDelegate, QStyleOptionViewItem, QFileDialog, QApplication
-from PyQt5.QtCore import QSettings, QItemSelectionModel, Qt, pyqtSignal, pyqtSlot, QItemSelection, QAbstractItemModel, QDir, QFile
+from PyQt5.QtWidgets import QDialog, QStyledItemDelegate, QStyleOptionViewItem, QFileDialog, QApplication
+from PyQt5.QtCore import QItemSelectionModel, Qt, pyqtSignal, pyqtSlot, QItemSelection, QAbstractItemModel, QDir, QFile
 from sort import import_data, gen_c_h_dic, export_data, copy_mcalmodule, gen_sort, moduledatashow
 import json
 import os
 from re import search, sub, match, fullmatch
 from distutils.dir_util import remove_tree
+from UpdateCombo import Class_UpdateCombo
 
 
-class ImageDialog(QDialog, Ui_Dialog):
-    MaxRecentFiles = 5
-
+class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo):
     def __init__(self):
-        super(ImageDialog, self).__init__()
+        super().__init__()
         # Set up the user interface from Designer
         self.setupUi(self)
         self.RelieveModuleModel = QStandardItemModel()
@@ -28,76 +28,25 @@ class ImageDialog(QDialog, Ui_Dialog):
         self.refine_result = dict()
         self.CopyProcessValid = False
         self.CopyProcessValid_NoSelect = True
-        self.settings = QSettings('Mcal.ini', QSettings.IniFormat)
+        # Call the folder list which were opened recently
+        self.create_recent_handler('Mcal.ini', 5)
         self.UpdateRecentOpenFile(self.McalComboBox, 'Mcal')
         self.UpdateRecentOpenFile(self.ModuleComboBox, 'Module')
         self.UpdateRecentOpenFile(self.SmoduleComboBox, 'Smodule')
         self.McalComboBox.currentIndexChanged.connect(
             lambda: self.ComboxBoxClick(self.McalComboBox))
         self.McalDirButton.clicked.connect(
-            lambda: self.setExistingDirectory(self.McalComboBox, 'Mcal'))
+            lambda: self.setExistingDirectory2(self.McalComboBox, 'Mcal',  'Mcal'))
         self.ModuleDirButton.clicked.connect(
-            lambda: self.setExistingDirectory(self.ModuleComboBox, 'Module'))
+            lambda: self.setExistingDirectory2(self.ModuleComboBox, 'Module', 'Module'))
         self.SmoduleDirButton.clicked.connect(
-            lambda: self.setExistingDirectory(self.SmoduleComboBox, 'Smodule'))
+            lambda: self.setExistingDirectory2(self.SmoduleComboBox, 'Smodule', 'Module'))
+
         self.SetModuleButton.clicked.connect(lambda: self.SetModuleTreeViewUpdate(
             self.RelieveModuleModel, self.SetModuleModel))
         self.RelieveModuleButton.clicked.connect(lambda: self.SetModuleTreeViewUpdate_Relieve(
             self.SetModuleModel, self.RelieveModuleModel))
         self.CopyButton.clicked.connect(self.CopyProcess)
-
-    def UpdateRecentOpenFile(self, comboboxname, targetcombox):
-        """Show the folder list which has been opened recently
-        File lists comes from Mcal.ini file"""
-        files = self.settings.value(targetcombox + '/RECENTFOLDERLIST', [])
-        numrecentfiles = min(len(files), ImageDialog.MaxRecentFiles)
-        comboboxname.addItem("")
-        for i in range(numrecentfiles):
-            text = "{}".format(files[i])
-            comboboxname.addItem(text)
-        return
-
-    def setExistingDirectory(self, comboboxname, targetcombox):
-        """Select the directory and update the combobox"""
-        tempfolder = self.settings.value(
-            targetcombox + '/RECENTFOLDERLIST', [])
-        options = QFileDialog.DontResolveSymlinks | QFileDialog.ShowDirsOnly
-        if len(tempfolder) and not "":
-            open_folder = tempfolder[0]
-        else:
-            open_folder = QDir.currentPath()
-        directory = QFileDialog.getExistingDirectory(self, "McalFolder",
-                                                     open_folder, options=options)
-        if directory is not "":
-            if targetcombox == 'Mcal':
-                processresult = self.McalFolderHandlingProcedure(directory)
-                if processresult is True:
-                    self.UpdateComboBox(
-                        comboboxname, directory, tempfolder, targetcombox)
-            elif targetcombox == 'Module':
-                self.UpdateComboBox(comboboxname, directory,
-                                    tempfolder, targetcombox)
-                self.plainTextEdit.setPlainText(
-                    self.ModuleComboBox.currentText())
-            elif targetcombox == 'Smodule':
-                self.UpdateComboBox(comboboxname, directory,
-                                    tempfolder, targetcombox)
-                self.plainTextEdit.setPlainText(
-                    self.SmoduleComboBox.currentText())
-        return
-
-    def UpdateComboBox(self, comboboxname, directory, tempfolder, targetcombox):
-        """Update the combobox and save Mcal.ini file"""
-        # If there is no same folder name add the folder name
-        if comboboxname.findText(directory) == -1:
-            comboboxname.addItem(directory)
-        comboboxname.setCurrentIndex(comboboxname.findText(directory))
-        tempfolder.insert(0, directory)
-        # Delete the oldest folder name
-        del tempfolder[ImageDialog.MaxRecentFiles:]
-        # Save Mcal.ini
-        self.settings.setValue(targetcombox + '/RECENTFOLDERLIST', tempfolder)
-        return
 
     def RebuildtreeInit(self, elements):
         rebuildtree = dict()
