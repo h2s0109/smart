@@ -300,24 +300,19 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
             self.CopyProcessValid = False
         return
     
-    def tempcheck(self, copypath2):        
-        splitresult = list()
-        # copypath['module'] = self.ModuleComboBox.currentText()        
-        # copypath['smodule'] = self.SmoduleComboBox.currentText()
-        # projectpath= self.ProjectComboBox.currentText()
-        # copypath['module'] = copypath['module'].replace('\\', '/')
-        # copypath['smodule'] = copypath['smodule'].replace('\\', '/')
-        # projectpath =projectpath.replace('\\', '/')        
+    def projecthierarchy(self, copypath2):        
+        splitresult = list()     
         projectpath = copypath2.pop('PROJECT')
         projectpath+= '/'
         for tempkey in copypath2:
             tempsplit = re.split(projectpath, copypath2[tempkey])
-            splitresult.append(tempsplit[0])
-        if not '' in splitresult:
-            #Not belong to project
+            tempfullmatch = re.fullmatch('',tempsplit[0])
+            splitresult.append(tempfullmatch)
+        if None in splitresult:
+            #project doesn`t include the paths. or same
             return False
         else:
-            #Belong to project path
+            #project includes the paths
             return True
             
 
@@ -325,39 +320,64 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
         """File copy process"""
         self.progresstxt_dest.clear()
         if self.CopyProcessValid is True and self.CopyProcessValid_NoSelect is False:
-            # To support Korean language.
-            copypath = dict()
-            copypath['module'] = self.ModuleComboBox.currentText()
-            copypath['smodule'] = self.SmoduleComboBox.currentText()                        
-            Pathchek_result = [pathcheck.is_pathname_valid(copypath[x]) for x in copypath]
-            if not False in Pathchek_result:
-                pathcheck.Copypath_creation(copypath)
-                sort.copy_mcalmodule(self.copylist['service'], copypath['smodule'], True)
-                sort.copy_mcalmodule(self.copylist['modulebaic'], copypath['module'])
-
+            copypath = dict()            
+            if self.PorjectCheckBox.checkState() == Qt.Checked:
+                copypath['module'] = self.ModuleComboBox.currentText()
+                copypath['smodule'] = self.SmoduleComboBox.currentText()            
+                copypath['PROJECT'] = self.ProjectComboBox.currentText()                
                 copypath['module'] = copypath['module'].replace('\\', '/')
                 copypath['smodule'] = copypath['smodule'].replace('\\', '/')
-                copypath['PROJECT'] = self.ProjectComboBox.currentText()
                 copypath['PROJECT'] = copypath['PROJECT'].replace('\\', '/')
-                import copy
-                
-                copypath2 = copy.deepcopy(copypath)
-                tempchecsss = self.tempcheck(copypath2)
-                if tempchecsss is True:
-                    includelist = self.Compiler_include2(self.ProjectComboBox.currentText())                
-                    import XMLtest
-                    XMLtest.parsing_Tasking(copypath['PROJECT'], includelist)
+                Pathchek_result = [pathcheck.is_pathname_valid(copypath[x]) for x in copypath]
+                if not False in Pathchek_result:
+                    import copy
+                    deepcopypath = copy.deepcopy(copypath)
+                    # copypath['PROJECT'] is removed from here.
+                    temphierarchy = self.projecthierarchy(deepcopypath)
+                    if temphierarchy is True:
+                        xmlpath = os.path.join(copypath['PROJECT'],'.cproject')
+                        xmlpath = xmlpath.replace('\\', '/')
+                        xmlexist = os.path.exists(xmlpath)
+                        if xmlexist is True:
+                            pathcheck.Copypath_creation(deepcopypath)
+                            sort.copy_mcalmodule(self.copylist['service'], copypath['smodule'], True)
+                            sort.copy_mcalmodule(self.copylist['modulebaic'], copypath['module'])
+                            includelist = self.Compiler_include2(self.ProjectComboBox.currentText())                
+                            import XMLCompiler
+                            XMLCompiler.parsing_includeTasking(copypath['PROJECT'], includelist)
+                            for k_list in includelist:
+                                self.progresstxt_dest.appendPlainText(k_list)
+                            self.show_message()
+                        else:
+                            self.progresstxt_dest.setPlainText(
+                            "Warning:It can`t find .cproject.")
+                    else:
+                        self.progresstxt_dest.setPlainText(
+                        "Warning: The project path does not contain a path or it contains exactly the same path.")
+                        pass                                  
                 else:
+                    self.progresstxt_dest.setPlainText(
+                        "Warning: The directory path has a problem.")                
+            elif self.PorjectCheckBox.checkState() == Qt.Unchecked:
+                copypath['module'] = self.ModuleComboBox.currentText()
+                copypath['smodule'] = self.SmoduleComboBox.currentText()                            
+                copypath['module'] = copypath['module'].replace('\\', '/')
+                copypath['smodule'] = copypath['smodule'].replace('\\', '/')
+                Pathchek_result = [pathcheck.is_pathname_valid(copypath[x]) for x in copypath]
+                if not False in Pathchek_result:
+                    pathcheck.Copypath_creation(copypath)
+                    sort.copy_mcalmodule(self.copylist['service'], copypath['smodule'], True)
+                    sort.copy_mcalmodule(self.copylist['modulebaic'], copypath['module'])
                     includelist = self.Compiler_include(copypath['module'], copypath['smodule'])                
-                for k_list in includelist:
-                    self.progresstxt_dest.appendPlainText(k_list)
-                self.show_message()
-            else:
-                self.progresstxt_dest.setPlainText(
-                    "Warning: The directory path name has a problem")
+                    for k_list in includelist:
+                        self.progresstxt_dest.appendPlainText(k_list)
+                    self.show_message()
+                else:
+                    self.progresstxt_dest.setPlainText(
+                        "Warning: The directory path has a problem.")
         else:
             self.progresstxt_dest.setPlainText(
-                "Warning: The modules are not configured")
+                "Warning: The modules are not configured.")
         return
     
     def data_key_creation(self, DATA_PATH):

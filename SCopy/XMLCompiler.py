@@ -17,26 +17,12 @@ def indent(elem, level=0):
             elem.tail = j
     return elem 
 
-# tree = ET.parse('.cproject')
-# TaskingRoot = tree.getroot()
-# print(TaskingRoot.tag)
-# m = '{workspace_loc:/${ProjName}/SourceCode/Mcal/McalSW/tricore_general/inc}'
-# for option in TaskingRoot.iter('option'):
-#     if option.attrib['superClass'] == "com.tasking.ctc.cc.includePaths":
-#         for value in option.findall('listOptionValue'):
-#             print(value.attrib['value'])
-#             option.remove(value)        
-#         y = ET.SubElement(option, 'listOptionValue', builtIn="false",value="&quot;$"+m+"&quot;")
-#         y = ET.SubElement(option, 'listOptionValue', builtIn="TRue",value="&quot;${workspace_loc:/${ProjName}/SourceCode/Mcal/McalSW/tricore_general/inc}&quot;")
-# indent(TaskingRoot)
-# tree.write('.1cproject')
-
-def parsing_Tasking(xmlpath, include_path):
+def parsing_includeTasking(xmlpath, include_path):
     xmlpath = os.path.join(xmlpath,'.cproject')
+    xmlpath = xmlpath.replace('\\', '/')
     tree = ET.parse(xmlpath)
     TaskingRoot = tree.getroot()
     print(TaskingRoot.tag)
-    m = '{workspace_loc:/${ProjName}/SourceCode/Mcal/McalSW/tricore_general/inc}'
     for option in TaskingRoot.iter('option'):
         if option.attrib['superClass'] == "com.tasking.ctc.cc.includePaths":
             for value in option.findall('listOptionValue'):
@@ -46,4 +32,5 @@ def parsing_Tasking(xmlpath, include_path):
                 ET.SubElement(option, 'listOptionValue', builtIn="false",value="&quot;$"+tmp_path+"&quot;")        
     indent(TaskingRoot)
     tree.write(xmlpath)
+    return
   
