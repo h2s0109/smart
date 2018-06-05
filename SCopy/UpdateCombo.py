@@ -8,11 +8,17 @@ class Class_UpdateCombo:
     def __init__(self):
         super().__init__()
         self.MaxRecentFiles = 5
-
+        return
     def create_recent_handler(self, hd_name, numrecent):
         self.MaxRecentFiles = numrecent
         self.settings = QtCore.QSettings(
             hd_name, QtCore.QSettings.IniFormat)
+        return    
+    def timeinstall(self, hd_name, value):
+        self.settings = QtCore.QSettings(
+            hd_name, QtCore.QSettings.IniFormat)
+        self.settings.setValue('DATE' + '/install', value)
+        return
 
     def setExistingDirectory(self, comboboxname, targetcombox, scopy=None):
         """Select the directory and update the combobox"""
