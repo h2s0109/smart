@@ -42,7 +42,7 @@ class Class_UpdateCombo:
                             result, self.data_handling['SORTKEYRESULT_PATH'])
                         self.UpdateComboBox(
                             comboboxname, directory, tempfolder, targetcombox)
-                elif targetcombox == 'Module' or 'Smodule':
+                elif targetcombox == 'Module' or 'Smodule' or 'PROJECT':
                     self.UpdateComboBox(
                         comboboxname, directory, tempfolder, targetcombox)
                     self.progresstxt_dest.setPlainText(

@@ -9,6 +9,7 @@ import pathcheck
 from UpdateCombo import Class_UpdateCombo
 from compiler import Class_comiler_path
 import sort
+import re
 class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
     def __init__(self):
         super().__init__()
@@ -43,6 +44,7 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
         self.UpdateRecentOpenFile(self.McalComboBox, 'Mcal')
         self.UpdateRecentOpenFile(self.ModuleComboBox, 'Module')
         self.UpdateRecentOpenFile(self.SmoduleComboBox, 'Smodule')
+        self.UpdateRecentOpenFile(self.ProjectComboBox, 'PROJECT')
         
         license_check = licensetime_check(handler, userpath)
 
@@ -54,6 +56,8 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
                 lambda: self.setExistingDirectory(self.ModuleComboBox, 'Module', True))
             self.SmoduleDirButton.clicked.connect(
                 lambda: self.setExistingDirectory(self.SmoduleComboBox, 'Smodule',True))
+            self.ProjectDirButton.clicked.connect(
+                lambda: self.setExistingDirectory(self.ProjectComboBox, 'PROJECT',True))
 
             #data_key_creation is called at here.
             self.McalComboBox.currentIndexChanged.connect(lambda: self.combobox_change(self.McalComboBox))
@@ -294,7 +298,28 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
             self.leftsideModel.clear()
             self.CopyProcessValid = False
         return
-        
+    def tempcheck(self):
+        copypath = dict()
+        a = list()
+        m = list()
+        y = list()
+        copypath['module'] = self.ModuleComboBox.currentText()
+        copypath['module'] = copypath['module'].replace('\\', '/')
+        copypath['smodule'] = self.SmoduleComboBox.currentText()
+        copypath['smodule'] = copypath['smodule'].replace('\\', '/')
+        projectpath= self.ProjectComboBox.currentText()
+        projectpath =projectpath.replace('\\', '/')
+        projectpath += '/'
+        for x in copypath:
+            m = re.split(projectpath, copypath[x])
+            y.append(m[0])
+        if not '' in y:
+            print('good')
+        else:
+            print('bad')
+        return
+            
+
     def CopyProcess(self):        
         """File copy process"""
         self.progresstxt_dest.clear()
@@ -303,6 +328,8 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
             copypath = dict()
             copypath['module'] = self.ModuleComboBox.currentText()
             copypath['smodule'] = self.SmoduleComboBox.currentText()            
+            # copypath['PROJECT'] = self.ProjectComboBox.currentText()
+            tempchecsss = self.tempcheck()
             Pathchek_result = [pathcheck.is_pathname_valid(copypath[x]) for x in copypath]
             if not False in Pathchek_result:
                 pathcheck.Copypath_creation(copypath)

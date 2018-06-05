@@ -76,7 +76,7 @@ class Class_comiler_path:
 
     def _include_path_find(self, dirpath):
         includelist = list()
-        delete_path = re.match('.*/', dirpath).group()
+        delete_path = os.path.split(dirpath)
         for tmp_dir, tmp_folder, tmp_file in os.walk(dirpath):
             tmp_dir = tmp_dir.replace('\\', '/')
             if len(tmp_file):
@@ -85,8 +85,8 @@ class Class_comiler_path:
                     if re.match('.*\.h', filelist):
                         # DEBUG:
                         # print('{}{}{}'.format(
-                        #     '${workspace_loc:/${ProjName}/{TEMPLETE}/', re.sub(delete_path, '', tmp_dir), '}'))
+                        #     '${workspace_loc:/${ProjName}/{TEMPLETE}/', re.sub(delete_path[0], '', tmp_dir), '}'))
                         includelist.append(
-                            '"${workspace_loc:/${ProjName}/SourceCode/Mcal/' + re.sub(delete_path, '', tmp_dir) + '}"')
+                            '"${workspace_loc:/${ProjName}/SourceCode/Mcal' + re.sub(delete_path[0], '', tmp_dir) + '}"')
                         break
         return includelist
