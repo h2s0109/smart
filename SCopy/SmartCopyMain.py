@@ -298,26 +298,26 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
             self.leftsideModel.clear()
             self.CopyProcessValid = False
         return
+    
     def tempcheck(self):
         copypath = dict()
-        a = list()
-        m = list()
-        y = list()
-        copypath['module'] = self.ModuleComboBox.currentText()
-        copypath['module'] = copypath['module'].replace('\\', '/')
+        splitresult = list()
+        copypath['module'] = self.ModuleComboBox.currentText()        
         copypath['smodule'] = self.SmoduleComboBox.currentText()
-        copypath['smodule'] = copypath['smodule'].replace('\\', '/')
         projectpath= self.ProjectComboBox.currentText()
+        copypath['module'] = copypath['module'].replace('\\', '/')
+        copypath['smodule'] = copypath['smodule'].replace('\\', '/')
         projectpath =projectpath.replace('\\', '/')
         projectpath += '/'
-        for x in copypath:
-            m = re.split(projectpath, copypath[x])
-            y.append(m[0])
-        if not '' in y:
-            print('good')
+        for tempkey in copypath:
+            tempsplit = re.split(projectpath, copypath[tempkey])
+            splitresult.append(tempsplit[0])
+        if not '' in splitresult:
+            #Not belong to project
+            return False
         else:
-            print('bad')
-        return
+            #Belong to project path
+            return True
             
 
     def CopyProcess(self):        
