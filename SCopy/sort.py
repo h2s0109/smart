@@ -60,7 +60,8 @@ def gen_c_h_dic(dir_arg, sort_data, module_data, smodule = False):
 def moduledatashow(dir_arg, sort_data, module_data):
     """Generate the dictionary including
         {include:[file name,file path],source:[file name,file path]}"""
-    search_result = dict()
+    #UPDATE:
+    data_creation_success = False
     module_whole = list()
     ex_classify_result = _sort_classify(sort_data['EX_AND'], sort_data['EX_OR'])
     inc_classify_result = _sort_classify(sort_data['INC_AND'], sort_data['INC_OR'])
@@ -78,9 +79,10 @@ def moduledatashow(dir_arg, sort_data, module_data):
                 module_whole.append(tmp_dir)
     # if there is installed module.
     if len(module_whole)is not 0:
-        _no_moduledata(module_whole, module_data)
+        data_creation_success = _no_moduledata(module_whole, module_data)
         _installed_mcalfolder_print(module_whole)
-    return search_result
+    #UPDATE:search_result
+    return data_creation_success
 
 def _installed_mcalfolder_print(modulelist):
     # To remove the duplicated folder name.
@@ -114,7 +116,7 @@ def _no_moduledata(whole_module_list, module_data):
       
     THIS_DIR  = os.path.realpath("{0}/Database/data_key.json".format(THIS_DIR))
     export_data(THIS_DIR, module_data)
-    return
+    return True
 
 def _gen_filefullpath(dir_arg, files_arg, sort_key_arg):
     """ Generating the file path which has

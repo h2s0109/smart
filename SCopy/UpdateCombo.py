@@ -1,6 +1,8 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 __all__ = ["Class_UpdateCombo"]
+
+
 class Class_UpdateCombo:
 
     def __init__(self):
@@ -30,13 +32,19 @@ class Class_UpdateCombo:
                                     tempfolder, targetcombox)
             elif scopy is True:
                 if targetcombox == 'Mcal':
-                    if self.McalFolderHandlingProcedure(directory) is True:
-                        self.UpdateComboBox(comboboxname, directory, tempfolder, targetcombox)
+                    self.data_handling['MCAL_PATH'] = directory
+                    #UPDATE:
+                    result = self.data_key_creation(self.data_handling)          
+                    if result is True:
+                        self.BuildTree(result, self.data_handling['SORTKEYRESULT_PATH'])
+                        self.UpdateComboBox(
+                            comboboxname, directory, tempfolder, targetcombox)
                 elif targetcombox == 'Module' or 'Smodule':
-                    self.UpdateComboBox(comboboxname, directory, tempfolder, targetcombox)
-                    self.plainTextEdit.setPlainText(comboboxname.currentText())
+                    self.UpdateComboBox(
+                        comboboxname, directory, tempfolder, targetcombox)
+                    self.progresstxt_dest.setPlainText(comboboxname.currentText())
         return
-    
+
     def UpdateComboBox(self, comboboxname, directory, tempfolder, targetcombox):
         """Update the combobox and save Mcal.ini file"""
         # If there is no same folder name add the folder name

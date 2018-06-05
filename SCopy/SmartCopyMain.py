@@ -1,30 +1,30 @@
-from Mcalcopytab import Ui_Dialog
-from PyQt5 import QtCore
-from PyQt5.QtGui import QPainter, QFont, QStandardItemModel, QStandardItem
-from PyQt5.QtWidgets import QDialog, QStyledItemDelegate, QStyleOptionViewItem, QFileDialog, QApplication
-from PyQt5.QtCore import QItemSelectionModel, Qt, pyqtSignal, pyqtSlot, QItemSelection, QAbstractItemModel, QDir, QFile
-from sort import import_data, gen_c_h_dic, export_data, copy_mcalmodule, gen_sort, moduledatashow
-import json
 import os
-from re import search, sub, match, fullmatch
+from Mcalcopytab import Ui_Dialog
+from PyQt5.QtGui import QStandardItemModel, QStandardItem
+from PyQt5.QtWidgets import QDialog, QApplication
+from PyQt5.QtCore import Qt, QFile
 from distutils.dir_util import remove_tree
 from UpdateCombo import Class_UpdateCombo
 from compiler import Class_comiler_path
+from sort import gen_c_h_dic, copy_mcalmodule, gen_sort, moduledatashow
+import sort 
+import copy
 
 class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
     def __init__(self):
         super().__init__()
+
         # Set up the user interface from Designer
         self.setupUi(self)
-        self.RelieveModuleModel = QStandardItemModel()
-        self.SetModuleModel = QStandardItemModel()
-        THIS_DIR = os.path.dirname(__file__)
-        # Module name will be changed at official release.
-        self.DATABASE_PATH = os.path.realpath(
-            "{0}/Database/sort_key.json".format(THIS_DIR))
-        self.TEMP_DATABASE_PATH = os.path.realpath(
-            "{0}/Database/data_key.json".format(THIS_DIR))
-
+        self.leftsideModel = QStandardItemModel()
+        self.rightsideModel = QStandardItemModel()
+        CurrentDir = os.path.dirname(__file__)
+        self.test_value = dict()
+        # Module name will be changed at official release.        
+        self.data_handling = dict()
+        self.data_handling.update(SORTKEY_PATH = os.path.join(CurrentDir,"Database","sort_key.json" ))
+        self.data_handling.update(SORTKEYRESULT_PATH = os.path.join(CurrentDir,"Database","data_key.json"))
+        self.data_handling.update(MCAL_PATH = '')
         self.module_sort_result = dict()
         self.refine_result = dict()
         self.CopyProcessValid = False
@@ -35,6 +35,8 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
         self.UpdateRecentOpenFile(self.McalComboBox, 'Mcal')
         self.UpdateRecentOpenFile(self.ModuleComboBox, 'Module')
         self.UpdateRecentOpenFile(self.SmoduleComboBox, 'Smodule')
+
+        #data_key_creation is called at here
         self.McalDirButton.clicked.connect(
             lambda: self.setExistingDirectory(self.McalComboBox, 'Mcal', True))
         self.ModuleDirButton.clicked.connect(
@@ -42,146 +44,130 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
         self.SmoduleDirButton.clicked.connect(
             lambda: self.setExistingDirectory(self.SmoduleComboBox, 'Smodule',True))
 
-        self.McalComboBox.currentIndexChanged.connect(
-            lambda: self.ComboxBoxClick(self.McalComboBox))            
-        self.SetModuleButton.clicked.connect(lambda: self.SetModuleTreeViewUpdate(
-            self.RelieveModuleModel, self.SetModuleModel))
-        self.RelieveModuleButton.clicked.connect(lambda: self.SetModuleTreeViewUpdate_Relieve(
-            self.SetModuleModel, self.RelieveModuleModel))
+        #data_key_creation is called at here.
+        self.McalComboBox.currentIndexChanged.connect(lambda: self.combobox_change(self.McalComboBox))
+        self.leftright_button.clicked.connect(lambda:self.left_tree_update(self.leftsideModel, self.rightsideModel))
+        self.rightleft_button.clicked.connect(lambda:self.right_tree_update(self.rightsideModel))
         self.CopyButton.clicked.connect(self.CopyProcess)
+        
+        #UPDATE: 모듈 로딩 되지 않았을때 어떻게 처리?
+        self.rightsideModel.itemChanged.connect(lambda: self.rightcheckbox_click(self.rightsideModel, self.righttreeinform))
+        self.leftsideModel.itemChanged.connect(lambda: self.leftcheckbox_click(self.leftsideModel, self.lefttreeinform))
 
-    def RebuildtreeInit(self, elements):
-        rebuildtree = dict()
-        for module in elements:
-            rebuildtree.update({module: []})
-        return rebuildtree
+        self.righttreeinform = 0
+        self.lefttreeinform = 0
 
-    def SetModuleTreeViewUpdate_Relieve(self, SetModuleParent, RelieveModuleParent):
+    def right_tree_update(self,right_parent):
         if self.CopyProcessValid is True:
-            self.plainTextEdit_Install.appendPlainText("Selected item removed")
+            self.progresstxt_source.appendPlainText("Selected item removed")
             rebuildtree = dict()
-            for k_num in range(0, SetModuleParent.rowCount()):
-                index_basemodule = SetModuleParent.index(k_num, 0)
-                data = SetModuleParent.data(index_basemodule)
-                rowCount_child = SetModuleParent.rowCount(index_basemodule)
+            for level_1_idx in range(0, right_parent.rowCount()):
+                index_basemodule = right_parent.index(level_1_idx, 0)
+                level_1_data = right_parent.data(index_basemodule)
+                rowCount_child = right_parent.rowCount(index_basemodule)
                 listcheck = list()
-                item_child = SetModuleParent.itemFromIndex(index_basemodule)
-                for j_num in range(0, rowCount_child):
-                    index_basemodule_child = SetModuleParent.index(
-                        j_num, 0, index_basemodule)
-                    item = SetModuleParent.itemFromIndex(
-                        index_basemodule_child)
-                    data2 = SetModuleParent.data(index_basemodule_child)
-                    print(data, data2, rowCount_child, j_num)
-                    if item_child.checkState() == Qt.Checked:
-                        item_child.setCheckState(Qt.Unchecked)
-                        item_child.setFlags(Qt.ItemIsTristate)
-                        data_child = SetModuleParent.data(
-                            index_basemodule_child)
-                        listcheck = [msls for msls in range(0, rowCount_child)]
+                level_1_item = right_parent.itemFromIndex(index_basemodule)
+                for level_2_idx in range(0,rowCount_child):
+                    index_basemodule_child = right_parent.index(level_2_idx, 0, index_basemodule)
+                    level_2_item = right_parent.itemFromIndex(index_basemodule_child)
+                    level_2_data = right_parent.data(index_basemodule_child)
+                    print(level_1_data,level_2_data,rowCount_child,level_2_idx)
+                    #if Leve_1 checked whole item will be removed
+                    if level_1_item.checkState() == Qt.Unchecked:
+                        print(level_1_data,"will be removed")
+                        level_1_item.setCheckState(Qt.Checked)
+                        level_1_item.setFlags(Qt.ItemIsTristate)                                               
+                        for tmplevel_2_idx in range(0,rowCount_child):
+                            listcheck.append(tmplevel_2_idx)
+                            index_basemodule_child = right_parent.index(tmplevel_2_idx, 0, index_basemodule)
+                            tmplevel_2_data = right_parent.data(index_basemodule_child)
+                            if tmplevel_2_data in self.module_sort_result:
+                                self.module_sort_result.pop(tmplevel_2_data)
+                            if tmplevel_2_data in self.refine_result:
+                                self.refine_result.pop(tmplevel_2_data)
                         listcheck.sort(reverse=True)
-                        rebuildtree.update({index_basemodule: listcheck})
+                        rebuildtree.update({index_basemodule:listcheck})
                         break
-                        # SetModuleParent.removeRows(k_num,0,index_basemodule)
-                    elif item.checkState() == Qt.Checked:
-                        data_child = SetModuleParent.data(
-                            index_basemodule_child)
-                        listcheck.append(j_num)
-                    listcheck.sort(reverse=True)
-                    rebuildtree.update({index_basemodule: listcheck})
-            for lll in rebuildtree:
-                if len(rebuildtree[lll]):
-                    for y in rebuildtree[lll]:
-                        mkz = SetModuleParent.removeRow(y, lll)
-            parentCount = SetModuleParent.rowCount()
-            tempCount = 0
-            for k_num in range(0, parentCount):
-                index_basemodule = SetModuleParent.index(k_num, 0)
-                if not SetModuleParent.hasChildren(index_basemodule):
-                    item2 = SetModuleParent.itemFromIndex(index_basemodule)
-                    item2.setFlags(Qt.ItemIsTristate)
-                    tempCount += 1
-                    # if all module is selected, no more copy process progresses
-                    if tempCount is parentCount:
-                        self.CopyProcessValid_NoSelect = True
-                        self.plainTextEdit_Install.appendPlainText(
-                            "All modules are unselected")
+                    #if Leve_2 checked only selected item wil be removed
+                    elif level_2_item.checkState() == Qt.Unchecked:
+                        print(level_2_data,"will be removed")                        
+                        if level_2_data in self.module_sort_result:
+                            self.module_sort_result.pop(level_2_data)
+                        if level_2_data in self.refine_result:
+                            self.refine_result.pop(level_2_data)
+                        listcheck.append(level_2_idx)
+                        listcheck.sort(reverse=True)
+                        rebuildtree.update({index_basemodule:listcheck})
+            self.item_remove(rebuildtree, right_parent)       
+            self.tristate_view(right_parent)
         else:
-            self.plainTextEdit_Install.setPlainText("Module is not yet loaded")
+            self.progresstxt_source.setPlainText("Module is not yet loaded")
+        return
 
-    def SetModuleTreeViewUpdate(self, Relieve_parent, SetModuleParent):
+    def item_remove(self,rebuildtree, right_parent):
+        for key in rebuildtree:
+            if len(rebuildtree[key]):
+                for idx in rebuildtree[key]:
+                    right_parent.removeRow(idx,key)
+        return
+
+    def tristate_view(self, right_parent):
+        parentCount = right_parent.rowCount()
+        tempCount = 0            
+        for k_num in range(0, parentCount):
+            index_basemodule = right_parent.index(k_num, 0)
+            if not right_parent.hasChildren(index_basemodule):
+                level_1_item2 = right_parent.itemFromIndex(index_basemodule)
+                level_1_data2 = right_parent.data(index_basemodule)
+                print("Debug",level_1_data2)
+                level_1_item2.setCheckState(Qt.Unchecked)
+                level_1_item2.setFlags(Qt.ItemIsTristate)                
+                tempCount+=1
+                # if all module is selected, no more copy process progresses
+                if tempCount is parentCount:
+                    self.CopyProcessValid_NoSelect = True
+                    self.progresstxt_source.appendPlainText("All modules are unselected")
+        return
+
+    def left_tree_update(self, left_parent, right_Parent):
         if self.CopyProcessValid is True:
             self.CopyProcessValid_NoSelect = False
             rebuildtree = dict()
-            for k_num in range(0, Relieve_parent.rowCount()):
-                index_basemodule = Relieve_parent.index(k_num, 0)
-                data = Relieve_parent.data(index_basemodule)
+            for cnt1 in range(0, left_parent.rowCount()):
                 listcheck = list()
-                item2 = Relieve_parent.itemFromIndex(index_basemodule)
-                for j_num in range(0, Relieve_parent.rowCount(index_basemodule)):
-                    index_basemodule2 = Relieve_parent.index(
-                        j_num, 0, index_basemodule)
-                    item = Relieve_parent.itemFromIndex(index_basemodule2)
-                    if item2.checkState() == Qt.Checked:
-                        data2 = Relieve_parent.data(index_basemodule2)
-                        listcheck.append(data2)
+                level_1_idx = left_parent.index(cnt1, 0)
+                level_1_data = left_parent.data(level_1_idx)                
+                level_1_itm = left_parent.itemFromIndex(level_1_idx)
+                for cnt2 in range(0, left_parent.rowCount(level_1_idx)):
+                    level_2_idx = left_parent.index(cnt2, 0, level_1_idx)
+                    item = left_parent.itemFromIndex(level_2_idx)
+                    if level_1_itm.checkState() == Qt.Checked:
+                        level_2_data = left_parent.data(level_2_idx)
+                        listcheck.append(level_2_data)
                     elif item.checkState() == Qt.Checked:
-                        data2 = Relieve_parent.data(index_basemodule2)
-                        listcheck.append(data2)
-                rebuildtree.update({data: listcheck})
-            sort_data = import_data(self.DATABASE_PATH, "SORTING")
-            sorkey_datas = import_data(self.DATABASE_PATH, "SORTINGKEY")
+                        level_2_data = left_parent.data(level_2_idx)
+                        listcheck.append(level_2_data)
+                    print('level_1_data:',level_1_data,'level_2_data:',level_2_data)                 
+                rebuildtree[level_1_data] = listcheck
+            sort_data = sort.import_data(self.data_handling['SORTKEY_PATH'], "SORTING")
+            sorkey_datas = sort.import_data(self.data_handling['SORTKEY_PATH'], "SORTINGKEY")
             smodule_data = rebuildtree["SERVICEMODULE"]
-            module_data = rebuildtree["MODULELIST"] + \
-                rebuildtree["BASICMODULE"]
-            smodule_sort_result = gen_c_h_dic(
-                self.McalComboBox.currentText(), sort_data, smodule_data, True)
-            self.module_sort_result = gen_c_h_dic(
-                self.McalComboBox.currentText(), sort_data, module_data)
-            self.refine_result = gen_sort(
-                self.module_sort_result, smodule_sort_result, sorkey_datas)
-            SetModuleParent.clear()
-            self.SetModuleBuildtree(SetModuleParent, rebuildtree)
-            self.SetModuleTreeView.expandAll()
+            module_data = rebuildtree["MODULELIST"] + rebuildtree["BASICMODULE"]
+            smodule_sort_result = gen_c_h_dic(self.McalComboBox.currentText(), sort_data, smodule_data, True)
+            self.module_sort_result = gen_c_h_dic(self.McalComboBox.currentText(), sort_data, module_data)
+            self.refine_result = gen_sort(self.module_sort_result, smodule_sort_result, sorkey_datas)
+            right_Parent.clear()
+            self.RightModuleBuildtree(right_Parent, rebuildtree)
+            self.right_tree.expandAll()
         else:
-            self.plainTextEdit_Install.setPlainText("Module is not yet loaded")
+            self.CopyProcessValid_NoSelect = True
+            self.progresstxt_source.setPlainText("Modules are not yet loaded")
 
-    def SetModuleBuildtree(self, parent, elements):
-        module_inform = dict()
-        for module in elements:
-            module_inform.update({module: {'indexnum': 0}})
-            item_module = QStandardItem(module)
-            item_module.setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsTristate)
-            item_module.setCheckState(Qt.Unchecked)
-            if len(elements[module]):
-                item_module.setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
-                item_module.setCheckState(Qt.Unchecked)
-                checkvalue = Qt.Unchecked
-                option = Qt.ItemIsUserCheckable | Qt.ItemIsEnabled
-                self.build_child(
-                    item_module, elements[module], checkvalue, option)
-            parent.appendRow(item_module)
-            module_inform[module]['indexnum'] = parent.rowCount() - 1
-        self.plainTextEdit_Install.appendPlainText("Selected item inserted")
-        return module_inform
-
-    def modulecheck(self, elements, pop_elements):
-        """Remove pop_elements from the elements"""
-        for k_pop_elements in pop_elements:
-            for j_elements in elements[k_pop_elements]:
-                print(j_elements)
-                try:
-                    indexnum = elements['MODULELIST'].index(j_elements)
-                    elements['MODULELIST'].pop(indexnum)
-                except:
-                    print("can not find")
-
-    def checkboxclick(self, parent, tree_inform):
+    def leftcheckbox_click(self, parent, tree_inform):
         for j_basemodule in tree_inform:
             indexnum = tree_inform[j_basemodule]['indexnum']
             index_basemodule = parent.index(indexnum, 0)
             count_basemodule = parent.rowCount(index_basemodule)
-            # a = parent.data(index_basemodule)
             item = parent.itemFromIndex(index_basemodule)
             if item.checkState() == Qt.Unchecked:
                 for k_num in range(0, count_basemodule):
@@ -196,7 +182,49 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
                         k_num, 0, index_basemodule)
                     child_item = parent.itemFromIndex(child_index_basemodule)
                     child_item.setFlags(Qt.NoItemFlags)
-                    # child_item.setCheckState(Qt.Checked)
+        return
+
+    def rightcheckbox_click(self, parent, tree_inform):
+        self.rightsideModel.itemChanged.disconnect()    
+        for j_basemodule in tree_inform:
+            indexnum = tree_inform[j_basemodule]['indexnum']
+            index_basemodule = parent.index(indexnum, 0)
+            count_basemodule = parent.rowCount(index_basemodule)
+            count_value = count_basemodule
+            item = parent.itemFromIndex(index_basemodule)
+            if self.test_value[j_basemodule] == item.checkState():
+                if item.checkState() == Qt.Unchecked:
+                    for k_num in range(0, count_basemodule):
+                        child_index_basemodule = parent.index(k_num, 0, index_basemodule)
+                        child_item = parent.itemFromIndex(child_index_basemodule)
+                        child_item.setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
+                        # child_item.setFlags(Qt.NoItemFlags)
+                elif item.checkState() == Qt.Checked:                    
+                    for k_num in range(0, count_basemodule):
+                        child_index_basemodule = parent.index(k_num, 0, index_basemodule)
+                        child_item = parent.itemFromIndex(child_index_basemodule)
+                        child_item.setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
+                        if child_item.checkState() == Qt.Unchecked:
+                            count_value = count_value - 1
+                if count_value is 0:
+                    print(parent.data(index_basemodule))                           
+                    item.setCheckState(Qt.Unchecked)
+            else:
+                if item.checkState() == Qt.Unchecked:
+                    for k_num in range(0, count_basemodule):
+                        child_index_basemodule = parent.index(k_num, 0, index_basemodule)
+                        child_item = parent.itemFromIndex(child_index_basemodule)
+                        child_item.setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
+                        child_item.setCheckState(Qt.Unchecked)
+                elif item.checkState() == Qt.Checked:
+                    for k_num in range(0, count_basemodule):
+                        child_index_basemodule = parent.index(k_num, 0, index_basemodule)
+                        child_item = parent.itemFromIndex(child_index_basemodule)
+                        child_item.setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
+                        child_item.setCheckState(Qt.Checked)
+            self.test_value[j_basemodule] = item.checkState()
+        self.rightsideModel.itemChanged.connect(lambda: self.rightcheckbox_click(self.rightsideModel, self.righttreeinform))
+        return    
 
     def build_child(self, item_perent, child_elements, checkstate, flag):
         childcount = 0
@@ -208,10 +236,29 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
             childcount += 1
         return
 
-    def RelieveModuleBuildtree(self, parent, elements, basemodule):
+    def RightModuleBuildtree(self, parent, elements):
         module_inform = dict()
         for module in elements:
-            module_inform.update({module: {'indexnum': 0}})
+            module_inform[module] = {'indexnum': 0}
+            item_module = QStandardItem(module)
+            item_module.setFlags(Qt.ItemIsUserCheckable)
+            item_module.setCheckState(Qt.Unchecked)
+            if len(elements[module]):
+                item_module.setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
+                item_module.setCheckState(Qt.Checked)
+                checkvalue = Qt.Checked
+                option = Qt.ItemIsUserCheckable | Qt.ItemIsEnabled
+                self.build_child(item_module, elements[module], checkvalue, option)
+            parent.appendRow(item_module)
+            module_inform[module]['indexnum'] = parent.rowCount() - 1            
+            self.test_value[module] =  item_module.checkState()
+        self.progresstxt_source.appendPlainText("Selected items are inserted")
+        return module_inform
+
+    def LeftModuleBuildtree(self, parent, elements, basemodule):
+        module_inform = dict()
+        for module in elements:
+            module_inform[module] = {'indexnum': 0}
             item_module = QStandardItem(module)
             item_module.setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
             if module in basemodule:
@@ -227,15 +274,16 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
             module_inform[module]['indexnum'] = parent.rowCount() - 1
         return module_inform
 
-    def ComboxBoxClick(self, targetcombo):
-        directory = targetcombo.currentText()
-        if directory is not "":
-            self.SetModuleModel.clear()
-            self.RelieveModuleModel.clear()
-            self.McalFolderHandlingProcedure(directory)
+    def combobox_change(self, combo_name):
+        if combo_name.currentText() is not "":
+            self.rightsideModel.clear()
+            self.leftsideModel.clear()
+            self.data_handling['MCAL_PATH'] = combo_name.currentText()
+            result = self.data_key_creation(self.data_handling)            
+            self.BuildTree(result, self.data_handling['SORTKEYRESULT_PATH'])
         else:
-            self.SetModuleModel.clear()
-            self.RelieveModuleModel.clear()
+            self.rightsideModel.clear()
+            self.leftsideModel.clear()
             self.CopyProcessValid = False
         return
 
@@ -261,60 +309,64 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
                 copy_mcalmodule(self.refine_result, Temp_Smodule, True)
                 copy_mcalmodule(self.module_sort_result, Temp_Module)
                 includelist = self.Compiler_include(Temp_Module, Temp_Smodule)
-                self.plainTextEdit.clear()
+                self.progresstxt_dest.clear()
                 for k_list in includelist:
-                    self.plainTextEdit.appendPlainText(k_list)
+                    self.progresstxt_dest.appendPlainText(k_list)
             else:
-                self.plainTextEdit.setPlainText(
+                self.progresstxt_dest.setPlainText(
                     "Warning: There are no destination")
         else:
-            self.plainTextEdit.setPlainText(
+            self.progresstxt_dest.setPlainText(
                 "Warning: Modules are not configured")
         return
     
-    def McalFolderHandlingProcedure(self, directory):
-        SORT_PATH = directory
-        QFile.remove(self.TEMP_DATABASE_PATH)
-        sort_data = import_data(self.DATABASE_PATH, "SORTING")
-        # module_data = import_data(self.DATABASE_PATH, "MODULE")
-        bmodule_data = import_data(self.DATABASE_PATH, "BASICMODULE")
-        smodule_data = import_data(self.DATABASE_PATH, "SERVICEMODULE")
+    def data_key_creation(self, DATA_PATH):
+        QFile.remove(DATA_PATH['SORTKEYRESULT_PATH'])
+        sort_data = sort.import_data(DATA_PATH['SORTKEY_PATH'], "SORTING")
+        # module_data = import_data(DATA_PATH['SORTKEY_PATH'], "MODULE")
+        bmodule_data = sort.import_data(DATA_PATH['SORTKEY_PATH'], "BASICMODULE")
+        smodule_data = sort.import_data(DATA_PATH['SORTKEY_PATH'], "SERVICEMODULE")
 
         displasydata = dict()
         displasydata.update({"MODULEDATA": {
                             "BASICMODULE": bmodule_data, "SERVICEMODULE": smodule_data, "MODULELIST": []}})
-        # Generate the module data
-        # self.TEMP_DATABASE_PATH is created at here.
-        moduledatashow(SORT_PATH, sort_data, displasydata)
-
-        if QFile.exists(self.TEMP_DATABASE_PATH):
-            modulelist = import_data(self.TEMP_DATABASE_PATH, "MODULEDATA")
-            basemodule = ['BASICMODULE', 'SERVICEMODULE']
-            # Remove the basemodule from modulelist
-            self.modulecheck(modulelist, basemodule)
-            RelieveModuleTreeInform = self.RelieveModuleBuildtree(
-                self.RelieveModuleModel, modulelist, basemodule)
-            self.RelieveModuleTreeView.setModel(self.RelieveModuleModel)
-            self.RelieveModuleTreeView.expandAll()
-            self.RelieveModuleTreeView.setHeaderHidden(True)
-            self.rebuildtree = self.RebuildtreeInit(modulelist)
-            SetModuleTreeInform = self.SetModuleBuildtree(
-                self.SetModuleModel, self.rebuildtree)
-            self.SetModuleTreeView.setModel(self.SetModuleModel)
-            self.SetModuleTreeView.setHeaderHidden(True)
-            self.RelieveModuleModel.itemChanged.connect(
-                lambda: self.checkboxclick(self.RelieveModuleModel, RelieveModuleTreeInform))
-            self.SetModuleModel.itemChanged.connect(
-                lambda: self.checkboxclick(self.SetModuleModel, SetModuleTreeInform))
-            self.CopyProcessValid = True
-            self.plainTextEdit_Install.setPlainText(
-                "Installed MCAL model is loaded successfully.")
+        # data_key.json is created at here.
+        moduledatashow(DATA_PATH['MCAL_PATH'], sort_data, displasydata)
+        if QFile.exists(DATA_PATH['SORTKEYRESULT_PATH']):
+            data_key_created = True
         else:
-            self.SetModuleModel.clear()
-            self.RelieveModuleModel.clear()
+            data_key_created = False
+        return data_key_created
+
+    def RebuildtreeInit(self, elements):
+        rebuildtree = dict()
+        for module in elements:            
+            rebuildtree[module] = []
+        return rebuildtree
+
+    def BuildTree(self, data_key_created, DATA_PATH):
+        if data_key_created is True:
+            modulelist = sort.import_data(DATA_PATH, "MODULEDATA")
+            modulelist['MODULELIST'] = set(modulelist['MODULELIST'])-(set(modulelist['BASICMODULE'])|set(modulelist['SERVICEMODULE']))
+            modulelist['MODULELIST'] = sorted(modulelist['MODULELIST'])            
+            basemodule = ['BASICMODULE', 'SERVICEMODULE']
+            
+            self.lefttreeinform = self.LeftModuleBuildtree(self.leftsideModel, modulelist, basemodule)           
+            self.left_tree.setModel(self.leftsideModel)            
+            self.left_tree.setHeaderHidden(True)            
+            self.left_tree.expandAll()
+    
+            self.righttreeinform = self.RightModuleBuildtree(self.rightsideModel, self.RebuildtreeInit(modulelist))       
+            self.right_tree.setModel(self.rightsideModel)
+            self.right_tree.setHeaderHidden(True)
+
+            self.progresstxt_source.setPlainText("Installed MCAL model is loaded successfully.")
+            self.CopyProcessValid = True
+        else:
+            self.rightsideModel.clear()
+            self.leftsideModel.clear()
+            self.progresstxt_source.setPlainText("Loading failed for Installed MCAL model.")
             self.CopyProcessValid = False
-            self.plainTextEdit_Install.setPlainText(
-                "Loading failed for Installed MCAL model.")
         return self.CopyProcessValid
 
     def closeEvent(self, exits):

@@ -90,7 +90,7 @@
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QTreeView" name="RelieveModuleTreeView">
+        <widget class="QTreeView" name="left_tree">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
            <horstretch>0</horstretch>
@@ -106,7 +106,7 @@
         </widget>
        </item>
        <item row="1" column="4">
-        <widget class="QTreeView" name="SetModuleTreeView"/>
+        <widget class="QTreeView" name="right_tree"/>
        </item>
        <item row="1" column="2" colspan="2">
         <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -124,7 +124,7 @@
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="SetModuleButton">
+          <widget class="QPushButton" name="leftright_button">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
              <horstretch>0</horstretch>
@@ -153,7 +153,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="RelieveModuleButton">
+          <widget class="QPushButton" name="rightleft_button">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
              <horstretch>0</horstretch>
@@ -197,7 +197,7 @@
         </layout>
        </item>
        <item row="2" column="1" colspan="4">
-        <widget class="QPlainTextEdit" name="plainTextEdit_Install"/>
+        <widget class="QPlainTextEdit" name="progresstxt_source"/>
        </item>
       </layout>
      </widget>
@@ -363,7 +363,7 @@
         </layout>
        </item>
        <item row="3" column="0">
-        <widget class="QPlainTextEdit" name="plainTextEdit"/>
+        <widget class="QPlainTextEdit" name="progresstxt_dest"/>
        </item>
       </layout>
      </widget>
