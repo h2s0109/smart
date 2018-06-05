@@ -25,7 +25,7 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
 
         # Module name will be changed at official release.
         #current_dir = os.path.dirname(__file__)
-        self.APPMODE = False
+        self.APPMODE = True
         if self.APPMODE is False:
             userpath = os.getcwd()
         else:
