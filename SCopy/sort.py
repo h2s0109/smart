@@ -94,10 +94,14 @@ def moduledatashow(dir_arg, sort_data, module_data, *pjname):
                 module_whole.append(tmp_dir)
     # if there is installed module.
     if len(module_whole)is not 0:
-        data_creation_success = _no_moduledata(
-            module_whole, module_data, pjname[0])
-        _installed_mcalfolder_print(module_whole, pjname[0])
-    # UPDATE:search_result
+        if not pjname:
+            data_creation_success = _no_moduledata(
+            module_whole, module_data)
+            _installed_mcalfolder_print(module_whole)
+        else:
+            data_creation_success = _no_moduledata(
+                module_whole, module_data, pjname[0])
+            _installed_mcalfolder_print(module_whole, pjname[0])      
     return data_creation_success
 
 
@@ -108,7 +112,7 @@ def _installed_mcalfolder_print(modulelist, *pjname):
     modulelist.sort()
     print("-" * 50, "sorting result", "-" * 50, "\n\r")
     # pprint(modulelist)
-    if not pjname[0]:
+    if not pjname:
         export_data('jmodule_whole.json', modulelist)
     else:
         userpath = pathcheck.windowinstallpathini(pjname[0])

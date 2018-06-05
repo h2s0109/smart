@@ -23,8 +23,8 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
 
         # Module name will be changed at official release.
         #current_dir = os.path.dirname(__file__)
-        APPMODE = True
-        if APPMODE is False:
+        self.APPMODE = False
+        if self.APPMODE is False:
             userpath = os.getcwd()
         else:
             userpath = pathcheck.windowinstallpathini('Smartcopy')
@@ -362,8 +362,11 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
         
         # data_key.json is created at here.
         data_key_templete = dict()
-        data_key_templete["MODULEDATA"]={"BASICMODULE": bmodule_data, "SERVICEMODULE": smodule_data, "MODULELIST": []}        
-        sort.moduledatashow(DATA_PATH['MCAL_PATH'], sort_data, data_key_templete,'Smartcopy')
+        data_key_templete["MODULEDATA"]={"BASICMODULE": bmodule_data, "SERVICEMODULE": smodule_data, "MODULELIST": []}
+        if self.APPMODE is False:
+            sort.moduledatashow(DATA_PATH['MCAL_PATH'], sort_data, data_key_templete)
+        else:
+            sort.moduledatashow(DATA_PATH['MCAL_PATH'], sort_data, data_key_templete,'Smartcopy')        
 
         if QFile.exists(DATA_PATH['SORTKEYRESULT_PATH']):
             data_key_created = True
