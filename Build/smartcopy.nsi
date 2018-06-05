@@ -66,6 +66,8 @@ Section "MainSection" SEC01
   SetOutPath "$INSTDIR"
   SetOverwrite ifnewer
   File /r "C:\D\Git\Gdrive\Git\SmartCopy\SCopy\build\exe.win-amd64-3.6\*"
+  CreateDirectory "$PROFILE\AppData\Local\${PRODUCT_NAME}\Database"
+  CreateDirectory "$PROFILE\AppData\Local\${PRODUCT_NAME}"
 ; Shortcuts
   !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
   CreateDirectory "$SMPROGRAMS\$ICONS_GROUP"
@@ -112,11 +114,11 @@ Section Uninstall
   Delete "$SMPROGRAMS\$ICONS_GROUP\Uninstall.lnk"
   Delete "$SMPROGRAMS\$ICONS_GROUP\Website.lnk" 
   Delete "$SMPROGRAMS\$ICONS_GROUP\Smartcopy.lnk"
-   Delete "$DESKTOP\Smartcopy.lnk"
+  Delete "$DESKTOP\Smartcopy.lnk"
 
   RMDir "$SMPROGRAMS\$ICONS_GROUP"
   RMDir "$INSTDIR"
-
+  RMDir /r "$PROFILE\AppData\Local\${PRODUCT_NAME}"
   DeleteRegKey ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}"
   DeleteRegKey HKLM "${PRODUCT_DIR_REGKEY}"
   SetAutoClose true
