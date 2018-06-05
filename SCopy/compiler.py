@@ -87,6 +87,18 @@ class Class_comiler_path:
                         # print('{}{}{}'.format(
                         #     '${workspace_loc:/${ProjName}/{TEMPLETE}/', re.sub(delete_path[0], '', tmp_dir), '}'))
                         includelist.append(
-                            '"${workspace_loc:/${ProjName}/SourceCode/Mcal' + re.sub(delete_path[0], '', tmp_dir) + '}"')
+                            '"${workspace_loc:/${ProjName}/{TEMPLETE}' + re.sub(delete_path[0], '', tmp_dir) + '}"')
                         break
+        return includelist
+    def Compiler_include2(self, dirpath):
+        includelist = list()
+        for tmp_dir, tmp_folder, tmp_file in os.walk(dirpath):
+            tmp_dir = tmp_dir.replace('\\', '/')
+            if len(tmp_file):
+                for filelist in tmp_file:
+                    if re.match('.*\.h', filelist):
+                        includelist.append(
+                            '"${workspace_loc:/${ProjName}' + re.sub(dirpath, '', tmp_dir) + '}"')
+                        break
+
         return includelist

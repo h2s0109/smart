@@ -1,7 +1,8 @@
 from Mcalcopytab import Ui_Dialog
-from PyQt5.QtGui import QStandardItemModel, QStandardItem
-from PyQt5.QtWidgets import QDialog, QApplication
+from PyQt5.QtGui import QStandardItemModel, QStandardItem 
+from PyQt5.QtWidgets import QDialog, QApplication, QMessageBox
 from PyQt5.QtCore import Qt, QFile
+from PyQt5 import QtGui 
 
 import os
 from license import licensetime_check
@@ -299,18 +300,18 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
             self.CopyProcessValid = False
         return
     
-    def tempcheck(self):
-        copypath = dict()
+    def tempcheck(self, copypath2):        
         splitresult = list()
-        copypath['module'] = self.ModuleComboBox.currentText()        
-        copypath['smodule'] = self.SmoduleComboBox.currentText()
-        projectpath= self.ProjectComboBox.currentText()
-        copypath['module'] = copypath['module'].replace('\\', '/')
-        copypath['smodule'] = copypath['smodule'].replace('\\', '/')
-        projectpath =projectpath.replace('\\', '/')
-        projectpath += '/'
-        for tempkey in copypath:
-            tempsplit = re.split(projectpath, copypath[tempkey])
+        # copypath['module'] = self.ModuleComboBox.currentText()        
+        # copypath['smodule'] = self.SmoduleComboBox.currentText()
+        # projectpath= self.ProjectComboBox.currentText()
+        # copypath['module'] = copypath['module'].replace('\\', '/')
+        # copypath['smodule'] = copypath['smodule'].replace('\\', '/')
+        # projectpath =projectpath.replace('\\', '/')        
+        projectpath = copypath2.pop('PROJECT')
+        projectpath+= '/'
+        for tempkey in copypath2:
+            tempsplit = re.split(projectpath, copypath2[tempkey])
             splitresult.append(tempsplit[0])
         if not '' in splitresult:
             #Not belong to project
@@ -327,19 +328,30 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
             # To support Korean language.
             copypath = dict()
             copypath['module'] = self.ModuleComboBox.currentText()
-            copypath['smodule'] = self.SmoduleComboBox.currentText()            
-            # copypath['PROJECT'] = self.ProjectComboBox.currentText()
-            tempchecsss = self.tempcheck()
+            copypath['smodule'] = self.SmoduleComboBox.currentText()                        
             Pathchek_result = [pathcheck.is_pathname_valid(copypath[x]) for x in copypath]
             if not False in Pathchek_result:
                 pathcheck.Copypath_creation(copypath)
                 sort.copy_mcalmodule(self.copylist['service'], copypath['smodule'], True)
                 sort.copy_mcalmodule(self.copylist['modulebaic'], copypath['module'])
+
                 copypath['module'] = copypath['module'].replace('\\', '/')
                 copypath['smodule'] = copypath['smodule'].replace('\\', '/')
-                includelist = self.Compiler_include(copypath['module'], copypath['smodule'])                
+                copypath['PROJECT'] = self.ProjectComboBox.currentText()
+                copypath['PROJECT'] = copypath['PROJECT'].replace('\\', '/')
+                import copy
+                
+                copypath2 = copy.deepcopy(copypath)
+                tempchecsss = self.tempcheck(copypath2)
+                if tempchecsss is True:
+                    includelist = self.Compiler_include2(self.ProjectComboBox.currentText())                
+                    import XMLtest
+                    XMLtest.parsing_Tasking(copypath['PROJECT'], includelist)
+                else:
+                    includelist = self.Compiler_include(copypath['module'], copypath['smodule'])                
                 for k_list in includelist:
                     self.progresstxt_dest.appendPlainText(k_list)
+                self.show_message()
             else:
                 self.progresstxt_dest.setPlainText(
                     "Warning: The directory path name has a problem")
@@ -403,8 +415,16 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
     def closeEvent(self, exits):
         """Close the application"""
         exits.accept()
-
-
+    
+    def show_message(self):
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Information)
+        msg.setText("Copy Success")
+        # msg.setInformativeText("This is additional information")
+        msg.setWindowTitle("Result")
+        msg.setWindowIcon(QtGui.QIcon("Ico/smart.ico"))
+        msg.setStandardButtons(QMessageBox.Ok)     
+        retval = msg.exec_()
 if __name__ == "__main__":
     import sys
     app = QApplication(sys.argv)
