@@ -23,7 +23,9 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
         self.before_checkstate = dict()
 
         # Module name will be changed at official release.
-        current_dir = os.path.dirname(__file__)        
+        #current_dir = os.path.dirname(__file__)
+        current_dir = os.getcwd()
+
         self.data_handling = dict()
         self.data_handling.update(SORTKEY_PATH = os.path.join(current_dir,"Database","sort_key.json" ))
         self.data_handling.update(SORTKEYRESULT_PATH = os.path.join(current_dir,"Database","data_key.json"))
