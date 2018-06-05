@@ -1,0 +1,48 @@
+{
+ "MODULEDATA": {
+  "BASICMODULE": [
+   "port",
+   "ecum",
+   "mcu",
+   "tricore_general",
+   "general"
+  ],
+  "SERVICEMODULE": [
+   "integration_general",
+   "irq"
+  ],
+  "MODULELIST": [
+   "adc",
+   "bfx",
+   "can_17_mcanp",
+   "cantrcv_17_6250gv33",
+   "cantrcv_17_6251g",
+   "crc",
+   "dio",
+   "dma",
+   "ecum",
+   "eth_17_ethmac",
+   "fee",
+   "fls_17_pmu",
+   "flsloader",
+   "fr_17_eray",
+   "general",
+   "gpt",
+   "icu_17_gtmccu6",
+   "integration_general",
+   "iom",
+   "irq",
+   "lin_17_asclin",
+   "mcu",
+   "port",
+   "pwm_17_gtm",
+   "sent",
+   "smu",
+   "spi",
+   "stm",
+   "tricore_general",
+   "uart",
+   "wdg_17_scu"
+  ]
+ }
+}
