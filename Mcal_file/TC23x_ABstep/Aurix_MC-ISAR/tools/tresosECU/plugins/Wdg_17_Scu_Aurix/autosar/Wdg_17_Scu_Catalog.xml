@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/******************************************************************************
+**                                                                           **
+** Copyright (C) Infineon Technologies (2015)                                **
+**                                                                           **
+** All rights reserved.                                                      **
+**                                                                           **
+** This document contains proprietary information belonging to Infineon      **
+** Technologies. Passing on and copying of this document, and communication  **
+** of its contents is not permitted without prior written authorization.     **
+**                                                                           **
+*******************************************************************************
+**                                                                           **
+**  $FILENAME   : Wdg_17_Scu_Catalog.xml $                                   **
+**                                                                           **
+**  $CC VERSION : \main\11 $                                                 **
+**                                                                           **
+**  $DATE       : 2015-11-30 $                                               **
+**                                                                           **
+**  AUTHOR      : DL-AUTOSAR-Engineering                                     **
+**                                                                           **
+**  VENDOR      : Infineon Technologies                                      **
+**                                                                           **
+**  DESCRIPTION : This file contains                                         **
+**                - Catalog for WDG driver                                   **
+**                                                                           **
+**  MAY BE CHANGED BY USER [yes/no]: No                                      **
+**                                                                           **
+******************************************************************************/
+/*  TRACEABILITY: [cover parentID=SAS_AS4XX_WDG_PR696,SAS_AS4XX_WDG_PR697,
+    SAS_AS4XX_WDG_PR698]
+    [/cover]                                                                  */
+-->
+<CATALOG xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="catalog_V3_0_0.ml.xsd">
+    <SHORT-NAME>WdgCatalog</SHORT-NAME>
+    <ABLOCKS>
+        <ABLOCK>
+            <SHORT-NAME>ssc::src::Wdg_17_Scu.c</SHORT-NAME>
+            <CATEGORY>SWSRC</CATEGORY>
+            <FILES>
+                <FILE>ssc/src/Wdg_17_Scu.c</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>ssc::src::Wdg_17_Scu_Safe.c</SHORT-NAME>
+            <CATEGORY>SWSRC</CATEGORY>
+            <FILES>
+                <FILE>ssc/src/Wdg_17_Scu_Safe.c</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>ssc::inc::Wdg_17_Scu_Safe.h</SHORT-NAME>
+            <CATEGORY>SWHDR</CATEGORY>
+            <FILES>
+                <FILE>ssc/inc/Wdg_17_Scu_Safe.h</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>ssc::inc::Wdg_17_Scu.h</SHORT-NAME>
+            <CATEGORY>SWHDR</CATEGORY>
+            <FILES>
+                <FILE>ssc/inc/Wdg_17_Scu.h</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>generate::src::Wdg_17_Scu_PBCfg.c</SHORT-NAME>
+            <CATEGORY>SWSRC</CATEGORY>
+            <FILES>
+                <FILE>generate/src/Wdg_17_Scu_PBCfg.c</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>generate::inc::Wdg_17_Scu_Cfg.h</SHORT-NAME>
+            <CATEGORY>SWHDR</CATEGORY>
+            <FILES>
+                <FILE>generate/inc/Wdg_17_Scu_Cfg.h</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>config::Wdg_17_Scu.xdm</SHORT-NAME>
+            <CATEGORY>SWTOOL</CATEGORY>
+            <FILES>
+                <FILE>config/Wdg_17_Scu.xdm</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>autosar::Wdg_17_Scu.bmd</SHORT-NAME>
+            <CATEGORY>SWTOOL</CATEGORY>
+            <FILES>
+                <FILE>autosar/Wdg_17_Scu.bmd</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>mak::wdg_17_scu_infineon_tricore::ssc::mak::infineon_wdg_17_scu_cfg.mak</SHORT-NAME>
+            <CATEGORY>SWMAKE</CATEGORY>
+            <FILES>
+                <FILE>mak/wdg_17_scu_infineon_tricore/ssc/mak/infineon_wdg_17_scu_cfg.mak</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>mak::wdg_17_scu_infineon_tricore::ssc::mak::infineon_wdg_17_scu_check.mak</SHORT-NAME>
+            <CATEGORY>SWMAKE</CATEGORY>
+            <FILES>
+                <FILE>mak/wdg_17_scu_infineon_tricore/ssc/mak/infineon_wdg_17_scu_check.mak</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>mak::wdg_17_scu_infineon_tricore::ssc::mak::infineon_wdg_17_scu_defs.mak</SHORT-NAME>
+            <CATEGORY>SWMAKE</CATEGORY>
+            <FILES>
+                <FILE>mak/wdg_17_scu_infineon_tricore/ssc/mak/infineon_wdg_17_scu_defs.mak</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>mak::wdg_17_scu_infineon_tricore::ssc::mak::infineon_wdg_17_scu_rules.mak</SHORT-NAME>
+            <CATEGORY>SWMAKE</CATEGORY>
+            <FILES>
+                <FILE>mak/wdg_17_scu_infineon_tricore/ssc/mak/infineon_wdg_17_scu_rules.mak</FILE>
+            </FILES>
+        </ABLOCK>
+    </ABLOCKS>
+</CATALOG>

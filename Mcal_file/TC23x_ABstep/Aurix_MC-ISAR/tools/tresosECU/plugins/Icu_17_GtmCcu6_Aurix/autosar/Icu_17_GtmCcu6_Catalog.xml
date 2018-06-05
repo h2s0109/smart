@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*******************************************************************************
+**                                                                            **
+** Copyright (C) Infineon Technologies (2015)                                 **
+**                                                                            **
+** All rights reserved.                                                       **
+**                                                                            **
+** This document contains proprietary information belonging to Infineon       **
+** Technologies. Passing on and copying of this document, and communication   **
+** of its contents is not permitted without prior written authorization.      **
+**                                                                            **
+********************************************************************************
+**                                                                            **
+**  $FILENAME  : Icu_17_Catalog.xml $                                         **
+**                                                                            **
+**   $CC VERSION : \main\10 $                                                 **
+**                                                                            **
+**   $DATE       : 2015-11-30 $                                               **
+**                                                                            **
+**   AUTHOR      : DL-AUTOSAR-Engineering                                     **
+**                                                                            **
+**   VENDOR      : Infineon Technologies                                      **
+**                                                                            **
+**   DESCRIPTION : This file contains the mapping of                          **
+**                 AUTOSAR-ENGINEERING-OBJECTs to the respective Files        **
+**                                                                            **
+**   MAY BE CHANGED BY USER [Yes/No]: No                                      **
+**                                                                            **
+*******************************************************************************/
+/*  TRACEABILITY: [cover parentID=SAS_AS4XX_ICU_PR696,SAS_AS4XX_ICU_PR697,
+    SAS_AS4XX_ICU_PR698]
+    [/cover]                                                                  */
+-->
+<CATALOG xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="catalog_V3_0_0.ml.xsd">
+    <SHORT-NAME>IcuCatalog</SHORT-NAME>
+    <ABLOCKS>
+        <ABLOCK>
+            <SHORT-NAME>ssc::src::Icu_17_GtmCcu6.c</SHORT-NAME>
+            <CATEGORY>SWSRC</CATEGORY>
+            <FILES>
+                <FILE>ssc/src/Icu_17_GtmCcu6.c</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>ssc::src::Icu_17_GtmCcu6_Safe.c</SHORT-NAME>
+            <CATEGORY>SWSRC</CATEGORY>
+            <FILES>
+                <FILE>ssc/src/Icu_17_GtmCcu6_Safe.c</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>ssc::src::Icu_17_GtmCcu6_Ver.c</SHORT-NAME>
+            <CATEGORY>SWSRC</CATEGORY>
+            <FILES>
+                <FILE>ssc/src/Icu_17_GtmCcu6_Ver.c</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>ssc::inc::Icu_17_GtmCcu6.h</SHORT-NAME>
+            <CATEGORY>SWHDR</CATEGORY>
+            <FILES>
+                <FILE>ssc/inc/Icu_17_GtmCcu6.h</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>ssc::inc::Icu_17_GtmCcu6_Ver.h</SHORT-NAME>
+            <CATEGORY>SWHDR</CATEGORY>
+            <FILES>
+                <FILE>ssc/inc/Icu_17_GtmCcu6_Ver.h</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>ssc::inc::Icu_17_GtmCcu6_Safe.h</SHORT-NAME>
+            <CATEGORY>SWHDR</CATEGORY>
+            <FILES>
+                <FILE>ssc/inc/Icu_17_GtmCcu6_Safe.h</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>ssc::inc::Icu_17_GtmCcu6_Dbg.h</SHORT-NAME>
+            <CATEGORY>SWHDR</CATEGORY>
+            <FILES>
+                <FILE>ssc/inc/Icu_17_GtmCcu6_Dbg.h</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>ssc::inc::Icu_17_GtmCcu6_Local.h</SHORT-NAME>
+            <CATEGORY>SWHDR</CATEGORY>
+            <FILES>
+                <FILE>ssc/inc/Icu_17_GtmCcu6_Local.h</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>generate::src::Icu_17_GtmCcu6_PBCfg.c</SHORT-NAME>
+            <CATEGORY>SWSRC</CATEGORY>
+            <FILES>
+                <FILE>generate/src/Icu_17_GtmCcu6_PBCfg.c</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>generate::inc::Icu_17_GtmCcu6_Cfg.h</SHORT-NAME>
+            <CATEGORY>SWHDR</CATEGORY>
+            <FILES>
+                <FILE>generate/inc/Icu_17_GtmCcu6_Cfg.h</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>config::Icu_17_GtmCcu6.xdm</SHORT-NAME>
+            <CATEGORY>SWTOOL</CATEGORY>
+            <FILES>
+                <FILE>config/Icu_17_GtmCcu6.xdm</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>autosar::Icu_17_GtmCcu6.bmd</SHORT-NAME>
+            <CATEGORY>SWTOOL</CATEGORY>
+            <FILES>
+                <FILE>autosar/Icu_17_GtmCcu6.bmd</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>mak::icu_17_gtmccu6_infineon_tricore::ssc::mak::infineon_icu_17_gtmccu6_cfg.mak</SHORT-NAME>
+            <CATEGORY>SWMAKE</CATEGORY>
+            <FILES>
+                <FILE>mak/icu_17_gtmccu6_infineon_tricore/ssc/mak/infineon_icu_17_gtmccu6_cfg.mak</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>mak::icu_17_gtmccu6_infineon_tricore::ssc::mak::infineon_icu_17_gtmccu6_check.mak</SHORT-NAME>
+            <CATEGORY>SWMAKE</CATEGORY>
+            <FILES>
+                <FILE>mak/icu_17_gtmccu6_infineon_tricore/ssc/mak/infineon_icu_17_gtmccu6_check.mak</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>mak::icu_17_gtmccu6_infineon_tricore::ssc::mak::infineon_icu_17_gtmccu6_defs.mak</SHORT-NAME>
+            <CATEGORY>SWMAKE</CATEGORY>
+            <FILES>
+                <FILE>mak/icu_17_gtmccu6_infineon_tricore/ssc/mak/infineon_icu_17_gtmccu6_defs.mak</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>mak::icu_17_gtmccu6_infineon_tricore::ssc::mak::infineon_icu_17_gtmccu6_rules.mak</SHORT-NAME>
+            <CATEGORY>SWMAKE</CATEGORY>
+            <FILES>
+                <FILE>mak/icu_17_gtmccu6_infineon_tricore/ssc/mak/infineon_icu_17_gtmccu6_rules.mak</FILE>
+            </FILES>
+        </ABLOCK>
+    </ABLOCKS>
+</CATALOG>

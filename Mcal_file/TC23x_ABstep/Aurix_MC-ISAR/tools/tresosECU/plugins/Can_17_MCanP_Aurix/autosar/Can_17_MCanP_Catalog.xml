@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*******************************************************************************
+**                                                                            **
+** Copyright (C) Infineon Technologies (2015)                                 **
+**                                                                            **
+** All rights reserved.                                                       **
+**                                                                            **
+** This document contains proprietary information belonging to Infineon       **
+** Technologies. Passing on and copying of this document, and communication   **
+** of its contents is not permitted without prior written authorization.      **
+**                                                                            **
+********************************************************************************
+**                                                                            **
+**  $FILENAME   : Can_17_MCanP_Catalog.xml $                                 **
+**                                                                            **
+**  $CC VERSION : \main\8 $                                                  **
+**                                                                            **
+**  $DATE       : 2015-11-30 $                                               **
+**                                                                            **
+**  AUTHOR    : DL-AUTOSAR-Engineering                                        **
+**                                                                            **
+**  VENDOR    : Infineon Technologies                                         **
+**                                                                            **
+**  DESCRIPTION  : This file contains the mapping of                          **
+**                 AUTOSAR-ENGINEERING-OBJECTs to the respective Files        **
+**                                                                            **
+**  MAY BE CHANGED BY USER [Yes/No]: No                                       **
+**                                                                            **
+*******************************************************************************/
+/*******************************************************************************
+**  Traceability   :                                                          **
+**  [cover parentID=SAS_AS4XX_CAN_PR696,SAS_AS4XX_CAN_PR697,SAS_AS4XX_CAN_PR698]
+    [/cover]                                                                  **
+*******************************************************************************/
+
+-->
+<CATALOG xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="catalog_V3_0_0.ml.xsd">
+    <SHORT-NAME>CanCatalog</SHORT-NAME>
+    <ABLOCKS>
+        <ABLOCK>
+            <SHORT-NAME>ssc::inc::Can_17_MCanP.h</SHORT-NAME>
+            <CATEGORY>SWHDR</CATEGORY>
+            <FILES>
+                <FILE>ssc/inc/Can_17_MCanP.h</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>ssc::inc::Can_17_MCanP_Dbg.h</SHORT-NAME>
+            <CATEGORY>SWHDR</CATEGORY>
+            <FILES>
+                <FILE>ssc/inc/Can_17_MCanP_Dbg.h</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>ssc::src::Can_17_MCanP.c</SHORT-NAME>
+            <CATEGORY>SWSRC</CATEGORY>
+            <FILES>
+                <FILE>ssc/src/Can_17_MCanP.c</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>generate::inc::Can_17_MCanP_Cfg.h</SHORT-NAME>
+            <CATEGORY>SWSRC</CATEGORY>
+            <FILES>
+                <FILE>generate/inc/Can_17_MCanP_Cfg.h</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>generate::src::Can_17_MCanP_PBCfg.c</SHORT-NAME>
+            <CATEGORY>SWHDR</CATEGORY>
+            <FILES>
+                <FILE>generate/src/Can_17_MCanP_PBCfg.c</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>config::Can_17_MCanP.xdm</SHORT-NAME>
+            <CATEGORY>SWTOOL</CATEGORY>
+            <FILES>
+                <FILE>config/Can_17_MCanP.xdm</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>autosar::Can_17_MCanP.bmd</SHORT-NAME>
+            <CATEGORY>SWTOOL</CATEGORY>
+            <FILES>
+                <FILE>autosar/Can_17_MCanP.bmd</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>generate::Can_17_MCanP.m</SHORT-NAME>
+            <CATEGORY>SWTOOL</CATEGORY>
+            <FILES>
+                <FILE>generate/Can_17_MCanP.m</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>irq_infineon_tricore::ssc::src::Can_Irq.c</SHORT-NAME>
+            <CATEGORY>SWSRC</CATEGORY>
+            <FILES>
+                <FILE>irq_infineon_tricore/ssc/src/Can_Irq.c</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>ssc::mak::infineon_can_17_mcanp_cfg.mak</SHORT-NAME>
+            <CATEGORY>SWMAKE</CATEGORY>
+            <FILES>
+                <FILE>ssc/mak/infineon_can_17_mcanp_cfg.mak</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>ssc::mak::infineon_can_17_mcanp_check.mak</SHORT-NAME>
+            <CATEGORY>SWMAKE</CATEGORY>
+            <FILES>
+                <FILE>ssc/mak/infineon_can_17_mcanp_check.mak</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>ssc::mak::infineon_can_17_mcanp_defs.mak</SHORT-NAME>
+            <CATEGORY>SWMAKE</CATEGORY>
+            <FILES>
+                <FILE>ssc/mak/infineon_can_17_mcanp_defs.mak</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>ssc::mak::infineon_can_17_mcanp_rules.mak</SHORT-NAME>
+            <CATEGORY>SWMAKE</CATEGORY>
+            <FILES>
+                <FILE>ssc/mak/infineon_can_17_mcanp_rules.mak</FILE>
+            </FILES>
+        </ABLOCK>
+    </ABLOCKS>
+</CATALOG>

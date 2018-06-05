@@ -1,0 +1,806 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!--
+/******************************************************************************
+**                                                                           **
+** Copyright (C) Infineon Technologies (2015)                                **
+**                                                                           **
+** All rights reserved.                                                      **
+**                                                                           **
+** This document contains proprietary information belonging to Infineon      **
+** Technologies. Passing on and copying of this document, and communication  **
+** of its contents is not permitted without prior written authorization.     **
+**                                                                           **
+*******************************************************************************
+**                                                                           **
+**  $FILENAME   : Stm_Bswmd.arxml $                                          **
+**                                                                           **
+**  $CC VERSION : \main\16 $                                                 **
+**                                                                           **
+**  $DATE       : 2015-11-30 $                                               **
+**                                                                           **
+**  AUTHOR    : DL-AUTOSAR-Engineering                                       **
+**                                                                           **
+**  VENDOR    : Infineon Technologies                                        **
+**                                                                           **
+**  DESCRIPTION  : BSWMD for Stm driver                            **
+**                                                                           **
+**  MAY BE CHANGED BY USER [yes/no]: No                                      **
+**                                                                           **
+******************************************************************************/
+/******************************************************************************
+**  Traceability   :                                                         **
+** 
+                                                                             **
+******************************************************************************/
+-->
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-0-3.xsd"> 
+
+<AR-PACKAGES>
+    <AR-PACKAGE>
+        <SHORT-NAME>AURIX_Stm</SHORT-NAME>
+        <AR-PACKAGES>
+            <AR-PACKAGE>
+                <SHORT-NAME>BswModuleDescriptions</SHORT-NAME>
+                <CATEGORY>STANDARD</CATEGORY>
+                <ELEMENTS>
+                    <BSW-MODULE-DESCRIPTION>
+                        <SHORT-NAME>Stm</SHORT-NAME>
+                        <LONG-NAME>
+                            <L-4 L="EN">System timer</L-4>
+                        </LONG-NAME>
+                        <CATEGORY>BSW_MODULE</CATEGORY>
+                        <MODULE-ID>255</MODULE-ID>
+                        <PROVIDED-ENTRYS>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Stm/BswModuleEntrys/Stm_EnableModule</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Stm/BswModuleEntrys/Stm_EnableAlarm</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Stm/BswModuleEntrys/Stm_DisableAlarm</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Stm/BswModuleEntrys/Stm_SetCompareMatchControl</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Stm/BswModuleEntrys/Stm_ReadTimerValue</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Stm/BswModuleEntrys/Stm_ReadTotalTimerValue</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Stm/BswModuleEntrys/Stm_InterruptNodeSelection</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Stm/BswModuleEntrys/Stm_SetAccessEnable</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Stm/BswModuleEntrys/Stm_GetAccessEnable</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Stm/BswModuleEntrys/Stm_SleepModeHandle</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Stm/BswModuleEntrys/Stm_SleepModeHandle</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Stm/BswModuleEntrys/Stm_Isr</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Stm/BswModuleEntrys/Stm_TimerNotification</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                        </PROVIDED-ENTRYS>
+                        <INTERNAL-BEHAVIORS>
+                          <BSW-INTERNAL-BEHAVIOR>
+                            <SHORT-NAME>StmBehavior</SHORT-NAME>
+                            <STATIC-MEMORYS>
+                              <VARIABLE-DATA-PROTOTYPE>
+                                <SHORT-NAME>Stm_ModuleParameter</SHORT-NAME>
+                                <SW-DATA-DEF-PROPS>
+                                  <SW-DATA-DEF-PROPS-VARIANTS>
+                                    <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                    <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AURIX_Stm/ImplementationDataTypes/Stm_ModuleParameterType</IMPLEMENTATION-DATA-TYPE-REF>
+                                    </SW-DATA-DEF-PROPS-CONDITIONAL>
+                                  </SW-DATA-DEF-PROPS-VARIANTS>
+                                </SW-DATA-DEF-PROPS>
+                                <TYPE-TREF DEST = "IMPLEMENTATION-DATA-TYPE">/AURIX_Stm/ImplementationDataTypes/Stm_ModuleParameterType</TYPE-TREF>
+                              </VARIABLE-DATA-PROTOTYPE>
+                            </STATIC-MEMORYS>
+                            <ENTITYS>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Stm_EnableModule</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Stm/BswModuleEntrys/Stm_EnableModule</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Stm_EnableAlarm</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Stm/BswModuleEntrys/Stm_EnableAlarm</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Stm_DisableAlarm</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Stm/BswModuleEntrys/Stm_DisableAlarm</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Stm_SetCompareMatchControl</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Stm/BswModuleEntrys/Stm_SetCompareMatchControl</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Stm_ReadTimerValue</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Stm/BswModuleEntrys/Stm_ReadTimerValue</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Stm_ReadTotalTimerValue</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Stm/BswModuleEntrys/Stm_ReadTotalTimerValue</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Stm_InterruptNodeSelection</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Stm/BswModuleEntrys/Stm_InterruptNodeSelection</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Stm_SetAccessEnable</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Stm/BswModuleEntrys/Stm_SetAccessEnable</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Stm_GetAccessEnable</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Stm/BswModuleEntrys/Stm_GetAccessEnable</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Stm_SleepModeHandle</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Stm/BswModuleEntrys/Stm_SleepModeHandle</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Stm_SleepModeHandle</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Stm/BswModuleEntrys/Stm_SleepModeHandle</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Stm_TimerNotification</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Stm/BswModuleEntrys/Stm_TimerNotification</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+                              <BSW-INTERRUPT-ENTITY>
+                                  <SHORT-NAME>Stm_Isr</SHORT-NAME>
+                                  <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                  <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Stm/BswModuleEntrys/Stm_Isr</IMPLEMENTED-ENTRY-REF>
+                                  <INTERRUPT-CATEGORY>CAT-1</INTERRUPT-CATEGORY>
+                                  <INTERRUPT-SOURCE>SRC_STMx_SRy</INTERRUPT-SOURCE>
+                              </BSW-INTERRUPT-ENTITY>
+                            </ENTITYS>
+                          </BSW-INTERNAL-BEHAVIOR>
+                        </INTERNAL-BEHAVIORS>
+                    </BSW-MODULE-DESCRIPTION>
+                </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE>
+                <SHORT-NAME>BswModuleEntrys</SHORT-NAME>
+                <CATEGORY>STANDARD</CATEGORY>
+                <ELEMENTS>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Stm_EnableModule</SHORT-NAME>
+                        <SERVICE-ID>0</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>ModuleNumber</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Stm_EnableAlarm</SHORT-NAME>
+                        <SERVICE-ID>1</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>ModuleNumber</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>CompareRegisterId</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>TimerMode</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>Ticks</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint32</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>Stm_Applicationfunction</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AURIX_Stm/ImplementationDataTypes/Stm_CallbackFnPtrType</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Stm_DisableAlarm</SHORT-NAME>
+                        <SERVICE-ID>2</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>ModuleNumber</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>CompareRegisterId</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Stm_SetCompareMatchControl</SHORT-NAME>
+                        <SERVICE-ID>3</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>ModuleNumber</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>CompareRegisterId</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>Mstart</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>Msize</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Stm_ReadTimerValue</SHORT-NAME>
+                        <SERVICE-ID>4</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <RETURN-TYPE>
+                          <SHORT-NAME>Return</SHORT-NAME>
+                          <SW-DATA-DEF-PROPS>
+                            <SW-DATA-DEF-PROPS-VARIANTS>
+                              <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint32</IMPLEMENTATION-DATA-TYPE-REF>
+                              </SW-DATA-DEF-PROPS-CONDITIONAL>
+                            </SW-DATA-DEF-PROPS-VARIANTS>
+                          </SW-DATA-DEF-PROPS>
+                        </RETURN-TYPE>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>ModuleNumber</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>TimerNumber</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Stm_ReadTotalTimerValue</SHORT-NAME>
+                        <SERVICE-ID>5</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <RETURN-TYPE>
+                          <SHORT-NAME>Return</SHORT-NAME>
+                          <SW-DATA-DEF-PROPS>
+                            <SW-DATA-DEF-PROPS-VARIANTS>
+                              <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AURIX_Stm/ImplementationDataTypes/Stm_TotalTimerCaptureType</IMPLEMENTATION-DATA-TYPE-REF>
+                              </SW-DATA-DEF-PROPS-CONDITIONAL>
+                            </SW-DATA-DEF-PROPS-VARIANTS>
+                          </SW-DATA-DEF-PROPS>
+                        </RETURN-TYPE>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>ModuleNumber</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Stm_InterruptNodeSelection</SHORT-NAME>
+                        <SERVICE-ID>6</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>ModuleNumber</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>CompareRegisterId</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>InterruptNodeNum</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Stm_SetAccessEnable</SHORT-NAME>
+                        <SERVICE-ID>7</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>ModuleNumber</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>WriteAccessValue</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint32</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Stm_GetAccessEnable</SHORT-NAME>
+                        <SERVICE-ID>8</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <RETURN-TYPE>
+                          <SHORT-NAME>Return</SHORT-NAME>
+                          <SW-DATA-DEF-PROPS>
+                            <SW-DATA-DEF-PROPS-VARIANTS>
+                              <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint32</IMPLEMENTATION-DATA-TYPE-REF>
+                              </SW-DATA-DEF-PROPS-CONDITIONAL>
+                            </SW-DATA-DEF-PROPS-VARIANTS>
+                          </SW-DATA-DEF-PROPS>
+                        </RETURN-TYPE>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>ModuleNumber</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Stm_SleepModeHandle</SHORT-NAME>
+                        <SERVICE-ID>9</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>ModuleNumber</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>SleemodeControl</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Stm_SleepModeHandle</SHORT-NAME>
+                        <SERVICE-ID>11</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>MACRO</SW-SERVICE-IMPL-POLICY>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>VersionInfoPtr</SHORT-NAME>
+                            <CATEGORY>DATA_REFERENCE</CATEGORY>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <SW-POINTER-TARGET-PROPS>
+                                <TARGET-CATEGORY>TYPE_REFERENCE</TARGET-CATEGORY>
+                                <SW-DATA-DEF-PROPS>
+                                <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Std/ImplementationDataTypes/Std_VersionInfoType</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                                </SW-DATA-DEF-PROPS-VARIANTS>
+                                </SW-DATA-DEF-PROPS>
+                                </SW-POINTER-TARGET-PROPS>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Stm_Isr</SHORT-NAME>
+                        <SERVICE-ID>10</SERVICE-ID>
+                        <IS-REENTRANT>true</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>INTERRUPT</CALL-TYPE>
+                        <EXECUTION-CONTEXT>INTERRUPT-CAT-1</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>ModuleNumber</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>InterruptNode</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Stm_TimerNotification</SHORT-NAME>
+                        <SERVICE-ID>255</SERVICE-ID>
+                        <IS-REENTRANT>true</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>INTERRUPT-CAT-1</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                    </BSW-MODULE-ENTRY>
+                </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE>
+                <SHORT-NAME>Implementations</SHORT-NAME>
+                <ELEMENTS>
+                    <BSW-IMPLEMENTATION>
+                        <SHORT-NAME>Stm</SHORT-NAME>
+                        <CODE-DESCRIPTORS>
+                            <CODE>
+                                <SHORT-NAME>Files</SHORT-NAME>
+                                <ARTIFACT-DESCRIPTORS>
+                                    <AUTOSAR-ENGINEERING-OBJECT>
+                                        <SHORT-LABEL>ssc::src::Stm.c</SHORT-LABEL>
+                                        <CATEGORY>SWSRC</CATEGORY>
+                                    </AUTOSAR-ENGINEERING-OBJECT>
+                                    <AUTOSAR-ENGINEERING-OBJECT>
+                                        <SHORT-LABEL>ssc::inc::Stm.h</SHORT-LABEL>
+                                        <CATEGORY>SWHDR</CATEGORY>
+                                    </AUTOSAR-ENGINEERING-OBJECT>
+                                    <AUTOSAR-ENGINEERING-OBJECT>
+                                        <SHORT-LABEL>irq_infineon_tricore::ssc::src::Stm_Irq.c</SHORT-LABEL>
+                                        <CATEGORY>SWSRC</CATEGORY>
+                                    </AUTOSAR-ENGINEERING-OBJECT>
+                                    <AUTOSAR-ENGINEERING-OBJECT>
+                                        <SHORT-LABEL>ssc::mak::infineon_stm_cfg.mak</SHORT-LABEL>
+                                        <CATEGORY>SWMAKE</CATEGORY>
+                                    </AUTOSAR-ENGINEERING-OBJECT>
+                                    <AUTOSAR-ENGINEERING-OBJECT>
+                                        <SHORT-LABEL>ssc::mak::infineon_stm_check.mak</SHORT-LABEL>
+                                        <CATEGORY>SWMAKE</CATEGORY>
+                                    </AUTOSAR-ENGINEERING-OBJECT>
+                                    <AUTOSAR-ENGINEERING-OBJECT>
+                                        <SHORT-LABEL>ssc::mak::infineon_stm_defs.mak</SHORT-LABEL>
+                                        <CATEGORY>SWMAKE</CATEGORY>
+                                    </AUTOSAR-ENGINEERING-OBJECT>
+                                    <AUTOSAR-ENGINEERING-OBJECT>
+                                        <SHORT-LABEL>ssc::mak::infineon_stm_rules.mak</SHORT-LABEL>
+                                        <CATEGORY>SWMAKE</CATEGORY>
+                                    </AUTOSAR-ENGINEERING-OBJECT>
+                                </ARTIFACT-DESCRIPTORS>
+                            </CODE>
+                        </CODE-DESCRIPTORS>
+                        <COMPILERS>
+                            <COMPILER>
+                                <SHORT-NAME>TASKING_COMPILE</SHORT-NAME>
+                                <NAME>TASKING</NAME>
+                                <OPTIONS>&quot;-c --core=tc1.6.x -t -Wa-gAHLs --emit-locals=-equ,-symbols -Wa-Ogs -Wa--error-limit=42 --iso=90 --eabi-compliant --integer-enumeration --language=-comments,-gcc,+volatile,-strings --switch=auto --align=0 --default-near-size=0 --default-a0-size=0 --default-a1-size=0 -O2ROPYG --tradeoff=4 -g --source -D_TASKING_C_TRICORE_=1 $(CALLFUNCTION)&quot;</OPTIONS>
+                                <VENDOR>Tasking</VENDOR>
+                                <VERSION>Tasking</VERSION>
+                            </COMPILER>
+                            <COMPILER>
+                                <SHORT-NAME>DIAB_COMPILE</SHORT-NAME>
+                                <NAME>DIAB</NAME>
+                                <OPTIONS>&quot;-c -tTC27xAstep16PMG:cross -Xdialect-c89 -Xno-common -Xalign-functions=4 -Xfp-fast -Xsection-split=1 -Xkeep-assembly-file=2 -g3 -ew4084 -ei4177,4550,4549,4068,5388 -XO -D_DIABDATA_C_TRICORE_=1 $(CALLFUNCTION)&quot;</OPTIONS>
+                                <VENDOR>WindRiver</VENDOR>
+                                <VERSION>WindRiver</VERSION>
+                            </COMPILER>
+                            <COMPILER>
+                                <SHORT-NAME>GNU_COMPILE</SHORT-NAME>
+                                <NAME>GNU</NAME>
+                                <OPTIONS>&quot;-c -save-temps=obj -std=iso9899:1990 -ansi -fno-asm -ffreestanding -Wundef -Wp,-std=iso9899:1990 -fno-short-enums -fpeel-loops -falign-functions=4 -frecord-gcc-switches -fsection-anchors -funsigned-bitfields -ffunction-sections -fno-ivopts -fno-peephole2 -nostartfiles -O3 -g3 -W -Wall -Wuninitialized -DTRIBOARD_TC27XX -mcpu=tc27xx -D_GNU_C_TRICORE_=1 $(CALLFUNCTION)&quot;</OPTIONS>
+                                <VENDOR>Hightec</VENDOR>
+                                <VERSION>Hightec</VERSION>
+                            </COMPILER>
+                        </COMPILERS>
+                        <LINKERS>
+                            <LINKER>
+                                <SHORT-NAME>TASKING_LINK</SHORT-NAME>
+                                <NAME>TASKING</NAME>
+                                <OPTIONS>&quot;-t -d_mcal_pjt.lsl -D__CPU__=tc27x -Cmpe:vtc -Otxycl --error-limit=42 -M -mcrfiklsmnoduq -lc -lfp -lrt&quot;</OPTIONS>
+                                <VENDOR>Tasking</VENDOR>
+                                <VERSION>Tasking</VERSION>
+                            </LINKER>
+                            <LINKER>
+                                <SHORT-NAME>DIAB_LINK</SHORT-NAME>
+                                <NAME>DIAB</NAME>
+                                <OPTIONS>&quot;-m6 &quot;_mcal_pjt.dld&quot; -lc&quot;</OPTIONS>
+                                <VENDOR>WindRiver</VENDOR>
+                                <VERSION>WindRiver</VERSION>
+                            </LINKER>
+                            <LINKER>
+                                <SHORT-NAME>GNU_LINK</SHORT-NAME>
+                                <NAME>GNU</NAME>
+                                <OPTIONS>&quot;-T&quot;_mcal_pjt.ld&quot; -nostartfiles -Wl,--allow-multiple-definition -Wl,--cref -Wl,--oformat=elf32-tricore -Wl,--mcpu=tc161 -Wl,--mem-holes -Wl,--extmap=&quot;a&quot;&quot;</OPTIONS>
+                                <VENDOR>Hightec</VENDOR>
+                                <VERSION>Hightec</VERSION>
+                            </LINKER>
+                        </LINKERS>
+                        <PROGRAMMING-LANGUAGE>C</PROGRAMMING-LANGUAGE>
+                        <RESOURCE-CONSUMPTION>
+                            <SHORT-NAME>ResourceConsumption</SHORT-NAME>
+                            <MEMORY-SECTIONS>
+                                <MEMORY-SECTION>
+                                    <SHORT-NAME>STM_VAR_32BIT</SHORT-NAME>
+                                    <ALIGNMENT>32</ALIGNMENT>
+                                    <SIZE>84</SIZE>
+                                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR</SW-ADDRMETHOD-REF>
+                                </MEMORY-SECTION>
+                                <MEMORY-SECTION>
+                                    <SHORT-NAME>STM_CODE</SHORT-NAME>
+                                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                                    <SIZE>654</SIZE>
+                                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CODE</SW-ADDRMETHOD-REF>
+                                </MEMORY-SECTION>
+                            </MEMORY-SECTIONS>
+                            <SECTION-NAME-PREFIXS>
+                                <SECTION-NAME-PREFIX>
+                                    <SHORT-NAME>STM</SHORT-NAME>
+                                    <SYMBOL>STM</SYMBOL>
+                                </SECTION-NAME-PREFIX>
+                            </SECTION-NAME-PREFIXS>
+                        </RESOURCE-CONSUMPTION>
+                        <SW-VERSION>0.0.0</SW-VERSION>
+                        <VENDOR-ID>17</VENDOR-ID>
+                        <AR-RELEASE-VERSION>4.0.3</AR-RELEASE-VERSION>
+                        <BEHAVIOR-REF DEST="BSW-INTERNAL-BEHAVIOR">/AURIX_Stm/BswModuleDescriptions/Stm/StmBehavior</BEHAVIOR-REF>
+                        <VENDOR-SPECIFIC-MODULE-DEF-REFS>
+                                <VENDOR-SPECIFIC-MODULE-DEF-REF DEST="ECUC-MODULE-DEF">/AURIX/Stm</VENDOR-SPECIFIC-MODULE-DEF-REF>
+                        </VENDOR-SPECIFIC-MODULE-DEF-REFS>
+                    </BSW-IMPLEMENTATION>
+                </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE>
+                <SHORT-NAME>ImplementationDataTypes</SHORT-NAME>
+                <CATEGORY>STANDARD</CATEGORY>
+                <ELEMENTS>
+                    <IMPLEMENTATION-DATA-TYPE>
+                     <SHORT-NAME>Stm_ModuleParameterType</SHORT-NAME>
+                     <CATEGORY>STRUCTURE</CATEGORY>
+                     <SUB-ELEMENTS>
+                       <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                         <SHORT-NAME>uint32</SHORT-NAME>
+                       </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                     </SUB-ELEMENTS>
+                     <TYPE-EMITTER>BSW</TYPE-EMITTER>
+                    </IMPLEMENTATION-DATA-TYPE>
+                    <IMPLEMENTATION-DATA-TYPE>
+                     <SHORT-NAME>Stm_TotalTimerCaptureType</SHORT-NAME>
+                     <CATEGORY>STRUCTURE</CATEGORY>
+                     <SUB-ELEMENTS>
+                       <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                         <SHORT-NAME>uint32</SHORT-NAME>
+                       </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                     </SUB-ELEMENTS>
+                     <TYPE-EMITTER>BSW</TYPE-EMITTER>
+                    </IMPLEMENTATION-DATA-TYPE>
+                    <IMPLEMENTATION-DATA-TYPE>
+                     <SHORT-NAME>Stm_CallbackFnPtrType</SHORT-NAME>
+                     <CATEGORY>FUNCTION_REFERENCE</CATEGORY>
+                     <SW-DATA-DEF-PROPS>
+                       <SW-DATA-DEF-PROPS-VARIANTS>
+                         <SW-DATA-DEF-PROPS-CONDITIONAL>
+                           <SW-POINTER-TARGET-PROPS>
+                             <SW-DATA-DEF-PROPS>
+                               <SW-DATA-DEF-PROPS-VARIANTS>
+                                 <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                 </SW-DATA-DEF-PROPS-CONDITIONAL>
+                               </SW-DATA-DEF-PROPS-VARIANTS>
+                             </SW-DATA-DEF-PROPS>
+                             <FUNCTION-POINTER-SIGNATURE-REF DEST="BSW-MODULE-ENTRY">/AURIX_Stm/BswModuleEntrys/Stm_TimerNotification</FUNCTION-POINTER-SIGNATURE-REF>
+                           </SW-POINTER-TARGET-PROPS>
+                         </SW-DATA-DEF-PROPS-CONDITIONAL>
+                       </SW-DATA-DEF-PROPS-VARIANTS>
+                     </SW-DATA-DEF-PROPS>
+                     <TYPE-EMITTER>BSW</TYPE-EMITTER>
+                    </IMPLEMENTATION-DATA-TYPE>
+                </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE>
+                <SHORT-NAME>CompuMethods</SHORT-NAME>
+                <CATEGORY>STANDARD</CATEGORY>
+                <ELEMENTS>
+                </ELEMENTS>
+            </AR-PACKAGE>
+        </AR-PACKAGES>
+    </AR-PACKAGE>
+</AR-PACKAGES>
+</AUTOSAR>

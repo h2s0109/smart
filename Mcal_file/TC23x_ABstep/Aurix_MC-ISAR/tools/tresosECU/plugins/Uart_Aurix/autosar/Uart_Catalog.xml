@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/******************************************************************************
+**                                                                           **
+** Copyright (C) Infineon Technologies (2015)                                **
+**                                                                           **
+** All rights reserved.                                                      **
+**                                                                           **
+** This document contains proprietary information belonging to Infineon      **
+** Technologies. Passing on and copying of this document, and communication  **
+** of its contents is not permitted without prior written authorization.     **
+**                                                                           **
+*******************************************************************************
+**                                                                           **
+**  $FILENAME   : Uart_Catalog.xml $                                         **
+**                                                                           **
+**  $CC VERSION : \main\11 $                                                 **
+**                                                                           **
+**  $DATE       : 2015-11-30 $                                               **
+**                                                                           **
+**  AUTHOR      : DL-AUTOSAR-Engineering                                     **
+**                                                                           **
+**  VENDOR      : Infineon Technologies                                      **
+**                                                                           **
+**  DESCRIPTION : XML Data Model for UART driver                             **
+**                                                                           **
+**  MAY BE CHANGED BY USER [yes/no]: No                                      **
+**                                                                           **
+******************************************************************************/
+/*  TRACEABILITY: [cover parentID=SAS_AS4XX_UART_PR697,SAS_AS4XX_UART_PR698]
+    [/cover]                                                                  */
+-->
+<CATALOG xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="catalog_V3_0_0.ml.xsd">
+    <SHORT-NAME>UartCatalog</SHORT-NAME>
+    <ABLOCKS>
+        <ABLOCK>
+            <SHORT-NAME>ssc::src::Uart.c</SHORT-NAME>
+            <CATEGORY>SWSRC</CATEGORY>
+            <FILES>
+                <FILE>ssc/src/Uart.c</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>ssc::inc::Uart.h</SHORT-NAME>
+            <CATEGORY>SWHDR</CATEGORY>
+            <FILES>
+                <FILE>ssc/inc/Uart.h</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>ssc::inc::Uart_Dbg.h</SHORT-NAME>
+            <CATEGORY>SWHDR</CATEGORY>
+            <FILES>
+                <FILE>ssc/inc/Uart_Dbg.h</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>generate::src::Uart_PBCfg.c</SHORT-NAME>
+            <CATEGORY>SWSRC</CATEGORY>
+            <FILES>
+                <FILE>generate/src/Uart_PBCfg.c</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>generate::inc::Uart_Cfg.h</SHORT-NAME>
+            <CATEGORY>SWHDR</CATEGORY>
+            <FILES>
+                <FILE>generate/inc/Uart_Cfg.h</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>config::Uart.xdm</SHORT-NAME>
+            <CATEGORY>SWTOOL</CATEGORY>
+            <FILES>
+                <FILE>config/Uart.xdm</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>autosar::Uart.bmd</SHORT-NAME>
+            <CATEGORY>SWTOOL</CATEGORY>
+            <FILES>
+                <FILE>autosar/Uart.bmd</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>mak::uart_infineon_tricore::ssc::mak::infineon_uart_cfg.mak</SHORT-NAME>
+            <CATEGORY>SWMAKE</CATEGORY>
+            <FILES>
+                <FILE>mak/uart_infineon_tricore/ssc/mak/infineon_uart_cfg.mak</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>mak::uart_infineon_tricore::ssc::mak::infineon_uart_check.mak</SHORT-NAME>
+            <CATEGORY>SWMAKE</CATEGORY>
+            <FILES>
+                <FILE>mak/uart_infineon_tricore/ssc/mak/infineon_uart_check.mak</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>mak::uart_infineon_tricore::ssc::mak::infineon_uart_defs.mak</SHORT-NAME>
+            <CATEGORY>SWMAKE</CATEGORY>
+            <FILES>
+                <FILE>mak/uart_infineon_tricore/ssc/mak/infineon_uart_defs.mak</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>mak::uart_infineon_tricore::ssc::mak::infineon_uart_rules.mak</SHORT-NAME>
+            <CATEGORY>SWMAKE</CATEGORY>
+            <FILES>
+                <FILE>mak/uart_infineon_tricore/ssc/mak/infineon_uart_rules.mak</FILE>
+            </FILES>
+        </ABLOCK>
+    </ABLOCKS>
+</CATALOG>

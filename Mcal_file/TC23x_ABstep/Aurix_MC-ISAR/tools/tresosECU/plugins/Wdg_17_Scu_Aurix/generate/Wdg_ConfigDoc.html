@@ -1,0 +1,620 @@
+<!--
+*****************************************************************************
+**                                                                            **
+** Copyright (C) Infineon Technologies (2013)                                 **
+**                                                                            **
+** All rights reserved.                                                       **
+**                                                                            **
+** This document contains proprietary information belonging to Infineon       **
+** Technologies. Passing on and copying of this document, and communication   **
+** of its contents is not permitted without prior written authorization.      **
+**                                                                            **
+********************************************************************************
+**                                                                            **
+**  $FILENAME   : Wdg_ConfigDoc.html $                                       **
+**                                                                            **
+**  $CC VERSION : \main\5 $                                                  **
+**                                                                            **
+**  $DATE       : 2014-07-16 $                                               **
+**                                                                            **
+**  AUTHOR      : DL-AUTOSAR-Engineering                                      **
+**                                                                            **
+**  VENDOR      : Infineon Technologies                                       **
+**                                                                            **
+**  DESCRIPTION : This file contains                                         **
+**                the Configuration description for WDG driver               **
+**                                                                            **
+**  MAY BE CHANGED BY USER [yes/no]: No                                       **
+**                                                                            **
+** Traceabilty :[cover parentID= SAS_MCAL_WDG_0501,SAS_MCAL_WDG_0505]         **
+**                                                                            **
+** [/cover]   
+********************************************************************************
+-->
+
+[!SELECT "as:modconf('Wdg')[1]"!][!//
+[!VAR "Wdg_MaxTimers" = "ecu:get('Wdg.MaxTimers')"!]
+[!VAR "Safety0level" = "'QM'"!][!//
+[!VAR "Safety1level" = "'QM'"!][!//
+[!VAR "Safety2level" = "'QM'"!][!//
+[!IF "WdgSafety/Wdg0SafetyEnable = 'true'"!][!//
+[!VAR "Safety0level" = "'Safety'"!][!//
+[!ENDIF!][!//
+[!IF "WdgSafety/Wdg1SafetyEnable = 'true'"!][!//
+[!VAR "Safety1level"= "'Safety'"!][!//
+[!ENDIF!][!//
+[!IF "$Wdg_MaxTimers ='3'"!][!//
+[!IF "WdgSafety/Wdg2SafetyEnable = 'true'"!][!//
+[!VAR "Safety2level"= "'Safety'"!][!//
+[!ENDIF!][!//
+[!ENDIF!][!//
+
+
+[!ENDSELECT!][!//
+
+
+[!NOCODE!][!//
+[!VAR "PAR" = "num:i(0)"!][!//
+[!VAR "UR" = "num:i(0)"!][!//
+[!VAR "TCR" = "num:i(0)"!][!//
+[!VAR "INIT" = "num:i(0)"!][!//
+[!VAR "TimerCheckValue" = "num:i(0)"!][!//
+
+[!IF "WdgSafety/Wdg0SafetyEnable  = 'true'"!][!//
+
+[!VAR "PAR" = "num:i(1)"!][!//
+[!VAR "UR"  = "num:i(1)"!][!//
+[!VAR "DR"  = "num:i(0)"!][!//
+[!IF "WdgSafety/WdgEnableTimecheck = 'true' and WdgSafety/Wdg0SafetyEnable = 'true'"!][!//
+[!VAR "TCR" = "num:i(1)"!][!//
+[!VAR "TimerCheckValue" = "WdgSettingsConfig/WdgSettingsConfig_0/WdgTimerCheckTolerance/Wdg0TimerTolerance"!][!//
+[!ELSE!][!//
+[!VAR "TCR" = "num:i(0)"!][!//
+[!VAR "TimerCheckValue" = "num:i(0)"!][!//
+[!ENDIF!][!//
+
+[!ENDIF!][!//
+
+[!VAR "Mode" = "WdgSettingsConfig/WdgSettingsConfig_0/WdgDefaultMode"!][!//
+[!IF "WdgSettingsConfig/WdgSettingsConfig_0/WdgDefaultMode ='WDGIF_SLOW_MODE'"!][!//
+[!VAR "IR0" = "num:i(0)"!][!//
+[!VAR "IR1" = "num:i(0)"!][!//
+[!VAR "DR" = "num:i(0)"!][!//
+[!ELSEIF "WdgSettingsConfig/WdgSettingsConfig_0/WdgDefaultMode ='WDGIF_FAST_MODE'"!][!//
+[!VAR "IR0" = "num:i(1)"!][!//
+[!VAR "IR1" = "num:i(0)"!][!//
+[!VAR "DR" = "num:i(0)"!][!//
+[!ELSE!][!//
+[!VAR "IR0" = "num:i(0)"!][!//
+[!VAR "IR1" = "num:i(0)"!][!//
+[!VAR "DR" = "num:i(1)"!][!//
+[!ENDIF!][!//
+[!VAR "AccessHex1" = "bit:or(num:i($INIT),bit:shl(num:i($IR0),num:i(2)))"!][!//
+[!VAR "AccessHex2" = "bit:or(num:i($AccessHex1),bit:shl(num:i($DR),num:i(3)))"!][!//
+[!VAR "AccessHex3" = "bit:or(num:i($AccessHex2),bit:shl(num:i($IR1),num:i(5)))"!][!//
+[!VAR "AccessHex4" = "bit:or(num:i($AccessHex3),bit:shl(num:i($UR),num:i(6)))"!][!//
+[!VAR "AccessHex5" = "bit:or(num:i($AccessHex4),bit:shl(num:i($PAR),num:i(7)))"!][!//
+[!VAR "AccessHex6" = "bit:or(num:i($AccessHex5),bit:shl(num:i($TCR),num:i(8)))"!][!//
+[!VAR "AccessHex7" = "bit:or(num:i($AccessHex6),bit:shl(num:i($TimerCheckValue),num:i(9)))"!][!//
+[!"num:inttohex($AccessHex7,8)"!]U
+[!ENDNOCODE!][!//
+
+
+[!NOCODE!][!//
+[!VAR "PAR" = "num:i(0)"!][!//
+[!VAR "UR" = "num:i(0)"!][!//
+[!VAR "DR" = "num:i(0)"!][!//
+[!VAR "TCR" = "num:i(0)"!][!//
+[!VAR "INIT" = "num:i(0)"!][!//
+[!VAR "TimerCheckValue" = "num:i(0)"!][!//
+
+[!/*  *******For WDG Timer1***/ */!]
+[!IF "WdgSafety/Wdg1SafetyEnable = 'true'"!][!//
+[!VAR "PAR" = "num:i(1)"!][!//
+[!VAR "UR"  = "num:i(1)"!][!//
+[!IF "WdgSafety/WdgEnableTimecheck = 'true' and WdgSafety/Wdg1SafetyEnable = 'true'"!][!//
+[!VAR "TCR" = "num:i(1)"!][!//
+[!VAR "TimerCheckValue" = "WdgSettingsConfig/WdgSettingsConfig_0/WdgTimerCheckTolerance/Wdg1TimerTolerance"!][!//
+[!ELSE!][!//
+[!VAR "TCR" = "num:i(0)"!][!//
+[!VAR "TimerCheckValue" = "num:i(0)"!][!//
+[!ENDIF!][!//
+[!VAR "Mode" = "WdgSettingsConfig/WdgSettingsConfig_0/Wdg1DefaultMode"!][!//
+[!ENDIF!][!//
+[!IF "WdgSettingsConfig/WdgSettingsConfig_0/Wdg1DefaultMode ='WDGIF_SLOW_MODE'"!][!//
+[!VAR "IR0" = "num:i(0)"!][!//
+[!VAR "IR1" = "num:i(0)"!][!//
+[!VAR "DR" = "num:i(0)"!][!//
+[!ELSEIF "WdgSettingsConfig/WdgSettingsConfig_0/Wdg1DefaultMode ='WDGIF_FAST_MODE'"!][!//
+[!VAR "IR0" = "num:i(1)"!][!//
+[!VAR "IR1" = "num:i(0)"!][!//
+[!VAR "DR" = "num:i(0)"!][!//
+[!ELSE!][!//
+[!VAR "IR0" = "num:i(0)"!][!//
+[!VAR "IR1" = "num:i(0)"!][!//
+[!VAR "DR" = "num:i(1)"!][!//
+[!ENDIF!][!//
+[!VAR "WDGIntial1" = "bit:or(num:i($INIT),bit:shl(num:i($IR0),num:i(2)))"!][!//
+[!VAR "WDGIntial2" = "bit:or(num:i($WDGIntial1),bit:shl(num:i($DR),num:i(3)))"!][!//
+[!VAR "WDGIntial3" = "bit:or(num:i($WDGIntial2),bit:shl(num:i($IR1),num:i(5)))"!][!//
+[!VAR "WDGIntial4" = "bit:or(num:i($WDGIntial3),bit:shl(num:i($UR),num:i(6)))"!][!//
+[!VAR "WDGIntial5" = "bit:or(num:i($WDGIntial4),bit:shl(num:i($PAR),num:i(7)))"!][!//
+[!VAR "WDGIntial6" = "bit:or(num:i($WDGIntial5),bit:shl(num:i($TCR),num:i(8)))"!][!//
+[!VAR "WDGIntial7" = "bit:or(num:i($WDGIntial6),bit:shl(num:i($TimerCheckValue),num:i(9)))"!][!//
+[!"num:inttohex($WDGIntial7,8)"!]U
+[!ENDNOCODE!][!//
+
+[!NOCODE!][!//
+
+[!VAR "PAR" = "num:i(0)"!][!//
+[!VAR "UR" = "num:i(0)"!][!//
+[!VAR "TCR" = "num:i(0)"!][!//
+[!VAR "INIT" = "num:i(0)"!][!//
+[!VAR "TimerCheckValue" = "num:i(0)"!][!//
+[!/*  *******For WDG Timer2*** */!]
+[!IF "WdgSafety/Wdg2SafetyEnable  = 'true'"!][!//
+[!VAR "PAR" = "num:i(1)"!][!//
+[!VAR "UR"  = "num:i(1)"!][!//
+[!VAR "DR"  = "num:i(0)"!][!//
+[!IF "WdgSafety/WdgEnableTimecheck = 'true' and WdgSafety/Wdg2SafetyEnable = 'true'"!][!//
+[!VAR "TCR" = "num:i(1)"!][!//
+[!VAR "TimerCheckValue" = "WdgSettingsConfig/WdgSettingsConfig_0/WdgTimerCheckTolerance/Wdg2TimerTolerance"!][!//
+[!ELSE!][!//
+[!VAR "TCR" = "num:i(0)"!][!//
+[!VAR "TimerCheckValue" = "num:i(0)"!][!//
+[!ENDIF!][!//
+[!VAR "Mode" = "WdgSettingsConfig/WdgSettingsConfig_0/Wdg2DefaultMode"!][!//
+[!ENDIF!][!//
+[!IF "WdgSettingsConfig/WdgSettingsConfig_0/Wdg2DefaultMode ='WDGIF_SLOW_MODE'"!][!//
+[!VAR "IR0" = "num:i(0)"!][!//
+[!VAR "IR1" = "num:i(0)"!][!//
+[!VAR "DR" = "num:i(0)"!][!//
+[!ELSEIF "WdgSettingsConfig/WdgSettingsConfig_0/Wdg2DefaultMode ='WDGIF_FAST_MODE'"!][!//
+[!VAR "IR0" = "num:i(1)"!][!//
+[!VAR "IR1" = "num:i(0)"!][!//
+[!VAR "DR" = "num:i(0)"!][!//
+[!ELSE!][!//
+[!VAR "IR0" = "num:i(0)"!][!//
+[!VAR "IR1" = "num:i(0)"!][!//
+[!VAR "DR" = "num:i(1)"!][!//
+[!ENDIF!][!//
+[!VAR "WDG2Intial1" = "bit:or(num:i($INIT),bit:shl(num:i($IR0),num:i(2)))"!][!//
+[!VAR "WDG2Intial2" = "bit:or(num:i($WDG2Intial1),bit:shl(num:i($DR),num:i(3)))"!][!//
+[!VAR "WDG2Intial3" = "bit:or(num:i($WDG2Intial2),bit:shl(num:i($IR1),num:i(5)))"!][!//
+[!VAR "WDG2Intial4" = "bit:or(num:i($WDG2Intial3),bit:shl(num:i($UR),num:i(6)))"!][!//
+[!VAR "WDG2Intial5" = "bit:or(num:i($WDG2Intial4),bit:shl(num:i($PAR),num:i(7)))"!][!//
+[!VAR "WDG2Intial6" = "bit:or(num:i($WDG2Intial5),bit:shl(num:i($TCR),num:i(8)))"!][!//
+[!VAR "WDG2Intial7" = "bit:or(num:i($WDG2Intial6),bit:shl(num:i($TimerCheckValue),num:i(9)))"!][!//
+[!"num:inttohex($WDG2Intial7,8)"!]U
+[!ENDNOCODE!][!//
+
+
+[!// ********Changes for mode number and channel no*****/
+
+
+[!VAR "WdgTotalConfig" = "num:i(count(as:modconf('Wdg')[1]/WdgSettingsConfig/*))"!][!//
+
+ [!// const Wdg_17_Scu_ConfigType Wdg_ConfigRoot[[!"string(num:i($WdgTotalConfig))"!]]=
+
+[!//
+[!VAR "No0fWdgModuleConfig" = "num:i(count(WdgSettingsConfig/*)- num:i(1))"!][!//
+[!//
+[!FOR "Index" = "num:i(0)" TO "num:i($No0fWdgModuleConfig)"!][!//
+[!//
+[!ENDFOR!][!//
+
+[!NOCODE!][!//
+[!VAR "Wdg0GtmChannel" = "(WdgSettingsConfig/*[@index = $Index]/WdgGtmSettings/Wdg0ServiceGtmChannelRef)"!][!//
+[!VAR "Wdg1GtmChannel" = "(WdgSettingsConfig/*[@index = $Index]/WdgGtmSettings/Wdg1ServiceGtmChannelRef)"!][!//
+    
+[!IF "($Wdg_MaxTimers > num:i(2))"!][!// 
+[!VAR "Wdg2GtmChannel" = "(WdgSettingsConfig/*[@index = $Index]/WdgGtmSettings/Wdg2ServiceGtmChannelRef)"!][!//
+[!ELSE!][!//
+[!VAR "Wdg2GtmChannel" = "'NotAvailable'"!][!//
+[!ENDIF!][!//
+
+[!VAR "Wdg0TimerUnit" = "contains($Wdg0GtmChannel,"Atom")"!]
+[!IF "$Wdg0TimerUnit = "true" "!]
+[!/*" ATOM channel Used "*/!]
+[!VAR "HWD" = "'ATOM'"!][!//
+[!VAR "Wdg0ModuleNumber" = "substring-before ( substring-after($Wdg0GtmChannel,'/Atom_'),'/AtomChannel_')"!]
+[!VAR "Wdg0ChannelNumber" = "substring-after($Wdg0GtmChannel,'/AtomChannel_')"!]
+[!ELSE!]
+[!/*" TOM channel Used "*/!]
+[!VAR "HWD" = "'TOM'"!][!//
+[!VAR "Wdg0ModuleNumber" = "substring-before ( substring-after($Wdg0GtmChannel,'/Tom_'),'/TomChannel_')"!]
+[!VAR "Wdg0ChannelNumber" = "substring-after($Wdg0GtmChannel,'/TomChannel_')"!]
+[!ENDIF!]
+
+[!VAR "Wdg1TimerUnit" = "contains($Wdg1GtmChannel,"Atom")"!]
+[!IF "$Wdg1TimerUnit = "true" "!]
+[!/*" ATOM channel Used "*/!]
+[!VAR "HWD1" = "'ATOM'"!][!//
+[!VAR "Wdg1ModuleNumber" = "substring-before ( substring-after($Wdg1GtmChannel,'/Atom_'),'/AtomChannel_')"!]
+[!VAR "Wdg1ChannelNumber" = "substring-after($Wdg1GtmChannel,'/AtomChannel_')"!]
+[!ELSE!]
+[!/*" TOM channel Used "*/!]
+[!VAR "HWD1" = "'TOM'"!][!//
+[!VAR "Wdg1ModuleNumber" = "substring-before ( substring-after($Wdg1GtmChannel,'/Tom_'),'/TomChannel_')"!]
+[!VAR "Wdg1ChannelNumber" = "substring-after($Wdg1GtmChannel,'/TomChannel_')"!]
+[!ENDIF!]
+
+[!IF "$Wdg2GtmChannel != 'NotAvailable'"!][!//
+[!VAR "Wdg2TimerUnit" = "contains($Wdg2GtmChannel,"Atom")"!]
+[!IF "$Wdg2TimerUnit = "true" "!]
+[!/*" ATOM channel Used "*/!]
+[!VAR "HWD2" = "'ATOM'"!][!//
+[!VAR "Wdg2ModuleNumber" = "substring-before ( substring-after($Wdg2GtmChannel,'/Atom_'),'/AtomChannel_')"!]
+[!VAR "Wdg2ChannelNumber" = "substring-after($Wdg2GtmChannel,'/AtomChannel_')"!]
+[!ELSE!]
+[!/*" TOM channel Used "*/!]
+[!VAR "HWD2" = "'TOM'"!][!//
+[!VAR "Wdg2ModuleNumber" = "substring-before ( substring-after($Wdg2GtmChannel,'/Tom_'),'/TomChannel_')"!]
+[!VAR "Wdg2ChannelNumber" = "substring-after($Wdg2GtmChannel,'/TomChannel_')"!]
+[!ENDIF!]
+[!ENDIF!][!//
+[!ENDNOCODE!][!//
+
+<html>
+<head>
+   
+   <h1> WDG Driver Details</h1>
+  </head>
+  <body>
+  <style type="text/css">
+table{table-layout: fixed;width: 300px;}
+table.curvedEdges { border:10px solid ;-webkit-border-radius:13px;-moz-border-radius:13px;-ms-border-radius:13px;-o-border-radius:13px;border-radius:13px; }
+table.curvedEdges td, table.curvedEdges th { border-bottom:1px dotted black;overflow: hidden;width: 400px;padding:5px; }
+</style>
+  <h2 style=" text-align:centr;">/**********************************Section 1:  HW-SW Map******************************************/</h2>
+ <p style="color:black;text-align:left;"> <strong> Table 1: Configured Groups </strong></p>
+ <table border= "2" cellpadding="5" cellspacing="0" style="width: 100%">
+   <tr> 
+   <thead>
+    <th style=text-align:left">  WDT  </th> 
+	<th > Safety Level </th>  
+	 </thead>
+   </tr>
+   <tbody>
+   <tr> 
+		<td>  WDG 0</td> 	
+		<td> [!"$Safety0level"!] </td> 		
+	</tr>
+    <tr> 
+		<td> WDG 1 </td> 	
+		<td> [!"$Safety1level"!] </td> 	
+   </tr>
+   [!IF "$Wdg_MaxTimers ='3'"!][!//
+  
+<tr> 
+		<td  > WDG 2 </td> 	
+		<td  > [!"$Safety2level"!] </td> 		
+   </tr>  
+[!ENDIF!]   </tbody>
+   </table>
+        <h2>/*******************************Section 2:  MPU Settings*******************************************/ </h2> 
+		
+		[!IF "WdgSafety/Wdg0SafetyEnable  = 'false' or WdgSafety/Wdg1SafetyEnable  = 'false' or WdgSafety/Wdg2SafetyEnable  = 'false' "!][!//
+		 <p style="color:black;text-align:center"> <strong> Table 1: WDG  SFR channel </strong>  </p>
+		<table border = "2" cellpadding="10" cellspacing="0" style="width: 100%">
+		<thead>
+		<th> TIMER </th>
+		<th> GTM Module </th>
+		<th> Module no </th>
+		<th> Channel no </th> </thead>
+		<tbody>
+		
+		<tr>
+		[!IF "WdgSafety/Wdg0SafetyEnable = 'false'"!][!//
+		<td>WDG0</td>
+		<td>[!"$HWD"!]</td>
+		<td>[!"$Wdg0ModuleNumber"!]</td>
+		<td> [!"$Wdg0ChannelNumber"!]  </td></tr>
+		[!ENDIF!]
+		
+		[!IF "WdgSafety/Wdg1SafetyEnable = 'false'"!][!//
+		<td>WDG1</td>
+		<td>[!"$HWD1"!]</td>
+		<td> [!"$Wdg1ModuleNumber"!]  </td>
+		<td> [!"$Wdg1ChannelNumber"!]</td> </tr>
+		[!ENDIF!]
+		<tr>
+		[!IF "WdgSafety/Wdg2SafetyEnable = 'false'"!][!//
+		<td>WDG2</td>
+		<td>[!"$HWD"!]</td>
+		<td>  [!"$Wdg2ModuleNumber"!] </td>
+		<td> [!"$Wdg2ChannelNumber"!]</td> </tr>
+		[!ENDIF!]
+		</tr>
+	    </tbody>	
+		[!ENDIF!][!//
+		</table>
+		
+		
+		<p style="color:black;text-align:center"> <strong> [!IF "WdgSafety/Wdg0SafetyEnable  = 'false' or WdgSafety/Wdg1SafetyEnable  = 'false' or WdgSafety/Wdg2SafetyEnable  = 'false' "!][!//
+    		Table 2: WDG  SFR and Memory Range 
+			[!ELSE!][!//
+			Table 1: WDG  SFR and Memory Range
+			[!ENDIF!][!//</strong>  </p>
+		<table border = "2" cellpadding="10" cellspacing="0" style="width: 100%">
+<tr> 
+   <thead>
+	<th> Timer </th>
+	<th> Section Start Address</th> 
+	<th> Section End Address</th> 
+	<th> Remarks </th> </thead>
+</tr>
+<tbody>
+	<tr >
+		<td rowspan="3">WDG0</td>
+		<td>SCU_WDTCPU0_CON0</td>
+		<td>SCU_WDTCPU0_SR</td>
+		<td>WDG0 password and reload value setting </td>
+	</tr>
+	<tr>
+		[!IF "WdgSafety/Wdg0SafetyEnable = 'false'"!][!//
+        <td>GTM_[!"$HWD"!][!"$Wdg0ModuleNumber"!]_CH[!"$Wdg0ChannelNumber"!]_CM0</td>
+		<td>GTM_[!"$HWD"!][!"$Wdg0ModuleNumber"!]_CH[!"$Wdg0ChannelNumber"!]_SR0</td>
+		<td>Includes Counter Registers,Compare 0 Registers and Shadow 0 Registers of configured [!"$HWD"!] Channels</td>   
+		[!ENDIF!][!//
+	</tr>
+	<tr>
+	[!IF "WdgSafety/Wdg0SafetyEnable = 'false'"!][!//
+	<td> GTM_[!"$HWD"!][!"$Wdg0ModuleNumber"!]_TGC0_ENDIS_STAT</td>
+	<td> GTM_[!"$HWD"!][!"$Wdg0ModuleNumber"!]_TGC1_ENDIS_STAT</td>
+	<td><li>Includes SFR's to enable or disable [!"$HWD"!]x channels </li> 
+	<li>[!IF "$HWD = 'TOM'"!][!//
+			 Number of channels in each TOMx is x =0-15
+			[!ELSEIF "$HWD = 'ATOM'"!][!//
+			 Number of channels in each ATOMx is x =0-7
+			[!ENDIF!][!//</li>
+	<li> [!IF "$HWD = 'TOM'"!][!//
+	        [!IF "$Wdg_MaxTimers ='3'"!][!//
+			 Number of TOMx.. where x=0,1,2
+			 [!ELSE!][!//
+			 Number of TOMx.. where x=0,1
+			 [!ENDIF!][!//
+		[!ELSEIF "$HWD = 'ATOM'"!][!//
+		    [!IF "$Wdg_MaxTimers ='3'"!][!//
+			 Number of ATOMy.. where y=0,1,2,3,4
+			 [!ELSE!][!//
+			 Number of ATOMy.. where y=0,1,2
+			 [!ENDIF!][!//
+		[!ENDIF!][!//</li>
+			</td>
+	[!ENDIF!][!//
+	</tr>
+ 
+	<tr>
+    <td rowspan=3 valign=top>
+    WDG1
+    </td><td>
+      SCU_WDTCPU1_CON0
+    </td>
+	<td>SCU_WDTCPU1_SR</td>
+	<td>WDG1 password and reload value setting </td>
+  </tr><tr>
+  [!IF "WdgSafety/Wdg1SafetyEnable = 'false'"!][!//
+    <td> 
+      [!IF "$HWD1 = 'TOM'"!][!//
+			GTM_TOM[!"$Wdg1ModuleNumber"!]_CH[!"$Wdg1ChannelNumber"!]_CM0[!// 
+            [!ENDIF!][!//
+            [!IF "$HWD1 = 'ATOM'"!][!//
+             GTM_ATOM[!"$Wdg1ModuleNumber"!]_CH[!"$Wdg1ChannelNumber"!]_CM0[!//
+			[!ENDIF!][!//
+    </td>
+
+	<td>[!IF "$HWD1 = 'TOM'"!][!//
+			GTM_TOM[!"$Wdg1ModuleNumber"!]_CH[!"$Wdg1ChannelNumber"!]_SR0[!// 
+            [!ENDIF!][!//
+            [!IF "$HWD1 = 'ATOM'"!][!//
+             GTM_ATOM[!"$Wdg1ModuleNumber"!]_CH[!"$Wdg1ChannelNumber"!]_SR0[!//
+			[!ENDIF!][!//</td> 
+	<td>Includes Counter Registers,Compare 0 Registers and Shadow 0 Registers of configured [!"$HWD1"!] Channels</td>   
+	[!ENDIF!][!//
+  </tr>
+  <tr>
+  [!IF "WdgSafety/Wdg1SafetyEnable = 'false'"!][!//
+    <td>
+     [!IF "$HWD1 = 'TOM'"!][!//
+      GTM_TOM[!"$Wdg1ModuleNumber"!]_TGC0_ENDIS_STAT[!//
+	  [!ENDIF!][!//
+	  [!IF "$HWD1 = 'ATOM'"!][!//
+	  GTM_ATOM[!"$Wdg1ModuleNumber"!]_AGC_ENDIS_STAT[!//
+	 [!ENDIF!][!//
+    </td>
+	<td>[!IF "$HWD1 = 'TOM'"!][!//
+      GTM_TOM[!"$Wdg1ModuleNumber"!]_TGC1_ENDIS_STAT[!//
+	  [!ENDIF!][!//
+	  [!IF "$HWD1 = 'ATOM'"!][!//
+	  GTM_ATOM[!"$Wdg1ModuleNumber"!]_AGC_ENDIS_STAT[!//
+	 [!ENDIF!][!// </td>
+	 <td> <li>Includes SFR's to enable or disable [!"$HWD1"!]x channels </li> 
+	<li>[!IF "$HWD1 = 'TOM'"!][!//
+			 Number of channels in each TOMx is x =0-15
+			[!ELSEIF "$HWD1 = 'ATOM'"!][!//
+			 Number of channels in each ATOMx is x =0-7
+			[!ENDIF!][!//</li>
+	<li> [!IF "$HWD1 = 'TOM'"!][!//
+	        [!IF "$Wdg_MaxTimers ='3'"!][!//
+			 Number of TOMx.. where x=0,1,2
+			 [!ELSE!][!//
+			 Number of TOMx.. where x=0,1
+			 [!ENDIF!][!//
+		[!ELSEIF "$HWD1 = 'ATOM'"!][!//
+		    [!IF "$Wdg_MaxTimers ='3'"!][!//
+			 Number of ATOMy.. where y=0,1,2,3,4
+			 [!ELSE!][!//
+			 Number of ATOMy.. where y=0,1,2
+			 [!ENDIF!][!//
+		[!ENDIF!][!//</li> 
+	 </td>
+	 [!ENDIF!][!//
+  </tr>
+</tr>
+	 [!IF "$Wdg_MaxTimers ='3'"!][!//
+	<tr>
+	 <td  rowspan=3 >WDG2</td>
+	 <td>SCU_WDTCPU2_CON0</td>
+	 <td>SCU_WDTCPU2_SR</td>
+	 <td>WDG2 password and reload value setting </td>
+	</tr>
+	<tr>[!IF "WdgSafety/Wdg2SafetyEnable = 'false'"!][!//
+        <td>GTM_[!"$HWD2"!][!"$Wdg2ModuleNumber"!]_CH[!"$Wdg2ChannelNumber"!]_CM0</td>
+		<td>GTM_[!"$HWD2"!][!"$Wdg2ModuleNumber"!]_CH[!"$Wdg2ChannelNumber"!]_SR0</td>
+		<td>Includes Counter Registers,Compare 0 Registers and Shadow 0 Registers of configured [!"$HWD2"!] Channels</td>   
+		[!ENDIF!][!// </tr>
+	<tr> [!IF "WdgSafety/Wdg2SafetyEnable = 'false'"!][!//
+	<td> GTM_[!"$HWD"!][!"$Wdg2ModuleNumber"!]_TGC0_ENDIS_STAT</td>
+	<td> GTM_[!"$HWD"!][!"$Wdg2ModuleNumber"!]_TGC1_ENDIS_STAT</td>
+	<td><li>Includes SFR's to enable or disable [!"$HWD2"!]x channels </li> 
+	<li>[!IF "$HWD2 = 'TOM'"!][!//
+			 Number of channels in each TOMx is x =0-15
+			[!ELSEIF "$HWD2 = 'ATOM'"!][!//
+			 Number of channels in each ATOMx is x =0-7
+			[!ENDIF!][!//</li>
+	<li> [!IF "$HWD2 = 'TOM'"!][!//
+	        [!IF "$Wdg_MaxTimers ='3'"!][!//
+			 Number of TOMx.. where x=0,1,2
+			 [!ELSE!][!//
+			 Number of TOM2.. where x=0,1
+			 [!ENDIF!][!//
+		[!ELSEIF "$HWD2 = 'ATOM'"!][!//
+		    [!IF "$Wdg_MaxTimers ='3'"!][!//
+			 Number of ATOMy.. where y=0,1,2,3,4
+			 [!ELSE!][!//
+			 Number of ATOMy.. where y=0,1,2
+			 [!ENDIF!][!//
+		[!ENDIF!][!//</li>
+			</td>
+	[!ENDIF!][!//</tr>
+	[!ENDIF!][!//
+	 </tbody>	
+	</thead>	
+	</table>
+		
+		
+		
+		
+   <p style="color:black;text-align:center"> <strong> [!IF "WdgSafety/Wdg0SafetyEnable  = 'false' or WdgSafety/Wdg1SafetyEnable  = 'false' or WdgSafety/Wdg2SafetyEnable  = 'false' "!][!//
+			Table 3: WDG  Code and Memory Range  
+			[!ELSE!][!//
+			Table 2: WDG  Code and Memory Range
+			[!ENDIF!][!// </strong>  </p>
+   <table border = "2" cellpadding="10" cellspacing="0" style="width: 100%">
+   <tr> 
+   <thead>
+	<th> Section Start Address</th> 
+	<th> Section End Address</th> 
+	<th> Remarks </th> </thead>
+   </tr>
+   <tbody>
+    [!IF "WdgGeneral/WdgPBFixedAddress = 'true'"!][!//
+   <tr>
+	<td> WDG_17_SCU_START_SEC_CONST_32BIT</td> 
+	<td> WDG_17_SCU_STOP_SEC_CONST_32BIT </td> 
+	<td> Wdg_kConfigPtr,WdgPBFixedAddress == STD_ON </td> 
+   </tr>
+   [!ENDIF!][!//
+   <tr> 
+	[!IF "WdgGeneral/WdgPBFixedAddress ='false'"!][!//
+	<td> WDG_17_SCU_START_SEC_VAR_32BIT  </td> 
+	<td> WDG_17_SCU_STOP_SEC_VAR_32BIT </td> 
+	<td> Wdg_kConfigPtr,WdgPBFixedAddress == STD_OFF</td> 
+   </tr>
+     [!ENDIF!][!//
+   <tr> 
+
+	<td>  WDG_17_SCU_START_SEC_VAR_16BIT </td> 
+	<td>  WDG_17_SCU_STOP_SEC_VAR_16BIT </td> 
+	<td>  WDG driver variable setting (only for AUTOSAR functionality) </td> 
+	<tr>
+
+	<td>  WDG_17_SCU_START_SEC_CODE </td> 
+	<td>  WDG_17_SCU_STOP_SEC_CODE </td> 
+	<td>  WDG driver-Basic AUTOSAR & Safety functionality </td> 
+   </tr>
+   <tr>
+
+	<td>  WDG_17_SCU_START_SEC_VAR_UNSPECIFIED </td> 
+	<td>  WDG_17_SCU_STOP_SEC_VAR_UNSPECIFIED </td> 
+	<td>  WDG driver current mode and state(only for AUTOSAR function)</td> 
+   </tr>
+   
+   </tbody>
+   </table>
+   
+   
+   
+   <p style="color:black;text-align:center"> <strong> 
+     [!IF "WdgSafety/Wdg0SafetyEnable  = 'false' or WdgSafety/Wdg1SafetyEnable  = 'false' or WdgSafety/Wdg2SafetyEnable  = 'false' "!][!//
+			Table 4: WDG SFR Usage  
+			[!ELSE!][!//
+			Table 3: WDG SFR Usage
+			[!ENDIF!][!//</strong> </p>
+    <table border = "2" cellpadding="10" cellspacing="0" style="width: 100%">
+   <tr> 
+   <thead>
+    <th centre > API Name </th> 
+	<th> SFRs Used </th> 
+	<th> Remarks </th> </thead>
+   </tr>
+   <tbody>
+   <tr> 
+	<td> Wdg_17_Scu_Init </td> 
+	<td> SCU_WDTCPUxCON1, SCU_WDTCPUxCON0, SCU_WDTCPUxSR </td> 
+	<td> x-holds corresponding CPU WDG </td> 
+   </tr>
+   <tr> 
+	<td> Wdg_17_Scu_SetMode </td> 
+	<td> SCU_WDTCPUxCON1, SCU_WDTCPUxCON0  </td> 
+	<td> x-holds corresponding CPU WDG</td> 
+   </tr>
+   <tr> 
+	<td> Wdg_17_Scu_SetTriggerCondition </td> 
+	<td> SCU_WDTCPUxCON0 </td> 
+	<td> x-holds corresponding CPU WDG</td> 
+   </tr>
+    <tr> 
+	<td> Wdg_17_Scu_SafeTrigger </td> 
+	<td> SCU_WDTCPUxCON0 </td> 
+	<td> x-holds corresponding CPU WDG </td> 
+   </tr>
+    <tr> 
+	<td> Wdg_17_Scu_SetOffMode </td> 
+	<td> SCU_WDTCPUxCON1, SCU_WDTCPUxCON0  </td> 
+	<td> x-holds corresponding CPU WDG </td> 
+   </tr>
+   </tbody>
+   </table>
+   </body>
+          <h2>/***************************Section 3:  Periodic SFR Check For WDG***************************************/ </h2>
+   
+    <p style="color:black;text-align:center"> <strong> Table 1: WDG CON1 SFR </strong> </p>
+    <table border = "2" cellpadding="10" cellspacing="0" style="width: 100%">
+   <tr> 
+   <thead>
+    <th centre > Register Name</th> 
+	<th> Value </th> 
+	</thead>
+   </tr>
+   <tbody>
+   <tr>
+   <td> SCU_WDTCPU0_CON1</td>
+   <td> [!"num:inttohex($AccessHex7,8)"!]U </td>
+   </tr>
+    <tr>
+   <td> SCU_WDTCPU1_CON1</td>
+   <td>[!"num:inttohex($WDGIntial7,8)"!]U </td>
+   </tr>
+    <tr>
+	 [!IF "$Wdg_MaxTimers ='3'"!][!//
+   <td> SCU_WDTCPU2_CON1 </td>
+   <td> [!"num:inttohex($WDG2Intial7,8)"!]U</td>
+   </tr>
+   [!ENDIF!] 
+    </tbody>
+   </table>
+   
+</html>
+

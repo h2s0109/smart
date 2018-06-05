@@ -1,0 +1,3001 @@
+<?xml version='1.0'?>
+<!--
+/*******************************************************************************
+**                                                                            **
+** Copyright (C) Infineon Technologies (2013)                                 **
+**                                                                            **
+** All rights reserved.                                                       **
+**                                                                            **
+** This document contains proprietary information belonging to Infineon       **
+** Technologies. Passing on and copying of this document, and communication   **
+** of its contents is not permitted without prior written authorization.      **
+**                                                                            **
+********************************************************************************
+**                                                                            **
+**  $FILENAME   : FlsLoader.xdm $                                            **
+**                                                                            **
+**  $CC VERSION : \main\44 $                                                 **
+**                                                                            **
+**  $DATE       : 2016-05-27 $                                               **
+**                                                                            **
+**  PLATFORM  : Infineon Aurix                                                **
+**                                                                            **
+**  AUTHOR      : DL-AUTOSAR-Engineering                                      **
+**                                                                            **
+**  VENDOR      : Infineon Technologies                                       **
+**                                                                            **
+**  DESCRIPTION : This file contains                                          **
+**                functionality of FlsLoader driver.                          **
+**                                                                            **
+**  MAY BE CHANGED BY USER [yes/no]: No                                       **
+**                                                                            **
+*******************************************************************************/
+/*******************************************************************************
+  TRACEABILITY : [cover parentID=DS_NAS_FLSLOADER_PR1587,
+DS_NAS_FLSLOADER_PR1588,DS_NAS_FLSLOADER_PR1589,
+DS_NAS_FLSLOADER_PR1590,DS_NAS_FLSLOADER_PR1591,DS_NAS_FLSLOADER_PR1592,
+DS_NAS_FLSLOADER_PR1593,DS_NAS_FLSLOADER_PR1594,DS_NAS_FLSLOADER_PR1595,
+DS_NAS_FLSLOADER_PR1596,DS_NAS_FLSLOADER_PR122,DS_NAS_FLSLOADER_PR1601,
+DS_NAS_FLSLOADER_PR1602,DS_NAS_FLSLOADER_PR1603,DS_NAS_FLSLOADER_PR1608,
+DS_NAS_FLSLOADER_PR1609,DS_NAS_FLSLOADER_PR1611,DS_NAS_FLSLOADER_PR1612,
+DS_NAS_FLSLOADER_PR1676,DS_NAS_FLSLOADER_PR1690,DS_NAS_FLSLOADER_PR1691,
+DS_NAS_FLSLOADER_PR1692,DS_NAS_FLSLOADER_PR228_1,DS_NAS_FLSLOADER_PR228_2,
+DS_NAS_FLSLOADER_PR228_3,DS_NAS_FLSLOADER_PR228_4,DS_NAS_FLSLOADER_PR228_5,
+DS_NAS_FLSLOADER_PR228,DS_NAS_FLSLOADER_PR228_9,DS_NAS_FLSLOADER_PR228_10,
+DS_NAS_FLSLOADER_PR228_12,DS_NAS_FLSLOADER_PR228_13,DS_NAS_FLSLOADER_PR228_14,
+DS_NAS_FLSLOADER_PR228_15,DS_NAS_FLSLOADER_PR228_16,DS_NAS_FLSLOADER_PR915,
+DS_NAS_FLSLOADER_PR446,DS_NAS_FLSLOADER_PR700,DS_NAS_FLSLOADER_PR701,
+DS_NAS_FLSLOADER_PR704,DS_NAS_FLSLOADER_PR707,DS_NAS_FLSLOADER_PR708,
+DS_NAS_FLSLOADER_PR709,DS_NAS_FLSLOADER_PR712,DS_NAS_FLSLOADER_PR713,
+DS_NAS_FLSLOADER_PR741,DS_NAS_FLSLOADER_PR716,
+DS_NAS_FLSLOADER_PR717,DS_NAS_FLSLOADER_PR723,DS_NAS_FLSLOADER_PR724,
+DS_NAS_FLSLOADER_PR728,DS_NAS_FLSLOADER_PR699,DS_NAS_FLSLOADER_PR655,
+DS_NAS_FLSLOADER_PR746,DS_NAS_FLSLOADER_PR914,DS_NAS_FLSLOADER_PR647,
+DS_NAS_FLSLOADER_PR719,DS_NAS_FLSLOADER_PR720,
+SAS_NAS_FLSLOADER_PR65,SAS_NAS_FLSLOADER_PR725,
+SAS_NAS_FLSLOADER_PR726,SAS_NAS_FLSLOADER_PR753,
+SAS_NAS_FLSLOADER_PR64,SAS_NAS_FLSLOADER_PR77,SAS_NAS_FLSLOADER_PR82,
+SAS_NAS_FLSLOADER_PR227,SAS_NAS_FLSLOADER_PR640,SAS_NAS_FLSLOADER_PR667,
+SAS_NAS_FLSLOADER_PR646] 
+  [/cover]
+*******************************************************************************/
+-->
+<datamodel version="3.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/08/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/08/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar"  
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="AURIX" type="AR-PACKAGE">
+        <a:a name="UUID" value="93d9a8be-9d4c-47b6-98cb-fe5aec24c8b0"/>
+        <d:lst type="ELEMENTS">
+          <d:chc name="FlsLoader" type="AR-ELEMENT" value="MODULE-DEF">
+            <v:ctr type="MODULE-DEF">
+              <a:a name="RELEASE" value="asc:4.0"/>
+              <a:a name="UUID" value="DCE:820c8734-fcba-4a70-ade2-60935d2440cb"/>
+              <v:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION">
+				<a:a name="IMPLEMENTATIONCONFIGCLASS" 
+						type="IMPLEMENTATIONCONFIGCLASS">
+				 <icc:v class="PreCompile">VariantPreCompile</icc:v>
+				</a:a>
+                <a:a name="LABEL" value="Config Variant"/>
+                <a:da name="DEFAULT" value="VariantPreCompile"/>
+                <a:da name="RANGE">
+                  <a:v>VariantPreCompile</a:v>
+                </a:da>
+              </v:var>
+              <v:ctr name="FlsLoaderDriverConfiguration" type="IDENTIFIABLE">
+              <a:a name="DESC" 
+                         value="FlsLoader driver configuration."/>
+                <a:a name="LONG-NAME" value="EN: FlsLoaderDriverConfiguration"/>
+                <a:a name="UUID" 
+                     value="DCE:39ad22fd-9140-41e4-b7ef-0fce20806dd8"/>
+                <v:var name="FlsLoaderDevErrorDetect" type="BOOLEAN">
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" value="PreCompile"/>
+                  <a:a name="LONG-NAME" value="EN: FlsLoaderDevErrorDetect"/>
+                  <a:a name="DESC" 
+                         value="EN: Preprocessor switch to enable/disable the FlsLoaderDevErrorDetect."/>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="UUID" 
+                       value="DCE:9c9bdd07-25ff-4a12-bd06-df38c2cd5c8f"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="FlsLoaderEnableLockCheck" type="BOOLEAN">
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" value="PreCompile"/>
+                  <a:a name="LONG-NAME" value="EN: FlsLoaderEnableLockCheck"/>
+                  <a:a name="DESC" 
+                         value="EN: Preprocessor switch to enable/disable the Lock Check functionality in Erase and Write API's."/>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="UUID" 
+                       value="DCE:6a29d629-d176-45ba-a064-c94c8733d9c2"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+              </v:ctr>  
+                <v:ctr name="FlsLoaderOptionalApi" type="IDENTIFIABLE">
+                <a:a name="DESC" 
+                         value="EN: FlsLoader driver optional APIconfiguration."/>
+                  <a:a name="LONG-NAME" value="EN: FlsLoaderOptionalApi"/>
+                  <a:a name="UUID" 
+                       value="DCE:109b2e3b-0f4a-4315-89d4-d3ddeb193105"/>
+                  <v:var name="FlsLoaderDeInitApi" type="BOOLEAN">
+                    <a:a name="DESC" 
+                         value="EN: Preprocessor switch to enable/disable the FlsLoader_DeInitSync API."/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" value="PreCompile"/>
+                    <a:a name="LONG-NAME" value="EN: FlsLoaderDeInitApi"/>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                    <a:a name="UUID" 
+                         value="DCE:3fc4c7b8-6345-4f67-a2f6-4037af1e3d83"/>
+                    <a:da name="DEFAULT" value="false"/>
+                  </v:var>
+                  <v:var name="FlsLoaderLockUnlockApi" type="BOOLEAN">
+                    <a:a name="DESC" 
+                         value="EN: Preprocessor switch to enable/disable the FlsLoader_RLockSync API"/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" value="PreCompile"/>
+                    <a:a name="LONG-NAME" value="EN: FlsLoaderRLockSyncApi"/>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                    <a:a name="UUID" 
+                         value="DCE:1e7b66c7-46e8-4b32-9908-e28d89b897e3"/>
+                    <a:da name="DEFAULT" value="false"/>
+                  </v:var>
+                  <v:var name="FlsLoaderVersionInfoApi" type="BOOLEAN">
+                    <a:a name="DESC" 
+                         value="EN: Preprocessor switch to enable/disable the FlsLoader_GetVersionInfo API"/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" value="PreCompile"/>
+                    <a:a name="LONG-NAME" value="EN: FlsLoaderVersionInfoApi"/>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                    <a:a name="UUID" 
+                         value="DCE:1d80fd03-eadc-4a7f-96f5-4290fdab447f"/>
+                    <a:da name="DEFAULT" value="false"/>
+                  </v:var>
+                </v:ctr>
+                <v:ctr name="FlsLoaderPFlash0ProtConfig" type="IDENTIFIABLE">
+                <a:a name="DESC" 
+                             value="EN:PF0 protection configuration."/>                
+                  <a:a name="LONG-NAME" value="EN: FlsLoaderPFlash0ProtConfig"/>
+                  <a:a name="UUID" 
+                       value="DCE:108b2e3b-0f4a-4315-89d4-d3ddeb193115"/>
+                    <v:var name="FlsLoaderPF0WriteProt" type="ENUMERATION">
+                      <a:a name="DESC" 
+                             value="EN:PF0 Read/Write protection."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="c37e5f8c-2ef2-472a-98b5-dcc18cbea5b2"/>
+                      <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                      <a:da name="RANGE">
+                        <a:v>NO_PROTECTION</a:v>
+                        <a:v>READ_PROTECTION</a:v>
+                        <a:v>WRITE_PROTECTION</a:v>
+                        <a:v>OTP_PROTECTION</a:v>
+                        <a:v>WOP_PROTECTION</a:v>
+                      </a:da>
+                    </v:var>
+                    <v:var name="FlsLoaderPFUcbPW0_0" type="INTEGER">
+                        <a:a name="DESC" 
+                             value="4th least significant double-word password out of 4 double-words  password"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPreCompile</icc:v>                   
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="e9afaa0c-2dc7-4390-a7c9-c605ae01c22f"/>
+                        <a:da name="DEFAULT" value="0"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=4294967295"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                      </v:var>
+                      <v:var name="FlsLoaderPFUcbPW0_1" type="INTEGER">
+                        <a:a name="DESC" 
+                             value="4th least significant double-word password out of 4 double-words  password"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPreCompile</icc:v>                   
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="e9afaa0c-2dc7-4390-a7c9-c605ae01c22a"/>
+                        <a:da name="DEFAULT" value="0"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=4294967295"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da> 
+                      </v:var>
+                      <v:var name="FlsLoaderPFUcbPW1_0" type="INTEGER">
+                        <a:a name="DESC" 
+                             value="3rd least significant double-word password out of 4 double-words  password"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPreCompile</icc:v>                   
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="e9afaa0c-2dc7-4390-a7c9-c605ae01c23f"/>
+                        <a:da name="DEFAULT" value="0"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=4294967295"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>                        
+                      </v:var>
+                      <v:var name="FlsLoaderPFUcbPW1_1" type="INTEGER">
+                        <a:a name="DESC" 
+                             value="2nd least significant double-word password out of 4 double-words  password"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPreCompile</icc:v>                   
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="e9afaa0c-2dc7-4390-a7c9-c605ae01c32f"/>
+                        <a:da name="DEFAULT" value="0"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=4294967295"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>                         
+                      </v:var>
+                      <v:var name="FlsLoaderPFUcbPW2_0" type="INTEGER">
+                        <a:a name="DESC" 
+                             value="2nd least significant double-word password out of 4 double-words  password"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPreCompile</icc:v>                   
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="7f8acec7-f9d9-421b-9d87-2fbf002b3364"/>
+                        <a:da name="DEFAULT" value="0"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=4294967295"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>                         
+                      </v:var>
+                      <v:var name="FlsLoaderPFUcbPW2_1" type="INTEGER">
+                        <a:a name="DESC" 
+                             value="2nd least significant double-word password out of 4 double-words  password"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPreCompile</icc:v>                   
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="f158aeb5-c294-4e93-9d36-73b215c02563"/>
+                        <a:da name="DEFAULT" value="0"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=4294967295"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>                         
+                      </v:var>
+                      <v:var name="FlsLoaderPFUcbPW3_0" type="INTEGER">
+                        <a:a name="DESC" 
+                             value="2nd least significant double-word password out of 4 double-words  password"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPreCompile</icc:v>                   
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="05f89bd5-22c2-4185-aafd-39b1a2715593"/>
+                        <a:da name="DEFAULT" value="0"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=4294967295"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>                         
+                      </v:var>
+                      <v:var name="FlsLoaderPFUcbPW3_1" type="INTEGER">
+                        <a:a name="DESC" 
+                             value="2nd least significant double-word password out of 4 double-words  password"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPreCompile</icc:v>                   
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a5242655-e895-4777-ab66-6b7ef366ab96"/>
+                        <a:da name="DEFAULT" value="0"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=4294967295"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>                         
+                      </v:var>
+                      <v:var name="FlsLoaderPF0Sector0" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" value="bf3e4123-a208-4261-aaac-01e12d164471"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF0WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF0WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF0WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>
+                      <v:var name="FlsLoaderPF0Sector1" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" value="bf3e4123-a208-4261-aaac-01e12d164472"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF0WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF0WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF0WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF0Sector2" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" value="bf3e4123-a208-4261-aaac-01e12d164473"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF0WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF0WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF0WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF0Sector3" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" value="bf3e4123-a208-4261-aaac-01e12d164474"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF0WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF0WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF0WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF0Sector4" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" value="bf3e4123-a208-4261-aaac-01e12d164475"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF0WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF0WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF0WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var> 
+                       <v:var name="FlsLoaderPF0Sector5" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="26e245de-4925-4886-b47a-4b2a2a4cc5bf"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF0WriteProt = 'WRITE_PROTECTION') or (../FlsLoaderPF0WriteProt = 'OTP_PROTECTION') or(../FlsLoaderPF0WriteProt = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF0Sector6" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" value="bf3e4123-a208-4261-aaac-01e12d164477"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF0WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF0WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF0WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF0Sector7" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" value="bf3e4123-a208-4261-aaac-01e12d164478"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF0WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF0WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF0WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF0Sector8" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" value="bf3e4123-a208-4261-aaac-01e12d164479"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF0WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF0WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF0WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF0Sector9" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" value="bf3e4123-a208-4261-aaac-01e12d16447a"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF0WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF0WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF0WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF0Sector10" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" value="bf3e4123-a208-4261-aaac-01e12d16447b"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF0WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF0WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF0WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF0Sector11" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a8fd60c3-3614-4753-b874-a56e8a23bc47"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF0WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF0WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF0WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF0Sector12" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" value="bf3e4123-a208-4261-aaac-01e12d16447c"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF0WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF0WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF0WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF0Sector13" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" value="bf3e4123-a208-4261-aaac-01e12d16447d"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF0WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF0WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF0WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF0Sector14" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" value="bf3e4123-a208-4261-aaac-01e12d16447e"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF0WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF0WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF0WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF0Sector15" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" value="bf3e4123-a208-4261-aaac-01e12d16447f"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF0WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF0WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF0WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF0Sector16" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" value="bf3e4123-a208-4261-aaac-01e12d164481"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF0WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF0WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF0WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF0Sector17" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" value="bf3e4123-a208-4261-aaac-01e12d164482"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF0WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF0WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF0WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF0Sector18" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" value="bf3e4123-a208-4261-aaac-01e12d164483"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="ENABLE" type="XPath">
+                            <a:tst expr= "ecu:get('FlsLoader.Pf0Sectors') > num:i(18)" />
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF0WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF0WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF0WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF0Sector19" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" value="bf3e4123-a208-4261-aaac-01e12d164484"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="ENABLE" type="XPath">
+                            <a:tst expr= "ecu:get('FlsLoader.Pf0Sectors') > num:i(18)" />
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF0WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF0WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF0WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF0Sector20" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" value="bf3e4123-a208-4261-aaac-01e12d164485"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="ENABLE" type="XPath">
+                            <a:tst expr= "ecu:get('FlsLoader.Pf0Sectors') > num:i(18)" />
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF0WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF0WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF0WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF0Sector21" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" value="bf3e4123-a208-4261-aaac-01e12d164486"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="ENABLE" type="XPath">
+                            <a:tst expr= "ecu:get('FlsLoader.Pf0Sectors') > num:i(21)" />
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF0WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF0WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF0WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF0Sector22" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" value="bf3e4123-a208-4261-aaac-01e12d164487"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="ENABLE" type="XPath">
+                            <a:tst expr= "ecu:get('FlsLoader.Pf0Sectors') > num:i(21)" />
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF0WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF0WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF0WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF0Sector23" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" value="bf3e4123-a208-4261-aaac-01e12d164488"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="ENABLE" type="XPath">
+                            <a:tst expr= "ecu:get('FlsLoader.Pf0Sectors') > num:i(23)" />
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF0WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF0WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF0WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF0Sector24" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" value="bf3e4123-a208-4261-aaac-01e12d164489"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="ENABLE" type="XPath">
+                            <a:tst expr= "ecu:get('FlsLoader.Pf0Sectors') > num:i(23)" />
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF0WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF0WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF0WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF0Sector25" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" value="bf3e4123-a208-4261-aaac-01e12d164490"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="ENABLE" type="XPath">
+                            <a:tst expr= "ecu:get('FlsLoader.Pf0Sectors') > num:i(25)" />
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF0WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF0WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF0WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF0Sector26" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" value="bf3e4123-a208-4261-aaac-01e12d164491"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="ENABLE" type="XPath">
+                            <a:tst expr= "ecu:get('FlsLoader.Pf0Sectors') > num:i(25)" />
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF0WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF0WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF0WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                       </v:ctr>                                              
+                <v:ctr name="FlsLoaderPFlash1ProtConfig" type="IDENTIFIABLE">
+                <a:a name="DESC" 
+                             value="EN:PF1 protection configuration."/>                
+                  <a:a name="LONG-NAME" value="EN: FlsLoaderPFlash1ProtConfig"/>
+                <a:a name="UUID" value="2688c009-db81-4b67-80bc-f45822fc95f7"/>
+                    <v:var name="FlsLoaderPF1WriteProt" type="ENUMERATION">
+                      <a:a name="DESC" 
+                             value="EN:PF0 Read/Write protection."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="6af99e0c-df9d-4f91-80c7-32a0956f075b"/>
+                      <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                      <a:da name="RANGE">
+                        <a:v>NO_PROTECTION</a:v>
+                        <a:v>READ_PROTECTION</a:v>
+                        <a:v>WRITE_PROTECTION</a:v>
+                        <a:v>OTP_PROTECTION</a:v>
+                        <a:v>WOP_PROTECTION</a:v>
+                      </a:da>
+                    </v:var>
+                      <v:var name="FlsLoaderPF1Sector0" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="6d92680e-680e-4869-8a73-5d8319e34bf9"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF1WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF1WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF1WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>
+                      <v:var name="FlsLoaderPF1Sector1" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="d86e8d44-1e61-4073-8fb8-98797c71eac6"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF1WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF1WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF1WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF1Sector2" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="9c2a3efd-525c-44ff-94b3-19ca29c45ff6"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF1WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF1WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF1WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF1Sector3" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="767996ae-1c10-4bcb-b2e0-b478f951592f"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF1WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF1WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF1WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF1Sector4" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="c0593ad4-2232-439d-9397-533fa6bdcd9c"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF1WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF1WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF1WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var> 
+                       <v:var name="FlsLoaderPF1Sector5" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="0f5d9e4f-c311-4173-b8bb-727769233e5f"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF1WriteProt = 'WRITE_PROTECTION') or (../FlsLoaderPF1WriteProt = 'OTP_PROTECTION') or(../FlsLoaderPF1WriteProt = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF1Sector6" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="ab53097c-a05d-4ded-8c7b-24eeacc9170a"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF1WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF1WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF1WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF1Sector7" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="5b2de9c5-eb13-4b52-bdc2-3b698036f5e1"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF1WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF1WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF1WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF1Sector8" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="193caa39-6a12-4e33-90a5-bc893c7e41cb"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF1WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF1WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF1WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF1Sector9" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="99cd2e2c-26b4-481f-a75d-51ca8133e82b"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF1WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF1WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF1WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF1Sector10" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="ed53eab3-0811-4f52-a6bf-3bf273e1c4de"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF1WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF1WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF1WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF1Sector11" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="51f1a433-7adf-473f-83a3-6953c983f473"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF1WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF1WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF1WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF1Sector12" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="e2b6cc6e-57fd-4811-abd5-684cc73397d7"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF1WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF1WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF1WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF1Sector13" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="febb48b3-9eec-4157-a835-366cd41ef5bd"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF1WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF1WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF1WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF1Sector14" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="1bf9f37a-235f-4912-9678-ca153594863a"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF1WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF1WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF1WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF1Sector15" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a5d7eb4d-20e9-407f-935c-74dede6cdee5"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF1WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF1WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF1WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF1Sector16" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="5178303d-8efd-4e8e-b86b-fb5ecb4d7c8f"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF1WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF1WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF1WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF1Sector17" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="7293a618-a257-44f4-9e5a-c96305012837"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF1WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF1WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF1WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF1Sector18" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="6c656f67-e9d3-4186-905a-90fce4e54e24"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF1WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF1WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF1WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF1Sector19" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="8ff9563c-fa4a-4318-ac46-ffd9b3c254c2"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF1WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF1WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF1WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF1Sector20" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="37f28cef-097a-4acd-b9bb-f1a6eefb3ee2"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF1WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF1WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF1WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF1Sector21" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="efedd7d0-69dd-46f4-be0d-948c9f6cfa66"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF1WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF1WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF1WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF1Sector22" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="6a6bb262-416d-4908-ac9e-b1127c1d9e55"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF1WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF1WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF1WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF1Sector23" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="743cac89-ebed-4658-b743-2ba1c0a3df23"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF1WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF1WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF1WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF1Sector24" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="7be838e9-324d-4163-b3bd-85baeaa42252"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF1WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF1WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF1WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF1Sector25" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="52d69a8f-45a2-40cd-8d08-bb5b468db487"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="ENABLE" type="XPath">
+                            <a:tst expr= "ecu:get('FlsLoader.Pf1Sectors') > num:i(25)" />
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF1WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF1WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF1WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF1Sector26" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="7fb8bfcf-4a57-413f-b645-245be5059454"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="ENABLE" type="XPath">
+                            <a:tst expr= "ecu:get('FlsLoader.Pf1Sectors') > num:i(25)" />
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF1WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF1WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF1WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>
+                        <a:da name="ENABLE" type="XPath">
+                          <a:tst expr= "ecu:get('FlsLoader.Pf1Sectors') > num:i(0)" />
+                        </a:da>
+                     </v:ctr>                                              
+                <v:ctr name="FlsLoaderPFlash2ProtConfig" type="IDENTIFIABLE">
+                <a:a name="DESC" 
+                             value="EN:PF2 protection configuration."/>                
+                  <a:a name="LONG-NAME" value="FlsLoaderPFlash2ProtConfig"/>
+                <a:a name="UUID" value="3613f5e7-5359-4835-a355-ce366feac55a"/>
+                    <v:var name="FlsLoaderPF2WriteProt" type="ENUMERATION">
+                      <a:a name="DESC" 
+                             value="EN:PF0 Read/Write protection."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="090c57d2-1637-40bc-b0e8-25fbbeb27218"/>
+                      <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                      <a:da name="RANGE">
+                        <a:v>NO_PROTECTION</a:v>
+                        <a:v>READ_PROTECTION</a:v>
+                        <a:v>WRITE_PROTECTION</a:v>
+                        <a:v>OTP_PROTECTION</a:v>
+                        <a:v>WOP_PROTECTION</a:v>
+                      </a:da>
+                    </v:var>
+                      <v:var name="FlsLoaderPF2Sector0" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="bbcbd879-3fc2-4775-9d4d-33611d85b73c"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF2WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF2WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF2WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>
+                      <v:var name="FlsLoaderPF2Sector1" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="fa51e755-a687-4a97-b411-b6c41794c99f"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF2WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF2WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF2WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF2Sector2" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="9c51feb1-9884-4301-a89b-36829cd20730"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF2WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF2WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF2WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF2Sector3" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="0d7f6504-5a5b-49c1-90ae-ebf680d5925e"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF2WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF2WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF2WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF2Sector4" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="9cafcd15-3c47-41ff-a15a-08e0e74e31a0"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF2WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF2WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF2WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var> 
+                       <v:var name="FlsLoaderPF2Sector5" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="43804ba0-2297-4571-9240-b7a0643ce248"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF2WriteProt = 'WRITE_PROTECTION') or (../FlsLoaderPF2WriteProt = 'OTP_PROTECTION') or(../FlsLoaderPF2WriteProt = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF2Sector6" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="d81f2af9-6d99-45e8-8395-06d9dd72cfc7"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF2WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF2WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF2WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF2Sector7" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="3ddc7ab2-7467-4635-b792-b8ad46e50a81"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF2WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF2WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF2WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF2Sector8" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="63d60829-fe5f-4de4-8c0b-e33b66de3f14"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF2WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF2WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF2WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF2Sector9" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="c65c36cf-79db-4e05-9088-b98046d09f70"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF2WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF2WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF2WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF2Sector10" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="8a4df5a3-a5c0-49b9-9246-f0f2293025b1"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF2WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF2WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF2WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF2Sector11" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="7f845cb0-3a37-4eb2-b6ba-8a52cd461f8d"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF2WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF2WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF2WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF2Sector12" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="be686097-4c51-429b-b72e-71de7626fea1"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF2WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF2WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF2WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF2Sector13" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="cc5bcc40-a95a-4825-bda9-62754a7de390"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF2WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF2WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF2WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF2Sector14" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="928352ad-69de-4523-b047-c3b3ab3fe14b"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF2WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF2WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF2WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF2Sector15" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="b8582793-5559-4c1e-ad66-f31b1f300ac4"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF2WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF2WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF2WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF2Sector16" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="5f443b2d-1b79-477b-895e-9eec6f54fbf9"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF2WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF2WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF2WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF2Sector17" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="8bca7461-7f1a-4ec1-a676-ced35a875297"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF2WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF2WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF2WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF2Sector18" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="7b7cff9b-5304-4a32-9a6f-8e7abf319b11"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF2WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF2WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF2WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF2Sector19" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="f4fcb03e-ea3b-486b-b320-582a9e905326"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF2WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF2WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF2WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF2Sector20" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="b5d8711a-6fc3-4b39-b464-93a2f36bbefa"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF2WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF2WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF2WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF2Sector21" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a07d707b-aebc-4050-b99f-a31ec1c593ee"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF2WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF2WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF2WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF2Sector22" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="5faf5e4d-e810-4e7a-97ff-b6f4e487d38c"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF2WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF2WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF2WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF2Sector23" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="d29862ce-bfc6-4ceb-a09b-4f6fb6713b1c"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF2WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF2WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF2WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF2Sector24" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="d478fc88-8335-4236-b3c0-4c93bb783297"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF2WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF2WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF2WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF2Sector25" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="bb20812c-71b1-484c-b9f6-fad344afd112"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF2WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF2WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF2WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF2Sector26" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a82dc14f-b987-4ecb-b653-ef47645c1fa9"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF2WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF2WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF2WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var> 
+                        <a:da name="ENABLE" type="XPath">
+                          <a:tst expr= "ecu:get('FlsLoader.Pf2Sectors') > num:i(0)" />
+                        </a:da>
+                       </v:ctr>
+                <v:ctr name="FlsLoaderPFlash3ProtConfig" type="IDENTIFIABLE">
+                <a:a name="DESC" 
+                             value="EN:PF3 protection configuration."/>                                
+                  <a:a name="LONG-NAME" value="FlsLoaderPFlash3ProtConfig"/>
+                <a:a name="UUID" value="3ac1082c-8196-4efc-b56f-a71cd966b069"/>
+                    <v:var name="FlsLoaderPF3WriteProt" type="ENUMERATION">
+                      <a:a name="DESC" 
+                             value="EN:PF0 Read/Write protection."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="3ce02f09-179f-4179-b684-b24b475bb33f"/>
+                      <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                      <a:da name="RANGE">
+                        <a:v>NO_PROTECTION</a:v>
+                        <a:v>READ_PROTECTION</a:v>
+                        <a:v>WRITE_PROTECTION</a:v>
+                        <a:v>OTP_PROTECTION</a:v>
+                        <a:v>WOP_PROTECTION</a:v>
+                      </a:da>
+                    </v:var>
+                      <v:var name="FlsLoaderPF3Sector0" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="d7543773-06a3-490b-8e8d-16b70f19e396"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF3WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF3WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF3WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>
+                      <v:var name="FlsLoaderPF3Sector1" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="b4475e34-3c1b-42b4-99e6-0d2536c7bf43"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF3WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF3WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF3WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF3Sector2" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="4d1cf690-d9d6-472f-9e24-5f5217f50a20"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF3WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF3WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF3WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF3Sector3" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a1c0a46d-bff0-40aa-abb2-4515cd9a2177"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF3WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF3WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF3WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF3Sector4" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="343c2cb7-37f2-417f-9c79-8ed68d1ba8ea"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF3WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF3WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF3WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var> 
+                       <v:var name="FlsLoaderPF3Sector5" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="e6c016a3-89eb-442e-8aab-ab29c109a3db"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF3WriteProt = 'WRITE_PROTECTION') or (../FlsLoaderPF3WriteProt = 'OTP_PROTECTION') or(../FlsLoaderPF3WriteProt = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF3Sector6" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="df4961fc-280c-4b40-8698-eab04fc503c3"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF3WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF3WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF3WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF3Sector7" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="69e4d8fb-ec91-4ca6-9af3-294b9eb2ee81"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF3WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF3WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF3WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF3Sector8" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a47d0991-3e20-4ed4-a5d4-d995832a57e3"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF3WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF3WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF3WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF3Sector9" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="7e1d747d-3428-4571-8e28-99363806272e"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF3WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF3WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF3WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF3Sector10" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="d10a8ece-ff43-45f5-8c07-906a7bd51196"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF3WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF3WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF3WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF3Sector11" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="b7fa0399-8d6c-407e-9f33-dae571683450"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF3WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF3WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF3WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF3Sector12" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="482272c6-d87a-4a9c-a2d0-38d200fc6484"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF3WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF3WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF3WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF3Sector13" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="969b0228-d958-4feb-8de7-d900c4f81c8c"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF3WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF3WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF3WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF3Sector14" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="6a9941ad-5b25-45d5-81da-08246dbbaa3f"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF3WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF3WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF3WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF3Sector15" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="4d64acfd-fed4-4476-bd23-d0ad204dc091"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF3WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF3WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF3WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF3Sector16" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="52d7a10e-6b66-4348-9a58-2da5cb35cea4"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF3WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF3WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF3WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF3Sector17" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="05e6e2ea-fb41-4920-b7d4-03970198f1c6"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF3WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF3WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF3WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF3Sector18" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="f6131729-aab1-4baf-8d8d-349e1e48233a"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF3WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF3WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF3WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF3Sector19" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="dd788789-1166-4fef-b1ad-a01755ff12a1"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF3WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF3WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF3WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF3Sector20" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="3a103239-8bb6-4ba2-b0ac-5b8074a5f3bc"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF3WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF3WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF3WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF3Sector21" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="79b0db63-2a8d-48e7-8705-7984657adfd1"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF3WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF3WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF3WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF3Sector22" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="b525d966-cf1b-4029-a2df-3482a48e6579"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF3WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF3WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF3WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF3Sector23" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="d7c1fe07-6993-405f-97ad-0ba0034ba40e"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF3WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF3WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF3WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF3Sector24" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="3b748c3e-0c30-422e-a400-ee2e81572e90"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF3WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF3WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF3WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF3Sector25" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="afa15d37-fb20-452b-a372-8ba83089d438"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF3WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF3WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF3WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>                       
+                      <v:var name="FlsLoaderPF3Sector26" type="ENUMERATION">
+                          <a:a name="DESC" 
+                            value="EN: Sector0 Write protection."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="26291d47-171d-4574-95c9-60cc2d46e225"/>
+                          <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                           <a:da name="RANGE">
+                             <a:v>NO_PROTECTION</a:v>
+                             <a:v>WRITE_PROTECTION</a:v>
+                             <a:v>OTP_PROTECTION</a:v>
+                             <a:v>WOP_PROTECTION</a:v>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderPF3WriteProt  = 'WRITE_PROTECTION') or (../FlsLoaderPF3WriteProt  = 'OTP_PROTECTION') or(../FlsLoaderPF3WriteProt  = 'WOP_PROTECTION')"/>
+                        </a:da>
+                       </v:var>   
+                        <a:da name="ENABLE" type="XPath">
+                          <a:tst expr= "ecu:get('FlsLoader.Pf3Sectors') > num:i(0)" />
+                        </a:da>
+                      </v:ctr> 
+                     <v:ctr name="FlsLoaderDFlashProtConfig" type="IDENTIFIABLE">
+                     <a:a name="DESC" 
+                             value="EN:DF protection configuration."/>                
+                       <a:a name="LONG-NAME" value="EN: FlsLoaderDFProtConfig"/>
+                       <a:a name="UUID" 
+                            value="DCE:108b2e3b-0f4a-4315-89d4-d3ddeb193116"/>                            
+                      <v:var name="FlsLoaderDF0Prot" type="ENUMERATION">
+                      <a:a name="DESC" 
+                             value="EN:DF0 Read/Write protection."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="c37e5f8c-2ef2-472a-98b5-dcc18cbea5cd"/>
+                      <a:da name="DEFAULT" value="NO_PROTECTION"/>
+                      <a:da name="RANGE">
+                        <a:v>NO_PROTECTION</a:v>
+                        <a:v>READ_PROTECTION</a:v>
+                        <a:v>WRITE_PROTECTION</a:v>
+                      </a:da>
+                    </v:var>
+                       <v:var name="FlsLoaderDFUcbPW0_0" type="INTEGER">
+                         <a:a name="DESC" 
+                              value="4th least significant double-word password out of 4 double-words  password"/>
+                         <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                              type="IMPLEMENTATIONCONFIGCLASS">
+                           <icc:v class="PreCompile">VariantPreCompile</icc:v>                   
+                         </a:a>
+                         <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                         <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="e9afaa0c-2dc7-4390-a7c9-c615ae01c46a"/>
+                         <a:da name="DEFAULT" value="0"/>
+                         <a:da name="INVALID" type="Range">
+                           <a:tst expr="&lt;=4294967295"/>
+                           <a:tst expr="&gt;=0"/>
+                         </a:da> 
+                         <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderDF0Prot  != 'NO_PROTECTION')"/>
+                         </a:da>
+                       </v:var>
+                       <v:var name="FlsLoaderDFUcbPW0_1" type="INTEGER">
+                         <a:a name="DESC" 
+                              value="3rd least significant double-word password out of 4 double-words  password"/>
+                         <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                              type="IMPLEMENTATIONCONFIGCLASS">
+                           <icc:v class="PreCompile">VariantPreCompile</icc:v>                   
+                         </a:a>
+                         <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                         <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="e9afaa0c-2dc7-4390-a7c9-c305ae01c26f"/>
+                         <a:da name="DEFAULT" value="0"/>
+                         <a:da name="INVALID" type="Range">
+                           <a:tst expr="&lt;=4294967295"/>
+                           <a:tst expr="&gt;=0"/>
+                         </a:da>                        
+                         <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderDF0Prot  != 'NO_PROTECTION')"/>
+                         </a:da>
+                       </v:var>
+                       <v:var name="FlsLoaderDFUcbPW1_0" type="INTEGER">
+                         <a:a name="DESC" 
+                              value="2nd least significant double-word password out of 4 double-words  password"/>
+                         <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                              type="IMPLEMENTATIONCONFIGCLASS">
+                           <icc:v class="PreCompile">VariantPreCompile</icc:v>                   
+                         </a:a>
+                         <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                         <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="e9afaa0c-2dc7-4390-a7c9-c905ae01d34f"/>
+                         <a:da name="DEFAULT" value="0"/>
+                         <a:da name="INVALID" type="Range">
+                           <a:tst expr="&lt;=4294967295"/>
+                           <a:tst expr="&gt;=0"/>
+                         </a:da> 
+                         <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderDF0Prot  != 'NO_PROTECTION')"/>
+                         </a:da>                                                 
+                       </v:var>
+                       <v:var name="FlsLoaderDFUcbPW1_1" type="INTEGER">
+                         <a:a name="DESC" 
+                              value="1st Least significant double-word password out of 4 double-words  password"/>
+                         <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                              type="IMPLEMENTATIONCONFIGCLASS">
+                           <icc:v class="PreCompile">VariantPreCompile</icc:v>                   
+                         </a:a>
+                         <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                         <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="e9afaa0c-2dc7-4390-a7c9-c805ae02c33f"/>
+                         <a:da name="DEFAULT" value="0"/>
+                         <a:da name="INVALID" type="Range">
+                           <a:tst expr="&lt;=4294967295"/>
+                           <a:tst expr="&gt;=0"/>
+                         </a:da>
+                         <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderDF0Prot  != 'NO_PROTECTION')"/>
+                         </a:da>                                                  
+                       </v:var>
+                       <v:var name="FlsLoaderDFUcbPW2_0" type="INTEGER">
+                         <a:a name="DESC" 
+                              value="4th least significant double-word password out of 4 double-words  password"/>
+                         <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                              type="IMPLEMENTATIONCONFIGCLASS">
+                           <icc:v class="PreCompile">VariantPreCompile</icc:v>                   
+                         </a:a>
+                         <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                         <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="e9afaa0c-2dc7-4394-a7c9-c615ae01c46a"/>
+                         <a:da name="DEFAULT" value="0"/>
+                         <a:da name="INVALID" type="Range">
+                           <a:tst expr="&lt;=4294967295"/>
+                           <a:tst expr="&gt;=0"/>
+                         </a:da>
+                         <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderDF0Prot  != 'NO_PROTECTION')"/>
+                         </a:da>                          
+                       </v:var>
+                       <v:var name="FlsLoaderDFUcbPW2_1" type="INTEGER">
+                         <a:a name="DESC" 
+                              value="3rd least significant double-word password out of 4 double-words  password"/>
+                         <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                              type="IMPLEMENTATIONCONFIGCLASS">
+                           <icc:v class="PreCompile">VariantPreCompile</icc:v>                   
+                         </a:a>
+                         <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                         <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="e9afaa0c-2dc7-4393-a7c9-c305ae01c26f"/>
+                         <a:da name="DEFAULT" value="0"/>
+                         <a:da name="INVALID" type="Range">
+                           <a:tst expr="&lt;=4294967295"/>
+                           <a:tst expr="&gt;=0"/>
+                         </a:da> 
+                         <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderDF0Prot  != 'NO_PROTECTION')"/>
+                         </a:da>                                                
+                       </v:var>
+                       <v:var name="FlsLoaderDFUcbPW3_0" type="INTEGER">
+                         <a:a name="DESC" 
+                              value="2nd least significant double-word password out of 4 double-words  password"/>
+                         <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                              type="IMPLEMENTATIONCONFIGCLASS">
+                           <icc:v class="PreCompile">VariantPreCompile</icc:v>                   
+                         </a:a>
+                         <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                         <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="e9afaa0c-2dc7-4392-a7c9-c905ae01d34f"/>
+                         <a:da name="DEFAULT" value="0"/>
+                         <a:da name="INVALID" type="Range">
+                           <a:tst expr="&lt;=4294967295"/>
+                           <a:tst expr="&gt;=0"/>
+                         </a:da> 
+                         <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderDF0Prot  != 'NO_PROTECTION')"/>
+                         </a:da>                                                 
+                       </v:var>
+                       <v:var name="FlsLoaderDFUcbPW3_1" type="INTEGER">
+                         <a:a name="DESC" 
+                              value="1st Least significant double-word password out of 4 double-words  password"/>
+                         <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                              type="IMPLEMENTATIONCONFIGCLASS">
+                           <icc:v class="PreCompile">VariantPreCompile</icc:v>                   
+                         </a:a>
+                         <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                         <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="e9afaa0c-2dc7-4391-a7c9-c805ae02c33f"/>
+                         <a:da name="DEFAULT" value="0"/>
+                         <a:da name="INVALID" type="Range">
+                           <a:tst expr="&lt;=4294967295"/>
+                           <a:tst expr="&gt;=0"/>
+                         </a:da> 
+                         <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../FlsLoaderDF0Prot  != 'NO_PROTECTION')"/>
+                         </a:da>                                                 
+                       </v:var>
+                    </v:ctr>
+            <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+              <a:a name="DESC" value="EN: Common container, aggregated by all modules. It contains published information about vendor and versions."/>
+              <a:a name="UUID" value="492f8482-3e2c-4bf1-b27f-01fd7ac35788"/>
+              <v:var name="ArMajorVersion" type="INTEGER">
+                <a:a name="DESC" value="EN: Major version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                <a:a name="IMPLEMENTATIONCONFIGCLASS" value="PublishedInformation"/>
+                <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                <a:a name="UUID" value="bd0a8d38-4d8c-4ee9-88fe-1166b258bb8a"/>
+                <a:da name="INVALID" type="Range">
+                  <a:tst expr="&lt;=65535"/>
+                  <a:tst expr="&gt;=0"/>
+                </a:da>
+                <a:da name="DEFAULT" value="0"/>
+              </v:var>
+              <v:var name="ArMinorVersion" type="INTEGER">
+                <a:a name="DESC" value="EN: Minor version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                <a:a name="IMPLEMENTATIONCONFIGCLASS" value="PublishedInformation"/>
+                <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                <a:a name="UUID" value="73f87c7f-e230-4178-bff0-eb2704aae656"/>
+                <a:da name="INVALID" type="Range">
+                  <a:tst expr="&lt;=65535"/>
+                  <a:tst expr="&gt;=0"/>
+                </a:da>
+                <a:da name="DEFAULT" value="0"/>
+              </v:var>
+              <v:var name="ArPatchVersion" type="INTEGER">
+                <a:a name="DESC" value="EN: Patch level version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                <a:a name="IMPLEMENTATIONCONFIGCLASS" value="PublishedInformation"/>
+                <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                <a:a name="UUID" value="2380135d-6778-417a-a34b-e10017d4dd54"/>
+                <a:da name="INVALID" type="Range">
+                  <a:tst expr="&lt;=65535"/>
+                  <a:tst expr="&gt;=0"/>
+                </a:da>
+                <a:da name="DEFAULT" value="0"/>
+              </v:var>
+              <v:var name="SwMajorVersion" type="INTEGER">
+                <a:a name="DESC" value="EN: Major version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                <a:a name="IMPLEMENTATIONCONFIGCLASS" value="PublishedInformation"/>
+                <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                <a:a name="UUID" value="fca015e3-5f28-4cbe-8949-8f4b87d86827"/>
+                <a:da name="INVALID" type="Range">
+                  <a:tst expr="&lt;=65535"/>
+                  <a:tst expr="&gt;=0"/>
+                </a:da>
+                <a:da name="DEFAULT" value="2"/>
+              </v:var>
+              <v:var name="SwMinorVersion" type="INTEGER">
+                <a:a name="DESC" value="EN: Minor version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                <a:a name="IMPLEMENTATIONCONFIGCLASS" value="PublishedInformation"/>
+                <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                <a:a name="UUID" value="14ab81e0-3d80-43dc-8b92-247e5a542df9"/>
+                <a:da name="INVALID" type="Range">
+                  <a:tst expr="&lt;=65535"/>
+                  <a:tst expr="&gt;=0"/>
+                </a:da>
+                <a:da name="DEFAULT" value="2"/>
+              </v:var>
+              <v:var name="SwPatchVersion" type="INTEGER">
+                <a:a name="DESC" value="EN: Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                <a:a name="IMPLEMENTATIONCONFIGCLASS" value="PublishedInformation"/>
+                <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                <a:a name="UUID" value="32e37bfd-18b6-41d1-9248-a81dbe0fe4c5"/>
+                <a:da name="INVALID" type="Range">
+                  <a:tst expr="&lt;=65535"/>
+                  <a:tst expr="&gt;=0"/>
+                </a:da>
+                <a:da name="DEFAULT" value="6"/>
+              </v:var>
+              <v:var name="ModuleId" type="INTEGER">
+                <a:a name="DESC" value="EN: Module ID of this module from Module List"/>
+                <a:a name="IMPLEMENTATIONCONFIGCLASS" value="PublishedInformation"/>
+                <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                <a:a name="UUID" value="3b407478-6902-4f80-b7cf-f33b0854e638"/>
+                <a:da name="INVALID" type="Range">
+                  <a:tst expr="&lt;=65535"/>
+                  <a:tst expr="&gt;=0"/>
+                </a:da>
+                <a:da name="DEFAULT" value="255"/>
+              </v:var>
+              <v:var name="VendorId" type="INTEGER">
+                <a:a name="DESC" value="EN: Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list"/>
+                <a:a name="IMPLEMENTATIONCONFIGCLASS" value="PublishedInformation"/>
+                <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                <a:a name="UUID" value="7d650b2d-4adb-41f0-a68e-5f0c416501d1"/>
+                <a:da name="INVALID" type="Range">
+                  <a:tst expr="&lt;=65535"/>
+                  <a:tst expr="&gt;=0"/>
+                </a:da>
+                <a:da name="DEFAULT" value="17"/>
+              </v:var>
+              <v:var name="VendorApiInfix" type="STRING">
+                <a:a name="DESC">
+                  <a:v>EN: In driver modules which can be instantiated several times on a single ECU, BSW00347 requires that the name of APIs is extended by the VendorId and a vendor specific name. 
+                      This parameter is used to specify the vendor specific name. In total, the implementation specific name is generated as follows:
+                      &lt;ModuleName&gt;_&gt;VendorId&gt;_&lt;VendorApiInfix&gt;&lt;Api name from SWS&gt;.
+                      
+                      E.g.  assuming that the VendorId of the implementor is 123 and the implementer chose a VendorApiInfix of &quot;v11r456&quot; a api name Can_Write defined in the SWS will translate to Can_123_v11r456Write. 
+                      
+                      This parameter is mandatory for all modules with upper multiplicity &gt; 1. It shall not be used for modules with upper multiplicity =1.</a:v>
+                </a:a>
+                <a:a name="IMPLEMENTATIONCONFIGCLASS" value="PublishedInformation"/>
+                <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                <a:a name="UUID" value="ad363b41-e945-4717-b12f-c2f800ef138e"/>
+                <a:da name="ENABLE" value="false"/>
+                <a:da name="DEFAULT" value=""/>
+              </v:var>
+              <v:var name="Release" type="STRING">
+                <a:a name="DESC" value="EN: Aurix derivative used for thr implementation"/>
+                <a:a name="IMPLEMENTATIONCONFIGCLASS" value="PublishedInformation"/>
+                <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                <a:a name="UUID" value="3b407478-6902-4f40-b7cf-f33b0854e638"/>
+                <a:da name="DEFAULT" type="XPath" expr="ecu:get('Rel.Derivate')"/>
+              </v:var>
+             </v:ctr>
+            </v:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+</datamodel>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+/******************************************************************************
+**                                                                           **
+** Copyright (C) Infineon Technologies (2013)                                **
+**                                                                           **
+** All rights reserved.                                                      **
+**                                                                           **
+** This document contains proprietary information belonging to Infineon      **
+** Technologies. Passing on and copying of this document, and communication  **
+** of its contents is not permitted without prior written authorization.     **
+**                                                                           **
+*******************************************************************************
+**                                                                           **
+**  $FILENAME   : plugin.xml $                                               **
+**                                                                           **
+**  $CC VERSION : \main\dev_tc23x_as4.0.3\13 $                               **
+**                                                                           **
+**  $DATE       : 2016-04-08 $                                               **
+**                                                                           **
+**  AUTHOR      : DL-AUTOSAR-Engineering                                     **
+**                                                                           **
+**  VENDOR      : Infineon Technologies                                      **
+**                                                                           **
+**  DESCRIPTION  : This file contains                                        **
+**                 - tresosECU plug-in description for Can driver            **
+**                                                                           **
+**  MAY BE CHANGED BY USER [Yes/No]: No                                      **
+**                                                                           **
+******************************************************************************/
+/*******************************************************************************
+**  Traceability   :                                                          **
+**  [cover parentID=SAS_NAS_CAN_PR740,SAS_NAS_CAN_PR741,SAS_NAS_HE1_ALL_PR71,
+     SAS_NAS_CAN_PR79_PR80_PR623,SAS_NAS_CAN_PR739,SAS_NAS_CAN_PR60,
+     SAS_NAS_CAN_PR738,SAS_NAS_CAN_PR742_PR743]
+    [/cover]                                                                  **
+******************************************************************************/
+-->
+
+<plugin>
+
+  <!--
+    ** brief AUTOSAR Can_17_MCanP_Aurix plugin
+    ** project AUTOSAR Standard Core
+    **
+    ** All rights exclusively reserved for Elektrobit Automotive GmbH,
+    ** unless expressly agreed to otherwise.
+  -->
+
+ <extension point="dreisoft.tresos.launcher2.plugin.module"
+             id="Can_AurixAS403_ModuleExt"
+             name="Can Module with template generator">
+
+    <module id="Can_AurixAS403"
+            label="%ModuleLabel"
+            mandatory="false"
+            allowMultiple="true"
+            description="%ModuleDesc"
+            copyright="(c) 2012 Infineon Technologies"
+            swVersionMajor="2"
+            swVersionMinor="4"
+            swVersionPatch="0"
+            swVersionSuffix=""
+            specVersionMajor="4"
+            specVersionMinor="0"
+            specVersionPatch="0"
+            specVersionSuffix="0000"
+            relVersionMajor="4"
+            relVersionMinor="0"
+            relVersionPatch="3"
+            relVersionSuffix=""
+            categoryType="Can"
+            categoryLayer="MCAL"
+            categoryCategory="ECU Firmware"
+            categoryComponent="ECUC">
+      <cluster name="Can Stack"/>
+
+      <ecuType target="AURIX" derivate="TC234"/>
+      <ecuType target="AURIX" derivate="TC233"/>
+      <ecuType target="AURIX" derivate="TC237"/>
+      
+    </module>
+  </extension>
+
+    <extension point="dreisoft.tresos.launcher2.plugin.configuration"
+             id="Can_AurixAS403_ConfigExt"
+             name="Can_Aurix Configuration">
+    <configuration moduleId="Can_AurixAS403">
+      <schema>
+        <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarSchemaManager"/>
+        <resource value="config/Can_17_MCanP.xdm" type="xdm"/>
+      </schema>
+
+      <data>
+        <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarConfigManager"/>
+        <schemaNode path="ASPath:/AURIX/Can"/>
+      </data>
+
+      <editor id="Can_AurixAS403_Edit"
+              label="%ModuleName"
+              tooltip="%ModuleDesc">
+        <class class="dreisoft.tresos.launcher2.editor.GenericConfigEditor">
+          <parameter name="schema" value="ASPath:/AURIX/Can"/>
+          <parameter name="title" value="Can"/>
+          <parameter name="noTabs" value="false"/>
+          <parameter name="noLinks" value="true"/>
+          <parameter name="groupLinks" value="false"/>
+          <parameter name="groupContainers" value="false"/>
+          <parameter name="groupTables" value="true"/>
+          <parameter name="optionalGeneralTab" value="true"/>
+        </class>
+      </editor>
+    </configuration>
+  </extension>
+  
+   <!-- 
+     This extension draws the connection between the module, and the com importer.
+   -->   
+  <extension point="dreisoft.tresos.comimporter.api.plugin.comtransformer">
+    <comtransformer
+           id="ComTransformer_Can_AurixAS40"
+           moduleId="Can_AurixAS403">
+      <transformer
+             class="dreisoft.tresos.comimporter.api.transformer.asr40.CanTransformer">
+      </transformer>
+    </comtransformer>
+  </extension>   
+  
+  <extension point="dreisoft.tresos.launcher2.plugin.generator"
+              id="Can_AurixAS403_GenExt"
+              name="Can_Aurix Generator">
+    <generator moduleId="Can_AurixAS403"
+               class="dreisoft.tresos.launcher2.generator.TemplateBasedCodeGenerator">
+
+      <!-- common template path parameters -->
+      <parameter name="templates"
+                 mode="generate,verify" value="generate"/>
+
+      <!-- swcd modes and template path parameters -->
+      <parameter name="mode_type"
+                 mode="generate_swcd" value="generate"/>
+
+      <parameter name="mode_type"
+                 mode="verify_swcd" value="verify"/>
+
+      <parameter name="templates"
+                 mode="generate_swcd,verify_swcd" value="generate_swcd"/>
+
+    </generator>
+  </extension>
+
+</plugin>
+

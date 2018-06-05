@@ -1,0 +1,29 @@
+
+Name: config/CanTrcv_17_6251G.xdm
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 11313377424787292134636840237525292360699978940947193121137
+ 5687923764331109171014845968315565752948786406079091
+SignatureKeyID: Infineon
+
+Name: generate/src/CanTrcv_17_6251G_Cfg.c
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 11313377424964639229626270938090278689030472447704496479293
+ 9694100950937863613252841886387370991171183448728930
+SignatureKeyID: Infineon
+
+Name: generate/inc/CanTrcv_17_6251G_Cfg.h
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 11313377422481682739366247524978649930274267988681100863115
+ 8460759047528704129172739364284553709758549205210369
+SignatureKeyID: Infineon
+
+Name: generate/CanTrcv_17_6251G_Bswmd.arxml
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 11313377424440332964405027764716923157863209821063505024998
+ 8180814684622214964075242429921425005362897692500590
+SignatureKeyID: Infineon
+

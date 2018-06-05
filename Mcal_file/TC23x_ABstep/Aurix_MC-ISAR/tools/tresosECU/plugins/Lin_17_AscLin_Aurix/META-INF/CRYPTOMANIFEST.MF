@@ -1,0 +1,29 @@
+
+Name: config/Lin_17_AscLin.xdm
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 11313377422947557950856216151013191523027203228396506647261
+ 5551898029452504648259271967404927867789354558921522
+SignatureKeyID: Infineon
+
+Name: generate/Lin_17_AscLin_Bswmd.arxml
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 11313377420887780470100556868712543481941266396833529385923
+ 9176648081183080225135549563185010489615841046194316
+SignatureKeyID: Infineon
+
+Name: generate/inc/Lin_17_AscLin_Cfg.h
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 11313377422352848452355595810320898363332273782375029455105
+ 0396954605442408785738133013657298550441053782239203
+SignatureKeyID: Infineon
+
+Name: generate/src/Lin_17_AscLin_PBCfg.c
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 11313377423852388439064717635588773426886170640595387905186
+ 3903420138028778012835538928565111774324132662760705
+SignatureKeyID: Infineon
+

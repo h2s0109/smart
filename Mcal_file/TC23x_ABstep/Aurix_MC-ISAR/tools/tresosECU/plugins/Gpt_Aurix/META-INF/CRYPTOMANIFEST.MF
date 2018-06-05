@@ -1,0 +1,43 @@
+
+Name: generate/src/Gpt_PBCfg.c
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 28964594773963788286147291482909622495493820960323822718650
+ 192353226781958921033584059338926177841604215366804861
+SignatureKeyID: Infineon
+
+Name: config/Gpt.xdm
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 11313377425311931193518595045262215349026836246733660362718
+ 9966645481878965736229371193519590303730203778001446
+SignatureKeyID: Infineon
+
+Name: generate/Gpt_ConfigDoc.html
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 11313377426429725318844521828529725885843497116804809899998
+ 7194638659787633075171358463192343740416614540500381
+SignatureKeyID: Infineon
+
+Name: generate/Gpt.m
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 11313377425961149950902371517693422328731381933550831374370
+ 1247356652439093214827505087138867116481182038350204
+SignatureKeyID: Infineon
+
+Name: generate/Gpt_Bswmd.arxml
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 11313377423814851118210658019305479704858434857660353176779
+ 6214905633241471421768943042303976013352950893691351
+SignatureKeyID: Infineon
+
+Name: generate/inc/Gpt_Cfg.h
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 11313377422209907166074484709445959903852913011134240386123
+ 8806101926460291433057452093763421321096084504558866
+SignatureKeyID: Infineon
+

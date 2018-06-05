@@ -1,0 +1,1013 @@
+<?xml version='1.0'?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-0-3.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE UUID="e656b9a5-1655-40db-ad91-29dd3b34035e">
+      <SHORT-NAME>AURIX</SHORT-NAME>
+      <ELEMENTS>
+        <ECUC-MODULE-DEF UUID="77b88fa1-a26a-47b1-842b-48059e84f41e">
+          <SHORT-NAME>Port</SHORT-NAME>
+          <ADMIN-DATA>
+            <DOC-REVISIONS>
+              <DOC-REVISION>
+                <REVISION-LABEL>3.2.0</REVISION-LABEL>
+                <ISSUED-BY>AUTOSAR</ISSUED-BY>
+                <DATE>2010-11-03</DATE>
+              </DOC-REVISION>
+            </DOC-REVISIONS>
+          </ADMIN-DATA>
+          <REFINED-MODULE-DEF-REF DEST="ECUC-MODULE-DEF">/AUTOSAR/EcucDefs/Port</REFINED-MODULE-DEF-REF>
+          <SUPPORTED-CONFIG-VARIANTS>
+            <SUPPORTED-CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</SUPPORTED-CONFIG-VARIANT>
+            <SUPPORTED-CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</SUPPORTED-CONFIG-VARIANT>
+          </SUPPORTED-CONFIG-VARIANTS>
+          <CONTAINERS>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="2b7f9475-2cf3-4de7-a0dd-acdeac7c902e">
+              <SHORT-NAME>PortConfigSet</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">This container is the base of a multiple configuration set</L-2>
+              </DESC>
+              <MULTIPLE-CONFIGURATION-CONTAINER>true</MULTIPLE-CONFIGURATION-CONTAINER>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF UUID="58c0d0d6-418a-437b-b59a-d4cba3e4d1f2">
+                  <SHORT-NAME>PortContainer</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Container collecting the PortPins.</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>15</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>15</UPPER-MULTIPLICITY>
+                  <PARAMETERS>
+                    <ECUC-INTEGER-PARAM-DEF UUID="2b452b26-b125-4997-8a7f-b50e9d257ca4">
+                      <SHORT-NAME>PortNumber</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">The number of specified Port in this PortContainer.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>41</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="2b452b26-b1b5-4997-8a7f-b50e9d257ca4">
+                      <SHORT-NAME>PortNumberOfPortPins</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">The number of PortPins available in this Port.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>11</DEFAULT-VALUE>
+                      <MAX>16</MAX>
+                      <MIN>1</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                  </PARAMETERS>
+                  <SUB-CONTAINERS>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="805d3334-920b-4f9b-b18f-ce2e8a6c2f9f">
+                      <SHORT-NAME>PortPin</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Configuration of the individual port pins.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>16</UPPER-MULTIPLICITY>
+                      <PARAMETERS>
+                        <ECUC-INTEGER-PARAM-DEF UUID="630cfba7-0e08-47ab-a9af-b8441e19b081">
+                          <SHORT-NAME>PortPinId</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Pin Id of the port pin. This value will be assigned to the symbolic name derived from the port pin container short name.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                          <MAX>672</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-STRING-PARAM-DEF UUID="c7902328-d273-4512-9bad-0e756751ad73">
+                          <SHORT-NAME>PortPinSymbolicName</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Symbolic name of the Port Pin.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <ECUC-STRING-PARAM-DEF-VARIANTS>
+                            <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                              <DEFAULT-VALUE>PORT_0_PIN_0</DEFAULT-VALUE>
+                            </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                          </ECUC-STRING-PARAM-DEF-VARIANTS>
+                        </ECUC-STRING-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="53170d11-cda1-4f50-8754-4453e1904683">
+                          <SHORT-NAME>PortPinDirection</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">The initial direction of the pin (IN or OUT). If the direction is not changeable, the value configured here is fixed.
+The direction must match the pin mode. E.g. a pin used for an ADC must be configured to be an in port.
+Implementation Type: Port_PinDirectionType</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>PORT_PIN_IN</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>PORT_PIN_IN</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>PORT_PIN_OUT</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-BOOLEAN-PARAM-DEF UUID="48dcc5c1-f7c6-417f-a2b1-e8cd402dcc28">
+                          <SHORT-NAME>PortPinDirectionChangeable</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Parameter to indicate if the direction is changeable on a port pin during runtime.
+true: Port Pin direction changeable enabled.
+false: Port Pin direction changeable disabled.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                        </ECUC-BOOLEAN-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="70907698-b2f6-49b0-bd1a-456c1b30de95">
+                          <SHORT-NAME>PortPinInputCharacteristic</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">Configuration of input characteristics (electrical) for input pins.
+If the pin direction is initialized as input, this configuration parameter is taken during initialization (by Port_Init API). The user must configure this.
+If the pin direction is initialized as output, this configuration parameter is ignored during initialization.
+If direction changeable is set to true, this parameter is used for configurating of pin to input during runtime.
+PORT_PIN_IN_NO_PULL: No input pull device connected
+PORT_PIN_IN_PULL_DOWN: Input pull-down device connected
+PORT_PIN_IN_PULL_UP: Input pull-up device connected</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>PORT_PIN_IN_PULL_UP</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>PORT_PIN_IN_NO_PULL</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>PORT_PIN_IN_PULL_DOWN</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>PORT_PIN_IN_PULL_UP</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="ed12eb00-b2f7-434c-8ad0-0001a509a0af">
+                          <SHORT-NAME>PortPinOutputCharacteristic</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">Configuration of output characteristic (electrical) for the output pins.
+If the pin direction is initialized as output, this configuration parameter is taken during initialization (by Port_Init API). The user must configure this.
+If the pin direction is initialized as input, this configuration parameter is ignored during initialization.
+If direction changeable is set to true, this parameter is used for configurating of pin to output during runtime.
+PORT_PIN_OUT_PUSHPULL: Push-pull functionality for output pins
+PORT_PIN_OUT_OPENDRAIN: Open-drain functionality for output pins</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>PORT_PIN_OUT_PUSHPULL</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>PORT_PIN_OUT_PUSHPULL</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>PORT_PIN_OUT_OPENDRAIN</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="63dbd4d6-5fe1-4eac-9c3f-e82e81000d1d">
+                          <SHORT-NAME>PortPinLevelValue</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Port Pin Level value from Port pin list.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>PORT_PIN_LEVEL_LOW</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>PORT_PIN_LEVEL_HIGH</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>PORT_PIN_LEVEL_LOW</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="ac00d2a8-d0e3-4329-9639-90b918215f31">
+                          <SHORT-NAME>PortPinInitialMode</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Port pin mode from mode list to be used in Port_Init() function. Keep the mouse over the parametername to know the supported modes of the pin.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>PORT_PIN_MODE_GPIO</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>PORT_PIN_MODE_GPIO</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>PORT_PIN_MODE_ALT1</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>PORT_PIN_MODE_ALT2</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>PORT_PIN_MODE_ALT3</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>PORT_PIN_MODE_ALT4</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>PORT_PIN_MODE_ALT5</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>PORT_PIN_MODE_ALT6</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>PORT_PIN_MODE_ALT7</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-BOOLEAN-PARAM-DEF UUID="48dcc5c1-f7c6-417f-a2b1-e8ad402dcc28">
+                          <SHORT-NAME>PortPinModeChangeable</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Parameter to indicate is the mode is changeable on a port pin during runtime.
+true: Port Pin mode changeable enabled.
+false: Port Pin mode changeable disabled.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                        </ECUC-BOOLEAN-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="89c2b63a-349b-43ad-a51c-d7451e361038">
+                          <SHORT-NAME>PortPinMode</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">
+Port pin mode from mode list.
+Note that more than one mode is allowed by default. That way it is e.g. possible to combine DIO with another mode such as ICU.
+More HW specific literals may be added by module implementor.
+E.g. SPI may be further broken down into SpiCsHw, SpiCsSw, etc. if necessary.</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>8</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>PORT_PIN_MODE_ALL</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>PORT_PIN_MODE_ALL</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>PORT_PIN_MODE_GPIO</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>PORT_PIN_MODE_ALT1</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>PORT_PIN_MODE_ALT2</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>PORT_PIN_MODE_ALT3</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>PORT_PIN_MODE_ALT4</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>PORT_PIN_MODE_ALT5</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>PORT_PIN_MODE_ALT6</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>PORT_PIN_MODE_ALT7</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="89c2b63a-349b-43ad-a51c-d7451e351036">
+                          <SHORT-NAME>PortPinDriverStrength</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Port pin pad driver mode selection.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>PORT_CMOS_SPEED_GRADE1</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>PORT_CMOS_SPEED_GRADE1</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>PORT_CMOS_SPEED_GRADE2</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>PORT_CMOS_SPEED_GRADE3</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>PORT_CMOS_SPEED_GRADE4</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="89c2b63a-349b-43ad-a51c-d7451e351038">
+                          <SHORT-NAME>PortPinPadLevel</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Port pin pad level selection
+                              Selecting PORT_PDR_CMOS_AUTOMOTIVE_LEVEL writes 0 into PLx bit of PDR Register of a Port pin</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>PORT_PDR_CMOS_AUTOMOTIVE_LEVEL</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>PORT_PDR_CMOS_AUTOMOTIVE_LEVEL</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="48dcc5c1-f7c6-417f-a2b2-e8cd402dcc28">
+                          <SHORT-NAME>PortPinAnalogInput</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">This parameter allows configuration of the PDISC register.
+Range:
+ENABLE: Pin has support for Analog Input.
+DISABLE: Pin do not have support for Analog Input.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>DISABLE</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ENABLE</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>DISABLE</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="48dc15c1-f4c6-417f-a2b2-e8cd402dcc28">
+                          <SHORT-NAME>PortPinControllerSelect</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">This parameter selects Ethernet output signals through ports alternate output or RMII mode.
+Also, it is used to enable or disable the VADC Pull Down Diagnostics (PDD) / Multiplexer Diagnostics (MD) feature</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <DEFAULT-VALUE>DISABLE</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ENABLE</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>DISABLE</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                      </PARAMETERS>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                  </SUB-CONTAINERS>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="6991f288-fe69-4ba3-8e4e-5be27814188b">
+              <SHORT-NAME>PortSafety</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">This container contains the configuration for the safety features of the PORT driver.</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="01fab1fb-1589-455e-9b2b-cead4d928886">
+                  <SHORT-NAME>PortSafetyEnable</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Pre-processor switch for enabling/disabling the PORT driver safety features. By default,                         - Range check on API parameters shall be done                        - PORT configuration structure shall have a unique marker field which will be verified by the driver                        - Publish the safety usage of PORT driver for user to set the respective MPU settings</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="e16d60b2-14c6-492b-8d8d-c6365dcff976">
+                  <SHORT-NAME>PortInitCheckApi</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">If this parameter is set to TRUE, the PORT initialization check will be done as a safety measure.  If this parameter is set to FALSE, the PORT driver shall not verify the initialization.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+              </PARAMETERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="4acbfb61-2a6a-4a90-a065-3ac83f20e9b1">
+              <SHORT-NAME>PortGeneral</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">Module wide configuration parameters of the PORT driver.</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="898346ba-c349-4abe-8ef6-9fd7e0753a0c">
+                  <SHORT-NAME>PortDevErrorDetect</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Switches the Development Error Detection and Notification on or off.
+true: Enabled.
+false: Disabled.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="3b0b791b-2364-4186-be0f-c040864ed0bc">
+                  <SHORT-NAME>PortPBFixedAddress</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">This parameter indicates whether the Port configuration to be used is decided at link time or changeable by user at runtime.
+ON : PORT Configuration to be used is fixed i.e Port_ConfigRoot[0]
+OFF: The user has to choose the PORT configuration to be used and pass the same as a parameter to Port_Init.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="82b5a039-207e-4a47-a0da-43553e716e14">
+                  <SHORT-NAME>PortSetPinDirectionApi</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Pre-processor switch to enable / disable the use of the function Port_SetPinDirection().
+TRUE: Enabled - Function Port_SetPinDirection() is available.
+FALSE: Disabled - Function Port_SetPinDirection() is not available.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="8446ad6c-4266-4593-b1a1-db33057b2c82">
+                  <SHORT-NAME>PortSetPinModeApi</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Pre-processor switch to enable / disable the use of the function Port_SetPinMode().
+true: Enabled - Function Port_SetPinMode() is available.
+false: Disabled - Function Port_SetPinMode() is not available.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="3b0b791b-2364-4186-be0f-c040864ed0bb">
+                  <SHORT-NAME>PortVersionInfoApi</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Pre-processor switch to enable / disable the API to read out the modules version information.
+true: Version info API enabled.
+false: Version info API disabled.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="bde3973f-c106-4b0f-901c-6f15b3cff715">
+                  <SHORT-NAME>PortRunningInUser0Mode</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">If this parameter is set to FALSE, then Protected Mode(user mode) register access will not be done and API is run in Supervisor mode.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="bde3973f-c106-4b9f-901c-6f15b3cff715">
+                  <SHORT-NAME>PortUserModeInitApiEnable</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">Pre-processor switch to enable / disable protected register access in all the Init API.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="bde3973f-c106-4b7f-902c-6f15b3cff715">
+                  <SHORT-NAME>PortUserModeRuntimeApiEnable</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">Pre-processor switch to enable / disable protected register access in all the APIs other than Init/Deinit APIs</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+              </PARAMETERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="492f8482-3e2c-4bf1-b27f-01fd7ac35788">
+              <SHORT-NAME>CommonPublishedInformation</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">Common container, aggregated by all modules. It contains published information about vendor and versions.</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-INTEGER-PARAM-DEF UUID="bd0a8d38-4d8c-4ee9-88fe-1166b258bb8a">
+                  <SHORT-NAME>ArMajorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Major version number of AUTOSAR specification on which the appropriate implementation is based on.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>3</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="73f87c7f-e230-4178-bff0-eb2704aae656">
+                  <SHORT-NAME>ArMinorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Minor version number of AUTOSAR specification on which the appropriate implementation is based on.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>2</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="2380135d-6778-417a-a34b-e10017d4dd54">
+                  <SHORT-NAME>ArPatchVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Patch level version number of AUTOSAR specification on which the appropriate implementation is based on.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="fca015e3-5f28-4cbe-8949-8f4b87d86827">
+                  <SHORT-NAME>SwMajorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Major version number of the vendor specific implementation of the module. The numbering is vendor specific.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>3</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="14ab81e0-3d80-43dc-8b92-247e5a542df9">
+                  <SHORT-NAME>SwMinorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Minor version number of the vendor specific implementation of the module. The numbering is vendor specific.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="32e37bfd-18b6-41d1-9248-a81dbe0fe4c5">
+                  <SHORT-NAME>SwPatchVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="3b407478-6902-4f80-b7cf-f33b0854e638">
+                  <SHORT-NAME>ModuleId</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Module ID of this module from Module List</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>124</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="7d650b2d-4adb-41f0-a68e-5f0c416501d1">
+                  <SHORT-NAME>VendorId</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>17</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-STRING-PARAM-DEF UUID="3b407478-6902-4f40-b7cf-f33b0854e638">
+                  <SHORT-NAME>Release</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Aurix derivative used for thr implementation</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <ECUC-STRING-PARAM-DEF-VARIANTS>
+                    <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                      <DEFAULT-VALUE>_TRICORE_TC234</DEFAULT-VALUE>
+                    </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                  </ECUC-STRING-PARAM-DEF-VARIANTS>
+                </ECUC-STRING-PARAM-DEF>
+                <ECUC-STRING-PARAM-DEF UUID="ad363b41-e945-4717-b12f-c2f800ef138e">
+                  <SHORT-NAME>VendorApiInfix</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">In driver modules which can be instantiated several times on a single ECU, BSW00347 requires that the name of APIs is extended by the VendorId and a vendor specific name.
+              This parameter is used to specify the vendor specific name. In total, the implementation specific name is generated as follows:
+              &lt;ModuleName&gt;_&gt;VendorId&gt;_&lt;VendorApiInfix&gt;&lt;Api name from SWS&gt;.
+
+              E.g.  assuming that the VendorId of the implementor is 123 and the implementer chose a VendorApiInfix of &quot;v11r456&quot; a api name Can_Write defined in the SWS will translate to Can_123_v11r456Write.
+
+              This parameter is mandatory for all modules with upper multiplicity &gt; 1. It shall not be used for modules with upper multiplicity =1.</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <ECUC-STRING-PARAM-DEF-VARIANTS>
+                    <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                      <DEFAULT-VALUE></DEFAULT-VALUE>
+                    </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                  </ECUC-STRING-PARAM-DEF-VARIANTS>
+                </ECUC-STRING-PARAM-DEF>
+              </PARAMETERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+          </CONTAINERS>
+        </ECUC-MODULE-DEF>
+      </ELEMENTS>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

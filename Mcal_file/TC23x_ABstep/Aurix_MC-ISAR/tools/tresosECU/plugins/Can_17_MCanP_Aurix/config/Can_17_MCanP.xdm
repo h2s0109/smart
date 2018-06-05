@@ -1,0 +1,2081 @@
+<?xml version='1.0'?>
+<!--
+/******************************************************************************
+**                                                                           **
+** Copyright (C) Infineon Technologies (2013)                                **
+**                                                                           **
+** All rights reserved.                                                      **
+**                                                                           **
+** This document contains proprietary information belonging to Infineon      **
+** Technologies. Passing on and copying of this document, and communication  **
+** of its contents is not permitted without prior written authorization.     **
+**                                                                           **
+*******************************************************************************
+**                                                                           **
+**  $FILENAME   : Can_17_MCanP.xdm $                                         **
+**                                                                           **
+**  $CC VERSION : \main\dev_tc23x_as4.0.3\35 $                               **
+**                                                                           **
+**  $DATE       : 2016-07-14 $                                               **
+**                                                                           **
+**  AUTHOR    : DL-AUTOSAR-Engineering                                       **
+**                                                                           **
+**  VENDOR    : Infineon Technologies                                        **
+**                                                                           **
+**  DESCRIPTION  : XML Data Model for CAN driver                             **
+**                                                                           **
+**  MAY BE CHANGED BY USER [yes/no]: No                                      **
+**                                                                           **
+******************************************************************************/
+/**  TRACEABILITY: [cover parentID=DS_NAS_CAN_PR127,DS_NAS_CAN_PR913,
+                   DS_NAS_CAN_PR69_PR469_PR122,DS_NAS_CAN_PR446,DS_NAS_CAN_PR483,
+                   DS_NAS_CAN_PR647,DS_NAS_CAN_PR643,DS_NAS_CAN_PR228_2,DS_NAS_CAN_PR762,
+                   DS_NAS_CAN_PR98,DS_AS_CAN022,DS_AS_CAN023_CAN024_CAN056_CAN221
+                   DS_AS_CAN328_Conf,DS_AS_CAN026_CAN064_Conf,
+                   DS_AS_CAN278_CAN069_Conf,DS_AS403_CAN378_Conf,
+                   DS_AS403_CAN432,DS_AS_CAN320_Conf,DS_AS_CAN434_Conf,
+                   DS_AS_CAN355_Conf,DS_AS403_CAN376_Conf,DS_AS_CAN357_Conf,
+                   DS_AS_CAN402_CAN403_CAN277_CAN095_Conf,DS_AS_CAN113_Conf,
+                   DS_AS_CAN106_Conf,DS_AS403_CAN431_Conf,DS_AS403_CAN430_Conf,
+                   DS_AS403_CAN436_Conf,DS_AS_CAN343_Conf,DS_AS_CAN354_Conf,
+                   DS_AS_CAN314_Conf,DS_AS_CAN099_1,DS_AS_CAN007_1,
+                   DS_AS_CAN317_Conf,DS_AS_CAN099_2,DS_AS_CAN007_2,
+                   DS_AS_CAN318_Conf,DS_AS_CAN099_3,DS_AS_CAN007_3,
+                   DS_AS_CAN315_Conf,DS_AS403_CAN382_Conf,DS_AS_CAN316_Conf,
+                   DS_NAS_CAN_PR228_15,DS_AS_CAN319_Conf,DS_AS_CAN099_4,
+                   DS_AS_CAN007_4,DS_AS403_CAN330_Conf,DS_AS_CAN313_Conf,
+                   DS_AS_CAN359_Conf,DS_NAS_CAN_PR228_16,DS_AS403_CAN435_Conf,
+                   DS_AS_CAN324_Conf,DS_AS_CAN323_Conf,DS_AS_CAN065_Conf,
+                   DS_AS_CAN325_Conf,DS_AS_CAN326_Conf,DS_AS_CAN327_Conf,
+                   DS_AS_CAN322_Conf,DS_AS_CAN321_Conf,DS_NAS_CAN_PR228_14,
+                   DS_AS_CAN401,DS_AS_CAN438_Conf,DS_AS403_CAN387_Conf,
+                   DS_AS_CAN005_Conf,DS_AS_CAN073_Conf,DS_AS_CAN074_Conf,
+                   DS_AS_CAN075_Conf,DS_AS_CAN383_Conf,DS_NAS_CAN_PR228_3,
+                   DS_NAS_CAN_PR228_4,DS_NAS_CAN_PR228_5,DS_NAS_CAN_PR228_6,DS_NAS_CAN_PR228_7,
+                   DS_NAS_CAN_PR228_8,DS_NAS_CAN_PR228_9,DS_NAS_CAN_PR228_10,
+                   DS_AS_CAN351_Conf,DS_AS_CAN066_Conf,DS_NAS_CAN_PR228_11,
+                   DS_NAS_CAN_PR228_12,DS_NAS_CAN_PR228_13,DS_AS_CAN437_Conf,
+                   DS_AS_CAN356_Conf,DS_AS_CAN358_Conf,DS_AS_PR2848,
+                   DS_NAS_CAN_PR655,DS_NAS_CAN_PR719,DS_NAS_CAN_PR720,DS_AS_CAN_PR5340
+                     SAS_NAS_CAN_PR656,SAS_NAS_CAN_PR64,SAS_NAS_CAN_PR725,
+  SAS_NAS_CAN_PR726,SAS_NAS_CAN_PR77,SAS_NAS_CAN_PR227,SAS_NAS_CAN_PR65,
+  SAS_NAS_CAN_PR640,SAS_NAS_CAN_PR621,SAS_NAS_CAN_PR82,
+  SAS_NAS_CAN_PR667,SAS_NAS_CAN_PR646,DS_NAS_CAN_PR2848,DS_NAS_HE2_CAN_PR2882,
+  DS_NAS_HE2_CAN_PR2883,DS_NAS_HE2_CAN_PR2884,DS_NAS_HE2_CAN_PR2885,
+  DS_NAS_HE2_CAN_PR2886,DS_NAS_HE2_CAN_PR2887,DS_NAS_HE2_CAN_PR2888,
+  DS_NAS_HE2_CAN_PR2889,DS_NAS_HE2_CAN_PR2890,DS_NAS_EP_CAN_PR2882,
+  DS_NAS_EP_CAN_PR2883,DS_NAS_EP_CAN_PR2884,DS_NAS_EP_CAN_PR2885,
+  DS_NAS_EP_CAN_PR2886,DS_NAS_EP_CAN_PR2887,DS_NAS_EP_CAN_PR2888,
+  DS_NAS_EP_CAN_PR2889,DS_NAS_EP_CAN_PR2890,DS_NAS_HE2_CAN_PR3017,
+  DS_NAS_EP_CAN_PR3017,DS_NAS_CAN_PR3026,SAS_NAS_EP_CAN_PR3054_1,
+  SAS_NAS_EP_CAN_PR3054_2,SAS_NAS_EP_CAN_PR3054_3,SAS_NAS_EP_CAN_PR3054_4,
+  SAS_NAS_CAN_PR228,DS_NAS_HE2_CAN_PR228_17,DS_NAS_HE2_CAN_PR228_18,DS_NAS_HE2_CAN_PR3054_1,
+  DS_NAS_HE2_CAN_PR3054_2,DS_NAS_HE2_CAN_PR3054_4,SAS_NAS_HE2_CAN_PR3054_1,SAS_NAS_HE2_CAN_PR3054_2,
+  SAS_NAS_HE2_CAN_PR3054_3,SAS_NAS_HE2_CAN_PR3054_4,DS_NAS_CAN_PR641_PR642_PR644,SAS_NAS_CAN_PR622,SAS_NAS_ALL_PR125]  **
+                                                          [/cover]          **/
+
+-->
+<datamodel version="3.0"
+           xmlns="http://www.tresos.de/_projects/DataModel2/08/root.xsd"
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/08/attribute.xsd"
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd"
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+  <d:ctr type="AUTOSAR" factory="autosar"
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd"
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd"
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd" >
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="AURIX" type="AR-PACKAGE">
+        <a:a name="UUID" value="da67ab07-f6eb-43e7-8e7c-598d861a1f25"/>
+        <d:lst type="ELEMENTS">
+          <d:chc name="Can" type="AR-ELEMENT" value="MODULE-DEF">
+            <v:ctr type="MODULE-DEF">
+              <a:a name="ADMIN-DATA" type="ADMIN-DATA">
+                <ad:ADMIN-DATA>
+                  <ad:DOC-REVISIONS>
+                    <ad:DOC-REVISION>
+                      <ad:REVISION-LABEL>4.2.0</ad:REVISION-LABEL>
+                      <ad:ISSUED-BY>AUTOSAR</ad:ISSUED-BY>
+                      <ad:DATE>2011-11-09</ad:DATE>
+                    </ad:DOC-REVISION>
+                  </ad:DOC-REVISIONS>
+                </ad:ADMIN-DATA>
+              </a:a>
+            <a:a name="RELEASE" value="asc:4.0"/>
+              <a:a name="UUID" value="bc324be9-5580-46d9-9f12-87d1f90e8b34"/>
+              <d:ref type="REFINED_MODULE_DEF" value="ASPath:/AUTOSAR/EcucDefs/Can"/>
+              <v:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION">
+                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                     type="IMPLEMENTATIONCONFIGCLASS">
+                  <icc:v class="PreCompile">VariantPostBuild</icc:v>
+                  <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                </a:a>
+                <a:a name="LABEL" value="ConfigVariant"/>
+                <a:da name="DEFAULT" value="VariantPostBuildSelectable"/>
+                <a:da name="RANGE">
+                  <a:v>VariantPostBuildLoadable</a:v>
+                  <a:v>VariantPostBuildSelectable</a:v>
+                </a:da>
+                <a:da name="EDITABLE" value="true"/>
+              </v:var>
+              <v:lst name="CanConfigSet" type="MULTIPLE-CONFIGURATION-CONTAINER">
+                <a:da name="MIN" value="1"/>
+                <v:ctr name="CanConfigSet" type="MULTIPLE-CONFIGURATION-CONTAINER">
+                  <a:a name="DESC" value="EN: This is the multiple configuration set container for CAN Driver"/>
+                  <a:a name="UUID" value="01ea5973-e37c-49d5-bdca-c9e827d1663e"/>
+                  <v:lst name="CanController" type="MAP">
+                    <a:da name="MAX" type="XPath" expr="ecu:get('Can.MaxControllers')"/>
+                    <a:da name="MIN" value="1"/>
+                    <v:ctr name="CanController" type="IDENTIFIABLE">
+                      <a:a name="DESC"
+                           value="EN: This container contains the configuration parameters of the CAN controller(s)."/>
+                      <a:a name="UUID"
+                           value="f2447d73-1d64-49a8-9905-7cab9519ca34"/>
+                      <v:var name="CanBusoffProcessing" type="ENUMERATION">
+                        <a:a name="DESC" value="EN: Specifies the way in which busoff event is handled."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" value="eee36f14-373d-44df-91cd-4ff09a1e8dbd"/>
+                        <a:da name="DEFAULT" value="INTERRUPT"/>
+                        <a:da name="RANGE">
+                          <a:v>INTERRUPT</a:v>
+                          <a:v>POLLING</a:v>
+                        </a:da>
+                        <a:da name="EDITABLE" type="XPath">
+                          <a:tst expr="../CanControllerActivation  = 'true'"/>
+                        </a:da>
+                      </v:var>
+                      <v:var name="CanControllerLoopbackEnable" type="BOOLEAN">
+                        <a:a name="DESC"
+                             value="EN: This parameter specifies whether to use CAN internal bus or external bus.If this parameter is enabled, it will use internal bus."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID"
+                             value="c37e5f8c-2ef2-472a-98b5-dcc18cbea5b1"/>
+                        <a:da name="DEFAULT" value="false"/>
+                        <a:da name="EDITABLE" type="XPath">
+                          <a:tst expr="../CanControllerActivation  = 'true'"/>
+                        </a:da>
+                      </v:var>
+                      <v:var name="CanControllerActivation" type="BOOLEAN">
+                        <a:a name="DESC"
+                             value="EN: Defines if a CAN controller is used in the configuration."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID"
+                             value="d69c9f88-536b-403a-b100-ac6c5f91462f"/>
+                        <a:da name="DEFAULT" value="false"/>
+                      </v:var>
+                      <v:var name="CanControllerBaseAddress" type="INTEGER">
+                        <a:a name="DESC"
+                             value="EN: Specifies the CAN controller base address. This parameter is not used by the CAN driver"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID"
+                             value="e9afaa0c-2dc7-4390-a7c9-c605ae01c22f"/>
+                        <a:da name="DEFAULT" value="0"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=4294967295"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                        <a:da name="EDITABLE" value="false"/>
+                      </v:var>
+                      <v:var name="CanControllerId" type="INTEGER">
+                        <a:a name="DESC"
+                             value="EN: This parameter provides the controller ID which is unique in a given CAN Driver. The value for this parameter starts with 0 and continue without any gaps."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                        <a:a name="UUID"
+                             value="e2ba0706-bc65-4c5b-bf17-18a65d52122a"/>
+                        <a:da name="DEFAULT" type="XPath" expr="node:fallback(../@index,'0')"/>
+                        <a:da name="INVALID" type="Multi">
+                          <mt:xpath expr="text:uniq(../../*/CanControllerId,.)"
+                          false="CanControllerId should be unique."/>
+                          <mt:xpath expr="node:isconsecutive(../../*/CanControllerId,0)"
+                          false="CanControllerId should start with 0 and continue without any gaps."/>
+                          <mt:range>
+                          <mt:tst expr="&gt;=0"/>
+                          <mt:tst expr="&lt;ecu:get('Can.MaxControllers')"/>
+                         </mt:range>
+                        </a:da>
+                        <a:da name="EDITABLE" type="XPath">
+                          <a:tst expr="../CanControllerActivation  = 'true'"/>
+                        </a:da>
+                      </v:var>
+                      <v:var name="CanHwControllerId" type="ENUMERATION">
+                        <a:a name="DESC"
+                             value="EN: CAN controller hardware to be used"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID"
+                             value="e2ba0706-bc65-4c5b-bf17-18a65d52122b"/>
+                         <a:da name="DEFAULT" type="XPath" expr="text:split(ecu:get('Can.HwController'), ',')[position() = 1]"/>
+                         <a:da name="RANGE" type="XPath" expr="ecu:list('Can.HwController')"/>
+                        <a:da name="EDITABLE" type="XPath">
+                          <a:tst expr="../CanControllerActivation  = 'true'"/>
+                        </a:da>
+                        <a:da name="INVALID" type="XPath">
+                          <a:tst expr="text:uniq(../../*/CanHwControllerId,.)" false="CanHwControllerId should be unique."/>
+                        </a:da>
+                      </v:var>
+                      <v:var name="CanRxProcessing" type="ENUMERATION">
+                        <a:a name="DESC"
+                             value="EN: Specifies the way in which CAN frame/FIFO reception events is handled."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID"
+                             value="cba09ffc-943a-4f6d-a103-218aa8917920"/>
+                        <a:da name="DEFAULT" value="INTERRUPT"/>
+                        <a:da name="RANGE">
+                          <a:v>INTERRUPT</a:v>
+                          <a:v>POLLING</a:v>
+                        </a:da>
+                        <a:da name="EDITABLE" type="XPath">
+                          <a:tst expr="../CanControllerActivation  = 'true'"/>
+                        </a:da>
+                      </v:var>
+                      <v:var name="CanTxProcessing" type="ENUMERATION">
+                        <a:a name="DESC"
+                             value="EN: Specifies the in which PDU transmission successful events are handled."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID"
+                             value="8ed3f3ad-18fa-43fd-b46a-b15317768438"/>
+                        <a:da name="DEFAULT" value="INTERRUPT"/>
+                        <a:da name="RANGE">
+                          <a:v>INTERRUPT</a:v>
+                          <a:v>POLLING</a:v>
+                        </a:da>
+                        <a:da name="EDITABLE" type="XPath">
+                          <a:tst expr="../CanControllerActivation  = 'true'"/>
+                        </a:da>
+                      </v:var>
+                      <v:var name="CanWakeupProcessing" type="ENUMERATION">
+                        <a:a name="DESC"
+                             value="EN: Specifies the way in which wakeup (CAN frame reception when the controller is in SLEEP state) event is handled."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID"
+                             value="91dd5060-f100-4a91-8341-4825be101f7e"/>
+                        <a:da name="DEFAULT" value="INTERRUPT"/>
+                        <a:da name="RANGE">
+                          <a:v>INTERRUPT</a:v>
+                          <a:v>POLLING</a:v>
+                        </a:da>
+                        <a:da name="EDITABLE" type="XPath">
+                          <a:tst expr="(../CanWakeupSupport  = 'true') and (../CanControllerActivation  = 'true')"/>
+                        </a:da>
+                      </v:var>
+                      <v:var name="CanWakeupSupport" type="BOOLEAN">
+                        <a:a name="DESC"
+                          value="EN: CAN driver support for wakeup over CAN Bus."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                          type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" value="bf3e4123-a208-4261-aaac-01e12d16447e"/>
+                        <a:da name="DEFAULT" value="false"/>
+                        <a:da name="EDITABLE" type="XPath">
+                          <a:tst expr="../CanControllerActivation  = 'true'"/>
+                        </a:da>
+                      </v:var>
+                      <v:var name="CanRxInputSelection" type="ENUMERATION">
+                        <a:a name="DESC"
+                             value="EN: Provides alternate Pin selection for CAN Node Recieve input line"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID"
+                             value="1b7aa112-460a-44ac-a9ba-ca4f568aba2f"/>
+                         <a:da name="DEFAULT" type="XPath" expr="text:split(ecu:get('Can.RxDCpinSel'), ',')[position() = 1]"/>
+                        <a:da name="RANGE" type="XPath" expr="ecu:list('Can.RxDCpinSel')"/>
+                        <a:da name="EDITABLE" type="XPath">
+                          <a:tst expr="(../CanControllerActivation  = 'true') and (../CanControllerLoopbackEnable  = 'false')"/>
+                        </a:da>
+                      </v:var>
+                      <v:ref name="CanCpuClockRef" type="REFERENCE">
+                        <a:a name="DESC"
+                             value="EN: Reference to the CPU clock configuration, which is set in the MCU driver configuration. Ensure that McuClockSPBFrequency is properly configured in the referenced node"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="UUID"
+                             value="8f832c6b-f51a-4faa-808c-3cf87d9be7fb"/>
+                        <a:da name="REF"
+                              value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Mcu/McuModuleConfiguration/McuClockSettingConfig/McuClockReferencePoint"/>
+                        <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="../CanControllerActivation  = 'true'"/>
+                        </a:da>
+                      </v:ref>
+                      <v:ref name="CanControllerDefaultBaudrate" type="REFERENCE">
+                        <a:a name="DESC"
+                             value="EN: Reference to baudrate configuration container configured for the Can Controller."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="UUID"
+                             value="8f832c6b-f51a-4faa-808c-3cf87d9be7fc"/>
+                        <a:da name="REF" value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Can/CanConfigSet/CanController/CanControllerBaudrateConfig"/>
+                        <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="../CanControllerActivation  = 'true'"/>
+                        </a:da>
+                      </v:ref>
+                      <v:lst name="CanWakeupSourceRef">
+                        <a:da name="MAX" value="1"/>
+                        <v:ref name="CanWakeupSourceRef"
+                               type="SYMBOLIC-NAME-REFERENCE">
+                          <a:a name="DESC">
+                            <a:v>"EN: This parameter contains a reference to the Wakeup Source for this controller as defined in the ECU State Manager. Implementation Type: reference to EcuM_WakeupSourceType."</a:v>
+                          </a:a>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="UUID"
+                               value="ab59fc82-b7d5-48be-9ed4-48a6db4c60c6"/>
+                          <a:da name="REF"
+                                value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/EcuM/EcuMConfiguration/EcuMCommonConfiguration/EcuMWakeupSource"/>
+                        </v:ref>
+                        <a:da name="EDITABLE" type="XPath">
+                          <a:tst expr="(../CanControllerActivation  = 'true') and (../CanWakeupSupport  = 'true')"/>
+                        </a:da>
+                      </v:lst>
+                      <v:lst name="CanControllerBaudrateConfig" type="MAP">
+                        <a:da name="MIN" value="1"/>
+                        <a:da name="MAX" value="254"/>
+                        <v:ctr name="CanControllerBaudrateConfig" type="IDENTIFIABLE">
+                          <a:a name="DESC"
+                               value="EN: This container contains bit timing related configuration parameters of the CAN controller(s)."/>
+                          <a:a name="UUID"
+                               value="e380e54a-e891-4fb8-88e8-459dc7c59aaf"/>
+                          <v:var name="CanControllerBaudRate" type="INTEGER">
+                            <a:a name="DESC"
+                              value="EN: Specifies the buadrate of the controller in kbps."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                              type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                              value="d25b4fbd-81bf-4a15-9ab3-341737514768"/>
+                            <a:da name="DEFAULT" value="500"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=1000"/>
+                              <a:tst expr="&gt;=25"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="CanControllerPropSeg" type="INTEGER">
+                            <a:da name="TOOLTIP" value="The given range is for CAN FD .For Classical CAN, range is (0->15)."/>
+                            <a:a name="DESC"><a:v>
+                               EN: Specifies propagation delay in time quantas.
+                               CanControllerPropSeg should be in the range (0 to 15) if CAN FD is disabled and (0 to 48) if CAN FD is enabled.
+                            </a:v></a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                              type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                              value="2679654f-2b2d-427c-a11a-76b457ab2edb"/>
+                            <a:da name="DEFAULT" value="2"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=48"/>
+                              <a:tst expr="&gt;=0"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="CanControllerSeg1" type="INTEGER">
+                            <a:da name="TOOLTIP" value="CanControllerSeg1 should be in the range (1->16) for CAN FD and Classical CAN"/>
+                            <a:a name="DESC"><a:v>
+                              EN: Specifies phase segment 1 in time quantas.
+                            </a:v></a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                              type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                              value="3b80179e-1028-48b1-a380-23fffed7c7b3"/>
+                            <a:da name="DEFAULT" value="5"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=16"/>
+                              <a:tst expr="&gt;=1"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="CanControllerSeg2" type="INTEGER">
+                          <a:da name="TOOLTIP" value="The given range is for CAN FD .For Classical CAN, range is (2->8)."/>
+                            <a:a name="DESC"><a:v>
+                               EN: Specifies phase segment 2 in time quantas.
+                               CanControllerSeg2 should be in the range (2 to 8) if CAN FD is disabled and (2 to 32) if CAN FD is enabled.
+                            </a:v></a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                              type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                              value="05d5341b-b278-44f8-8284-120fe34a5b0e"/>
+                            <a:da name="DEFAULT" value="4"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=32"/>
+                              <a:tst expr="&gt;=2"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="CanControllerSyncJumpWidth" type="INTEGER">
+                          <a:da name="TOOLTIP" value="The given range is for CAN FD .For Classical CAN, range is (1->4)."/>
+                            <a:a name="DESC"><a:v>
+                               EN: Specifies the synchronization jump width for the controller in time quantas.
+                               CanControllerSyncJumpWidth should be in the range (1 to 4) if CAN FD is disabled and (1 to 16) if CAN FD is enabled.
+                            </a:v></a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                              type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                              value="e0cfe32e-1160-408d-be3c-9e8a789a5bb9"/>
+                            <a:da name="DEFAULT" value="1"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=16"/>
+                              <a:tst expr="&gt;=1"/>
+                            </a:da>
+                          </v:var>
+                        </v:ctr>
+                        <a:da name="EDITABLE" type="XPath">
+                          <a:tst expr="../CanControllerActivation  = 'true'"/>
+                        </a:da>
+                      </v:lst>
+                      <v:lst name="CanControllerFdBaudrateConfig" type="MAP">
+                        <a:da name="MIN" value="0"/>
+                        <a:da name="MAX" type="XPath" expr="num:i(number(ecu:get('Can.FDFeaturePresent')='true'))"/>
+                        <v:ctr name="CanControllerFdBaudrateConfig" type="IDENTIFIABLE">
+                          <a:a name="DESC"
+                               value="EN: This container contains bit timing related configuration parameters of the CAN controller(s) for FD frame."/>
+                          <a:a name="UUID"
+                               value="e380e54a-e891-4fb8-88e8-459dc7c59faf"/>
+                          <v:var name="CanControllerFdBaudRate" type="INTEGER">
+                            <a:a name="DESC"
+                              value="EN: Specifies the buadrate of the controller in kbps."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                              type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                              value="d25b4fbd-81bf-4a15-9ab3-341737514968"/>
+                            <a:da name="DEFAULT" value="2500"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=5000"/>
+                              <a:tst expr="&gt;=1000"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="CanControllerPropSeg" type="INTEGER">
+                            <a:a name="DESC"
+                              value="EN: Specifies propagation delay in time quantas."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                              type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                              value="2679654f-2b2d-427c-a11a-76b457ab2adb"/>
+                            <a:da name="DEFAULT" value="2"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=15"/>
+                              <a:tst expr="&gt;=0"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="CanControllerSeg1" type="INTEGER">
+                            <a:a name="DESC"
+                              value="EN: Specifies phase segment 1 in time quantas."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                              type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                              value="3b80179e-1028-48b1-a380-23fffed7c9b3"/>
+                            <a:da name="DEFAULT" value="5"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=16"/>
+                              <a:tst expr="&gt;=1"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="CanControllerSeg2" type="INTEGER">
+                            <a:a name="DESC"
+                              value="EN: Specifies phase segment 2 in time quantas."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                              type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                              value="05d5341b-b278-44f8-8284-120fe34a5e0e"/>
+                            <a:da name="DEFAULT" value="4"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=8"/>
+                              <a:tst expr="&gt;=2"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="CanControllerSyncJumpWidth" type="INTEGER">
+                            <a:a name="DESC" value="EN: Specifies the synchronization jump width for the controller in time quantas. This parameter is not used by the CAN driver."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                              type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                              value="e0cfe32e-1160-408d-be3c-9e8a789a5db9"/>
+                            <a:da name="DEFAULT" value="1"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=4"/>
+                              <a:tst expr="&gt;=1"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="CanControllerTrcvDelayCompensationOffset" type="INTEGER">
+                            <a:a name="DESC" value="EN: Specifies the Transceiver Delay Compensation Offset in ns."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                              type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                              value="e0cfe32e-1160-408d-be3c-9e8a789a5eb9"/>
+                            <a:da name="DEFAULT" value="0"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=400"/>
+                              <a:tst expr="&gt;=0"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="CanControllerTxBitRateSwitch" type="BOOLEAN">
+                            <a:a name="DESC" value="EN: Specifies if the bit rate switching shall be used for transmissions."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                              type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                              value="e0cfe32e-1160-408d-be3c-9e8a789a56b9"/>
+                            <a:da name="DEFAULT" value="true"/>
+                          </v:var>
+                        </v:ctr>
+                        <a:da name="EDITABLE" type="XPath">
+                          <a:tst expr="../CanControllerActivation  = 'true'"/>
+                        </a:da>
+                      </v:lst>
+                      <v:lst name="CanFilterMask" type="MAP">
+                        <a:da name="MAX" type="XPath" expr="ecu:get('Can.MaxHwObjects')"/>
+                        <a:da name="MIN" value="0"/>
+                        <v:ctr name="CanFilterMask" type="IDENTIFIABLE">
+                          <a:a name="DESC" value="EN: This container contains the configuration (parameters) of the CAN Filter Mask(s)."/>
+                          <a:a name="UUID" value="aefac3a8-c5c8-4c4e-9514-fd3b9ba418fc"/>
+                          <v:var name="CanFilterMaskValue" type="INTEGER">
+                            <a:a name="DESC">
+                              <a:v>EN: Describes a mask for hardware-based filtering of CAN identifiers. </a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                              type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                              value="bb21a1d6-1600-402e-b0be-ec273918645e"/>
+                            <a:da name="DEFAULT" value="0"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=536870911"/>
+                              <a:tst expr="&gt;=0"/>
+                            </a:da>
+                          </v:var>
+                        </v:ctr>
+                        <a:da name="EDITABLE" type="XPath">
+                          <a:tst expr="../CanControllerActivation  = 'true'"/>
+                        </a:da>
+                      </v:lst>
+                      <v:lst name="CanTTController" type="MAP">
+                        <a:da name="MAX" value="1"/>
+                        <v:ctr name="CanTTController" type="IDENTIFIABLE">
+                          <a:a name="DESC"
+                               value="EN: This container is only included and valid if TTCAN SWS is used and TTCAN is enabled."/>
+                          <a:a name="UUID"
+                               value="ECUC:03522dfa-716f-4cae-b216-c32f5ff584cf"/>
+                          <v:var name="CanTTControllerApplWatchdogLimit" type="INTEGER">
+                            <a:a name="DESC"
+                                 value="EN: Defines the maximum time period (unit is 256 times NTU) after which the application has to serve the watchdog."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="ECUC:58bdc478-e74c-42df-8d3d-0ba19ae24009"/>
+                                 <a:da name="DEFAULT" value="0"/>
+                                 <a:da name="INVALID" type="Range">
+                                 <a:tst expr="&lt;=255"/>
+                              <a:tst expr="&gt;=0"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="CanTTControllerCycleCountMax" type="INTEGER">
+                            <a:a name="DESC"
+                                 value="EN: Defines the value for cycle_count_max."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="ECUC:fafa672b-b0c5-4c09-9035-06e2461576c0"/>
+                             <a:da name="DEFAULT" value="0"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=63"/>
+                              <a:tst expr="&gt;=0"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="CanTTControllerExpectedTxTrigger" type="INTEGER">
+                            <a:a name="DESC"
+                                 value="EN: Number of expected_tx_trigger."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="ECUC:91b067db-e57d-432f-9093-262d567242ed"/>
+                 <a:da name="DEFAULT" value="0"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=255"/>
+                              <a:tst expr="&gt;=0"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="CanTTControllerExternalClockSynchronisation" type="BOOLEAN">
+                            <a:a name="DESC"
+                                 value="EN: Enables/disables the external clock synchronization."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="ECUC:1f319887-2617-4190-b5d6-95b9e555b181"/>
+                           <a:da name="DEFAULT" value="false"/>
+                          </v:var>
+                          <v:var name="CanTTControllerGlobalTimeFiltering" type="BOOLEAN">
+                            <a:a name="DESC"
+                                 value="EN: Enables/disables the global time filtering."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="ECUC:ced20e88-c426-42a9-bce0-ed1a2a5f3798"/>
+                          <a:da name="DEFAULT" value="false"/>
+                          </v:var>
+                          <v:var name="CanTTControllerInitialRefOffset" type="INTEGER">
+                            <a:a name="DESC"
+                                 value="EN: Defines the initial value for ref trigger offset."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="ECUC:25750102-31df-4bed-91cf-01253dc78fa0"/>
+                            <a:da name="DEFAULT" value="0"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=127"/>
+                              <a:tst expr="&gt;=0"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="CanTTControllerInterruptEnable" type="INTEGER">
+                            <a:a name="DESC"
+                                 value="EN: Enables/disables the respective interrupts."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="ECUC:6d752b5f-31aa-4e11-915c-cbe1e1a0f01b"/>
+                            <a:da name="DEFAULT" value="0"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=1023"/>
+                              <a:tst expr="&gt;=0"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="CanTTControllerLevel2" type="BOOLEAN">
+                            <a:a name="DESC"
+                                 value="EN: Defines whether Level 2 or Level 1 is used."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="ECUC:91462836-5301-42da-8b89-dad7c7ddeb2d"/>
+                          <a:da name="DEFAULT" value="false"/>
+                          </v:var>
+                          <v:var name="CanTTControllerNTUConfig" type="FLOAT">
+                            <a:a name="DESC"
+                                 value="EN: Defines the config value for NTU (network time unit)."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="ECUC:fc8b7d0e-677b-4c04-b547-ef6602271c34"/>
+                            <a:da name="DEFAULT" value="0.0"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=100.0"/>
+                              <a:tst expr="&gt;=0.0"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="CanTTControllerOperationMode" type="ENUMERATION">
+                            <a:a name="DESC"
+                                 value="EN: Defines the operation mode."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="ECUC:fd04f084-a5cc-4c27-9d75-7e1a46e86bfb"/>
+                            <a:da name="DEFAULT" value="CAN_TT_TIME_TRIGGERED"/>
+                            <a:da name="RANGE">
+                              <a:v>CAN_TT_EVENT_SYNC_TIME_TRIGGERED</a:v>
+                              <a:v>CAN_TT_EVENT_TRIGGERED</a:v>
+                              <a:v>CAN_TT_TIME_TRIGGERED</a:v>
+                            </a:da>
+                          </v:var>
+                          <v:var name="CanTTControllerSyncDeviation" type="FLOAT">
+                            <a:a name="DESC"
+                                 value="EN: Defines the maximum synchronization deviation:"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="ECUC:26f778c8-15de-4c4a-b05e-fff49e20b234"/>
+                            <a:da name="DEFAULT" value="0.0"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=100.0"/>
+                              <a:tst expr="&gt;=0.0"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="CanTTControllerTURRestore" type="BOOLEAN">
+                            <a:a name="DESC"
+                                 value="EN: Enables/disables the TUR restore."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="ECUC:e5b66746-4e6e-47f5-b62b-ab6452a49083"/>
+                          <a:da name="DEFAULT" value="false"/>
+                          </v:var>
+                          <v:var name="CanTTControllerTimeMaster" type="BOOLEAN">
+                            <a:a name="DESC"
+                                 value="EN: Defines whether the controller acts as a potential time master."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="ECUC:68c24e85-bb75-4b38-b9af-05947b2f0f28"/>
+                          <a:da name="DEFAULT" value="false"/>
+                          </v:var>
+                          <v:var name="CanTTControllerTimeMasterPriority" type="INTEGER">
+                            <a:a name="DESC"
+                                 value="EN: Defines the time master priority."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="ECUC:64837877-30b7-48a4-9f87-a7e4e9590100"/>
+                            <a:da name="DEFAULT" value="0"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=7"/>
+                              <a:tst expr="&gt;=0"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="CanTTControllerTxEnableWindowLength" type="INTEGER">
+                            <a:a name="DESC"
+                                 value="EN: Length of the tx enable window given in CAN bit times."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="ECUC:432b3c85-542c-48e3-ab51-3944e1d6e422"/>
+                            <a:da name="DEFAULT" value="1"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=16"/>
+                              <a:tst expr="&gt;=1"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="CanTTControllerWatchTriggerGapTimeMark" type="INTEGER">
+                            <a:a name="DESC"
+                                 value="EN: watch trigger time mark after a gap"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="ECUC:a880dad8-6591-4dbc-a3d4-8057ff9b6932"/>
+                            <a:da name="DEFAULT" value="0"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=65535"/>
+                              <a:tst expr="&gt;=0"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="CanTTControllerWatchTriggerTimeMark" type="INTEGER">
+                            <a:a name="DESC" value="EN: watch trigger time mark"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="ECUC:496f1799-9365-4e5b-878a-dd8cab58f339"/>
+                            <a:da name="DEFAULT" value="0"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=65535"/>
+                              <a:tst expr="&gt;=0"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="CanTTIRQProcessing" type="ENUMERATION">
+                            <a:a name="DESC"
+                                 value="EN: Enables / disables API Can_MainFunction_BusOff() for handling busoff events in polling mode."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="ECUC:089059db-bfe6-43a7-9fa7-99b4b583a2b0"/>
+                            <a:da name="DEFAULT" value="INTERRUPT"/>
+                            <a:da name="RANGE">
+                              <a:v>INTERRUPT</a:v>
+                              <a:v>POLLING</a:v>
+                            </a:da>
+                          </v:var>
+                        </v:ctr>
+                        <a:da name="EDITABLE" value="false"/>
+                      </v:lst>
+                    </v:ctr>
+                  </v:lst>
+                  <v:lst name="CanHardwareObject" type="MAP">
+                    <a:da name="MAX" type="XPath" expr="ecu:get('Can.MaxHwObjects')"/>
+                    <a:da name="MIN" value="1"/>
+                    <v:ctr name="CanHardwareObject" type="IDENTIFIABLE">
+                      <a:a name="DESC" value="EN: This container contains the configuration (parameters) of CAN Hardware Objects."/>
+                      <a:a name="UUID" value="5f8561e5-25df-4bda-8d7f-23f78525f89f"/>
+                      <v:var name="CanHandleType" type="ENUMERATION">
+                        <a:a name="DESC" value="EN: Specifies the type (Full-CAN or Basic-CAN) of a hardware object."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                          type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" value="af9850d2-61a1-41de-b4b8-cc8881ef8281"/>
+                        <a:da name="DEFAULT" value="FULL"/>
+                        <a:da name="RANGE">
+                          <a:v>BASIC</a:v>
+                          <a:v>FULL</a:v>
+                        </a:da>
+                      </v:var>
+                      <v:var name="CanIdType" type="ENUMERATION">
+                        <a:a name="DESC">
+                          <a:v>EN: Specifies whether the IdValue is of type [1]Standard identifier [2]Extended identifier or [3]Mixed mode. ImplementationType: Can_IdType</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                          type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID"
+                          value="1b7aa112-460a-44ab-a9ba-ca4f568aba2e"/>
+                        <a:da name="DEFAULT" value="STANDARD"/>
+                        <a:da name="RANGE">
+                          <a:v>EXTENDED</a:v>
+                          <a:v>MIXED</a:v>
+                          <a:v>STANDARD</a:v>
+                        </a:da>
+                      </v:var>
+                      <v:var name="CanIdValue" type="INTEGER">
+                        <a:a name="DESC" value="EN: Specifies (together with the filter mask) the identifiers range that passes the hardware filter."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                          type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID"
+                          value="316bfd67-4e3c-4415-8bfb-7aac0a02f5e3"/>
+                        <a:da name="DEFAULT" value="0"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=536870911"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                        <a:da name="EDITABLE" type="XPath">
+                          <a:tst expr="../CanObjectType  = 'RECEIVE'"/>
+                        </a:da>
+                      </v:var>
+                      <v:var name="CanObjectId" type="INTEGER">
+                        <a:a name="DESC">
+                          <a:v>"EN: Holds the handle ID of HRH or HTH. The value of this parameter is unique in a given CAN Driver, and it should start with 0 and continue without any gaps."</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                          type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                        <a:a name="UUID"
+                          value="dfecb0cd-bfae-47f0-af3b-04f21b6d0a36"/>
+                        <a:da name="DEFAULT" type="XPath" expr="node:fallback(../@index,'0')"/>
+                        <a:da name="INVALID" type="Multi">
+                          <mt:xpath expr="node:isconsecutive(../../*/CanObjectId,0)"
+                          false="CanObjectId should start with 0 and continue without any gaps."/>
+                          <mt:xpath expr="text:uniq(../../*/CanObjectId,.)"
+                          false="CanObjectId should be unique.Enter diff Number"/>
+                          <mt:range>
+                          <mt:tst expr="&lt;ecu:get('Can.MaxHwObjects')"/>
+                          <mt:tst expr="&gt;=0"/>
+                          </mt:range>
+                        </a:da>
+                      </v:var>
+                      <v:var name="CanObjectType" type="ENUMERATION">
+                        <a:a name="DESC" value="EN: Specifies if the HardwareObject is used as Transmit or as Receive object"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                          type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID"
+                          value="7f91cbf2-72e3-4a7f-b1ba-9a504dae09fe"/>
+                        <a:da name="DEFAULT" value="RECEIVE"/>
+                        <a:da name="RANGE">
+                          <a:v>RECEIVE</a:v>
+                          <a:v>TRANSMIT</a:v>
+                        </a:da>
+                      </v:var>
+                      <v:ref name="CanControllerRef" type="REFERENCE">
+                        <a:a name="DESC" value="EN: Reference to CAN Controller to which the HOH is associated to."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                          type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="UUID"
+                          value="4e8f054e-d56f-4410-b256-6dc3e70169d6"/>
+                        <a:da name="REF" value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Can/CanConfigSet/CanController"/>
+                      </v:ref>
+                      <v:lst name="CanFilterMaskRef">
+                        <a:da name="MAX" value="1"/>
+                        <v:ref name="CanFilterMaskRef" type="REFERENCE">
+                          <a:a name="DESC">
+                            <a:v>EN: Reference to the filter mask that is used for hardware filtering togerther with the CanIdValue. </a:v>
+                          </a:a>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="UUID" value="0dec09cc-3d20-4fc1-8d5a-1fdec3ccaa37"/>
+                            <a:da name="REF" value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Can/CanConfigSet/CanController/CanFilterMask"/>
+                        </v:ref>
+                        <a:da name="EDITABLE" type="XPath">
+                          <a:tst expr="../CanObjectType  = 'RECEIVE'"/>
+                        </a:da>
+                      </v:lst>
+                      <v:var name="CanMultiplexedHwObjects" type="INTEGER">
+                        <a:a name="DESC" value="EN: This parameter determines the number of message objects associated with the HTH."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" value="ac520ea9-0872-4d4a-8ff9-5043e9600659"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=255"/>
+                          <a:tst expr="&gt;=1"/>
+                        </a:da>
+                        <a:da name="DEFAULT" value="1"/>
+                        <a:da name="EDITABLE" type="XPath">
+                          <a:tst expr="../../../../../CanGeneral/CanMultiplexedTransmission  = 'true' and ../CanObjectType  = 'TRANSMIT'"/>
+                        </a:da>
+                      </v:var>
+                      <v:lst name="CanMainFunctionRWPeriodRef">
+                        <a:da name="MAX" value="1"/>
+                        <v:ref name="CanMainFunctionRWPeriodRef" type="REFERENCE">
+                          <a:a name="DESC" value="EN: Reference to read/write polling raster to which the HOH is associated."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="UUID" value="efa284a2-911f-4001-adf0-b0c1af96a95b"/>
+                          <a:da name="REF" value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Can/CanGeneral/CanMainFunctionRWPeriods"/>
+                        </v:ref>
+                        <a:da name="EDITABLE" value="false"/>
+                      </v:lst>
+                      <v:lst name="CanTTHardwareObjectTrigger" type="MAP">
+                        <v:ctr name="CanTTHardwareObjectTrigger"
+                               type="IDENTIFIABLE">
+                          <a:a name="DESC"
+                               value="EN: This container is only included and valid if TTCAN SWS is used and TTCAN is enabled."/>
+                          <a:a name="UUID"
+                               value="ECUC:5c10353d-3ba8-4140-adf6-b5c02d28c9f1"/>
+                          <v:var name="CanTTHardwareObjectBaseCycle" type="INTEGER">
+                            <a:a name="DESC"
+                                 value="EN: Defines the cycle_offset."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="ECUC:bbb7fda0-3f86-4144-b471-33793652290f"/>
+                            <a:da name="DEFAULT" value="0"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=63"/>
+                              <a:tst expr="&gt;=0"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="CanTTHardwareObjectCycleRepetition" type="INTEGER">
+                            <a:a name="DESC"
+                                 value="EN: Defines the repeat_factor."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="ECUC:6f58e444-b305-47d4-899b-38971bc77aa7"/>
+                            <a:da name="DEFAULT" value="1"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=64"/>
+                              <a:tst expr="&gt;=1"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="CanTTHardwareObjectTimeMark" type="INTEGER">
+                            <a:a name="DESC"
+                                 value="EN: Defines the point in time, when the trigger will be activated."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="ECUC:737166e8-39c4-4d60-ac3f-00672a8ebf67"/>
+                            <a:da name="DEFAULT" value="0"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=65535"/>
+                              <a:tst expr="&gt;=0"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="CanTTHardwareObjectTriggerId" type="INTEGER">
+                            <a:a name="DESC"
+                                 value="EN: Sequential number which allows separation of different TTCAN triggers configured for one and the same hardware object."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                            <a:a name="UUID"
+                                 value="ECUC:0da05573-613f-45fd-94f7-68688e7bcf19"/>
+                            <a:da name="DEFAULT" value="0"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=63"/>
+                              <a:tst expr="&gt;=0"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="CanTTHardwareObjectTriggerType" type="ENUMERATION">
+                            <a:a name="DESC"
+                                 value="EN: Defines the type of the trigger associated with the hardware object. This parameter depends on plain CAN parameter CAN_OBJECT_TYPE."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="ECUC:b15710a4-a4ef-45a8-830a-33d47a8b386d"/>
+                            <a:da name="DEFAULT" value="CAN_TT_RX_TRIGGER"/>
+                            <a:da name="RANGE">
+                              <a:v>CAN_TT_RX_TRIGGER</a:v>
+                              <a:v>CAN_TT_TX_REF_TRIGGER</a:v>
+                              <a:v>CAN_TT_TX_REF_TRIGGER_GAP</a:v>
+                              <a:v>CAN_TT_TX_TRIGGER_EXCLUSIVE</a:v>
+                              <a:v>CAN_TT_TX_TRIGGER_MERGED</a:v>
+                              <a:v>CAN_TT_TX_TRIGGER_SINGLE</a:v>
+                            </a:da>
+                          </v:var>
+                        </v:ctr>
+                        <a:da name="EDITABLE" value="false"/>
+                      </v:lst>
+                    </v:ctr>
+                  </v:lst>
+                  <v:ctr name="CanClockConfiguration" type="IDENTIFIABLE">
+                    <a:a name="DESC" value="EN: Container for CAN Driver module clock configuration."/>
+                    <a:a name="UUID" value="DCE:ed748ec1-d72a-66d8-a760-990505545472"/>
+                    <v:var name="CanClockStepValue" type="INTEGER">
+                      <a:a name="DESC" value="EN: This parameter specifies Prescale value for CAN module clock."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                        type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                        <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" value="22c89d9b-2aac-45c6-a8db-d32784c53922"/>
+                      <a:da name="DEFAULT" value="1023"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=1023"/>
+                        <a:tst expr="&gt;=0"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="CanClockDividerMode" type="ENUMERATION">
+                      <a:a name="DESC" value="EN: This parameter specifies Divider mode for CAN module clock (NORMAL_DIVIDER/FRACTIONAL_DIVIDER)."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                        type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                        <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID"
+                        value="2f4b7e64-f4ee-4f25-8269-a087056aed43"/>
+                      <a:da name="DEFAULT" value="NORMAL_DIVIDER"/>
+                      <a:da name="RANGE">
+                        <a:v>NORMAL_DIVIDER</a:v>
+                        <a:v>FRACTIONAL_DIVIDER</a:v>
+                      </a:da>
+                    </v:var>
+                  </v:ctr>
+                  <v:lst name="CanFifoConfiguration" type="MAP">
+                    <v:ctr name="CanFifoConfiguration" type="IDENTIFIABLE">
+                      <a:a name="DESC" value="EN: CAN FIFO Container. FIFO is supported only for reception."/>
+                      <a:a name="UUID" value="DCE:ed748ec1-d72a-66d8-a760-990505545471"/>
+                        <v:var name="CanFifoObjectId" type="INTEGER">
+                        <a:a name="DESC">
+                          <a:v>"EN: Hardware FIFO Handle (HFH), this should be greater than CanObjectId of all the HTHs and HRHs"</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                          type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                        <a:a name="UUID"
+                          value="dfecb0cd-bfae-47f0-af3b-04f21b6d0a37"/>
+                        <a:da name="DEFAULT" type="XPath" expr="node:fallback(../@index,'0')"/>
+                        <a:da name="INVALID" type="Multi">
+                          <mt:xpath expr="node:isconsecutive(../../*/CanFifoObjectId,num:i(count(../../../CanHardwareObject/*)))"
+                          false="CanFifoObjectId should be consecutive after all CanObjectId"/>
+                          <mt:xpath expr=". &lt;num:i(count(../../../CanHardwareObject/*))"
+                          true="Error"/>
+                          <mt:range>
+                            <mt:tst expr="&lt;ecu:get('Can.MaxHwObjects')"/>
+                            <mt:tst expr="&gt;=0"/>
+                          </mt:range>
+                        </a:da>
+                      </v:var>
+                      <v:var name="CanFifoSize" type="INTEGER">
+                        <a:a name="DESC" value="EN: Size of the FIFO to be used. This includes the size of both FIFO base object and slave objects"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                          type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID"
+                          value="22c89d9b-2aac-45c6-a8db-d32784c53921"/>
+                        <a:da name="DEFAULT" value="1"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=ecu:get('Can.MaxHwObjects')"/>
+                          <a:tst expr="&gt;=1"/>
+                        </a:da>
+                      </v:var>
+                      <v:var name="CanFifoThreshold" type="INTEGER">
+                        <a:a name="DESC" value="EN: Threshold size (less than or equal to FIFO size) at which interrupt is triggered to copy the data."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                          type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" value="22c89d9b-2aac-45c6-a8db-d32784c53911"/>
+                        <a:da name="DEFAULT" value="1"/>
+                        <a:da name="INVALID" type="Multi">
+                          <mt:xpath expr=".=num:i(0)"
+                          true="Fifo thresold size should be greater than 0"/>
+                          <mt:xpath expr="(. &gt;= node:value(../CanFifoSize) + 1)"
+                          true="Wrong Configuration, CanFifoThreshold value should be less than or equal to configured CanFifoSize value."/>
+                          <mt:range>
+                          <mt:tst expr="&lt;ecu:get('Can.MaxHwObjects')"/>
+                          <mt:tst expr="&gt;=1"/>
+                          </mt:range>
+                        </a:da>
+                      </v:var>
+                      <v:var name="CanFifoIdType" type="ENUMERATION">
+                        <a:a name="DESC">
+                          <a:v>EN: Specifies whether the IdValue is of type [1]Standard identifier [2]Extended identifier or [3]Mixed mode. ImplementationType: Can_IdType</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                          type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID"
+                          value="1b7aa112-460a-44ab-a9ba-ca4f568aba2f"/>
+                        <a:da name="DEFAULT" value="STANDARD"/>
+                        <a:da name="RANGE">
+                          <a:v>EXTENDED</a:v>
+                          <a:v>MIXED</a:v>
+                          <a:v>STANDARD</a:v>
+                        </a:da>
+                      </v:var>
+                      <v:var name="CanFifoIdValue" type="INTEGER">
+                        <a:a name="DESC" value="EN: Specifies (together with the filter mask) the identifiers range that passes the hardware filter."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                          type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID"
+                          value="316bfd67-4e3c-4415-8bfb-7aac0a02f5e4"/>
+                        <a:da name="DEFAULT" value="0"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=536870911"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                      </v:var>
+                      <v:ref name="CanFifoControllerRef" type="REFERENCE">
+                        <a:a name="DESC" value="EN: Reference to CAN Controller to which the FIFO is associated to."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                          type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="UUID"
+                          value="4e8f054e-d56f-4410-b256-6dc3e70169d7"/>
+                        <a:da name="REF" value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Can/CanConfigSet/CanController"/>
+                      </v:ref>
+                      <v:lst name="CanFifoFilterMaskRef">
+                        <a:da name="MAX" value="1"/>
+                        <v:ref name="CanFifoFilterMaskRef" type="REFERENCE">
+                          <a:a name="DESC">
+                            <a:v>EN: Reference to the filter mask that is used for hardware filtering togerther with CanFifoIdValue. </a:v>
+                          </a:a>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="UUID" value="0dec09cc-3d20-4fc1-8d5a-1fdec3ccaa38"/>
+                            <a:da name="REF" value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Can/CanConfigSet/CanController/CanFilterMask"/>
+                        </v:ref>
+                      </v:lst>
+                      <v:lst name="CanFifoMainFunctionReadPeriodRef">
+                        <a:da name="MAX" value="1"/>
+                        <v:ref name="CanFifoMainFunctionReadPeriodRef" type="REFERENCE">
+                          <a:a name="DESC" value="EN: Reference to the read polling raster to which the FIFO is associated with. This parameter is not used by the CAN driver."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID" value="efa284a2-911f-4001-adf0-b0c1af96a95c"/>
+                          <a:da name="REF" value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Can/CanGeneral/CanMainFunctionRWPeriods"/>
+                        </v:ref>
+                        <a:da name="EDITABLE" value="false"/>
+                      </v:lst>
+                    </v:ctr>
+                  </v:lst>
+                </v:ctr>
+              </v:lst>
+              <v:ctr name="CanGeneral" type="IDENTIFIABLE">
+                <a:a name="DESC" value="EN: This container contains the parameters related each CAN Driver Unit."/>
+                <a:a name="UUID" value="852ce0b1-81f8-4e5c-947f-510003b2b311"/>
+                <v:var name="CanDevErrorDetection" type="BOOLEAN">
+                  <a:a name="DESC" value="EN: Switches the Development Error Detection and Notification ON or OFF."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                    type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="1b785e91-339b-4171-b872-a3d8c2be4bcb"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="CanBaudRateClkSelErayPll" type="BOOLEAN">
+                  <a:a name="DESC" value="EN: ERAY PLL is used for CAN Module timer clock."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                    type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="1b785e91-339b-4171-b872-a3d8c2ba5bdb"/>
+                  <a:da name="EDITABLE" type="XPath" expr="../CanBaudRateClkSelExtOsc='false'"/>
+                  <a:a name="VISIBLE" type="XPath" expr="ecu:get('Mcu.fErayPllExists')='true'"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="CanBaudRateClkSelExtOsc" type="BOOLEAN">
+                  <a:a name="DESC" value="EN: EXT OSCLTR is used for CAN Module timer clock."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                    type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="1b785e91-339b-4171-b872-a3d8c2ba5bdd"/>
+                  <a:da name="EDITABLE" type="XPath" expr="../CanBaudRateClkSelErayPll='false'"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="CanHardwareCancellation" type="BOOLEAN">
+                  <a:a name="DESC" value="EN: Specifies if hardware cancellation shall be supported. Since it is not supported, it is always OFF."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                    type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="e3535c2a-32fb-4ec7-885a-10e3c246a21f"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="EDITABLE" value="false"/>
+                </v:var>
+                <v:var name="CanIdenticalIdCancellation" type="BOOLEAN">
+                  <a:a name="DESC" value="EN: Enables/disables cancellation of pending PDUs with identical ID. This feature is not supported hence it is always OFF."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                    type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="e3156f66-0274-4236-b05b-8cca84e9844f"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="EDITABLE" value="false"/>
+                </v:var>
+                <v:var name="CanIndex" type="INTEGER">
+                  <a:a name="DESC" value="EN: Specifies the InstanceId of this module instance. If only one instance is present it shall have the Id 0."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                    type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="ac520ea9-0872-4d4a-8ff9-5043e960065a"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=255"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:lst name="CanLPduReceiveCalloutFunction">
+                  <a:da name="MAX" value="1"/>
+                  <v:var name="CanLPduReceiveCalloutFunction" type="FUNCTION-NAME">
+                    <a:a name="DESC">
+                      <a:v>EN: This parameter defines the existence and the name of a callout function that is called after a successful reception of a CAN L-PDU. If this parameter is omitted no callout shall take place.</a:v>
+                    </a:a>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                      type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                      <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:a name="UUID" value="e0b712d9-c92e-4cc8-961c-734dad056de6"/>
+                    <a:da name="DEFAULT" value="NULL_PTR"/>
+                  </v:var>
+                </v:lst>
+                <v:lst name="CanMainFunctionBusoffPeriod">
+                  <a:da name="MAX" value="1"/>
+                  <v:var name="CanMainFunctionBusoffPeriod" type="FLOAT">
+                    <a:a name="DESC" value="EN: This parameter describes the period for cyclic call to Can_MainFunction_Busoff. Unit is seconds. This parameter is not used by the CAN driver"/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                      type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                      <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:a name="UUID" value="8761b426-6c0a-4d97-b5a4-4fa1789d0ea8"/>
+                    <a:da name="INVALID" type="Range">
+                      <a:tst expr="&lt;=65.535"/>
+                      <a:tst expr="&gt;=0.0010"/>
+                    </a:da>
+                    <a:da name="DEFAULT" value="0.001"/>
+                  </v:var>
+                </v:lst>
+                <v:var name="CanMainFunctionModePeriod" type="FLOAT">
+                  <a:a name="DESC" value="EN: This parameter describes the period for cyclic call to Can_MainFunction_Mode. Unit is seconds. This parameter is not used by the CAN driver"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                    type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a4a82737-e923-4dd2-a0c3-8e56b5c0ce7c"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65.535"/>
+                    <a:tst expr="&gt;=0.0010"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="0.001"/>
+                </v:var>
+                <v:lst name="CanMainFunctionWakeupPeriod">
+                  <a:da name="MAX" value="1"/>
+                  <v:var name="CanMainFunctionWakeupPeriod" type="FLOAT">
+                    <a:a name="DESC" value="EN: This parameter describes the period for cyclic call to Can_MainFunction_Wakeup. Unit is seconds. This parameter is not used by the CAN driver"/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                      type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                      <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:a name="UUID" value="e11a81ba-406c-41b9-861b-c9075841d3b3"/>
+                    <a:da name="INVALID" type="Range">
+                      <a:tst expr="&lt;=65.535"/>
+                    <a:tst expr="&gt;=0.001"/>
+                    </a:da>
+                    <a:da name="DEFAULT" value="0.001"/>
+                  </v:var>
+                </v:lst>
+                <v:var name="CanMultiplexedTransmission" type="BOOLEAN">
+                  <a:a name="DESC" value="EN: Specifies if multiplexed transmission shall be supported."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                    type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="217267a1-496d-4f37-b73e-4c42a62a24bc"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="CanTimeoutDuration" type="FLOAT">
+                  <a:a name="DESC" value="EN: Specifies the maximum time for blocking function until a timeout is detected. Unit is seconds.
+This parameter is not used by the CAN driver; CanTimeoutDurationFactor is used instead of CanTimeoutDuration."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                    type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="e7cac63c-c0db-4b72-a6e9-fa18d83d7a7f"/>
+                  <a:da name="DEFAULT" value="0.001"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65.535"/>
+                    <a:tst expr="&gt;=0.001"/>
+                  </a:da>
+                  <a:da name="EDITABLE" value="false"/>
+                </v:var>
+                <v:var name="CanTimeoutDurationFactor" type="INTEGER">
+                  <a:a name="DESC" value="EN: Specifies the maximum number of loops for blocking function (Can_17_MCanP_Init) until a timeout is detected in short term wait loops."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                    type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="6cff5058-466a-4e62-89bc-2edc313391e4"/>
+                  <a:da name="DEFAULT" value="400"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=4294967295"/>
+                    <a:tst expr="&gt;=100"/>
+                  </a:da>
+                </v:var>
+                <v:var name="CanVersionInfoApi" type="BOOLEAN">
+                  <a:a name="DESC" value="EN: Switches the Can_17_MCanP_GetVersionInfo() API ON or OFF."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                    type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="47c1581c-e5df-40d6-b4bc-313da492db6f"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="CanPBFixedAddress" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="EN: This parameter enables the user to fix the PB config pointer to first instance of configuration"/>
+                  <a:a name="TOOLTIP"
+                       value="Pre-processor switch for Enables/Disables the user to fix the PB config pointer to first instance of configuration."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="e15c50c2-14c6-492b-8d8d-c6075dcfd576"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="INVALID" type="XPath">
+                  <a:tst expr="(num:i(count(../../CanConfigSet/*))) > 1 and . = 'true'"
+                   true="Wrong Configuration. If CanPBFixedAddress is enabled then only 1 Config set is permitted. Remove the other Config sets."/>
+                  </a:da>
+                </v:var>
+                <v:var name="CanDebugSupport" type="BOOLEAN">
+                  <a:a name="DESC" value="EN: Switches the debug support ON or OFF."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                    type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="1b785e91-339b-4171-b872-a3d8c2be4bcc"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="CanChangeBaudrateApi" type="BOOLEAN">
+                  <a:a name="DESC" value="EN: Switches the Can_17_MCanP_CheckBaudrate and Can_17_MCanP_ChangeBaudrate APIs ON or OFF."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                    type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="1b785e91-339b-4171-b872-a3d8c2be4bcd"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="CanResetSfrAtInit" type="BOOLEAN">
+                  <a:a name="DESC" value="EN: Switches the CAN Kernel Registers reset feature ON or OFF."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                    type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="1b785e91-339b-4171-b872-a3d8c2bf4bac"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="CanDeInitApi" type="BOOLEAN">
+                  <a:a name="DESC" value="EN: enables / disables the CAN De-initialization API."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                    type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="1b785e91-339b-4171-b872-a3d8c3be1bcc"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                 <v:var name="CanISOFrameSupport" type="BOOLEAN">
+                        <a:a name="DESC"
+                             value="EN: Defines if a CAN module used supports ISO frame format."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID"
+                             value="d69c9f88-536b-403a-b100-ac6c5f92573e"/>
+                        <a:da name="DEFAULT" value="false"/>
+                       <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="ecu:get('Can.FDFeaturePresent')='true' and ecu:get('Can.FDIsoFrameSupport')='true'"/>
+                        </a:da>
+                      </v:var>
+
+                      <v:var name="CanProtocolExceptionFeature" type="BOOLEAN">
+                        <a:a name="DESC"
+                             value="EN: Defines if a CAN module used supports Protocol Exception feature."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID"
+                             value="d69c9f88-536b-403a-b100-ac6c5f034574"/>
+                        <a:da name="DEFAULT" value="false"/>
+                        <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="ecu:get('Can.FDFeaturePresent')='true'"/>
+                        </a:da>
+                      </v:var>
+                <v:ref name="CanCounterRef" type="REFERENCE">
+                  <a:a name="DESC" value="EN: This parameter contains a reference to the counter. This parameter is not used by the CAN driver."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                    type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="UUID" value="ef0c8933-6ce9-4a53-90cc-31b61ca90e25"/>
+                  <a:da name="EDITABLE" value="false"/>
+                  <a:da name="ENABLE" value="false"/>
+                  <a:da name="REF" value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Os/OsCounter"/>
+                </v:ref>
+                <v:ref name="CanSupportTTCANRef" type="REFERENCE">
+                  <a:a name="DESC" value="EN: The parameter refers to CanIfSupportTTCAN parameter in the CAN Interface Module configuration. This parameter is not used by the CAN driver"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                    type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="UUID" value="ECUC:3fc9831b-0db6-41a2-8700-1b0dbcf79da5"/>
+                  <a:da name="EDITABLE" value="false"/>
+                  <a:da name="ENABLE" value="false"/>
+                  <a:da name="REF" value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/CanIf/CanIfPrivateCfg"/>
+                </v:ref>
+                <v:lst name="CanMainFunctionRWPeriods" type="MAP">
+                  <a:da name="MAX" value="1"/>
+                  <v:ctr name="CanMainFunctionRWPeriods" type="IDENTIFIABLE">
+                    <a:a name="DESC" value="EN: Container for CAN Driver's Read, Write main function period configuration."/>
+                    <a:a name="UUID" value="DCE:ed748ec1-d72a-66d8-a760-990505545473"/>
+                    <v:lst name="CanMainFunctionReadPeriod">
+                      <a:da name="MAX" value="1"/>
+                      <v:var name="CanMainFunctionReadPeriod" type="FLOAT">
+                        <a:a name="DESC" value="EN: This parameter describes the period for cyclic call to Can_MainFunction_Read. Unit is seconds. This parameter is not used by the CAN driver"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" value="5f1cbf20-db77-4d50-ab4e-30753c1e1672"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=65.535"/>
+                          <a:tst expr="&gt;=0.001"/>
+                        </a:da>
+                        <a:da name="DEFAULT" value="0.001"/>
+                      </v:var>
+                    </v:lst>
+                    <v:lst name="CanMainFunctionWritePeriod">
+                      <a:da name="MAX" value="1"/>
+                      <v:var name="CanMainFunctionWritePeriod" type="FLOAT">
+                        <a:a name="DESC" value="EN: This parameter describes the period for cyclic call to Can_MainFunction_Write. Unit is seconds. This parameter is not used by the CAN driver"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" value="5f1cbf20-db77-4d50-ab4e-30753c1e1673"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=65.535"/>
+                          <a:tst expr="&gt;=0.001"/>
+                        </a:da>
+                        <a:da name="DEFAULT" value="0.001"/>
+                      </v:var>
+                    </v:lst>
+                  </v:ctr>
+                </v:lst>
+                <v:var name="CanRunningInUser0Mode" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="If this parameter is set to FALSE, then Protected Mode(user mode) register access will not be done and API is run in Supervisor mode."/>
+                  <a:a name="TOOLTIP"
+                       value="EN:Pre-processor switch to enable/disable the Normal/Protected mode."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                   <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                   <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="2496a537-5ef8-487e-51e0-0234c58e9bf0"/>
+                  <a:da name="DEFAULT" value="false"/>
+               </v:var>
+               <v:var name="CanUserModeInitApiEnable" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="Pre-processor switch to enable / disable protected register access in all the Init API."/>
+                  <a:a name="TOOLTIP"
+                       value="EN:Pre-processor switch to enable / disable protected register access in all the Init API."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                   <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                   <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="2496a537-5ef8-487e-51e0-0234c58e9bf0"/>
+                  <a:da name="DEFAULT" value="false"/>
+               </v:var>
+               <v:var name="CanUserModeDeInitApiEnable" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="Pre-processor switch to enable / disable protected register access in all the DeInit API."/>
+                  <a:a name="TOOLTIP"
+                       value="EN:Pre-processor switch to enable / disable protected register access in all the DeInit API."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                   <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                   <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="2496a537-5ef8-487e-51e0-0234c58e9bf0"/>
+                  <a:da name="DEFAULT" value="false"/>
+               </v:var>
+               <v:var name="CanUserModeRuntimeApiEnable" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="Pre-processor switch to enable / disable protected register access in all the APIs other than Init/Deinit APIs."/>
+                  <a:a name="TOOLTIP"
+                       value="EN:Pre-processor switch to enable / disable protected register access in all the APIs other than Init/Deinit APIs."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                   <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                   <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="2496a537-5ef8-487e-51e0-0234c58e9bf0"/>
+                  <a:da name="DEFAULT" value="false"/>
+               </v:var>
+              </v:ctr>
+              <v:lst name="CanDemEventParameterRefs" type="MAP">
+                <a:da name="MAX" value="1"/>
+                <v:ctr name="CanDemEventParameterRefs" type="IDENTIFIABLE">
+                  <a:a name="DESC" value="EN: Configuration container for the selection of DEM for CAN Hardware Timeout Error."/>
+                  <a:a name="UUID" value="522ad0f7-951e-412e-91c4-2f09577f667e"/>
+                  <v:lst name="CAN_E_TIMEOUT">
+                    <a:da name="MAX" value="1"/>
+                    <v:ref name="CAN_E_TIMEOUT" type="SYMBOLIC-NAME-REFERENCE">
+                      <a:a name="DESC" value="EN: Reference to configured DEM event to report CAN time out error."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                        type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                        <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="UUID" value="1afc7fa9-2d93-470a-a7e9-d183ba72fb34"/>
+                      <a:da name="REF" value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter"/>
+                    </v:ref>
+                  </v:lst>
+                </v:ctr>
+              </v:lst>
+              <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC" value="EN: Common container, aggregated by all modules. It contains published information about vendor and versions."/>
+                <a:a name="UUID" value="492f8482-3e2c-4bf1-b27f-01fd7a235788"/>
+                <v:var name="ArMajorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Major version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="bd0a8d38-4d8c-4ee9-88fe-1166b258bb8a"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="4"/>
+                </v:var>
+                <v:var name="ArMinorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Minor version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="73f87c7f-e230-4178-bff0-ea2704aae656"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="ArPatchVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Patch level version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="2380135d-6778-417a-a34b-e100aad4dd54"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="SwMajorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Major version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="fca015e3-5f28-4cbe-8949-8fab87d86827"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="2"/>
+                </v:var>
+                <v:var name="SwMinorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Minor version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="14ab81e0-3d80-43dc-8b92-2a7e5a542df9"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="4"/>
+                </v:var>
+                <v:var name="SwPatchVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="32e37bfd-18b6-41d1-9248-a81dae0fe4c5"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="ModuleId" type="INTEGER">
+                  <a:a name="DESC" value="EN: Module ID of this module from Module List"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="3b407478-6902-4f80-b7cf-f33b0854e638"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="80"/>
+                </v:var>
+                <v:var name="VendorId" type="INTEGER">
+                  <a:a name="DESC" value="EN: Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="7d650b2d-4adb-41f0-aa8e-5f0c416501d1"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="17"/>
+                </v:var>
+                <v:var name="VendorApiInfix" type="STRING">
+                  <a:a name="DESC">
+                    <a:v>EN: In driver modules which can be instantiated several times on a single ECU, BSW00347 requires that the name of APIs is extended by the VendorId and a vendor specific name.
+This parameter is used to specify the vendor specific name. In total, the implementation specific name is generated as follows:
+&lt;ModuleName&gt;_&gt;VendorId&gt;_&lt;VendorApiInfix&gt;&lt;Api name from SWS&gt;.
+E.g.  assuming that the VendorId of the implementor is 123 and the implementer chose a VendorApiInfix of &quot;v11r456&quot; a api name Can_Write defined in the SWS will translate to Can_123_v11r456Write.
+This parameter is mandatory for all modules with upper multiplicity &gt; 1. It shall not be used for modules with upper multiplicity =1.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="ad363b41-e945-4717-b12f-c2f800ef138e"/>
+                  <a:da name="ENABLE" value="true"/>
+                  <a:da name="DEFAULT" value="MCanP"/>
+                </v:var>
+                <v:var name="Release" type="STRING">
+                  <a:a name="DESC" value="EN: Aurix derivative used for thr implementation"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="3b407478-6902-4f40-b7cf-f33b0854e638"/>
+                  <a:da name="DEFAULT" type="XPath" expr="ecu:get('Rel.Derivate')"/>
+                </v:var>
+              </v:ctr>
+            </v:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+</datamodel>

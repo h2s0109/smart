@@ -1,0 +1,83 @@
+/* ----------------------------------------------------------------------------
+ *
+ * Target: TriCore
+ *
+ * This is a sample linker command file . 
+ *
+ * For a description of the different statements in this file, please refer
+ * to the D-LD Linker User's Manual.
+ * ------------------------------------------------------------------------- */
+
+
+/* The MEMORY command defines memory areas using a name intended
+ * to suggest its purpose:
+ *
+ * ------------------------------------------------------------------------ */
+
+MEMORY
+{
+  /* - 0x(8)A0000000--0x(8)A000001F ABM Header Start */
+  /* - 0x(8)A0000020 Boot Address */
+  /* - 0x(A)80000020--0x(A)80017FFF Code Application Pattern */
+  PMU_PFLASH0_BMI:      org = 0x80000000, len = 32
+  PMU_STARTUP:      org = 0x80000020, len = 0xE0
+  PMU_TRAPTAB:      org = 0x80000100, len = 0x300    
+  PMU_INTTAB_TC0 :      org = 0x800F0000, len = 0x2000
+  PMU_USER_FUNCS :      org = 0x8002E000, len = 0x2000  
+  FLS_ERASE_PFLASH0:   org = 0x80001100, len = 0x200
+  FLS_WRITE_PFLASH0:   org = 0x80001300, len = 0x200  
+  PMU_PFLASH0:      org = 0x80030000, len = 768K
+  PMU_PFLASH0_CONST:     org = 0x80100000, len = 500K  
+  PMU_PFLASH1:      org = 0x80200000, len = 2M  
+  CONFIG_DATA:     org = 0xa0100000, len = 20K
+  CONFIG_DIO_DATA:     org = 0xa0140000, len = 512
+
+  CPU0_PMI_PSPR:      org = 0x70100000, len = 24K
+
+  CPU0_DMI_DSPR:      org = 0x70000000, len = 112K - 12K
+  DMI_DSPR     :      org = 0xD0019000, len = 12K  
+
+  /* ERR_SECTION defined to remove the warning of .text section */
+  ERR_SECTION :      org = 0x0, len = 0x0  
+
+}
+
+/* The SECTIONS command specifies where and how the linker should locate
+ * different modules of the system.
+ * ------------------------------------------------------------------------ */
+
+SECTIONS
+{
+
+	GROUP BIND(0xa0100000) : {
+		.CONFIGURATION_ECUM_PB (CONST) : {
+			KEEP(*(.rodata.CPU0.Private.CONFIGURATION_ECUM_PB))
+		}
+	} > CONFIG_DATA
+
+	GROUP BIND(0xa0100080) : {
+		.LIN_LOADABLE_CHANCFG (CONST) : {
+			KEEP(*(.rodata.CPU0.Private.LIN_LOADABLE_CHANCFG))
+			. = ALIGN(4) ;
+		}
+	} > CONFIG_DATA
+
+	GROUP BIND(0xa0100200) : {
+		.CONFIGURATION_PB (CONST) : {
+			KEEP(*(.rodata.CPU0.Private.CONFIGURATION_PB))
+			. = ALIGN(4) ;
+		}
+	} > CONFIG_DATA
+
+	GROUP : {
+		DIO_LCFG_RESERVED_START = .;
+		. = . + 512;
+		DIO_LCFG_RESERVED_END = .;
+	} > CONFIG_DIO_DATA
+
+  GROUP : {
+		.text (TEXT) : {
+		}
+	} > ERR_SECTION	
+}
+

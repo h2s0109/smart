@@ -1,0 +1,965 @@
+<?xml version='1.0'?>
+<!--
+/*******************************************************************************
+**                                                                            **
+** Copyright (C) Infineon Technologies (2015)                                 **
+**                                                                            **
+** All rights reserved.                                                       **
+**                                                                            **
+** This document contains proprietary information belonging to Infineon       **
+** Technologies. Passing on and copying of this document, and communication   **
+** of its contents is not permitted without prior written authorization.      **
+**                                                                            **
+********************************************************************************
+**                                                                            **
+**  $FILENAME   : Sent.xdm $                                                 **
+**                                                                            **
+**  $CC VERSION : \main\28 $                                                 **
+**                                                                            **
+**  $DATE       : 2016-03-31 $                                               **
+**                                                                            **
+**  AUTHOR      : DL-AUTOSAR-Engineering                                      **
+**                                                                            **
+**  VENDOR      : Infineon Technologies                                       **
+**                                                                            **
+**  DESCRIPTION  : XML Data Model for Sent driver                             **
+**                                                                            **
+**  MAY BE CHANGED BY USER [yes/no]: No                                       **
+**                                                                            **
+*******************************************************************************/
+-->
+<datamodel version="3.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/08/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/08/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar"  
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd"
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd" >
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="AURIX" type="AR-PACKAGE">
+        <a:a name="UUID" value="93d9a111-9d4c-47b6-98cb-fe5aec24c8b0"/>
+        <d:lst type="ELEMENTS">
+          <d:chc name="Sent" type="AR-ELEMENT" value="MODULE-DEF">
+            <v:ctr type="MODULE-DEF">
+              <a:a name="RELEASE" value="asc:4.0"/>        
+              <a:a name="UUID" value="03eaa8c5-137e-402e-823d-8d7776c1de4d"/>
+              <a:a name="DESC" 
+                   value="EN: Configuration of the SENT (Single Edge Nibble Transmission) module."/>
+              <a:a name="LOWER-MULTIPLICITY" value="0"/>
+              <a:a name="UPPER-MULTIPLICITY" value="1"/>                 
+              <v:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION">
+                <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                     type="IMPLEMENTATIONCONFIGCLASS">
+                  <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                  <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                </a:a>              
+                <a:a name="LABEL" value="Config Variant"/>
+                <a:da name="DEFAULT" value="VariantPostBuildSelectable"/>
+                <a:da name="RANGE">
+                  <a:v>VariantPostBuildLoadable</a:v>
+                  <a:v>VariantPostBuildSelectable</a:v>
+                </a:da>
+              </v:var>              
+              <v:lst name="SentConfigSet" type="MULTIPLE-CONFIGURATION-CONTAINER">
+                <a:da name="MIN" value="1"/>
+                <v:ctr name="SentConfigSet" type="MULTIPLE-CONFIGURATION-CONTAINER">
+                  <a:a name="DESC" 
+                       value="This is the base container that contains the post-build selectable configuration parameters"/>
+                  <a:a name="UUID" value="ccda81dc-46cf-4171-858b-7c947884702f"/>
+                  <v:ref name="SentSystemClock" type="CHOICE-REFERENCE">
+                    <a:da name="TOOLTIP" value="This parameter refers to the system clock configured using the Mcu_ClockInit function"/>
+                    <a:a name="DESC">
+                      <a:v>EN: This parameter refers to the system clock configured using the Mcu_ClockInit function.
+ This parameter should refer to a vaild McuClockSetting Configuration (/Mcu/McuModuleConfiguration/McuClockSettingConf/McuClockReferencePoint)
+Also the SENT module will work correctly only for this system clock setting. No changes should be done to the system clock if SENT is to be kept functioning.</a:v>
+                    </a:a>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                      <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                    </a:a>                    
+                    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                    <a:a name="UUID" 
+                         value="eb0bf770-872b-456a-8a16-15b7daf533f9"/>
+                    <a:da name="REF">
+                    <a:v>ASPathDataOfSchema:/AUTOSAR/EcucDefs/Mcu/McuModuleConfiguration/McuClockSettingConfig</a:v> 
+                    </a:da>
+                  </v:ref>                  
+                  <v:var name="SentSleepModeEnable" type="BOOLEAN">
+                    <a:da name="TOOLTIP" value="Sent driver accepts or rejects the sleep mode request from Mcu driver"/>
+                    <a:a name="DESC">
+                      <a:v>Decides whether to accept sleep mode request from the Mcu
+                      </a:v>
+                    </a:a>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                      <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                    </a:a>                    
+                    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:a name="UUID" value="e52ed3a7-c933-483f-8b10-390e26b1d366"/>
+                    <a:da name="DEFAULT" value="false"/>
+                  </v:var>
+                  <v:var name="SentModuleClkDiv" type="INTEGER">
+                    <a:da name="TOOLTIP" value="Defines the 8-bit divider to generate the SENT module clock"/>
+                    <a:a name="DESC">
+                      <a:v>Defines the 8bit divider used to generate the SENT module clock. This value will be used to divide the MCU SPB clock fSpb and derive the fSent SENT module clock. 
+                      </a:v>
+                    </a:a>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                      <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                    </a:a>                                        
+                    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                    <a:a name="UUID" 
+                         value="98ce928e-6ed1-4968-93b2-21d90b1fa49d"/>
+                    <a:da name="DEFAULT" value="1"/>
+                    <a:da name="INVALID" type="Range">
+                      <a:tst expr="&lt;=255"/>
+                      <a:tst expr="&gt;=1"/>
+                    </a:da>
+                  </v:var>
+                  <v:var name="SentBaudFracStep" type="INTEGER">
+                    <a:da name="TOOLTIP" value="Defines the 10-bit step divider to generate the SENT fractional divider clock "/>
+                    <a:a name="DESC">
+                      <a:v>Defines the 10bit step divider to generate the SENT fractional divider clockwhich is an input for all SENT channels;
+derived as follows: Ffracdiv = Fsent/ (1024 - SentBaudFracStep)
+                      </a:v>                    
+                    </a:a>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                      <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                    </a:a>                    
+                    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                    <a:a name="UUID" 
+                         value="98df928e-6ed1-4968-93b2-21d90b1fa49e"/>
+                    <a:da name="DEFAULT" value="1023"/>
+                    <a:da name="INVALID" type="Range">
+                      <a:tst expr="&lt;=1023"/>
+                      <a:tst expr="&gt;=0"/>
+                    </a:da>
+                  </v:var>                  
+                  <v:lst name="SentAccessEnVal" type="MAP">
+                    <a:da name="TOOLTIP" value="Defines the Access Control of Sent Module from different Bus Masters. Enabled only if  SentAccessEnable = SENT_ACCEN_INIT"/>                  
+                    <a:da name="MAX" value="1"/>
+                    <a:da name="ENABLE" type="XPath"> 
+                       <a:tst expr="((../../../SentGeneral/SentAccessEnable = 'SENT_ACCEN_INIT'))"/>
+                    </a:da>                    
+                    <v:ctr name="SentAccessEnVal" type="IDENTIFIABLE">
+                      <a:a name="DESC"
+                           value="This defines the Access Control of Sent Module from different Bus Master"/>
+                      <a:a name="UUID"
+                           value="97715302-6606-40f0-b28e-aeb75b7d44f2"/>
+                      <v:lst name="SentEnableAccForTagId" type="MAP">
+                        <a:da name="MAX" value="32"/>
+                        <a:da name="MIN" value="32"/>
+                        <v:ctr name="SentEnableAccForTagId"
+                               type="IDENTIFIABLE">
+                          <a:a name="DESC"
+                               value="EN: This defines the Access Control of Sent Module from different Bus Masters"/>
+                          <a:a name="UUID"
+                               value="97815302-6606-40f0-b28e-aeb75b7d44f2"/>
+                          <v:var name="EnableAccess"
+                                 type="BOOLEAN">
+                            <a:a name="DESC"
+                                 value="EN: This defines the Access Control of Sent Module from different Bus Master"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="5cca25d0-21e8-4b1e-aa8d-7b8f595f29d8"/>
+                            <a:da name="DEFAULT" value="true"/>
+                            <a:da name="TOOLTIP" value=" Defines the Access Control of Sent Module from different Bus Masters"/>
+                          </v:var>
+                        </v:ctr>
+                      </v:lst>
+                    </v:ctr>
+                  </v:lst>                  
+                  <v:lst name="SentChannelConfigSet" type="MAP">
+                    <a:da name="MAX" type="XPath" expr="ecu:get('Sent.MaxChannelsSupported')"/>
+                    <a:da name="MIN" value="1"/>
+                    <v:ctr name="SentChannelConfigSet" type="IDENTIFIABLE">
+                      <a:a name="DESC" 
+                       value="This is the base container that contains the post-build selectable configuration parameters for a particular channel"/>
+                      <a:a name="UUID" 
+                           value="97e6fd09-f2da-4844-b2e0-ecc3dc70e5a3"/>
+                      <v:var name="SentChanIndex" type="INTEGER">
+                        <a:da name="TOOLTIP" value="SENT Physical Channel to be configured"/>
+                        <a:a name="DESC">
+                          <a:v>SENT Physical Channel Id to be configured.
+                          </a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>                        
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="UUID" 
+                             value="6e2cdc5f-16e8-4669-b7d8-531a888e7acc"/>
+                        <a:da name="DEFAULT" type="XPath" expr="node:fallback(../@index,'0')"/>
+	                      <a:da name="INVALID" type="Range">
+	                        <a:tst expr="&lt;=num:i(ecu:get('Sent.MaxChannelsSupported') - 1)"/>
+	                        <a:tst expr="&gt;=0"/>
+                        </a:da>
+                      </v:var>
+                      <v:var name="SentChanPreDiv" type="INTEGER">
+                        <a:da name="TOOLTIP" value="Defines the 12-bit divider to generate the SENT's channel Pre-divider clock"/>
+                        <a:a name="DESC" 
+                             value="Defines the 12bit divider setting for the channel's predivider clock;
+derived as Fpdiv = Ffracdiv/ (SentChanPreDiv + 1)."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="UUID" 
+                             value="6e2cdc5f-16e8-4669-b7d8-531a888e7bdd"/>
+                        <a:da name="DEFAULT" value="7"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=2047"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                      </v:var>
+                      <v:var name="SentChanBaudDiv" type="INTEGER">
+                        <a:da name="TOOLTIP" value="Defines the 12-bit divider to generate the SENT's channel baudrate"/>
+                        <a:a name="DESC" 
+                             value="Defines the 12bit divider setting for the channel's fractional divider clock Ftick. This is the channel's baud rate frequency derived as Ftick = Fpdiv * 56/SentChanBaudDiv."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>                             
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="UUID" 
+                             value="6e2cdc5f-16e8-4669-b7d8-531a888e7cee"/>
+                        <a:da name="DEFAULT" value="1680"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=3276"/>
+                          <a:tst expr="&gt;=560"/>
+                        </a:da>
+                      </v:var>                      
+                      <v:var name="SentChanCRCMode" type="ENUMERATION">
+                        <a:da name="TOOLTIP" value="CRC mode to be used for fast channel/slow channel data communication"/>
+                        <a:a name="DESC" 
+                             value="Defines the CRC mode to be used for fast channel/slow channel data communication"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>                        
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="UUID" 
+                             value="bfec07fb-550f-421e-b568-cb02a2e4eda6"/>
+                        <a:da name="DEFAULT" value="SENT_STANDARD"/>
+                        <a:da name="RANGE">
+                          <a:v>SENT_STANDARD</a:v>
+                          <a:v>SENT_IFX_ALTERNATE</a:v>
+                        </a:da>
+                      </v:var>
+                      <v:var name="SentChanStatusNibbleCRCInc" type="BOOLEAN">
+                        <a:da name="TOOLTIP" value="Defines whether status nibble should be used for CRC calculation"/>
+                        <a:a name="DESC">
+                          <a:v>Defines whether status nibble should be used for CRC calculation.
+                          </a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" value="f09ce730-c48a-499a-8eff-8b03a15032cc"/>
+                        <a:da name="DEFAULT" value="false"/>
+                      </v:var>
+                      <v:var name="SentChanEnESF" type="BOOLEAN">
+                        <a:da name="TOOLTIP" value="Defines whether standard serial mode or extended serial encoding mode should be used"/>
+                        <a:a name="DESC">
+                          <a:v>Defines whether standard serial mode or extended serial encoding mode should be used.
+If standard serial mode is used, processing will be done after 16 SENT frames (4bit ID, 8bit data, 4bit CRC).
+If extended serial mode is used, processing will be done after 18 SENT frames (4 or 8bit ID, 12 or 16bit data, 6bit CRC).
+                          </a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" value="f09ce730-c48a-499a-8eff-8b03a15033dd"/>
+                        <a:da name="DEFAULT" value="false"/>
+                      </v:var>
+                      <v:var name="SentChanSerialProcEn" type="BOOLEAN">
+                        <a:da name="TOOLTIP" value="Defines whether automatic processing of serial data should be enabled or not"/>
+                        <a:a name="DESC">
+                          <a:v>Defines whether automatic processing of serial data should be enabled or not. 
+If enabled, serial data can be read through Sent_ReadSerialData once SDI interrupt has been activated.
+If not enabled, status nibble can be read manually and the user should collate the serial data accordingly from the status nibbles of respective SENT frames.
+                          </a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" value="f09ce730-c48a-499a-8eff-8b03a15034ee"/>
+                        <a:da name="DEFAULT" value="false"/>
+                      </v:var>
+                      <v:var name="SentChanSerialCrcDisable" type="BOOLEAN">
+                        <a:da name="TOOLTIP" value="Defines whether the serial data's CRC should be verified internally by SENT hardware"/>
+                        <a:a name="DESC">
+                          <a:v>Defines whether the serial data's CRC should be verified internally by SENT hardware. 
+If TRUE, then it is responsibility of the application to verify the CRC of the received serial data.
+                          </a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" value="f09ce730-c48a-499a-8eff-8b03a15035ff"/>
+                        <a:da name="DEFAULT" value="false"/>
+                      </v:var>
+                      <v:var name="SentChanFrameCrcDisable" type="BOOLEAN">
+                        <a:da name="TOOLTIP" value="Defines whether the current SENT frame's CRC should be verified internally by SENT hardware"/>
+                        <a:a name="DESC">
+                          <a:v>Defines whether the current SENT frame's CRC should be verified internally by SENT hardware. 
+If TRUE, then it is responsibility of the application to verify the CRC of the received SENT frame.
+                          </a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" value="f09ce730-c48a-499a-8eff-8b03a1503600"/>
+                        <a:da name="DEFAULT" value="false"/>
+                      </v:var>
+                      <v:var name="SentChanFrameChk" type="ENUMERATION">
+                        <a:da name="TOOLTIP" value="Defines whether the current SENT frame should be verified against preceding or last valid preceding SENT frame"/>
+                        <a:a name="DESC" 
+                             value="Defines whether the current SENT frame should be verified against preceding SENT frame/ last valid preceding SENT frame for successive sync pulse difference (> 1.5625 %). 
+If SENT_PAST_SYNC_PULSE is selected, the sync pulse of the current frame is compared to sync pulse of the immediate preceded frame. This is the preferred option as per standard [8].
+If SENT_PAST_VALID_SYNC_PULSE is selected, the sync pulse of the current frame is compared to sync pulse of the last valid preceded frame."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>                        
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="UUID" 
+                             value="bfec07fb-550f-421e-b568-cb02a2e4eeb7"/>
+                        <a:da name="DEFAULT" value="SENT_PAST_SYNC_PULSE"/>
+                        <a:da name="RANGE">
+                          <a:v>SENT_PAST_SYNC_PULSE</a:v>
+                          <a:v>SENT_PAST_VALID_SYNC_PULSE</a:v>
+                        </a:da>
+                      </v:var>     
+                      <v:var name="SentChanFrameDataLen" type="INTEGER">
+                        <a:da name="TOOLTIP" value="Data nibbles per SENT frame"/>
+                        <a:a name="DESC">
+                          <a:v>Defines the number of data nibbles per SENT frame. It does not include sync pulse, status nibble, CRC nibble, or the additional zero length nibble. 
+If more than 8 nibbles are configured, RDI interrupt is issued each time 8 nibbles are written into RDR register of that channel. At the end of the last data frame also, RDI interrupt is issued. If no RDI interrupt occurs at the last data frame, an error has occurred. RSI interrupt shall be issued at every successful receive of a single SENT frame.
+
+                          </a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>                        
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="UUID" 
+                             value="6e2cdc5f-16e8-4669-b7d8-531a888e8bdd"/>
+                        <a:da name="DEFAULT" value="6"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=255"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                      </v:var>
+                      <v:var name="SentChanDriftErrEn" type="BOOLEAN">
+                        <a:da name="TOOLTIP" value="Defines whether drift errors should be enabled or not"/>
+                        <a:a name="DESC">
+                          <a:v>Defines whether drift errors should be enabled or not. 
+Certain sensors triggered by SPC tend to have a long pause period and the accumulated drift could be more than 1.5625%, then it useful to disable this feature.
+                          </a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" value="f09ce730-c48a-499a-8eff-8b03a15057aa"/>
+                        <a:da name="DEFAULT" value="true"/>
+                      </v:var>
+                      <v:var name="SentChanCRZEn" type="BOOLEAN">
+                        <a:da name="TOOLTIP" value="Defines whether Zero nibble should be augmented for CRC calculation or not"/>
+                        <a:a name="DESC">
+                          <a:v>Defines whether Zero nibble should be augmented for CRC calculation or not. 
+If TRUE, augmentation is selected, (i.e a ZERO NIBBLE is added at the end of CRC calculation (only in calculation)). E.g. as 7th nibble (in case of 6 data nibbles).
+                          </a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" value="f09ce730-c48a-499a-8eff-8b03a1503611"/>
+                        <a:da name="DEFAULT" value="true"/>
+                      </v:var>
+                      <v:var name="SentChanIgnoreEndPulse" type="BOOLEAN">
+                        <a:da name="TOOLTIP" value="Defines whether End pulse is ignored or not"/>
+                        <a:a name="DESC">
+                          <a:v>Defines whether end pulse should be ignored or not. 
+For some systems with an end pulse, during synchronize or resynchronize of reception, if calibration pulses are detected one immediately following the other, the first calibration pulse shall be ignored as it may be a pause pulse with duration matching the calibration pulse range.
+                          </a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" value="f09ce730-c48a-499a-8eff-8b03a1503622"/>
+                        <a:da name="DEFAULT" value="false"/>
+                      </v:var>          
+                      <v:var name="SentChanInPulse" type="ENUMERATION">
+                        <a:da name="TOOLTIP" value="Defines pulse polarity of the respective input channel"/>
+                        <a:a name="DESC" 
+                             value="Defines pulse polarity of the respective input channel."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>                        
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="UUID" 
+                             value="bfec07fb-550f-421e-b568-cb02a2e5feb7"/>
+                        <a:da name="DEFAULT" value="SENT_ACTIVE_LOW"/>
+                        <a:da name="RANGE">
+                          <a:v>SENT_ACTIVE_LOW</a:v>
+                          <a:v>SENT_ACTIVE_HIGH</a:v>
+                        </a:da>
+                      </v:var>
+                      <v:var name="SentChanOutPulse" type="ENUMERATION">
+                        <a:da name="TOOLTIP" value="Defines pulse polarity of the respective output channel"/>
+                        <a:a name="DESC" 
+                             value="Defines pulse polarity of the respective output channel."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>                        
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="UUID" 
+                             value="bfec07fb-550f-421e-b568-cb02a2e60eb7"/>
+                        <a:da name="DEFAULT" value="SENT_ACTIVE_LOW"/>
+                        <a:da name="RANGE">
+                          <a:v>SENT_ACTIVE_LOW</a:v>
+                          <a:v>SENT_ACTIVE_HIGH</a:v>
+                        </a:da>
+                      </v:var>     
+                      <v:var name="SentChanGlitchFilterDepth" type="INTEGER">
+                        <a:da name="TOOLTIP" value="Defines the number of input samples that should be taken into account for the digital glitch filter"/>
+                        <a:a name="DESC">
+                          <a:v>Defines the number of input samples that should be taken into account for the digital glitch filter.
+                          </a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>                        
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="UUID" 
+                             value="6e2cdc5f-16e8-4669-b7d8-641a888e8bdd"/>
+                        <a:da name="DEFAULT" value="0"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=15"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                      </v:var>
+                      <v:var name="SentChanDataView" type="INTEGER">
+                        <a:da name="TOOLTIP" value="Defines the the sequence in which the received data nibbles shall be presented to the user"/>
+                        <a:a name="DESC">
+                          <a:v>Defines the the sequence in which the received data nibbles shall be presented to the user for the respective channel.
+For example 0x76540123 means
+Received nibble 0 goes to bits 12-15 of RDR
+Received nibble 1 goes to bits 8-11 of RDR 
+Received nibble 2 goes to bits 4-7 of RDR
+Received nibble 3 goes to bits 0-3 of RDR
+Received nibble 4 goes to bits 16-19 of RDR
+Received nibble 5 goes to bits 20-23 of RDR
+Received nibble 6 goes to bits 24-27 of RDR
+Received nibble 7 goes to bits 28-31 of RDR.
+                          </a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>                        
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="UUID" 
+                             value="6e2cdc5f-16e8-4669-b7d8-751a888e8bdd"/>
+                        <a:a name="DEFAULT_RADIX" value="HEX" />                             
+                        <a:da name="DEFAULT" value="1985229328"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=4294967295"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                      </v:var>
+                      <v:var name="SentChanPinSel" type="ENUMERATION">
+                        <a:da name="TOOLTIP" value="Defines the Pin select for the respective SENT channel"/>
+                        <a:a name="DESC" 
+                             value="Defines the pin select. Based on this parameter, the respective setting will be written to the ALTI (Alternate Input Select) bit field of input select register (IOCR) for that respective channel."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>                             
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="UUID" 
+                             value="bfec080c-550f-421e-b568-cb02a2e60eb7"/>
+                        <a:da name="DEFAULT" value="SENT_ALT_INPUT0"/>
+                        <a:da name="RANGE">
+                          <a:v>SENT_ALT_INPUT0</a:v>
+                          <a:v>SENT_ALT_INPUT1</a:v>
+                          <a:v>SENT_ALT_INPUT2</a:v>
+                          <a:v>SENT_ALT_INPUT3</a:v>                          
+                        </a:da>
+                      </v:var>       
+                      <v:var name="SentChanCalloutFn" type="FUNCTION-NAME">
+                        <a:da name="TOOLTIP" value="Call-out function invoked by SENT driver to inform application"/>                      
+                        <a:a name="DESC">
+                          <a:v>Defines the function to be invoked for any notification event/error of the respective channel.</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="UUID" 
+                             value="bfec091d-550f-421e-b568-cb02a2e60eb7"/>
+                        <a:da name="DEFAULT" value="NULL_PTR"/>
+                      </v:var>                      
+                    </v:ctr>
+                  </v:lst>
+                </v:ctr>
+              </v:lst>
+              <v:ctr name="SentGeneral" type="IDENTIFIABLE">
+                <a:a name="DESC" 
+                     value="EN: General configuration (parameters) of the SENT driver software module."/>
+                <a:a name="UUID" value="3ea7abca-6ba4-4d14-befd-8bb9350fe86f"/>
+                <v:var name="SentPBFixedAddress" type="BOOLEAN">
+                  <a:da name="TOOLTIP" value="Pre-processor switch to enable / disable the Loadable fixed address feature."/>
+                  <a:a name="DESC">
+                    <a:v>Enable / Disable the fixed address usage of the configuration.
+true: The configuration address is fixed at compile time.
+false: Dynamic selection of configurations is possible.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="132db8da-97cc-4ad8-a8c3-187626822716"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="INVALID" type="XPath">
+                  <a:tst expr="(num:i(count(../../SentConfigSet/*))) > 1 and . = 'true'" 
+                   true="Wrong Configuration. When SentPBFixedAddress is enabled then only 1 Config set is permitted. Remove the other Config sets."/>
+                  </a:da>                  
+                </v:var>                
+                <v:var name="SentAccessEnable" type="ENUMERATION">
+                  <a:da name="TOOLTIP" value="Decision to configure SENT_ACCEN0 register dynamically or during Init. This defines the Access Control of SENT Module from different Bus Master."/>
+                    <a:a name="DESC">
+                      <a:v>SENT_ACCEN_DEFAULT: Default values of SENT_ACCEN0, no access to this register allowed.
+SENT_ACCEN_INIT: SENT_ACCEN0 updated only during Initialization of SENT module
+SENT_ACCEN_API: SENT_ACCEN0 updated dynamically through API
+                      </a:v>
+                    </a:a>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                      <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                    </a:a>                    
+                    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                    <a:a name="UUID" 
+                         value="32e1445f-3eb8-4911-87f8-215464630ba0"/>
+                    <a:da name="DEFAULT" value="SENT_ACCEN_DEFAULT"/>
+                    <a:da name="RANGE">
+                      <a:v>SENT_ACCEN_DEFAULT</a:v>
+                      <a:v>SENT_ACCEN_INIT</a:v>
+                      <a:v>SENT_ACCEN_API</a:v>
+                    </a:da>
+                </v:var>
+                <v:var name="SentDeInitApi" type="BOOLEAN">
+                  <a:da name="TOOLTIP" value="Pre-processor switch to enable / disable the Sent_DeInit() API"/>
+                  <a:a name="DESC">
+                    <a:v>Adds / removes the service Sent_DeInit() from the code.
+true: Sent_DeInit() can be used.
+false: Sent_DeInit() can not be used.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="e53ed3a7-c933-483f-8b90-390e46b1d366"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>                
+                <v:var name="SentDevErrorDetect" type="BOOLEAN">
+                  <a:da name="TOOLTIP" value="Pre-processor switch to enable/disable the Development Error Detection and Notification"/>
+                  <a:a name="DESC">
+                    <a:v>Switches the Development Error Detection and Notification ON or OFF.
+true: Enabled.
+false: Disabled.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="ef9ce730-c48a-499a-8eff-8b03a15032cc"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="SentSpcFeatureSupport" type="BOOLEAN">
+                  <a:da name="TOOLTIP" value="Pre-processor switch to enable/disable the SENT SPC feature"/>
+                  <a:a name="DESC">
+                    <a:v>Determines, if the SPC (Short PWM Code) feature should be enabled or not.
+true: Enabled.
+false: Disabled.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="494fd1b0-19bd-4093-86eb-32cb35bfcf84"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="SentVersionInfoApi" type="BOOLEAN">
+                <a:da name="TOOLTIP" value="Pre-processor switch to enable / disable the API Sent_GetVersionInfo()"/>
+                  <a:a name="DESC">
+                    <a:v>Adds / removes the service Sent_GetVersionInfo() from the code.
+true: Sent_GetVersionInfo() can be used.
+false: Sent_GetVersionInfo() can not be used.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="141db8da-97cc-4ad8-a8c3-187626822714"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="SentIndex" type="INTEGER">
+                  <a:a name="DESC" 
+                       value="EN: Specifies the InstanceId of this module instance. If only one instance is present it shall have the Id 0."/>
+                  <a:a name="TOOLTIP" 
+                             value="Specifies the InstanceId of this module instance."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="6b330dcc-6344-4ea2-bd60-bc4e44ce726f"/>
+                  <a:da name="DEFAULT" value="0"/>
+                  <a:da name="INVALID" type="Range">
+                      <a:tst expr="&lt;=255"/>
+                      <a:tst expr="&gt;=0"/>
+                  </a:da>
+                </v:var>                
+                <v:var name="SentResetSfrAtInit" type="BOOLEAN">
+                  <a:da name="TOOLTIP" value="Pre-processor switch to enable/disable SFR's Reset during Init"/>
+                  <a:a name="DESC" 
+                       value="EN: Enables / Disables Reset of SFR's to default value during Init"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="494fd1b0-19bd-4093-86eb-62cb85bfcf84"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+								<v:var name="SentRunningInUser0Mode" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="If this parameter is set to FALSE, then Protected Mode(user mode) register access will not be done and API is run in Supervisor mode."/>
+                  <a:a name="TOOLTIP"
+                       value="EN:Pre-processor switch to enable/disable the Normal/Protected mode."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                   <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                   <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="2496d537-5ef8-487e-51e0-0234c58e9bf0"/>
+                  <a:da name="DEFAULT" value="false"/>
+               </v:var>
+               <v:var name="SentUserModeInitApiEnable" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="Pre-processor switch to enable / disable protected register access in all the Init API."/>
+                  <a:a name="TOOLTIP"
+                       value="EN:Pre-processor switch to enable / disable protected register access in all the Init API."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                   <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                   <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="2496c537-5ef8-487e-51e0-0234c58e9bf0"/>
+                  <a:da name="DEFAULT" value="false"/>
+               </v:var>
+               <v:var name="SentUserModeDeInitApiEnable" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="Pre-processor switch to enable / disable protected register access in all the DeInit API."/>
+                  <a:a name="TOOLTIP"
+                       value="EN:Pre-processor switch to enable / disable protected register access in all the DeInit API."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                   <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                   <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="2496b537-5ef8-487e-51e0-0234c58e9bf0"/>
+                  <a:da name="DEFAULT" value="false"/>
+               </v:var>
+               <v:var name="SentUserModeRuntimeApiEnable" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="Pre-processor switch to enable / disable protected register access in all the APIs other than Init/Deinit APIs."/>
+                  <a:a name="TOOLTIP"
+                       value="EN:Pre-processor switch to enable / disable protected register access in all the APIs other than Init/Deinit APIs."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                   <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                   <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="2496a537-5ef8-487e-51e0-0234c58e9bf0"/>
+                  <a:da name="DEFAULT" value="false"/>
+               </v:var>
+              </v:ctr>
+              <v:ctr name="SentPublishedInformation" type="IDENTIFIABLE">
+                  <a:da name="TOOLTIP" value="Additional published parameters not covered by CommonPublishedInformation container"/>
+                <a:a name="DESC">
+                  <a:v>EN: Additional published parameters not covered by CommonPublishedInformation container.
+
+Note that these parameters do not have any configuration class setting, since they are published information.</a:v>
+                </a:a>
+                <a:a name="UUID" value="6b7480fc-6dd2-4b90-a754-188ab99f8aa4"/>
+              </v:ctr>      
+              <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC" value="EN: Common container, aggregated by all modules. It contains published information about vendor and versions."/>
+                <a:a name="UUID" value="40308482-3e2c-4bf1-b27f-01fd7ac35788"/>
+                <v:var name="ArMajorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Major version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="bd0a8d38-4d8c-4ff0-88fe-1166b258bb8a"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="ArMinorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Minor version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="73f87c7f-f340-4178-bff0-eb2704aae656"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="ArPatchVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Patch level version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="2380135d-6889-417a-a34b-e10017d4dd54"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="SwMajorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Major version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="fdb115e3-5f28-4cbe-8949-8f4b87d86827"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="SwMinorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Minor version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="15bc81e0-3d80-43dc-8b92-247e5a542df9"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="2"/>
+                </v:var>
+                <v:var name="SwPatchVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="32f48bfd-18b6-41d1-9248-a81dbe0fe4c5"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="ModuleId" type="INTEGER">
+                  <a:a name="DESC" value="EN: Module ID of this module from Module List"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="3b518478-6902-4f80-b7cf-f33b0854e638"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="255"/>
+                </v:var>
+                <v:var name="VendorId" type="INTEGER">
+                  <a:a name="DESC" value="EN: Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="7d650b2d-4bec-41f0-a68e-5f0c416501d1"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="17"/>
+                </v:var>
+                <v:var name="VendorApiInfix" type="STRING">
+                  <a:a name="DESC">
+                    <a:v>EN: In driver modules which can be instantiated several times on a single ECU, BSW00347 requires that the name of APIs is extended by the VendorId and a vendor specific name. 
+This parameter is used to specify the vendor specific name. In total, the implementation specific name is generated as follows:
+&lt;ModuleName&gt;_&gt;VendorId&gt;_&lt;VendorApiInfix&gt;&lt;Api name from SWS&gt;.
+
+E.g.  assuming that the VendorId of the implementor is 123 and the implementer chose a VendorApiInfix of &quot;v11r456&quot; a api name Can_Write defined in the SWS will translate to Can_123_v11r456Write. 
+
+This parameter is mandatory for all modules with upper multiplicity &gt; 1. It shall not be used for modules with upper multiplicity =1.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="ad363b41-e046-4717-b12f-c2f800ef138e"/>
+                  <a:da name="ENABLE" value="false"/>
+                  <a:da name="DEFAULT" value=""/>
+                </v:var>
+                <v:var name="Release" type="STRING">
+                  <a:a name="DESC" value="EN: Aurix derivative used for thr implementation"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="3b407478-6902-4f40-b7cf-f33b0854e638"/>
+                  <a:da name="DEFAULT" type="XPath" expr="ecu:get('Rel.Derivate')"/>
+                </v:var>
+              </v:ctr>                   
+            </v:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+</datamodel>

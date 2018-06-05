@@ -1,0 +1,182 @@
+[!/*****************************************************************************
+**                                                                            **
+** Copyright (C) Infineon Technologies (2013)                                 **
+**                                                                            **
+** All rights reserved.                                                       **
+**                                                                            **
+** This document contains proprietary information belonging to Infineon       **
+** Technologies. Passing on and copying of this document, and communication   **
+** of its contents is not permitted without prior written authorization.      **
+**                                                                            **
+********************************************************************************
+**                                                                            **
+**  $FILENAME   : Port_ConfigDoc.html $                                      **
+**                                                                            **
+**  $CC VERSION : \main\4 $                                                  **
+**                                                                            **
+**  $DATE       : 2014-05-17 $                                               **
+**                                                                            **
+**  AUTHOR      : DL-AUTOSAR-Engineering                                      **
+**                                                                            **
+**  VENDOR      : Infineon Technologies                                       **
+**                                                                            **
+**  DESCRIPTION  : HTML Resource Usage for Port driver                        **
+**                                                                            **
+**  MAY BE CHANGED BY USER [yes/no]: No                                       **
+**                                                                            **
+**   Traceabilty :[cover parentID = DS_MCAL_PORT_0414]                        **
+**                                                                            **
+** [/cover]   
+*************************************************************************/!][!//
+-->
+[!SELECT "as:modconf('Port')[1]"!][!//
+[!VAR "PortPinDirectionChangeControl" = "PortGeneral/PortSetPinDirectionApi"!][!//
+[!VAR "PortPinModeChangeControl" = "PortGeneral/PortSetPinModeApi"!][!//
+<html>
+  <head>
+    <title>PORT Driver Details</title>
+  </head>
+  <body>
+    <style type="text/css">
+table{table-layout: fixed;width: 300px;}
+table.curvedEdges { border:10px solid ;-webkit-border-radius:13px;-moz-border-radius:13px;-ms-border-radius:13px;-o-border-radius:13px;border-radius:13px; }
+table.curvedEdges td, table.curvedEdges th { border-bottom:1px dotted black;overflow: hidden;width: 400px;padding:5px; }
+</style>
+<!-- Be sure to place the above styles (i.e. everything between the <style></style> tags) into the document 'head' (i.e. between the <head></head> tags. Everything below goes inside the <body></body> tags) -->   
+    <p>
+      &nbsp;</p>  
+    <h2>
+      /*****************************************PORT HW-SW MAP*****************************************/</h2>
+    <table border="3" cellpadding="5" cellspacing="0" class="curvedEdges">
+      <caption><strong>
+        Table 1: PORT SFR Usage per API</strong></caption>
+      <thead>
+        <tr>
+          <th scope="col">
+            API Name</th>
+          <th scope="col">
+            SFRs Used</th>
+          <th scope="col">
+            Remarks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Port_Init</td>
+          <td>
+            Pn_PDR,Pn_OUT,Pn_IOCR,Pn_DISC,
+            Pn_LPCR,Pn_PCSR,Pn_OMR
+          </td>
+          <td>
+          n refers to port number
+          </td>
+          <td>-</td>
+        </tr>
+        [!IF "PortSafety/PortInitCheckApi = 'true'"!][!//
+        <tr>
+          <td>
+            Port_InitCheck</td>
+          <td>
+            Pn_PDR0,Pn_PDR1,Pn_IOCR,Pn_DISC,
+            Pn_LPCR,Pn_PCSR,Pn_IN
+          </td>
+          <td>
+          n refers to port number
+          </td>
+        </tr>
+        [!ENDIF!][!//
+        [!IF "$PortPinDirectionChangeControl = 'true'"!][!//
+        <tr>
+          <td>
+            Port_SetPinDirection</td>
+          <td>
+            Pn_IOCR
+          </td>
+          <td>
+          n refers to port number
+          </td>
+        </tr>
+        [!ENDIF!][!//
+        <tr>
+          <td>
+            Port_RefreshPortDirection </td>
+          <td>
+            Pn_IOCR           
+          </td>
+          <td>
+          n refers to port number
+          </td>
+        </tr>
+        [!IF "$PortPinModeChangeControl = 'true'"!][!//
+        <tr>
+          <td>
+            Port_SetPinMode</td>
+          <td>
+            Pn_IOCR           
+          </td>
+          <td>n refers to port number</td>
+        </tr>   
+        [!ENDIF!][!//  
+      </tbody>
+    </table>    
+    <p>
+      &nbsp;</p>      
+    <h2>
+      /******************************************PORT MPU Settings******************************************/</h2>        
+    <table border="3" cellpadding="5" cellspacing="0" class="curvedEdges">
+      <caption><strong>
+        Table 2: PORT SFR and Memory Range</strong></caption>
+      <thead>
+        <tr>
+          <th scope="col">
+            Start Address</th>
+          <th scope="col">
+            End Address</th>
+          <th scope="col">
+            Remarks</th>
+        </tr>
+      </thead>
+      <tbody>
+        [!IF "PortGeneral/PortPBFixedAddress = 'true'"!][!//
+        <tr>
+          <td>
+            PORT_START_SEC_CONST_32BIT</td>
+          <td>
+            PORT_STOP_SEC_CONST_32BIT</td>
+          <td>
+            Port_kConfigPtr -&nbsp;32 bit constant used by PORT</td>
+        </tr>
+        [!ENDIF!][!//
+        [!IF "PortGeneral/PortPBFixedAddress = 'false'"!][!//
+        <tr>
+          <td>
+            PORT_START_SEC_VAR_32BIT</td>
+          <td>
+            PORT_STOP_SEC_VAR_32BIT</td>
+          <td>
+              Port_kConfigPtr -&nbsp;32 bit variable used by PORT </p>
+          </td>
+        </tr>
+        [!ENDIF!][!//
+        <tr>
+          <td>
+            PORT_START_SEC_CODE</td>
+          <td>
+            PORT_STOP_SEC_CODE</td>
+          <td>
+            PORT driver - Basic AUTOSAR and SAFETY functionality</td>
+        </tr>
+        <tr>
+          <td>
+            PORT_START_SEC_CONST_16BIT</td>
+          <td>
+            PORT_STOP_SEC_CONST_16BIT</td>
+          <td>
+            Port_kAvailablePins -&nbsp;16 bit constant used by PORT</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>                                    
+[!ENDSELECT!][!//

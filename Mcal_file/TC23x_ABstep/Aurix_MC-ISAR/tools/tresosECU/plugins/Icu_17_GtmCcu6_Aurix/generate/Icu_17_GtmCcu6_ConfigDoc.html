@@ -1,0 +1,820 @@
+[!/*****************************************************************************
+**                                                                            **
+** Copyright (C) Infineon Technologies (2013)                                 **
+**                                                                            **
+** All rights reserved.                                                       **
+**                                                                            **
+** This document contains proprietary information belonging to Infineon       **
+** Technologies. Passing on and copying of this document, and communication   **
+** of its contents is not permitted without prior written authorization.      **
+**                                                                            **
+********************************************************************************
+**                                                                            **
+**  $FILENAME   : Icu_17_GtmCcu6_ConfigDoc.html $                            **
+**                                                                            **
+**  $CC VERSION : \main\5 $                                                  **
+**                                                                            **
+**  $DATE       : 2014-05-19 $                                               **
+**                                                                            **
+**  AUTHOR      : DL-AUTOSAR-Engineering                                      **
+**                                                                            **
+**  VENDOR      : Infineon Technologies                                       **
+**                                                                            **
+**  DESCRIPTION  : HTML Resource Usage for ICU driver                         **
+**                                                                            **
+**  MAY BE CHANGED BY USER [yes/no]: No                                       **
+**                                                                            **
+*************************************************************************/!][!//
+[!/*  TRACEABILITY: [cover parentID=DS_MCAL_ICU_0012]
+**  [/cover]                                                                  **
+*/!][!//
+[!NOCODE!]
+[!VAR "TotalIcuConfig" = "num:i(count(IcuConfigSet/*))"!][!//
+[!FOR "ModuleId" = "num:i(1)" TO "num:i($TotalIcuConfig)"!][!//  
+[!SELECT "IcuConfigSet/*[num:i($ModuleId)]"!][!//
+[!VAR "EdgeDetectionQmGtmChannels" = "num:i(count(IcuChannel/*[IcuMeasurementMode='ICU_MODE_SIGNAL_EDGE_DETECT' and contains(node:path(node:ref(./IcuAssignedHwUnit)), "GtmConfiguration") = 'true']))"!][!//
+[!VAR "EdgeDetectionQmCcu6Channels" = "num:i(count(IcuChannel/*[IcuMeasurementMode='ICU_MODE_SIGNAL_EDGE_DETECT' and contains(node:path(node:ref(./IcuAssignedHwUnit)), "CcuConfiguration") = 'true']))"!][!//
+[!VAR "EdgeDetectionQmEruChannels" = "num:i(count(IcuChannel/*[IcuMeasurementMode='ICU_MODE_SIGNAL_EDGE_DETECT' and contains(node:path(node:ref(./IcuAssignedHwUnit)), "EruConfiguration") = 'true']))"!][!//
+
+
+[!VAR "SigMeasurementQmGtmChannels" = "num:i(count(IcuChannel/*[IcuMeasurementMode='ICU_MODE_SIGNAL_MEASUREMENT' and contains(node:path(node:ref(./IcuAssignedHwUnit)), "GtmConfiguration") = 'true']))"!][!//
+[!VAR "SigMeasurementQmCcu6Channels" = "num:i(count(IcuChannel/*[IcuMeasurementMode='ICU_MODE_SIGNAL_MEASUREMENT' and contains(node:path(node:ref(./IcuAssignedHwUnit)), "CcuConfiguration") = 'true']))"!][!//
+[!ENDSELECT!][!//
+[!ENDFOR!][!//
+
+[!VAR "OsmUsed" = "num:i(0)"!][!//
+[!VAR "GTMUsed" = "num:i(0)"!][!//
+[!VAR "CCU6Used" = "num:i(0)"!][!//
+[!VAR "ERUUsed" = "num:i(0)"!][!//
+[!LOOP "./IcuConfigSet/*"!][!//
+[!LOOP "./IcuChannel/*"!][!//
+[!VAR "Cell" = "node:name(node:ref(./IcuAssignedHwUnit))"!][!//
+
+[!IF "contains($Cell,'ERU') = 'true'"!][!//
+[!VAR "ERUUsed" = "num:i(1)"!][!//
+[!ELSEIF "contains($Cell,'Tim') = 'true'"!][!//
+[!VAR "GTMUsed" = "num:i(1)"!][!//
+[!ELSEIF "contains($Cell,'Cc6') = 'true'"!][!//
+[!VAR "CCU6Used" = "num:i(1)"!][!//
+[!ENDIF!][!//
+[!ENDLOOP!][!//
+[!ENDLOOP!][!//
+
+[!VAR "IcuSafetyUsed" = "'STD_OFF'"!][!//
+[!VAR "IcuInitCheckUsed" = "'STD_OFF'"!][!//
+[!VAR "IcuGetModeUsed" = "'STD_OFF'"!][!//
+[!IF "IcuSafety/IcuSafetyEnable = 'true'"!][!//
+[!VAR "IcuSafetyUsed" = "'STD_ON'"!][!//
+[!IF "IcuSafety/IcuInitCheckApi = 'true'"!][!//
+[!VAR "IcuInitCheckUsed" = "'STD_ON'"!][!//
+[!ENDIF!][!//
+[!ENDIF!][!//
+[!IF "IcuSafety/IcuSafetyEnable = 'true'"!][!//
+[!IF "IcuSafety/IcuGetModeApi = 'true'"!][!//
+[!VAR "IcuGetModeUsed" = "'STD_ON'"!][!//
+[!ENDIF!][!//
+[!ENDIF!][!//
+
+[!ENDNOCODE!]
+
+
+<html>
+  <head>
+    <title>ICU Driver Details</title>
+  </head>
+  <body>
+    <style type="text/css">
+table{table-layout: fixed;width: 300px;}
+table.curvedEdges { border:10px solid ;-webkit-border-radius:13px;-moz-border-radius:13px;-ms-border-radius:13px;-o-border-radius:13px;border-radius:13px; }
+table.curvedEdges td, table.curvedEdges th { border-bottom:1px dotted black;overflow: hidden;width: 400px;padding:5px; }
+</style>
+<!-- Be sure to place the above styles (i.e. everything between the <style></style> tags) into the document 'head' (i.e. between the <head></head> tags. Everything below goes inside the <body></body> tags) -->       
+    <p>
+      &nbsp;</p>  
+    <h2>
+      /*****************************************ICU HW-SW MAP*****************************************/</h2>
+    <table border="1" cellpadding="5" cellspacing="0" class="curvedEdges" width="100%">
+      <caption><strong>
+        Table 1: Api Usage and SFR access</strong></caption>
+      <thead>
+        <col width="300">
+        <col width="700">
+        <col width="300"> 
+        <tr>
+          <th scope="col">
+            API Name</th>
+          <th scope="col">
+            SFRs Used</th>
+          <th scope="col">
+            Remarks</th>
+        </tr>
+      </thead>
+[!IF "IcuOptionalApis/IcuEdgeDetectApi = 'true'"!][!//      
+	  <tr>
+	  <td>Icu_17_GtmCcu6_EnableEdgeDetection </td>
+	  <td>[!IF "$EdgeDetectionQmGtmChannels > 0"!]
+	       GTM<li>TIMi_CHx_CTRL</li><li>TIMi_CHx_IRQ_NOTIFY</li> 
+	     [!ENDIF!][!// 
+       [!IF "$EdgeDetectionQmCcu6Channels > 0"!]
+		   <p>CCU6</p><li>CCU6x_T12MSEL</li><li>CCU6x_ISR</li>
+		  [!ENDIF!][!//
+       [!IF "$EdgeDetectionQmEruChannels > 0"!]
+		  <p>ERU</p><li>SCU.FMR</li><li>SCU.EICR,SCU.EIFR</li> 
+		  [!ENDIF!][!// 
+      </td>
+	  <td>[!IF "$EdgeDetectionQmGtmChannels > 0"!]
+        Where i refers to TIM module number and x refers to channel number
+      [!ELSEIF "$EdgeDetectionQmCcu6Channels > 0"!] 
+        Where x refers to CCU channel number 
+        [!ELSE!][!// 
+         None        
+		  [!ENDIF!][!// </td>  
+	  </tr>
+	   <tr>
+	  <td> Icu_17_GtmCcu6_DisableEdgeDetection</td>
+	  <td> <li>[!IF "$EdgeDetectionQmGtmChannels > 0"!]
+	       GTM<li>TIMi_CHx_CTRL</li>
+	     [!ENDIF!][!// 
+        [!IF "$EdgeDetectionQmCcu6Channels > 0"!]
+		  <p>CCU6</p><li>CCU6x_T12MSEL</li>
+	     [!ENDIF!][!//       
+		  [!IF "$EdgeDetectionQmEruChannels > 0"!]
+		  <p>ERU</p><li>SCU.FMR</li>
+		  [!ENDIF!][!// </li></td>
+	  <td>[!IF "$EdgeDetectionQmGtmChannels > 0"!]
+        Where i refers to TIM module number and x refers to channel number
+      [!ELSEIF "$EdgeDetectionQmCcu6Channels > 0"!]
+        Where x refers to CCU channel number 
+      [!ELSE!][!// 
+        None
+		  [!ENDIF!][!// </td>  
+	  </tr>
+    [!IF "IcuOptionalApis/IcuEnableWakeupApi = 'true'"!][!//
+	   <tr>
+	  <td>Icu_17_GtmCcu6_EnableWakeup </td>
+	  <td>GTM<li> TIMi_CHx_IRQ_NOTIFY</li><li>TIMi_CHx_IRQ_EN</li></td>
+	  <td>[!IF "$GTMUsed = num:i(1)"!][!//
+        Where i refers to TIM module number and x refers to channel number
+                    [!ELSE!][!// 
+        None
+	     [!ENDIF!][!// 
+    </td>  
+	  </tr>
+    [!ENDIF!][!//
+    [!IF "IcuOptionalApis/IcuDisableWakeupApi = 'true'"!][!//
+	   <tr>
+	  <td> Icu_17_GtmCcu6_DisableWakeup</td>
+	  <td> GTM<li>TIMi_CHx_IRQ_EN </li></td>
+	  <td>[!IF "$GTMUsed = num:i(1)"!][!//
+        Where i refers to TIM module number and x refers to channel number
+                    [!ELSE!][!// 
+        None
+	     [!ENDIF!][!// 
+       </td>  
+	  </tr>
+     [!ENDIF!][!//    
+     [!ENDIF!][!//
+     [!IF "IcuOptionalApis/IcuSignalMeasurementApi = 'true'"!][!//
+	   <tr>
+	  <td>Icu_17_GtmCcu6_StartSignalMeasurement </td>
+	  <td> [!IF "$SigMeasurementQmGtmChannels > 0"!]
+	       GTM<li> TIMi_CHx_CTRL </li><li>TIMi_CHx_IRQ_NOTIFY</li><li>TIMi_CHx_CNTS</li><li>TIMi_CHx_IRQ_EN</li>
+	     [!ENDIF!][!// 
+       [!IF "$SigMeasurementQmCcu6Channels > 0"!]
+		  <p>CCU6</p><li>CCU6x_CC60SR</li><li>CCU6x_CC60R</li><li>CCU6x_ISR</li><li>CCU6x_IEN</li><li>CCU6x_T12MSEL</li>
+		  [!ENDIF!][!//</td>
+	  <td> [!IF "$SigMeasurementQmGtmChannels > 0"!]
+        Where i refers to TIM module number and x refers to channel number
+      [!ELSEIF "$SigMeasurementQmCcu6Channels > 0"!]
+        Where x refers to CCU channel number 
+        [!ELSE!][!// 
+        None
+		  [!ENDIF!][!// </td>  
+	  </tr>
+	   <tr>
+	  <td> Icu_17_GtmCcu6_StopSignalMeasurement</td>
+	  <td> [!IF "$SigMeasurementQmGtmChannels > 0"!] 
+	       GTM<li>TIMi_CHx_CTRL</li> <li>TIMi_CHx_IRQ_EN</li>
+	     [!ENDIF!][!// 
+       [!IF "$SigMeasurementQmCcu6Channels > 0"!]
+		  <p>CCU6</p><li> CCU6x_IEN</li><li>CCU6x_T12MSEL</li>
+		  [!ENDIF!][!//</td>
+	  <td>[!IF "$SigMeasurementQmGtmChannels > 0"!] 
+        Where i refers to TIM module number and x refers to channel number
+       [!ELSEIF "$SigMeasurementQmCcu6Channels > 0"!] 
+        Where x refers to CCU channel number 
+                    [!ELSE!][!// 
+        None
+		  [!ENDIF!][!// </td>  
+	  </tr>
+    [!IF "IcuOptionalApis/IcuGetTimeElapsedApi = 'true'"!][!//
+	   <tr>
+	  <td>Icu_17_GtmCcu6_GetTimeElapsed </td>
+	  <td> [!IF "$SigMeasurementQmGtmChannels > 0"!] 
+	       GTM<li>TIMi_CHx_CNTS</li> <li>TIMi_CHx_IRQ_NOTIFY</li> <li>TIMi_CH_GPR1</li>
+	     [!ENDIF!][!// 
+       [!IF "$SigMeasurementQmCcu6Channels > 0"!]
+		  <p>CCU6</p><li>CCU6x_CC60SR</li><li>CCU6x_CC60R</li>
+		  [!ENDIF!][!//</td>
+	  <td>[!IF "$SigMeasurementQmGtmChannels > 0"!]
+        Where i refers to TIM module number and x refers to channel number
+      [!ELSEIF "$SigMeasurementQmCcu6Channels > 0"!]
+        Where x refers to CCU channel number 
+                    [!ELSE!][!// 
+        None
+		  [!ENDIF!][!// </td>  
+	  </tr>
+     [!ENDIF!][!//
+    [!IF "IcuOptionalApis/IcuGetDutyCycleValuesApi = 'true'"!][!//
+	  <tr>
+	  <td>Icu_17_GtmCcu6_GetDutyCycleValues </td>
+	  <td> [!IF "$SigMeasurementQmGtmChannels > 0"!]     
+     GTM<li>TIMi_CHx_IRQ_NOTIFY</li><li>CH_GPR0,CH_GPR1</li>
+      [!ELSE!][!// 
+        None
+		  [!ENDIF!][!//     
+     </td>
+	  <td>[!IF "$SigMeasurementQmGtmChannels > 0"!]/
+        Where i refers to TIM module number and x refers to channel number
+                    [!ELSE!][!// 
+        None
+		  [!ENDIF!][!// </td>  
+	  </tr>
+     [!ENDIF!][!//  
+  [!ENDIF!][!//  
+ [!IF "IcuOptionalApis/IcuEdgeCountApi = 'true'"!][!//    
+	  <tr>
+	  <td>Icu_17_GtmCcu6_EnableEdgeCount </td>
+	  <td>GTM<li>TIMx_CHx_CNT</li><li>TIMi_CHx_CTRL</li></td>
+	  <td>[!IF "$GTMUsed = num:i(1)"!][!//
+        Where i refers to TIM module number and x refers to channel number
+      [!ELSEIF "$CCU6Used = num:i(1)"!][!// 
+         Where x refers to CCU channel number  
+                     [!ELSE!][!// 
+        None
+		  [!ENDIF!][!// </td>  
+	  </tr>
+	  <tr>
+	  <td> Icu_17_GtmCcu6_DisableEdgeCount</td>
+	  <td>GTM<li>TIMi_CHx_CTRL</li></td>
+	  <td>[!IF "$GTMUsed = num:i(1)"!][!//
+        Where i refers to TIM module number and x refers to channel number
+      [!ELSEIF "$CCU6Used = num:i(1)"!][!// 
+         Where x refers to CCU channel number 
+                     [!ELSE!][!// 
+        None
+		  [!ENDIF!][!// </td>  
+	  </tr>
+	  <tr>
+	  <td>Icu_17_GtmCcu6_GetEdgeNumbers </td>
+	  <td>GTM<li>TIMx_CHx_CNT</li> </td>
+	  <td>[!IF "$GTMUsed = num:i(1)"!][!//
+        Where i refers to TIM module number and x refers to channel number
+      [!ELSEIF "$CCU6Used = num:i(1)"!][!// 
+         Where x refers to CCU channel number 
+                     [!ELSE!][!// 
+        None
+		  [!ENDIF!][!// </td>  
+	  </tr>
+	  <tr>
+	  <td> Icu_17_GtmCcu6_ResetEdgeCount </td>
+	  <td>GTM<li>TIMi_CHx_CTRL</li></td>
+	  <td>[!IF "$GTMUsed = num:i(1)"!][!//
+        Where i refers to TIM module number and x refers to channel number
+      [!ELSEIF "$CCU6Used = num:i(1)"!][!// 
+        Where x refers to CCU channel number 
+                    [!ELSE!][!// 
+        None
+		  [!ENDIF!][!// </td>  
+	  </tr>
+ [!ENDIF!][!//    
+ [!IF "IcuOptionalApis/IcuTimestampApi = 'true'"!][!//
+	  <tr>
+	  <td>Icu_17_GtmCcu6_StartTimestamp  </td>
+	  <td>GTM<li>TIMi_CHx_CTRL</li><li>TIMi_CHx_IRQ_NOTIFY</li><li>TIMi_CHx_IRQ_EN</li></td>
+	  <td>[!IF "$GTMUsed = num:i(1)"!][!//
+        Where i refers to TIM module number and x refers to channel number
+      [!ELSEIF "$CCU6Used = num:i(1)"!][!// 
+       Where x refers to CCU channel number  
+                   [!ELSE!][!// 
+        None
+		  [!ENDIF!][!// </td>  
+	  </tr>
+	   <tr>
+	  <td> Icu_17_GtmCcu6_StopTimestamp </td>
+	  <td>GTM<li>TIMi_CHx_CTRL</li><li>TIMi_CHx_IRQ_EN</li></td>
+	  <td>[!IF "$GTMUsed = num:i(1)"!][!//
+        Where i refers to TIM module number and x refers to channel number
+      [!ELSEIF "$CCU6Used = num:i(1)"!][!// 
+         Where x refers to CCU channel number  
+                     [!ELSE!][!// 
+        None
+		  [!ENDIF!][!// </td>  
+	  </tr>
+	   <tr>
+	  <td> Icu_17_GtmCcu6_GetTimestampIndex </td>
+	  <td>None </td>  
+	  <td>None </td>  
+	  </tr>
+     [!ENDIF!][!//
+	   <tr>
+	  <td> Icu_17_GtmCcu6_Init </td>
+	  <td> [!IF "$GTMUsed = num:i(1)"!][!// 
+	       GTM<li>TIMi_CHx_FLT_RE</li><li>TIMi_CHx_IRQ_MODE</li><li>TIMi_CHx_IRQ_NOTIFY</li><li>TIMi_CHx_CTRL </li>
+	     [!ENDIF!][!// 
+       [!IF "$CCU6Used =  num:i(1)"!][!//
+		  <p>CCU6</p><li>CCU6x_CLC</li><li>CCU6x_T12</li><li>CCU6x_TCTR0 </li><li>CCU6x_TCTR4 </li><li>CCU6x_T12PR </li><li>CCU6x.SR0 </li>
+		  [!ENDIF!][!//		  
+      [!IF "$ERUUsed = num:i(1)"!][!//
+		  <p>ERU</p><li>SCU.SCU.ERU[0]</li>
+		  [!ENDIF!][!// </td>
+	  <td>[!IF "$GTMUsed = num:i(1)"!][!//
+        Where i refers to TIM module number and x refers to channel number
+      [!ELSEIF "$CCU6Used = num:i(1)"!][!// 
+        Where x refers to CCU channel number 
+            [!ELSE!][!// 
+        None    
+		  [!ENDIF!][!// </td>      
+	  </tr>
+  [!IF "IcuOptionalApis/IcuDeInitApi = 'true'"!][!//
+	   <tr>
+	  <td> Icu_17_GtmCcu6_DeInit </td>
+	  <td> [!IF "$GTMUsed = num:i(1)"!][!// 
+	       GTM<li>TIMi_RST</li>
+		   [!ENDIF!][!// 
+       [!IF "$CCU6Used =  num:i(1)"!][!//
+		   <p>CCU6</p><li>CCU6x_CC60SR</li><li>CCU6x_T12MSEL</li><li>CCU6x_PISEL0 </li><li>CCU6x_IEN</li><li>CCU6x_ISR </li><li>CCU6x_TCTR0 </li> <li>CCU6x_TCTR4 </li> <li>CCU6x_T12PR </li><li>CCU6x.SR0</li>
+		  [!ENDIF!][!//		   
+       [!IF "$ERUUsed = num:i(1)"!][!//
+		   <p>ERU</p> <li>SCU.IGCR</li> <li>SCU.FMR</li><li>SCU.SCUERU</li>[!ENDIF!][!//</td>
+	  <td>[!IF "$GTMUsed = num:i(1)"!][!//
+        Where i refers to TIM module number and x refers to channel number
+      [!ELSEIF "$CCU6Used = num:i(1)"!][!// 
+        Where x refers to CCU channel number  
+                    [!ELSE!][!// 
+        None
+		  [!ENDIF!][!// </td>  
+	  </tr>
+ [!ENDIF!][!//
+	   <tr>
+	  <td> Icu_17_GtmCcu6_SetMode </td>
+	  <td>[!IF "$GTMUsed = num:i(1)"!][!// 
+	       GTM<li>CH_CTRL</li><li>TIMi_CH_IRQ_NOTIFY </li><li>TIMi_CH_CTRL </li>
+		   [!ENDIF!][!// 
+       [!IF "$CCU6Used =  num:i(1)"!][!//
+		   <p>CCU6</p><li>CCU6x_T12MSEL</li><li>CCU6x_T12MSEL</li><li>CCU6x_ISR </li>
+		  [!ENDIF!][!//       
+		   [!IF "$ERUUsed = num:i(1)"!][!//
+		   <p>ERU</p> <li>SCU.EICR</li> <li>SCU.FMR</li>
+       [!ENDIF!][!//
+	  <td>[!IF "$GTMUsed = num:i(1)"!][!//
+        Where i refers to TIM module number and x refers to channel number
+      [!ELSEIF "$CCU6Used = num:i(1)"!][!// 
+         Where x refers to CCU channel number  
+                     [!ELSE!][!// 
+        None
+		  [!ENDIF!][!// </td>  
+       </td>  
+	  </tr>
+	   <tr>
+	  <td>  Icu_17_GtmCcu6_CheckWakeup</td>
+	  <td> None</td>
+	  <td>None</td>
+	  </tr>
+	   <tr>
+	  <td> Icu_17_GtmCcu6_EnableNotification </td>
+	  <td>[!IF "$GTMUsed = num:i(1)"!][!//     
+	  GTM<li>TIMi_CH_IRQ_NOTIFY</li><li>TIMi_CHx_IRQ_EN </li>
+        [!ELSE!][!// 
+         None		   
+       [!ENDIF!][!//    
+	  <td>[!IF "$GTMUsed = num:i(1)"!][!//
+        Where i refers to TIM module number and x refers to channel number
+      [!ELSEIF "$CCU6Used = num:i(1)"!][!// 
+        Where x refers to CCU channel number 
+                    [!ELSE!][!// 
+        None
+		  [!ENDIF!][!// </td> 
+   </td>       
+	  </tr>
+	   <tr>
+	  <td> Icu_17_GtmCcu6_DisableNotification </td>
+	  <td>[!IF "$GTMUsed = num:i(1)"!][!//      
+	  GTM<li> TIMi_CHx_IRQ_EN</li>
+            [!ELSE!][!// 
+         None
+		   [!ENDIF!][!//       
+	  <td>[!IF "$GTMUsed = num:i(1)"!][!//
+        Where i refers to TIM module number and x refers to channel number
+      [!ELSEIF "$CCU6Used = num:i(1)"!][!// 
+         Where x refers to CCU channel number 
+                     [!ELSE!][!// 
+        None
+		  [!ENDIF!][!// </td>  
+   </td>        
+	  </tr> 
+	  <tr>
+	  <td> Icu_17_GtmCcu6_GetInputState </td>
+	  <td>[!IF "$GTMUsed = num:i(1)"!][!//     
+	  GTM<li>TIMi_CHx_CNTS</li><li>TIMi_CH_IRQ_NOTIFY </li>
+            [!ELSE!][!// 
+         None
+		   [!ENDIF!][!//     
+	  <td>[!IF "$GTMUsed = num:i(1)"!][!//
+        Where i refers to TIM module number and x refers to channel number
+      [!ELSEIF "$CCU6Used = num:i(1)"!][!// 
+         Where x refers to CCU channel number  
+                     [!ELSE!][!// 
+        None
+		  [!ENDIF!][!// </td>  
+         </td>  
+	  </tr>
+	  <tr>
+	  <td> Icu_17_GtmCcu6_SetActivationCondition </td>
+	  <td> [!IF "$GTMUsed = num:i(1)"!][!// 
+	       GTM<li>TIMi_CH_CTRL</li> 
+		  [!ENDIF!][!//
+      [!IF "$CCU6Used =  num:i(1)"!][!//
+		   <p><p>CCU6</p></p><li>CCU6x_IEN</li>
+		  [!ENDIF!][!//       
+		   [!IF "$ERUUsed = num:i(1)"!][!//
+		   <p>ERU</p> <li>SCU.FMR</li>[!ENDIF!][!//</td>
+	  <td>[!IF "$GTMUsed = num:i(1)"!][!//
+        Where i refers to TIM module number and x refers to channel number
+      [!ELSEIF "$CCU6Used = num:i(1)"!][!//  
+         Where x refers to CCU channel number 
+                     [!ELSE!][!// 
+        None
+		  [!ENDIF!][!// </td>  
+	  </tr>
+        [!IF "$IcuInitCheckUsed = 'STD_ON'"!][!//
+        <tr>
+          <td>
+            Icu_17_GtmCcu6_InitCheck</td>
+          <td>
+            Refer SFRs used by Icu_17_GtmCcu6_Init()</td>
+          <td>-</td>
+        </tr>  
+        [!ENDIF!][!// 
+        [!IF "$IcuGetModeUsed = 'STD_ON'"!][!// 
+        <tr>
+          <td>
+            Icu_17_GtmCcu6_GetMode</td>
+          <td>-</td>
+          <td>No SFRs used</td>
+        </tr> 
+        [!ENDIF!][!//     
+    [!IF "$GTMUsed = num:i(1)"!][!//
+	  <tr>
+	  <td> Icu_17_GtmCcu6_Isr </td>
+	  <td>GTM<li>TIMi_CH_CTRL</li> </td>
+	  <td>[!IF "$GTMUsed = num:i(1)"!][!//
+        Where i refers to TIM module number and x refers to channel number
+		  [!ENDIF!][!// </td>  
+	  </tr>
+[!ENDIF!][!//    
+    [!IF "$CCU6Used = num:i(1)"!][!//	  
+    <tr>
+	  <td> Icu_17_GtmCcu6_Ccu_Isr </td>
+	  <td> CCU6<li>CCU6x_CC60SR</li><li>CCU6x_CC60R</li>   </td>
+	  <td>[!IF "$CCU6Used = num:i(1)"!][!//
+        Where x refers to CCU channel number  
+                    [!ELSE!][!// 
+        None
+		  [!ENDIF!][!// </td>  
+	  </tr>
+[!ENDIF!][!//       
+[!IF "$ERUUsed = num:i(1)"!][!//    
+	  <tr>
+	  <td>Icu_17_GtmCcu6_Eru_Isr  </td>
+	  <td>ERU<li>SCU.EIFR</li><li>FMR</li></td>
+	  <td>-- </td>  
+	  </tr> 
+    [!ENDIF!][!//
+      <tbody>
+	  </tbody>
+	  </table>
+	  
+	  
+	  
+	  
+	  
+	  <table border="3" cellpadding="5" cellspacing="0" class="curvedEdges">
+      <caption><strong>
+        Table 2: ICU Configured Channels</strong></caption>
+        <thead>
+        <col width="250">
+        <col width="250">
+        <col width="250">
+        <col width="250">
+        [!IF "$IcuSafetyUsed = 'STD_ON'"!][!// 
+        <col width="250">
+        [!ENDIF!][!// 
+        <th> ICU Channel </th>
+        <th> Used peripheral </th>
+        <th> Module no </th>        
+        <th> Channel no </th> 
+        [!IF "$IcuSafetyUsed = 'STD_ON'"!][!// 
+        <th> Safety level </th>
+        [!ENDIF!][!//        
+        </thead>
+        <tbody> 
+[!SELECT "as:modconf('Icu')[1]"!][!//
+[!LOOP "./IcuConfigSet/*"!][!//
+[!VAR "IcuIndex" = "@index"!][!//
+[!VAR "MaxChannels"= "num:i(count(IcuChannel/*))"!][!//
+[!FOR "ChannelId" = "num:i(1)" TO "num:i($MaxChannels)"!][!//
+[!SELECT "IcuChannel/*[IcuChannelId = num:i($ChannelId) - num:i(1)]"!][!//
+[!VAR "ChanId" = "num:i($ChannelId) - num:i(1)"!][!//
+[!VAR "IcuRef" = "node:path(node:ref(./IcuAssignedHwUnit))"!][!//
+[!VAR "nodeval" = "node:name(node:ref(./IcuAssignedHwUnit))"!][!//
+[!IF "contains($IcuRef, "GtmConfiguration") = 'true'"!][!//
+[!VAR "IcuUsedPer" ="'GTM'"!][!//
+[!VAR "Temp" = "num:i(substring-before ( substring-after($IcuRef,'/Tim_'),'/TimChannel_'))"!]
+[!VAR "IcuModuleNumber" = "concat('TIM',$Temp)"!][!//
+[!VAR "IcuChannelNumber" = "substring-after($IcuRef,'/TimChannel_')"!]
+[!ELSEIF "contains($IcuRef, "CcuConfiguration") = 'true'"!][!//
+[!VAR "IcuUsedPer" ="'CCU'"!][!//
+[!VAR "KernalNodeName" = "node:name(node:ref(./IcuAssignedHwUnit)/../../..)"!]
+[!VAR "CcuKernalNumber" = "text:toupper($KernalNodeName)"!][!//
+[!VAR "IcuModuleNumber" = "$CcuKernalNumber"!]
+#[!VAR "IcuChannelNumber" = "$CcuKernalNumber"!]
+[!VAR "IcuChannelNumber" = "(substring-after($IcuRef,'/T12/Cc6/'))"!]
+[!ELSEIF "contains($IcuRef, "EruConfiguration") = 'true'"!][!//
+[!VAR "IcuUsedPer" ="'ERU'"!][!//
+[!VAR "nodeval" = "node:name(node:ref(./IcuAssignedHwUnit))"!][!//
+[!VAR "IcuModuleNumber" = "$IcuUsedPer"!]
+[!VAR "IcuChannelNumber" = "substring-after($nodeval,'ERU')"!]
+[!ENDIF!][!//
+[!IF "$IcuSafetyUsed = 'STD_ON'"!][!// 
+[!VAR "SignalType" = "IcuSignalType"!][!//
+[!IF "$SignalType = 'ICU_QM_SIGNAL'"!][!//
+[!VAR "SignalType" = "'QM'"!][!//
+[!ELSEIF "$SignalType = 'ICU_ASIL_SIGNAL'"!][!//
+[!VAR "SignalType" = "'ASIL'"!][!//
+[!ENDIF!][!//
+[!ENDIF!][!//
+        <tr>
+        <td>ICU_Channel_[!"num:i($ChanId)"!]</td>
+        <td>[!"$IcuUsedPer"!]</td>
+        <td>[!"($IcuModuleNumber)"!]</td>
+        <td>[!"($IcuChannelNumber)"!]</td>
+        [!IF "$IcuSafetyUsed = 'STD_ON'"!][!// 
+        <td>[!"$SignalType"!]</td>
+        [!ENDIF!][!//        
+        </tr>
+[!ENDSELECT!][!//
+[!ENDFOR!][!//
+[!ENDLOOP!][!// 
+[!ENDSELECT!][!//       
+		<tr>
+		<td> </td>
+		<td> </td>
+		<td> </td>
+		<td> </td>
+		</tr>
+		<tr>
+		<td> </td>
+		<td> </td>
+		<td> </td>
+		<td> </td>
+		</tr><tr>
+		<td> </td>
+		<td> </td>
+		<td> </td>
+		<td> </td>
+		</tr><tr>
+		<td> </td>
+		<td> </td>
+		<td> </td>
+		<td> </td>
+		</tr>
+		<tbody>
+		</table>
+		
+		
+		
+		
+		
+		 /******************************************ICU MPU Settings******************************************/</h2>     
+    <table border="3" cellpadding="5" cellspacing="0" class="curvedEdges">
+      <caption><strong>
+        Table 3: Common SFR and Memory Range</strong></caption>
+      <thead>
+        <col width="500">
+        <col width="500">
+        <col width="300">
+        <tr>
+          <th scope="col">
+            Start Address</th>
+          <th scope="col">
+            End Address</th>
+          <th scope="col">
+            Remarks</th>
+        </tr>
+      </thead>
+       <tbody>
+        <tr>
+          <td>
+            GTM_TIMi_CHx_GPR0</td>
+          <td>
+            GTM_TIMi_CHx_IRQ_MODE</td>
+          <td>
+            Refer Table 2 for respective GTM Module, Module number(i) and Channel number(x)</td>
+        </tr>
+        <tr>
+          <td>
+            CCUx_CLC</td>
+          <td>
+            CCUx_IEN</td>
+          <td>
+            Refer Table 2 for respective CCU Module and Channel </td>
+        </tr>
+          <td>
+            SCU_EICR0</td>
+          <td>
+            SCU_DTSLIM</td>
+          <td>
+            Refer Table 2 for respective ERU Channel </td>
+        </tr>  
+       [!IF "$GTMUsed = num:i(1)"!][!//        
+        <tr>        
+          <td>
+            SRC_GTMTIM00</td>
+          <td>
+            SRC_GTMMCS00</td>
+          <td>
+            Service request control registers for GTM </td>
+        </tr> 
+        [!ENDIF!][!//
+        </tr>  
+       [!IF "$CCU6Used = num:i(1)"!][!//        
+        <tr>        
+          <td>
+            SRC_CCU6_CCU60_SR0</td>
+          <td>
+            SRC_GPT120CIRQ</td>
+          <td>
+            Service request control registers for CCU </td>
+        </tr> 
+        [!ENDIF!][!//    
+       [!IF "$ERUUsed = num:i(1)"!][!//        
+        <tr>        
+          <td>
+            SRC_SCU_SCU_ERU0</td>
+          <td>
+            SRC_SMU_SMU0_SR0</td>
+          <td>
+            Service request control registers for ERU </td>
+        </tr> 
+        [!ENDIF!][!//           
+        <tr>
+          <td>
+            ICU_17_GTMCCU6_START_SEC_VAR_32BIT</td>
+          <td>
+            ICU_17_GTMCCU6_STOP_SEC_VAR_32BIT</td>
+          <td>All 32-bit varaibles used in ICU driver</td>
+        </tr>
+        
+        <tr>
+          <td>
+            ICU_17_GTMCCU6_START_SEC_VAR_8BIT</td>
+          <td>
+            ICU_17_GTMCCU6_STOP_SEC_VAR_8BIT</td>
+          <td>All 8-bit varaibles used in ICU driver</td>
+        </tr>
+
+        <tr>
+          <td>
+            ICU_17_GTMCCU6_START_SEC_CONST_32BIT</td>
+          <td>
+            ICU_17_GTMCCU6_STOP_SEC_CONST_32BIT</td>
+          <td>All 32-bit const varaibles used in ICU driver</td>
+        </tr>
+
+        <tr>
+          <td>
+            ICU_17_GTMCCU6_START_SEC_CODE</td>
+          <td>
+            ICU_17_GTMCCU6_STOP_SEC_CODE</td>
+          <td>All text data</td>
+        </tr>
+        
+        <tr>
+          <td>
+            ICU_17_GTMCCU6_START_SEC_POSTBUILDCFG</td>
+          <td>
+            ICU_17_GTMCCU6_STOP_SEC_POSTBUILDCFG</td>
+          <td>All post build configuration data</td>
+        </tr>
+        
+        <tr>
+          <td>
+            ICU_17_GTMCCU6_START_SEC_CALLOUT_CODE</td>
+          <td>
+            ICU_17_GTMCCU6_STOP_SEC_CALLOUT_CODE</td>
+          <td>All ISR section defined in ICU driver </td>
+        </tr>        
+        </tbody>
+    </table>
+    
+     <p>
+      &nbsp;</p>       
+
+ [!IF "$IcuSafetyUsed = 'STD_ON'"!][!// 
+  [!IF "$GTMUsed = num:i(1)"!][!// 
+        <table border="3" cellpadding="5" cellspacing="0" class="curvedEdges">
+      <caption><strong>
+        Table 4:  ASIL 0:GTM SFR and Memory Range</strong></caption>
+      <thead>
+        <col width="500">
+        <col width="500">
+        <col width="300">
+        <tr>
+          <th scope="col">
+            Start Address</th>
+          <th scope="col">
+            End Address</th>
+          <th scope="col">
+            Remarks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            ICU_17_GTMCCU6_START_SEC_ASIL0_VAR_UNSPECIFIED</td>
+          <td>
+            ICU_17_GTMCCU6_STOP_SEC_ASIL0_VAR_UNSPECIFIED</td>
+          <td>ASIL 0 GTM channels variables section</td>
+        </tr>
+
+      </tbody>      
+    </table>
+[!ENDIF!][!// 
+[!ENDIF!][!//
+
+    <p>
+      &nbsp;</p>        
+
+[!IF "$IcuSafetyUsed = 'STD_ON'"!][!// 
+[!IF "$CCU6Used = num:i(1)"!][!//     
+        <table border="3" cellpadding="5" cellspacing="0" class="curvedEdges">
+      <caption><strong>
+        Table 5:  ASIL 1:CCU SFR and Memory Range</strong></caption>
+      <thead>
+        <col width="500">
+        <col width="500">
+        <col width="300">
+        <tr>
+          <th scope="col">
+            Start Address</th>
+          <th scope="col">
+            End Address</th>
+          <th scope="col">
+            Remarks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            ICU_17_GTMCCU6_START_SEC_ASIL1_VAR_UNSPECIFIED</td>
+          <td>
+            ICU_17_GTMCCU6_STOP_SEC_ASIL1_VAR_UNSPECIFIED</td>
+          <td>ASIL 1 CCU channels variables section</td>
+        </tr>
+
+      </tbody>      
+    </table>
+[!ENDIF!][!//  
+[!ENDIF!][!// 
+
+    <p>
+      &nbsp;</p>    
+     
+        <table border="3" cellpadding="5" cellspacing="0" class="curvedEdges">
+      <caption><strong>
+        Table 6:  QM SFR and Memory Range</strong></caption>
+      <thead>
+        <col width="500">
+        <col width="500">
+        <col width="300">
+        <tr>
+          <th scope="col">
+            Start Address</th>
+          <th scope="col">
+            End Address</th>
+          <th scope="col">
+            Remarks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            ICU_17_GTMCCU6_START_SEC_VAR_UNSPECIFIED</td>
+          <td>
+            ICU_17_GTMCCU6_STOP_SEC_VAR_UNSPECIFIED</td>
+          <td> QM channels variables section</td>
+        </tr>
+
+      </tbody>      
+    </table>

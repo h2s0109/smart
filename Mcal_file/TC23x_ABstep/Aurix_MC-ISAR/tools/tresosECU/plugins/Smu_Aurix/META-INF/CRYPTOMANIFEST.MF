@@ -1,0 +1,29 @@
+
+Name: generate/Smu.m
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 11313377421483088649761224958116338774045371954310574546608
+ 4578020638168976139453308777623606613775586040043730
+SignatureKeyID: Infineon
+
+Name: generate/src/Smu_PBCfg.c
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 28964594748488148488567297728222930247510295729276667412603
+ 829546304043964851155946765133873822305168986334695133
+SignatureKeyID: Infineon
+
+Name: config/Smu.xdm
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 11313377426333188454354407434491664496366546663911916184448
+ 8150250461332133134857390398978576532645111478673360
+SignatureKeyID: Infineon
+
+Name: generate/inc/Smu_Cfg.h
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 11313377424415303130959582822145126549791221170127459622067
+ 7803156366383257371323294177846782237521117557875788
+SignatureKeyID: Infineon
+

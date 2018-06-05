@@ -1,0 +1,29 @@
+
+Name: generate/inc/Eth_17_EthMac_Cfg.h
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 11313377420616296653403355472371263671541927290410894215023
+ 5279266470508298483082630466621396130069432533740780
+SignatureKeyID: Infineon
+
+Name: generate/src/Eth_17_EthMac_PBCfg.c
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 11313377421030309390646375554492485184703859994920043273533
+ 8753771594737286610938202229347741473243884411634376
+SignatureKeyID: Infineon
+
+Name: config/Eth_17_EthMac.xdm
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 28964594740513305106221238475057992353130665664206844963320
+ 005537471122101920457801581774275959035648423003155381
+SignatureKeyID: Infineon
+
+Name: generate/Eth_17_EthMac_Bswmd.arxml
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 28964594754132949378015344567183803676022445636960153939566
+ 651356831250977707284457337019265342862439791951823523
+SignatureKeyID: Infineon
+

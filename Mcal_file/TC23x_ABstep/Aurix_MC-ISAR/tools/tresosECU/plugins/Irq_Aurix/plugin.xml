@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+/*******************************************************************************
+**                                                                            **
+** Copyright (C) Infineon Technologies (2014)                                 **
+**                                                                            **
+** All rights reserved.                                                       **
+**                                                                            **
+** This document contains proprietary information belonging to Infineon       **
+** Technologies. Passing on and copying of this document, and communication   **
+** of its contents is not permitted without prior written authorization.      **
+**                                                                            **
+********************************************************************************
+**                                                                            **
+**   $FILENAME   : plugin.xml $                                               **
+**                                                                            **
+**   $CC VERSION : \main\dev_tc23x_as4.0.3\7 $                                **
+**                                                                            **
+**   $DATE       : 2016-03-30 $                                               **
+**                                                                            **
+**   AUTHOR      : DL-AUTOSAR-Engineering                                     **
+**                                                                            **
+**   VENDOR      : Infineon Technologies                                      **
+**                                                                            **
+**   DESCRIPTION : This file contains                                         **
+**                 - tresosECU plug-in description for Irq driver             **
+**                                                                            **
+**   MAY BE CHANGED BY USER [Yes/No]: No                                      **
+**                                                                            **
+*******************************************************************************/
+-->
+<plugin>
+
+  <!--
+    ** brief AUTOSAR Irq_Aurix plugin
+    ** project AUTOSAR Standard Core
+    **
+    ** All rights exclusively reserved for Elektrobit Automotive GmbH,
+    ** unless expressly agreed to otherwise.
+  -->
+
+ <extension point="dreisoft.tresos.launcher2.plugin.module"
+             id="Irq_AurixAS403_ModuleExt"
+             name="Irq Module with template generator">
+
+    <module id="Irq_AurixAS403"
+            label="%ModuleLabel"
+            mandatory="false"
+            allowMultiple="true"
+            description="%ModuleDesc"
+            copyright="(c) 2014 Infineon Technologies"
+            swVersionMajor="2"
+            swVersionMinor="1"
+            swVersionPatch="0"
+            swVersionSuffix=""
+            specVersionMajor="0"
+            specVersionMinor="0"
+            specVersionPatch="0"
+            specVersionSuffix="0001"
+            relVersionMajor="4"
+            relVersionMinor="0"
+            relVersionPatch="3"
+            relVersionSuffix=""
+            categoryType="Irq"
+            categoryLayer="MCAL"
+            categoryCategory="ECU Firmware"
+            categoryComponent="ECUC">
+	   <cluster name="MCAL"/>
+
+      <ecuType target="AURIX" derivate="TC233"/>
+      <ecuType target="AURIX" derivate="TC234"/>
+      <ecuType target="AURIX" derivate="TC237"/>
+      
+    </module>
+  </extension>
+
+    <extension point="dreisoft.tresos.launcher2.plugin.configuration"
+             id="Irq_AurixAS403_ConfigExt"
+             name="Irq_Aurix Configuration">
+    <configuration moduleId="Irq_AurixAS403">
+      <schema>
+        <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarSchemaManager"/>
+        <resource value="config/Irq.xdm" type="xdm"/>
+      </schema>
+
+      <data>
+        <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarConfigManager"/>
+        <schemaNode path="ASPath:/AURIX/Irq"/>
+      </data>
+
+      <editor id="Irq_AurixAS403_Edit"
+              label="%ModuleName"
+              tooltip="%ModuleDesc">
+        <class class="dreisoft.tresos.launcher2.editor.GenericConfigEditor">
+          <parameter name="schema" value="ASPath:/AURIX/Irq"/>
+          <parameter name="title" value="Irq"/>
+          <parameter name="noTabs" value="false"/>
+          <parameter name="noLinks" value="true"/>
+          <parameter name="groupLinks" value="false"/>
+          <parameter name="groupContainers" value="false"/>
+          <parameter name="groupTables" value="true"/>
+          <parameter name="optionalGeneralTab" value="true"/>
+        </class>
+      </editor>
+    </configuration>
+  </extension>
+
+  <extension point="dreisoft.tresos.launcher2.plugin.generator"
+              id="Irq_AurixAS403_GenExt"
+              name="Irq_Aurix Generator">
+    <generator moduleId="Irq_AurixAS403"
+               class="dreisoft.tresos.launcher2.generator.TemplateBasedCodeGenerator">
+
+      <!-- common template path parameters -->
+      <parameter name="templates"
+                 mode="generate,verify" value="generate"/>
+
+      <!-- swcd modes and template path parameters -->
+      <parameter name="mode_type"
+                 mode="generate_swcd" value="generate"/>
+
+      <parameter name="mode_type"
+                 mode="verify_swcd" value="verify"/>
+
+      <parameter name="templates"
+                 mode="generate_swcd,verify_swcd" value="generate_swcd"/>
+
+    </generator>
+  </extension>
+
+</plugin>
+

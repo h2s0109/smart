@@ -1,0 +1,286 @@
+[!/*****************************************************************************
+**                                                                            **
+** Copyright (C) Infineon Technologies (2013)                                 **
+**                                                                            **
+** All rights reserved.                                                       **
+**                                                                            **
+** This document contains proprietary information belonging to Infineon       **
+** Technologies. Passing on and copying of this document, and communication   **
+** of its contents is not permitted without prior written authorization.      **
+**                                                                            **
+********************************************************************************
+**                                                                            **
+**  $FILENAME   : $                                                           **
+**                                                                            **
+**  $CC VERSION : $                                                           **
+**                                                                            **
+**  $DATE       : $                                                           **
+**                                                                            **
+**  AUTHOR      : DL-AUTOSAR-Engineering                                      **
+**                                                                            **
+**  VENDOR      : Infineon Technologies                                       **
+**                                                                            **
+**  DESCRIPTION  : HTML Resource Usage for CRC driver                         **
+**                                                                            **
+**  MAY BE CHANGED BY USER [yes/no]: No                                       **
+**                                                                            **
+*************************************************************************/!][!//
+[!VAR "CrcHardwareModeUsed" = "'STD_OFF'"!][!//
+[!VAR "CrcAllHardwareModeUsed" = "'STD_OFF'"!][!//
+[!VAR "Crc8HardwareModeUsed" = "'STD_OFF'"!][!//
+[!VAR "Crc8H2FModeUsed" = "'STD_OFF'"!][!//
+[!VAR "Crc16HardwareModeUsed" = "'STD_OFF'"!][!//
+[!VAR "Crc32HardwareModeUsed" = "'STD_OFF'"!][!//
+[!VAR "CrcTableMode8Used" = "'STD_OFF'"!][!//
+[!VAR "CrcTableMode8H2FUsed" = "'STD_OFF'"!][!//
+[!VAR "CrcTableMode16Used" = "'STD_OFF'"!][!//
+[!VAR "CrcTableMode32Used" = "'STD_OFF'"!][!//
+[!SELECT "as:modconf('Crc')[1]"!][!//
+[!IF "CrcGeneral/Crc8Mode/__1 = 'CRC_8_HARDWARE'"!][!//
+[!VAR "CrcHardwareModeUsed" = "'STD_ON'"!][!//
+[!VAR "Crc8HardwareModeUsed" = "'STD_ON'"!][!//
+[!ELSEIF "CrcGeneral/Crc8Mode/__1 = 'CRC_8_TABLE'"!][!//
+[!VAR "CrcTableMode8Used" = "'STD_ON'"!][!//
+[!ENDIF!][!//
+[!IF "CrcGeneral/Crc8H2FMode/__1 = 'CRC_TABLE'"!][!//
+[!VAR "CrcHardwareModeUsed" = "'STD_ON'"!][!//
+[!VAR "Crc8H2FModeUsed" = "'STD_ON'"!][!//
+[!ELSEIF "CrcGeneral/Crc8H2FMode/__1 = 'CRC_8H2F_TABLE'"!][!//
+[!VAR "CrcTableMode8H2FUsed" = "'STD_ON'"!][!//
+[!ENDIF!][!//
+[!IF "CrcGeneral/Crc16Mode/__1 = 'CRC_16_HARDWARE'"!][!//
+[!VAR "CrcHardwareModeUsed" = "'STD_ON'"!][!//
+[!VAR "Crc16HardwareModeUsed" = "'STD_ON'"!][!//
+[!ELSEIF "CrcGeneral/Crc16Mode/__1 = 'CRC_16_TABLE'"!][!//
+[!VAR "CrcTableMode16Used" = "'STD_ON'"!][!//
+[!ENDIF!][!//
+[!IF "CrcGeneral/Crc32Mode/__1 = 'CRC_32_HARDWARE'"!][!//
+[!VAR "CrcHardwareModeUsed" = "'STD_ON'"!][!//
+[!VAR "Crc32HardwareModeUsed" = "'STD_ON'"!][!//
+[!ELSEIF "CrcGeneral/Crc32Mode/__1 = 'CRC_32_TABLE'"!][!//
+[!VAR "CrcTableMode32Used" = "'STD_ON'"!][!//
+[!ENDIF!][!//
+<html>
+  <head>
+    <title>CRC Driver Details</title>
+  </head>
+  <body>
+    <style type="text/css">
+table{table-layout: fixed;width: 300px;}
+table.curvedEdges { border:10px solid ;-webkit-border-radius:13px;-moz-border-radius:13px;-ms-border-radius:13px;-o-border-radius:13px;border-radius:13px; }
+table.curvedEdges td, table.curvedEdges th { border-bottom:1px dotted black;overflow: hidden;width: 400px;padding:5px; }
+</style>
+<!-- Be sure to place the above styles (i.e. everything between the <style></style> tags) into the document 'head' (i.e. between the <head></head> tags. Everything below goes inside the <body></body> tags) -->		
+    <p>
+      &nbsp;</p>  
+    <h2>
+      /*****************************************CRC HW-SW MAP*****************************************/</h2>
+    <table border="3" cellpadding="5" cellspacing="0" class="curvedEdges">
+      <caption><strong>
+        Table 1: CRC SFR Usage per API</strong></caption>
+      <thead>
+        <tr>
+          <th scope="col">
+            API Name</th>
+          <th scope="col">
+            SFRs Used</th>
+          <th scope="col">
+            Remarks</th>
+        </tr>
+      </thead>
+      <tbody>        
+        [!IF "$Crc8HardwareModeUsed = 'STD_ON'"!][!//
+        <tr>
+          <td>
+            Crc_CalculateCRC8</td>
+          <td>
+            FCE0_IN3_CRC, FCE0_IN3_IR,FCE0_IN3_RES            
+            </td>
+          <td>-</td>
+        </tr>
+        [!ELSE!]
+         <tr>
+          <td>
+            Crc_CalculateCRC8</td>
+          <td>-</td>
+          <td>
+            No SFRs used for Table and RunTime CRC Calculation Method
+          </td>
+        </tr>
+        [!ENDIF!]           
+        [!IF "$Crc8H2FModeUsed = 'STD_ON'"!][!//
+         <tr>
+          <td>
+            Crc_CalculateCRC8H2F</td>
+          <td>-</td>
+          <td>
+            No SFRs used for Table and RunTime CRC Calculation Method
+          </td>
+        </tr>
+        [!ELSE!]
+        <tr>
+          <td>
+            Crc_CalculateCRC8H2F</td>
+          <td>-</td>
+          <td>
+           No SFRs used for Table and RunTime CRC Calculation Method
+          </td>
+        </tr>
+         [!ENDIF!]           
+        [!IF "$Crc16HardwareModeUsed = 'STD_ON'"!][!//
+        <tr>
+          <td>
+            Crc_CalculateCRC16</td>
+          <td>
+            FCE0_IN2_CRC, FCE0_IN2_IR,FCE0_IN2_RES
+          </td>
+          <td>-</td>
+        </tr>
+        [!ELSE!]
+        <tr>
+          <td>
+            Crc_CalculateCRC16</td>
+          <td>-</td>
+          <td>
+            No SFRs used for Table and RunTime CRC Calculation Method
+          </td>
+        </tr>
+         [!ENDIF!] 
+         [!IF "$Crc32HardwareModeUsed = 'STD_ON'"!][!//
+        <tr>
+          <td>
+            Crc_CalculateCRC32</td>
+          <td>
+            FCE0_IN0_CRC, FCE0_IN0_IR,FCE0_IN0_RES            
+          </td>
+          <td>-</td>
+        </tr>
+        [!ELSE!]
+        <tr>
+          <td>
+            Crc_CalculateCRC32</td>
+          <td>-</td>
+          <td>
+           No SFRs used for Table and RunTime CRC Calculation Method
+          </td>
+        </tr>
+        [!ENDIF!]    
+        
+      </tbody>
+    </table>    
+    <p>
+      &nbsp;</p>      
+    <h2>
+      /******************************************CRC MPU Settings******************************************/</h2>        
+   <table border="3" cellpadding="5" cellspacing="0" class="curvedEdges">
+      <caption><strong>
+        Table 2: CRC SFR and Memory Range</strong></caption>
+      <thead>
+        <tr>
+          <th scope="col">
+            Start Address</th>
+          <th scope="col">
+            End Address</th>
+          <th scope="col">
+            Remarks</th>
+        </tr>
+      </thead>
+      <tbody>       
+      	[!IF "$Crc8HardwareModeUsed = 'STD_ON' and $Crc16HardwareModeUsed = 'STD_ON' and $Crc32HardwareModeUsed = 'STD_ON'"!][!//
+      	[!VAR "CrcAllHardwareModeUsed" = "'STD_ON'"!][!//
+      	 <tr>
+          <td>
+            FCE0_IN0_IR</td>
+          <td>
+            FCE0_IN3_CTR</td>
+          <td>      
+            CRC 8/16/32 - bit Hardware register initialization</td>
+        </tr>
+      	[!ENDIF!]      	
+      	[!IF "$CrcAllHardwareModeUsed != 'STD_ON'"!][!//
+        [!IF "$Crc8HardwareModeUsed = 'STD_ON'"!][!//
+        <tr>
+          <td>
+            FCE0_IN3_IR</td>
+          <td>
+            FCE0_IN3_CTR</td>
+          <td>      
+            CRC 8-bit Hardware register initialization</td>
+        </tr>
+        [!ENDIF!][!// 
+        [!IF "$Crc16HardwareModeUsed = 'STD_ON'"!][!//
+        <tr>
+          <td>
+            FCE0_IN2_IR</td>
+          <td>
+            FCE0_IN3_IR</td>
+          <td>      
+            CRC 16-bit Hardware register initialization</td>
+        </tr>
+        [!ENDIF!][!// 
+        [!IF "$Crc32HardwareModeUsed = 'STD_ON'"!][!//
+        <tr>
+          <td>
+            FCE0_IN0_IR</td>
+          <td>
+            FCE0_IN1_IR</td>
+          <td>      
+            CRC 32-bit Hardware register initialization</td>
+        </tr>
+        [!ENDIF!][!// 
+        [!ENDIF!][!//        
+        [!IF "$CrcTableMode8Used = 'STD_ON'"!][!//
+        <tr>
+          <td>
+            CRC_START_SEC_CONST_8BIT</td>
+          <td>
+            CRC_STOP_SEC_CONST_8BIT</td>
+          <td>
+            Crc_Table8  -&nbsp;8 bit const varaibles used by CRC for table based calcualtion method</td>
+        </tr>
+        [!ENDIF!][!//
+        [!IF "$CrcTableMode8H2FUsed = 'STD_ON'"!][!//
+        <tr>
+          <td>
+            CRC_START_SEC_CONST_8BIT</td>
+          <td>
+            CRC_STOP_SEC_CONST_8BIT</td>
+          <td>
+            Crc_Table8H2F  -&nbsp;8 bit const varaibles used by CRC for table based calcualtion method</td>
+        </tr>
+        [!ENDIF!][!//        
+        [!IF "$CrcTableMode16Used = 'STD_ON'"!][!//
+        <tr>
+          <td>
+            CRC_START_SEC_CONST_16BIT</td>
+          <td>
+            CRC_STOP_SEC_CONST_16BIT</td>
+          <td>
+            Crc_Table16  -&nbsp;16 bit const varaibles used by CRC for table based calcualtion method</td>
+        </tr>
+        [!ENDIF!][!//
+        [!IF "$CrcTableMode32Used = 'STD_ON'"!][!//
+        <tr>
+          <td>
+            CRC_START_SEC_CONST_32BIT</td>
+          <td>
+            CRC_STOP_SEC_CONST_32BIT</td>
+          <td>
+            Crc_Table32  -&nbsp;32 bit const varaibles used by CRC for table based calcualtion method</td>
+        </tr>
+        [!ENDIF!][!//
+        <tr>
+          <td>
+            CRC_START_SEC_CODE</td>
+          <td>
+            CRC_STOP_SEC_CODE</td>
+          <td>
+            <p>
+              CRC driver - Basic AUTOSAR functionality</p>
+          </td>
+        </tr>      
+      </tbody>
+    </table>
+  </body>
+</html>                                    
+[!ENDSELECT!][!//

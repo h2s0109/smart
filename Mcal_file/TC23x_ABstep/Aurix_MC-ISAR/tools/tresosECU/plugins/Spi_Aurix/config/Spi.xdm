@@ -1,0 +1,2803 @@
+<?xml version='1.0'?>
+<!--
+/*******************************************************************************
+**                                                                            **
+** Copyright (C) Infineon Technologies (2015)                                 **
+**                                                                            **
+** All rights reserved.                                                       **
+**                                                                            **
+** This document contains proprietary information belonging to Infineon       **
+** Technologies. Passing on and copying of this document, and communication   **
+** of its contents is not permitted without prior written authorization.      **
+**                                                                            **
+********************************************************************************
+**                                                                            **
+**  $FILENAME   : Spi.xdm $                                                  **
+**                                                                            **
+**  $CC VERSION : \main\94 $                                                 **
+**                                                                            **
+**  $DATE       : 2016-07-13 $                                               **
+**                                                                            **
+**  AUTHOR      : DL-AUTOSAR-Engineering                                      **
+**                                                                            **
+**  VENDOR      : Infineon Technologies                                       **
+**                                                                            **
+**  DESCRIPTION  : XML Data Model for SPI driver                              **
+**                                                                            **
+**  MAY BE CHANGED BY USER [yes/no]: No                                       **
+**                                                                            **
+*******************************************************************************/
+/*  TRACEABILITY : [cover parentID= 
+SAS_AS_SPI225_Conf, SAS_AS_SPI249_SPI250_SPI029_SPI100_SPI228_Conf, 
+SAS_AS_SPI005, SAS_AS_SPI232_Conf, SAS_AS_SPI102, SAS_AS_SPI231_Conf, SAS_AS_SPI110,
+SAS_AS_SPI160, SAS_AS_SPI162_SPI295, SAS_AS_SPI132_SPI284, SAS_AS_SPI227_Conf, 
+SAS_AS_SPI111_SPI115_SPI117_SPI279, SAS_AS_SPI121_SPI230_Conf, SAS_AS_SPI122_SPI125, 
+SAS_AS_SPI229_Conf, SAS_AS_SPI226_Conf, SAS_AS_SPI091_Conf, 
+SAS_AS_SPI255_SPI034, SAS_AS_SPI104_Conf, 
+SAS_AS_SPI201_Conf, SAS_AS_SPI202_Conf, SAS_AS_SPI206_Conf, 
+SAS_AS_SPI205_Conf, SAS_AS_SPI112_SPI204_Conf, SAS_AS_SPI203_Conf, 
+SAS_AS_SPI200_Conf, SAS_AS_SPI105_Conf, 
+SAS_AS4XX_SPI114,  
+SAS_AS_SPI065, SAS_AS_SPI262, SAS_AS_SPI002_1_SPI093_SPI220_Conf, 
+SAS_AS_SPI118_SPI218_Conf, SAS_AS_SPI219_Conf, 
+SAS_AS_SPI207_Conf, SAS_AS_SPI209_Conf, SAS_AS_SPI066, 
+SAS_AS_SPI210_Conf, 
+SAS_AS_SPI208_Conf, SAS_AS_SPI213_Conf, SAS_AS_SPI211_Conf, 
+SAS_AS_SPI343, SAS_AS_SPI106_Conf, SAS_AS_SPI003, 
+SAS_AS_SPI236, SAS_AS_SPI126_SPI282_SPI222_Conf, SAS_AS_SPI223_Conf, 
+SAS_AS_SPI224_Conf, 
+SAS_AS_SPI002_2, DS_AS_SPI159_2_SPI097_2, 
+DS_AS_SPI159_1_SPI097_1,
+DS_NAS_SPI_PR655, DS_NAS_SPI_PR713, DS_NAS_SPI_PR714, DS_NAS_SPI_PR719, DS_NAS_SPI_PR720, DS_NAS_SPI_PR723, DS_NAS_SPI_PR2848,
+DS_AS_SPI129, DS_NAS_SPI_PR99, SAS_AS403_SPI103_Conf, 
+SAS_NAS_SPI_PR228_1, SAS_NAS_SPI_PR228_2, SAS_NAS_SPI_PR228_3, SAS_NAS_SPI_PR228_4, SAS_NAS_SPI_PR228_5, 
+SAS_NAS_SPI_PR228_6, SAS_NAS_SPI_PR228_7, SAS_NAS_SPI_PR228_8, SAS_NAS_SPI_PR228_9, 
+SAS_NAS_SPI_PR228_10, SAS_NAS_SPI_PR228_11, SAS_NAS_SPI_PR228_12, SAS_NAS_SPI_PR228_13, 
+SAS_NAS_SPI_PR228_14, SAS_NAS_SPI_PR228_15, SAS_NAS_SPI_PR228_16, SAS_NAS_SPI_PR228_17, 
+SAS_NAS_SPI_PR228_18, SAS_NAS_SPI_PR228_19, SAS_NAS_SPI_PR228_20, SAS_NAS_SPI_PR228_21, 
+SAS_NAS_SPI_PR228_22, SAS_NAS_SPI_PR228_23, SAS_NAS_SPI_PR228_24, SAS_NAS_SPI_PR228_25, 
+SAS_NAS_SPI_PR228_26, SAS_NAS_SPI_PR228_27, SAS_NAS_SPI_PR647, 
+SAS_NAS_SPI_PR483, SAS_NAS_SPI_PR122_1, SAS_NAS_SPI_PR122_2, SAS_NAS_SPI_PR122_3, SAS_NAS_SPI_PR122_4, 
+SAS_NAS_SPI_PR122_5, SAS_NAS_SPI_PR122_6, SAS_NAS_SPI_PR122_7, SAS_NAS_SPI_PR122_8, SAS_NAS_SPI_PR122_9, 
+SAS_NAS_SPI_PR122_10, SAS_NAS_SPI_PR122_11, SAS_NAS_SPI_PR122_12, SAS_NAS_SPI_PR122_13, 
+SAS_NAS_SPI_PR122_14, SAS_NAS_SPI_PR122_15, SAS_NAS_SPI_PR122_16, SAS_NAS_SPI_PR122_17, 
+SAS_NAS_SPI_PR122_19, SAS_NAS_SPI_PR122_20, SAS_NAS_SPI_PR122_21, SAS_NAS_SPI_PR122_22, SAS_NAS_SPI_PR122_23, 
+SAS_AS403_SPI368_SPI234_Conf, DS_AS4XX_SPI195,
+SAS_AS403_SPI216_Conf, SAS_AS403_SPI233_Conf, SAS_AS403_SPI215_Conf, SAS_AS403_SPI370, SAS_AS403_SPI221_Conf, 
+SAS_AS403_SPI214_Conf, SAS_AS403_SPI221_Conf, SAS_AS403_SPI217_Conf, 
+SAS_AS403_SPI235_Conf, SAS_AS403_SPI236_Conf, SAS_AS403_SPI068,
+SAS_AS_SPI128_SPI129_Conf_1_SPI238_Conf_SPI140, SAS_AS_SPI212, SAS_AS_SPI106_Conf, SAS_AS_SPI126_SPI282_SPI222_Conf, 
+SAS_AS_SPI223_Conf, SAS_AS_SPI224_Conf, SAS_AS_SPI089, 
+DS_AS_SPI199_Conf, DS_AS_SPI198_Conf, DS_AS_SPI197_Conf, 
+SAS_AS_SPI237_Conf, SAS_AS_SPI239_Conf, SAS_NAS_SPI_PR914, SAS_NAS_SPI_PR915, 
+SAS_NAS_SPI_PR919, SAS_NAS_SPI_PR2925, 
+SAS_MCAL_SPI_9836,SAS_MCAL_SPI_9849,SAS_MCAL_SPI_9843,SAS_MCAL_SPI_9847,
+SAS_MCAL_SPI_9848,SAS_MCAL_SPI_9850,SAS_MCAL_SPI_9816,SAS_MCAL_SPI_9823,
+SAS_MCAL_SPI_9825,SAS_MCAL_SPI_9829,SAS_MCAL_SPI_9830,SAS_MCAL_SPI_9838,
+SAS_MCAL_SPI_9845,SAS_MCAL_SPI_9826,DS_MCAL_SPI_9817,
+SAS_NAS_SPI_PR725,SAS_NAS_SPI_PR726, SAS_NAS_ALL_PR1647,SAS_NAS_ALL_PR470, 
+SAS_NAS_ALL_PR471,SAS_NAS_SPI_PR621,
+SAS_NAS_SPI_PR640,SAS_NAS_SPI_PR656,SAS_AS4XX_SPI_PR668,
+SAS_NAS_SPI_PR227,SAS_NAS_SPI_PR60,SAS_NAS_SPI_PR64,
+SAS_NAS_SPI_PR667,SAS_NAS_SPI_PR646,SAS_NAS_SPI_PR65,
+SAS_NAS_SPI_PR77,   
+SAS_NAS_HE2_SPI_PR2955, SAS_NAS_EP_SPI_PR2955,
+SAS_NAS_HE2_SPI_PR2967, SAS_NAS_EP_SPI_PR2967,
+SAS_NAS_HE2_SPI_PR2981_1, SAS_NAS_EP_SPI_PR2981_1, SAS_NAS_HE2_SPI_PR3022,
+SAS_NAS_EP_SPI_PR3022, SAS_NAS_HE2_SPI_PR3017, SAS_NAS_EP_SPI_PR3017
+SAS_NAS_HE2_SPI_PR3048,SAS_NAS_EP_SPI_PR3048,SAS_NAS_EP_SPI_PR3054_1,
+SAS_NAS_EP_SPI_PR3054_2,SAS_NAS_EP_SPI_PR3054_3,SAS_NAS_EP_SPI_PR3054_4,
+SAS_NAS_HE2_SPI_PR3054_1,SAS_NAS_HE2_SPI_PR3054_2,SAS_NAS_HE2_SPI_PR3054_3,
+SAS_NAS_HE2_SPI_PR3054_4]
+    [/cover]                                                                  */
+-->
+<datamodel version="3.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/08/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/08/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar"  
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="AURIX" type="AR-PACKAGE">
+        <a:a name="UUID" value="9a8b82b6-c3a9-4a4d-b2d3-617b2e1b4a0c"/>
+        <d:lst type="ELEMENTS">
+          <d:chc name="Spi" type="AR-ELEMENT" value="MODULE-DEF">
+            <v:ctr type="MODULE-DEF">
+	    <a:a name="ADMIN-DATA" type="ADMIN-DATA">
+                <ad:ADMIN-DATA>
+                  <ad:DOC-REVISIONS>
+                    <ad:DOC-REVISION>
+                      <ad:REVISION-LABEL>4.2.0</ad:REVISION-LABEL>
+                      <ad:ISSUED-BY>AUTOSAR</ad:ISSUED-BY>
+                      <ad:DATE>2011-11-09</ad:DATE>
+                    </ad:DOC-REVISION>
+                  </ad:DOC-REVISIONS>
+                </ad:ADMIN-DATA>
+              </a:a>
+              <a:a name="DESC" 
+                   value="EN: Configuration of the Spi (Serial Peripheral Interface) module."/>
+              <a:a name="RELEASE" value="asc:4.0"/>
+              <a:a name="UUID" value="739a7374-887e-4990-bb70-3ef0ae98eb91"/>
+              <d:ref type="REFINED_MODULE_DEF" value="ASPath:/AUTOSAR/EcucDefs/Spi"/>
+              <v:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION">
+			      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                <a:a name="LABEL" value="ConfigVariant"/>
+                <a:da name="DEFAULT" value="VariantPostBuildSelectable"/>
+                <a:da name="RANGE">
+                  <a:v>VariantPostBuildLoadable</a:v>
+                  <a:v>VariantPostBuildSelectable</a:v>
+                </a:da>
+                <a:da name="EDITABLE" value="true"/>
+              </v:var>
+              <v:ctr name="SpiGeneral" type="IDENTIFIABLE">
+                <a:a name="DESC" 
+                     value="EN: General configuration settings for SPI-Handler"/>
+                <a:a name="UUID" value="564fe124-75c8-40a1-b55f-e39bf801966c"/>
+                <v:var name="SpiDevErrorDetect" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="EN: Switches the Development Error Detection and Notification ON or OFF."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="6ef30998-101c-4cfe-a0fb-d8b6a23527ac"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="TOOLTIP" value="Switches the Development Error Detection and Notification ON or OFF"/>
+                </v:var>
+                <v:var name="SpiVersionInfoApi" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="EN: Switches the Spi_GetVersionInfo function ON or OFF."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="7e18c5e2-13bb-4abb-aa16-5fbc825abfc5"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="TOOLTIP" value="Switches the Spi_GetVersionInfo function ON or OFF"/>
+                </v:var>
+                <v:var name="SpiChannelBuffersAllowed" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>EN: Selects the SPI Handler/Driver Channel Buffers usage allowed and delivered.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="5ca39235-baef-4f28-afe6-0d3752fa724d"/>
+                  <a:da name="DEFAULT" value="2"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=2"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="TOOLTIP" value="Selects the SPI Handler/Driver Channel Buffers usage allowed: 0 - IB, 1 - EB, 2 - both "/>
+                </v:var>
+                <v:var name="SpiHwStatusApi" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="EN: Switches the Spi_GetHWUnitStatus function ON or OFF."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="1d02bb89-a7de-4ce0-884c-fb87f9c891b0"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="TOOLTIP" value="Switches the Spi_GetHWUnitStatus function ON or OFF "/>
+                </v:var>
+                <v:var name="SpiLevelDelivered" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>EN: Selects the SPI Handler/Driver level of scalable functionality that is
+available and delivered.
+SpiLevelDelivered is 0(LEVEL0): The driver handles only simple synchronous transmission on all available SPI busses(QSPIx)
+SpiLevelDelivered is 1(LEVEL1): The driver handles only simple asynchronous transmission on all available SPI busses(QSPIx)
+SpiLevelDelivered is 2(LEVEL2): The LEVEL2 which is an enhanced behavior of the driver will handle both synchronous and asynchronous
+transmissions.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="708f8799-a4c4-4ec4-9747-e44bc2866c3b"/>
+                  <a:da name="DEFAULT" value="1"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=2"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="TOOLTIP" value="Selects the SPI Handler/Driver level of scalable functionality that is
+available and delivered.
+SpiLevelDelivered is 0(LEVEL0): The driver handles only simple synchronous transmission on all available SPI busses(QSPIx)
+SpiLevelDelivered is 1(LEVEL1): The driver handles only simple asynchronous transmission on all available SPI busses(QSPIx)
+SpiLevelDelivered is 2(LEVEL2): The LEVEL2 which is an enhanced behavior of the driver will handle both synchronous and asynchronous
+transmissions. "/>
+                </v:var>
+                <v:var name="SpiSupportConcurrentSyncTransmit" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="EN: Specifies whether concurrent Spi_SyncTransmit() calls for different se-quences shall be configurable."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="6ef30498-101c-4cfe-a0fb-d8b6a23527ac"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="ENABLE" type="XPath">
+                  <a:tst expr="(../SpiLevelDelivered = '0' or ../SpiLevelDelivered = '2' )" />
+                  </a:da>
+                  <a:da name="TOOLTIP" value="Specifies whether concurrent Spi_SyncTransmit() calls for different se-quences shall be configurable"/>
+                </v:var>
+                <v:var name="SpiInterruptibleSeqAllowed" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="EN: Switches the Interruptible Sequences handling functionality ON or OFF."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="7e7252aa-f7e6-4607-a4af-11892d5194e2"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="ENABLE" type="XPath">
+                  <a:tst expr="(../SpiLevelDelivered = '1' or ../SpiLevelDelivered = '2' )" />
+                  </a:da>
+                  <a:da name="TOOLTIP" value="Switches the Interruptible Sequences handling functionality ON or OFF. Applicable for Level Delivered 1 , 2 "/>
+                </v:var>
+                <v:var name="SpiCancelApi" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="EN: Switches the Spi_Cancel function ON or OFF."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="d2f52233-0a95-4863-8c21-8c1ea554c81d"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="TOOLTIP" value="Switches the Spi_Cancel function ON or OFF"/>
+                </v:var>
+                <v:var name="SpiMaxJobTriggerQueueLength" type="INTEGER">
+                  <a:a name="DESC" 
+                       value="EN: Number of jobs that needs to be executed or serviced."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="6da18a69-ebb2-42d3-abb2-b63e218cac9e"/>
+                  <a:da name="DEFAULT" value="2"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=1"/>
+                  </a:da>
+                  <a:da name="TOOLTIP" value="Maximum Number of jobs that needs to be executed or serviced."/>
+                </v:var>
+                <v:var name="SpiPBFixedAddress" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="EN: Enable/Disable parameter for the selection of fixed adress. ON: fixed address used, OFF: Post build configuration selected."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="7e18c5e2-13bb-4abb-aa16-5fbc825abfc6"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="TOOLTIP" value="Enable/Disable parameter for the selection of fixed adress. ON: fixed address used, OFF: Post build configuration selected."/>
+                  <a:da name="INVALID" type="XPath">
+                  <a:tst expr="(num:i(count(../../SpiDriver/*))) > 1 and . = 'true'" 
+                   true="Wrong Configuration. When SpiPBFixedAddress is enabled then only 1 Config set is permitted. Remove the other Config sets."/>
+                  </a:da>                                    
+                </v:var>
+                <v:var name="SpiDebugSupport" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="EN: Pre-processor switch for enabling/disabling the debugging support."/>
+                  <a:a name="TOOLTIP" 
+                       value="Pre-processor switch for enabling/disabling the debugging support."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="01eee1fb-1589-455e-9b2b-cead4d920436"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>                
+                <v:var name="SpiAsyncParallelTransmit" type="BOOLEAN">
+                 <a:a name="DESC">
+                 <a:v>EN: Pre-processor switch for enabling/disabling Parallel Asynchronous Transmission Editiable Only in Level 1 and 2
+By Enabling SpiAsyncParallelTransmit restrictions are applicable on Autosar usage.
+A sequence cannot have the Jobs which are belonging to a different QSPI modules.</a:v>
+                 </a:a>
+                  <a:a name="TOOLTIP" 
+                       value="Pre-processor switch for enabling/disabling Parallel Asynchronous Transmission Editiable Only in Level 1 and 2"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="01abc1fb-1589-455e-9b2b-cead4d920436"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="EDITABLE" type="XPath">
+                  <a:tst expr="(../SpiLevelDelivered = '1' or ../SpiLevelDelivered = '2' )" />
+                  </a:da>
+                </v:var>
+                <v:var name="SpiBaudrateConfigAtRuntime" type="BOOLEAN">
+                 <a:a name="DESC">
+                 <a:v>EN: Pre-processor switch for setting up ECON sfr during Spi_Init()[DISABLED] or before starting of a new Job during runtime [ENABLED]</a:v>
+                 </a:a>
+                  <a:a name="TOOLTIP" 
+                       value="Pre-processor switch for enabling ECON sfr configuration during Spi_Init()"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="01abc1fb-1589-455e-9b2b-cebb4d920436"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="SpiResetSfrAtInit" type="BOOLEAN">
+                 <a:a name="DESC">
+                 <a:v>EN: Pre-processor switch to enable/disable resetting SFR to its reset value in the init function [STD_ON/STD_OFF]</a:v>
+                 </a:a>
+                  <a:a name="TOOLTIP" 
+                       value="Pre-processor switch enable/disable resetting SFR to its reset value in the Spi_Init API"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="01abc1fb-1589-455e-9b2b-cfbb4d920436"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="SpiSyncTransmitTimeoutDuration" type="INTEGER">
+                  <a:a name="DEFAULT_RADIX" value="HEX"/>                  
+                  <a:a name="DESC" 
+                       value="EN: The parameter is used as timeout loop counter while waiting for data transmission/reception of 1 data element."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="6da13a69-ebb2-42d3-abb2-b63e218cac9e"/>
+                  <a:da name="DEFAULT" value="1048575"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=4294967295"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="EDITABLE" type="XPath">
+                  <a:tst expr="(../SpiLevelDelivered = '0' or ../SpiLevelDelivered = '2' )" />
+                  </a:da>
+                  <a:da name="TOOLTIP" value="The parameter is used as timeout loop counter while waiting for data transmission/reception of 1 data element"/>
+                </v:var>
+                <v:var name="SpiSlaveSelectRef" type="ENUMERATION">
+                  <a:a name="DESC" value="EN: SPI HW Slave module "/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="9a3246b8-2b22-4b16-9364-c79f3b01b30e"/>
+                  <a:da name="DEFAULT" value="SPI_SLAVE_UNUSED"/>
+                  <a:da name="ENABLE" type="XPath" expr="(../../SpiSafety/SpiSafetyEnable = 'true')"/>
+                  <a:da name="RANGE" type="XPath" expr="ecu:list('Spi.AvailableQSPISlaveChannels')"/>
+                <a:da name="TOOLTIP" value="This parameter defines the assigned HW Slave Unit."/>
+                </v:var>
+                <v:var name="SpiSlaveFlipTransferStart" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="EN: Flips the MSB->LSB or LSB->MSB on slave reception. i.e inverse of on Master module configuration. 
+                       Configurable only when SpiSafetyEnable = ON"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="7e18c5e2-13bb-4abb-aa16-5fbc825abfc1"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="ENABLE" type="XPath">
+                    <a:tst expr="((../../SpiSafety/SpiSafetyEnable = 'true') and (../SpiSlaveSelectRef != 'SPI_SLAVE_UNUSED')) "/>  
+                  </a:da>
+                  <a:da name="TOOLTIP" value="Switches the MSB->LSB or LSB->MSB on slave reception depending on master configuration."/>
+                </v:var>                
+                <v:var name="SpiSafetyMasterRef" type="ENUMERATION">
+                  <a:a name="DESC" value="EN: SPI HW Safety Master module. Configurable only when SpiSafetyEnable = ON"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="9a3246b8-2b22-4b16-9364-c79f3b01b301"/>
+                  <a:da name="DEFAULT" type="XPath">
+                  <a:tst expr="normalize-space(text:split(ecu:get('Spi.AvailableQSPIChannels'),',')[1])"/>
+                  </a:da>
+                  <a:da name="ENABLE" type="XPath">
+                    <a:tst expr="((../../SpiSafety/SpiSafetyEnable = 'true')) "/>  
+                  </a:da>
+                  <a:da name="RANGE" type="XPath" expr="ecu:list('Spi.AvailableQSPIChannels')"/>
+                  <a:da name="INVALID" type="XPath"> 
+                  <a:tst expr="((../SpiSlaveSelectRef = .) and (../../SpiSafety/SpiSafetyEnable = 'true'))" true="Invalid Configuration: If QSPI0 is configured as slave, SPI Master module must be QSPI1 to QSPIx."/>
+                  <a:tst expr="(((../SpiSlaveSelectRef != 'SPI_SLAVE_UNUSED') and (../SpiSlaveSelectRef != 'QSPI0') and (. != 'QSPI0')) and (../../SpiSafety/SpiSafetyEnable = 'true'))" true="Invalid Configuration: For QSPIx as slave, SPI Master module must be QSPI0"/>
+                </a:da>                
+                <a:da name="TOOLTIP" value="This parameter defines the assigned HW Safety Master Unit."/>
+                </v:var>
+                <v:lst name="SpiMainFunctionPeriod">
+                   <a:da name="MAX" value="1"/>
+                   <v:var name="SpiMainFunctionPeriod" type="FLOAT">
+                     <a:a name="DESC" value="EN: This parameter defines the cycle time of the function Spi_MainFunction_Handling in seconds. The parameter is not used by the driver it self, but it is used by upper layer."/>
+                     <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                       <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                       <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                     </a:a>
+                     <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                     <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                     <a:a name="UUID" value="5f1cbf20-db77-4d50-a44e-30753c1e1673"/>
+                     <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=1.0"/>
+                        <a:tst expr="&gt;=0.0000001"/>
+                     </a:da>
+                     <a:da name="DEFAULT" value="0.01"/>
+                   </v:var>
+                </v:lst>
+                <v:var name="SpiRunningInUser0Mode" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="If this parameter is set to FALSE, then Protected Mode(user mode) register access will not be done and API is run in Supervisor mode."/>
+                  <a:a name="TOOLTIP"
+                       value="EN:Pre-processor switch to enable/disable the Normal/Protected mode."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                   <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                   <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="2486a537-5ef8-487e-51e0-0234c58e9bf0"/>
+                  <a:da name="DEFAULT" value="false"/>
+               </v:var>
+               <v:var name="SpiUserModeInitApiEnable" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="Pre-processor switch to enable / disable protected register access in all the Init API."/>
+                  <a:a name="TOOLTIP"
+                       value="EN:Pre-processor switch to enable / disable protected register access in all the Init API."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                   <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                   <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="2496a537-5ef8-487e-51e0-0254c58e9bf0"/>
+                  <a:da name="DEFAULT" value="false"/>
+               </v:var>
+               <v:var name="SpiUserModeDeInitApiEnable" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="Pre-processor switch to enable / disable protected register access in all the DeInit API."/>
+                  <a:a name="TOOLTIP"
+                       value="EN:Pre-processor switch to enable / disable protected register access in all the DeInit API."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                   <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                   <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="2496a537-5ef8-487e-51e1-0234c58e9bf0"/>
+                  <a:da name="DEFAULT" value="false"/>
+               </v:var>
+               <v:var name="SpiUserModeRuntimeApiEnable" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="Pre-processor switch to enable / disable protected register access in all the APIs other than Init/Deinit APIs."/>
+                  <a:a name="TOOLTIP"
+                       value="EN:Pre-processor switch to enable / disable protected register access in all the APIs other than Init/Deinit APIs."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                   <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                   <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="2496a537-5ef8-487e-51e0-0434c58e9bf0"/>
+                  <a:da name="DEFAULT" value="false"/>
+               </v:var>
+              </v:ctr>
+              <v:ctr name="SpiSafety" type="IDENTIFIABLE">
+                <a:a name="DESC" 
+                     value="EN: General Safety configuration settings for SPI-Handler"/>
+                <a:a name="UUID" value="564fe124-75c8-40a1-b55f-e39bf8019661"/>
+                <v:var name="SpiSafetyEnable" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="EN: Switches the Safety ON or OFF."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="6ef30998-101c-4cfe-a0fb-d8b6a23527a1"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="TOOLTIP" value="Switches the Safety ON or OFF."/>
+                </v:var>
+                <v:var name="SpiInitCheckApi" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="EN: Switches the Spi Init Check API ON or OFF."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="7e18c5e2-13bb-4abb-aa16-5fbc825abfc2"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="ENABLE" type="XPath">
+                    <a:tst expr="((../SpiSafetyEnable = 'true')) "/>  
+                  </a:da>
+                  <a:da name="TOOLTIP" value="Switches the Init Check API ON or OFF."/>
+                </v:var>
+              </v:ctr>
+              <v:lst name="SpiDriver" 
+                         type="MULTIPLE-CONFIGURATION-CONTAINER">
+                <a:da name="MIN" value="1"/>
+                <v:ctr name="SpiDriver" 
+                                type="MULTIPLE-CONFIGURATION-CONTAINER">
+                <a:a name="DESC" 
+                     value="EN: Configuration settings for SpiDriver"/>
+                  <a:a name="UUID" value="6374e8d2-b2d7-4c08-8a32-b68f54bda4ca"/>
+                  <v:lst name="SpiMaxChannel">
+                   <a:da name = "ENABLE" value = "false"/>
+                   <a:da name="TOOLTIP" value=" Spi Max Channel is calculated by the tool"/>
+                    <a:da name="MAX" value="1"/>
+                    <v:var name="SpiMaxChannel" type="INTEGER">
+                      <a:a name="DESC" 
+                           value="EN: This parameter contains the number of Channels configured. It will be gathered by tools during the configuration stage."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                      <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="ab000ab4-a03e-4365-ab99-a3b38d66f182"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=255"/>
+                        <a:tst expr="&gt;=0"/>
+                      </a:da>
+                    </v:var>
+                  </v:lst>
+                  <v:lst name="SpiMaxJob">
+                  <a:da name = "ENABLE" value = "false"/>
+                        <a:da name="TOOLTIP" value="Spi Max Job is calculated by the tool"/>
+                    <a:da name="MAX" value="1"/>
+                    <v:var name="SpiMaxJob" type="INTEGER">
+                    <a:a name="DESC" 
+                       value="EN: Maximum number of jobs. Autocalculated by tool."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                      <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="e06d3af8-dc2b-4dc3-a3ff-3b02cc4c6eba"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=65535"/>
+                        <a:tst expr="&gt;=0"/>
+                      </a:da>
+                    </v:var>
+                  </v:lst>
+                  <v:lst name="SpiMaxSequence">
+                  <a:da name = "ENABLE" value = "false"/>
+                        <a:da name="TOOLTIP" value="Spi Max Sequence is calculated by the tool"/>
+                    <a:da name="MAX" value="1"/>
+                    <v:var name="SpiMaxSequence" type="INTEGER">
+                    <a:a name="DESC" 
+                       value="EN: Maximum number of Sequences. Autocalculated by tool."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                      <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="efa05d2e-8021-4fb1-80ed-6fe14ecdb218"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=255"/>
+                        <a:tst expr="&gt;=0"/>
+                      </a:da>
+                    </v:var>
+                  </v:lst>
+                  <v:ref name="SpiSystemClock" type="REFERENCE">
+                    <a:a name="DESC" 
+                         value="EN: This parameter refer MCU read the System clock configured"/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                    <a:a name="UUID" 
+                         value="7a12e6a7-f02f-4d95-8b8a-87a36bed8fb9"/>
+                    <a:da name="REF" 
+                          value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Mcu/McuModuleConfiguration/McuClockSettingConfig/McuClockReferencePoint"/>
+                      <a:da name="TOOLTIP" value="This parameter refer to the System clock configured in MCU module."/>
+                  </v:ref>                                  
+                  <v:lst name="SpiChannel" type="MAP">
+                    <a:da name="MAX" value="255"/>
+                    <a:da name="MIN" value="1"/>
+                    <v:ctr name="SpiChannel" type="IDENTIFIABLE">
+                      <a:a name="DESC" 
+                           value="EN: All data needed to configure one SPI-channel"/>
+                      <a:a name="UUID" 
+                           value="a8ff4a3e-d932-4f31-b319-2a7e34c01f02"/>
+                      <v:var name="SpiChannelId" type="INTEGER">
+                        <a:a name="DESC" 
+                             value="EN: This is ID number assigned to SPI channel"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                        <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                        <a:a name="UUID" 
+                             value="61ea525c-a919-46b3-834d-bdc06f1ec2ff"/>
+                        <a:da name="DEFAULT" value="0"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=255"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                        <a:da name = "ENABLE" value = "false"/>
+                        <a:da name="TOOLTIP" value="Channel Id is generated by the tool"/>
+                      </v:var>
+                      <v:var name="SpiChannelType" type="ENUMERATION">
+                        <a:a name="DESC" 
+                             value="EN: Buffer usage with EB/IB channel"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                        <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="eeb96b62-9133-479f-9070-8382f60c36fc"/>
+                        <a:da name="DEFAULT" value="EB"/>
+                        <a:da name="RANGE">
+                          <a:v>EB</a:v>
+                          <a:v>IB</a:v>
+                        </a:da>
+                        <a:da name="TOOLTIP" value="Buffer usage with EB/IB channel."/>
+                      </v:var>
+                      <v:var name="SpiDataWidth" type="INTEGER">
+                        <a:a name="DESC" 
+                             value="EN: This parameter is the width of a transmitted data unit."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="ea83e38c-1fd0-4493-90a8-f2bdc80c3aac"/>
+                        <a:da name="DEFAULT" value="8"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=32"/>
+                          <a:tst expr="&gt;=2"/>
+                        </a:da>
+                        <a:da name="TOOLTIP" value="This parameter is the width of a transmitted data unit."/>
+                      </v:var>
+                      <v:var name="SpiDefaultData" type="INTEGER">
+                        <a:a name="DESC" 
+                             value="EN: This parameter is the default value to transmit."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="9a539114-4b57-46ab-9980-f5c35c3939cd"/>
+                        <a:da name="DEFAULT" value="0"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=4294967295"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                        <a:da name="TOOLTIP" value="This parameter is the default value to transmit on the bus if no data is provided."/>
+                      </v:var>
+                      <v:var name="SpiEbMaxLength" type="INTEGER">
+                        <a:a name="DESC">
+                          <a:v>EN: This parameter contains the maximum size of data buffers in case of
+EB Channels. Enabled only for EB.</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="d7770de0-e0b9-4d54-877a-a741c5393c7f"/>
+                        <a:da name="DEFAULT" value="511"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=65535"/>
+                          <a:tst expr="&gt;=1"/>
+                      </a:da>
+                      <a:da name="ENABLE" type="XPath">
+                      <a:tst expr="((../../../../../SpiGeneral/SpiChannelBuffersAllowed = '1' or ../../../../../SpiGeneral/SpiChannelBuffersAllowed = '2' ) and (../SpiChannelType = 'EB')) "/>  
+                        </a:da>
+                      <a:da name="TOOLTIP" value="This parameter contains the maximum size of data buffers in case of EB Channels. It is enabled only for SpiChannelType is EB"/>
+                      </v:var>
+                      <v:var name="SpiIbNBuffers" type="INTEGER">
+                        <a:a name="DESC">
+                          <a:v>EN: This parameter contains the maximum number of data buffers in case
+of IB Channels.</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="26853f64-81ac-4c8e-a3e1-adfe909b9ab9"/>
+                        <a:da name="DEFAULT" value="10"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=65535"/>
+                          <a:tst expr="&gt;=1"/>
+                        </a:da>
+                        <a:da name="ENABLE" type="XPath">
+                        <a:tst expr="((../../../../../SpiGeneral/SpiChannelBuffersAllowed = '0' or ../../../../../SpiGeneral/SpiChannelBuffersAllowed = '2')  and (../SpiChannelType = 'IB'))"/>
+                        </a:da>
+                        <a:da name="TOOLTIP" value="This parameter contains the maximum number of data buffers in case of IB Channels. It is enabled only for SpiChannelType is IB"/>
+                      </v:var>
+                      <v:var name="SpiTransferStart" type="ENUMERATION">
+                        <a:a name="DESC" 
+                             value="EN: This parameter defines the first starting bit for transmission."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="bb1ff1dd-d2a4-450f-94b9-d04eb50bc611"/>
+                        <a:da name="DEFAULT" value="LSB"/>
+                        <a:da name="RANGE">
+                          <a:v>LSB</a:v>
+                          <a:v>MSB</a:v>
+                        </a:da>
+                        <a:da name="TOOLTIP" value="This parameter defines the first starting bit for transmission."/>
+                      </v:var>
+                      <v:var name="SpiSafetyBufferMarker" type="INTEGER">
+                        <a:a name="DEFAULT_RADIX" value="HEX"/>
+                        <a:a name="DESC">
+                          <a:v>EN: This parameter contains the marker for buffer. Enabled only if Safety Enabled.</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="d7770de0-e0b9-4d54-877a-a741c5393c71"/>
+                        <a:da name="DEFAULT" value="165"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=255"/>
+                          <a:tst expr="&gt;=0"/>
+                      </a:da>
+                      <a:da name="ENABLE" type="XPath">
+                      <a:tst expr="(../../../../../SpiSafety/SpiSafetyEnable = 'true')"/>  
+                        </a:da>
+                      <a:da name="TOOLTIP" value="This parameter contains the marker for EB. Used for safe access. Enabled only for EB and only if Safety Enabled."/>
+                      </v:var>
+                    </v:ctr>
+                  </v:lst>
+                  <v:lst name="SpiExternalDevice" type="MAP">
+                    <a:da name="MIN" value="1"/>
+                    <v:ctr name="SpiExternalDevice" type="IDENTIFIABLE">
+                      <a:a name="DESC" 
+                           value="EN: The communication settings of an external device. Closely linked to SpiJob."/>
+                      <a:a name="UUID" 
+                           value="91a17236-e5c5-4ef6-a712-a4857621814a"/>
+                      <v:var name="SpiBaudrate" type="FLOAT">
+                        <a:a name="DESC">
+                          <a:v>EN: This parameter is the communication baudrate - This parameter allows
+using a range of values, from the point of view of configuration tools,
+from Hz up to MHz.</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="1180d680-cfd2-4f23-8cc8-bf196dcc3b79"/>
+                        <a:da name="DEFAULT" value="9600.0"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=50000000"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                        <a:da name="ENABLE" type="XPath">
+                        <a:tst expr="../SpiAutoCalcBaudParams = 'true'" /> 
+                        </a:da>  
+                        <a:da name="TOOLTIP" value="communication baudrate: Ranges upto 50Mhz. Enabled only if the SpiAutoCalcBaudParams is ON."/>
+                      </v:var>
+                      <v:var name="SpiCsIdentifier" type="STRING">
+                        <a:a name="DESC" 
+                             value="EN: This parameter is the symbolic name to identify the Chip Select (CS) allocated to this Job."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                        <a:a name="UUID" 
+                             value="73b29e9f-9c95-41ee-bbe5-e56d06f71416"/>
+                        <a:da name = "ENABLE" value = "false"/>
+                        <a:da name="TOOLTIP" value="This parameter is disabled, the chip select is refered to the port by the container SpiCsGpio if CS_VIA_GPIO is selected. "/>
+                      </v:var>
+                      <v:var name="SpiCsPolarity" type="ENUMERATION">
+                        <a:a name="DESC" 
+                             value="EN: This parameter defines the active polarity of Chip Select."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="a64deb81-f92e-4ba5-98b0-c301a8becdd2"/>
+                        <a:da name="DEFAULT" value="LOW"/>
+                        <a:da name="RANGE">
+                          <a:v>HIGH</a:v>
+                          <a:v>LOW</a:v>
+                        </a:da>
+                        <a:da name="TOOLTIP" value="This parameter defines the active polarity of Chip Select. "/>
+                      </v:var>
+                      <v:var name="SpiDataShiftEdge" type="ENUMERATION">
+                        <a:a name="DESC" 
+                             value="EN: This parameter defines the SPI data shift edge."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="2d4c0abe-41c9-4308-a2e2-b6c1661e9661"/>
+                        <a:da name="DEFAULT" value="LEADING"/>
+                        <a:da name="RANGE">
+                          <a:v>LEADING</a:v>
+                          <a:v>TRAILING</a:v>
+                        </a:da>
+                        <a:da name="TOOLTIP" value="This parameter defines the SPI data shift edge "/>
+                      </v:var>
+                      <v:var name="SpiShiftClockIdleLevel" type="ENUMERATION">
+                        <a:a name="DESC" 
+                             value="EN: This parameter defines the SPI shift clock idle level."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="3a1e8f30-5da0-490a-833a-9b9c307127e8"/>
+                        <a:da name="DEFAULT" value="LOW"/>
+                        <a:da name="RANGE">
+                          <a:v>HIGH</a:v>
+                          <a:v>LOW</a:v>
+                        </a:da>
+                        <a:da name="TOOLTIP" value="This parameter defines the SPI shift clock idle level. "/>
+                      </v:var>
+                      <v:var name="SpiAutoCalcBaudParams" type="BOOLEAN">
+                        <a:a name="DESC" 
+                             value="EN: This parameter enables or not the automatic calculation of qspi baudrate parameters."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="d8a811c9-2c44-4532-b207-03e295103c7a"/>
+                        <a:da name="DEFAULT" value="false"/>
+                        <a:da name="TOOLTIP" value="This parameter enables/disables the automatic calculation of qspi baudrate parameters. If this value is ON, then the Hw parameters TQ,Q,A,B,C are calculated based on SpiBaudrate"/>
+                      </v:var>
+                      <v:var name="SpiQSpiParamTq" type="INTEGER">
+                        <a:a name="DESC" value="EN: This parameter defines Qspi TQ Hw parameter"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="993206b8-2a62-4b16-9314-c89f3b01b30e"/>
+                        <a:da name="DEFAULT" value="2"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=255"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                        <a:da name="ENABLE" type="XPath">
+                        <a:tst expr="../SpiAutoCalcBaudParams = 'false'" /> 
+                        </a:da>  
+                        <a:da name="TOOLTIP" value="This parameter defines Qspi TQ Hw parameter. If SpiAutoCalcBaudParams value is ON, then the Hw parameters TQ,Q,A,B,C are calculated based on SpiBaudrate"/>
+                      </v:var>
+                      <v:var name="SpiQSpiParamQ" type="INTEGER">
+                        <a:a name="DESC" value="EN: This parameter defines Qspi Q Hw parameter"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="993206b8-2b62-4b16-9314-c89f3b01b30e"/>
+                        <a:da name="DEFAULT" value="10"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=63"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                        <a:da name="ENABLE" type="XPath">
+                        <a:tst expr="../SpiAutoCalcBaudParams = 'false'" /> 
+                        </a:da>
+                        <a:da name="TOOLTIP" value="This parameter defines Qspi Q Hw parameter. If SpiAutoCalcBaudParams value is ON, then the Hw parameters TQ,Q,A,B,C are calculated based on SpiBaudrate"/>
+                      </v:var>
+                      <v:var name="SpiQSpiParamA" type="INTEGER">
+                        <a:a name="DESC" value="EN: This parameter defines Qspi A Hw parameter"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="9a3206b8-2b62-4b16-9314-c89f3b01b30e"/>
+                        <a:da name="DEFAULT" value="1"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=3"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                        <a:da name="ENABLE" type="XPath">
+                        <a:tst expr="../SpiAutoCalcBaudParams = 'false'" /> 
+                        </a:da>  
+                        <a:da name="TOOLTIP" value="This parameter defines Qspi A Hw parameter. If SpiAutoCalcBaudParams value is ON, then the Hw parameters TQ,Q,A,B,C are calculated based on SpiBaudrate"/>
+                      </v:var>
+                      <v:var name="SpiQSpiParamB" type="INTEGER">
+                        <a:a name="DESC" value="EN: Qspi B Hw parameter"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="9a3506b8-2b62-4b16-9314-c89f3b01b30e"/>
+                        <a:da name="DEFAULT" value="0"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=3"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                        <a:da name="ENABLE" type="XPath">
+                        <a:tst expr="../SpiAutoCalcBaudParams = 'false'" /> 
+                        </a:da>
+                        <a:da name="TOOLTIP" value="This parameter defines Qspi B Hw parameter. If SpiAutoCalcBaudParams value is ON, then the Hw parameters TQ,Q,A,B,C are calculated based on SpiBaudrate"/>
+                      </v:var>
+                      <v:var name="SpiQSpiParamC" type="INTEGER">
+                        <a:a name="DESC" value="EN: Qspi C Hw parameter"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="9a3246b8-2b62-4b16-9314-c89f3b01b30e"/>
+                        <a:da name="DEFAULT" value="1"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=3"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                        <a:da name="ENABLE" type="XPath">
+                        <a:tst expr="../SpiAutoCalcBaudParams = 'false'" /> 
+                        </a:da>  
+                        <a:da name="TOOLTIP" value="This parameter defines Qspi C Hw parameter. If SpiAutoCalcBaudParams value is ON, then the Hw parameters TQ,Q,A,B,C are calculated based on SpiBaudrate"/>
+                      </v:var>
+                      <v:var name="SpiAutoCalcDelayParams" type="BOOLEAN">
+                        <a:a name="DESC" 
+                             value="EN: This parameter enables or not the automatic calculation of qspi Delay parameters."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="d8a811c9-2c44-4532-b207-03e295123c7a"/>
+                        <a:da name="DEFAULT" value="false"/>
+                        <a:da name="TOOLTIP" value="This parameter enables/disables the automatic calculation of qspi Delay parameters. If this value is ON, then the Hw parameters IDLE, IPRE are calculated based on SpiTimeClk2Cs "/>
+                      </v:var>
+                      <v:var name="SpiTimeClk2Cs" type="FLOAT">
+                        <a:a name="DESC">
+                          <a:v>EN: Timing between clock and chip select or Lead Time- This parameter allows to use a range of values from 0 up to 100 microSec. </a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="ce2100ab-166a-4676-891e-07d8bd1a7255"/>
+                        <a:da name="DEFAULT" value="0.0"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=0.0001"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                        <a:da name="ENABLE" type="XPath">
+                        <a:tst expr="../SpiAutoCalcDelayParams = 'true'" /> 
+                        </a:da>  
+                        <a:da name="TOOLTIP" value="Timing between clock and chip select - This parameter allows to use a range of values from 0 to 100 microSec. Enabled only if SpiAutoCalcDelayParams is ON and the Hw Timing parametres are automatically calculated by the tool."/>
+                      </v:var>
+                      <v:var name="SpiTrailingTime" type="FLOAT">
+                        <a:a name="DESC">
+                          <a:v>EN: Trailing Time . </a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="ce2120ab-166a-4676-891e-07d8bd1b7255"/>
+                        <a:da name="DEFAULT" value="0.0000001"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=0.0033"/>
+                          <a:tst expr="&gt;=0.0"/>
+                        </a:da>
+                        <a:da name="ENABLE" type="XPath">
+                        <a:tst expr="../SpiAutoCalcDelayParams = 'true'" /> 
+                        </a:da>  
+                        <a:da name="TOOLTIP" value="Trailing Time ."/>
+                      </v:var>
+                      <v:var name="SpiIdleTime" type="FLOAT">
+                        <a:a name="DESC">
+                          <a:v>EN: IDLEA / IDLEB Time . </a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="ce2120ab-166a-4676-891e-07d8bd1b7275"/>
+                        <a:da name="DEFAULT" value="0.0000001"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=0.0033"/>
+                          <a:tst expr="&gt;=0.0"/>
+                        </a:da>
+                        <a:da name="ENABLE" type="XPath">
+                        <a:tst expr="../SpiAutoCalcDelayParams = 'true'" /> 
+                        </a:da>  
+                        <a:da name="TOOLTIP" value="Idle Time."/>
+                      </v:var>
+                      <v:var name="SpiQSpiParamIPre" type="INTEGER">
+                        <a:a name="DESC" value="EN: Qspi Idle delay prescalar Hw parameter"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="9a3246b8-2b62-4b16-9364-c89f3b11b30e"/>
+                        <a:da name="DEFAULT" value="1"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=7"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                        <a:da name="ENABLE" type="XPath">
+                        <a:tst expr="../SpiAutoCalcDelayParams = 'false'" /> 
+                        </a:da>
+                        <a:da name="TOOLTIP" value="Qspi Idle delay prescalar Hw parameter. If SpiAutoCalcBaudParams value is ON, then the Hw parameters IPRE, IDLE are calculated based on SpiTimeClk2Cs"/>
+                      </v:var>
+                      <v:var name="SpiQSpiParamIdle" type="INTEGER">
+                        <a:a name="DESC" value="EN: Qspi IDLE delay Hw parameter"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="9a3246b8-2b62-4b16-9364-c89f3b11b31e"/>
+                        <a:da name="DEFAULT" value="1"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=7"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                        <a:da name="ENABLE" type="XPath">
+                        <a:tst expr="../SpiAutoCalcDelayParams = 'false'" /> 
+                        </a:da>  
+                        <a:da name="TOOLTIP" value="Qspi IDLE delay Hw parameter. If SpiAutoCalcBaudParams value is ON, then the Hw parameters IPRE, IDLE are calculated based on SpiTimeClk2Cs"/>
+                      </v:var>
+                      <v:var name="SpiQSpiParamLPre" type="INTEGER">
+                        <a:a name="DESC" value="EN: Qspi Lead delay prescalar Hw parameter"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="9a3246b8-2b62-4b16-9384-c89f3b11b30e"/>
+                        <a:da name="DEFAULT" value="0"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=7"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                        <a:da name="ENABLE" type="XPath">
+                        <a:tst expr="../SpiAutoCalcDelayParams = 'false'" /> 
+                        </a:da>
+                        <a:da name="TOOLTIP" value="Qspi Lead delay prescalar Hw parameter"/>
+                      </v:var>
+                      <v:var name="SpiQSpiParamLead" type="INTEGER">
+                        <a:a name="DESC" value="EN: Qspi LEAD delay Hw parameter"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="9a3246b8-2b62-4b16-9364-c89f3b21b31e"/>
+                        <a:da name="DEFAULT" value="1"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=7"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                        <a:da name="ENABLE" type="XPath">
+                        <a:tst expr="../SpiAutoCalcDelayParams = 'false'" /> 
+                        </a:da>  
+                        <a:da name="TOOLTIP" value="Qspi Lead delay Hw parameter"/>
+                      </v:var>
+                      <v:var name="SpiQSpiParamTPre" type="INTEGER">
+                        <a:a name="DESC" value="EN: Qspi Trail delay prescalar Hw parameter"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="9a3246b8-2b62-4b16-9384-c89f3b14b30e"/>
+                        <a:da name="DEFAULT" value="0"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=7"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                        <a:da name="ENABLE" type="XPath">
+                        <a:tst expr="../SpiAutoCalcDelayParams = 'false'" /> 
+                        </a:da>  
+                        <a:da name="TOOLTIP" value="Qspi Trail delay prescalar Hw parameter"/>
+                      </v:var>
+                      <v:var name="SpiQSpiParamTrail" type="INTEGER">
+                        <a:a name="DESC" value="EN: Qspi Trail Hw parameter"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="9a3246b8-2b62-4b16-9364-c89f3b01b30e"/>
+                        <a:da name="DEFAULT" value="1"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=7"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                        <a:da name="ENABLE" type="XPath">
+                        <a:tst expr="../SpiAutoCalcDelayParams = 'false'" /> 
+                        </a:da>
+                        <a:da name="TOOLTIP" value="Qspi Trail Hw parameter"/>
+                      </v:var>
+                      <v:var name="SpiEnableCs" type="BOOLEAN">
+                        <a:a name="DESC" 
+                             value="EN: This parameter enables or not the Chip Select handling functions."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="d8a81ac9-2c44-4532-b207-03e295103c7a"/>
+                        <a:da name="DEFAULT" value="true"/>
+                        <a:da name="TOOLTIP" value="This parameter is used by the Chip Select handling functions. If this parameter is enabled then parameter SpiCsSelection further details the type of chip selection."/>
+                      </v:var>
+                      <v:var name="SpiCsSelection" type="ENUMERATION">
+                        <a:a name="DESC" 
+                             value="EN: When the Chip select handling is enabled (see SpiEnableCs), then this parameter specifies if the chip select is handled automatically by Peripheral HW engine or via general purpose IO by Spi driver."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="d8a81ac9-2b44-4532-b207-03e295103c7a"/>
+                        <a:da name="DEFAULT" value="CS_VIA_PERIPHERAL_ENGINE"/>
+                        <a:da name="RANGE">
+                          <a:v>CS_VIA_PERIPHERAL_ENGINE</a:v>
+                          <a:v>CS_VIA_GPIO</a:v>
+                        </a:da>
+                        <a:da name="TOOLTIP" value="When the Chip select handling is enabled (see SpiEnableCs), then this parameter specifies if the chip select is handled automatically by Peripheral HW engine or via general purpose IO by Spi driver."/>
+                        <a:da name="EDITABLE" type="XPath">
+                        <a:tst expr="../SpiEnableCs = 'true'" /> 
+                        </a:da>  
+                      </v:var>                     
+                      <v:var name="SpiParitySupport" type="ENUMERATION">
+                        <a:a name="DESC" 
+                             value="EN: When the SpiParitySupport is selected SPI data Transmission/Reception incorporates an additional bit making the parity EVEN or ODD based on selection"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="d8a81ac9-2b44-4555-b207-03e295103c7a"/>
+                        <a:da name="DEFAULT" value="Unused"/>
+                        <a:da name="RANGE">
+                          <a:v>Unused</a:v>
+                          <a:v>Even</a:v>
+                          <a:v>Odd</a:v>
+                        </a:da>
+                        <a:da name="TOOLTIP" value="When the SpiParitySupport is chosen Even or Odd SPI data Transmission/Reception incorporates an additional bit making the parity EVEN or ODD based on selection"/>
+                      </v:var>
+                      <v:ctr name="SpiHwUnit" type="IDENTIFIABLE">
+                      <a:a name="DESC" 
+                           value="EN: Container for the SpiHwUnit"/>
+                        <a:a name="LONG-NAME" value="SpiHwUnit"/>
+                        <a:a name="UUID" 
+                             value="DCE:d8394d8c-6029-69ac-b7ce-1b57c6a97003"/>
+                        <v:var name="SpiAssignedHwModule" type="ENUMERATION">
+                          <a:a name="DESC" value="EN: SPI Hw module"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" 
+                               value="9a3246b8-2b22-4b16-9364-c79f3b01b302"/>
+                          <a:da name="DEFAULT" type="XPath">
+                          <a:tst expr="normalize-space(text:split(ecu:get('Spi.AvailableQSPIChannels'),',')[1])"/>
+                          </a:da>
+                          <a:da name="RANGE" type="XPath" expr="ecu:list('Spi.AvailableQSPIChannels')"/>
+                        <a:da name="TOOLTIP" value="This parameter defines the assigned Hw Unit Module."/>
+                        </v:var>
+                        <v:var name="SpiAssignedHwChannel" type="ENUMERATION">
+                          <a:a name="DESC" value="EN: SPI Hw module channel no"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" 
+                               value="9a3246b8-2b22-4b16-9364-c79f3b31b30e"/>
+                          <a:da name="DEFAULT" value="Channel0"/>
+                          <a:da name="RANGE">
+                            <a:v>Channel0</a:v>
+                            <a:v>Channel1</a:v>
+                            <a:v>Channel2</a:v>
+                            <a:v>Channel3</a:v>
+                            <a:v>Channel4</a:v>
+                            <a:v>Channel5</a:v>
+                            <a:v>Channel6</a:v>
+                            <a:v>Channel7</a:v>
+                            <a:v>Channel8</a:v>
+                            <a:v>Channel9</a:v>
+                            <a:v>Channel10</a:v>
+                            <a:v>Channel11</a:v>
+                            <a:v>Channel12</a:v>
+                            <a:v>Channel13</a:v>
+                            <a:v>Channel14</a:v>
+                            <a:v>Channel15</a:v>
+                          </a:da>
+                        <a:da name="TOOLTIP" value="This parameter defines the assigned Hw Unit Channel no. The SLSO/CS corresponding to this channel no is used by Qspi HW for Auto EOF. "/>
+                        </v:var>
+                      </v:ctr>
+                      <v:ctr name="SpiCsGpio" type="IDENTIFIABLE">
+                      <a:a name="DESC" 
+                           value="EN: Container for the selection of Chipselect"/>
+                          <a:a name="LONG-NAME" value="SpiCsGpio"/>
+                          <a:a name="UUID" 
+                               value="DCE:d8394d8c-6029-69ac-b7ce-0b57c6a97003"/>
+                          <v:var name="SpiCsGpioPortSelection" type="INTEGER">
+                            <a:a name="DESC" value="EN: Gpio port no used for Chipselect"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="9a3246b8-2b22-4b16-9364-c89f3b01b30e"/>
+                            <a:da name="DEFAULT" value="1"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=40"/>
+                              <a:tst expr="&gt;=0"/>
+                            </a:da>
+                            <a:da name="ENABLE" type="XPath">
+                            <a:tst expr="../../SpiEnableCs = 'true' and ../../SpiCsSelection = 'CS_VIA_GPIO'" /> 
+                            </a:da>  
+                        <a:da name="TOOLTIP" value="Gpio port no used for Chipselect if SpiEnableCs = true and SpiCsSelection = CS_VIA_GPIO. Disabled for others"/>
+                          </v:var>
+                          <v:var name="SpiCsGpioPinSelection" type="INTEGER">
+                            <a:a name="DESC" value="EN: Gpio port pin no used for Chipselect"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="9a3246b8-2b22-4b16-9364-c89f3b21b30e"/>
+                            <a:da name="DEFAULT" value="1"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=15"/>
+                              <a:tst expr="&gt;=0"/>
+                            </a:da>
+                            <a:da name="ENABLE" type="XPath">
+                            <a:tst expr="../../SpiEnableCs = 'true' and ../../SpiCsSelection = 'CS_VIA_GPIO'" /> 
+                            </a:da>  
+                        <a:da name="TOOLTIP" value="Gpio pin no used for Chipselect if SpiEnableCs = true and SpiCsSelection = CS_VIA_GPIO. Disabled for others"/>
+                          </v:var>
+                      </v:ctr>
+                    </v:ctr>
+                  </v:lst>
+                  <v:lst name="SpiJob" type="MAP">
+                    <a:da name="MAX" value="65535"/>
+                    <a:da name="MIN" value="1"/>
+                    <v:ctr name="SpiJob" type="IDENTIFIABLE">
+                      <a:a name="DESC" 
+                           value="EN: All data needed to configure one SPI-Job, amongst others the connection between the internal SPI unit and the special settings for an external device is done."/>
+                      <a:a name="UUID" 
+                           value="9ea42a4c-e5a5-4a27-aeb5-e56f23325aa6"/>
+                      <v:var name="SpiJobEndNotification" type="FUNCTION-NAME">
+                        <a:a name="DESC" 
+                             value="EN: This parameter is a reference to a notification function."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="999fcf11-8b4f-4719-abee-2f2d75e8614a"/>
+                        <a:da name="DEFAULT" value="NULL_PTR"/>
+                                     <a:da name="ENABLE" type="XPath">
+                <a:tst expr="../../../../../SpiGeneral/SpiLevelDelivered = '1' or ../../../../../SpiGeneral/SpiLevelDelivered = '2'"/> 
+               </a:da>
+                        <a:da name="TOOLTIP" value="This parameter is a reference to a Job notification function."/>
+                      </v:var>
+                      <v:var name="SpiJobId" type="INTEGER">
+                      <a:a name="DESC" 
+                           value="EN: Parameter for the SpiJobId. Generated by the tool"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                        <a:a name="UUID" 
+                             value="f19865d3-c9b8-46f8-9fe4-4e0190259b4e"/>
+                        <a:da name="DEFAULT" value="0"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=65535"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                        <a:da name = "ENABLE" value = "false"/>
+                        <a:da name="TOOLTIP" value="The ID for the Jobs are generated by the tool"/>
+                      </v:var>
+                      <v:var name="SpiJobPriority" type="INTEGER">
+                        <a:a name="DESC" value="EN: Priority of the Job"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="993406b8-2a62-4b16-9314-c89f3b01b30e"/>
+                        <a:da name="DEFAULT" value="0"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=3"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                        <a:da name="TOOLTIP" value="Priority of the Job (0- lowest, 3 - highest)."/>
+                      </v:var>
+                      <v:var name="SpiHwUnitSynchronous" type="ENUMERATION">
+                        <a:a name="DESC" 
+                             value="EN: This parameter defines whether the Job is Synchronous/ASynchronous."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="2d4a2abe-41c9-4308-a2e2-b6c1261e9661"/>
+                        <a:da name="DEFAULT" value="Asynchronous"/>
+                        <a:da name="RANGE">
+                          <a:v>Synchronous</a:v>
+                          <a:v>Asynchronous</a:v>
+                        </a:da>
+                        <a:da name="ENABLE" type="XPath">
+                        <a:tst expr="../../../../../SpiGeneral/SpiLevelDelivered = '2'" /> 
+                        </a:da>  
+                        <a:da name="TOOLTIP" value="This parameter defines whether the Job is used as Synchronous/ASynchronous. Enabled only for Level Delivered 2"/>
+                      </v:var>
+                      <v:var name="SpiChannelBasedCS" type="ENUMERATION">
+                        <a:a name="DESC" 
+                             value="EN: Enabling will toggle the Chip select after each data of the channel is transmitted(violates Autosar req:SPI263). Note: If channel based chip select is needed then SpiExternalDevice->SpiCsSelection  must be configured as CS_VIA_PERIPHERAL_ENGINE"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>                        
+                        <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="eeb96b62-9133-479f-9170-8382f60c36fc"/>
+                        <a:da name="DEFAULT" value="Disabled"/>
+                        <a:da name="RANGE">
+                          <a:v>Disabled</a:v>
+                          <a:v>Enabled</a:v>
+                        </a:da>
+                        <a:da name="WARNING" type="XPath">
+                          <a:tst expr="( (. = 'Enabled'))" true="Enabling SpiChannelBasedCS violates autosar requirement: SPI263. Chip select would be deactivated after each SPI data transmission, Channel completion and Job completion."/>
+                        </a:da>
+                        <a:da name="TOOLTIP" value="Channel based chip select. (Enabling violates Autosar req:SPI263)"/>
+                      </v:var>		      
+                      <v:ref name="SpiDeviceAssignment" type="REFERENCE">
+                        <a:a name="DESC" 
+                             value="EN: Reference to the external device used by this job"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="UUID" 
+                             value="ac64715b-a773-4a4d-ab8a-eb7eb3b5169b"/>
+                        <a:da name="REF" 
+                              value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Spi/SpiDriver/SpiExternalDevice"/>
+                        <a:da name="TOOLTIP" value="Reference to the external device used by this job."/>
+                      </v:ref>
+                      <v:lst name="SpiChannelList" type="MAP">
+                        <a:da name="MAX" value="255"/>
+                        <a:da name="MIN" value="1"/>
+                        <v:ctr name="SpiChannelList" type="IDENTIFIABLE">
+                        <a:a name="DESC" 
+                           value="EN: Container for the List of Spi Channels."/>
+                          <a:a name="LONG-NAME" value="SpiChannelList"/>
+                          <a:a name="UUID" 
+                               value="DCE:d83a4d8c-6029-69ac-b7ce-0b57c6a97003"/>
+                          <v:var name="SpiChannelIndex" type="INTEGER">
+                          <a:a name="DESC" 
+                             value="EN: Parameter for the Spi Channel Index. Specifies the order of Channels within the Job"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                            <a:a name="UUID" 
+                                 value="a962a7e3-410c-411d-8f19-accbc09f096e"/>
+                            <a:da name="DEFAULT" value="0"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=255"/>
+                              <a:tst expr="&gt;=0"/>
+                            </a:da>
+                            <a:da name="TOOLTIP" value="This parameter specifies the order of Channels within the Job "/>
+                          </v:var>
+                          <v:ref name="SpiChannelAssignment" 
+                                 type="REFERENCE">
+                            <a:a name="DESC">
+                              <a:v>A job reference to a SPI channel.</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="UUID" 
+                                 value="42d94cf6-9bbe-4b83-a833-bddbf3d6bad2"/>
+                            <a:da name="REF" 
+                                  value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Spi/SpiDriver/SpiChannel"/>
+                            <a:da name="TOOLTIP" value="Reference to the Channel."/>
+                          </v:ref>
+                        </v:ctr>
+                      </v:lst>
+                    </v:ctr>
+                  </v:lst>
+                  <v:lst name="SpiSequence" type="MAP">
+                    <a:da name="MIN" value="1"/>
+					<a:da name="INVALID" type="XPath">
+                  <a:tst expr="(num:i(count(../SpiSequence/*))> 255)" true="Invalid Configuration.The driver allows to configure only maximum of 255 Sequences"/>
+                  </a:da>
+                    <v:ctr name="SpiSequence" type="IDENTIFIABLE">
+                      <a:a name="DESC" 
+                           value="EN: All data needed to configure one SPI-sequence"/>
+                      <a:a name="UUID" 
+                           value="2a3d2174-8a4c-414d-af29-8c7796e01cbb"/>
+                      <v:var name="SpiInterruptibleSequence" type="BOOLEAN">
+                        <a:a name="DESC" 
+                             value="EN: This parameter allows or not this Sequence to be suspended by another one."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="b73fce7d-73df-4c5e-820d-d9ddbc878a0e"/>
+                        <a:da name="DEFAULT" value="false"/>
+                        <a:da name="ENABLE" type="XPath">
+                         <a:tst expr="((../../../../../SpiGeneral/SpiLevelDelivered = '1' or ../../../../../SpiGeneral/SpiLevelDelivered = '2') and (../../../../../SpiGeneral/SpiInterruptibleSeqAllowed = 'true')) "/> 
+                        </a:da> 
+                        <a:da name="TOOLTIP" value="This is enabled for Spi Level delivered 1 or 2"/>
+                      </v:var>
+                      <v:var name="SpiSeqEndNotification" type="FUNCTION-NAME">
+                        <a:a name="DESC" 
+                             value="EN: This parameter is a reference to a notification function."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="cc12fb6f-7073-463d-af12-a790e1e4b56a"/>
+                        <a:da name="DEFAULT" value="NULL_PTR"/>
+                                        <a:da name="ENABLE" type="XPath">
+                   <a:tst expr="../../../../../SpiGeneral/SpiLevelDelivered = '1' or ../../../../../SpiGeneral/SpiLevelDelivered = '2'" /> 
+                   </a:da>  
+                        <a:da name="TOOLTIP" value="This parameter is a reference to a Sequence notification function. "/>
+                      </v:var>
+                      <v:var name="SpiSequenceId" type="INTEGER">
+                      <a:a name="DESC" 
+                         value="EN: The tool generates the ID for the sequence."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                        <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                        <a:a name="UUID" 
+                             value="a962a7e2-410c-411d-8f19-accbc09f096e"/>
+                        <a:da name="DEFAULT" value="0"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=255"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                        <a:da name = "ENABLE" value = "false"/>
+                        <a:da name="TOOLTIP" value="The tool generates the ID for the sequence "/>
+                      </v:var>
+                      <v:lst name="SpiJobAssignment">
+                        <a:da name="MIN" value="1"/>
+                        <v:ref name="SpiJobAssignment" type="REFERENCE">
+                          <a:a name="DESC" 
+                               value="EN: A sequence references several jobs, which are executed during a communication sequence"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="UUID" 
+                               value="80d853bd-33c8-4d50-8b8e-ba2cb37b5fe8"/>
+                          <a:da name="REF" 
+                                value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Spi/SpiDriver/SpiJob"/>
+                            <a:da name="TOOLTIP" value="Reference to the Job used by this sequence."/>
+                        </v:ref>
+                      </v:lst>
+                    </v:ctr>
+                  </v:lst>
+                  <v:lst name="SpiDemEventParameterRefs" type="MAP">
+                    <a:da name="MAX" value="1"/>
+                    <v:ctr name="SpiDemEventParameterRefs" type="IDENTIFIABLE">
+                      <a:a name="DESC" 
+                           value="EN: Container for the references to DemEventParameter elements which shall be invoked using the API Dem_ReportErrorStatus API in case the corresponding error occurs. The EventId is taken from the referenced DemEventParameter&apos;s DemEventId value. The standardized errors are provided in the container and can be extended by vendor specific error references."/>
+                      <a:a name="UUID" 
+                           value="ECUC:4C697A47-02D8-42df-8696-0C9F592008C7"/>
+                      <v:lst name="SPI_E_HARDWARE_ERROR">
+                        <a:da name="MAX" value="1"/>
+                        <v:ref name="SPI_E_HARDWARE_ERROR" 
+                               type="SYMBOLIC-NAME-REFERENCE">
+                          <a:a name="DESC" 
+                               value="EN: Reference to configured DEM event to report Spi receive error."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>        
+                            <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="UUID" 
+                               value="ECUC:66C8E910-6197-42a3-8E25-A695AA21788E"/>
+                          <a:da name="REF" 
+                                value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter"/>
+                        </v:ref>
+                      </v:lst>
+                      <v:lst name="SPI_E_DMA_TRANSFER">
+                        <a:da name="MAX" value="1"/>
+                        <v:ref name="SPI_E_DMA_TRANSFER" 
+                               type="SYMBOLIC-NAME-REFERENCE">
+                          <a:a name="DESC" 
+                               value="EN: Reference to configured DEM event to report &quot;Clock source failure&quot;."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>        
+                            <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID" 
+                               value="ECUC:66C8E900-6192-42a3-8E25-A695AA21788E"/>
+                          <a:da name="REF" 
+                                value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter"/>
+                        </v:ref>
+                      </v:lst>             
+                   </v:ctr>
+                 </v:lst>                               
+                </v:ctr>
+              </v:lst>
+              <v:ctr name="SpiHwConfiguration" type="IDENTIFIABLE">
+                  <a:a name="DESC" 
+                     value="EN: Container for the SpiHwConfiguration"/>
+                    <a:a name="LONG-NAME" value="SpiHwConfiguration"/>
+                    <a:a name="UUID" 
+                         value="e4358dc6-3015-455d-9499-0fb82a8c6b26"/>
+                      <v:ctr name="SpiHwConfigurationQspi0" 
+                             type="IDENTIFIABLE">
+                      <a:a name="DESC" 
+                           value="EN: Container for the SpiHwConfigurationQspi0"/>
+                        <a:a name="LONG-NAME" 
+                             value="SpiHwConfigurationQspi0"/>
+                        <a:a name="UUID" 
+                             value="DCE:46354a81-d2f8-6a3d-9a0a-546962bdd907"/>
+                        <a:da name="ENABLE" type="XPath">
+                        <a:tst expr="(ecu:get('Spi.NoOfAvailableQspi') > 0) and (ecu:get('Rel.Derivate') != '_TRICORE_TC298')"/> 
+                        </a:da>  
+                        <v:ctr name="SpiClockConfiguration" type="IDENTIFIABLE">
+                        <a:a name="DESC" value="EN: Spi Clock Configuration For QSPI node"/>
+                          <a:a name="LONG-NAME" value="SpiClockConfiguration"/>
+                          <a:a name="UUID" 
+                               value="DCE:33eb03cf-2df6-6c54-b867-396d3df4c2a1"/>
+                          <v:var name="SpiSleepEnable" type="BOOLEAN">
+                            <a:a name="DESC" 
+                                 value="EN: To control QSPIx sleep mode"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="20398301-18ac-4596-83ef-b364ac76a8c1"/>
+                            <a:da name="DEFAULT" value="false"/>
+                            <a:da name="TOOLTIP" value="To control QSPIx Hw sleep mode."/>
+                          </v:var>
+                        </v:ctr>
+                        <v:ctr name="SpiHwPinConfiguration" type="IDENTIFIABLE">
+                        <a:a name="DESC" value="EN: Spi HW Pin Configuration For QSPI node"/>
+                          <a:a name="LONG-NAME" value="SpiHwPinConfiguration"/>
+                          <a:a name="UUID" 
+                               value="DCE:1da9ffda-ce19-6053-b203-c7cc4651411e"/>
+                          <v:var name="SpiHWPinMISO" type="ENUMERATION">
+                            <a:a name="DESC" 
+                                 value="EN: Port Pin selection for MISO"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="LONG-NAME" 
+                                 value="MRSTA_PORT10_PIN0: MRSTA_PORT10_PIN0"/>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="8cb2b502-2224-4dd2-917b-f73778ef1854"/>
+                            <a:da name="DEFAULT" type="XPath" expr="ecu:get('Spi.QSPI0MisoPinDefault')"/>
+                            <a:da name="ENABLE" type="XPath">
+                            <a:tst expr="(../../../../SpiSafety/SpiSafetyEnable != 'true') or (../../../../SpiGeneral/SpiSlaveSelectRef != 'QSPI0')" />
+                            </a:da>                            
+                            <a:da name="RANGE" type="XPath" expr="ecu:list('Spi.QSPI0MisoPin')"/>
+                            <a:da name="TOOLTIP" value="Port Pin selection for MISO. Available pins are given in the range."/>
+                          </v:var>
+                          <v:var name="SPISlaveHwPinMOSI" type="ENUMERATION">
+                            <a:a name="DESC" 
+                                 value="EN: Port Pin selection for Slave MTSR"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="LONG-NAME" 
+                                 value="MTSR0A_PORT20_PIN14: MTSR0A_PORT20_PIN14"/>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="8cb2b502-2224-4dd2-917b-f73778efffee"/>
+                            <a:da name="DEFAULT" type="XPath" expr="ecu:get('Spi.QSPI0SlaveMosiPinDefault')"/>
+                            <a:da name="ENABLE" type="XPath">
+                            <a:tst expr="(../../../../SpiSafety/SpiSafetyEnable = 'true') and (../../../../SpiGeneral/SpiSlaveSelectRef = 'QSPI0')" />
+                            </a:da>
+                            <a:da name="RANGE" type="XPath" expr="ecu:list('Spi.QSPI0SlaveMosiPin')"/>
+                            <a:da name="TOOLTIP" value="Port Pin selection for Slave MTSR. Available pins are given in the range."/>
+                          </v:var>
+                          <v:var name="SPISlaveHwPinSCLK" type="ENUMERATION">
+                            <a:a name="DESC" 
+                                 value="EN: Port Pin selection for Slave SCLK"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="LONG-NAME" 
+                                 value="SCLK0A_PORT20_PIN11: SCLK0A_PORT20_PIN11"/>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="8cb2b502-2224-4dd2-917b-f73778effefe"/>
+                            <a:da name="DEFAULT" type="XPath" expr="ecu:get('Spi.QSPI0SlaveSclkPinDefault')"/>
+                            <a:da name="ENABLE" type="XPath">
+                            <a:tst expr="(../../../../SpiSafety/SpiSafetyEnable = 'true') and (../../../../SpiGeneral/SpiSlaveSelectRef = 'QSPI0')" />
+                            </a:da>
+                            <a:da name="RANGE" type="XPath" expr="ecu:list('Spi.QSPI0SlaveSclkPin')"/>
+                            <a:da name="TOOLTIP" value="Port Pin selection for Slave SCLK. Available pins are given in the range."/>
+                          </v:var>
+                        </v:ctr>
+                        <v:ctr name="SpiHwDmaConfiguration" type="IDENTIFIABLE">
+                        <a:a name="DESC" value="EN: Spi DMA Configuration For QSPI node"/>
+                          <a:a name="LONG-NAME" value="SpiHwDmaConfiguration"/>
+                          <a:a name="UUID" 
+                               value="DCE:d4d23ce0-5d7f-6675-8216-3ae14eb45983"/>
+                            <a:da name="ENABLE" type="XPath">
+                            <a:tst expr="(../../../SpiGeneral/SpiLevelDelivered = '1' or ../../../SpiGeneral/SpiLevelDelivered = '2' or ../../../SpiGeneral/SpiSlaveSelectRef = 'QSPI0' )" />
+                            </a:da>
+                  <v:ref name="SpiHwDmaChannelReceptionRef" type="REFERENCE">
+                    <a:a name="DESC" 
+                         value="EN: This parameter refer DMA channel configuration in MCU. Used for SPI reception."/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                    <a:a name="UUID" 
+                         value="083bfb84-a97f-421f-ad57-5bee661ea350"/>
+                    <a:da name="REF" 
+                          value="ASPathDataOfSchema:/AURIX/Mcu/McuModuleConfiguration/DmaConfiguration/DmaChannel"/>
+                      <a:da name="TOOLTIP" value="DMA channel used for SPI reception."/>
+                  </v:ref>  
+                  <v:ref name="SpiHwDmaChannelTransmissionRef" type="REFERENCE">
+                    <a:a name="DESC" 
+                         value="EN: This parameter refer DMA channel configuration in MCU. Used for SPI transmission."/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                    <a:a name="UUID" 
+                         value="d27b20e2-b898-4d7a-bb7c-3833cb3dfbe5"/>
+                    <a:da name="REF" 
+                          value="ASPathDataOfSchema:/AURIX/Mcu/McuModuleConfiguration/DmaConfiguration/DmaChannel"/>
+                      <a:da name="TOOLTIP" value="DMA channel used for SPI transmission."/>
+                  </v:ref>  
+                        </v:ctr>
+                      </v:ctr>
+                      <v:ctr name="SpiHwConfigurationQspi1" 
+                             type="IDENTIFIABLE">
+                      <a:a name="DESC" 
+                           value="EN: Container for the SpiHwConfigurationQspi1"/>
+                        <a:a name="LONG-NAME" 
+                             value="SpiHwConfigurationQspi1"/>
+                        <a:a name="UUID" 
+                             value="593a4a79-89c3-431a-a7bd-a01b06b8f104"/>
+                        <a:da name="ENABLE" type="XPath">
+                        <a:tst expr="ecu:get('Spi.NoOfAvailableQspi') > 1" /> 
+                        </a:da>  
+                        <v:ctr name="SpiClockConfiguration" type="IDENTIFIABLE">
+                        <a:a name="DESC" value="EN: Spi Clock Configuration For QSPI node"/>
+                          <a:a name="LONG-NAME" value="SpiClockConfiguration"/>
+                          <a:a name="UUID" 
+                               value="DCE:33eb03cf-2df6-6c54-b867-396d3df4c2a2"/>
+                          <v:var name="SpiSleepEnable" type="BOOLEAN">
+                            <a:a name="DESC" 
+                                 value="EN: To control QSPIx sleep mode"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="20398301-18ac-4596-83ef-b364ac76a8cc"/>
+                            <a:da name="DEFAULT" value="false"/>
+                            <a:da name="TOOLTIP" value="To control QSPIx Hw sleep mode."/>
+                          </v:var>
+                        </v:ctr>
+                        <v:ctr name="SpiHwPinConfiguration" type="IDENTIFIABLE">
+                        <a:a name="DESC" value="EN: Spi HW Pin Configuration For QSPI node"/>
+                          <a:a name="LONG-NAME" 
+                               value="SpiHwPinConfiguration"/>
+                          <a:a name="UUID" 
+                               value="DCE:1da9ffda-ce19-6053-b203-c7cc46514111"/>
+                          <v:var name="SpiHWPinMISO" type="ENUMERATION">
+                            <a:a name="DESC" 
+                                 value="EN: Port Pin selection for MISO"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="LONG-NAME" 
+                                 value="MRSTA_PORT6_PIN5: MRSTA_PORT10_PIN0MRSTA_PORT10_PIN0"/>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="8cb2b502-2224-4dd2-917b-f73778ef1851"/>
+                            <a:da name="DEFAULT" type="XPath" expr="ecu:get('Spi.QSPI1MisoPinDefault')"/>
+                            <a:da name="ENABLE" type="XPath">
+                            <a:tst expr="(../../../../SpiSafety/SpiSafetyEnable != 'true') or (../../../../SpiGeneral/SpiSlaveSelectRef != 'QSPI1')" />
+                            </a:da>                             
+                            <a:da name="RANGE" type="XPath" expr="ecu:list('Spi.QSPI1MisoPin')"/>
+                            <a:da name="TOOLTIP" value="Port Pin selection for MISO. Available pins are given in the range."/>
+                          </v:var>
+                          <v:var name="SPISlaveHwPinMOSI" type="ENUMERATION">
+                            <a:a name="DESC" 
+                                 value="EN: Port Pin selection for Slave MTSR"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="LONG-NAME" 
+                                 value="MTSR1A_PORT10_PIN3: MTSR1A_PORT10_PIN3"/>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="8cb2b502-2224-4dd2-917b-f73778feefee"/>
+                            <a:da name="DEFAULT" type="XPath" expr="ecu:get('Spi.QSPI1SlaveMosiPinDefault')"/>
+                            <a:da name="ENABLE" type="XPath">
+                            <a:tst expr="(../../../../SpiSafety/SpiSafetyEnable = 'true') and (../../../../SpiGeneral/SpiSlaveSelectRef = 'QSPI1')" />
+                            </a:da>
+                            <a:da name="RANGE" type="XPath" expr="ecu:list('Spi.QSPI1SlaveMosiPin')"/>
+                            <a:da name="TOOLTIP" value="Port Pin selection for Slave MTSR. Available pins are given in the range."/>
+                          </v:var>
+                          <v:var name="SPISlaveHwPinSCLK" type="ENUMERATION">
+                            <a:a name="DESC" 
+                                 value="EN: Port Pin selection for Slave SCLK"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="LONG-NAME" 
+                                 value="SCLK1A_PORT10_PIN2: SCLK1A_PORT10_PIN2"/>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="8cb2b502-2224-4dd2-917b-f7377811fefe"/>
+                            <a:da name="DEFAULT" type="XPath" expr="ecu:get('Spi.QSPI1SlaveSclkPinDefault')"/>
+                            <a:da name="ENABLE" type="XPath">
+                            <a:tst expr="(../../../../SpiSafety/SpiSafetyEnable = 'true') and (../../../../SpiGeneral/SpiSlaveSelectRef = 'QSPI1')" />
+                            </a:da>
+                            <a:da name="RANGE" type="XPath" expr="ecu:list('Spi.QSPI1SlaveSclkPin')"/>
+                            <a:da name="TOOLTIP" value="Port Pin selection for Slave SCLK. Available pins are given in the range."/>
+                          </v:var>
+                        </v:ctr>
+                        <v:ctr name="SpiHwDmaConfiguration" type="IDENTIFIABLE">
+                        <a:a name="DESC" value="EN: Spi DMA Configuration For QSPI node"/>
+                          <a:a name="LONG-NAME" value="SpiHwDmaConfiguration"/>
+                          <a:a name="UUID" 
+                               value="DCE:d4d23ce0-5d7f-6675-8216-3ae14eb45984"/>
+                            <a:da name="ENABLE" type="XPath">
+                            <a:tst expr="(../../../SpiGeneral/SpiLevelDelivered = '1' or ../../../SpiGeneral/SpiLevelDelivered = '2' or ../../../SpiGeneral/SpiSlaveSelectRef = 'QSPI1' )" />
+                            </a:da>
+                  <v:ref name="SpiHwDmaChannelReceptionRef" type="REFERENCE">
+                    <a:a name="DESC" 
+                         value="EN: This parameter refer DMA channel configuration in MCU. Used for SPI reception."/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                    <a:a name="UUID" 
+                         value="083bfb84-a97f-421f-ad57-5bee661ea351"/>
+                    <a:da name="REF" 
+                          value="ASPathDataOfSchema:/AURIX/Mcu/McuModuleConfiguration/DmaConfiguration/DmaChannel"/>
+                      <a:da name="TOOLTIP" value="DMA channel used for SPI reception."/>
+                  </v:ref>  
+                  <v:ref name="SpiHwDmaChannelTransmissionRef" type="REFERENCE">
+                    <a:a name="DESC" 
+                         value="EN: This parameter refer DMA channel configuration in MCU. Used for SPI transmission."/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                    <a:a name="UUID" 
+                         value="593a4a79-89c3-431a-a7cd-a01b06b8f104"/>
+                    <a:da name="REF" 
+                          value="ASPathDataOfSchema:/AURIX/Mcu/McuModuleConfiguration/DmaConfiguration/DmaChannel"/>
+                      <a:da name="TOOLTIP" value="DMA channel used for SPI transmission."/>
+                  </v:ref>  
+                        </v:ctr>
+                      </v:ctr>
+                      <v:ctr name="SpiHwConfigurationQspi2" 
+                             type="IDENTIFIABLE">
+                      <a:a name="DESC" 
+                           value="EN: Container for the SpiHwConfigurationQspi2"/>
+                        <a:a name="LONG-NAME" 
+                             value="SpiHwConfigurationQspi2"/>
+                        <a:a name="UUID" 
+                             value="593a4a79-89c3-431a-a7cd-a01b06b8f101"/>
+                        <a:da name="ENABLE" type="XPath">
+                        <a:tst expr="ecu:get('Spi.NoOfAvailableQspi') > 2" /> 
+                        </a:da>  
+                        <v:ctr name="SpiClockConfiguration" type="IDENTIFIABLE">
+                        <a:a name="DESC" value="EN: Spi Clock Configuration For QSPI node"/>                        
+                          <a:a name="LONG-NAME" value="SpiClockConfiguration"/>
+                          <a:a name="UUID" 
+                               value="DCE:33eb03cf-2df6-6c54-b867-396d7df4c2a1"/>
+                          <v:var name="SpiSleepEnable" type="BOOLEAN">
+                            <a:a name="DESC" 
+                                 value="EN: To control QSPIx sleep mode"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="20398341-18ac-4596-83ef-b364ac76a8cc"/>
+                            <a:da name="DEFAULT" value="false"/>
+                            <a:da name="TOOLTIP" value="To control QSPIx Hw sleep mode."/>
+                          </v:var>
+                        </v:ctr>
+                        <v:ctr name="SpiHwPinConfiguration" type="IDENTIFIABLE">
+                        <a:a name="DESC" value="EN: Spi HW Pin Configuration For QSPI node"/>
+                          <a:a name="LONG-NAME" 
+                               value="SpiHwPinConfiguration"/>
+                          <a:a name="UUID" 
+                               value="DCE:1da9ffda-ce19-6053-b223-c7cc4651411e"/>
+                          <v:var name="SpiHWPinMISO" type="ENUMERATION">
+                            <a:a name="DESC" 
+                                 value="EN: Port Pin selection for MISO"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="LONG-NAME" 
+                                 value="MRSTA_PORT6_PIN5: MRSTA_PORT10_PIN0MRSTA_PORT10_PIN0"/>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="8cb2b502-2224-4dd2-917b-f73678ef1854"/>
+                            <a:da name="DEFAULT" type="XPath" expr="ecu:get('Spi.QSPI2MisoPinDefault')"/>
+                            <a:da name="ENABLE" type="XPath">
+                            <a:tst expr="(../../../../SpiSafety/SpiSafetyEnable != 'true') or (../../../../SpiGeneral/SpiSlaveSelectRef != 'QSPI2')" />
+                            </a:da>                            
+                            <a:da name="RANGE" type="XPath" expr="ecu:list('Spi.QSPI2MisoPin')"/>
+                            <a:da name="TOOLTIP" value="Port Pin selection for MISO. Available pins are given in the range."/>
+                          </v:var>
+                          <v:var name="SPISlaveHwPinMOSI" type="ENUMERATION">
+                            <a:a name="DESC" 
+                                 value="EN: Port Pin selection for Slave MTSR"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="LONG-NAME" 
+                                 value="MTSR2A_PORT15_PIN5: MTSR2A_PORT15_PIN5"/>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="8cb2b502-2224-4dd2-917b-f73778f1134e"/>
+                            <a:da name="DEFAULT" type="XPath" expr="ecu:get('Spi.QSPI2SlaveMosiPinDefault')"/>
+                            <a:da name="ENABLE" type="XPath">
+                            <a:tst expr="(../../../../SpiSafety/SpiSafetyEnable = 'true') and (../../../../SpiGeneral/SpiSlaveSelectRef = 'QSPI2')" />
+                            </a:da>
+                            <a:da name="RANGE" type="XPath" expr="ecu:list('Spi.QSPI2SlaveMosiPin')"/>
+                            <a:da name="TOOLTIP" value="Port Pin selection for Slave MTSR. Available pins are given in the range."/>
+                          </v:var>
+                          <v:var name="SPISlaveHwPinSCLK" type="ENUMERATION">
+                            <a:a name="DESC" 
+                                 value="EN: Port Pin selection for Slave SCLK"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="LONG-NAME" 
+                                 value="SCLK2A_PORT15_PIN3: SCLK2A_PORT15_PIN3"/>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="8cb2b502-2224-4dd2-917b-f7377811f33e"/>
+                            <a:da name="DEFAULT" type="XPath" expr="ecu:get('Spi.QSPI2SlaveSclkPinDefault')"/>
+                            <a:da name="ENABLE" type="XPath">
+                            <a:tst expr="(../../../../SpiSafety/SpiSafetyEnable = 'true') and (../../../../SpiGeneral/SpiSlaveSelectRef = 'QSPI2')" />
+                            </a:da>
+                            <a:da name="RANGE" type="XPath" expr="ecu:list('Spi.QSPI2SlaveSclkPin')"/>
+                            <a:da name="TOOLTIP" value="Port Pin selection for Slave SCLK. Available pins are given in the range."/>
+                          </v:var>
+                        </v:ctr>
+                        <v:ctr name="SpiHwDmaConfiguration" type="IDENTIFIABLE">
+                        <a:a name="DESC" value="EN: Spi DMA Configuration For QSPI node"/>
+                          <a:a name="LONG-NAME" value="SpiHwDmaConfiguration"/>
+                          <a:a name="UUID" 
+                               value="DCE:d4d23ce0-5d7f-6675-8216-3ae14ee45983"/>
+                            <a:da name="ENABLE" type="XPath">
+                            <a:tst expr="(../../../SpiGeneral/SpiLevelDelivered = '1' or ../../../SpiGeneral/SpiLevelDelivered = '2' or ../../../SpiGeneral/SpiSlaveSelectRef = 'QSPI2' )" />
+                            </a:da>
+                  <v:ref name="SpiHwDmaChannelReceptionRef" type="REFERENCE">
+                    <a:a name="DESC" 
+                         value="EN: This parameter refer DMA channel configuration in MCU. Used for SPI reception."/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                    <a:a name="UUID" 
+                         value="083bfb84-a97f-421f-ad57-5bee661aa350"/>
+                    <a:da name="REF" 
+                          value="ASPathDataOfSchema:/AURIX/Mcu/McuModuleConfiguration/DmaConfiguration/DmaChannel"/>
+                      <a:da name="TOOLTIP" value="DMA channel used for SPI reception."/>
+                  </v:ref>  
+                  <v:ref name="SpiHwDmaChannelTransmissionRef" type="REFERENCE">
+                    <a:a name="DESC" 
+                         value="EN: This parameter refer DMA channel configuration in MCU. Used for SPI transmission."/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                    <a:a name="UUID" 
+                         value="d27b20e2-b898-4d7a-ba7c-3833cb3dfbe5"/>
+                    <a:da name="REF" 
+                          value="ASPathDataOfSchema:/AURIX/Mcu/McuModuleConfiguration/DmaConfiguration/DmaChannel"/>
+                      <a:da name="TOOLTIP" value="DMA channel used for SPI transmission."/>
+                  </v:ref>
+                        </v:ctr>
+                      </v:ctr>
+                      <v:ctr name="SpiHwConfigurationQspi3" 
+                             type="IDENTIFIABLE">
+                      <a:a name="DESC" 
+                           value="EN: Container for the SpiHwConfigurationQspi3"/>
+                        <a:a name="LONG-NAME" 
+                             value="SpiHwConfigurationQspi3"/>
+                        <a:a name="UUID" 
+                             value="593a4a79-89c3-431a-a7cd-a11b06b8f104"/>
+                        <a:da name="ENABLE" type="XPath">
+                        <a:tst expr="ecu:get('Spi.NoOfAvailableQspi') > 3" /> 
+                        </a:da>  
+                        <v:ctr name="SpiClockConfiguration" type="IDENTIFIABLE">
+                        <a:a name="DESC" value="EN: Spi Clock Configuration For QSPI node"/>
+                          <a:a name="LONG-NAME" value="SpiClockConfiguration"/>
+                          <a:a name="UUID" 
+                               value="DCE:33eb03cf-2df6-6c54-b967-396d7df4c2a1"/>
+                          <v:var name="SpiSleepEnable" type="BOOLEAN">
+                            <a:a name="DESC" 
+                                 value="EN: To control QSPIx sleep mode"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="20198341-18ac-4596-83ef-b334ac76a8cc"/>
+                            <a:da name="DEFAULT" value="false"/>
+                            <a:da name="TOOLTIP" value="To control QSPIx Hw sleep mode."/>
+                          </v:var>
+                        </v:ctr>
+                        <v:ctr name="SpiHwPinConfiguration" type="IDENTIFIABLE">
+                        <a:a name="DESC" value="EN: Spi HW Pin Configuration For QSPI node"/>
+                          <a:a name="LONG-NAME" 
+                               value="SpiHwPinConfiguration"/>
+                          <a:a name="UUID" 
+                               value="DCE:1da9feda-ce19-6053-b223-c7cc4651411e"/>
+                          <v:var name="SpiHWPinMISO" type="ENUMERATION">
+                            <a:a name="DESC" 
+                                 value="EN: Port Pin selection for MISO"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="LONG-NAME" 
+                                 value="MRSTA_PORT6_PIN5: MRSTA_PORT10_PIN0MRSTA_PORT10_PIN0"/>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="8cb2a502-2224-4dd2-917b-f73678ef1854"/>
+                            <a:da name="DEFAULT" type="XPath" expr="ecu:get('Spi.QSPI3MisoPinDefault')"/>
+                            <a:da name="ENABLE" type="XPath">
+                            <a:tst expr="(../../../../SpiSafety/SpiSafetyEnable != 'true') or (../../../../SpiGeneral/SpiSlaveSelectRef != 'QSPI3')" />
+                            </a:da>                            
+                            <a:da name="RANGE" type="XPath" expr="ecu:list('Spi.QSPI3MisoPin')"/>
+                            <a:da name="TOOLTIP" value="Port Pin selection for MISO. Available pins are given in the range."/>
+                          </v:var>
+                          <v:var name="SPISlaveHwPinMOSI" type="ENUMERATION">
+                            <a:a name="DESC" 
+                                 value="EN: Port Pin selection for Slave MTSR"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="LONG-NAME" 
+                                 value="MTSR3A_PORT2_PIN6: MTSR3A_PORT2_PIN6"/>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="8cb2b502-2224-4dd2-917b-f73778f22fef"/>
+                            <a:da name="DEFAULT" type="XPath" expr="ecu:get('Spi.QSPI3SlaveMosiPinDefault')"/>
+                            <a:da name="ENABLE" type="XPath">
+                            <a:tst expr="(../../../../SpiSafety/SpiSafetyEnable = 'true') and (../../../../SpiGeneral/SpiSlaveSelectRef = 'QSPI3')" />
+                            </a:da>
+                            <a:da name="RANGE" type="XPath" expr="ecu:list('Spi.QSPI3SlaveMosiPin')"/>
+                            <a:da name="TOOLTIP" value="Port Pin selection for Slave MTSR. Available pins are given in the range."/>
+                          </v:var>
+                          <v:var name="SPISlaveHwPinSCLK" type="ENUMERATION">
+                            <a:a name="DESC" 
+                                 value="EN: Port Pin selection for Slave SCLK"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="LONG-NAME" 
+                                 value="SCLK3A_PORT2_PIN7: SCLK3A_PORT2_PIN7"/>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="8cb2b502-2224-4dd2-917b-f7377811f22f"/>
+                            <a:da name="DEFAULT" type="XPath" expr="ecu:get('Spi.QSPI3SlaveSclkPinDefault')"/>
+                            <a:da name="ENABLE" type="XPath">
+                            <a:tst expr="(../../../../SpiSafety/SpiSafetyEnable = 'true') and (../../../../SpiGeneral/SpiSlaveSelectRef = 'QSPI3')" />
+                            </a:da>
+                            <a:da name="RANGE" type="XPath" expr="ecu:list('Spi.QSPI3SlaveSclkPin')"/>
+                            <a:da name="TOOLTIP" value="Port Pin selection for Slave SCLK. Available pins are given in the range."/>
+                          </v:var>
+                        </v:ctr>
+                        <v:ctr name="SpiHwDmaConfiguration" type="IDENTIFIABLE">
+                        <a:a name="DESC" value="EN: Spi DMA Configuration For QSPI node"/>
+                          <a:a name="LONG-NAME" value="SpiHwDmaConfiguration"/>
+                          <a:a name="UUID" 
+                               value="DCE:d4d23ce0-5d7f-6575-8216-3ae14ee45983"/>
+                            <a:da name="ENABLE" type="XPath">
+                            <a:tst expr="(../../../SpiGeneral/SpiLevelDelivered = '1' or ../../../SpiGeneral/SpiLevelDelivered = '2' or ../../../SpiGeneral/SpiSlaveSelectRef = 'QSPI3' )" />
+                            </a:da>
+                  <v:ref name="SpiHwDmaChannelReceptionRef" type="REFERENCE">
+                    <a:a name="DESC" 
+                         value="EN: This parameter refer DMA channel configuration in MCU. Used for SPI reception."/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                    <a:a name="UUID" 
+                         value="183bfb84-a97f-421f-ad57-5bee661aa350"/>
+                    <a:da name="REF" 
+                          value="ASPathDataOfSchema:/AURIX/Mcu/McuModuleConfiguration/DmaConfiguration/DmaChannel"/>
+                      <a:da name="TOOLTIP" value="DMA channel used for SPI reception."/>
+                  </v:ref>  
+                  <v:ref name="SpiHwDmaChannelTransmissionRef" type="REFERENCE">
+                    <a:a name="DESC" 
+                         value="EN: This parameter refer DMA channel configuration in MCU. Used for SPI transmission."/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                    <a:a name="UUID" 
+                         value="d27420e2-b898-4d7a-ba7c-3833cb3dfbe5"/>
+                    <a:da name="REF" 
+                          value="ASPathDataOfSchema:/AURIX/Mcu/McuModuleConfiguration/DmaConfiguration/DmaChannel"/>
+                      <a:da name="TOOLTIP" value="DMA channel used for SPI transmission."/>
+                  </v:ref>
+                        </v:ctr>
+                      </v:ctr>
+                      <v:ctr name="SpiHwConfigurationQspi4" 
+                             type="IDENTIFIABLE">
+                      <a:a name="DESC" 
+                           value="EN: Container for the SpiHwConfigurationQspi4"/>
+                        <a:a name="LONG-NAME" 
+                             value="SpiHwConfigurationQspi4"/>
+                        <a:a name="UUID" 
+                             value="593a4a79-11c3-431a-a7cd-a11b06b8f104"/>
+                        <a:da name="ENABLE" type="XPath">
+			<a:tst expr="((ecu:get('Spi.NoOfAvailableQspi') > 4) or (ecu:get('Rel.Derivate') = '_TRICORE_TC298'))" />
+                        </a:da>  
+                        <v:ctr name="SpiClockConfiguration" type="IDENTIFIABLE">
+                        <a:a name="DESC" value="EN: Spi Clock Configuration For QSPI node"/>
+                          <a:a name="LONG-NAME" value="SpiClockConfiguration"/>
+                          <a:a name="UUID" 
+                               value="DCE:33eb03cf-11f6-6c54-b967-396d7df4c2a1"/>
+                          <v:var name="SpiSleepEnable" type="BOOLEAN">
+                            <a:a name="DESC" 
+                                 value="EN: To control QSPIx sleep mode"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="20198341-11ac-4596-83ef-b334ac76a8cc"/>
+                            <a:da name="DEFAULT" value="false"/>
+                            <a:da name="TOOLTIP" value="To control QSPIx Hw sleep mode."/>
+                          </v:var>
+                        </v:ctr>
+                        <v:ctr name="SpiHwPinConfiguration" type="IDENTIFIABLE">
+                        <a:a name="DESC" value="EN: Spi HW Pin Configuration For QSPI node"/>
+                          <a:a name="LONG-NAME" 
+                               value="SpiHwPinConfiguration"/>
+                          <a:a name="UUID" 
+                               value="DCE:1da9feda-1119-6053-b223-c7cc4651411e"/>
+                          <v:var name="SpiHWPinMISO" type="ENUMERATION">
+                            <a:a name="DESC" 
+                                 value="EN: Port Pin selection for MISO"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="LONG-NAME" 
+                                 value="MRSTA_PORT6_PIN5: MRSTA_PORT10_PIN0MRSTA_PORT10_PIN0"/>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="8cb2a502-1124-4dd2-917b-f73678ef1854"/>
+                            <a:da name="DEFAULT" type="XPath" expr="ecu:get('Spi.QSPI4MisoPinDefault')"/>
+                            <a:da name="ENABLE" type="XPath">
+                            <a:tst expr="(../../../../SpiSafety/SpiSafetyEnable != 'true') or (../../../../SpiGeneral/SpiSlaveSelectRef != 'QSPI4')" />
+                            </a:da>                            
+                            <a:da name="RANGE" type="XPath" expr="ecu:list('Spi.QSPI4MisoPin')"/>
+                            <a:da name="TOOLTIP" value="Port Pin selection for MISO. Available pins are given in the range."/>
+                          </v:var>
+                          <v:var name="SPISlaveHwPinMOSI" type="ENUMERATION">
+                            <a:a name="DESC" 
+                                 value="EN: Port Pin selection for Slave MTSR"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="LONG-NAME" 
+                                 value="MTSR4A_PORT33_PIN12: MTSR4A_PORT33_PIN12"/>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="8cb2b502-2224-4dd2-917b-f73778f22f55"/>
+                            <a:da name="DEFAULT" type="XPath" expr="ecu:get('Spi.QSPI4SlaveMosiPinDefault')"/>
+                            <a:da name="ENABLE" type="XPath">
+                            <a:tst expr="(../../../../SpiSafety/SpiSafetyEnable = 'true') and (../../../../SpiGeneral/SpiSlaveSelectRef = 'QSPI4')" />
+                            </a:da>
+                            <a:da name="RANGE" type="XPath" expr="ecu:list('Spi.QSPI4SlaveMosiPin')"/>
+                            <a:da name="TOOLTIP" value="Port Pin selection for Slave MTSR. Available pins are given in the range."/>
+                          </v:var>
+                          <v:var name="SPISlaveHwPinSCLK" type="ENUMERATION">
+                            <a:a name="DESC" 
+                                 value="EN: Port Pin selection for Slave SCLK"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="LONG-NAME" 
+                                 value="SCLK4A_PORT33_PIN11: SCLK4A_PORT33_PIN11"/>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="8cb2b502-2224-4dd2-917b-f7377811f55e"/>
+                            <a:da name="DEFAULT" type="XPath" expr="ecu:get('Spi.QSPI4SlaveSclkPinDefault')"/>
+                            <a:da name="ENABLE" type="XPath">
+                            <a:tst expr="(../../../../SpiSafety/SpiSafetyEnable = 'true') and (../../../../SpiGeneral/SpiSlaveSelectRef = 'QSPI4')" />
+                            </a:da>
+                            <a:da name="RANGE" type="XPath" expr="ecu:list('Spi.QSPI4SlaveSclkPin')"/>
+                            <a:da name="TOOLTIP" value="Port Pin selection for Slave SCLK. Available pins are given in the range."/>
+                          </v:var>
+                        </v:ctr>
+                        <v:ctr name="SpiHwDmaConfiguration" type="IDENTIFIABLE">
+                        <a:a name="DESC" value="EN: Spi DMA Configuration For QSPI node"/>
+                          <a:a name="LONG-NAME" value="SpiHwDmaConfiguration"/>
+                          <a:a name="UUID" 
+                               value="DCE:d4d23ce0-117f-6575-8216-3ae14ee45983"/>
+                            <a:da name="ENABLE" type="XPath">
+                            <a:tst expr="(../../../SpiGeneral/SpiLevelDelivered = '1' or ../../../SpiGeneral/SpiLevelDelivered = '2' or ../../../SpiGeneral/SpiSlaveSelectRef = 'QSPI4')" />
+                            </a:da>
+                  <v:ref name="SpiHwDmaChannelReceptionRef" type="REFERENCE">
+                    <a:a name="DESC" 
+                         value="EN: This parameter refer DMA channel configuration in MCU. Used for SPI reception."/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                    <a:a name="UUID" 
+                         value="183bfb84-117f-421f-ad57-5bee661aa350"/>
+                    <a:da name="REF" 
+                          value="ASPathDataOfSchema:/AURIX/Mcu/McuModuleConfiguration/DmaConfiguration/DmaChannel"/>
+                      <a:da name="TOOLTIP" value="DMA channel used for SPI reception."/>
+                  </v:ref>  
+                  <v:ref name="SpiHwDmaChannelTransmissionRef" type="REFERENCE">
+                    <a:a name="DESC" 
+                         value="EN: This parameter refer DMA channel configuration in MCU. Used for SPI transmission."/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                    <a:a name="UUID" 
+                         value="d27420e2-1198-4d7a-ba7c-3833cb3dfbe5"/>
+                    <a:da name="REF" 
+                          value="ASPathDataOfSchema:/AURIX/Mcu/McuModuleConfiguration/DmaConfiguration/DmaChannel"/>
+                      <a:da name="TOOLTIP" value="DMA channel used for SPI transmission."/>
+                  </v:ref>
+                        </v:ctr>
+                      </v:ctr>
+                      <v:ctr name="SpiHwConfigurationQspi5" 
+                             type="IDENTIFIABLE">
+                      <a:a name="DESC" 
+                           value="EN: Container for the SpiHwConfigurationQspi5"/>
+                        <a:a name="LONG-NAME" 
+                             value="SpiHwConfigurationQspi5"/>
+                        <a:a name="UUID" 
+                             value="593a4a79-22c3-431a-a7cd-a11b06b8f104"/>
+                        <a:da name="ENABLE" type="XPath">
+                        <a:tst expr="ecu:get('Spi.NoOfAvailableQspi') > 5" /> 
+                        </a:da>  
+                        <v:ctr name="SpiClockConfiguration" type="IDENTIFIABLE">
+                        <a:a name="DESC" value="EN: Spi Clock Configuration For QSPI node"/>
+                          <a:a name="LONG-NAME" value="SpiClockConfiguration"/>
+                          <a:a name="UUID" 
+                               value="DCE:33eb03cf-22f6-6c54-b967-396d7df4c2a1"/>
+                          <v:var name="SpiSleepEnable" type="BOOLEAN">
+                            <a:a name="DESC" 
+                                 value="EN: To control QSPIx sleep mode"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="20198341-22ac-4596-83ef-b334ac76a8cc"/>
+                            <a:da name="DEFAULT" value="false"/>
+                            <a:da name="TOOLTIP" value="To control QSPIx Hw sleep mode."/>
+                          </v:var>
+                        </v:ctr>
+                        <v:ctr name="SpiHwPinConfiguration" type="IDENTIFIABLE">
+                        <a:a name="DESC" value="EN: Spi HW Pin Configuration For QSPI node"/>
+                          <a:a name="LONG-NAME" 
+                               value="SpiHwPinConfiguration"/>
+                          <a:a name="UUID" 
+                               value="DCE:1da9feda-2219-6053-b223-c7cc4651411e"/>
+                          <v:var name="SpiHWPinMISO" type="ENUMERATION">
+                            <a:a name="DESC" 
+                                 value="EN: Port Pin selection for MISO"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="LONG-NAME" 
+                                 value="MRSTA_PORT6_PIN5: MRSTA_PORT10_PIN0MRSTA_PORT10_PIN0"/>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="8cb2a502-3324-4dd2-917b-f73678ef1854"/>
+                            <a:da name="DEFAULT" type="XPath" expr="ecu:get('Spi.QSPI5MisoPinDefault')"/>
+                            <a:da name="ENABLE" type="XPath">
+                            <a:tst expr="(../../../../SpiSafety/SpiSafetyEnable != 'true') or (../../../../SpiGeneral/SpiSlaveSelectRef != 'QSPI5')" />
+                            </a:da>                            
+                            <a:da name="RANGE" type="XPath" expr="ecu:list('Spi.QSPI5MisoPin')"/>
+                            <a:da name="TOOLTIP" value="Port Pin selection for MISO. Available pins are given in the range."/>
+                          </v:var>
+                          <v:var name="SPISlaveHwPinMOSI" type="ENUMERATION">
+                            <a:a name="DESC" 
+                                 value="EN: Port Pin selection for Slave MTSR"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="LONG-NAME" 
+                                 value="MTSR5A_PORT15_PIN14: MTSR5A_PORT15_PIN14"/>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="8cb2b502-2224-4dd2-917b-f73778f55fee"/>
+                            <a:da name="DEFAULT" type="XPath" expr="ecu:get('Spi.QSPI5SlaveMosiPinDefault')"/>
+                            <a:da name="ENABLE" type="XPath">
+                            <a:tst expr="(../../../../SpiSafety/SpiSafetyEnable = 'true') and (../../../../SpiGeneral/SpiSlaveSelectRef = 'QSPI5')" />
+                            </a:da>
+                            <a:da name="RANGE" type="XPath" expr="ecu:list('Spi.QSPI5SlaveMosiPin')"/>
+                            <a:da name="TOOLTIP" value="Port Pin selection for Slave MTSR. Available pins are given in the range."/>
+                          </v:var>
+                          <v:var name="SPISlaveHwPinSCLK" type="ENUMERATION">
+                            <a:a name="DESC" 
+                                 value="EN: Port Pin selection for Slave SCLK"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="LONG-NAME" 
+                                 value="SCLK5A_PORT15_PIN15: SCLK5A_PORT15_PIN15"/>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="8cb2b502-2224-4dd2-917b-f7377855f22e"/>
+                            <a:da name="DEFAULT" type="XPath" expr="ecu:get('Spi.QSPI5SlaveSclkPinDefault')"/>
+                            <a:da name="ENABLE" type="XPath">
+                            <a:tst expr="(../../../../SpiSafety/SpiSafetyEnable = 'true') and (../../../../SpiGeneral/SpiSlaveSelectRef = 'QSPI5')" />
+                            </a:da>
+                            <a:da name="RANGE" type="XPath" expr="ecu:list('Spi.QSPI5SlaveSclkPin')"/>
+                            <a:da name="TOOLTIP" value="Port Pin selection for Slave SCLK. Available pins are given in the range."/>
+                          </v:var>
+                        </v:ctr>
+                        <v:ctr name="SpiHwDmaConfiguration" type="IDENTIFIABLE">
+                        <a:a name="DESC" value="EN: Spi DMA Configuration For QSPI node"/>
+                          <a:a name="LONG-NAME" value="SpiHwDmaConfiguration"/>
+                          <a:a name="UUID" 
+                               value="DCE:d4d23ce0-227f-6575-8216-3ae14ee45983"/>
+                            <a:da name="ENABLE" type="XPath">
+                            <a:tst expr="(../../../SpiGeneral/SpiLevelDelivered = '1' or ../../../SpiGeneral/SpiLevelDelivered = '2' or ../../../SpiGeneral/SpiSlaveSelectRef = 'QSPI5')" />
+                            </a:da>
+                  <v:ref name="SpiHwDmaChannelReceptionRef" type="REFERENCE">
+                    <a:a name="DESC" 
+                         value="EN: This parameter refer DMA channel configuration in MCU. Used for SPI reception."/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                    <a:a name="UUID" 
+                         value="183bfb84-227f-421f-ad57-5bee661aa350"/>
+                    <a:da name="REF" 
+                          value="ASPathDataOfSchema:/AURIX/Mcu/McuModuleConfiguration/DmaConfiguration/DmaChannel"/>
+                      <a:da name="TOOLTIP" value="DMA channel used for SPI reception."/>
+                  </v:ref>  
+                  <v:ref name="SpiHwDmaChannelTransmissionRef" type="REFERENCE">
+                    <a:a name="DESC" 
+                         value="EN: This parameter refer DMA channel configuration in MCU. Used for SPI transmission."/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                    <a:a name="UUID" 
+                         value="d27420e2-2298-4d7a-ba7c-3833cb3dfbe5"/>
+                    <a:da name="REF" 
+                          value="ASPathDataOfSchema:/AURIX/Mcu/McuModuleConfiguration/DmaConfiguration/DmaChannel"/>
+                      <a:da name="TOOLTIP" value="DMA channel used for SPI transmission."/>
+                  </v:ref>
+                        </v:ctr>
+                      </v:ctr>                                            
+              </v:ctr>              
+              <v:ctr name="SpiPublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC" 
+                     value="EN: This container contains the published information of the Spi driver."/>
+                <a:a name="UUID" value="6985f177-fe69-4ba3-8e4e-5be27814177b"/>
+                    <v:var name="SpiMaxHwUnit" type="INTEGER">
+                      <a:a name="DESC" 
+                           value="EN: The parameter represents Maximum supported Spi HW units."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                        <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="f5bfe0aa-bdd7-43d5-8427-c23bcb39b44a"/>
+                      <a:da name="DEFAULT" type="XPath">
+                      <a:tst expr="ecu:get('Spi.NoOfAvailableQspi')"/>
+                      </a:da>
+                      <a:da name="ENABLE" value="false"/>
+                      <a:da name="TOOLTIP" value="The parameter represents Maximum supported Spi HW units."/>
+                    </v:var>
+              </v:ctr>
+              <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC" value="EN: Common container, aggregated by all modules. It contains published information about vendor and versions."/>
+                <a:a name="UUID" value="492f8482-3e2c-4bf1-b27f-01fd7ac35788"/>
+                <v:var name="ArMajorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Major version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="bd0a8d38-4d8c-4ee9-88fe-1166b258bb8a"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="3"/>
+                </v:var>
+                <v:var name="ArMinorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Minor version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="73f87c7f-e230-4178-bff0-eb2704aae656"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="2"/>
+                </v:var>
+                <v:var name="ArPatchVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Patch level version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="2380135d-6778-417a-a34b-e10017d4dd54"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="SwMajorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Major version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="fca015e3-5f28-4cbe-8949-8f4b87d86827"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="4"/>
+                </v:var>
+                <v:var name="SwMinorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Minor version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="14ab81e0-3d80-43dc-8b92-247e5a542df9"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="7"/>
+                </v:var>
+                <v:var name="SwPatchVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="32e37bfd-18b6-41d1-9248-a81dbe0fe4c5"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="ModuleId" type="INTEGER">
+                  <a:a name="DESC" value="EN: Module ID of this module from Module List"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="3b407478-6902-4f80-b7cf-f33b0854e638"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="83"/>
+                </v:var>
+                <v:var name="VendorId" type="INTEGER">
+                  <a:a name="DESC" value="EN: Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="7d650b2d-4adb-41f0-a68e-5f0c416501d1"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="17"/>
+                </v:var>
+                <v:var name="VendorApiInfix" type="STRING">
+                  <a:a name="DESC">
+                    <a:v>EN: In driver modules which can be instantiated several times on a single ECU, BSW00347 requires that the name of APIs is extended by the VendorId and a vendor specific name. 
+              This parameter is used to specify the vendor specific name. In total, the implementation specific name is generated as follows:
+              &lt;ModuleName&gt;_&gt;VendorId&gt;_&lt;VendorApiInfix&gt;&lt;Api name from SWS&gt;.
+              
+              E.g.  assuming that the VendorId of the implementor is 123 and the implementer chose a VendorApiInfix of &quot;v11r456&quot; a api name Can_Write defined in the SWS will translate to Can_123_v11r456Write. 
+              
+              This parameter is mandatory for all modules with upper multiplicity &gt; 1. It shall not be used for modules with upper multiplicity =1.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="ad363b41-e945-4717-b12f-c2f800ef138e"/>
+                  <a:da name="ENABLE" value="false"/>
+                  <a:da name="DEFAULT" value=""/>
+                </v:var>
+                <v:var name="Release" type="STRING">
+                  <a:a name="DESC" value="EN: Aurix derivative used for thr implementation"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="3b407478-6902-4f40-b7cf-f33b0854e638"/>
+                  <a:da name="DEFAULT" type="XPath" expr="ecu:get('Rel.Derivate')"/>
+                </v:var>
+              </v:ctr>                            
+            </v:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+
+</datamodel>

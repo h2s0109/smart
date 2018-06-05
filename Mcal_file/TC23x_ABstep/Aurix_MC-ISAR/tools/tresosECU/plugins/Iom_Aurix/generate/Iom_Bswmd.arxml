@@ -1,0 +1,1028 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!--
+/******************************************************************************
+**                                                                           **
+** Copyright (C) Infineon Technologies (2015)                                **
+**                                                                           **
+** All rights reserved.                                                      **
+**                                                                           **
+** This document contains proprietary information belonging to Infineon      **
+** Technologies. Passing on and copying of this document, and communication  **
+** of its contents is not permitted without prior written authorization.     **
+**                                                                           **
+*******************************************************************************
+**                                                                           **
+**  $FILENAME   : Iom_Bswmd.arxml $                                          **
+**                                                                           **
+**  $CC VERSION : \main\18 $                                                 **
+**                                                                           **
+**  $DATE       : 2015-11-30 $                                               **
+**                                                                           **
+**  AUTHOR    : DL-AUTOSAR-Engineering                                       **
+**                                                                           **
+**  VENDOR    : Infineon Technologies                                        **
+**                                                                           **
+**  DESCRIPTION  : BSWMD for Iom driver                            **
+**                                                                           **
+**  MAY BE CHANGED BY USER [yes/no]: No                                      **
+**                                                                           **
+******************************************************************************/
+/******************************************************************************
+**  Traceability   :                                                         **
+** 
+                                                                             **
+******************************************************************************/
+-->
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-0-3.xsd"> 
+[!AUTOSPACING!][!//
+[!NOCODE!][!//
+[!SELECT " as:modconf('Iom')[1]"!][!//"!][!//
+[!VAR "Iom_DeinitApi" = "IomGeneral/IomDeinitApi"!][!//
+[!VAR "Iom_VersionInfoApi" = "IomGeneral/IomVersionInfoApi"!][!//
+[!ENDSELECT!][!//      
+[!ENDNOCODE!][!//  
+<AR-PACKAGES>
+    <AR-PACKAGE>
+        <SHORT-NAME>AURIX_Iom</SHORT-NAME>
+        <AR-PACKAGES>
+            <AR-PACKAGE>
+                <SHORT-NAME>BswModuleDescriptions</SHORT-NAME>
+                <CATEGORY>STANDARD</CATEGORY>
+                <ELEMENTS>
+                    <BSW-MODULE-DESCRIPTION>
+                        <SHORT-NAME>Iom</SHORT-NAME>
+                        <LONG-NAME>
+                            <L-4 L="EN">Input Output Monitor</L-4>
+                        </LONG-NAME>
+                        <CATEGORY>BSW_MODULE</CATEGORY>
+                        <MODULE-ID>255</MODULE-ID>
+                        <PROVIDED-ENTRYS>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_Init</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+[!IF "$Iom_DeinitApi = 'true'"!][!//
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_Deinit</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+[!ENDIF!][!//
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_ResetKernel</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_ClrResetStatus</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_ClrFpcEdgeStatus</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_GetFpcEdgeStatus</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_SetEcmThresVal</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_GetEcmThresVal</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_SetFpcCompare</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_GetFpcCompare</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_SetLamThreshold</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_GetLamThreshold</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_GetLamEntWinCount</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_SetLamConfig</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_GetLamConfig</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_GetEcmGlobalEveSel</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_SetEcmGlobalEveSel</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_GetAccessEnReg0</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_SetAccessEnReg0</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+[!IF "$Iom_VersionInfoApi = 'true'"!][!//
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_GetVersionInfo</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+[!ENDIF!][!//
+                        </PROVIDED-ENTRYS>
+                        <BSW-MODULE-DEPENDENCYS>
+                            <BSW-MODULE-DEPENDENCY>
+                                <SHORT-NAME>DetDependency</SHORT-NAME>
+                                <TARGET-MODULE-ID>15</TARGET-MODULE-ID>
+                                <REQUIRED-ENTRYS>
+                                    <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                        <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_Det/BswModuleEntrys/Det_ReportError</BSW-MODULE-ENTRY-REF>
+                                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                </REQUIRED-ENTRYS>
+                            </BSW-MODULE-DEPENDENCY>
+                        </BSW-MODULE-DEPENDENCYS>
+                        <INTERNAL-BEHAVIORS>
+                          <BSW-INTERNAL-BEHAVIOR>
+                            <SHORT-NAME>IomBehavior</SHORT-NAME>
+                            <STATIC-MEMORYS>
+                              <VARIABLE-DATA-PROTOTYPE>
+                                <SHORT-NAME>Iom_InitStatus</SHORT-NAME>
+                                <SW-DATA-DEF-PROPS>
+                                  <SW-DATA-DEF-PROPS-VARIANTS>
+                                    <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                    <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                    </SW-DATA-DEF-PROPS-CONDITIONAL>
+                                  </SW-DATA-DEF-PROPS-VARIANTS>
+                                </SW-DATA-DEF-PROPS>
+                                <TYPE-TREF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</TYPE-TREF>
+                              </VARIABLE-DATA-PROTOTYPE>
+                            </STATIC-MEMORYS>
+                            <ENTITYS>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Iom_Init</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_Init</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+[!IF "$Iom_DeinitApi = 'true'"!][!//
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Iom_Deinit</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_Deinit</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+[!ENDIF!][!//
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Iom_ResetKernel</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_ResetKernel</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Iom_ClrResetStatus</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_ClrResetStatus</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Iom_ClrFpcEdgeStatus</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_ClrFpcEdgeStatus</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Iom_GetFpcEdgeStatus</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_GetFpcEdgeStatus</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Iom_SetEcmThresVal</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_SetEcmThresVal</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Iom_GetEcmThresVal</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_GetEcmThresVal</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Iom_SetFpcCompare</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_SetFpcCompare</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Iom_GetFpcCompare</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_GetFpcCompare</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Iom_SetLamThreshold</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_SetLamThreshold</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Iom_GetLamThreshold</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_GetLamThreshold</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Iom_GetLamEntWinCount</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_GetLamEntWinCount</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Iom_SetLamConfig</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_SetLamConfig</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Iom_GetLamConfig</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_GetLamConfig</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Iom_GetEcmGlobalEveSel</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_GetEcmGlobalEveSel</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Iom_SetEcmGlobalEveSel</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_SetEcmGlobalEveSel</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Iom_GetAccessEnReg0</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_GetAccessEnReg0</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Iom_SetAccessEnReg0</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_SetAccessEnReg0</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+[!IF "$Iom_VersionInfoApi = 'true'"!][!//
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Iom_GetVersionInfo</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Iom/BswModuleEntrys/Iom_GetVersionInfo</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+[!ENDIF!][!//
+                            </ENTITYS>
+                          </BSW-INTERNAL-BEHAVIOR>
+                        </INTERNAL-BEHAVIORS>
+                    </BSW-MODULE-DESCRIPTION>
+                </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE>
+                <SHORT-NAME>BswModuleEntrys</SHORT-NAME>
+                <CATEGORY>STANDARD</CATEGORY>
+                <ELEMENTS>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Iom_Init</SHORT-NAME>
+                        <SERVICE-ID>1</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>ConfigPtr</SHORT-NAME>
+                            <CATEGORY>DATA_REFERENCE</CATEGORY>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <SW-POINTER-TARGET-PROPS>
+                                <TARGET-CATEGORY>TYPE_REFERENCE</TARGET-CATEGORY>
+                                <SW-DATA-DEF-PROPS>
+                                <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AURIX_Iom/ImplementationDataTypes/Iom_ConfigType</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                                </SW-DATA-DEF-PROPS-VARIANTS>
+                                </SW-DATA-DEF-PROPS>
+                                </SW-POINTER-TARGET-PROPS>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+[!IF "$Iom_DeinitApi = 'true'"!][!//
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Iom_Deinit</SHORT-NAME>
+                        <SERVICE-ID>2</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                    </BSW-MODULE-ENTRY>
+[!ENDIF!][!//
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Iom_ResetKernel</SHORT-NAME>
+                        <SERVICE-ID>19</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                    </BSW-MODULE-ENTRY>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Iom_ClrResetStatus</SHORT-NAME>
+                        <SERVICE-ID>20</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                    </BSW-MODULE-ENTRY>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Iom_ClrFpcEdgeStatus</SHORT-NAME>
+                        <SERVICE-ID>7</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>FpcNo</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>Edge</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Iom_GetFpcEdgeStatus</SHORT-NAME>
+                        <SERVICE-ID>6</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <RETURN-TYPE>
+                          <SHORT-NAME>Return</SHORT-NAME>
+                          <SW-DATA-DEF-PROPS>
+                            <SW-DATA-DEF-PROPS-VARIANTS>
+                              <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint32</IMPLEMENTATION-DATA-TYPE-REF>
+                              </SW-DATA-DEF-PROPS-CONDITIONAL>
+                            </SW-DATA-DEF-PROPS-VARIANTS>
+                          </SW-DATA-DEF-PROPS>
+                        </RETURN-TYPE>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>FpcNo</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>Edge</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Iom_SetEcmThresVal</SHORT-NAME>
+                        <SERVICE-ID>16</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>CountVal</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>CounterNo</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>SelInput</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Iom_GetEcmThresVal</SHORT-NAME>
+                        <SERVICE-ID>15</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <RETURN-TYPE>
+                          <SHORT-NAME>Return</SHORT-NAME>
+                          <SW-DATA-DEF-PROPS>
+                            <SW-DATA-DEF-PROPS-VARIANTS>
+                              <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                              </SW-DATA-DEF-PROPS-CONDITIONAL>
+                            </SW-DATA-DEF-PROPS-VARIANTS>
+                          </SW-DATA-DEF-PROPS>
+                        </RETURN-TYPE>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>CounterNo</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Iom_SetFpcCompare</SHORT-NAME>
+                        <SERVICE-ID>4</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>FpcNo</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>CompVal</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint16</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Iom_GetFpcCompare</SHORT-NAME>
+                        <SERVICE-ID>5</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <RETURN-TYPE>
+                          <SHORT-NAME>Return</SHORT-NAME>
+                          <SW-DATA-DEF-PROPS>
+                            <SW-DATA-DEF-PROPS-VARIANTS>
+                              <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint16</IMPLEMENTATION-DATA-TYPE-REF>
+                              </SW-DATA-DEF-PROPS-CONDITIONAL>
+                            </SW-DATA-DEF-PROPS-VARIANTS>
+                          </SW-DATA-DEF-PROPS>
+                        </RETURN-TYPE>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>FpcNo</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Iom_SetLamThreshold</SHORT-NAME>
+                        <SERVICE-ID>8</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>LamNo</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>ThresVal</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint32</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Iom_GetLamThreshold</SHORT-NAME>
+                        <SERVICE-ID>9</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <RETURN-TYPE>
+                          <SHORT-NAME>Return</SHORT-NAME>
+                          <SW-DATA-DEF-PROPS>
+                            <SW-DATA-DEF-PROPS-VARIANTS>
+                              <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint32</IMPLEMENTATION-DATA-TYPE-REF>
+                              </SW-DATA-DEF-PROPS-CONDITIONAL>
+                            </SW-DATA-DEF-PROPS-VARIANTS>
+                          </SW-DATA-DEF-PROPS>
+                        </RETURN-TYPE>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>LamNo</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Iom_GetLamEntWinCount</SHORT-NAME>
+                        <SERVICE-ID>10</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <RETURN-TYPE>
+                          <SHORT-NAME>Return</SHORT-NAME>
+                          <SW-DATA-DEF-PROPS>
+                            <SW-DATA-DEF-PROPS-VARIANTS>
+                              <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint32</IMPLEMENTATION-DATA-TYPE-REF>
+                              </SW-DATA-DEF-PROPS-CONDITIONAL>
+                            </SW-DATA-DEF-PROPS-VARIANTS>
+                          </SW-DATA-DEF-PROPS>
+                        </RETURN-TYPE>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>LamNo</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Iom_SetLamConfig</SHORT-NAME>
+                        <SERVICE-ID>11</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>LamNo</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>ConfigVal</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint32</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Iom_GetLamConfig</SHORT-NAME>
+                        <SERVICE-ID>12</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <RETURN-TYPE>
+                          <SHORT-NAME>Return</SHORT-NAME>
+                          <SW-DATA-DEF-PROPS>
+                            <SW-DATA-DEF-PROPS-VARIANTS>
+                              <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint32</IMPLEMENTATION-DATA-TYPE-REF>
+                              </SW-DATA-DEF-PROPS-CONDITIONAL>
+                            </SW-DATA-DEF-PROPS-VARIANTS>
+                          </SW-DATA-DEF-PROPS>
+                        </RETURN-TYPE>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>LamNo</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Iom_GetEcmGlobalEveSel</SHORT-NAME>
+                        <SERVICE-ID>13</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <RETURN-TYPE>
+                          <SHORT-NAME>Return</SHORT-NAME>
+                          <SW-DATA-DEF-PROPS>
+                            <SW-DATA-DEF-PROPS-VARIANTS>
+                              <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint32</IMPLEMENTATION-DATA-TYPE-REF>
+                              </SW-DATA-DEF-PROPS-CONDITIONAL>
+                            </SW-DATA-DEF-PROPS-VARIANTS>
+                          </SW-DATA-DEF-PROPS>
+                        </RETURN-TYPE>
+                    </BSW-MODULE-ENTRY>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Iom_SetEcmGlobalEveSel</SHORT-NAME>
+                        <SERVICE-ID>14</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>Value</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint32</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Iom_GetAccessEnReg0</SHORT-NAME>
+                        <SERVICE-ID>17</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <RETURN-TYPE>
+                          <SHORT-NAME>Return</SHORT-NAME>
+                          <SW-DATA-DEF-PROPS>
+                            <SW-DATA-DEF-PROPS-VARIANTS>
+                              <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint32</IMPLEMENTATION-DATA-TYPE-REF>
+                              </SW-DATA-DEF-PROPS-CONDITIONAL>
+                            </SW-DATA-DEF-PROPS-VARIANTS>
+                          </SW-DATA-DEF-PROPS>
+                        </RETURN-TYPE>
+                    </BSW-MODULE-ENTRY>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Iom_SetAccessEnReg0</SHORT-NAME>
+                        <SERVICE-ID>18</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>Value</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint32</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+[!IF "$Iom_VersionInfoApi = 'true'"!][!//
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Iom_GetVersionInfo</SHORT-NAME>
+                        <SERVICE-ID>3</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>MACRO</SW-SERVICE-IMPL-POLICY>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>VersionInfoPtr</SHORT-NAME>
+                            <CATEGORY>DATA_REFERENCE</CATEGORY>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <SW-POINTER-TARGET-PROPS>
+                                <TARGET-CATEGORY>TYPE_REFERENCE</TARGET-CATEGORY>
+                                <SW-DATA-DEF-PROPS>
+                                <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Std/ImplementationDataTypes/Std_VersionInfoType</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                                </SW-DATA-DEF-PROPS-VARIANTS>
+                                </SW-DATA-DEF-PROPS>
+                                </SW-POINTER-TARGET-PROPS>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+[!ENDIF!][!//
+                </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE>
+                <SHORT-NAME>Implementations</SHORT-NAME>
+                <ELEMENTS>
+                    <BSW-IMPLEMENTATION>
+                        <SHORT-NAME>Iom</SHORT-NAME>
+                        <CODE-DESCRIPTORS>
+                            <CODE>
+                                <SHORT-NAME>Files</SHORT-NAME>
+                                <ARTIFACT-DESCRIPTORS>
+                                    <AUTOSAR-ENGINEERING-OBJECT>
+                                        <SHORT-LABEL>ssc::src::Iom.c</SHORT-LABEL>
+                                        <CATEGORY>SWSRC</CATEGORY>
+                                    </AUTOSAR-ENGINEERING-OBJECT>
+                                    <AUTOSAR-ENGINEERING-OBJECT>
+                                        <SHORT-LABEL>ssc::inc::Iom.h</SHORT-LABEL>
+                                        <CATEGORY>SWHDR</CATEGORY>
+                                    </AUTOSAR-ENGINEERING-OBJECT>
+                                    <AUTOSAR-ENGINEERING-OBJECT>
+                                        <SHORT-LABEL>ssc::mak::infineon_iom_cfg.mak</SHORT-LABEL>
+                                        <CATEGORY>SWMAKE</CATEGORY>
+                                    </AUTOSAR-ENGINEERING-OBJECT>
+                                    <AUTOSAR-ENGINEERING-OBJECT>
+                                        <SHORT-LABEL>ssc::mak::infineon_iom_check.mak</SHORT-LABEL>
+                                        <CATEGORY>SWMAKE</CATEGORY>
+                                    </AUTOSAR-ENGINEERING-OBJECT>
+                                    <AUTOSAR-ENGINEERING-OBJECT>
+                                        <SHORT-LABEL>ssc::mak::infineon_iom_defs.mak</SHORT-LABEL>
+                                        <CATEGORY>SWMAKE</CATEGORY>
+                                    </AUTOSAR-ENGINEERING-OBJECT>
+                                    <AUTOSAR-ENGINEERING-OBJECT>
+                                        <SHORT-LABEL>ssc::mak::infineon_iom_rules.mak</SHORT-LABEL>
+                                        <CATEGORY>SWMAKE</CATEGORY>
+                                    </AUTOSAR-ENGINEERING-OBJECT>
+                                </ARTIFACT-DESCRIPTORS>
+                            </CODE>
+                        </CODE-DESCRIPTORS>
+                        <COMPILERS>
+                            <COMPILER>
+                                <SHORT-NAME>TASKING_COMPILE</SHORT-NAME>
+                                <NAME>TASKING</NAME>
+                                <OPTIONS>&quot;-c --core=tc1.6.x -t -Wa-gAHLs --emit-locals=-equ,-symbols -Wa-Ogs -Wa--error-limit=42 --iso=90 --eabi-compliant --integer-enumeration --language=-comments,-gcc,+volatile,-strings --switch=auto --align=0 --default-near-size=0 --default-a0-size=0 --default-a1-size=0 -O2ROPYG --tradeoff=4 -g --source -D_TASKING_C_TRICORE_=1 $(CALLFUNCTION)&quot;</OPTIONS>
+                                <VENDOR>Tasking</VENDOR>
+                                <VERSION>Tasking</VERSION>
+                            </COMPILER>
+                            <COMPILER>
+                                <SHORT-NAME>DIAB_COMPILE</SHORT-NAME>
+                                <NAME>DIAB</NAME>
+                                <OPTIONS>&quot;-c -tTC27xAstep16PMG:cross -Xdialect-c89 -Xno-common -Xalign-functions=4 -Xfp-fast -Xsection-split=1 -Xkeep-assembly-file=2 -g3 -ew4084 -ei4177,4550,4549,4068,5388 -XO -D_DIABDATA_C_TRICORE_=1 $(CALLFUNCTION)&quot;</OPTIONS>
+                                <VENDOR>WindRiver</VENDOR>
+                                <VERSION>WindRiver</VERSION>
+                            </COMPILER>
+                            <COMPILER>
+                                <SHORT-NAME>GNU_COMPILE</SHORT-NAME>
+                                <NAME>GNU</NAME>
+                                <OPTIONS>&quot;-c -save-temps=obj -std=iso9899:1990 -ansi -fno-asm -ffreestanding -Wundef -Wp,-std=iso9899:1990 -fno-short-enums -fpeel-loops -falign-functions=4 -frecord-gcc-switches -fsection-anchors -funsigned-bitfields -ffunction-sections -fno-ivopts -fno-peephole2 -nostartfiles -O3 -g3 -W -Wall -Wuninitialized -DTRIBOARD_TC27XX -mcpu=tc27xx -D_GNU_C_TRICORE_=1 $(CALLFUNCTION)&quot;</OPTIONS>
+                                <VENDOR>Hightec</VENDOR>
+                                <VERSION>Hightec</VERSION>
+                            </COMPILER>
+                        </COMPILERS>
+                        <GENERATED-ARTIFACTS>
+                            <DEPENDENCY-ON-ARTIFACT>
+                                <SHORT-NAME>Iom_PBCfg_c</SHORT-NAME>
+                                <ARTIFACT-DESCRIPTOR>
+                                    <SHORT-LABEL>generate::src::Iom_PBCfg.c</SHORT-LABEL>
+                                    <CATEGORY>SWSRC</CATEGORY>
+                                </ARTIFACT-DESCRIPTOR>
+                                <USAGES>
+                                    <USAGE>CODEGENERATION</USAGE>
+                                </USAGES>
+                            </DEPENDENCY-ON-ARTIFACT>
+                            <DEPENDENCY-ON-ARTIFACT>
+                                <SHORT-NAME>Iom_Cfg_h</SHORT-NAME>
+                                <ARTIFACT-DESCRIPTOR>
+                                    <SHORT-LABEL>generate::inc::Iom_Cfg.h</SHORT-LABEL>
+                                    <CATEGORY>SWHDR</CATEGORY>
+                                </ARTIFACT-DESCRIPTOR>
+                                <USAGES>
+                                    <USAGE>CODEGENERATION</USAGE>
+                                </USAGES>
+                            </DEPENDENCY-ON-ARTIFACT>
+                            <DEPENDENCY-ON-ARTIFACT>
+                                <SHORT-NAME>Iom_xdm</SHORT-NAME>
+                                <ARTIFACT-DESCRIPTOR>
+                                    <SHORT-LABEL>config::Iom.xdm</SHORT-LABEL>
+                                    <CATEGORY>SWTOOL</CATEGORY>
+                                </ARTIFACT-DESCRIPTOR>
+                                <USAGES>
+                                    <USAGE>CODEGENERATION</USAGE>
+                                </USAGES>
+                            </DEPENDENCY-ON-ARTIFACT>
+                            <DEPENDENCY-ON-ARTIFACT>
+                                <SHORT-NAME>Iom_bmd</SHORT-NAME>
+                                <ARTIFACT-DESCRIPTOR>
+                                    <SHORT-LABEL>autosar::Iom.bmd</SHORT-LABEL>
+                                    <CATEGORY>SWTOOL</CATEGORY>
+                                </ARTIFACT-DESCRIPTOR>
+                                <USAGES>
+                                    <USAGE>CODEGENERATION</USAGE>
+                                </USAGES>
+                            </DEPENDENCY-ON-ARTIFACT>
+                        </GENERATED-ARTIFACTS>
+                        <LINKERS>
+                            <LINKER>
+                                <SHORT-NAME>TASKING_LINK</SHORT-NAME>
+                                <NAME>TASKING</NAME>
+                                <OPTIONS>&quot;-t -d_mcal_pjt.lsl -D__CPU__=tc27x -Cmpe:vtc -Otxycl --error-limit=42 -M -mcrfiklsmnoduq -lc -lfp -lrt&quot;</OPTIONS>
+                                <VENDOR>Tasking</VENDOR>
+                                <VERSION>Tasking</VERSION>
+                            </LINKER>
+                            <LINKER>
+                                <SHORT-NAME>DIAB_LINK</SHORT-NAME>
+                                <NAME>DIAB</NAME>
+                                <OPTIONS>&quot;-m6 &quot;_mcal_pjt.dld&quot; -lc&quot;</OPTIONS>
+                                <VENDOR>WindRiver</VENDOR>
+                                <VERSION>WindRiver</VERSION>
+                            </LINKER>
+                            <LINKER>
+                                <SHORT-NAME>GNU_LINK</SHORT-NAME>
+                                <NAME>GNU</NAME>
+                                <OPTIONS>&quot;-T&quot;_mcal_pjt.ld&quot; -nostartfiles -Wl,--allow-multiple-definition -Wl,--cref -Wl,--oformat=elf32-tricore -Wl,--mcpu=tc161 -Wl,--mem-holes -Wl,--extmap=&quot;a&quot;&quot;</OPTIONS>
+                                <VENDOR>Hightec</VENDOR>
+                                <VERSION>Hightec</VERSION>
+                            </LINKER>
+                        </LINKERS>
+                        <PROGRAMMING-LANGUAGE>C</PROGRAMMING-LANGUAGE>
+                        <RESOURCE-CONSUMPTION>
+                            <SHORT-NAME>ResourceConsumption</SHORT-NAME>
+                            <MEMORY-SECTIONS>
+                                <MEMORY-SECTION>
+                                    <SHORT-NAME>IOM_VAR_8BIT</SHORT-NAME>
+                                    <ALIGNMENT>8</ALIGNMENT>
+                                    <SIZE>1</SIZE>
+                                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR</SW-ADDRMETHOD-REF>
+                                </MEMORY-SECTION>
+                                <MEMORY-SECTION>
+                                    <SHORT-NAME>IOM_VAR_32BIT</SHORT-NAME>
+                                    <ALIGNMENT>32</ALIGNMENT>
+                                    <SIZE>4</SIZE>
+                                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR</SW-ADDRMETHOD-REF>
+                                </MEMORY-SECTION>
+                                <MEMORY-SECTION>
+                                    <SHORT-NAME>IOM_CODE</SHORT-NAME>
+                                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                                    <SIZE>300</SIZE>
+                                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CODE</SW-ADDRMETHOD-REF>
+                                </MEMORY-SECTION>
+                                <MEMORY-SECTION>
+                                    <SHORT-NAME>IOM_POSTBUILDCFG</SHORT-NAME>
+                                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                                    <SIZE>290</SIZE>
+                                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CONFIG_DATA</SW-ADDRMETHOD-REF>
+                                </MEMORY-SECTION>
+                            </MEMORY-SECTIONS>
+                            <SECTION-NAME-PREFIXS>
+                                <SECTION-NAME-PREFIX>
+                                    <SHORT-NAME>IOM</SHORT-NAME>
+                                    <SYMBOL>IOM</SYMBOL>
+                                </SECTION-NAME-PREFIX>
+                            </SECTION-NAME-PREFIXS>
+                        </RESOURCE-CONSUMPTION>
+                        <SW-VERSION>0.0.0</SW-VERSION>
+                        <VENDOR-ID>17</VENDOR-ID>
+                        <AR-RELEASE-VERSION>4.0.3</AR-RELEASE-VERSION>
+                        <BEHAVIOR-REF DEST="BSW-INTERNAL-BEHAVIOR">/AURIX_Iom/BswModuleDescriptions/Iom/IomBehavior</BEHAVIOR-REF>
+                        <VENDOR-SPECIFIC-MODULE-DEF-REFS>
+                                <VENDOR-SPECIFIC-MODULE-DEF-REF DEST="ECUC-MODULE-DEF">/AURIX/Iom</VENDOR-SPECIFIC-MODULE-DEF-REF>
+                        </VENDOR-SPECIFIC-MODULE-DEF-REFS>
+                    </BSW-IMPLEMENTATION>
+                </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE>
+                <SHORT-NAME>ImplementationDataTypes</SHORT-NAME>
+                <CATEGORY>STANDARD</CATEGORY>
+                <ELEMENTS>
+                    <IMPLEMENTATION-DATA-TYPE>
+                     <SHORT-NAME>Iom_FpcConfigType</SHORT-NAME>
+                     <CATEGORY>STRUCTURE</CATEGORY>
+                     <SUB-ELEMENTS>
+                       <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                         <SHORT-NAME>uint32</SHORT-NAME>
+                       </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                     </SUB-ELEMENTS>
+                     <TYPE-EMITTER>BSW</TYPE-EMITTER>
+                    </IMPLEMENTATION-DATA-TYPE>
+                    <IMPLEMENTATION-DATA-TYPE>
+                     <SHORT-NAME>Iom_LamConfigType</SHORT-NAME>
+                     <CATEGORY>STRUCTURE</CATEGORY>
+                     <SUB-ELEMENTS>
+                       <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                         <SHORT-NAME>uint32</SHORT-NAME>
+                       </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                     </SUB-ELEMENTS>
+                     <TYPE-EMITTER>BSW</TYPE-EMITTER>
+                    </IMPLEMENTATION-DATA-TYPE>
+                    <IMPLEMENTATION-DATA-TYPE>
+                     <SHORT-NAME>Iom_EcmConfigType</SHORT-NAME>
+                     <CATEGORY>STRUCTURE</CATEGORY>
+                     <SUB-ELEMENTS>
+                       <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                         <SHORT-NAME>uint32</SHORT-NAME>
+                       </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                     </SUB-ELEMENTS>
+                     <TYPE-EMITTER>BSW</TYPE-EMITTER>
+                    </IMPLEMENTATION-DATA-TYPE>
+                    <IMPLEMENTATION-DATA-TYPE>
+                     <SHORT-NAME>Iom_ConfigType</SHORT-NAME>
+                     <CATEGORY>STRUCTURE</CATEGORY>
+                     <SUB-ELEMENTS>
+                       <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                         <SHORT-NAME>Iom_FpcConfigType</SHORT-NAME>
+                       </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                     </SUB-ELEMENTS>
+                     <TYPE-EMITTER>BSW</TYPE-EMITTER>
+                    </IMPLEMENTATION-DATA-TYPE>
+                </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE>
+                <SHORT-NAME>CompuMethods</SHORT-NAME>
+                <CATEGORY>STANDARD</CATEGORY>
+                <ELEMENTS>
+                </ELEMENTS>
+            </AR-PACKAGE>
+        </AR-PACKAGES>
+    </AR-PACKAGE>
+</AR-PACKAGES>
+</AUTOSAR>

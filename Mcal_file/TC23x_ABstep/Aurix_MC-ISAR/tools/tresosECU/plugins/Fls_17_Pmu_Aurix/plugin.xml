@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+/******************************************************************************
+**                                                                           **
+** Copyright (C) Infineon Technologies (2013)                                **
+**                                                                           **
+** All rights reserved.                                                      **
+**                                                                           **
+** This document contains proprietary information belonging to Infineon      **
+** Technologies. Passing on and copying of this document, and communication  **
+** of its contents is not permitted without prior written authorization.     **
+**                                                                           **
+*******************************************************************************
+**                                                                           **
+**  $FILENAME   : plugin.xml $                                               **
+**                                                                           **
+**  $CC VERSION : \main\dev_tc23x_as4.0.3\15 $                               **
+**                                                                           **
+**  $DATE       : 2016-04-01 $                                               **
+**                                                                           **
+**  AUTHOR      : DL-AUTOSAR-Engineering                                     **
+**                                                                           **
+**  VENDOR      : Infineon Technologies                                      **
+**                                                                           **
+**  DESCRIPTION  : This file contains                                        **
+**                 - tresosECU plug-in description for Fls driver            **
+**                                                                           **
+**  MAY BE CHANGED BY USER [yes/no]: No                                      **
+**                                                                           **
+******************************************************************************/
+/******************************************************************************
+**  Traceability   :                                                         **
+**  [cover parentID=SAS_NAS_FLS_PR740,SAS_NAS_FLS_PR741,SAS_NAS_HE1_ALL_PR71,
+     SAS_NAS_FLS_PR79_PR80_PR623,SAS_NAS_FLS_PR739,SAS_NAS_FLS_PR60]
+    [/cover]                                                                 **
+******************************************************************************/
+-->
+<plugin>
+
+  <!--
+    ** brief AUTOSAR Fls_Aurix plugin
+    ** project AUTOSAR Standard Core
+    **
+    ** All rights exclusively reserved for Elektrobit Automotive GmbH,
+    ** unless expressly agreed to otherwise.
+  -->
+
+ <extension point="dreisoft.tresos.launcher2.plugin.module"
+             id="Fls_AurixAS403_ModuleExt"
+             name="Fls Module with template generator">
+
+    <module id="Fls_AurixAS403"
+            label="%ModuleLabel"
+            mandatory="false"
+            allowMultiple="true"
+            description="%ModuleDesc"
+            copyright="(c) 2013 Infineon Technologies"
+            swVersionMajor="2"
+            swVersionMinor="3"
+            swVersionPatch="0"
+            swVersionSuffix=""
+            specVersionMajor="3"
+            specVersionMinor="2"
+            specVersionPatch="0"
+            specVersionSuffix=""
+            relVersionMajor="4"
+            relVersionMinor="0"
+            relVersionPatch="3"
+            relVersionSuffix=""
+            categoryType="Fls"
+            categoryLayer="MCAL"
+            categoryCategory="ECU Firmware"
+            categoryComponent="ECUC">
+      <cluster name="Memory Stack"/>
+
+      <ecuType target="AURIX" derivate="TC234"/>
+      <ecuType target="AURIX" derivate="TC233"/>
+      <ecuType target="AURIX" derivate="TC237"/>
+
+    </module>
+  </extension>
+
+    <extension point="dreisoft.tresos.launcher2.plugin.configuration"
+             id="Fls_AurixAS403_ConfigExt"
+             name="Fls_Aurix Configuration">
+    <configuration moduleId="Fls_AurixAS403">
+      <schema>
+        <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarSchemaManager"/>
+        <resource value="config/Fls_17_Pmu.xdm" type="xdm"/>
+      </schema>
+
+      <data>
+        <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarConfigManager"/>
+        <schemaNode path="ASPath:/AURIX/Fls"/>
+      </data>
+
+      <editor id="Fls_AurixAS403_Edit"
+              label="%ModuleName"
+              tooltip="%ModuleDesc">
+        <class class="dreisoft.tresos.launcher2.editor.GenericConfigEditor">
+          <parameter name="schema" value="ASPath:/AURIX/Fls"/>
+          <parameter name="title" value="Fls"/>
+          <parameter name="noTabs" value="false"/>
+          <parameter name="noLinks" value="true"/>
+          <parameter name="groupLinks" value="false"/>
+          <parameter name="groupContainers" value="false"/>
+          <parameter name="groupTables" value="true"/>
+          <parameter name="optionalGeneralTab" value="true"/>
+        </class>
+      </editor>
+    </configuration>
+  </extension>
+
+  <extension point="dreisoft.tresos.launcher2.plugin.generator"
+              id="Fls_AurixAS403_GenExt"
+              name="Fls_Aurix Generator">
+    <generator moduleId="Fls_AurixAS403"
+               class="dreisoft.tresos.launcher2.generator.TemplateBasedCodeGenerator">
+
+      <!-- common template path parameters -->
+      <parameter name="templates"
+                 mode="generate,verify" value="generate"/>
+
+      <!-- swcd modes and template path parameters -->
+      <parameter name="mode_type"
+                 mode="generate_swcd" value="generate"/>
+
+      <parameter name="mode_type"
+                 mode="verify_swcd" value="verify"/>
+
+      <parameter name="templates"
+                 mode="generate_swcd,verify_swcd" value="generate_swcd"/>
+
+    </generator>
+  </extension>
+
+</plugin>
+

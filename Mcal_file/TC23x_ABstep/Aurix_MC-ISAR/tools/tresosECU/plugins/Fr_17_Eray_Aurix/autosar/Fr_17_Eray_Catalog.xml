@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*******************************************************************************
+**                                                                            **
+** Copyright (C) Infineon Technologies (2015)                                 **
+**                                                                            **
+** All rights reserved.                                                       **
+**                                                                            **
+** This document contains proprietary information belonging to Infineon       **
+** Technologies. Passing on and copying of this document, and communication   **
+** of its contents is not permitted without prior written authorization.      **
+**                                                                            **
+********************************************************************************
+**                                                                            **
+**  $FILENAME   : Fr_17_Eray_Catalog.xml $                                   **
+**                                                                            **
+**  $CC VERSION : \main\6 $                                                  **
+**                                                                            **
+**  $DATE       : 2015-11-30 $                                               **
+**                                                                            **
+**  AUTHOR    : DL-AUTOSAR-Engineering                                        **
+**                                                                            **
+**  VENDOR    : Infineon Technologies                                         **
+**                                                                            **
+**  DESCRIPTION  : This file contains the mapping of                          **
+**                 AUTOSAR-ENGINEERING-OBJECTs to the respective Files        **
+**                                                                            **
+**  MAY BE CHANGED BY USER [Yes/No]: No                                       **
+**                                                                            **
+*******************************************************************************/
+/*******************************************************************************
+**  Traceability   :                                                          **
+**  [cover parentID=SAS_AS4XX_FR_PR696,SAS_AS4XX_FR_PR697,SAS_AS4XX_FR_PR698]
+    [/cover]                                                                  **
+*******************************************************************************/
+-->
+<CATALOG xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="catalog_V3_0_0.ml.xsd">
+    <SHORT-NAME>FrCatalog</SHORT-NAME>
+    <ABLOCKS>
+        <ABLOCK>
+            <SHORT-NAME>src::Fr_17_Eray.c</SHORT-NAME>
+            <CATEGORY>SWSRC</CATEGORY>
+            <FILES>
+                <FILE>src/Fr_17_Eray.c</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>inc::Fr_17_Eray.h</SHORT-NAME>
+            <CATEGORY>SWHDR</CATEGORY>
+            <FILES>
+                <FILE>inc/Fr_17_Eray.h</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>inc::Fr_17_Eray_PBCfg.c</SHORT-NAME>
+            <CATEGORY>SWSRC</CATEGORY>
+            <FILES>
+                <FILE>inc/Fr_17_Eray_PBCfg.c</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>inc::Fr_17_Eray_Cfg.h</SHORT-NAME>
+            <CATEGORY>SWHDR</CATEGORY>
+            <FILES>
+                <FILE>inc/Fr_17_Eray_Cfg.h</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>Config::Fr_17_Eray.xdm</SHORT-NAME>
+            <CATEGORY>SWTOOL</CATEGORY>
+            <FILES>
+                <FILE>Config/Fr_17_Eray.xdm</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>tool::FlexTrain.exe</SHORT-NAME>
+            <CATEGORY>SWTOOL</CATEGORY>
+            <FILES>
+                <FILE>tool/FlexTrain.exe</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>mak::infineon_fr_17_eray_cfg.mak</SHORT-NAME>
+            <CATEGORY>SWMAKE</CATEGORY>
+            <FILES>
+                <FILE>mak/infineon_fr_17_eray_cfg.mak</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>mak::infineon_fr_17_eray_check.mak</SHORT-NAME>
+            <CATEGORY>SWMAKE</CATEGORY>
+            <FILES>
+                <FILE>mak/infineon_fr_17_eray_check.mak</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>mak::infineon_fr_17_eray_defs.mak</SHORT-NAME>
+            <CATEGORY>SWMAKE</CATEGORY>
+            <FILES>
+                <FILE>mak/infineon_fr_17_eray_defs.mak</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>mak::infineon_fr_17_eray_rules.mak</SHORT-NAME>
+            <CATEGORY>SWMAKE</CATEGORY>
+            <FILES>
+                <FILE>mak/infineon_fr_17_eray_rules.mak</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>mak::infineon_fr_17_eray_rules.mak</SHORT-NAME>
+            <CATEGORY>SWMAKE</CATEGORY>
+            <FILES>
+                <FILE>mak/infineon_fr_17_eray_rules.mak</FILE>
+            </FILES>
+        </ABLOCK>
+    </ABLOCKS>
+</CATALOG>

@@ -1,0 +1,795 @@
+<!--
+******************************************************************************
+**                                                                           **
+** Copyright (C) Infineon Technologies (2013)                                **
+**                                                                           **
+** All rights reserved.                                                      **
+**                                                                           **
+** This document contains proprietary information belonging to Infineon      **
+** Technologies. Passing on and copying of this document, and communication  **
+** of its contents is not permitted without prior written authorization.     **
+**                                                                           **
+*******************************************************************************
+**                                                                           **
+**  $FILENAME   : Pwm_ConfigDoc.html $                                       **
+**                                                                           **
+**  $CC VERSION : \main\5 $                                                  **
+**                                                                           **
+**  $DATE       : 2014-05-21 $                                               **
+**                                                                           **
+**  AUTHOR      : DL-AUTOSAR-Engineering                                     **
+**                                                                           **
+**  VENDOR      : Infineon Technologies                                      **
+**                                                                           **
+**  DESCRIPTION : This file contains                                         **
+**                the Configuration description for PWM driver               **
+**                                                                           **
+**  MAY BE CHANGED BY USER [yes/no]: No                                      **
+**                                                                           **
+*******************************************************************************
+*******************************************************************************
+**  TRACEABILITY :                                                           **
+*******************************************************************************
+-->
+
+[!//
+[!/* Select MODULE-CONFIGURATION as context-node */!][!//
+[!SELECT "as:modconf('Pwm')"!][!//
+
+[!VAR "PwmSafetyUsed" = "'STD_OFF'"!][!//
+ [!IF "PwmSafety/PwmSafetyEnable = 'true'"!][!//
+ [!VAR "PwmSafetyUsed" = "'STD_ON'"!][!//
+ [!ENDIF!][!//
+ <html>
+   <head>
+     <title>Pwm Driver Details</title>
+   </head>
+   <body>
+     <style type="text/css">
+table{table-layout: fixed;width: 300px;}
+table.curvedEdges { border:10px solid ;-webkit-border-radius:13px;-moz-border-radius:13px;-ms-border-radius:13px;-o-border-radius:13px;border-radius:13px; }
+table.curvedEdges td, table.curvedEdges th { border-bottom:1px dotted black;overflow: hidden;width: 400px;padding:5px; }
+</style>
+<!-- Be sure to place the above styles (i.e. everything between the <style></style> tags) into the document 'head' (i.e. between the <head></head> tags. Everything below goes inside the <body></body> tags) -->		
+    <p>
+      &nbsp;</p>  
+    <h2>
+      /*****************************************PWM HW-SW MAP*****************************************/</h2>
+    <table border="3" cellpadding="5" cellspacing="0" class="curvedEdges">
+      <caption><strong>
+        Table 1: PWM SFR Usage per API</strong></caption>
+      <thead>
+        <tr>
+          <th scope="col">
+            API Name</th>
+          <th scope="col">
+            SFRs Used</th>
+          <th scope="col">
+            Remarks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Pwm_17_Gtm_Init</td>
+          <td>
+TOMi_CHx_CTRL,TOMi_TGCy_GLB_CTRL,
+TOMi_CHx_CM0,TOMi_CHx_CM1,
+TOMi_CHx_CN0,TOMi_CHx_SR0,
+TOMi_CHx_SR1,TOMi_TGCy_ENDIS_STAT,
+TOMi_TGCy_ENDIS_CTRL,TOMi_TGCy_OUTEN_STAT,
+TOMi_TGCy_OUTEN_CTRL
+ATOMi_CHx_CTRL,ATOMi_AGC_GLB_CTRL,
+ATOMi_CHx_CM0,ATOMi_CHx_CM1,
+ATOMi_CHx_CN0,ATOMi_CHx_SR0,
+ATOMi_CHx_SR1,ATOMi_TGCy_ENDIS_STAT,
+ATOMi_AGC_ENDIS_CTRL,ATOMi_AGC_OUTEN_STAT,
+ATOMi_AGC_OUTEN_CTRL</td>
+          <td>Where i refers to TOM/ATOM module number, x refers to channel number and y refers to the TGC number(0 or 1)</td>
+        </tr>
+[!IF "(PwmGeneral/PwmVersionInfoApi = 'true')"!][!//
+        <tr>
+          <td>
+            Pwm_GetVersionInfo</td>
+          <td>-</td>
+          <td>No SFRs used</td>
+        </tr>
+[!ENDIF!]
+        <tr>
+          <td>
+            Pwm_17_Gtm_DeInit</td>
+          <td>
+TOMi_CHx_CTRL,
+TOMi_CHx_CM0,TOMi_CHx_CM1,
+TOMi_CHx_SR0,TOMi_CHx_SR1,
+TOMi_CHx_CN0
+ATOMi_CHx_CTRL,
+ATOMi_CHx_CM0,ATOMi_CHx_CM1,
+ATOMi_CHx_SR0,ATOMi_CHx_SR1,
+ATOMi_CHx_CN0</td>
+          <td>Where i refers to TOM/ATOM module number, x refers to channel number </td>
+        </tr>
+        <tr>
+          <td>
+            Pwm_17_Gtm_SetDutyCycle</td>
+          <td>
+TOMi_CHx_CTRL,
+TOMi_CHx_CM0,TOMi_CHx_CM1,
+TOMi_CHx_SR0,TOMi_CHx_SR1,
+TOMi_CHx_CN0
+ATOMi_CHx_CTRL,
+ATOMi_CHx_CM0,ATOMi_CHx_CM1,
+ATOMi_CHx_SR0,ATOMi_CHx_SR1,
+ATOMi_CHx_CN0
+          </td>
+          <td>Where i refers to TOM/ATOM module number, x refers to channel number</td>
+        </tr>
+        <tr>
+          <td>
+            Pwm_17_Gtm_SetDutyAndPeriod</td>
+          <td>
+TOMi_CHx_CTRL,
+TOMi_CHx_CM0,TOMi_CHx_CM1,
+TOMi_CHx_SR0,TOMi_CHx_SR1,
+TOMi_CHx_CN0
+ATOMi_CHx_CTRL,
+ATOMi_CHx_CM0,ATOMi_CHx_CM1,
+ATOMi_CHx_SR0,ATOMi_CHx_SR1,
+ATOMi_CHx_CN0
+          </td>
+          <td>Where i refers to TOM/ATOM module number, x refers to channel number</td>
+        </tr>
+        <tr>
+          <td>
+            Pwm_17_Gtm_SetOutputToIdle</td>
+          <td>
+TOMi_CHx_CTRL,
+TOMi_CHx_CM0,TOMi_CHx_CM1,
+TOMi_CHx_SR0,TOMi_CHx_SR1,
+TOMi_CHx_CN0
+ATOMi_CHx_CTRL,
+ATOMi_CHx_CM0,ATOMi_CHx_CM1,
+ATOMi_CHx_SR0,ATOMi_CHx_SR1,
+ATOMi_CHx_CN0
+          </td>
+          <td>Where i refers to TOM/ATOM module number, x refers to channel number</td>
+        </tr>
+        <tr>
+          <td>
+            Pwm_17_Gtm_GetOutputState</td>
+          <td>
+TOMi_CHx_STAT
+ATOMi_CHx_STAT
+          </td>
+          <td>Where i refers to TOM/ATOM module number, x refers to channel number</td>
+        </tr>
+        <tr>
+          <td>
+            Pwm_17_Gtm_EnableNotification</td>
+          <td>
+TOMi_CHx_IRQ_NOTIFY,TOMi_CHx_IRQ_EN
+ATOMi_CHx_IRQ_NOTIFY,ATOMi_CHx_IRQ_EN
+          </td>
+          <td>Where i refers to TOM/ATOM module number, x refers to channel number</td>
+        </tr> 
+        <tr>
+          <td>
+            Pwm_17_Gtm_DisableNotification</td>
+          <td>
+TOMi_CHx_IRQ_NOTIFY,TOMi_CHx_IRQ_EN
+ATOMi_CHx_IRQ_NOTIFY,ATOMi_CHx_IRQ_EN
+          </td>
+          <td>Where i refers to TOM/ATOM module number, x refers to channel number</td>
+        </tr> 
+      </tbody>
+    </table>    
+    <p>
+      &nbsp;</p>      
+    <h2>
+      /******************************************PWM MPU Settings******************************************/</h2>        
+<h3>
+      For MPU setting wrt SFR, refer HW manual for PWM module</h3>     
+    <table border="3" cellpadding="5" cellspacing="0" class="curvedEdges">
+      <caption><strong>
+        Table 2: PWM Memory Range</strong></caption>
+      <thead>
+        <tr>
+          <th scope="col">
+            Start Address</th>
+          <th scope="col">
+            End Address</th>
+          <th scope="col">
+            Remarks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            PWM_17_GTM_START_SEC_CODE</td>
+          <td>
+            PWM_17_GTM_STOP_SEC_CODE</td>
+          <td>
+            PWM driver - Basic AUTOSAR functionality</td>
+        </tr>
+[!IF "(PwmGeneral/PwmDevErrorDetect = 'true')"!][!//
+        <tr>
+          <td>
+            PWM_17_GTM_START_SEC_VAR_8BIT</td>
+          <td>
+            PWM_17_GTM_START_SEC_VAR_8BIT</td>
+          <td>
+            Pwm_InitStatus - 8 bit variable used by PWM driver</td>
+        </tr>
+[!ENDIF!]
+        <tr>
+          <td>
+            PWM_17_GTM_START_SEC_VAR_32BIT</td>
+          <td>
+            PWM_17_GTM_STOP_SEC_VAR_32BIT</td>
+          <td>
+            <p>
+              Pwm_kConfigPtr - 32 bit variables used by PWM driver</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      &nbsp;</p>  
+    <h2>
+      /*****************************************PWM Configuration Details*****************************************/</h2>
+    <table border="3" cellpadding="5" cellspacing="0" class="curvedEdges">
+      <caption><strong>
+        Table 3: PWM Configured Channels</strong></caption>
+        <thead>
+        <col width="250">
+        <col width="250">
+        <col width="150">
+        <col width="150">
+        <col width="150">
+        [!IF "$PwmSafetyUsed = 'STD_ON'"!][!// 
+        <col width="150">
+        [!ENDIF!][!//
+        <th> PWM Configuration </th>
+        <th> PWM Channel </th>
+        <th> PWM Module </th>
+        <th> Module no </th>
+        <th> Channel no </th> 
+        [!IF "$PwmSafetyUsed = 'STD_ON'"!][!// 
+        <th> Safety level </th>
+        [!ENDIF!][!//
+        </thead>
+        <tbody>
+        [!SELECT "as:modconf('Pwm')[1]"!][!//
+[!LOOP "./PwmChannelConfigSet/*"!][!//
+[!VAR "PwmIndex" = "@index"!][!//
+[!VAR "PwmMaxChannels"= "num:i(count(PwmChannel/*))"!][!//
+[!FOR "ChannelId" = "num:i(1)" TO "num:i($PwmMaxChannels)"!][!//
+[!SELECT "PwmChannel/*[PwmChannelId = num:i($ChannelId) - num:i(1)]"!][!//
+[!VAR "ChanId" = "num:i($ChannelId) - num:i(1)"!][!//
+[!VAR "PwmGtmRef" = "node:path(node:ref(./PwmAssignedHwUnit))"!][!//
+[!IF "contains($PwmGtmRef, '/Tom/') = 'true'"!][!//
+[!VAR "PwmGtmMod" ="'TOM'"!][!//
+[!VAR "PwmGtmModuleNumber" = "substring-before ( substring-after($PwmGtmRef,'/Tom_'),'/TomChannel_')"!]
+[!VAR "PwmGtmChannelNumber" = "substring-after($PwmGtmRef,'/TomChannel_')"!]
+[!ELSEIF "contains($PwmGtmRef, '/Atom/') = 'true'"!][!//
+[!VAR "PwmGtmMod" ="'ATOM'"!][!//
+[!VAR "PwmGtmModuleNumber" = "substring-before ( substring-after($PwmGtmRef,'/Atom_'),'/AtomChannel_')"!]
+[!VAR "PwmGtmChannelNumber" = "substring-after($PwmGtmRef,'/AtomChannel_')"!]
+[!ENDIF!][!//
+[!IF "$PwmSafetyUsed = 'STD_ON'"!][!// 
+[!VAR "PwmSignalType" = "PwmSafetySignal"!][!//
+[!IF "$PwmSignalType = 'PWM_ASIL_TYPE'"!][!//
+[!VAR "PwmSignalType" = "'ASIL'"!][!//
+[!ELSE!][!//
+[!VAR "PwmSignalType" = "'QM'"!][!//
+[!ENDIF!][!//
+[!ENDIF!][!//
+        <tr>
+        <td>PWM_Configuration_[!"num:i($PwmIndex)"!]</td>
+        <td>PWM_Channel_[!"num:i($ChanId)"!]</td>
+        <td>[!"$PwmGtmMod"!]</td>
+        <td>[!"num:i($PwmGtmModuleNumber)"!]</td>
+        <td>[!"num:i($PwmGtmChannelNumber)"!]</td>
+        [!IF "$PwmSafetyUsed = 'STD_ON'"!][!// 
+        <td>[!"$PwmSignalType"!]</td>
+        [!ENDIF!][!//        
+        </tr>
+[!ENDSELECT!][!//
+[!ENDFOR!][!//
+[!ENDLOOP!][!// 
+[!ENDSELECT!][!//
+        </tbody>    
+        </table>    
+
+
+    <h2>
+      /*****************************************PWM TGC values*****************************************/</h2>
+    <table border="3" cellpadding="5" cellspacing="0" class="curvedEdges">
+      <caption><strong>
+        Table 3: PWM TGC values </strong></caption>
+        <thead>
+        <col width="250">
+        <col width="250">
+        <th> PWM TGC  </th>
+        <th> PWM TGC values </th>
+        </thead>
+        <tbody>
+[!VAR "PwmTom0TGC0GlbCtrl" = "num:i(0)"!][!//
+[!VAR "PwmTom0TGC1GlbCtrl" = "num:i(0)"!][!//
+[!VAR "PwmTom1TGC0GlbCtrl" = "num:i(0)"!][!//
+[!VAR "PwmTom1TGC1GlbCtrl" = "num:i(0)"!][!//
+[!VAR "PwmTom2TGC0GlbCtrl" = "num:i(0)"!][!//
+[!VAR "PwmTom2TGC1GlbCtrl" = "num:i(0)"!][!//
+[!VAR "PwmTom3TGC0GlbCtrl" = "num:i(0)"!][!//
+[!VAR "PwmTom3TGC1GlbCtrl" = "num:i(0)"!][!//
+[!VAR "PwmTom4TGC0GlbCtrl" = "num:i(0)"!][!//
+[!VAR "PwmTom4TGC1GlbCtrl" = "num:i(0)"!][!//
+[!VAR "PwmTom5TGC0GlbCtrl" = "num:i(0)"!][!//
+[!VAR "PwmTom5TGC1GlbCtrl" = "num:i(0)"!][!//
+
+[!VAR "PwmAtom0AGCGlbCtrl" = "num:i(0)"!][!//
+[!VAR "PwmAtom1AGCGlbCtrl" = "num:i(0)"!][!//
+[!VAR "PwmAtom2AGCGlbCtrl" = "num:i(0)"!][!//
+[!VAR "PwmAtom3AGCGlbCtrl" = "num:i(0)"!][!//
+[!VAR "PwmAtom4AGCGlbCtrl" = "num:i(0)"!][!//
+[!VAR "PwmAtom5AGCGlbCtrl" = "num:i(0)"!][!//
+[!VAR "PwmAtom6AGCGlbCtrl" = "num:i(0)"!][!//
+[!VAR "PwmAtom7AGCGlbCtrl" = "num:i(0)"!][!//
+[!VAR "PwmAtom8AGCGlbCtrl" = "num:i(0)"!][!//
+[!VAR "PwmAtom9AGCGlbCtrl" = "num:i(0)"!][!//
+
+[!VAR "PwmTom0TGC0Endis_Stat" = "num:i(0)"!][!//
+[!VAR "PwmTom0TGC1Endis_Stat" = "num:i(0)"!][!//
+[!VAR "PwmTom1TGC0Endis_Stat" = "num:i(0)"!][!//
+[!VAR "PwmTom1TGC1Endis_Stat" = "num:i(0)"!][!//
+[!VAR "PwmTom2TGC0Endis_Stat" = "num:i(0)"!][!//
+[!VAR "PwmTom2TGC1Endis_Stat" = "num:i(0)"!][!//
+[!VAR "PwmTom3TGC0Endis_Stat" = "num:i(0)"!][!//
+[!VAR "PwmTom3TGC1Endis_Stat" = "num:i(0)"!][!//
+[!VAR "PwmTom4TGC0Endis_Stat" = "num:i(0)"!][!//
+[!VAR "PwmTom4TGC1Endis_Stat" = "num:i(0)"!][!//
+[!VAR "PwmTom5TGC0Endis_Stat" = "num:i(0)"!][!//
+[!VAR "PwmTom5TGC1Endis_Stat" = "num:i(0)"!][!//
+
+[!VAR "PwmTom0TGC0Endis_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmTom0TGC1Endis_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmTom1TGC0Endis_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmTom1TGC1Endis_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmTom2TGC0Endis_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmTom2TGC1Endis_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmTom3TGC0Endis_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmTom3TGC1Endis_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmTom4TGC0Endis_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmTom4TGC1Endis_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmTom5TGC0Endis_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmTom5TGC1Endis_ctrl" = "num:i(0)"!][!//
+
+[!VAR "PwmTom0TGC0Outen_Stat" = "num:i(0)"!][!//
+[!VAR "PwmTom0TGC1Outen_Stat" = "num:i(0)"!][!//
+[!VAR "PwmTom1TGC0Outen_Stat" = "num:i(0)"!][!//
+[!VAR "PwmTom1TGC1Outen_Stat" = "num:i(0)"!][!//
+[!VAR "PwmTom2TGC0Outen_Stat" = "num:i(0)"!][!//
+[!VAR "PwmTom2TGC1Outen_Stat" = "num:i(0)"!][!//
+[!VAR "PwmTom3TGC0Outen_Stat" = "num:i(0)"!][!//
+[!VAR "PwmTom3TGC1Outen_Stat" = "num:i(0)"!][!//
+[!VAR "PwmTom4TGC0Outen_Stat" = "num:i(0)"!][!//
+[!VAR "PwmTom4TGC1Outen_Stat" = "num:i(0)"!][!//
+[!VAR "PwmTom5TGC0Outen_Stat" = "num:i(0)"!][!//
+[!VAR "PwmTom5TGC1Outen_Stat" = "num:i(0)"!][!//
+
+[!VAR "PwmTom0TGC0Outen_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmTom0TGC1Outen_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmTom1TGC0Outen_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmTom1TGC1Outen_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmTom2TGC0Outen_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmTom2TGC1Outen_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmTom3TGC0Outen_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmTom3TGC1Outen_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmTom4TGC0Outen_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmTom4TGC1Outen_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmTom5TGC0Outen_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmTom5TGC1Endis_ctrl" = "num:i(0)"!][!//
+
+[!VAR "PwmAtom0AGCOuten_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmAtom1AGCOuten_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmAtom2AGCOuten_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmAtom3AGCOuten_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmAtom4AGCOuten_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmAtom5AGCOuten_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmAtom6AGCOuten_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmAtom7AGCOuten_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmAtom8AGCOuten_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmAtom9AGCOuten_ctrl" = "num:i(0)"!][!//
+
+[!VAR "PwmAtom0AGCOuten_Stat" = "num:i(0)"!][!//
+[!VAR "PwmAtom1AGCOuten_Stat" = "num:i(0)"!][!//
+[!VAR "PwmAtom2AGCOuten_Stat" = "num:i(0)"!][!//
+[!VAR "PwmAtom3AGCOuten_Stat" = "num:i(0)"!][!//
+[!VAR "PwmAtom4AGCOuten_Stat" = "num:i(0)"!][!//
+[!VAR "PwmAtom5AGCOuten_Stat" = "num:i(0)"!][!//
+[!VAR "PwmAtom6AGCOuten_Stat" = "num:i(0)"!][!//
+[!VAR "PwmAtom7AGCOuten_Stat" = "num:i(0)"!][!//
+[!VAR "PwmAtom8AGCOuten_Stat" = "num:i(0)"!][!//
+[!VAR "PwmAtom9AGCOuten_ctrl" = "num:i(0)"!][!//
+
+[!VAR "PwmAtom0AGCEndis_Stat" = "num:i(0)"!][!//
+[!VAR "PwmAtom1AGCEndis_Stat" = "num:i(0)"!][!//
+[!VAR "PwmAtom2AGCEndis_Stat" = "num:i(0)"!][!//
+[!VAR "PwmAtom3AGCEndis_Stat" = "num:i(0)"!][!//
+[!VAR "PwmAtom4AGCEndis_Stat" = "num:i(0)"!][!//
+[!VAR "PwmAtom5AGCEndis_Stat" = "num:i(0)"!][!//
+[!VAR "PwmAtom6AGCEndis_Stat" = "num:i(0)"!][!//
+[!VAR "PwmAtom7AGCEndis_Stat" = "num:i(0)"!][!//
+[!VAR "PwmAtom8AGCEndis_Stat" = "num:i(0)"!][!//
+[!VAR "PwmAtom9AGCEndis_Stat" = "num:i(0)"!][!//
+
+[!VAR "PwmAtom0AGCEndis_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmAtom1AGCEndis_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmAtom2AGCEndis_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmAtom3AGCEndis_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmAtom4AGCEndis_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmAtom5AGCEndis_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmAtom6AGCEndis_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmAtom7AGCEndis_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmAtom8AGCEndis_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmAtom9AGCEndis_ctrl" = "num:i(0)"!][!//
+[!VAR "PwmModuleNumber" = "num:i(0)"!][!//
+
+[!SELECT "as:modconf('Pwm')[1]"!][!//
+ [!VAR "TotalPwmConfigsets" = "num:i(count(PwmChannelConfigSet/*))"!][!//
+ [!FOR "PwmId" ="num:i(1)" TO "num:i($TotalPwmConfigsets)"!][!//[!SELECT "as:modconf('Pwm')[1]"!][!//
+  [!SELECT "PwmChannelConfigSet/*[num:i($PwmId)]"!][!//
+   [!LOOP "PwmChannel/*"!][!//
+
+  [!VAR "PwmChannelLocation" = "node:name(node:ref(./PwmAssignedHwUnit))"!][!//
+  [!VAR "PwmModuleLocation" = "node:name(node:ref(./PwmAssignedHwUnit)/../..)"!][!//
+  [!VAR "PwmChannelNumber" = "text:split($PwmChannelLocation, '_')[position()-1 = 1]"!][!//
+  [!VAR "PwmModuleNumber" = "text:split($PwmModuleLocation, '_')[position()-1 = 1]"!][!//
+  [!VAR "PwmModuleType" = "text:split($PwmModuleLocation, '_')[position()-1 = 0]"!][!//
+
+  [!IF "$PwmModuleType = 'Tom'"!][!//
+
+  [!IF "$PwmModuleNumber = num:i(0)"!][!//
+  [!IF "$PwmChannelNumber < num:i(8)"!][!//
+    [!VAR "PwmTom0TGC0GlbCtrl" = "bit:or($PwmTom0TGC0GlbCtrl, bit:shl(3,(16+($PwmChannelNumber * 2))))"!][!//
+    [!VAR "PwmTom0TGC0Endis_Stat" = "bit:or($PwmTom0TGC0Endis_Stat, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+    [!VAR "PwmTom0TGC0Endis_ctrl" = "bit:or($PwmTom0TGC0Endis_ctrl, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+    [!VAR "PwmTom0TGC0Outen_ctrl" = "bit:or($PwmTom0TGC0Outen_ctrl, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+    [!VAR "PwmTom0TGC0Outen_Stat" = "bit:or($PwmTom0TGC0Outen_Stat, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+  [!ELSE!][!// 
+    [!VAR "TempChannelNumber" = "$PwmChannelNumber - num:i(8)"!][!//
+    [!VAR "PwmTom0TGC1GlbCtrl" = "bit:or($PwmTom0TGC1GlbCtrl, bit:shl(3,(16+($TempChannelNumber * 2))))"!][!//
+    [!VAR "PwmTom0TGC1Endis_Stat" = "bit:or($PwmTom0TGC1Endis_Stat, bit:shl(3,($TempChannelNumber * 2)))"!][!//
+    [!VAR "PwmTom0TGC1Endis_ctrl" = "bit:or($PwmTom0TGC1Endis_ctrl, bit:shl(3,($TempChannelNumber * 2)))"!][!//
+    [!VAR "PwmTom0TGC1Outen_ctrl" = "bit:or($PwmTom0TGC1Outen_ctrl, bit:shl(3,($TempChannelNumber * 2)))"!][!//
+    [!VAR "PwmTom0TGC1Outen_Stat" = "bit:or($PwmTom0TGC1Outen_Stat, bit:shl(3,($TempChannelNumber * 2)))"!][!//
+  [!ENDIF!][!//
+ 
+
+[!ELSEIF "$PwmModuleNumber = num:i(1)"!][!//
+[!IF "$PwmChannelNumber < num:i(8)"!][!//
+[!VAR "PwmTom1TGC0GlbCtrl" = "bit:or($PwmTom1TGC0GlbCtrl, bit:shl(3,(16+($PwmChannelNumber * 2))))"!][!//
+[!VAR "PwmTom1TGCEndis_Stat" = "bit:or($PwmTom1TGC0Endis_Stat, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmTom1TGC0Endis_ctrl" = "bit:or($PwmTom1TGC0Endis_ctrl, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmTom1TGC0Outen_ctrl" = "bit:or($PwmTom1TGC0Outen_ctrl, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmTom1TGC0Outen_Stat" = "bit:or($PwmTom1TGC0Outen_Stat, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!ELSE!][!// 
+[!VAR "TempChannelNumber" = "$PwmChannelNumber - num:i(8)"!][!//
+[!VAR "PwmTom1TGC1GlbCtrl" = "bit:or($PwmTom1TGC1GlbCtrl, bit:shl(3,(16+($TempChannelNumber * 2))))"!][!//
+[!VAR "PwmTom1TGC1Endis_Stat" = "bit:or($PwmTom1TGC1Endis_Stat, bit:shl(3,($TempChannelNumber * 2)))"!][!//
+[!VAR "PwmTom1TGC1Endis_ctrl" = "bit:or($PwmTom1TGC1Endis_ctrl, bit:shl(3,($TempChannelNumber * 2)))"!][!//
+[!VAR "PwmTom1TGC1Outen_ctrl" = "bit:or($PwmTom1TGC1Outen_ctrl, bit:shl(3,($TempChannelNumber * 2)))"!][!//
+[!VAR "PwmTom1TGC1Outen_Stat" = "bit:or($PwmTom1TGC1Outen_Stat, bit:shl(3,($TempChannelNumber * 2)))"!][!//
+[!ENDIF!][!//   
+
+
+[!ELSEIF "$PwmModuleNumber = num:i(2)"!][!//
+[!IF "$PwmChannelNumber < num:i(8)"!][!//
+[!VAR "PwmTom2TGC0GlbCtrl" = "bit:or($PwmTom2TGC0GlbCtrl, bit:shl(3,(16+($PwmChannelNumber * 2))))"!][!//
+[!VAR "PwmTom2TGC0Endis_Stat" = "bit:or($PwmTom2TGC0Endis_Stat, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmTom2TGC0Endis_ctrl" = "bit:or($PwmTom2TGC0Endis_ctrl, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmTom2TGC0Outen_ctrl" = "bit:or($PwmTom2TGC0Outen_ctrl, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmTom2TGC0Outen_Stat" = "bit:or($PwmTom2TGC0Outen_Stat, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!ELSE!][!//
+[!VAR "TempChannelNumber" = "$PwmChannelNumber - num:i(8)"!][!//
+[!VAR "PwmTom2TGC1GlbCtrl" = "bit:or($PwmTom2TGC1GlbCtrl, bit:shl(3,(16+($TempChannelNumber * 2))))"!][!//
+[!VAR "PwmTom2TGC1Endis_Stat" = "bit:or($PwmTom2TGC1Endis_Stat, bit:shl(3,($TempChannelNumber * 2)))"!][!//
+[!VAR "PwmTom2TGC1Endis_ctrl" = "bit:or($PwmTom2TGC1Endis_ctrl, bit:shl(3,($TempChannelNumber * 2)))"!][!//
+[!VAR "PwmTom2TGC1Outen_ctrl" = "bit:or($PwmTom2TGC1Outen_ctrl, bit:shl(3,($TempChannelNumber * 2)))"!][!//
+[!VAR "PwmTom2TGC1Outen_Stat" = "bit:or($PwmTom2TGC1Outen_Stat, bit:shl(3,($TempChannelNumber * 2)))"!][!//
+[!ENDIF!][!//   
+
+
+[!ELSEIF "$PwmModuleNumber = num:i(3)"!][!//
+[!IF "$PwmChannelNumber < num:i(8)"!][!//
+[!VAR "PwmTom3TGC0GlbCtrl" = "bit:or($PwmTom3TGC0GlbCtrl, bit:shl(3,(16+($PwmChannelNumber * 2))))"!][!//
+[!VAR "PwmTom3TGC0Endis_Stat" = "bit:or($PwmTom3TGC0Endis_Stat, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmTom3TGC0Endis_ctrl" = "bit:or($PwmTom3TGC0Endis_ctrl, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmTom3TGC0Outen_ctrl" = "bit:or($PwmTom3TGC0Outen_ctrl, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmTom3TGC0Outen_Stat" = "bit:or($PwmTom3TGC0Outen_Stat, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!ELSE!][!//
+[!VAR "TempChannelNumber" = "$PwmChannelNumber - num:i(8)"!][!//
+[!VAR "PwmTom3TGC1GlbCtrl" = "bit:or($PwmTom3TGC1GlbCtrl, bit:shl(3,(16+($TempChannelNumber * 2))))"!][!//
+[!VAR "PwmTom3TGC1Endis_Stat" = "bit:or($PwmTom3TGC1Endis_Stat, bit:shl(3,($TempChannelNumber * 2)))"!][!//
+[!VAR "PwmTom3TGC1Endis_ctrl" = "bit:or($PwmTom3TGC1Endis_ctrl, bit:shl(3,($TempChannelNumber * 2)))"!][!//
+[!VAR "PwmTom3TGC1Outen_ctrl" = "bit:or($PwmTom3TGC1Outen_ctrl, bit:shl(3,($TempChannelNumber * 2)))"!][!//
+[!VAR "PwmTom3TGC1Outen_Stat" = "bit:or($PwmTom3TGC1Outen_Stat, bit:shl(3,($TempChannelNumber * 2)))"!][!//
+[!ENDIF!][!//   
+
+[!ELSEIF "$PwmModuleNumber = num:i(4)"!][!//
+[!IF "$PwmChannelNumber < num:i(8)"!][!//
+[!VAR "PwmTom4TGC0GlbCtrl" = "bit:or($PwmTom4TGC0GlbCtrl, bit:shl(3,(16+($PwmChannelNumber * 2))))"!][!//
+[!VAR "PwmTom4TGC0Endis_Stat" = "bit:or($PwmTom4TGC0Endis_Stat, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmTom4TGC0Endis_ctrl" = "bit:or($PwmTom4TGC0Endis_ctrl, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmTom4TGC0Outen_ctrl" = "bit:or($PwmTom4TGC0Outen_ctrl, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmTom4TGC0Outen_Stat" = "bit:or($PwmTom4TGC0Outen_Stat, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!ELSE!][!//
+[!VAR "TempChannelNumber" = "$PwmChannelNumber - num:i(8)"!][!//
+[!VAR "PwmTom4TGC1GlbCtrl" = "bit:or($PwmTom4TGC1GlbCtrl, bit:shl(3,(16+($TempChannelNumber * 2))))"!][!//
+[!VAR "PwmTom4TGC1Endis_Stat" = "bit:or($PwmTom4TGC1Endis_Stat, bit:shl(3,($TempChannelNumber * 2)))"!][!//
+[!VAR "PwmTom4TGC1Endis_ctrl" = "bit:or($PwmTom4TGC1Endis_ctrl, bit:shl(3,($TempChannelNumber * 2)))"!][!//
+[!VAR "PwmTom4TGC1Outen_ctrl" = "bit:or($PwmTom4TGC1Outen_ctrl, bit:shl(3,($TempChannelNumber * 2)))"!][!//
+[!VAR "PwmTom4TGC1Outen_Stat" = "bit:or($PwmTom4TGC1Outen_Stat, bit:shl(3,($TempChannelNumber * 2)))"!][!//
+[!ENDIF!][!//  
+
+
+[!ELSEIF "$PwmModuleNumber = num:i(5)"!][!//
+[!IF "$PwmChannelNumber < num:i(8)"!][!//
+[!VAR "PwmTom5TGC0GlbCtrl" = "bit:or($PwmTom5TGC0GlbCtrl, bit:shl(3,(16+($PwmChannelNumber * 2))))"!][!//
+[!VAR "PwmTom5TGC0Endis_Stat" = "bit:or($PwmTom5TGC0Endis_Stat, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmTom5TGC0Endis_ctrl" = "bit:or($PwmTom5TGC0Endis_ctrl, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmTom5TGC0Outen_ctrl" = "bit:or($PwmTom5TGC0Outen_ctrl, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmTom5TGC0Outen_Stat" = "bit:or($PwmTom5TGC0Outen_Stat, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!ELSE!][!//
+[!VAR "TempChannelNumber" = "$PwmChannelNumber - num:i(8)"!][!//
+[!VAR "PwmTom5TGC1GlbCtrl" = "bit:or($PwmTom5TGC1GlbCtrl, bit:shl(3,(16+($TempChannelNumber * 2))))"!][!//
+[!VAR "PwmTom5TGC1Endis_Stat" = "bit:or($PwmTom5TGC1Endis_Stat, bit:shl(3,($TempChannelNumber * 2)))"!][!//
+[!VAR "PwmTom5TGC1Endis_ctrl" = "bit:or($PwmTom5TGC1Endis_ctrl, bit:shl(3,($TempChannelNumber * 2)))"!][!//
+[!VAR "PwmTom5TGC1Outen_ctrl" = "bit:or($PwmTom5TGC1Outen_ctrl, bit:shl(3,($TempChannelNumber * 2)))"!][!//
+[!VAR "PwmTom5TGC1Outen_Stat" = "bit:or($PwmTom5TGC1Outen_Stat, bit:shl(3,($TempChannelNumber * 2)))"!][!//
+[!ENDIF!][!//   
+[!ENDIF!][!// 
+
+[!ELSEIF "$PwmModuleType = 'Atom'"!][!//
+[!IF "$PwmModuleNumber = num:i(0)"!][!//
+[!VAR "PwmAtom0AGCGlbCtrl" = "bit:or($PwmAtom0AGCGlbCtrl, bit:shl(3,(16+($PwmChannelNumber * 2))))"!][!//
+[!VAR "PwmAtom0AGCEndis_Stat" = "bit:or($PwmAtom0AGCEndis_Stat, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmAtom0AGCEndis_ctrl" = "bit:or($PwmAtom0AGCEndis_ctrl, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmAtom0AGCOuten_ctrl" = "bit:or($PwmAtom0AGCOuten_ctrl, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmAtom0AGCOuten_Stat" = "bit:or($PwmAtom0AGCOuten_Stat, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!ENDIF!][!// 
+
+[!IF "$PwmModuleNumber = num:i(1)"!][!//
+[!VAR "PwmAtom1AGCGlbCtrl" = "bit:or($PwmAtom1AGCGlbCtrl, bit:shl(3,(16+($PwmChannelNumber * 2))))"!][!//
+[!VAR "PwmAtom1AGCEndis_Stat" = "bit:or($PwmAtom1AGCEndis_Stat, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmAtom1AGCEndis_ctrl" = "bit:or($PwmAtom1AGCEndis_ctrl, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmAtom1AGCOuten_ctrl" = "bit:or($PwmAtom1AGCOuten_ctrl, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmAtom1AGCOuten_Stat" = "bit:or($PwmAtom1AGCOuten_Stat, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!ENDIF!][!// 
+
+[!IF "$PwmModuleNumber = num:i(2)"!][!//
+[!VAR "PwmAtom2AGCGlbCtrl" = "bit:or($PwmAtom2AGCGlbCtrl, bit:shl(3,(16+($PwmChannelNumber * 2))))"!][!//
+[!VAR "PwmAtom2AGCEndis_Stat" = "bit:or($PwmAtom2AGCEndis_Stat, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmAtom2AGCEndis_ctrl" = "bit:or($PwmAtom2AGCEndis_ctrl, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmAtom2AGCOuten_ctrl" = "bit:or($PwmAtom2AGCOuten_ctrl, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmAtom2AGCOuten_Stat" = "bit:or($PwmAtom2AGCOuten_Stat, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!ENDIF!][!// 
+
+[!IF "$PwmModuleNumber = num:i(3)"!][!//
+[!VAR "PwmAtom3AGCGlbCtrl" = "bit:or($PwmAtom3AGCGlbCtrl, bit:shl(3,(16+($PwmChannelNumber * 2))))"!][!//
+[!VAR "PwmAtom3AGCEndis_Stat" = "bit:or($PwmAtom3AGCEndis_Stat, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmAtom3AGCEndis_ctrl" = "bit:or($PwmAtom3AGCEndis_ctrl, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmAtom3AGCOuten_ctrl" = "bit:or($PwmAtom3AGCOuten_ctrl, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmAtom3AGCOuten_Stat" = "bit:or($PwmAtom3AGCOuten_Stat, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!ENDIF!][!// 
+
+[!IF "$PwmModuleNumber = num:i(4)"!][!//
+[!VAR "PwmAtom4AGCGlbCtrl" = "bit:or($PwmAtom4AGCGlbCtrl, bit:shl(3,(16+($PwmChannelNumber * 2))))"!][!//
+[!VAR "PwmAtom4AGCEndis_Stat" = "bit:or($PwmAtom4AGCEndis_Stat, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmAtom4AGCEndis_ctrl" = "bit:or($PwmAtom4AGCEndis_ctrl, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmAtom4AGCOuten_ctrl" = "bit:or($PwmAtom4AGCOuten_ctrl, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmAtom4AGCOuten_Stat" = "bit:or($PwmAtom4AGCOuten_Stat, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!ENDIF!][!// 
+
+[!IF "$PwmModuleNumber = num:i(5)"!][!//
+[!VAR "PwmAtom5AGCGlbCtrl" = "bit:or($PwmAtom5AGCGlbCtrl, bit:shl(3,(16+($PwmChannelNumber * 2))))"!][!//
+[!VAR "PwmAtom5AGCEndis_Stat" = "bit:or($PwmAtom5AGCEndis_Stat, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmAtom5AGCEndis_ctrl" = "bit:or($PwmAtom5AGCEndis_ctrl, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmAtom5AGCOuten_ctrl" = "bit:or($PwmAtom5AGCOuten_ctrl, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmAtom5AGCOuten_Stat" = "bit:or($PwmAtom5AGCOuten_Stat, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!ENDIF!][!// 
+
+[!IF "$PwmModuleNumber = num:i(6)"!][!//
+[!VAR "PwmAtom6AGCGlbCtrl" = "bit:or($PwmAtom6AGCGlbCtrl, bit:shl(3,(16+($PwmChannelNumber * 2))))"!][!//
+[!VAR "PwmAtom6AGCEndis_Stat" = "bit:or($PwmAtom6AGCEndis_Stat, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmAtom6AGCEndis_ctrl" = "bit:or($PwmAtom6AGCEndis_ctrl, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmAtom6AGCOuten_ctrl" = "bit:or($PwmAtom6AGCOuten_ctrl, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmAtom6AGCOuten_Stat" = "bit:or($PwmAtom6AGCOuten_Stat, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!ENDIF!][!// 
+
+[!IF "$PwmModuleNumber = num:i(7)"!][!//
+[!VAR "PwmAtom7AGCGlbCtrl" = "bit:or($PwmAtom7AGCGlbCtrl, bit:shl(3,(16+($PwmChannelNumber * 2))))"!][!//
+[!VAR "PwmAtom7AGCEndis_Stat" = "bit:or($PwmAtom7AGCEndis_Stat, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmAtom7AGCEndis_ctrl" = "bit:or($PwmAtom7AGCEndis_ctrl, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmAtom7AGCOuten_ctrl" = "bit:or($PwmAtom7AGCOuten_ctrl, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmAtom7AGCOuten_Stat" = "bit:or($PwmAtom7AGCOuten_Stat, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!ENDIF!][!// 
+
+[!IF "$PwmModuleNumber = num:i(8)"!][!//
+[!VAR "PwmAtom8AGCGlbCtrl" = "bit:or($PwmAtom8AGCGlbCtrl, bit:shl(3,(16+($PwmChannelNumber * 2))))"!][!//
+[!VAR "PwmAtom8AGCEndis_Stat" = "bit:or($PwmAtom8AGCEndis_Stat, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmAtom8AGCEndis_ctrl" = "bit:or($PwmAtom8AGCEndis_ctrl, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmAtom8AGCOuten_ctrl" = "bit:or($PwmAtom8AGCOuten_ctrl, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmAtom8AGCOuten_Stat" = "bit:or($PwmAtom8AGCOuten_Stat, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!ENDIF!][!// 
+
+[!IF "$PwmModuleNumber = num:i(9)"!][!//
+[!VAR "PwmAtom9AGCGlbCtrl" = "bit:or($PwmAtom9AGCGlbCtrl, bit:shl(3,(16+($PwmChannelNumber * 2))))"!][!//
+[!VAR "PwmAtom9AGCEndis_Stat" = "bit:or($PwmAtom9AGCEndis_Stat, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmAtom9AGCEndis_ctrl" = "bit:or($PwmAtom9AGCEndis_ctrl, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmAtom9AGCOuten_ctrl" = "bit:or($PwmAtom9AGCOuten_ctrl, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!VAR "PwmAtom9AGCOuten_Stat" = "bit:or($PwmAtom9AGCOuten_Stat, bit:shl(3,($PwmChannelNumber * 2)))"!][!//
+[!ENDIF!][!// 
+
+[!ENDIF!][!// 
+
+
+[!ENDLOOP!][!//
+[!ENDSELECT!][!//
+[!ENDFOR!][!//
+[!ENDSELECT!][!//
+
+        <tr>
+        
+<td>PwmTom0TGC0GlbCtrl</td>        <td>[!"$PwmTom0TGC0GlbCtrl"!]</td>
+</tr>
+<tr>
+<td>PwmTom0TGC1GlbCtrl</td>        <td>[!"$PwmTom0TGC1GlbCtrl"!]</td></tr>
+<tr>
+<td>PwmTom1TGC0GlbCtrl</td>        <td>[!"$PwmTom1TGC0GlbCtrl"!]</td></tr>
+<tr>
+<td>PwmTom1TGC1GlbCtrl</td>        <td>[!"$PwmTom1TGC1GlbCtrl"!]</td></tr>
+<tr>
+<td>PwmTom2TGC0GlbCtrl</td>        <td>[!"$PwmTom2TGC0GlbCtrl"!]</td></tr>
+<tr>
+<td>PwmTom2TGC1GlbCtrl</td>        <td>[!"$PwmTom2TGC1GlbCtrl"!]</td></tr>
+<tr>
+<td>PwmTom3TGC0GlbCtrl</td>        <td>[!"$PwmTom3TGC0GlbCtrl"!]</td></tr>
+<tr>
+<td>PwmTom3TGC1GlbCtrl</td>        <td>[!"$PwmTom3TGC1GlbCtrl"!]</td></tr>
+<tr>
+<td>PwmTom4TGC0GlbCtrl</td>        <td>[!"$PwmTom4TGC0GlbCtrl"!]</td></tr>
+<tr>
+<td>PwmTom4TGC1GlbCtrl</td>        <td>[!"$PwmTom4TGC1GlbCtrl"!]</td></tr>
+<tr>
+<td>PwmTom5TGC0GlbCtrl</td>        <td>[!"$PwmTom5TGC0GlbCtrl"!]</td></tr>
+<tr>
+<td>PwmTom5TGC1GlbCtrl</td>        <td>[!"$PwmTom5TGC1GlbCtrl"!]</td></tr>
+<tr>
+                                           
+<td>PwmAtom0AGCGlbCtrl</td>        <td>[!"$PwmAtom0AGCGlbCtrl"!]</td> </tr>
+<tr>
+<td>PwmAtom1AGCGlbCtrl</td>        <td>[!"$PwmAtom1AGCGlbCtrl"!]</td> </tr>
+<tr>
+<td>PwmAtom2AGCGlbCtrl</td>        <td>[!"$PwmAtom2AGCGlbCtrl"!]</td> </tr>
+<tr>
+<td>PwmAtom3AGCGlbCtrl</td>        <td>[!"$PwmAtom3AGCGlbCtrl"!]</td> </tr>
+<tr>
+<td>PwmAtom4AGCGlbCtrl</td>        <td>[!"$PwmAtom4AGCGlbCtrl"!]</td> </tr>
+<tr>
+<td>PwmAtom5AGCGlbCtrl</td>        <td>[!"$PwmAtom5AGCGlbCtrl"!]</td> </tr>
+<tr>
+<td>PwmAtom6AGCGlbCtrl</td>        <td>[!"$PwmAtom6AGCGlbCtrl"!]</td> </tr>
+<tr>
+<td>PwmAtom7AGCGlbCtrl</td>        <td>[!"$PwmAtom7AGCGlbCtrl"!]</td> </tr>
+<tr>
+<td>PwmAtom8AGCGlbCtrl</td>        <td>[!"$PwmAtom8AGCGlbCtrl"!]</td> </tr>
+<tr>
+<td>PwmAtom9AGCGlbCtrl</td>        <td>[!"$PwmAtom9AGCGlbCtrl"!]</td> </tr>
+<tr>
+                                                                      
+<td>PwmTom0TGC0Endis_Stat</td>        <td>[!"$PwmTom0TGC0Endis_Stat"!]</td>
+<tr><td>PwmTom0TGC1Endis_Stat</td>        <td>[!"$PwmTom0TGC1Endis_Stat"!]</td>
+<tr><td>PwmTom1TGC0Endis_Stat</td>        <td>[!"$PwmTom1TGC0Endis_Stat"!]</td></tr>
+<tr><td>PwmTom1TGC1Endis_Stat</td>        <td>[!"$PwmTom1TGC1Endis_Stat"!]</td></tr>
+<tr><td>PwmTom2TGC0Endis_Stat</td>        <td>[!"$PwmTom2TGC0Endis_Stat"!]</td></tr>
+<tr><td>PwmTom2TGC1Endis_Stat</td>        <td>[!"$PwmTom2TGC1Endis_Stat"!]</td></tr>
+<tr><td>PwmTom3TGC0Endis_Stat</td>        <td>[!"$PwmTom3TGC0Endis_Stat"!]</td></tr>
+<tr><td>PwmTom3TGC1Endis_Stat</td>        <td>[!"$PwmTom3TGC1Endis_Stat"!]</td></tr>
+<tr><td>PwmTom4TGC0Endis_Stat</td>        <td>[!"$PwmTom4TGC0Endis_Stat"!]</td></tr>
+<tr><td>PwmTom4TGC1Endis_Stat</td>        <td>[!"$PwmTom4TGC1Endis_Stat"!]</td></tr>
+<tr><td>PwmTom5TGC0Endis_Stat</td>        <td>[!"$PwmTom5TGC0Endis_Stat"!]</td></tr>
+<tr><td>PwmTom5TGC1Endis_Stat</td>        <td>[!"$PwmTom5TGC1Endis_Stat"!]</td></tr>
+                                              
+<tr><td>PwmTom0TGC0Endis_ctrl</td>        <td>[!"$PwmTom0TGC0Endis_ctrl"!]</td></tr>
+<tr><td>PwmTom0TGC1Endis_ctrl</td>        <td>[!"$PwmTom0TGC1Endis_ctrl"!]</td></tr>
+<tr><td>PwmTom1TGC0Endis_ctrl</td>        <td>[!"$PwmTom1TGC0Endis_ctrl"!]</td></tr>
+<tr><td>PwmTom1TGC1Endis_ctrl</td>        <td>[!"$PwmTom1TGC1Endis_ctrl"!]</td></tr>
+<tr><td>PwmTom2TGC0Endis_ctrl</td>        <td>[!"$PwmTom2TGC0Endis_ctrl"!]</td></tr>
+<tr><td>PwmTom2TGC1Endis_ctrl</td>        <td>[!"$PwmTom2TGC1Endis_ctrl"!]</td></tr>
+<tr><td>PwmTom3TGC0Endis_ctrl</td>        <td>[!"$PwmTom3TGC0Endis_ctrl"!]</td></tr>
+<tr><td>PwmTom3TGC1Endis_ctrl</td>        <td>[!"$PwmTom3TGC1Endis_ctrl"!]</td></tr>
+<tr><td>PwmTom4TGC0Endis_ctrl</td>        <td>[!"$PwmTom4TGC0Endis_ctrl"!]</td></tr>
+<tr><td>PwmTom4TGC1Endis_ctrl</td>        <td>[!"$PwmTom4TGC1Endis_ctrl"!]</td></tr>
+<tr><td>PwmTom5TGC0Endis_ctrl</td>        <td>[!"$PwmTom5TGC0Endis_ctrl"!]</td></tr>
+<tr><td>PwmTom5TGC1Endis_ctrl</td>        <td>[!"$PwmTom5TGC1Endis_ctrl"!]</td></tr>
+                                              
+<tr><td>PwmTom0TGC0Outen_Stat</td>        <td>[!"$PwmTom0TGC0Outen_Stat"!]</td></tr>
+<tr><td>PwmTom0TGC1Outen_Stat</td>        <td>[!"$PwmTom0TGC1Outen_Stat"!]</td></tr>
+<tr><td>PwmTom1TGC0Outen_Stat</td>        <td>[!"$PwmTom1TGC0Outen_Stat"!]</td></tr>
+<tr><td>PwmTom1TGC1Outen_Stat</td>        <td>[!"$PwmTom1TGC1Outen_Stat"!]</td></tr>
+<tr><td>PwmTom2TGC0Outen_Stat</td>        <td>[!"$PwmTom2TGC0Outen_Stat"!]</td></tr>
+<tr><td>PwmTom2TGC1Outen_Stat</td>        <td>[!"$PwmTom2TGC1Outen_Stat"!]</td></tr>
+<tr><td>PwmTom3TGC0Outen_Stat</td>        <td>[!"$PwmTom3TGC0Outen_Stat"!]</td></tr>
+<tr><td>PwmTom3TGC1Outen_Stat</td>        <td>[!"$PwmTom3TGC1Outen_Stat"!]</td></tr>
+<tr><td>PwmTom4TGC0Outen_Stat</td>        <td>[!"$PwmTom4TGC0Outen_Stat"!]</td></tr>
+<tr><td>PwmTom4TGC1Outen_Stat</td>        <td>[!"$PwmTom4TGC1Outen_Stat"!]</td></tr>
+<tr><td>PwmTom5TGC0Outen_Stat</td>        <td>[!"$PwmTom5TGC0Outen_Stat"!]</td></tr>
+<tr><td>PwmTom5TGC1Outen_Stat</td>        <td>[!"$PwmTom5TGC1Outen_Stat"!]</td></tr>
+                                              
+<tr><td>PwmTom0TGC0Outen_ctrl</td>        <td>[!"$PwmTom0TGC0Outen_ctrl"!]</td></tr>
+<tr><td>PwmTom0TGC1Outen_ctrl</td>        <td>[!"$PwmTom0TGC1Outen_ctrl"!]</td></tr>
+<tr><td>PwmTom1TGC0Outen_ctrl</td>        <td>[!"$PwmTom1TGC0Outen_ctrl"!]</td></tr>
+<tr><td>PwmTom1TGC1Outen_ctrl</td>        <td>[!"$PwmTom1TGC1Outen_ctrl"!]</td></tr>
+<tr><td>PwmTom2TGC0Outen_ctrl</td>        <td>[!"$PwmTom2TGC0Outen_ctrl"!]</td></tr>
+<tr><td>PwmTom2TGC1Outen_ctrl</td>        <td>[!"$PwmTom2TGC1Outen_ctrl"!]</td></tr>
+<tr><td>PwmTom3TGC0Outen_ctrl</td>        <td>[!"$PwmTom3TGC0Outen_ctrl"!]</td></tr>
+<tr><td>PwmTom3TGC1Outen_ctrl</td>        <td>[!"$PwmTom3TGC1Outen_ctrl"!]</td></tr>
+<tr><td>PwmTom4TGC0Outen_ctrl</td>        <td>[!"$PwmTom4TGC0Outen_ctrl"!]</td></tr>
+<tr><td>PwmTom4TGC1Outen_ctrl</td>        <td>[!"$PwmTom4TGC1Outen_ctrl"!]</td></tr>
+<tr><td>PwmTom5TGC0Outen_ctrl</td>        <td>[!"$PwmTom5TGC0Outen_ctrl"!]</td></tr>
+<tr><td>PwmTom5TGC1Endis_ctrl</td>        <td>[!"$PwmTom5TGC1Endis_ctrl"!]</td></tr>
+                                              
+<tr><td>PwmAtom0AGCOuten_ctrl</td>        <td>[!"$PwmAtom0AGCOuten_ctrl"!]</td></tr>
+<tr><td>PwmAtom1AGCOuten_ctrl</td>        <td>[!"$PwmAtom1AGCOuten_ctrl"!]</td></tr>
+<tr><td>PwmAtom2AGCOuten_ctrl</td>        <td>[!"$PwmAtom2AGCOuten_ctrl"!]</td></tr>
+<tr><td>PwmAtom3AGCOuten_ctrl</td>        <td>[!"$PwmAtom3AGCOuten_ctrl"!]</td></tr>
+<tr><td>PwmAtom4AGCOuten_ctrl</td>        <td>[!"$PwmAtom4AGCOuten_ctrl"!]</td></tr>
+<tr><td>PwmAtom5AGCOuten_ctrl</td>        <td>[!"$PwmAtom5AGCOuten_ctrl"!]</td></tr>
+<tr><td>PwmAtom6AGCOuten_ctrl</td>        <td>[!"$PwmAtom6AGCOuten_ctrl"!]</td></tr>
+<tr><td>PwmAtom7AGCOuten_ctrl</td>        <td>[!"$PwmAtom7AGCOuten_ctrl"!]</td></tr>
+<tr><td>PwmAtom8AGCOuten_ctrl</td>        <td>[!"$PwmAtom8AGCOuten_ctrl"!]</td></tr>
+<tr><td>PwmAtom9AGCOuten_ctrl</td>        <td>[!"$PwmAtom9AGCOuten_ctrl"!]</td></tr>
+                                                                           
+<tr><td>PwmAtom0AGCOuten_Stat</td>        <td>[!"$PwmAtom0AGCOuten_Stat"!]</td></tr>
+<tr><td>PwmAtom1AGCOuten_Stat</td>        <td>[!"$PwmAtom1AGCOuten_Stat"!]</td></tr>
+<tr><td>PwmAtom2AGCOuten_Stat</td>        <td>[!"$PwmAtom2AGCOuten_Stat"!]</td></tr>
+<tr><td>PwmAtom3AGCOuten_Stat</td>        <td>[!"$PwmAtom3AGCOuten_Stat"!]</td></tr>
+<tr><td>PwmAtom4AGCOuten_Stat</td>        <td>[!"$PwmAtom4AGCOuten_Stat"!]</td></tr>
+<tr><td>PwmAtom5AGCOuten_Stat</td>        <td>[!"$PwmAtom5AGCOuten_Stat"!]</td></tr>
+<tr><td>PwmAtom6AGCOuten_Stat</td>        <td>[!"$PwmAtom6AGCOuten_Stat"!]</td></tr>
+<tr><td>PwmAtom7AGCOuten_Stat</td>        <td>[!"$PwmAtom7AGCOuten_Stat"!]</td></tr>
+<tr><td>PwmAtom8AGCOuten_Stat</td>        <td>[!"$PwmAtom8AGCOuten_Stat"!]</td></tr>
+<tr><td>PwmAtom9AGCOuten_ctrl</td>        <td>[!"$PwmAtom9AGCOuten_ctrl"!]</td></tr>
+                                                                           
+<tr><td>PwmAtom0AGCEndis_Stat</td>        <td>[!"$PwmAtom0AGCEndis_Stat"!]</td></tr>
+<tr><td>PwmAtom1AGCEndis_Stat</td>        <td>[!"$PwmAtom1AGCEndis_Stat"!]</td></tr>
+<tr><td>PwmAtom2AGCEndis_Stat</td>        <td>[!"$PwmAtom2AGCEndis_Stat"!]</td></tr>
+<tr><td>PwmAtom3AGCEndis_Stat</td>        <td>[!"$PwmAtom3AGCEndis_Stat"!]</td></tr>
+<tr><td>PwmAtom4AGCEndis_Stat</td>        <td>[!"$PwmAtom4AGCEndis_Stat"!]</td></tr>
+<tr><td>PwmAtom5AGCEndis_Stat</td>        <td>[!"$PwmAtom5AGCEndis_Stat"!]</td></tr>
+<tr><td>PwmAtom6AGCEndis_Stat</td>        <td>[!"$PwmAtom6AGCEndis_Stat"!]</td></tr>
+<tr><td>PwmAtom7AGCEndis_Stat</td>        <td>[!"$PwmAtom7AGCEndis_Stat"!]</td></tr>
+<tr><td>PwmAtom8AGCEndis_Stat</td>        <td>[!"$PwmAtom8AGCEndis_Stat"!]</td></tr>
+<tr><td>PwmAtom9AGCEndis_Stat</td>        <td>[!"$PwmAtom9AGCEndis_Stat"!]</td></tr>
+                                                                           
+<tr><td>PwmAtom0AGCEndis_ctrl</td>        <td>[!"$PwmAtom0AGCEndis_ctrl"!]</td></tr>
+<tr><td>PwmAtom1AGCEndis_ctrl</td>        <td>[!"$PwmAtom1AGCEndis_ctrl"!]</td></tr>
+<tr><td>PwmAtom2AGCEndis_ctrl</td>        <td>[!"$PwmAtom2AGCEndis_ctrl"!]</td></tr>
+<tr><td>PwmAtom3AGCEndis_ctrl</td>        <td>[!"$PwmAtom3AGCEndis_ctrl"!]</td></tr>
+<tr><td>PwmAtom4AGCEndis_ctrl</td>        <td>[!"$PwmAtom4AGCEndis_ctrl"!]</td></tr>
+<tr><td>PwmAtom5AGCEndis_ctrl</td>        <td>[!"$PwmAtom5AGCEndis_ctrl"!]</td></tr>
+<tr><td>PwmAtom6AGCEndis_ctrl</td>        <td>[!"$PwmAtom6AGCEndis_ctrl"!]</td></tr>
+<tr><td>PwmAtom7AGCEndis_ctrl</td>        <td>[!"$PwmAtom7AGCEndis_ctrl"!]</td></tr>
+<tr><td>PwmAtom8AGCEndis_ctrl</td>        <td>[!"$PwmAtom8AGCEndis_ctrl"!]</td></tr>
+<tr><td>PwmAtom9AGCEndis_ctrl</td>        <td>[!"$PwmAtom9AGCEndis_ctrl"!]</td></tr>
+                                                                           
+                                                            
+[!ENDSELECT!][!//                                                          
+                                                                          
+        </tbody>    
+        </table> 
+  </body>
+</html>
+
+

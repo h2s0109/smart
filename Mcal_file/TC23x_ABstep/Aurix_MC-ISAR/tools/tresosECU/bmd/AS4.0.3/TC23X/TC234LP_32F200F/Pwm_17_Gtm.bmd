@@ -1,0 +1,1135 @@
+<?xml version='1.0'?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-0-3.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE UUID="07b0f01c-b96b-4fd5-b756-6f77e1b47df7">
+      <SHORT-NAME>AURIX</SHORT-NAME>
+      <ELEMENTS>
+        <ECUC-MODULE-DEF UUID="d036edb5-3919-4dd4-b3a1-0d7e84239952">
+          <SHORT-NAME>Pwm</SHORT-NAME>
+          <ADMIN-DATA>
+            <DOC-REVISIONS>
+              <DOC-REVISION>
+                <REVISION-LABEL>4.1.0</REVISION-LABEL>
+                <ISSUED-BY>AUTOSAR</ISSUED-BY>
+                <DATE>2010-12-03</DATE>
+              </DOC-REVISION>
+              <DOC-REVISION>
+                <REVISION-LABEL>4.2.0</REVISION-LABEL>
+                <ISSUED-BY>AUTOSAR</ISSUED-BY>
+                <DATE>2011-11-09</DATE>
+              </DOC-REVISION>
+            </DOC-REVISIONS>
+          </ADMIN-DATA>
+          <REFINED-MODULE-DEF-REF DEST="ECUC-MODULE-DEF">/AUTOSAR/EcucDefs/Pwm</REFINED-MODULE-DEF-REF>
+          <SUPPORTED-CONFIG-VARIANTS>
+            <SUPPORTED-CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</SUPPORTED-CONFIG-VARIANT>
+            <SUPPORTED-CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</SUPPORTED-CONFIG-VARIANT>
+          </SUPPORTED-CONFIG-VARIANTS>
+          <CONTAINERS>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="f850d3fa-b5ae-4f1a-b9f9-5c406c058865">
+              <SHORT-NAME>PwmChannelConfigSet</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">Multiple Configuration Set Container</L-2>
+              </DESC>
+              <MULTIPLE-CONFIGURATION-CONTAINER>true</MULTIPLE-CONFIGURATION-CONTAINER>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF UUID="e4502f41-9748-4bb3-b141-3399bb30fa7e">
+                  <SHORT-NAME>PwmChannel</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Configuration of an individual PWM channel.</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY-INFINITE>1</UPPER-MULTIPLICITY-INFINITE>
+                  <PARAMETERS>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="2d293219-e734-4c63-aa17-04c20a9acbc0">
+                      <SHORT-NAME>PwmChannelClass</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FOR-ALL">PWM_FIXED_PERIOD_CENTER_ALIGNED: PWM_FIXED_PERIOD_CENTER_ALIGNED</L-4>
+                      </LONG-NAME>
+                      <DESC>
+                        <L-2 L="EN">Class of PWM Channel.  ImplementationType: Pwm_17_Gtm_ChannelClassType.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>PWM_FIXED_PERIOD</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>PWM_FIXED_PERIOD</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>PWM_FIXED_PERIOD_SHIFTED</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>PWM_VARIABLE_PERIOD</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>PWM_FIXED_PERIOD_CENTER_ALIGNED</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="e53c91fc-14ed-438f-a51a-c43f685c2a58">
+                      <SHORT-NAME>PwmSafetySignal</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Specifies the type of the Pwm channel</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>PWM_QM_TYPE</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>PWM_QM_TYPE</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>PWM_ASIL_TYPE</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="98652939-96ab-4a60-b7ce-67853999611d">
+                      <SHORT-NAME>PwmChannelId</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Channel Id of the PWM channel. This value will be assigned to the symbolic name derived of the PwmChannel container short name.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>true</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>4294967295</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="e4bab055-95ef-4fb0-b038-a015bdc1ca70">
+                      <SHORT-NAME>PwmShiftValue</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Shift Value for PWM_FIXED_PERIOD_SHIFTED Signal.
+Valid only when PwmChannelClass is PWM_FIXED_PERIOD_SHIFTED.
+This depends on PwmDutyShiftInTicks parameter.
+When the PwmDutyShiftInTicks is OFF, the Shift value should be entered as percentage:
+0, represents 0% 
+0x8000 represents 100%
+When the PwmDutyShiftInTicks is ON, the Shift value should be entered as absolute ticks:
+0, represents 0% 
+Same value as Period value represents 100%</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>65534</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="297a0729-7a7c-4267-892a-631b7b659b60">
+                      <SHORT-NAME>PwmDutycycleDefault</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Value of duty cycle used for Initialization
+Depends on PwmDutyShiftInTicks parameter.
+When the PwmDutyShiftInTicks is OFF, the Dutycyle should be entered as percentage:
+0, represents 0% 
+0x8000 represents 100%
+When the PwmDutyShiftInTicks is ON, the Dutycyle should be entered as absolute ticks:
+0, represents 0% 
+Same value as Period value represents 100%</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>65534</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="8e24a403-6cc7-4b4c-9ed5-891074a707ca">
+                      <SHORT-NAME>PwmIdleState</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">The parameter PWM_IDLE_STATE represents the output state of the PWM after the signal is stopped (e.g. call of Pwm_SetOutputToIdle).</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>PWM_LOW</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>PWM_HIGH</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>PWM_LOW</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-FUNCTION-NAME-DEF UUID="ce992da9-950a-490f-8725-b839953c679c">
+                      <SHORT-NAME>PwmNotification</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Definition of the Callback function.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <ECUC-FUNCTION-NAME-DEF-VARIANTS>
+                        <ECUC-FUNCTION-NAME-DEF-CONDITIONAL>
+                          <DEFAULT-VALUE>NULL_PTR</DEFAULT-VALUE>
+                        </ECUC-FUNCTION-NAME-DEF-CONDITIONAL>
+                      </ECUC-FUNCTION-NAME-DEF-VARIANTS>
+                    </ECUC-FUNCTION-NAME-DEF>
+                    <ECUC-FLOAT-PARAM-DEF UUID="c6a84657-cf20-43cf-8e14-7cb104e0aa1c">
+                      <SHORT-NAME>PwmPeriodDefault</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Default Period of the channel. Input Value in absolute ticks.
+This parameter does not impact the channels of class PWM_FIXED_PERIOD_SHIFTED and PWM_FIXED_PERIOD_CENTER_ALIGNED.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>65534.0</MAX>
+                      <MIN>0.0</MIN>
+                    </ECUC-FLOAT-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="acfafd24-d46c-4cf2-b4d8-ed006767cf15">
+                      <SHORT-NAME>PwmPolarity</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Defines the starting polarity of each PWM channel.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>PWM_LOW</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>PWM_HIGH</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>PWM_LOW</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF UUID="cc44a967-9eb2-45c0-a13b-1cbf48845d81">
+                      <SHORT-NAME>PwmCoherentUpdate</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Setting this parameter to true determines channel is coherent ot not.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                  </PARAMETERS>
+                  <REFERENCES>
+                    <ECUC-CHOICE-REFERENCE-DEF UUID="6f437ed0-d2ae-4a8e-b431-f86d5d448728">
+                      <SHORT-NAME>PwmAssignedHwUnit</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">The required GTM channel.
+                           Choose the GTM TOM channel which will be used by the PWM driver.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <DESTINATION-REFS>
+                        <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AURIX/Mcu/McuModuleConfiguration/GtmConfiguration/Tom/TomChannel</DESTINATION-REF>
+                      </DESTINATION-REFS>
+                    </ECUC-CHOICE-REFERENCE-DEF>
+                    <ECUC-REFERENCE-DEF UUID="974fcd0a-d294-4e4d-860f-7d1d17eabf16">
+                      <SHORT-NAME>PwmReferenceChannel</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Reference channel for PWM_FIXED_PERIOD_SHIFTED, and PWM_FIXED_PERIOD_CENTER_ALIGNED.
+Reference should be a channel of PWM_FIXED_PERIOD Only.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/Pwm/PwmChannelConfigSet/PwmChannel</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                  </REFERENCES>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+                <ECUC-PARAM-CONF-CONTAINER-DEF UUID="e4513f21-9721-4bc3-b241-3499bb50fa7e">
+                  <SHORT-NAME>PwmSyncGroup</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">PWM channel groups defined here.</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY-INFINITE>1</UPPER-MULTIPLICITY-INFINITE>
+                  <PARAMETERS>
+                    <ECUC-INTEGER-PARAM-DEF UUID="5232dc25-d234-4efa-9d54-121f01cb122e">
+                      <SHORT-NAME>PWMDutycycleBufferMarker</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN"> Marker for Dutycycle buffer </L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>65535</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="98642939-98ab-4a61-b7ce-67823999611d">
+                      <SHORT-NAME>PwmGroupId</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Group Id of the PWM Group. This value will be assigned to the symbolic name derived of the PwmSyncGroup container short name.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>true</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>4294967295</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                  </PARAMETERS>
+                  <REFERENCES>
+                    <ECUC-REFERENCE-DEF UUID="974fcd1a-d297-4e4d-861f-7d1d17e2bf56">
+                      <SHORT-NAME>PwmGroupChannels</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Reference channel for Grouping of channels.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>8</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/Pwm/PwmChannelConfigSet/PwmChannel</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                  </REFERENCES>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="79fe20ff-f881-4ca3-9bde-6ff554e2ee1c">
+              <SHORT-NAME>PwmConfigurationOfOptApiServices</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">Pwm configuration of optional API sevices.</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="4bba25d0-21e8-4b1e-aa8d-7b8f595f29d8">
+                  <SHORT-NAME>PwmDeInitApi</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Adds / removes the service Pwm_DeInit() from the code.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="1bbdff97-65ca-4880-8b2d-dd4d89bf41db">
+                  <SHORT-NAME>PwmGetOutputState</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Adds / removes the service Pwm_GetOutputState() from the code.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="405e6b94-9886-4126-baa9-576e2c3932f9">
+                  <SHORT-NAME>PwmSetDutyCycle</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Adds / removes the service Pwm_SetDutyCycle() from the code.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="15b3adbe-b88c-4be9-b25f-4bcac5064a1e">
+                  <SHORT-NAME>PwmSetOutputToIdle</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Adds / removes the service Pwm_SetOutputToIdle() from the code.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="82c9d290-9c91-436e-9fb6-67b0d02005f2">
+                  <SHORT-NAME>PwmSetPeriodAndDuty</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Adds / removes the service Pwm_SetPeriodAndDuty() from the code.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="f865afb1-fe82-45e1-b15a-95237a8e4adb">
+                  <SHORT-NAME>PwmVersionInfoApi</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Switch to indicate that the Pwm_GetVersionInfo is supported</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="cc42a967-8eb2-41c0-a12b-1cbf43665d32">
+                  <SHORT-NAME>PwmSyncGrpUpdateDutiesApi</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Switch for enabling group for PWM channels.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+              </PARAMETERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="81534b37-86a6-47e3-880e-06558c415da8">
+              <SHORT-NAME>PwmGeneral</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">General settings for the PWM driver</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="cc44a967-9eb2-45c0-a13b-1cbf48845d82">
+                  <SHORT-NAME>PwmDevErrorDetect</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Switch for enabling the development error detection.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="c0cf38b3-1fbd-4bd6-84a4-b2788965f82f">
+                  <SHORT-NAME>PwmDutycycleUpdatedEndperiod</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Switch for enabling the update of the duty cycle parameter at the end of the current period
+                             PWM_VARIABLE_PERIOD channel class will not get affected with this parameter setting.</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="c0cf38b3-1fbd-4bd6-84a4-b2788965f82e">
+                  <SHORT-NAME>PwmChannelCoherentSelection</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Switch for enabling the update of the period / duty parameter at the end of the current period
+channel wise. Switching on this parameter obsoletes PwmDutycycleUpdatedEndperiod and
+PwmPeriodUpdatedEndperiod.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="81b00562-c4fa-4519-9f66-ab3ddfc640d1">
+                  <SHORT-NAME>PwmIndex</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Specifies the InstanceId of this module instance. If only one instance is present it shall have the Id 0.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                  <MAX>255</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="1b28421f-b09d-4eb9-a8d2-85f0678e32a5">
+                  <SHORT-NAME>PwmNotificationSupported</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Switch to indicate that the notifications are supported.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="e4463ca4-9fba-4f80-b917-5ec69eaf6e52">
+                  <SHORT-NAME>PwmPeriodUpdatedEndperiod</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Switch for enabling the update of the period parameter at the end of the current period
+                         PWM_FIXED_PERIOD, PWM_FIXED_PERIOD_SHIFTED and PWM_FIXED_PERIOD_CENTER_ALIGNED channel class will not get affected with this parameter setting.</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="cc44a967-9eb2-45c0-a13b-1cbf48845d88">
+                  <SHORT-NAME>PwmPBFixedAddress</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">This parameter enables the user to switch ON/OFF the PostBuild Fixed Address Feature.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="cc44a967-9eb2-45c0-a13b-1cbf48845d89">
+                  <SHORT-NAME>PwmDutyShiftInTicks</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Switch for Pwm Duty Cycle type:
+Disabled - Duty Cycle and Shift value in percentage.
+Enabled - Duty Cycle and Shift value in timer ticks. 
+User has to take care of entering the right values for PwmDutycycleDefault and PwmShiftValue based on this selection.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="c0cf48b3-1f2d-4bd6-81a4-b2797965f82e">
+                  <SHORT-NAME>PwmHandleShiftByOffset</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Switch for enabling Speacial handling for shifted channels.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="c0df28b3-1fcd-4be6-84a4-b1788962f81f">
+                  <SHORT-NAME>PwmEnable0Or100DutyNotification</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Switch to enable notification for 0% and 100% duty for variable and fixed period channels.</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="cde3953f-c106-420f-901c-6f1513cfe715">
+                  <SHORT-NAME>PwmRunningInUser0Mode</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">If this parameter is set to FALSE, then Protected Mode(user mode) register access will not be done and API is run in Supervisor mode.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="bde3173f-c106-4b3f-901c-6f1db3cf2715">
+                  <SHORT-NAME>PwmUserModeInitApiEnable</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">Pre-processor switch to enable / disable protected register access in all the Init API.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="bdee973f-c126-4b8f-901d-6f16b3cdd715">
+                  <SHORT-NAME>PwmUserModeDeInitApiEnable</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">Pre-processor switch to enable / disable protected register access in all the DeInit API.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="bce3973f-c216-4c7f-912c-6d15b3cff815">
+                  <SHORT-NAME>PwmUserModeRuntimeApiEnable</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">Pre-processor switch to enable / disable protected register access in all the APIs other than Init/Deinit APIs</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+              </PARAMETERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="492f8482-3e2c-4bf1-b27f-01fd7ac35788">
+              <SHORT-NAME>CommonPublishedInformation</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">Common container, aggregated by all modules. It contains published information about vendor and versions.</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-INTEGER-PARAM-DEF UUID="bd0a8c38-4d8c-4de9-88fe-116ab258bb8a">
+                  <SHORT-NAME>ArMajorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Major version number of AUTOSAR specification on which the appropriate implementation is based on.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>2</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="73f87c7f-e230-4178-bff0-eb2704aae656">
+                  <SHORT-NAME>ArMinorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Minor version number of AUTOSAR specification on which the appropriate implementation is based on.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>5</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="2380135d-6778-417a-a34b-e10017d4dd54">
+                  <SHORT-NAME>ArPatchVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Patch level version number of AUTOSAR specification on which the appropriate implementation is based on.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="fca015e3-5f28-4cbe-8949-8f4b87d86827">
+                  <SHORT-NAME>SwMajorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Major version number of the vendor specific implementation of the module. The numbering is vendor specific.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>5</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="14ab81e0-3d80-43dc-8b92-247e5a542df9">
+                  <SHORT-NAME>SwMinorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Minor version number of the vendor specific implementation of the module. The numbering is vendor specific.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="32e37bfd-18b6-41d1-9248-a81dbe0fe4c5">
+                  <SHORT-NAME>SwPatchVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="3b407478-6902-4f80-b7cf-f33b0854e638">
+                  <SHORT-NAME>ModuleId</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Module ID of this module from Module List</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>121</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="7d650b2d-4adb-41f0-a68e-5f0c416501d1">
+                  <SHORT-NAME>VendorId</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>17</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-STRING-PARAM-DEF UUID="ad363b41-e945-4717-b12f-c2f800ef138e">
+                  <SHORT-NAME>VendorApiInfix</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">In driver modules which can be instantiated several times on a single ECU, BSW00347 requires that the name of APIs is extended by the VendorId and a vendor specific name. 
+This parameter is used to specify the vendor specific name. In total, the implementation specific name is generated as follows:
+&lt;ModuleName&gt;_&gt;VendorId&gt;_&lt;VendorApiInfix&gt;&lt;Api name from SWS&gt;.
+
+E.g.  assuming that the VendorId of the implementor is 123 and the implementer chose a VendorApiInfix of &quot;v11r456&quot; a api name Can_Write defined in the SWS will translate to Can_123_v11r456Write. 
+
+This parameter is mandatory for all modules with upper multiplicity &gt; 1. It shall not be used for modules with upper multiplicity =1.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <ECUC-STRING-PARAM-DEF-VARIANTS>
+                    <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                      <DEFAULT-VALUE>Gtm</DEFAULT-VALUE>
+                    </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                  </ECUC-STRING-PARAM-DEF-VARIANTS>
+                </ECUC-STRING-PARAM-DEF>
+                <ECUC-STRING-PARAM-DEF UUID="3b407478-6902-4f40-b7cf-f33b0854e638">
+                  <SHORT-NAME>Release</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Aurix derivative used for the implementation</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <ECUC-STRING-PARAM-DEF-VARIANTS>
+                    <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                      <DEFAULT-VALUE>_TRICORE_TC234</DEFAULT-VALUE>
+                    </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                  </ECUC-STRING-PARAM-DEF-VARIANTS>
+                </ECUC-STRING-PARAM-DEF>
+              </PARAMETERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="6211f288-ff69-4ca3-8d4e-5be39814177b">
+              <SHORT-NAME>PwmSafety</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">This container contains the configuration for the safety features of the GPT driver.</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="02fab1fb-1689-465e-9b3b-cead4d320536">
+                  <SHORT-NAME>PwmSafetyEnable</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Pre-processor switch for enabling/disabling the PWM driver safety features. By default,                         - Range check on API parameters shall be done                        - PWM configuration structure shall have a unique marker field which will be verified by the driver                        - Publish the safety usage of PWM driver for user to set the respective MPU settings</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+              </PARAMETERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+          </CONTAINERS>
+        </ECUC-MODULE-DEF>
+      </ELEMENTS>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

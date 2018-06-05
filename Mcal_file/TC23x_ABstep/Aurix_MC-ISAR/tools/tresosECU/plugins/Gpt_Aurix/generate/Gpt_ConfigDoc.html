@@ -1,0 +1,450 @@
+[!/*****************************************************************************
+**                                                                            **
+** Copyright (C) Infineon Technologies (2013)                                 **
+**                                                                            **
+** All rights reserved.                                                       **
+**                                                                            **
+** This document contains proprietary information belonging to Infineon       **
+** Technologies. Passing on and copying of this document, and communication   **
+** of its contents is not permitted without prior written authorization.      **
+**                                                                            **
+********************************************************************************
+**                                                                            **
+**  $FILENAME   : Gpt_ConfigDoc.html $                                       **
+**                                                                            **
+**  $CC VERSION : \main\dev_tc23x\1 $                                        **
+**                                                                            **
+**  $DATE       : 2014-08-04 $                                               **
+**                                                                            **
+**  AUTHOR      : DL-AUTOSAR-Engineering                                      **
+**                                                                            **
+**  VENDOR      : Infineon Technologies                                       **
+**                                                                            **
+**  DESCRIPTION  : HTML Resource Usage for GPT driver                         **
+**                                                                            **
+**  MAY BE CHANGED BY USER [yes/no]: No                                       **
+**                                                                            **
+*************************************************************************/!][!//
+[!/*  TRACEABILITY: [cover parentID=SAS_MCAL_GPT_0113]
+**  [/cover]                                                                  **
+*/!][!//
+[!NOCODE!]
+[!VAR "OsmUsed" = "num:i(0)"!][!//
+[!LOOP "./GptChannelConfigSet/*"!][!//
+[!LOOP "./GptChannelConfiguration/*"!][!//
+[!VAR "Mode" = "GptChannelMode"!][!//
+[!IF "$Mode = 'GPT_CH_MODE_ONESHOT'"!][!//
+[!VAR "OsmUsed" = "num:i(1)"!][!//
+[!BREAK!][!//
+[!ENDIF!][!//
+[!ENDLOOP!][!//
+[!IF "$OsmUsed = num:i(1)"!][!//
+[!BREAK!][!//
+[!ENDIF!][!//
+[!ENDLOOP!][!//
+
+[!VAR "GptSafetyUsed" = "'STD_OFF'"!][!//
+[!VAR "GptInitCheckUsed" = "'STD_OFF'"!][!//
+[!VAR "GptGetModeUsed" = "'STD_OFF'"!][!//
+[!IF "GptSafety/GptSafetyEnable = 'true'"!][!//
+[!VAR "GptSafetyUsed" = "'STD_ON'"!][!//
+[!IF "GptSafety/GptInitCheckApi = 'true'"!][!//
+[!VAR "GptInitCheckUsed" = "'STD_ON'"!][!//
+[!ENDIF!][!//
+[!ENDIF!][!//
+[!IF "GptSafety/GptSafetyEnable = 'true'"!][!//
+[!IF "GptSafety/GptGetModeApi = 'true'"!][!//
+[!VAR "GptGetModeUsed" = "'STD_ON'"!][!//
+[!ENDIF!][!//
+[!ENDIF!][!//
+
+
+[!ENDNOCODE!][!//
+
+<html>
+  <head>
+    <title>GPT Driver Details</title>
+  </head>
+  <body>
+    <style type="text/css">
+table{table-layout: fixed;width: 300px;}
+table.curvedEdges { border:10px solid ;-webkit-border-radius:13px;-moz-border-radius:13px;-ms-border-radius:13px;-o-border-radius:13px;border-radius:13px; }
+table.curvedEdges td, table.curvedEdges th { border-bottom:1px dotted black;overflow: hidden;width: 400px;padding:5px; }
+</style>
+<!-- Be sure to place the above styles (i.e. everything between the <style></style> tags) into the document 'head' (i.e. between the <head></head> tags. Everything below goes inside the <body></body> tags) -->       
+    <p>
+      &nbsp;</p>  
+    <h2>
+      /*****************************************GPT HW-SW MAP*****************************************/</h2>
+    <table border="1" cellpadding="5" cellspacing="0" class="curvedEdges" width="100%">
+      <caption><strong>
+        Table 1: Api Usage and SFR access</strong></caption>
+      <thead>
+        <col width="300">
+        <col width="700">
+        <col width="300"> 
+        <tr>
+          <th scope="col">
+            API Name</th>
+          <th scope="col">
+            SFRs Used</th>
+          <th scope="col">
+            Remarks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Gpt_Init</td>
+          <td>
+            TOMi_CHx_CTRL[!IF "$OsmUsed = num:i(1)"!],
+            TOMi_CHx_IRQ_NOTIFY,TOMi_CHx_IRQ_EN
+            [!ENDIF!][!//
+            </td>
+          <td>Where i refers to TOM module number and x refers to channel number</td>
+        </tr>
+        [!IF "GptConfigurationOfOptApiServices/GptDeinitApi = 'true'"!][!//
+        <tr>
+          <td>
+            Gpt_DeInit</td>
+          <td>TOMi_CHx_CTRL,TOMi_CHx_IRQ_NOTIFY,TOMi_CHx_IRQ_EN,
+          TOMi_CHx_CN0,TOMi_CHx_CM0,TOMi_CHx_SR0</td>
+          <td>
+            Where i refers to TOM module number and x refers to channel number
+          </td>
+        </tr>
+        [!ENDIF!][!//
+        <tr>
+          <td>
+            Gpt_StartTimer</td>
+          <td>
+            TOMi_CHx_CN0,TOMi_CHx_CM0,TOMi_CHx_SR0,TOMi_TGCy_ENDIS_CTRL,
+            TOMi_TGCy_ENDIS_STAT[!IF "$OsmUsed = num:i(1)"!],
+            TOMi_CHx_IRQ_NOTIFY
+            [!ENDIF!][!//
+          </td>
+          <td>Where i refers to TOM module number, x refers to channel number and y refers to the TGC number(0 or 1)</td>
+        </tr>
+        <tr>
+          <td>
+            Gpt_StopTimer</td>
+          <td>TOMi_TGCy_ENDIS_CTRL,TOMi_TGCy_ENDIS_STAT</td>
+          <td>Where i refers to TOM module number, x refers to channel number nad y refers to the TGC number(0 or 1)</td>
+        </tr>
+        [!IF "GptConfigurationOfOptApiServices/GptWakeupFunctionalityApi = 'true'"!][!//
+        <tr>
+          <td>
+            Gpt_SetMode</td>
+          <td>
+            TOMi_TGCy_ENDIS_CTRL,TOMi_TGCy_ENDIS_STAT
+            ,TOMi_CHx_IRQ_EN
+          </td>
+          <td>Where i refers to TOM module number, x refers to channel number nad y refers to the TGC number(0 or 1)</td>
+        </tr>
+        <tr>
+          <td>
+            Gpt_EnableWakeup</td>
+          <td>TOMi_CHx_IRQ_NOTIFY,TOMi_CHx_IRQ_EN</td>
+          <td>
+            Where i refers to TOM module number and x refers to channel number
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Gpt_DisableWakeup</td>
+          <td>TOMi_CHx_IRQ_NOTIFY,TOMi_CHx_IRQ_EN</td>
+          <td>
+            Where i refers to TOM module number and x refers to channel number
+          </td>
+        </tr>
+        [!IF "GptDriverConfiguration/GptReportWakeupSource = 'true'"!][!//
+        <tr>
+          <td>
+            Gpt_CheckWakeup</td>
+          <td>-</td>
+          <td>No SFRs used</td>
+        </tr>
+        [!ENDIF!][!//
+        [!ENDIF!][!//
+        [!IF "GptConfigurationOfOptApiServices/GptTimeElapsedApi = 'true'"!][!//
+        <tr>
+          <td>
+            Gpt_GetTimeElapsed</td>
+          <td>TOMi_CHx_CN0,TOMi_CHx_CM0</td>
+          <td>
+            Where i refers to TOM module number and x refers to channel number
+          </td>
+        </tr>
+        [!ENDIF!][!//
+        [!IF "GptConfigurationOfOptApiServices/GptTimeRemainingApi = 'true'"!][!//
+        <tr>
+          <td>
+            Gpt_GetTimeRemaining</td>
+          <td>TOMi_CHx_CN0,TOMi_CHx_CM0</td>
+          <td>
+            Where i refers to TOM module number and x refers to channel number
+          </td>
+        </tr> 
+        [!ENDIF!][!//
+        [!IF "GptConfigurationOfOptApiServices/GptEnableDisableNotificationApi = 'true'"!][!//
+        <tr>
+          <td>
+            Gpt_EnableNotification</td>
+          <td>
+            TOMi_CHx_IRQ_NOTIFY,TOMi_CHx_IRQ_EN
+          </td>
+          <td>Where i refers to TOM module number and x refers to channel number</td>          
+        </tr>   
+        <tr>
+          <td>
+            Gpt_DisableNotification</td>
+          <td>
+            TOMi_CHx_IRQ_NOTIFY,TOMi_CHx_IRQ_EN</td>
+          <td>Where i refers to TOM module number and x refers to channel number</td>
+        </tr>
+        [!ENDIF!][!//
+        [!IF "$GptInitCheckUsed = 'STD_ON'"!][!//
+        <tr>
+          <td>
+            Gpt_InitCheck</td>
+          <td>
+            Refer SFRs used by Gpt_Init()</td>
+          <td>-</td>
+        </tr>  
+        [!ENDIF!][!// 
+        [!IF "$GptGetModeUsed = 'STD_ON'"!][!// 
+        <tr>
+          <td>
+            Gpt_GetMode</td>
+          <td>-</td>
+          <td>No SFRs used</td>
+        </tr> 
+        [!ENDIF!][!// 
+        [!IF "GptConfigurationOfOptApiServices/GptVersionInfoApi = 'true'"!][!//
+        <tr>
+          <td>
+            Gpt_GetVersionInfo</td>
+          <td>-</td>
+          <td>No SFRs used</td>
+        </tr> 
+        [!ENDIF!][!// 
+      </tbody>
+      </table>   
+
+      <p>
+      &nbsp;</p>     
+
+    <table border="3" cellpadding="5" cellspacing="0" class="curvedEdges">
+      <caption><strong>
+        Table 2: GPT Configured Channels</strong></caption>
+        <thead>
+        <col width="250">
+        <col width="250">
+        <col width="250">
+        <col width="250">
+        [!IF "$GptSafetyUsed = 'STD_ON'"!][!// 
+        <col width="250">
+        [!ENDIF!][!//
+        <th> GPT Channel </th>
+        <th> GTM Module </th>
+        <th> Module no </th>
+        <th> Channel no </th> 
+        [!IF "$GptSafetyUsed = 'STD_ON'"!][!// 
+        <th> Safety level </th>
+        [!ENDIF!][!//
+        </thead>
+        <tbody>
+[!SELECT "as:modconf('Gpt')[1]"!][!//
+[!LOOP "./GptChannelConfigSet/*"!][!//
+[!VAR "GptIndex" = "@index"!][!//
+[!VAR "MaxChannels"= "num:i(count(GptChannelConfiguration/*))"!][!//
+[!FOR "ChannelId" = "num:i(1)" TO "num:i($MaxChannels)"!][!//
+[!SELECT "GptChannelConfiguration/*[GptChannelId = num:i($ChannelId) - num:i(1)]"!][!//
+[!VAR "ChanId" = "num:i($ChannelId) - num:i(1)"!][!//
+[!VAR "GtmRef" = "node:path(node:ref(./GptAssignedHwUnit))"!][!//
+[!IF "contains($GtmRef, '/Tom/') = 'true'"!][!//
+[!VAR "GtmMod" ="'TOM'"!][!//
+[!VAR "GtmModuleNumber" = "substring-before ( substring-after($GtmRef,'/Tom_'),'/TomChannel_')"!]
+[!VAR "GtmChannelNumber" = "substring-after($GtmRef,'/TomChannel_')"!]
+[!ENDIF!][!//
+[!IF "$GptSafetyUsed = 'STD_ON'"!][!// 
+[!VAR "SignalType" = "GptSignalType"!][!//
+[!IF "$SignalType = 'GPT_QM_SIGNAL'"!][!//
+[!VAR "SignalType" = "'QM'"!][!//
+[!ELSEIF "$SignalType = 'GPT_ASIL_SIGNAL'"!][!//
+[!VAR "SignalType" = "'ASIL'"!][!//
+[!ENDIF!][!//
+[!ENDIF!][!//
+        <tr>
+        <td>GPT_Channel_[!"num:i($ChanId)"!]</td>
+        <td>[!"$GtmMod"!]</td>
+        <td>[!"num:i($GtmModuleNumber)"!]</td>
+        <td>[!"num:i($GtmChannelNumber)"!]</td>
+        [!IF "$GptSafetyUsed = 'STD_ON'"!][!// 
+        <td>[!"$SignalType"!]</td>
+        [!ENDIF!][!//        
+        </tr>
+[!ENDSELECT!][!//
+[!ENDFOR!][!//
+[!ENDLOOP!][!// 
+[!ENDSELECT!][!//
+
+        </tbody>    
+
+        </table>    
+    <p>
+      &nbsp;</p>      
+    <h2>
+[!IF "$GptSafetyUsed = 'STD_ON'"!][!// 
+      /******************************************GPT MPU Settings******************************************/</h2>     
+    <table border="3" cellpadding="5" cellspacing="0" class="curvedEdges">
+      <caption><strong>
+        Table 3: Common SFR and Memory Range</strong></caption>
+      <thead>
+        <col width="500">
+        <col width="500">
+        <col width="300">
+        <tr>
+          <th scope="col">
+            Start Address</th>
+          <th scope="col">
+            End Address</th>
+          <th scope="col">
+            Remarks</th>
+        </tr>
+      </thead>
+      <tbody>
+        [!IF "GptDriverConfiguration/GptPBFixedAddress = 'false'"!][!//
+        <tr>
+          <td>
+            GPT_START_SEC_VAR_32BIT</td>
+          <td>
+            GPT_STOP_SEC_VAR_32BIT</td>
+          <td>
+            Gpt_kConfigPtr</td>
+        </tr>
+        [!ENDIF!][!//
+        [!IF "GptDriverConfiguration/GptPBFixedAddress = 'true'"!][!//
+        <tr>
+          <td>
+            GPT_START_SEC_CONST_32BIT</td>
+          <td>
+            GPT_STOP_SEC_CONST_32BIT</td>
+          <td>
+            Gpt_kConfigPtr</td>
+        </tr>
+        [!ENDIF!][!//
+        [!IF "GptConfigurationOfOptApiServices/GptWakeupFunctionalityApi = 'true'"!][!//
+        [!IF "GptDriverConfiguration/GptReportWakeupSource = 'true'"!][!//
+        <tr>
+          <td>
+            GPT_START_SEC_VAR_FAST_32BIT</td>
+          <td>
+            GPT_STOP_SEC_VAR_FAST_32BIT</td>
+          <td>Gpt_WakeupChannelInfo</td>
+        </tr>
+        [!ENDIF!][!//
+        [!ENDIF!][!//
+        <tr>
+          <td>
+            GPT_START_SEC_VAR_8BIT</td>
+          <td>
+            GPT_STOP_SEC_VAR_8BIT</td>
+          <td>Gpt_DriverMode, Gpt_ChannelIndex, Gpt_ChannelIdentifier, QMChannelStatus variable, QM Notification flags if notification enabled</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      &nbsp;</p>      
+
+    <table border="3" cellpadding="5" cellspacing="0" class="curvedEdges">
+      <caption><strong>
+        Table 4: ASIL B SFR and Memory Range</strong></caption>
+      <thead>
+        <col width="500">
+        <col width="500">
+        <col width="300">
+        <tr>
+          <th scope="col">
+            Start Address</th>
+          <th scope="col">
+            End Address</th>
+          <th scope="col">
+            Remarks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            GTM_TOMi_CHx_CTRL</td>
+          <td>
+            GTM_TOMi_CHx_IRQ_EN</td>
+          <td>
+            Refer Table 2 for respective GTM Module, Module number(i) and Channel number(x)</td>
+        </tr>
+        <tr>
+          <td>
+            GTM_TOMi_TGCy_ENDIS_CTRL</td>
+          <td>
+            GTM_TOMi_TGCy_ENDIS_STAT</td>
+          <td>
+            Refer Table 2 for respective GTM Module, Module number(i).
+            TGC number(y) will be 0 if Channel number <= 7,
+            TGC number(y) will be 1 if Channel number > 7</td>
+        </tr>
+
+        <tr>
+          <td>
+            GPT_START_SEC_ASIL0_VAR_8BIT</td>
+          <td>
+            GPT_STOP_SEC_ASIL0_VAR_8BIT</td>
+          <td>AsilChannelStatus variable, ASIL Notification flags if notification enabled</td>
+        </tr>
+
+      </tbody>
+    </table>
+
+    <p>
+      &nbsp;</p>      
+
+    <table border="3" cellpadding="5" cellspacing="0" class="curvedEdges">
+      <caption><strong>
+        Table 5: QM SFR and Memory Range</strong></caption>
+      <thead>
+        <col width="500">
+        <col width="500">
+        <col width="300">
+        <tr>
+          <th scope="col">
+            Start Address</th>
+          <th scope="col">
+            End Address</th>
+          <th scope="col">
+            Remarks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            GTM_TOMi_CHx_CTRL</td>
+          <td>
+            GTM_TOMi_CHx_IRQ_EN</td>
+          <td>
+            Refer Table 2 for respective GTM Module, Module number(i) and Channel number(x)</td>
+        </tr>
+        <tr>
+          <td>
+            GTM_TOMi_TGCy_ENDIS_CTRL</td>
+          <td>
+            GTM_TOMi_TGCy_ENDIS_STAT</td>
+          <td>
+            Refer Table 2 for respective GTM Module, Module number(i).
+            TGC number(y) will be 0 if Channel number <= 7,
+            TGC number(y) will be 1 if Channel number > 7</td>
+        </tr>
+      </tbody>
+    </table>
+[!ENDIF!][!// 
+  </body>
+</html>                                    

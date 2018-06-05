@@ -1,0 +1,1814 @@
+<?xml version='1.0'?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-0-3.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE UUID="5aeb53c9-948a-4587-ad87-bafa68274075">
+      <SHORT-NAME>AURIX</SHORT-NAME>
+      <ELEMENTS>
+        <ECUC-MODULE-DEF UUID="e4a01b36-d552-4466-a21a-b12fb2b7fc18">
+          <SHORT-NAME>Fr</SHORT-NAME>
+          <DESC>
+            <L-2 L="EN">Configuration of the Fr (FlexRay driver) module.</L-2>
+          </DESC>
+          <ADMIN-DATA>
+            <DOC-REVISIONS>
+              <DOC-REVISION>
+                <REVISION-LABEL>4.1.0</REVISION-LABEL>
+                <ISSUED-BY>AUTOSAR</ISSUED-BY>
+                <DATE>2010-12-03</DATE>
+              </DOC-REVISION>
+            </DOC-REVISIONS>
+          </ADMIN-DATA>
+          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+          <UPPER-MULTIPLICITY-INFINITE>1</UPPER-MULTIPLICITY-INFINITE>
+          <REFINED-MODULE-DEF-REF DEST="ECUC-MODULE-DEF">/AUTOSAR/EcucDefs/Fr</REFINED-MODULE-DEF-REF>
+          <SUPPORTED-CONFIG-VARIANTS>
+            <SUPPORTED-CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</SUPPORTED-CONFIG-VARIANT>
+            <SUPPORTED-CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</SUPPORTED-CONFIG-VARIANT>
+          </SUPPORTED-CONFIG-VARIANTS>
+          <CONTAINERS>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="d6bf29db-12db-4c11-8918-a5ae5039adf3">
+              <SHORT-NAME>FrGeneral</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">General configuration (parameters) of the FlexRay Driver module.</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="ec9cb6b6-5c2f-4e49-912a-9f4196a9d27d">
+                  <SHORT-NAME>FrBufferReconfig</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Enables or disables buffer reconfiguration at runtime through Fr_PrepareLPdu. Pre-compile switch FR_RECONFIG_BUFFER is derived from this configuration parameter.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="ECUC:f7190b81-1f47-444c-9d32-9e0e82e0d9f7">
+                  <SHORT-NAME>FrCtrlTestCount</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Maxmimum number of iterations the FlexRay controller hardware test is performed during controller initialization.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                  <MAX>255</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="e7138176-79ba-4d4b-b4b8-ced0dc414321">
+                  <SHORT-NAME>FrDevErrorDetect</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Switches the Development Error Detection and Notification 
+on or off.
+true: Development Error Detection and Notification enabled.
+false: Development Error Detection and Notification disabled.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="b2933d20-ffeb-45b7-a8e7-982dddbcab7e">
+                  <SHORT-NAME>FrIndex</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Specifies the InstanceId of this module instance. If only one instance is present it shall have the Id 0.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                  <MAX>255</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="358212ed-9daa-4175-9fda-0f16e02dde5a">
+                  <SHORT-NAME>FrTimeoutDurationFactor</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Specifies the maximum number of loops for blocking function until a timeout is raised in short term wait loops.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <DEFAULT-VALUE>100</DEFAULT-VALUE>
+                  <MAX>4294967295</MAX>
+                  <MIN>100</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="33284286-1fd3-4ed3-9f30-cab2c17e895f">
+                  <SHORT-NAME>FrNumCtrlSupported</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Determines the maximum number of communication controllers that the driver supports.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                  <MAX>1</MAX>
+                  <MIN>1</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="ec9cb6b6-5c2f-4e49-912a-9f4196a9d27e">
+                  <SHORT-NAME>FrRxStringentCheck</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">If stringent check is enabled (true), received frames are only accepted if no slot status error occured.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="ec9cb6b6-5c2f-4e49-912a-9f4196a9d27f">
+                  <SHORT-NAME>FrRxStringentLengthCheck</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">If stringent check is enabled (true), received frames are only accepted the received payload length matches the configured payload length.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="b004eb10-016b-41e0-8b7c-9146f1017b8b">
+                  <SHORT-NAME>FrNmVectorEnable</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Enables/disables the existence of the Fr_GetNmVector API. Pre-compile switch FR_NMVECTOR_ENABLE is derived from this configuration parameter.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="e7138176-79ba-4d4b-b4b8-ced0dc414323">
+                  <SHORT-NAME>FrVersionInfoApi</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Enables/disables the existence of the Fr_GetVersionInfo API.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="e7138176-79ba-4d4b-b4b8-abd0dc414323">
+                  <SHORT-NAME>FrDebugSupport</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Enables/disables the Debug support of variables that shall be debugged by AUTOSAR Debugging</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="26affa9b-f445-4719-bb13-421950e150f8">
+                  <SHORT-NAME>FrPBFixedAddress</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">The fixed address feature supports the optimization of a post build configuration with a fixed address by avoiding pointer indirection. 
+                        True: Fixed Address is used (Deviates from AUTOSAR).
+                        False:PostBuild Configuration selected (AUTOSAR compliant)</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="e7138176-79ba-4d4b-b4b8-abd0ec424323">
+                  <SHORT-NAME>FrResetSfrAtInit</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Enables / Disables the FR Kernel Registers reset feature in the Initialization function</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="bde3973f-c106-4b0f-901c-6f15b3cff715">
+                  <SHORT-NAME>FrRunningInUser0Mode</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">If this parameter is set to FALSE, then Protected Mode(user mode) register access will not be done and API is run in Supervisor mode.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="bde3973f-c106-4b9f-901c-6f15b3cff715">
+                  <SHORT-NAME>FrUserModeInitApiEnable</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">Pre-processor switch to enable / disable protected register access in all the Init API.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="bde3973f-c106-4b7f-902c-6f15b3cff715">
+                  <SHORT-NAME>FrUserModeRuntimeApiEnable</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">Pre-processor switch to enable / disable protected register access in all the APIs other than Init/Deinit APIs</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+              </PARAMETERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="492f8482-3e2c-4bf1-b27f-01fd7ac35788">
+              <SHORT-NAME>CommonPublishedInformation</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">Common container, aggregated by all modules. It contains published information about vendor and versions.</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-INTEGER-PARAM-DEF UUID="bd0a8d38-4d8c-4ee9-88fe-1166b258bb8a">
+                  <SHORT-NAME>ArMajorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Major version number of AUTOSAR specification on which the appropriate implementation is based on.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>2</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="73f87c7f-e230-4178-bff0-eb2704aae656">
+                  <SHORT-NAME>ArMinorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Minor version number of AUTOSAR specification on which the appropriate implementation is based on.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>5</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="2380135d-6778-417a-a34b-e10017d4dd54">
+                  <SHORT-NAME>ArPatchVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Patch level version number of AUTOSAR specification on which the appropriate implementation is based on.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="fca015e3-5f28-4cbe-8949-8f4b87d86827">
+                  <SHORT-NAME>SwMajorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Major version number of the vendor specific implementation of the module. The numbering is vendor specific.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>2</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="14ab81e0-3d80-43dc-8b92-247e5a542df9">
+                  <SHORT-NAME>SwMinorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Minor version number of the vendor specific implementation of the module. The numbering is vendor specific.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>3</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="32e37bfd-18b6-41d1-9248-a81dbe0fe4c5">
+                  <SHORT-NAME>SwPatchVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="3b407478-6902-4f80-b7cf-f33b0854e638">
+                  <SHORT-NAME>ModuleId</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Module ID of this module from Module List</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>81</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="7d650b2d-4adb-41f0-a68e-5f0c416501d1">
+                  <SHORT-NAME>VendorId</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>17</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-STRING-PARAM-DEF UUID="ad363b41-e945-4717-b12f-c2f800ef138e">
+                  <SHORT-NAME>VendorApiInfix</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">In driver modules which can be instantiated several times on a single ECU, BSW00347 requires that the name of APIs is extended by the VendorId and a vendor specific name. 
+This parameter is used to specify the vendor specific name. In total, the implementation specific name is generated as follows:
+&lt;ModuleName&gt;_&gt;VendorId&gt;_&lt;VendorApiInfix&gt;&lt;Api name from SWS&gt;.
+
+E.g.  assuming that the VendorId of the implementor is 123 and the implementer chose a VendorApiInfix of &quot;v11r456&quot; a api name Can_Write defined in the SWS will translate to Can_123_v11r456Write. 
+
+This parameter is mandatory for all modules with upper multiplicity &gt; 1. It shall not be used for modules with upper multiplicity =1.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <ECUC-STRING-PARAM-DEF-VARIANTS>
+                    <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                      <DEFAULT-VALUE>Eray</DEFAULT-VALUE>
+                    </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                  </ECUC-STRING-PARAM-DEF-VARIANTS>
+                </ECUC-STRING-PARAM-DEF>
+                <ECUC-STRING-PARAM-DEF UUID="3b407478-6902-4f40-b7cf-f33b0854e638">
+                  <SHORT-NAME>Release</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Aurix derivative used for thr implementation</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <ECUC-STRING-PARAM-DEF-VARIANTS>
+                    <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                      <DEFAULT-VALUE>_TRICORE_TC233</DEFAULT-VALUE>
+                    </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                  </ECUC-STRING-PARAM-DEF-VARIANTS>
+                </ECUC-STRING-PARAM-DEF>
+              </PARAMETERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="e5636942-7f7c-44b0-9a4a-5cebd912843d">
+              <SHORT-NAME>FrMultipleConfiguration</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">Configuration of the individual controllers.</L-2>
+              </DESC>
+              <MULTIPLE-CONFIGURATION-CONTAINER>true</MULTIPLE-CONFIGURATION-CONTAINER>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF UUID="6cb702ac-2c3f-4217-953b-a1974d53a705">
+                  <SHORT-NAME>FrController</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Configuration of the individual controller.</L-2>
+                  </DESC>
+                  <PARAMETERS>
+                    <ECUC-INTEGER-PARAM-DEF UUID="6f4f7a61-017a-405c-88ed-f9dc2a0e615f">
+                      <SHORT-NAME>FrCtrlIdx</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Determines index of CC within Fr.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>true</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>0</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF UUID="34d278f2-4c4f-4279-9e4e-97404c9b057d">
+                      <SHORT-NAME>FrPAllowHaltDueToClock</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Boolean flag that controls the transition to the POC:halt state due to a clock synchronization errors. If set to true, the CC is allowed to transition to POC:halt. If set to false, the CC will not transition to the POC:halt state but will enter or remain in the POC:normal passive state (self healing would still be possible)</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="8074f103-6235-415e-8fea-72d4aa47e7df">
+                      <SHORT-NAME>FrPAllowPassiveToActive</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Number of consecutive even/odd cycle pairs that must have valid clock correction terms before the CC will be allowed to transition from the POC:normal passive state to POC:normal active state. If set to zero, the CC is not allowed to transition from POC:normal passive to POC:normal active</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>10</DEFAULT-VALUE>
+                      <MAX>31</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="b0431fb7-06ee-4bb9-8ec5-4ae292085774">
+                      <SHORT-NAME>FrPChannels</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Channels to which the node is connected.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>FR_CHANNEL_AB</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>FR_CHANNEL_A</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>FR_CHANNEL_AB</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>FR_CHANNEL_B</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="e4b27410-00d9-4b72-8757-382015b9d4cc">
+                      <SHORT-NAME>FrPClusterDriftDamping</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Local cluster drift damping factor used for rate correction [Microticks].</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                      <MAX>20</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="1983f047-ec50-49db-8fab-f603500351bd">
+                      <SHORT-NAME>FrPDecodingCorrection</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Value used by the receiver to calculate the difference between primary time reference point and secondary time reference point [Microticks]</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>14</DEFAULT-VALUE>
+                      <MAX>143</MAX>
+                      <MIN>14</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="fef96fe6-d972-4818-9883-42e449c5e2f5">
+                      <SHORT-NAME>FrPDelayCompensationA</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Value used to compensate for reception delays on the indicated channel. This covers assumed propagation delay up to cPropagationDelayMax for microticks in the range of 0.0125 ?s to 0.05 ?s. In practice, the minimum of the propagation delays of all sync nodes should be applied [Microticks].</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>200</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="1e0a8255-7858-4047-b8f5-00f80c483f0e">
+                      <SHORT-NAME>FrPDelayCompensationB</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Value used to compensate for reception delays on the indicated channel. This covers assumed propagation delay up to cPropagationDelayMax for microticks in the range of 0.0125 ?s to 0.05 ?s. In practice, the minimum of the propagation delays of all sync nodes should be applied [Microticks].</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>200</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF UUID="26affa9b-f445-4719-bb13-421950e150f9">
+                      <SHORT-NAME>FrPExternalSync</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Flag indicating whether the node is externally synchronized 
+                    Remarks: Set to &apos;false&apos; for FlexRay Protocol 2.1 Rev. A compliance.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF UUID="26affa9b-f445-4719-bb13-421950e150fa">
+                      <SHORT-NAME>FrPFallBackInternal</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Flag indicating whether a time gateway sink node will switch to local clock operation 
+                    when synchronization with the time gateway source node is lost 
+                    Remarks: Set to &apos;false&apos; for FlexRay Protocol 2.1 Rev. A compliance.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="9c5ed87e-1c7f-4502-904b-f4eedd9f7e8a">
+                      <SHORT-NAME>FrPKeySlotId</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">ID of the slot used to transmit the startup frame, sync frame, or designated single slot frame</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                      <MAX>1023</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF UUID="644468d0-d244-415a-8283-2ec150198bdb">
+                      <SHORT-NAME>FrPKeySlotOnlyEnabled</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">maps to pSingleSlotEnabled. Flag indicating whether or not the node shall enter single slot mode following startup</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF UUID="61a9172f-06f3-4913-8189-ffa150294f97">
+                      <SHORT-NAME>FrPKeySlotUsedForStartup</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Flag indicating whether the Key Slot is used to transmit a startup frame</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF UUID="98067038-ccd1-4853-82b4-1d3693ac6135">
+                      <SHORT-NAME>FrPKeySlotUsedForSync</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Flag indicating whether the Key Slot is used to transmit a sync frame</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="22a31ea4-79ef-4fd4-9489-a92db72db79e">
+                      <SHORT-NAME>FrPLatestTx</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Number of the last minislot in which a frame transmission can start in the dynamic segment [Minislots].</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>7980</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="816147e3-7230-49dd-b103-dd38bdef73b0">
+                      <SHORT-NAME>FrPMacroInitialOffsetA</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Integer number of macroticks between the static slot boundary and the following macrotick boundary of the secondary time reference point based on the nominal macrotick duration [Macroticks].</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>2</DEFAULT-VALUE>
+                      <MAX>68</MAX>
+                      <MIN>2</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="232a4dbb-1139-40e7-b5e4-9e1ac7e298cd">
+                      <SHORT-NAME>FrPMacroInitialOffsetB</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Integer number of macroticks between the static slot boundary and the following macrotick boundary of the secondary time reference point based on the nominal macrotick duration [Macroticks].</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>2</DEFAULT-VALUE>
+                      <MAX>68</MAX>
+                      <MIN>2</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="9840cacf-a627-488a-a189-443164837887">
+                      <SHORT-NAME>FrPMicroInitialOffsetA</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Number of microticks between the closest macrotick boundary described by pMacroInitialOffset[Ch] and the secondary time reference point. The parameter depends on pDelayCompensation[Ch] and therefore it has to be set independently for each channel [Microticks].</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                      <MAX>239</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="3842aca6-46c1-49e1-93d9-f7cd5858857c">
+                      <SHORT-NAME>FrPMicroInitialOffsetB</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Number of microticks between the closest macrotick boundary described by pMacroInitialOffset[Ch] and the secondary time reference point. The parameter depends on pDelayCompensation[Ch] and therefore it has to be set independently for each channel [Microticks].</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                      <MAX>239</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="683796aa-c8be-4cd3-ac9d-ca66ab396f79">
+                      <SHORT-NAME>FrPMicroPerCycle</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Nominal number of microticks in the communication cycle of the local node. If nodes have different microtick durations this number will differ from node to node [Microticks].</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>640</DEFAULT-VALUE>
+                      <MAX>640000</MAX>
+                      <MIN>640</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF UUID="26affa9b-f445-4719-bb13-421950e150ef">
+                      <SHORT-NAME>FrPNmVectorEarlyUpdate</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Flag indicating when the update of the Network Management Vector in the CHI shall take place. 
+                                 Remarks: Set to &apos;false&apos; for FlexRay Protocol 2.1 Rev. A compliance.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="0b27e327-8da8-422a-80a9-849376f78ee8">
+                      <SHORT-NAME>FrPOffsetCorrectionOut</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Magnitude of the maximum permissible offset correction value [Microticks].</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>15</DEFAULT-VALUE>
+                      <MAX>15567</MAX>
+                      <MIN>15</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="0b27e327-8da8-422b-80a9-849376f78ee8">
+                      <SHORT-NAME>FrPOffsetCorrectionStart</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">gOffsetCorectionStart. Magnitude of the maximum permissible offset correction value [Microticks].</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>9</DEFAULT-VALUE>
+                      <MAX>15999</MAX>
+                      <MIN>9</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="01a69259-41ed-403a-8915-1eab3a2ba4bb">
+                      <SHORT-NAME>FrPPayloadLengthDynMax</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Maximum payload length for dynamic frames [16 bit words].</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>127</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="03e0bfa0-3703-4c01-bf8d-3d42618b0499">
+                      <SHORT-NAME>FrPRateCorrectionOut</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Magnitude of the maximum permissible rate correction value [Microticks].</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>2</DEFAULT-VALUE>
+                      <MAX>1923</MAX>
+                      <MIN>2</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="2550925e-5c69-4cb1-a272-b498163ad2ca">
+                      <SHORT-NAME>FrPSamplesPerMicrotick</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Number of samples per microtick</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>N2SAMPLES</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>N1SAMPLES</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>N2SAMPLES</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>N4SAMPLES</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="03e0bfa0-3703-4c01-bf8c-3d42618b049a">
+                      <SHORT-NAME>FrPSecondKeySlotId</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Magnitude of the maximum permissible rate correction value [Microticks].</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>1023</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF UUID="26affa9b-f445-4719-dd13-421950e150fa">
+                      <SHORT-NAME>FrPTwoKeySlotMode</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Flag indicating whether node operates as a coldstart node in a TT-E or TT-L cluster. 
+                             Remarks: Set to &apos;false&apos; for FlexRay Protocol 2.1 Rev. A compliance.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="5928e281-6ffa-4fae-8d6d-0c662af1a14b">
+                      <SHORT-NAME>FrPWakeupChannel</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Channel used by the node to send a wakeup pattern.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>FR_CHANNEL_A</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>FR_CHANNEL_A</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>FR_CHANNEL_B</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="f29f8f2c-f9f2-45ac-a0b2-bb3508b2f5ee">
+                      <SHORT-NAME>FrPWakeupPattern</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Number of repetitions of the wakeup symbol that are combined to form a wakeup pattern when the node enters the POC:wakeup send state</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>2</DEFAULT-VALUE>
+                      <MAX>63</MAX>
+                      <MIN>2</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="919fda4a-8e9a-4cb8-a025-6d02a7d48fad">
+                      <SHORT-NAME>FrPdAcceptedStartupRange</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Expanded range of measured clock deviation allowed for startup frames during integration [Microticks].</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>1875</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="198ef5fc-f2f5-4eb1-ac87-00e843bfcd76">
+                      <SHORT-NAME>FrPdListenTimeout</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Upper limit for the start up listen timeout and wake up listen timeout [Microticks].</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>1284</DEFAULT-VALUE>
+                      <MAX>1283846</MAX>
+                      <MIN>1284</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="68e0dc5b-db49-4f35-bb1e-c7ebf612a0d0">
+                      <SHORT-NAME>FrPdMicrotick</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Duration of a microtick.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>T25NS</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>T100NS</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>T12_5NS</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>T25NS</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>T50NS</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="1b7aa112-460a-44ac-a9ba-ca4f568aba2f">
+                      <SHORT-NAME>FrRxInputSelectionA</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Provides alternate Port Pin selection for Flex Ray Recieve input line for Channel A</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>FR_RXSEL0</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>FR_RXSEL0</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>FR_RXSEL1</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>FR_RXSEL2</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>FR_RXSEL3</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="e79edddf-095a-46b4-ac8d-c41351bf4adb">
+                      <SHORT-NAME>FrRxInputSelectionB</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Provides alternate Port Pin selection for Flex Ray Recieve input line for Channel B</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>FR_RXSEL0</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>FR_RXSEL0</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>FR_RXSEL1</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>FR_RXSEL2</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>FR_RXSEL3</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                  </PARAMETERS>
+                  <SUB-CONTAINERS>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="8f8638bd-66d6-4090-9666-c0ad91554e7b">
+                      <SHORT-NAME>FrAbsoluteTimer</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Specifies the absolute timer configuration parameters of the Fr.</L-2>
+                      </DESC>
+                      <PARAMETERS>
+                        <ECUC-INTEGER-PARAM-DEF UUID="fc43f7e6-61c0-4942-ae3e-7a7f9c64b574">
+                          <SHORT-NAME>FrAbsTimerIdx</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Contains the index of an absolute timer contained in Fr on a certain FlexRay CC.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>true</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                          <MAX>0</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                      </PARAMETERS>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="ECUC:4C697A37-02D8-42df-8696-0C9F592008C8">
+                      <SHORT-NAME>FrControllerDemEventParameterRefs</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This container contains the references to DemEventParameter elements.  Please see MCU187_Conf for more information on this parameter.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <REFERENCES>
+                        <ECUC-SYMBOLIC-NAME-REFERENCE-DEF UUID="ECUC:66C8E900-6197-42a3-8E25-A695AA21788E">
+                          <SHORT-NAME>FrDemCtrlTestResultRef</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Reference to the DemEventParameter which shall be issued on FlexRay controller hardware test failure</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter</DESTINATION-REF>
+                        </ECUC-SYMBOLIC-NAME-REFERENCE-DEF>
+                        <ECUC-SYMBOLIC-NAME-REFERENCE-DEF UUID="ECUC:69fd4110-9760-498d-9fdf-823e17edbdae">
+                          <SHORT-NAME>FrDemTimeoutRef</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Reference to the DemEventParameter which shall be issued when there is a Timeout in Hardware response.</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter</DESTINATION-REF>
+                        </ECUC-SYMBOLIC-NAME-REFERENCE-DEF>
+                      </REFERENCES>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="8f8638bd-66d6-4090-9667-c0ad91554e7e">
+                      <SHORT-NAME>FrFifo</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">One First In First Out (FIFO) queued receive structure, defining the admittance criteria to the FIFO, and mandating the ability to admit messages into the FIFO based on Message Id filtering criteria.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <PARAMETERS>
+                        <ECUC-BOOLEAN-PARAM-DEF UUID="644468d0-d244-415a-8283-2ec150198bec">
+                          <SHORT-NAME>FrAdmitWithoutMessageId</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Determines whether or not frames received in the dynamic segment that don&apos;t contain a message ID will be admitted into the FIFO.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                        </ECUC-BOOLEAN-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="198ef5fc-f2f5-4eb1-ac87-00e843bfcd87">
+                          <SHORT-NAME>FrBaseCycle</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">FIFO cycle counter acceptance criteria.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                          <MAX>63</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="68e0dc5b-db49-4f36-bb1f-c7ebf612a0d0">
+                          <SHORT-NAME>FrChannels</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">FIFO channel admittance criteria.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <DEFAULT-VALUE>FR_CHANNEL_A</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>FR_CHANNEL_A</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>FR_CHANNEL_AB</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>FR_CHANNEL_B</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="198ef5fc-f2f5-4eb1-ac87-00e843bfcd9">
+                          <SHORT-NAME>FrCycleRepetition</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">FIFO cylce counter acceptance criteria. Valid values are 1,2,4,8,16,32,64.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                          <MAX>64</MAX>
+                          <MIN>1</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="198ef5fc-f2f5-4eb1-ac87-00e843bfcd98">
+                          <SHORT-NAME>FrFifoDepth</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Fifo Depth.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                          <MAX>127</MAX>
+                          <MIN>1</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="198ef5fc-f2f5-4eb1-ac87-00e843bfef87">
+                          <SHORT-NAME>FrMsgIdMask</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">FIFO message identifier acceptance criteria (Mask filter).</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                          <MAX>65535</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="198ef5fc-f2f5-4eef-ac87-00e843bfcd87">
+                          <SHORT-NAME>FrMsgIdMatch</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">FIFO message identifier acceptance criteria (Match filter).</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                          <MAX>65535</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="198ef5fc-f2f5-4eef-ac87-00E843Bfcd85">
+                          <SHORT-NAME>FrFrameIdRejectionFilter</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">FIFO FrameId rejection criteria, frame ID to be rejected by the FIFO.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                          <MAX>2047</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="198ef5fc-f2f5-4eef-ac87-00E843Bfcd90">
+                          <SHORT-NAME>FrFrameIdRejectionFilterMask</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">FIFO FrameId rejection mask, For all the bits that are 0, corresponding bits are considered in the FrFrameIdRejectionFilter for FrameId rejection </L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <DEFAULT-VALUE>2047</DEFAULT-VALUE>
+                          <MAX>2047</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-BOOLEAN-PARAM-DEF UUID="644468d0-d244-415a-8283-2ec150198bef">
+                          <SHORT-NAME>FrRejectStaticSegment</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Determines whether or not frames received in the static segment are considered for FIFO.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                        </ECUC-BOOLEAN-PARAM-DEF>
+                        <ECUC-BOOLEAN-PARAM-DEF UUID="644468d0-d244-415a-8283-2ec150198b45">
+                          <SHORT-NAME>FrRejectNullFrames</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Determines whether or not null frames received are considered for FIFO.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                        </ECUC-BOOLEAN-PARAM-DEF>
+                      </PARAMETERS>
+                      <SUB-CONTAINERS>
+                        <ECUC-PARAM-CONF-CONTAINER-DEF UUID="8f8638bd-66d6-4090-9666-c0ad91554e8c">
+                          <SHORT-NAME>FrRange</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">FIFO Frame Id range acceptance criteria.</L-2>
+                          </DESC>
+                          <PARAMETERS>
+                            <ECUC-INTEGER-PARAM-DEF UUID="fc43f7e6-61c0-4942-ae3e-7a7f9c64b585">
+                              <SHORT-NAME>FrRangeMax</SHORT-NAME>
+                              <DESC>
+                                <L-2 L="EN">Last FrameId of this range that will be accepted by the FIFO.</L-2>
+                              </DESC>
+                              <IMPLEMENTATION-CONFIG-CLASSES>
+                                <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                                  <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                                  <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                                </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                                <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                                  <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                                  <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                                </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              </IMPLEMENTATION-CONFIG-CLASSES>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                              <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                              <MAX>2047</MAX>
+                              <MIN>0</MIN>
+                            </ECUC-INTEGER-PARAM-DEF>
+                            <ECUC-INTEGER-PARAM-DEF UUID="fc43f7e6-61c0-4943-ae3e-7a7f9c64b585">
+                              <SHORT-NAME>FrRangeMin</SHORT-NAME>
+                              <DESC>
+                                <L-2 L="EN">First FrameId of this range that will be accepted by the FIFO.</L-2>
+                              </DESC>
+                              <IMPLEMENTATION-CONFIG-CLASSES>
+                                <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                                  <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                                  <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                                </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                                <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                                  <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                                  <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                                </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              </IMPLEMENTATION-CONFIG-CLASSES>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                              <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                              <MAX>2047</MAX>
+                              <MIN>0</MIN>
+                            </ECUC-INTEGER-PARAM-DEF>
+                          </PARAMETERS>
+                        </ECUC-PARAM-CONF-CONTAINER-DEF>
+                      </SUB-CONTAINERS>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                  </SUB-CONTAINERS>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+                <ECUC-PARAM-CONF-CONTAINER-DEF UUID="da0a594d-be4d-4441-8785-a5b238f167e2">
+                  <SHORT-NAME>FrClockConfiguration</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FOR-ALL">FrClockConfiguration</L-4>
+                  </LONG-NAME>
+                  <DESC>
+                    <L-2 L="EN">Clock Configuration of the individual controller.</L-2>
+                  </DESC>
+                  <PARAMETERS>
+                    <ECUC-INTEGER-PARAM-DEF UUID="6584632d-87ac-405c-bcb6-e3f8ae229de2">
+                      <SHORT-NAME>FrClockDivider</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Module clock divider. 
+1 - Clock fCLC_ERAY = fSYS selected
+2 - Clock fCLC_ERAY = fSYS /2 selected
+3 - Clock fCLC_ERAY = fSYS /3 selected
+4 - Clock fCLC_ERAY = fSYS /4 selected
+5 - Clock fCLC_ERAY = fSYS /5 selected
+6 - Clock fCLC_ERAY = fSYS /6 selected
+7 - Clock fCLC_ERAY = fSYS /7 selected
+Note: This configuration parameter only controls the kernel clock fCLC_ERAY and not the sampling clock fSCLK.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                      <MAX>7</MAX>
+                      <MIN>1</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                  </PARAMETERS>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+          </CONTAINERS>
+        </ECUC-MODULE-DEF>
+      </ELEMENTS>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

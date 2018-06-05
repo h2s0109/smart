@@ -1,0 +1,36 @@
+
+Name: generate/Can_17_MCanP_Bswmd.arxml
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 11313377425750343511118553587732392806714140808255935526960
+ 0929703028390619823826502651834820027918112007957930
+SignatureKeyID: Infineon
+
+Name: generate/Can_17_MCanP.m
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 11313377424819002473883505195121045828201725483807478717979
+ 6063539551305509373493800429289302665271245745128232
+SignatureKeyID: Infineon
+
+Name: generate/src/Can_17_MCanP_PBCfg.c
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 28964594744614010678046814606496778370044551949638186836232
+ 634546974938676688073136590662847568590076903564993066
+SignatureKeyID: Infineon
+
+Name: config/Can_17_MCanP.xdm
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 44189296966082496022400413210607587611868803586492432185996
+ 4920317702248782168202593325542264083397234326182
+SignatureKeyID: Infineon
+
+Name: generate/inc/Can_17_MCanP_Cfg.h
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 11313377423581739789923761266668090694474924834052961030912
+ 5498732005283402805214932477844544486092990923913448
+SignatureKeyID: Infineon
+

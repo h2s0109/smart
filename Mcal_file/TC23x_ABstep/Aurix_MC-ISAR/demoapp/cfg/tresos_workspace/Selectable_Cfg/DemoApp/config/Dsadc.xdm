@@ -1,0 +1,349 @@
+<?xml version='1.0'?>
+<datamodel version="3.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/08/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/08/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar" 
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd" 
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd" >
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="Dsadc" type="AR-PACKAGE">
+        <d:lst type="ELEMENTS">
+          <d:chc name="Dsadc" type="AR-ELEMENT" value="MODULE-CONFIGURATION">
+            <d:ctr type="MODULE-CONFIGURATION">
+              <a:a name="DEF" value="ASPath:/AURIX/Dsadc"/>
+              <d:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION" 
+                     value="VariantPostBuildSelectable"/>
+              <d:ctr name="DsadcGeneral" type="IDENTIFIABLE">
+                <d:var name="DsadcDevErrorDetect" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="DsadcVersionInfoApi" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="DsadcDeInitApi" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="DsadcPBFixedAddress" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="DsadcDebugSupport" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="DsadcEnableLimitCheck" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="DsadcResolverSupport" type="BOOLEAN" value="true">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="DsadcInitialConfigEnable" type="BOOLEAN" 
+                       value="false"/>
+                <d:var name="DsadcResetSfrAtInit" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="DsadcRunningInUser0Mode" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="DsadcUserModeDeInitApiEnable" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="DsadcUserModeInitApiEnable" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="DsadcUserModeRuntimeApiEnable" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+              </d:ctr>
+              <d:lst name="DsadcConfigSet" type="MAP">
+                <d:ctr name="DsadcConfigSet_0" type="IDENTIFIABLE">
+                  <d:ctr name="DsadcClockConfiguration" type="IDENTIFIABLE">
+                    <d:var name="DsadcClockSource" type="ENUMERATION" 
+                           value="CLOCK_FERAY"/>
+                    <d:var name="DsadcPowerSupply" type="ENUMERATION" 
+                           value="POWERSUPPLY_5V">
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                    <d:var name="DsadcSleepMode" type="ENUMERATION" 
+                           value="SLEEP_DISABLE"/>
+                  </d:ctr>
+                  <d:ctr name="DsadcCarrierGenConfiguration" 
+                         type="IDENTIFIABLE">
+                    <d:var name="DsadcCarrierWaveformMode" type="ENUMERATION" 
+                           value="STOPPED">
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                    <d:var name="DsadcBitReversePWM" type="ENUMERATION" 
+                           value="NORMAL_MODE">
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                    <d:var name="DsadcCarrierSignalPolarity" type="ENUMERATION" 
+                           value="NORMAL">
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                    <d:var name="DsadcCGDividerFactor" type="INTEGER" value="3">
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:lst name="DsadcChannelConfigSet" type="MAP">
+                    <d:ctr name="DsadcChannelConfigSet_0" type="IDENTIFIABLE">
+                      <d:var name="DsadcChannelID" type="INTEGER" value="0"/>
+                      <d:ctr name="DsadcModulatorConfiguration" 
+                             type="IDENTIFIABLE">
+                        <d:var name="DsadcPositiveInputLine" type="ENUMERATION" 
+                               value="INPUT_PIN">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcNegativeInputLine" type="ENUMERATION" 
+                               value="REFERENCE_GROUND">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcInputPinSelection" type="ENUMERATION" 
+                               value="INPUTPIN_A">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcInputGain" type="ENUMERATION" 
+                               value="GAIN_FACTOR1">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcCommonModeVoltage" type="ENUMERATION" 
+                               value="COMMONMODEVOLTAGE_A">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcDividerFactor" type="ENUMERATION" 
+                               value="CLOCKDIVIDER_DIV4">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcInputMuxControlMode" 
+                               type="ENUMERATION" value="SOFTWARE_CONTROL">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcInputMuxActionMode" 
+                               type="ENUMERATION" value="PRESET_MODE">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcAutomaticPowerControl" type="BOOLEAN" 
+                               value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:ctr name="DsadcCMHVoltageInputSelect" 
+                               type="IDENTIFIABLE">
+                          <d:var name="DsadcVoltageControlPositiveInput" 
+                                 type="BOOLEAN" value="false"/>
+                          <d:var name="DsadcVoltageControlNegativeInput" 
+                                 type="BOOLEAN" value="true"/>
+                        </d:ctr>
+                      </d:ctr>
+                      <d:ctr name="DsadcDeModulatorConfiguration" 
+                             type="IDENTIFIABLE">
+                        <d:var name="DsadcInputDataSourceSelect" 
+                               type="ENUMERATION" 
+                               value="ONCHIPSTANDALONE_3RDORDER">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcTriggerSelect" type="ENUMERATION" 
+                               value="TRIGGERINPUT_A">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcIntegrationTriggerMode" 
+                               type="ENUMERATION" value="BYPASSED">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcTimestampTriggerMode" 
+                               type="ENUMERATION" value="NOTRIGGER">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcSampleClockSourceSelect" 
+                               type="ENUMERATION" value="INTERNAL">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcDataStrobeGenerationMode" 
+                               type="ENUMERATION" value="SAMPLEONRISINGEDGE">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                      </d:ctr>
+                      <d:ctr name="DsadcMainCICFilterConfiguration" 
+                             type="IDENTIFIABLE">
+                        <d:var name="DsadcMainCombFilterEnable" type="BOOLEAN" 
+                               value="true">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcMainCombFilterType" 
+                               type="ENUMERATION" value="CIC3">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcMainCombFilterShift" 
+                               type="ENUMERATION" value="SHIFTBY3">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcServiceRequestMode" 
+                               type="ENUMERATION" value="NEVER">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcDecimationFactor" type="INTEGER" 
+                               value="50">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcDecimationStartValue" type="INTEGER" 
+                               value="3">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                      </d:ctr>
+                      <d:ctr name="DsadcFIRFilterChainConfiguration" 
+                             type="IDENTIFIABLE">
+                        <d:var name="DsadcFirFilter0Enabled" type="BOOLEAN" 
+                               value="true">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcFirInternalShift" type="ENUMERATION" 
+                               value="SHIFTBY1">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcFirFilter1Enabled" type="BOOLEAN" 
+                               value="true">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcFirDataShift" type="ENUMERATION" 
+                               value="SHIFTBY2">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcDCOffsetFilterEnabled" type="BOOLEAN" 
+                               value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcOffsetValue" type="INTEGER" value="0">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                      </d:ctr>
+                      <d:ctr name="DsadcAuxFilterConfiguration" 
+                             type="IDENTIFIABLE">
+                        <d:var name="DsadcAuxCombFilterType" type="ENUMERATION" 
+                               value="CIC1">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcAuxCombFilterShift" 
+                               type="ENUMERATION" value="NOSHIFT">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcAuxServiceRequestMode" 
+                               type="ENUMERATION" value="NEVER">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcAuxEventSelect" type="ENUMERATION" 
+                               value="EVERY_NEW_RESULT">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcAuxEventGate" type="ENUMERATION" 
+                               value="DEFINED_BY_EVENT_SELECT">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcAuxDecimationFactor" type="INTEGER" 
+                               value="32">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcLowerBoundaryValue" type="INTEGER" 
+                               value="0">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcUpperBoundaryValue" type="INTEGER" 
+                               value="0">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                      </d:ctr>
+                      <d:ctr name="DsadcRecificationConfiguration" 
+                             type="IDENTIFIABLE">
+                        <d:var name="DsadcRectifierEnabled" type="BOOLEAN" 
+                               value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcRectifierSignSource" 
+                               type="ENUMERATION" value="ONCHIPGENERATOR">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcSyncPosSignDelayValue" type="INTEGER" 
+                               value="0">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcSyncNegSignDelayValue" type="INTEGER" 
+                               value="0">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                      </d:ctr>
+                      <d:ctr name="DsadcIntegrationConfiguration" 
+                             type="IDENTIFIABLE">
+                        <d:var name="DsadcIntegrationWindowSize" 
+                               type="ENUMERATION" value="INTERNAL_CONTROL">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcDiscardCount" type="INTEGER" value="0">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcIntegrationCount" type="INTEGER" 
+                               value="0">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="DsadcIntegrationCycleCount" type="INTEGER" 
+                               value="0">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                      </d:ctr>
+                      <d:ctr name="DsadcTimeStampConfiguration" 
+                             type="IDENTIFIABLE">
+                        <d:var name="DsadcTimestampServiceRequest" 
+                               type="ENUMERATION" value="NO_SERVICE_REQUEST">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                      </d:ctr>
+                      <d:var name="DsadcDitheringEnable0" type="BOOLEAN" 
+                             value="true"/>
+                      <d:var name="DsadcDitheringEnable1" type="BOOLEAN" 
+                             value="true"/>
+                      <d:var name="DsadcIntegratorResetEnable" type="BOOLEAN" 
+                             value="true"/>
+                    </d:ctr>
+                  </d:lst>
+                  <d:ref name="DsadcSystemClockRef" type="REFERENCE" 
+                         value="ASPath:/Mcu/Mcu/McuModuleConfiguration_0/McuClockSettingConfig_0/McuClockReferencePoint"/>
+                  <d:var name="DsadcTrimmingValue" type="INTEGER" value="5"/>
+                  <d:ctr name="DsadcCMHVoltage" type="IDENTIFIABLE">
+                    <d:var name="DsadcCMHVoltageEnableAlways" type="BOOLEAN" 
+                           value="true"/>
+                    <d:var name="DsadcCMHVoltageSelect" type="ENUMERATION" 
+                           value="CMHVOLTAGE_C"/>
+                  </d:ctr>
+                </d:ctr>
+              </d:lst>
+              <d:ctr name="DsadcPublishedInformation" type="IDENTIFIABLE"/>
+              <d:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                <d:var name="ArMajorVersion" type="INTEGER" value="0"/>
+                <d:var name="ArMinorVersion" type="INTEGER" value="0"/>
+                <d:var name="ArPatchVersion" type="INTEGER" value="0"/>
+                <d:var name="SwMajorVersion" type="INTEGER" value="2"/>
+                <d:var name="SwMinorVersion" type="INTEGER" value="1"/>
+                <d:var name="SwPatchVersion" type="INTEGER" value="0"/>
+                <d:var name="ModuleId" type="INTEGER" value="255">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="VendorId" type="INTEGER" value="17">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="VendorApiInfix" type="STRING" value="">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="Release" type="STRING" value="_TRICORE_TC275">
+                  <a:a name="IMPORTER_INFO">
+                    <a:v>@DEF</a:v>
+                    <a:v>@CALC</a:v>
+                  </a:a>
+                </d:var>
+              </d:ctr>
+            </d:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+
+</datamodel>

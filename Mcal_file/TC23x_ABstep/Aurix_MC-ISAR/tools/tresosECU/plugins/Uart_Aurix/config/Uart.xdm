@@ -1,0 +1,847 @@
+<?xml version='1.0'?>
+<!--
+/******************************************************************************
+**                                                                           **
+** Copyright (C) Infineon Technologies (2014)                                **
+**                                                                           **
+** All rights reserved.                                                      **
+**                                                                           **
+** This document contains proprietary information belonging to Infineon      **
+** Technologies. Passing on and copying of this document, and communication  **
+** of its contents is not permitted without prior written authorization.     **
+**                                                                           **
+*******************************************************************************
+**                                                                           **
+**  $FILENAME   : Uart.xdm $                                                 **
+**                                                                           **
+**  $CC VERSION : \main\39 $                                                 **
+**                                                                           **
+**  $DATE       : 2016-07-22 $                                               **
+**                                                                           **
+**  AUTHOR      : DL-AUTOSAR-Engineering                                     **
+**                                                                           **
+**  VENDOR      : Infineon Technologies                                      **
+**                                                                           **
+**  DESCRIPTION : BSW module description for Uart driver                     **
+**                                                                           **
+**  MAY BE CHANGED BY USER [yes/no]: No                                      **
+**                                                                           **
+******************************************************************************/
+/*******************************************************************************
+**  TRACEABILITY : [cover parentID=DS_NAS_UART_PR127,DS_NAS_UART_PR655,
+    DS_NAS_UART_PR483,DS_NAS_UART_PR123,DS_NAS_UART_PR446,DS_NAS_UART_PR2848
+    DS_NAS_UART_PR913,DS_NAS_UART_PR69_PR469,DS_NAS_UART_PR122,
+    DS_NAS_UART_PR60_PR64_PR445,DS_NAS_UART_PR647,DS_NAS_UART_PR700
+    DS_NAS_UART_PR701,DS_NAS_UART_PR704,DS_NAS_UART_PR707,DS_NAS_UART_PR728,
+    DS_NAS_UART_PR708,DS_NAS_UART_PR712,DS_NAS_UART_PR713,DS_NAS_UART_PR716,
+    DS_NAS_UART_PR717,DS_NAS_UART_PR719,DS_NAS_UART_PR720,DS_NAS_UART_PR723,    
+    SAS_NAS_UART_PR79_PR80_PR623,DS_NAS_UART_PR724,SAS_NAS_UART_PR753,
+    SAS_AS4XX_UART_PR670,SAS_NAS_UART_PR640,SAS_NAS_UART_PR725,SAS_NAS_UART_PR65,
+    SAS_NAS_UART_PR60,SAS_NAS_UART_PR64,SAS_NAS_UART_PR77,SAS_NAS_UART_PR646,
+    SAS_NAS_UART_PR82,SAS_NAS_UART_PR227,SAS_NAS_UART_PR667,
+    DS_NAS_HE2_UART_PR3017,DS_NAS_EP_UART_PR3017
+    SAS_NAS_ALL_PR453_PR1649,SAS_NAS_ALL_PR624,SAS_NAS_ALL_PR454,SAS_NAS_ALL_PR125,
+    SAS_NAS_ALL_PR1648_PR230,SAS_NAS_EP_UART_PR3054_1,SAS_NAS_EP_UART_PR3054_2,
+    SAS_NAS_EP_UART_PR3054_3,SAS_NAS_EP_UART_PR3054_4,SAS_NAS_HE2_UART_PR3054_1,
+    SAS_NAS_HE2_UART_PR3054_2,SAS_NAS_HE2_UART_PR3054_3,
+    SAS_NAS_HE2_UART_PR3054_4,DS_NAS_UART_PR63_1,DS_NAS_UART_PR63_2,
+    DS_NAS_UART_PR63_3,DS_NAS_UART_PR63_4,DS_NAS_UART_PR63_5]
+**                [/cover]                                                   **
+*******************************************************************************/
+-->
+<datamodel version="3.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/08/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/08/attribute.xsd"
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar"  
+       xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+       xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd">
+   <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="AURIX" type="AR-PACKAGE">
+       <a:a name="UUID" value="2a9139c9-cb44-4448-b406-140466018712"/>
+       <d:lst type="ELEMENTS">
+          <d:chc name="Uart" type="AR-ELEMENT" value="MODULE-DEF">
+            <v:ctr type="MODULE-DEF">
+              <a:a name="RELEASE" value="asc:4.0"/>
+              <a:a name="UUID" value="95584b7b-4178-7f7c-a87e-aec58703ad58"/>
+              <a:a name="DESC" 
+                   value="EN: Configuration of the UART Module."/>
+              <a:a name="LOWER-MULTIPLICITY" value="0"/>
+              <a:a name="UPPER-MULTIPLICITY" value="1"/>                 
+              <v:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION">
+              <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                       <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                       <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                <a:a name="LABEL" value="Config Variant"/>
+                <a:da name="DEFAULT" value="VariantPostBuildSelectable"/>
+                <a:da name="RANGE">
+                  <a:v>VariantPostBuildLoadable</a:v>
+                  <a:v>VariantPostBuildSelectable</a:v>
+                </a:da>
+              </v:var>              
+                <v:ctr name="UartGeneral" type="IDENTIFIABLE">
+                <a:a name="DESC" 
+                     value="EN: General configuration (parameters) of the UART driver software module."/>
+                 <a:a name="UUID" value="a868aef7-06f0-5e10-9482-3b9f6ca77cb2"/>
+                 <v:var name="UartDevErrorDetect" type="BOOLEAN">
+                  <a:a name="DESC" 
+                  value="EN: Switches the Development Error Detection and Notification ON or OFF."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                       <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                       <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="5afd6e0e1-3e9-5e1f-8812-45831dc8e9b0"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="TOOLTIP" value="Switches the Development Error Detection and Notification ON or OFF"/>
+                 </v:var>
+                 <v:var name="UartIndex" type="INTEGER">
+                  <a:a name="DESC" 
+                       value="EN: Specifies the InstanceId of this module instance. "/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a9361f42-ca28-4ec5-8a32-aca0597add15"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=255"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="0"/>
+                  <a:da name="TOOLTIP" value="Specifies the InstanceId of this module instance. "/>
+                 </v:var>
+                 <v:var name="UartVersionInfoApi" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="EN: Switches the Uart_GetVersionInfo function ON or OFF."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                       <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                       <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="3f862ba7-4f88-4980-950b-a3117f65e387"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="TOOLTIP" value="Switches the Uart_GetVersionInfo function ON or OFF."/>
+                 </v:var>
+            
+                 <v:var name="UartDeInitApi" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="EN: Switches the Uart_Deinit function ON or OFF."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                       <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                       <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="2f362bd7-4f28-498d-95db-a31d7f65ed87"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="TOOLTIP" value="Switches the Uart_Deinit function ON or OFF."/>
+                 </v:var>
+            
+                 <v:var name="UartAbortReadApi" type="BOOLEAN">
+                  <a:a name="DESC" 
+                      value="EN: Switches the Uart_AbortRead function ON or OFF."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                       <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                       <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="3f823ba7-4bf8-49f8-9f0b-a311ff65ef87"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="TOOLTIP" value="Switches the Uart_AbortRead function ON or OFF."/>
+                 </v:var>
+            
+                 <v:var name="UartAbortWriteApi" type="BOOLEAN">
+                  <a:a name="DESC" 
+                      value="EN: Switches the Uart_AbortWrite function ON or OFF."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                       <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                       <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="3f82dba7-4df8-49d8-9fdb-a312ff65ef87"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="TOOLTIP" value="Switches the Uart_AbortWrite function ON or OFF."/>
+                 </v:var>
+            
+                 <v:var name="UartPBFixedAddress" type="BOOLEAN">
+                  <a:a name="DESC" 
+                      value="EN: Enable/Disable parameter for the selection of fixed adress. ON: fixed address used, OFF: Post build configuration selected."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                       <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                       <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="7e17c5e2-12bb-4bbb-ab16-5fbb825bbfc6"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="INVALID" type="XPath">
+                  <a:tst expr="(num:i(count(../../UartConfigSet/*))) > 1 and . = 'true'" 
+                         true="Wrong Configuration. When UartPBFixedAddress is enabled then only 1 Config set is permitted. Remove the other Config sets."/>
+                  </a:da>                  
+                  <a:da name="TOOLTIP" value="Enable/Disable parameter for the selection of fixed adress. ON: fixed address used, OFF: Post build configuration selected."/>
+                 </v:var>
+            
+                 <v:var name="UartDebugSupport" type="BOOLEAN">
+                  <a:a name="DESC" 
+                      value="EN: Switches the Uart_DebugSupport feature ON or OFF."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                       <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                       <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="3f372ba7-4d92-4980-951b-a3417f65e787"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="TOOLTIP" value="Switches the Uart DebugSupport feature ON or OFF."/>
+                 </v:var>
+                 
+                <v:var name="UartResetSfrAtInit" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="EN: Enable/Disable parameter to reset all SFRs in Initialization function."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="13cc7127-ef8d-4893-b0e5-495c0b3a7765"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="TOOLTIP" value="Enable/Disable parameter to reset all SFRs in Initialization function."/>
+                </v:var>
+            
+                 <v:var name="UartSleepEnable" type="BOOLEAN">
+                  <a:a name="DESC" 
+                      value="EN: Enable/Disable parameter for the ASCLIN Hw module Sleep triggered by SCU"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                      <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                      value="13dc6427-ed8d-4484-b0d4-494cdb3a7764"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="TOOLTIP" value="Enable/Disable parameter for the ASCLIN Hw module Sleep triggered by SCU."/>
+                 </v:var>
+                             <v:var name="UartRunningInUser0Mode" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="If this parameter is set to FALSE, then Protected Mode(user mode) register access will not be done and API is run in Supervisor mode."/>
+                  <a:a name="TOOLTIP"
+                       value="EN:Pre-processor switch to enable/disable the Normal/Protected mode."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                   <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                   <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="2496a537-5ef8-487e-51e1-0234c58e9bf0"/>
+                  <a:da name="DEFAULT" value="false"/>
+               </v:var>
+               <v:var name="UartUserModeInitApiEnable" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="Pre-processor switch to enable / disable protected register access in all the Init API."/>
+                  <a:a name="TOOLTIP"
+                       value="EN:Pre-processor switch to enable / disable protected register access in all the Init API."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                   <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                   <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="2496a537-6ef8-487e-51e0-0234c58e9bf0"/>
+                  <a:da name="DEFAULT" value="false"/>
+               </v:var>
+               <v:var name="UartUserModeDeInitApiEnable" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="Pre-processor switch to enable / disable protected register access in all the DeInit API."/>
+                  <a:a name="TOOLTIP"
+                       value="EN:Pre-processor switch to enable / disable protected register access in all the DeInit API."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                   <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                   <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="2496a547-5ef8-487e-51e0-0234c58e9bf0"/>
+                  <a:da name="DEFAULT" value="false"/>
+               </v:var>
+               <v:var name="UartUserModeRuntimeApiEnable" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="Pre-processor switch to enable / disable protected register access in all the APIs other than Init/Deinit APIs."/>
+                  <a:a name="TOOLTIP"
+                       value="EN:Pre-processor switch to enable / disable protected register access in all the APIs other than Init/Deinit APIs."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                   <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                   <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="2596a537-5ef8-487e-51e0-0234c58e9bf0"/>
+                  <a:da name="DEFAULT" value="false"/>
+               </v:var>
+                </v:ctr>
+                  <v:lst name="UartConfigSet" type="MULTIPLE-CONFIGURATION-CONTAINER">
+                   <a:da name="MIN" value="1"/>
+                   <v:ctr name="UartConfigSet" type="MULTIPLE-CONFIGURATION-CONTAINER">
+                    <a:a name="DESC" 
+                        value="EN: This container contains the Channel configuration of the Uart driver. This container is a MultipleConfigurationContainer, i.e. this container and its sub-containers exit once per configuration set."/>
+                    <a:a name="UUID" value="439b823d-f723-43d7-b3d6-8e4c38733021"/>
+                     <v:ref name="UartSysClockRef" type="REFERENCE">
+                      <a:a name="DESC" 
+                          value="EN: This parameter is a reference parameter to System clock."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                           <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                           <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="UUID" 
+                          value="024f1a36-4dee-44cc-ab44-48c8dc314b39"/>
+                      <a:da name="REF" 
+                           value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Mcu/McuModuleConfiguration/McuClockSettingConfig/McuClockReferencePoint"/>
+                      <a:da name="TOOLTIP" value="This parameter is a reference parameter to Mcu System clock."/>
+                     </v:ref>
+                  <v:lst name="UartChannel" type="MAP">
+                   <a:da name="MAX" type="XPath" expr="ecu:get('AscLin.MaxNoOfAscLinModules')"/>
+                   <a:da name="MIN" value="1"/>
+                
+                  <v:ctr name="UartChannel" type="IDENTIFIABLE">
+                   <a:a name="DESC" 
+                       value="EN: This container contains the configuration (parameters) of the UART Controller(s)."/>
+                   <a:a name="UUID" 
+                       value="eee1d64f-d2e3-4e79-a5ed-c142334dee3c"/>
+               
+                    <v:var name="UartBaudRate" type="INTEGER">
+                      <a:a name="DESC" 
+                          value="EN: Specifies the baud rate of the UART channel"/>
+                     <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                          type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                     </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                          value="8db8dbce-1d4b-4315-8d1b-edad5df02cb1"/>
+                     <a:da name="DEFAULT" value="9600"/>
+                     <a:da name="INVALID" type="Range">
+                     <a:tst expr="&lt;=6250000"/>
+                     <a:tst expr="&gt;=1000"/>
+                     </a:da>
+                     <a:da name="TOOLTIP" value="Specifies the baud rate of the UART channel. This parameter shall be disabled when 'UartAutoCalcBaudParams' is false"/>
+                     <a:da name="EDITABLE" type="XPath">
+                     <a:tst expr="../UartAutoCalcBaudParams = 'true'"/>     
+                     </a:da>
+                    </v:var>
+                    <v:var name="UartHwUnit" type="ENUMERATION">
+                      <a:a name="DESC" 
+                          value="EN: This parameter selects the hardware unit used by Uart channel."/>
+                     <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                          type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                     </a:a>
+                     <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                     <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                     <a:a name="UUID" 
+                        value="989b798d-d7b4-479e-909c-b8479ac98b69"/>
+                     <a:da name="DEFAULT" value="ASCLIN0"/>
+                     <a:da name="RANGE" type="XPath" expr="ecu:list('AscLin.AvailableAscLinModules')"/>
+                     <a:da name="TOOLTIP" value="This parameter selects the hardware unit used by uart channel."/>
+                   </v:var>
+                   <v:var name="UartChannelId" type="INTEGER">
+                      <a:a name="DESC" 
+                          value="EN: Identifies the UART channel."/>
+                     <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                          type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                     </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                      <a:a name="UUID" 
+                       value="575c5e2f-5aba-43b2-be5d-e3b62b05a6e7"/>
+                     
+                      <a:da name="DEFAULT" type="XPath" expr="node:fallback(../@index,'0')"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=num:i(ecu:get('AscLin.MaxNoOfAscLinModules') - 1)"/>
+                        <a:tst expr="&gt;=0"/>
+                      </a:da>
+                      <a:da name="EDITABLE" value="false"/>
+                      <a:da name="TOOLTIP" value="Identifies the UART channel."/>
+                   </v:var>
+                   <v:var name="UartAutoCalcBaudParams" type="BOOLEAN">
+                      <a:a name="DESC" 
+                           value="EN: Enable/Disable Automatic calculation of Asclin Baudrate params UartChanBaudNumerator, UartChanBaudDenominator, UartChanBaudPrescalar,UartChanBaudOVERSAMPLING "/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                           <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                           <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="13cc2127-e28d-4433-b0e5-495c1b3a7765"/>
+                      <a:da name="DEFAULT" value="false"/>
+                      <a:da name="TOOLTIP" value="EN: Enable/Disable automatic calculation of ASCLIN hw baudrate parameters."/>
+                   </v:var>
+                   <v:var name="UartChanBaudNumerator" type="INTEGER">
+                      <a:a name="DESC" 
+                           value="EN: Specifies the BRG register numerator value used for Baudrate calculation. This parameter shall be disabled when 'UartAutoCalcBaudParams' is true"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                        <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" value="967b5282-8ce2-4638-9586-3a3a28391b69"/>
+                      <a:da name="DEFAULT" value="1"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=4095"/>
+                        <a:tst expr="&gt;=1"/>
+                      </a:da>
+                      <a:da name="ENABLE" type="XPath">
+                      <a:tst expr="../UartAutoCalcBaudParams = 'false'"/>     
+                      </a:da>
+                      <a:da name="TOOLTIP" value="Specifies the BRG register numerator value used for Baudrate calculation. This parameter shall be disabled when 'UartAutoCalcBaudParams' is true"/>
+                   </v:var>
+                   <v:var name="UartChanBaudDenominator" type="INTEGER">
+                      <a:a name="DESC" 
+                           value="EN: Specifies the BRG register Denominator value used for Baudrate calculation. This parameter shall be disabled when 'UartAutoCalcBaudParams' is true"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                        <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" value="967b5282-8ce2-4638-9586-3a3a28394b69"/>
+                      <a:da name="DEFAULT" value="1"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=4095"/>
+                        <a:tst expr="&gt;=1"/>
+                      </a:da>
+                      <a:da name="TOOLTIP" value="Specifies the BRG register Denominator value used for Baudrate calculation. This parameter shall be disabled when 'UartAutoCalcBaudParams' is true"/>
+                      <a:da name="ENABLE" type="XPath">
+                      <a:tst expr="../UartAutoCalcBaudParams = 'false'"/>     
+                      </a:da>
+                   </v:var>
+                   <v:var name="UartChanBaudPrescalar" type="INTEGER">
+                      <a:a name="DESC" 
+                           value="EN: Specifies the BITCON register Prescalar value used for Baudrate calculation. This parameter shall be disabled when 'UartAutoCalcBaudParams' is true"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                        <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" value="96ab5282-8cea-46a8-9586-3a3a28394b69"/>
+                      <a:da name="DEFAULT" value="1"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=4095"/>
+                        <a:tst expr="&gt;=1"/>
+                      </a:da>
+                      <a:da name="TOOLTIP" value="Specifies the BITCON register Prescalar value used for Baudrate calculation. This parameter shall be disabled when 'UartAutoCalcBaudParams' is true"/>
+                      <a:da name="ENABLE" type="XPath">
+                      <a:tst expr="../UartAutoCalcBaudParams = 'false'"/>     
+                      </a:da>
+                   </v:var>
+                   <v:var name="UartChanBaudOverSampling" type="INTEGER">
+                      <a:a name="DESC" 
+                           value="EN: Specifies the BITCON register Oversampling value used for Baudrate calculation. This parameter shall be disabled when 'UartAutoCalcBaudParams' is true"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                        <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" value="96ac5282-8cea-4628-9286-3a3a18394b69"/>
+                      <a:da name="DEFAULT" value="8"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=16"/>
+                        <a:tst expr="&gt;=8"/>
+                      </a:da>
+                      <a:da name="TOOLTIP" value="Specifies the BITCON register Oversampling value used for Baudrate calculation. This parameter shall be disabled when 'UartAutoCalcBaudParams' is true"/>
+                      <a:da name="ENABLE" type="XPath">
+                      <a:tst expr="../UartAutoCalcBaudParams = 'false'"/>     
+                      </a:da>
+                   </v:var>
+                   <v:var name="UartRxPinSelection" type="ENUMERATION">
+                      <a:a name="DESC" 
+                           value="EN: Selects the alternate input for the RX signal for the given Uart channel"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                        <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="571e4e1f-8aba-43b2-be1e-e2b62b02a6d7"/>
+                      <a:da name="DEFAULT" value="SELECT_DATALINE_A"/>                      
+                      <a:da name="RANGE" type="XPath" expr="ecu:list(concat('AscLin.', node:fallback(node:current()/../UartHwUnit,'ASCLIN0') , '_RxSelectLine'))"/>
+                      <a:da name="TOOLTIP" value="Selects the alternate input for the RX signal for the given Uart channel."/>
+                   </v:var>
+                   <v:var name="UartDataLength" type="INTEGER">
+                      <a:a name="DESC" 
+                           value="EN: Specifies the number of bits to be transmitted or recieved. "/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                       <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                       <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                      </a:a>
+                       <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                       <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                       <a:a name="UUID" value="a9361d42-cb28-4bc5-8ae2-aca0597ade15"/>
+                       <a:da name="INVALID" type="Range">
+                      <a:tst expr="&lt;=9"/>
+                      <a:tst expr="&gt;=7"/>
+                      </a:da>
+                       <a:da name="DEFAULT" value="8"/>
+                       <a:da name="TOOLTIP" value="Specifies the number of bits to be transmitted or recieved. "/>
+                   </v:var>
+                   <v:var name="UartStopBits" type="INTEGER">
+                     <a:a name="DESC" 
+                         value="EN: Specifies the number of stop bits Range is one or two. "/>
+                     <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                          type="IMPLEMENTATIONCONFIGCLASS">
+                         <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                         <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:a name="UUID" value="4f862ba7-4f88-4980-950b-a3117f65e387"/>
+                    <a:da name="INVALID" type="Range">
+                      <a:tst expr="&lt;=2"/>
+                      <a:tst expr="&gt;=1"/>
+                    </a:da>
+                    <a:da name="DEFAULT" value="1"/>
+                    <a:da name="TOOLTIP" value="Specifies the number of stop bits one or two."/>
+                   </v:var>                
+                   <v:var name="UartParityBit" type="ENUMERATION">
+                    <a:a name="DESC" 
+                       value="EN: This parameter selects the parity even or odd or no parity."/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:a name="UUID" 
+                         value="939b718d-d2b4-429e-109c-b8489ac98b96"/>
+                    <a:da name="DEFAULT" value="NOPARITY"/>
+                    <a:da name="RANGE">
+                    <a:v>NOPARITY</a:v>
+                    <a:v>ODDPARITY</a:v>
+                    <a:v>EVENPARITY</a:v>
+                    </a:da>
+                    <a:da name="TOOLTIP" value="This parameter selects the parity even or odd or no parity."/>
+                   </v:var>
+                   <v:var name="UartCTSEnable" type="BOOLEAN">
+                     <a:a name="DESC" 
+                          value="EN: Switch to enable the CTS signal ."/>
+                     <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                          type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                        <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                     <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                     <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                     <a:a name="UUID" value="5aae2e0e1-3d9-8d1f-8142-45531dc8a9b0"/>
+                     <a:da name="DEFAULT" value="true"/>
+                     <a:da name="TOOLTIP" value=" Switch to enable the CTS signal ."/>
+                     </v:var>   
+                   <v:var name="UartCTSPolarity" type="ENUMERATION">
+                    <a:a name="DESC" 
+                       value="EN: This parameter defines the active level or the RTS and CTS signals. Active means ready/clear to send."/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                        <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:a name="UUID" 
+                         value="962b718d-d1b6-149e-139c-b8419ac68b46"/>
+                    <a:da name="DEFAULT" value="HIGH"/>
+                    <a:da name="RANGE">
+                      <a:v>LOW</a:v>
+                      <a:v>HIGH</a:v>
+                      </a:da>
+                      <a:da name="EDITABLE" type="XPath">
+                      <a:tst expr="../UartCTSEnable = 'true'"/>     
+                      </a:da>
+                      <a:da name="TOOLTIP" value="This parameter defines the active level or the RTS and CTS signals. Active means ready/clear to send."/>
+                   </v:var>  
+                   <v:ctr name="UartNotification" type="IDENTIFIABLE">
+                     <a:a name="DESC" 
+                         value="EN: This container contains the Notification function pointers ."/>
+                     <a:a name="UUID" 
+                         value="eea1d64f-d2e3-4b79-a5ed-ca42334dea3c"/>  
+                                    
+                     <v:var name="UartTransmitNotifPtr" type="FUNCTION-NAME">
+                        <a:a name="DESC" 
+                             value="EN: This parameter is a reference to a notification function."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                             <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                             <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="999ccf11-8b4f-4719-abde-2f2d65e8614a"/>
+                        <a:da name="DEFAULT" value="NULL_PTR"/>
+                        <a:da name="TOOLTIP" value="This parameter is a reference to a Uart Write complete notification function."/>
+                     </v:var>
+                     <v:var name="UartRecieveNotifPtr" type="FUNCTION-NAME">
+                        <a:a name="DESC" 
+                             value="EN: This parameter is a reference to a notification function."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                           value="956fcf11-1b4f-4719-ab2e-2f2d75e8624a"/>
+                        <a:da name="DEFAULT" value="NULL_PTR"/>               
+                        <a:da name="TOOLTIP" value="This parameter is a reference to a Uart Read complete notification function."/>
+                     </v:var>
+                     <v:var name="UartAbortTransmitNotifPtr" type="FUNCTION-NAME">
+                       <a:a name="DESC" 
+                           value="EN: This parameter is a reference to a notification function."/>
+                       <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                            type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                       </a:a>
+                       <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                       <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                       <a:a name="UUID" 
+                         value="929fcf11-8b2f-4719-aaee-2f2d73e8614a"/>
+                       <a:da name="DEFAULT" value="NULL_PTR"/>
+                       <a:da name="TOOLTIP" value="This parameter is a reference to a Uart Abort Write complete notification function."/>
+                     </v:var>
+                     <v:var name="UartAbortReceiveNotifPtr" type="FUNCTION-NAME">
+                        <a:a name="DESC" 
+                             value="EN: This parameter is a reference to a notification function."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                             <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                             <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="199fcf11-8a4f-4719-acee-2f2d75e7614a"/>
+                        <a:da name="DEFAULT" value="NULL_PTR"/>
+                        <a:da name="TOOLTIP" value="This parameter is a reference to a Uart Abort Read complete notification function."/>
+                     </v:var>
+                    </v:ctr>   
+                  </v:ctr>
+                 </v:lst>
+                </v:ctr>
+              </v:lst>
+            <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+              <a:a name="DESC" value="EN: Common container, aggregated by all modules. It contains published information about vendor and versions."/>
+              <a:a name="UUID" value="492f8482-3e2c-4bf1-b27f-01fd7ac35788"/>
+              <v:var name="ArMajorVersion" type="INTEGER">
+                <a:a name="DESC" value="EN: Major version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                <a:a name="UUID" value="bd0a8d38-4d8c-4ee9-88fe-1166b258bb8a"/>
+                <a:da name="INVALID" type="Range">
+                  <a:tst expr="&lt;=65535"/>
+                  <a:tst expr="&gt;=0"/>
+                </a:da>
+                <a:da name="DEFAULT" value="0"/>
+              </v:var>
+              <v:var name="ArMinorVersion" type="INTEGER">
+                <a:a name="DESC" value="EN: Minor version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                <a:a name="UUID" value="73f87c7f-e230-4178-bff0-eb2704aae656"/>
+                <a:da name="INVALID" type="Range">
+                  <a:tst expr="&lt;=65535"/>
+                  <a:tst expr="&gt;=0"/>
+                </a:da>
+                <a:da name="DEFAULT" value="0"/>
+              </v:var>
+              <v:var name="ArPatchVersion" type="INTEGER">
+                <a:a name="DESC" value="EN: Patch level version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                <a:a name="UUID" value="2380135d-6778-417a-a34b-e10017d4dd54"/>
+                <a:da name="INVALID" type="Range">
+                  <a:tst expr="&lt;=65535"/>
+                  <a:tst expr="&gt;=0"/>
+                </a:da>
+                <a:da name="DEFAULT" value="0"/>
+              </v:var>
+              <v:var name="SwMajorVersion" type="INTEGER">
+                <a:a name="DESC" value="EN: Major version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                <a:a name="UUID" value="fca015e3-5f28-4cbe-8949-8f4b87d86827"/>
+                <a:da name="INVALID" type="Range">
+                  <a:tst expr="&lt;=65535"/>
+                  <a:tst expr="&gt;=0"/>
+                </a:da>
+                <a:da name="DEFAULT" value="1"/>
+              </v:var>
+              <v:var name="SwMinorVersion" type="INTEGER">
+                <a:a name="DESC" value="EN: Minor version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                <a:a name="UUID" value="14ab81e0-3d80-43dc-8b92-247e5a542df9"/>
+                <a:da name="INVALID" type="Range">
+                  <a:tst expr="&lt;=65535"/>
+                  <a:tst expr="&gt;=0"/>
+                </a:da>
+                <a:da name="DEFAULT" value="3"/>
+              </v:var>
+              <v:var name="SwPatchVersion" type="INTEGER">
+                <a:a name="DESC" value="EN: Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                <a:a name="UUID" value="32e37bfd-18b6-41d1-9248-a81dbe0fe4c5"/>
+                <a:da name="INVALID" type="Range">
+                  <a:tst expr="&lt;=65535"/>
+                  <a:tst expr="&gt;=0"/>
+                </a:da>
+                <a:da name="DEFAULT" value="0"/>
+              </v:var>
+              <v:var name="ModuleId" type="INTEGER">
+                <a:a name="DESC" value="EN: Module ID of this module from Module List"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                <a:a name="UUID" value="3b407478-6902-4f80-b7cf-f33b0854e638"/>
+                <a:da name="INVALID" type="Range">
+                  <a:tst expr="&lt;=65535"/>
+                  <a:tst expr="&gt;=0"/>
+                </a:da>
+                <a:da name="DEFAULT" value="255"/>
+              </v:var>
+              <v:var name="VendorId" type="INTEGER">
+                <a:a name="DESC" value="EN: Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                <a:a name="UUID" value="7d650b2d-4adb-41f0-a68e-5f0c416501d1"/>
+                <a:da name="INVALID" type="Range">
+                  <a:tst expr="&lt;=65535"/>
+                  <a:tst expr="&gt;=0"/>
+                </a:da>
+                <a:da name="DEFAULT" value="17"/>
+              </v:var>
+              <v:var name="VendorApiInfix" type="STRING">
+                <a:a name="DESC">
+                  <a:v>EN: In driver modules which can be instantiated several times on a single ECU, BSW00347 requires that the name of APIs is extended by the VendorId and a vendor specific name. 
+                      This parameter is used to specify the vendor specific name. In total, the implementation specific name is generated as follows:
+                      &lt;ModuleName&gt;_&gt;VendorId&gt;_&lt;VendorApiInfix&gt;&lt;Api name from SWS&gt;.
+                      
+                      E.g.  assuming that the VendorId of the implementor is 123 and the implementer chose a VendorApiInfix of &quot;v11r456&quot; a api name Can_Write defined in the SWS will translate to Can_123_v11r456Write. 
+                      
+                      This parameter is mandatory for all modules with upper multiplicity &gt; 1. It shall not be used for modules with upper multiplicity =1.</a:v>
+                </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                <a:a name="UUID" value="ad363b41-e945-4717-b12f-c2f800ef138e"/>
+                <a:da name="ENABLE" value="false"/>
+                <a:da name="DEFAULT" value=""/>
+              </v:var>
+              <v:var name="Release" type="STRING">
+                <a:a name="DESC" value="EN: Aurix derivative used for the implementation"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                <a:a name="UUID" value="3b407478-6902-4f40-b7cf-f33b0854e638"/>
+                <a:da name="DEFAULT" type="XPath" expr="ecu:get('Rel.Derivate')"/>
+              </v:var>
+            </v:ctr>
+          </v:ctr>
+        </d:chc>
+      </d:lst>
+    </d:ctr>
+  </d:lst>
+ </d:ctr>
+</datamodel>

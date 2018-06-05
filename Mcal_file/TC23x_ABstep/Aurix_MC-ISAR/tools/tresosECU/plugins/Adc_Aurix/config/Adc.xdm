@@ -1,0 +1,2614 @@
+<?xml version='1.0'?>
+<!--
+/*******************************************************************************
+**                                                                            **
+** Copyright (C) Infineon Technologies (2014)                                 **
+**                                                                            **
+** All rights reserved.                                                       **
+**                                                                            **
+** This document contains proprietary information belonging to Infineon       **
+** Technologies. Passing on and copying of this document, and communication   **
+** of its contents is not permitted without prior written authorization.      **
+**                                                                            **
+********************************************************************************
+**                                                                            **
+**   $FILENAME   : Adc.xdm $                                                  **
+**                                                                            **
+**   $CC VERSION : \main\dev_tc23x_as4.0.3\21 $                               **
+**                                                                            **
+**   $DATE       : 2016-06-20 $                                               **
+**                                                                            **
+**   AUTHOR      : DL-AUTOSAR-Engineering                                     **
+**                                                                            **
+**   VENDOR      : Infineon Technologies                                      **
+**                                                                            **
+**   DESCRIPTION : XML Data Model for Adc driver                              **
+**                                                                            **
+**   MAY BE CHANGED BY USER [yes/no]: No                                      **
+**                                                                            **
+*******************************************************************************/
+
+/*******************************************************************************
+**                                                                            **
+**  TRACEABILITY:[cover parentID=DS_AS_ADC_PR8,DS_AS_ADC363,
+DS_AS_ADC233,DS_AS_ADC404_Conf,DS_AS_ADC452_Conf,
+DS_AS_ADC391_Conf,DS_AS_ADC406_Conf,DS_AS_ADC105_Conf,DS_AS_ADC408_Conf,
+DS_AS_ADC393_Conf,DS_AS_ADC315,DS_AS_ADC341,DS_AS_ADC340,DS_AS_ADC394_Conf,
+DS_AS_ADC444_Conf,DS_AS_ADC409_Conf,DS_AS_ADC390_Conf,
+DS_AS_ADC088_Conf,DS_AS_ADC290_1_Conf,DS_AS_ADC019_1_Conf,
+DS_AS_ADC138_ADC242_Conf,DS_AS_ADC087_Conf,DS_AS_ADC389_Conf,SAS_AS_ADC339,
+DS_AS_ADC268_Conf,DS_AS_ADC011_Conf,DS_AS_ADC455_Conf,DS_AS_ADC392_Conf,
+DS_AS_ADC445,DS_AS_ADC454_Conf,DS_AS_ADC456_Conf,
+DS_AS_ADC089_Conf,DS_AS_ADC023_Conf,DS_AS_ADC028_Conf,DS_AS_ADC317_Conf,
+DS_AS_ADC397_Conf,DS_AS_ADC380,DS_AS_ADC381,DS_AS_ADC398_Conf,DS_AS_ADC099,
+DS_AS_ADC287_Conf,DS_AS_ADC288,DS_AS_ADC289,DS_AS_ADC312,DS_AS_ADC435_Conf,
+DS_AS_ADC310,DS_AS_ADC430,DS_AS_ADC399_Conf,DS_AS_ADC279,DS_AS_ADC356,
+DS_AS_ADC357,DS_AS_ADC400_Conf,DS_AS_ADC401_Conf,DS_AS_ADC402_Conf,DS_AS_ADC104,
+DS_AS_ADC082,DS_AS_ADC084,DS_AS_ADC080,DS_AS_ADC316_Conf,DS_AS_ADC292_Conf,
+DS_AS_ADC014_Conf,DS_AS_ADC098,DS_AS_ADC290_2_Conf,DS_AS_ADC019_2_Conf,
+DS_AS_ADC030_Conf,DS_AS_ADC410_Conf,DS_AS_ADC411_Conf,DS_AS_ADC412_Conf,
+DS_AS_ADC027_Conf,DS_AS_ADC405_Conf,DS_AS_ADC453_Conf,DS_NAS_ADC_PR655_PR656,
+DS_NAS_ADC_PR713,DS_NAS_ADC_PR714,DS_NAS_ADC_PR719,DS_NAS_ADC_PR720,
+DS_NAS_ADC_PR723,DS_NAS_ADC_PR228,DS_NAS_ADC_PR643,DS_NAS_ADC_PR647,
+DS_NAS_ADC_PR103_PR104,DS_NAS_ADC_PR913,DS_NAS_ADC_PR483,DS_NAS_ADC_PR122_1,
+DS_NAS_ADC_PR122_2,DS_NAS_ADC_PR122_3,DS_NAS_ADC_PR122_4,DS_NAS_ADC_PR122_5,
+DS_NAS_ADC_PR122_7,DS_NAS_ADC_PR122_8,DS_NAS_ADC_PR122_9,
+DS_NAS_ADC_PR122_10,DS_NAS_ADC_PR122_12,DS_NAS_ADC_PR122_13,DS_NAS_ADC_PR122_14,
+DS_NAS_ADC_PR122_15,DS_NAS_ADC_PR122_16,DS_NAS_ADC_PR122_17,DS_NAS_ADC_PR122_18,
+DS_NAS_ADC_PR122_19,DS_NAS_ADC_PR122_20,DS_NAS_ADC_PR122_21,DS_NAS_ADC_PR122_22,
+DS_NAS_ADC_PR96_1,DS_NAS_ADC_PR96_2,DS_NAS_ADC_PR111_1,DS_NAS_ADC_PR111_2,
+DS_NAS_ADC_PR107_1,DS_NAS_ADC_PR107_2,DS_NAS_ADC_PR96_PR110,DS_NAS_ADC_PR109,
+DS_NAS_ADC_PR105,DS_NAS_ADC_PR1778,DS_NAS_ADC_PR1779,DS_NAS_ADC_PR1780,
+SAS_NAS_ADC_PR1781,DS_MCAL_ADC_0500,DS_MCAL_ADC_0501,DS_MCAL_ADC_0502,
+DS_MCAL_ADC_0503,DS_MCAL_ADC_0448,DS_AS_PR2848,SAS_NAS_ADC_PR64_PR77,
+SAS_NAS_ADC_PR640,SAS_NAS_ADC_PR667,SAS_NAS_ADC_PR646,DS_NAS_ADC_PR445_PR621,
+DS_NAS_ADC_PR2848,SAS_NAS_ADC_PR65,DS_NAS_HE2_ADC_PR122_23,
+DS_NAS_EP_ADC_PR122_23,DS_NAS_HE2_ADC_PR122_24,DS_NAS_EP_ADC_PR122_24,
+DS_NAS_EP_ADC_PR122_25,DS_NAS_EP_ADC_PR122_26,DS_NAS_EP_ADC_PR122_27,
+DS_NAS_HE2_ADC_PR122_28,DS_NAS_EP_ADC_PR122_28,DS_NAS_HE2_ADC_PR122_29,
+DS_NAS_EP_ADC_PR122_29,DS_NAS_HE2_ADC_PR3033,DS_NAS_EP_ADC_PR3033,
+DS_NAS_HE2_ADC_PR3017,DS_NAS_EP_ADC_PR3017,SAS_NAS_EP_ADC_PR3054_1,
+SAS_NAS_EP_ADC_PR3054_2,SAS_NAS_EP_ADC_PR3054_3,SAS_NAS_EP_ADC_PR3054_4,
+SAS_NAS_HE2_ADC_PR3054_1,SAS_NAS_HE2_ADC_PR3054_2,SAS_NAS_HE2_ADC_PR3054_3
+SAS_NAS_HE2_ADC_PR3054_4]                                                     **
+**                                                                            **
+**  XML Data Model for Adc driver                                             **
+**                                                                            **
+**  [/cover]                                                                  **
+**                                                                            **
+*******************************************************************************/
+
+-->
+<datamodel version="3.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/08/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/08/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar"  
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd"
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="AURIX" type="AR-PACKAGE">
+        <a:a name="UUID" value="93d9a8be-9d4c-47b6-98cb-fe5aec24c8b0"/>
+        <d:lst type="ELEMENTS">
+          <d:chc name="Adc" type="AR-ELEMENT" value="MODULE-DEF">
+            <v:ctr type="MODULE-DEF">
+              <a:a name="ADMIN-DATA" type="ADMIN-DATA">
+                <ad:ADMIN-DATA>
+                  <ad:DOC-REVISIONS>
+                    <ad:DOC-REVISION>
+                      <ad:REVISION-LABEL>4.2.0</ad:REVISION-LABEL>
+                      <ad:ISSUED-BY>AUTOSAR</ad:ISSUED-BY>
+                      <ad:DATE>2011-11-09</ad:DATE>
+                    </ad:DOC-REVISION>
+                  </ad:DOC-REVISIONS>
+                </ad:ADMIN-DATA>
+              </a:a>
+              <a:a name="RELEASE" value="asc:4.0"/>
+              <a:a name="UUID" value="03eaa7b4-137e-402e-823d-8d7776c1de4d"/>
+              <d:ref type="REFINED_MODULE_DEF" value="ASPath:/AUTOSAR/EcucDefs/Adc"/>
+              <a:a name="DESC" 
+                   value="EN: Configuration of the Adc (Analog Digital Conversion) module."/>
+              <a:a name="LOWER-MULTIPLICITY" value="0"/>
+              <a:a name="UPPER-MULTIPLICITY" value="1"/>
+              <v:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION">
+                <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                     type="IMPLEMENTATIONCONFIGCLASS">
+                  <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                  <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                </a:a>
+                <a:a name="LABEL" value="Config Variant"/>
+                <a:da name="DEFAULT" value="VariantPostBuildSelectable"/>
+                <a:da name="RANGE">
+                  <a:v>VariantPostBuildLoadable</a:v>
+                  <a:v>VariantPostBuildSelectable</a:v>
+                </a:da>
+              </v:var>
+              <v:lst name="AdcConfigSet" 
+                     type="MULTIPLE-CONFIGURATION-CONTAINER">
+                <a:da name="MIN" value="1"/>
+                <v:ctr name="AdcConfigSet" 
+                       type="MULTIPLE-CONFIGURATION-CONTAINER">
+                  <a:a name="DESC" 
+                       value="EN: This is the base container that contains the post-build selectable configuration parameters"/>
+                  <a:a name="UUID" value="ccda81dc-46cf-4145-858b-7c947884702f"/>
+                  <v:var name="AdcAnalogClockDivider" type="INTEGER">
+                    <a:da name="TOOLTIP" value="Defines the number of fADC clock cycles to generate the fADCI clock for the converter"/>
+                    <a:a name="DESC">
+                      <a:v>EN: Defines the number of fADC clock cycles to generate the fADCI clock for the converter (used as internal base for the conversions and the sample time calculation).
+00H fADCI = fADC
+01H fADCI = fADC / 2
+02H fADCI = fADC / 3
+...
+1FH fADCI = fADC / 32
+
+fADCI: Analog clock frequency
+fADC: ADC module clock = System clock</a:v>
+                    </a:a>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                      <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                    <a:a name="UUID" 
+                         value="171b3e35-c300-4bcf-b609-59e2e0a349c0"/>
+                    <a:da name="DEFAULT" value="10"/>
+                    <a:da name="INVALID" type="Range">
+                      <a:tst expr="&lt;=31"/>
+                      <a:tst expr="&gt;=0"/>
+                    </a:da>
+                  </v:var>
+                  <v:ref name="AdcCcu6ModuleRef" type="CHOICE-REFERENCE">
+                    <a:da name="TOOLTIP" value="This parameter refers to the CCU6x module (T13) used to generate Synchronization signal to all VADCs"/>
+                    <a:a name="DESC">
+                      <a:v>EN: This parameter refers to the CCU6x module (T13) used to generate Synchronization signal to all VADCs.
+                      </a:v>
+                    </a:a>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                      <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                    <a:a name="UUID" 
+                         value="390bf770-a72b-456a-8a16-75b7daf5b3f9"/>
+                    <a:da name="REF">
+                      <a:v>ASPathDataOfSchema:/AURIX/Mcu/McuModuleConfiguration/CcuConfiguration/Ccu6</a:v>  
+                    </a:da>
+                    <a:da name="EDITABLE" type="XPath"> 
+                     <a:tst expr="(../../../AdcGeneral/AdcCcu6Synchronization = 'true')"/>
+                    </a:da>
+                  </v:ref>
+                  <v:var name="AdcDigitalArbiterClockDivider" 
+                         type="INTEGER">
+                    <a:da name="TOOLTIP" value="Defines the number of fADC clock cycles within each arbitration slot"/>
+                    <a:a name="DESC">
+                      <a:v>EN: Defines the number of fADC clock cycles within each arbitration slot (each arbitration slots last one periods of fADCD). It is recommended to use the default setting 0 to obtain the minimum arbiter reaction time.
+
+00B fADCD = fADC
+01B fADCD = fADC / 2
+10B fADCD = fADC / 3
+11B fADCD = fADC / 4
+
+fADCD: Digital clock frequency
+fADC: ADC module clock = System clock</a:v>
+                    </a:a>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                      <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                    <a:a name="UUID" 
+                         value="87ce928e-6ed1-4968-93b2-21d90b1fa49d"/>
+                    <a:da name="DEFAULT" value="0"/>
+                    <a:da name="INVALID" type="Range">
+                      <a:tst expr="&lt;=3"/>
+                      <a:tst expr="&gt;=0"/>
+                    </a:da>
+                  </v:var>
+                  <v:var name="AdcEmuxSelectGrp0" type="ENUMERATION">
+                    <a:da name="TOOLTIP" value="Numeric ID of the HW Unit where the Emux select line group 0 is routed"/>
+                    <a:a name="DESC">
+                      <a:v>EN: Numeric ID of the HW Unit where the Emux select line group 0 is routed
+                               Value of the AdcEmuxSelectGrp0 and AdcEmuxSelectGrp1 should not be the same Adc kernel.
+                      </a:v>
+                    </a:a>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                      <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                    <a:a name="UUID" 
+                         value="2c8f0be9-1a8c-4107-bba8-2f8e88e9278e"/>
+                    <a:da name="DEFAULT" value="HWUNIT_ADC0"/>
+                    <a:da name="RANGE" type="XPath" expr="ecu:list('Adc.HwUnitId')">
+                    </a:da>
+                    <a:da name="INVALID" type="XPath">                    
+                      <a:tst expr="(../AdcEmuxSelectGrp0 = ../AdcEmuxSelectGrp1)" 
+                      true="Wrong Configuration, you should configure different hardware units for AdcEmuxSelectGrp0 and AdcEmuxSelectGrp1 ."/> 
+                    </a:da>             
+                    <a:da name="ENABLE" type="XPath"> 
+                       <a:tst expr="((../../../AdcGeneral/AdcUseEmux = 'true'))"/>
+                    </a:da>
+                  </v:var>
+                  <v:var name="AdcEmuxSelectGrp1" type="ENUMERATION">
+                    <a:da name="TOOLTIP" value="Numeric ID of the HW Unit where the Emux select line group 1 is routed"/>
+                    <a:a name="DESC">
+                      <a:v>EN: Numeric ID of the HW Unit where the Emux select line group 1 is routed
+                               Value of the AdcEmuxSelectGrp0 and AdcEmuxSelectGrp1 should not be the same Adc kernel.
+                      </a:v>
+                    </a:a>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                      <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                    <a:a name="UUID" 
+                         value="2c8f0be9-1a8c-4107-b3a8-2f8e88e9278e"/>
+                    <a:da name="DEFAULT" value="HWUNIT_ADC1"/>
+                    <a:da name="RANGE" type="XPath" expr="ecu:list('Adc.HwUnitId')">
+                    </a:da>
+                    <a:da name="INVALID" type="XPath">                    
+                      <a:tst expr="(../AdcEmuxSelectGrp1 = ../AdcEmuxSelectGrp0)" 
+                      true="Wrong Configuration, you should configure different hardware units for AdcEmuxSelectGrp0 and AdcEmuxSelectGrp1 ."/> 
+                    </a:da>             
+                    <a:da name="ENABLE" type="XPath"> 
+                       <a:tst expr="((../../../AdcGeneral/AdcUseEmux = 'true'))"/>
+                    </a:da>
+                  </v:var>
+                  <v:lst name="AdcGlobInputClass" type="MAP">
+                    <a:da name="MAX" value="2"/>
+                    <a:da name="MIN" value="2"/>
+                    <v:ctr name="AdcGlobInputClass" type="IDENTIFIABLE">
+                      <a:a name="DESC">
+                        <a:v>EN: This container contains the Sample Time and Resolution configuration (parameters) of channels. GLOBICLASS register is configured via this container.</a:v>
+                      </a:a>
+                      <a:a name="UUID" 
+                           value="86e6fd09-f2da-4844-b2e0-ecc3dc70e5a3"/>
+                      <v:var name="AdcGlobChSampleTime" type="INTEGER">
+                        <a:da name="TOOLTIP" value="The time during which the value is sampled"/>
+                        <a:a name="DESC" 
+                             value="EN: The time during which the value is sampled, (in clock-cycles).This has been used globally for all the available Adc hardware units."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="UUID" 
+                             value="5d2cdc5f-16e8-4669-b7d8-531a888e7acc"/>
+                        <a:da name="DEFAULT" value="0"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=31"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                      </v:var>
+                      <v:var name="AdcGlobChResolution" type="ENUMERATION">
+                        <a:da name="TOOLTIP" value="ADC Channel resolution in bits"/>
+                        <a:a name="DESC" 
+                             value="EN: ADC Channel resolution in bits."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="UUID" 
+                             value="bfec07fb-550f-421e-b568-cb02a2e4eda6"/>
+                        <a:da name="DEFAULT" type="XPath" expr="ecu:get('Adc.DefaultResolution')"/>
+                        <a:da name="RANGE" type="XPath" expr="ecu:list('Adc.Resolution')">
+                        </a:da>
+                      </v:var>
+                      <v:var name="AdcGlobEmuxChSampleTime" type="INTEGER">
+                        <a:da name="TOOLTIP" value="The time during which the Emux channel value is sampled"/>
+                        <a:a name="DESC" 
+                             value="EN: The time during which the Emux channel value is sampled, (in clock-cycles). This has been used globally for all the available Adc hardware units."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="UUID" 
+                             value="5d2c3c5f-16e8-4659-b7d8-531a888e7acc"/>
+                        <a:da name="DEFAULT" value="0"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=31"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                        <a:da name="ENABLE" type="XPath"> 
+                          <a:tst expr="((../../../../../AdcGeneral/AdcUseEmux = 'true'))"/>
+                        </a:da>
+                      </v:var>
+                    </v:ctr>
+                  </v:lst>
+                  <v:var name="AdcLowPowerSupplyVoltage" type="ENUMERATION">
+                    <a:da name="TOOLTIP" value="Adjusts the analog circuitry to the supply voltage used in the application system"/>
+                    <a:a name="DESC">
+                      <a:v>EN: Adjusts the analog circuitry to the supply voltage used in the application system.</a:v>
+                    </a:a>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                      <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                    <a:a name="UUID" 
+                         value="5d48a32a-2145-4616-9d2f-64b9a3aa1af3"/>
+                    <a:da name="DEFAULT" value="POWER_SUPPLY_5V"/>
+                    <a:da name="RANGE">
+                      <a:v>POWER_SUPPLY_5V</a:v>
+                      <a:v>POWER_SUPPLY_3_3V</a:v>
+                    </a:da>
+                  </v:var>
+                  <v:var name="AdcRefPrechargeControl" type="ENUMERATION">
+                    <a:da name="TOOLTIP" value="Reference Precharge Control of the converter"/>
+                    <a:a name="DESC">
+                      <a:v>EN: Defines the Reference Precharge Control of the converter.</a:v>
+                    </a:a>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                      <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                    <a:a name="UUID" 
+                         value="5da8a32a-2145-4619-9d9f-65b9a35a1af3"/>
+                    <a:da name="DEFAULT" value="USE_VDDM_PRECH_VAREF_ADJ"/>
+                    <a:da name="RANGE">
+                      <a:v>USE_VDDM_PRECH_VAREF_ADJ</a:v>
+                      <a:v>USE_VAREF_CONVERSION</a:v>
+                    </a:da>
+                  </v:var>
+                  <v:var name="AdcSleepMode" type="ENUMERATION">
+                    <a:da name="TOOLTIP" value="Adc driver accepts / rejects the sleep mode request from Mcu driver"/>
+                    <a:a name="DESC">
+                      <a:v>EN: Adc driver accepts / rejects the sleep mode request from Mcu driver.
+                      </a:v>
+                    </a:a>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                      <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                    <a:a name="UUID" 
+                         value="ebb80fa0-b275-4e65-8281-43bca04b66f8"/>
+                    <a:da name="DEFAULT" value="SLEEP_MODE_ACCEPT"/>
+                    <a:da name="RANGE">
+                      <a:v>SLEEP_MODE_ACCEPT</a:v>
+                      <a:v>SLEEP_MODE_REJECT</a:v>
+                    </a:da>
+                  </v:var>
+                  <v:ref name="AdcSystemClock" type="CHOICE-REFERENCE">
+                    <a:da name="TOOLTIP" value="This parameter refers to the system clock configured using the Mcu_ClockInit function"/>
+                    <a:a name="DESC">
+                      <a:v>EN: This parameter refers to the system clock configured using the Mcu_ClockInit function.
+
+ This parameter should refer to a vaild McuClockSetting Configuration (/Mcu/McuModuleConfiguration/McuClockSettingConf/McuClockReferencePoint)
+Also the ADC module will work correctly only for this system clock setting. No changes should be done to the system clock if ADC is to be kept functioning.</a:v>
+                    </a:a>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                      <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                    <a:a name="UUID" 
+                         value="f90bf770-872b-456a-8a16-15b7daf533f9"/>
+                    <a:da name="REF">
+                      <a:v>ASPathDataOfSchema:/AUTOSAR/EcucDefs/Mcu/McuModuleConfiguration/McuClockSettingConfig/McuClockReferencePoint</a:v>  
+                    </a:da>
+                  </v:ref>
+                  <v:lst name="AdcHwUnit" type="MAP">
+                    <a:da name="MAX" type="XPath" expr="ecu:get('Adc.MaxControllers')"/>
+                    <a:da name="MIN" value="1"/>
+                    <v:ctr name="AdcHwUnit" type="IDENTIFIABLE">
+                      <a:a name="DESC">
+                        <a:v>EN: This container contains the Driver configuration (parameters) depending on grouping of channels
+This container could contain HW specific parameters which are not defined in the Standardized Module Definition. They must be added in the Vendor Specific Module Definition.
+AURIX has 1..* ADC HW Units.</a:v>
+                      </a:a>
+                      <a:a name="UUID" 
+                           value="b9809e8a-1208-49a1-954a-2aa3803c8f17"/>
+                      <v:var name="AdcArbitrationRoundLength" 
+                             type="ENUMERATION">
+                        <a:da name="TOOLTIP" value="Defines the number of arbitration slots per arbitration round"/>
+                        <a:a name="DESC">
+                          <a:v>EN: Defines the number of arbitration slots per arbitration round.
+
+only 4 slots (i.e. ARBITRATION_SLOTS_4) are required for 3 request sources (i.e. RS0, RS1, RS2).
+
+RS - Request Source</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="UUID" 
+                             value="21e1445f-3eb8-4911-87f8-215464630ba0"/>
+                        <a:da name="DEFAULT" value="ARBITRATION_SLOTS_4"/>
+                        <a:da name="RANGE">
+                          <a:v>ARBITRATION_SLOTS_4</a:v>
+                          <a:v>ARBITRATION_SLOTS_8</a:v>
+                          <a:v>ARBITRATION_SLOTS_16</a:v>
+                          <a:v>ARBITRATION_SLOTS_20</a:v>
+                        </a:da>
+                        <a:da name="EDITABLE" type="XPath"> 
+                          <a:tst expr="../AdcSyncConvMode != 'ADC_SLAVE'"/>
+                        </a:da>
+                      </v:var>
+                      <v:lst name="AdcClockSource">
+                        <a:da name="MAX" value="1"/>
+                        <v:var name="AdcClockSource" type="ENUMERATION">
+                          <a:da name="TOOLTIP" value="The ADC module specific clock input.AURIX provides only system clock as module input clock."/>
+                          <a:a name="DESC">
+                            <a:v>EN: The ADC module specific clock input. 
+  AURIX provides only system clock as module input clock.</a:v>
+                          </a:a>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="UUID" 
+                               value="6aa301df-56f8-4144-99a4-be96b8c32e3b"/>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:da name="DEFAULT" value="CLK_SRC_SYS_CLK"/>
+                          <a:da name="RANGE" value="CLK_SRC_SYS_CLK"/>
+                          <a:da name="EDITABLE" value="false"/> 
+                        </v:var>
+                      </v:lst>
+                      <v:ref name="AdcDmaChannelRef" type="CHOICE-REFERENCE">
+                        <a:da name="TOOLTIP" value="In Non AUTOSAR specific result handling mode, the user needs to configure and handle the DMA peripheral using IFX DMA Complex driver."/>
+                        <a:a name="DESC" 
+                             value="EN: In Non AUTOSAR specific result handling mode, the user needs to configure and handle the DMA peripheral using IFX DMA Complex driver. Selection between DMA channels 6 and DMA channel 7 is provided.
+Note: The selected DMA Channel should match with the DMA channel configuration which needs to be used for ADC result handling."/>
+                        <a:a name="UUID" 
+                             value="618afad1-d85d-6f81-82f8-12b976d162fa"/>
+                        <a:da name="REF">
+                          <a:v>ASPathDataOfSchema:/AURIX/Mcu/McuModuleConfiguration/DmaConfiguration/DmaChannel</a:v>
+                        </a:da>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:da name="ENABLE" type="XPath"> 
+                          <a:tst expr="(../../../../../AdcGeneral/AdcNonAutosarDmaResultHandling = 'true') or (../AdcGroup/*/AdcEmuxScanEnable = 'true')"/>
+                        </a:da>
+                      </v:ref>
+                      <v:var name="AdcHwUnitId" type="ENUMERATION">
+                        <a:da name="TOOLTIP" value="Numeric ID of the HW Unit"/>
+                        <a:a name="DESC">
+                          <a:v>EN: Numeric ID of the HW Unit. 
+This symbolic name allows accessing and configuring the Hw Unit data.</a:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="UUID" 
+                             value="3c8f0be9-1a8c-4107-b7a8-2f8e88e9278e"/>
+                        <a:da name="DEFAULT" value="HWUNIT_ADC0"/>
+                        <a:da name="RANGE" type="XPath" expr="ecu:list('Adc.HwUnitId')">
+                        </a:da>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:da name="INVALID" type="XPath">                    
+                          <a:tst expr="(num:i(count(../../../AdcHwUnit/*[AdcHwUnitId ='HWUNIT_ADC0']))) > 1" 
+                          true="Wrong Configuration, you should configure different hardware unit IDs under different AdcHwUnit."/> 
+                          <a:tst expr="(num:i(count(../../../AdcHwUnit/*[AdcHwUnitId ='HWUNIT_ADC1']))) > 1" 
+                          true="Wrong Configuration, you should configure different hardware unit IDs under different AdcHwUnit."/> 
+                          <a:tst expr="(num:i(count(../../../AdcHwUnit/*[AdcHwUnitId ='HWUNIT_ADC2']))) > 1" 
+                          true="Wrong Configuration, you should configure different hardware unit IDs under different AdcHwUnit."/> 
+                          <a:tst expr="(num:i(count(../../../AdcHwUnit/*[AdcHwUnitId ='HWUNIT_ADC3']))) > 1" 
+                          true="Wrong Configuration, you should configure different hardware unit IDs under different AdcHwUnit."/> 
+                          <a:tst expr="(num:i(count(../../../AdcHwUnit/*[AdcHwUnitId ='HWUNIT_ADC4']))) > 1" 
+                          true="Wrong Configuration, you should configure different hardware unit IDs under different AdcHwUnit."/> 
+                          <a:tst expr="(num:i(count(../../../AdcHwUnit/*[AdcHwUnitId ='HWUNIT_ADC5']))) > 1" 
+                          true="Wrong Configuration, you should configure different hardware unit IDs under different AdcHwUnit."/> 
+                          <a:tst expr="(num:i(count(../../../AdcHwUnit/*[AdcHwUnitId ='HWUNIT_ADC6']))) > 1" 
+                          true="Wrong Configuration, you should configure different hardware unit IDs under different AdcHwUnit."/> 
+                          <a:tst expr="(num:i(count(../../../AdcHwUnit/*[AdcHwUnitId ='HWUNIT_ADC7']))) > 1" 
+                          true="Wrong Configuration, you should configure different hardware unit IDs under different AdcHwUnit."/> 
+                          <a:tst expr="(num:i(count(../../../AdcHwUnit/*[AdcHwUnitId ='HWUNIT_ADC8']))) > 1" 
+                          true="Wrong Configuration, you should configure different hardware unit IDs under different AdcHwUnit."/> 
+                          <a:tst expr="(num:i(count(../../../AdcHwUnit/*[AdcHwUnitId ='HWUNIT_ADC9']))) > 1" 
+                          true="Wrong Configuration, you should configure different hardware unit IDs under different AdcHwUnit."/> 
+                          <a:tst expr="(num:i(count(../../../AdcHwUnit/*[AdcHwUnitId ='HWUNIT_ADC10']))) > 1" 
+                          true="Wrong Configuration, you should configure different hardware unit IDs under different AdcHwUnit."/> 
+                        </a:da>             
+                      </v:var>
+                      <v:var name="AdcPostCal" type="ENUMERATION">
+                        <a:da name="TOOLTIP" value="Enable / Disable the HW calibration which happens in regular intervals."/>
+                        <a:a name="DESC" 
+                             value="EN: Enable / Disable the HW calibration which happens in regular intervals."/>
+                        <a:a name="UUID" 
+                             value="478e73a0-1a3e-413b-8dce-351a87ce0129"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:da name="DEFAULT" value="POST_CAL_DISABLE"/>
+                        <a:da name="RANGE">
+                          <a:v>POST_CAL_ENABLE</a:v>
+                          <a:v>POST_CAL_DISABLE</a:v>
+                        </a:da>
+                      </v:var>
+                      <v:lst name="AdcPrescale">
+                      <a:da name="EDITABLE" value="false"/>
+                        <a:da name="MAX" value="1"/>
+                        <v:var name="AdcPrescale" type="INTEGER">
+                          <a:a name="DESC">
+                            <a:v>EN: NOT SUPPORTED
+For AURIX, the configuration of clock prescale is not required. Insted configuration of divider value is required at AdcAnalogClockDivider and AdcDigitalArbiterClockDivider.
+Optional ADC module specific clock prescale factor, if supported by hardware.
+</a:v>
+                          </a:a>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" 
+                               value="25a639ce-80ab-4a3b-95ca-f7e30c5e4ccb"/>
+                          <a:da name="EDITABLE" value="false"/>
+                          <a:da name="DEFAULT" value="0"/>
+                          <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=65535"/>
+                            <a:tst expr="&gt;=0"/>
+                          </a:da>
+                        </v:var>
+                      </v:lst>
+                      <v:var name="AdcRequestSource0Prio" type="ENUMERATION">
+                        <a:da name="TOOLTIP" value="Priority for the Request Source 0"/>
+                        <a:a name="DESC">
+                          <a:v>EN: Priority for the request source.
+Arbitration between the request sources is taken care by the ADC HW Unit.</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="UUID" 
+                             value="5da8ae2a-2115-4669-9d9f-65b9a35d1af3"/>
+                        <a:da name="DEFAULT" value="REQSRC_PRIORITY_0_LOWEST"/>
+                        <a:da name="RANGE">
+                          <a:v>REQSRC_PRIORITY_0_LOWEST</a:v>
+                          <a:v>REQSRC_PRIORITY_1</a:v>
+                          <a:v>REQSRC_PRIORITY_2</a:v>
+                          <a:v>REQSRC_PRIORITY_3_HIGHEST</a:v>
+                        </a:da>
+                        <a:da name="ENABLE" type="XPath"> 
+                          <a:tst expr="../../../../../AdcGeneral/AdcPriorityImplementation = 'ADC_PRIORITY_HW_SW' or ../../../../../AdcGeneral/AdcPriorityImplementation = 'ADC_PRIORITY_HW'"/>
+                        </a:da>
+                      </v:var>
+                      <v:var name="AdcRequestSource1Prio" type="ENUMERATION">
+                        <a:da name="TOOLTIP" value="Priority for the Request Source 1"/>
+                        <a:a name="DESC">
+                          <a:v>EN: Priority for the request source.
+Arbitration between the request sources is taken care by the ADC HW Unit.</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="UUID" 
+                             value="abdb45c9-db94-4d8b-9921-a360a38f90b1"/>
+                        <a:da name="DEFAULT" value="REQSRC_PRIORITY_0_LOWEST"/>
+                        <a:da name="RANGE">
+                          <a:v>REQSRC_PRIORITY_0_LOWEST</a:v>
+                          <a:v>REQSRC_PRIORITY_1</a:v>
+                          <a:v>REQSRC_PRIORITY_2</a:v>
+                          <a:v>REQSRC_PRIORITY_3_HIGHEST</a:v>
+                        </a:da>
+                        <a:da name="ENABLE" type="XPath"> 
+                          <a:tst expr="../../../../../AdcGeneral/AdcPriorityImplementation = 'ADC_PRIORITY_HW_SW' or ../../../../../AdcGeneral/AdcPriorityImplementation = 'ADC_PRIORITY_HW'"/>
+                        </a:da>
+                      </v:var>
+                      <v:var name="AdcRequestSource3Prio" type="ENUMERATION">
+                        <a:da name="TOOLTIP" value="Priority for the Request Source 3"/>
+                        <a:a name="DESC">
+                          <a:v>EN: Priority for the request source.
+Arbitration between the request sources is taken care by the ADC HW Unit.</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="UUID" 
+                             value="abdc45c9-da94-4ddb-9321-a360a78f90b1"/>
+                        <a:da name="DEFAULT" value="REQSRC_PRIORITY_0_LOWEST"/>
+                        <a:da name="RANGE">
+                          <a:v>REQSRC_PRIORITY_0_LOWEST</a:v>
+                          <a:v>REQSRC_PRIORITY_1</a:v>
+                          <a:v>REQSRC_PRIORITY_2</a:v>
+                          <a:v>REQSRC_PRIORITY_3_HIGHEST</a:v>
+                        </a:da>
+                        <a:da name="ENABLE" type="XPath"> 
+                          <a:tst expr="(../../../../../AdcGeneral/AdcPriorityImplementation = 'ADC_PRIORITY_HW_SW' or ../../../../../AdcGeneral/AdcPriorityImplementation = 'ADC_PRIORITY_HW') and (ecu:get('Adc.ReqSrcCount') = '4')"/>
+                        </a:da>
+                      </v:var>
+                      <v:var name="AdcSafetySignal" type="BOOLEAN">
+                        <a:da name="TOOLTIP" value="Defines the type of the signal (ASIL/QM) used in the Adc kernel"/>
+                        <a:a name="DESC">
+                          <a:v>EN: Defines the type of the signal (ASIL/QM) used in the Adc kernel.
+                          </a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" value="ec9c6730-d32a-491a-8ef7-8a04a15092c5"/>
+                        <a:da name="DEFAULT" value="false"/>
+                        <a:da name="ENABLE" type="XPath"> 
+                          <a:tst expr="../../../../../AdcSafety/AdcSafetyEnable = 'true'"/>
+                        </a:da>
+                      </v:var>
+                      <v:var name="AdcSyncConvMode" type="ENUMERATION">
+                        <a:da name="TOOLTIP" value="Conversion mode of the Adc kernel for Synchronization of conversion feature"/>
+                        <a:a name="DESC">
+                          <a:v>EN: Defines the conversion mode of the Adc kernel for Synchronization of conversion (Parallel sampling) feature.
+                          </a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="UUID" 
+                             value="5da8ae2a-2515-4669-9d9f-65b9a35d1af3"/>
+                        <a:da name="DEFAULT" value="ADC_STANDALONE"/>
+                        <a:da name="RANGE">
+                          <a:v>ADC_MASTER</a:v>
+                          <a:v>ADC_SLAVE</a:v>
+                          <a:v>ADC_STANDALONE</a:v>
+                        </a:da>
+                        <a:da name="EDITABLE" type="XPath"> 
+                          <a:tst expr="../../../../../AdcGeneral/AdcMasterSlaveSync = 'true'"/>
+                        </a:da>
+                      </v:var>
+                      <v:lst name="AdcChannel" type="MAP">
+                        <a:da name="MIN" value="1"/>
+                        <a:da name="MAX" value="256"/>
+                        <v:ctr name="AdcChannel" type="IDENTIFIABLE">
+                          <a:a name="DESC">
+                            <a:v>EN: This container contains the channel configuration (parameters) depending on the hardware capability.
+The organization of this data structure could contain dependencies to the microcontroller so this is left up to the implementer and its location is left up to the configuration. 
+Note: Since a AdcChannel can be part of several AdcGroups, this container is not realized as a subcontainer of AdcGroup but instead as a subcontainer of AdcHwUnit.</a:v>
+                          </a:a>
+                          <a:a name="UUID" 
+                               value="33a8ca61-43cf-40f1-b8ec-c9e42f16bd7f"/>
+                          <a:da name="INVALID" type="XPath">
+                            <a:tst 
+                              expr="
+                              not
+                              (
+                                contains(substring-before(concat(text:join(../../../*/AdcChannel/*/@name, ','), ','), concat(name(.), ',')), concat(name(.), ',')) 
+                                or 
+                                contains(substring-after(concat(text:join(../../../*/AdcChannel/*/@name, ','), ','), concat(name(.), ',')), concat(name(.), ','))
+                              )
+                              "
+                              false="Duplicate AdcChannel Names, Channel names names must be unique across HWUnits"
+                            />
+                          </a:da>                               
+                          <v:var name="AdcAnChannelNum" type="INTEGER">
+                            <a:da name="TOOLTIP" value="Analog Input Channel Number"/>
+                            <a:a name="DESC">
+                              <a:v>EN: Analog Input Channel Number.
+8 analog inputs for each ADC HW Units are connected.
+Note: All unused analog input pins should be connected to a fixed potential either VAGND or VAREF to avoid disturbance of active analog inputs.
+
+Values:
+For HWUNIT_ADC0: 0 - 7 for TC27x / TC29x and 0 - 15 for TC26x
+For HWUNIT_ADC1: 8 - 15 for TC27x / TC29x and 16 - 31 for TC26x
+For HWUNIT_ADC2: 16 - 23 for TC27x / TC29x and 32 - 47 for TC26x
+For HWUNIT_ADC3: 24 - 31 for TC27x / TC29x and 48 - 63 for TC26x
+For HWUNIT_ADC4: 32 - 39 for TC27x / TC29x
+For HWUNIT_ADC5: 40 - 47 for TC27x / TC29x
+For HWUNIT_ADC6: 48 - 55 for TC27x / TC29x
+For HWUNIT_ADC7: 56 - 63 for TC27x / TC29x
+For HWUNIT_ADC8: 64 - 71 for TC29x
+For HWUNIT_ADC9: 72 - 79 for TC29x
+For HWUNIT_ADC10: 80 - 87 for TC29x</a:v>
+                            </a:a>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                                <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                              </a:a>
+                            <a:a name="UUID" 
+                                 value="55b16180-ed10-4e98-a14d-f205643c08a0"/>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:da name="DEFAULT" value="0"/>
+                            <a:da name="INVALID" type="Multi">
+                              <mt:xpath expr="(../../../AdcHwUnitId = 'HWUNIT_ADC0') and not(contains( ecu:get('Adc.AdcChannels_Adc0'), concat('_', . , '_' )))" true="Invalid AdcAnChannelNum for HWUNIT_ADC0. Selected channel number should be from 0 to 7 for TC27x/TC29x and 0 to 15 for TC26x only. If the selected channel number is within the range, then the channel is not available for the selected derivative of Aurix."/>
+                              <mt:xpath expr="(../../../AdcHwUnitId = 'HWUNIT_ADC1') and not(contains( ecu:get('Adc.AdcChannels_Adc1'), concat('_', . , '_' )))" true="Invalid AdcAnChannelNum for HWUNIT_ADC1. Selected channel number should be from 8 to 15 for TC27x/TC29x and 16 to 31 for TC26x only. If the selected channel number is within the range, then the channel is not available for the selected derivative of Aurix."/>
+                              <mt:xpath expr="(../../../AdcHwUnitId = 'HWUNIT_ADC2') and not(contains( ecu:get('Adc.AdcChannels_Adc2'), concat('_', . , '_' )))" true="Invalid AdcAnChannelNum for HWUNIT_ADC2. Selected channel number should be from 16 to 23 for TC27x/TC29x and 32to 47 for TC26x only. If the selected channel number is within the range, then the channel is not available for the selected derivative of Aurix."/>
+                              <mt:xpath expr="(../../../AdcHwUnitId = 'HWUNIT_ADC3') and not(contains( ecu:get('Adc.AdcChannels_Adc3'), concat('_', . , '_' )))" true="Invalid AdcAnChannelNum for HWUNIT_ADC3. Selected channel number should be from 24 to 31 for TC27x/TC29x and 48 to 63 for TC26x only. If the selected channel number is within the range, then the channel is not available for the selected derivative of Aurix."/>
+                              <mt:xpath expr="(../../../AdcHwUnitId = 'HWUNIT_ADC4') and not(contains( ecu:get('Adc.AdcChannels_Adc4'), concat('_', . , '_' )))" true="Invalid AdcAnChannelNum for HWUNIT_ADC4. Selected channel number should be from 32 to 39 only. If the selected channel number is within the range, then the channel is not available for the selected derivative of Aurix."/>
+                              <mt:xpath expr="(../../../AdcHwUnitId = 'HWUNIT_ADC5') and not(contains( ecu:get('Adc.AdcChannels_Adc5'), concat('_', . , '_' )))" true="Invalid AdcAnChannelNum for HWUNIT_ADC5. Selected channel number should be from 40 to 47 only. If the selected channel number is within the range, then the channel is not available for the selected derivative of Aurix."/>
+                              <mt:xpath expr="(../../../AdcHwUnitId = 'HWUNIT_ADC6') and not(contains( ecu:get('Adc.AdcChannels_Adc6'), concat('_', . , '_' )))" true="Invalid AdcAnChannelNum for HWUNIT_ADC6. Selected channel number should be from 48 to 55 only. If the selected channel number is within the range, then the channel is not available for the selected derivative of Aurix."/>
+                              <mt:xpath expr="(../../../AdcHwUnitId = 'HWUNIT_ADC7') and not(contains( ecu:get('Adc.AdcChannels_Adc7'), concat('_', . , '_' )))" true="Invalid AdcAnChannelNum for HWUNIT_ADC7. Selected channel number should be from 56 to 63 only. If the selected channel number is within the range, then the channel is not available for the selected derivative of Aurix."/>
+                              <mt:xpath expr="(../../../AdcHwUnitId = 'HWUNIT_ADC8') and not(contains( ecu:get('Adc.AdcChannels_Adc8'), concat('_', . , '_' )))" true="Invalid AdcAnChannelNum for HWUNIT_ADC8. Selected channel number should be from 64 to 71 only. If the selected channel number is within the range, then the channel is not available for the selected derivative of Aurix."/>
+                              <mt:xpath expr="(../../../AdcHwUnitId = 'HWUNIT_ADC9') and not(contains( ecu:get('Adc.AdcChannels_Adc9'), concat('_', . , '_' )))" true="Invalid AdcAnChannelNum for HWUNIT_ADC9. Selected channel number should be from 72 to 79 only. If the selected channel number is within the range, then the channel is not available for the selected derivative of Aurix."/>
+                              <mt:xpath expr="(../../../AdcHwUnitId = 'HWUNIT_ADC10') and not(contains( ecu:get('Adc.AdcChannels_Adc10'), concat('_', . , '_' )))" true="Invalid AdcAnChannelNum for HWUNIT_ADC10. Selected channel number should be from 80 to 87 only. If the selected channel number is within the range, then the channel is not available for the selected derivative of Aurix."/>
+                              <mt:range>
+                                <mt:tst expr="&gt;=0"/>
+                                <mt:tst expr="&lt;=ecu:get('Adc.MaxChannelNum')"/>
+                              </mt:range>
+                           </a:da>
+                          </v:var>
+                          <v:lst name="AdcChannelConvTime">
+                          <a:da name="EDITABLE" value="false"/>
+                            <a:da name="MAX" value="1"/>
+                            <v:var name="AdcChannelConvTime" type="INTEGER">
+                              <a:da name="TOOLTIP" value="NOT SUPPORTED"/>
+                              <a:a name="DESC">
+                                <a:v>EN: NOT SUPPORTED
+Configuration of conversion time, including sample time (in clockcycles) for each channel, if supported by hardware .
+Aurix will not support the configuration of this parameter.</a:v>
+                              </a:a>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                                <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                              <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                              <a:a name="UUID" 
+                                   value="868ee59b-03dc-44b1-8f0f-65c897c3895b"/>
+                              <a:da name="DEFAULT" value="0"/>
+                              <a:da name="INVALID" type="Range">
+                                <a:tst expr="&lt;=65535"/>
+                                <a:tst expr="&gt;=0"/>
+                              </a:da>
+                            </v:var>
+                          </v:lst>
+                          <v:var name="AdcChannelHighLimit" type="INTEGER">
+                            <a:da name="TOOLTIP" value="High limit value used for limit checking"/>
+                            <a:a name="DESC" 
+                                 value="EN: High limit value used for limit checking"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="196df31d-f4c4-4534-8677-76299f26faf0"/>
+                            <a:da name="DEFAULT" value="255"/>
+                            <a:da name="EDITABLE" type="XPath"> 
+                             <a:tst expr="((../../../../../../../AdcGeneral/AdcEnableLimitCheck = 'true') and (../AdcChannelLimitCheck = 'true') and (../AdcChannelRangeSelect != 'ADC_RANGE_UNDER_LOW') and (../AdcChannelRangeSelect != 'ADC_RANGE_NOT_UNDER_LOW'))"/>
+                            </a:da>
+                            <a:da name="INVALID" type="Multi">
+                              <mt:xpath expr="(../AdcChannelLowLimit &gt; ../AdcChannelHighLimit)" true="Invalid Configuration. AdcChannelHighLimit value should be greater than or equal to AdcChannelLowLimit value"/>
+                              <mt:range>
+                                <mt:tst expr="&gt;=0"/>
+                                <mt:tst expr="&lt;=4095"/>
+                              </mt:range>
+                            </a:da>
+                          </v:var>
+                          <v:var name="AdcChannelId" type="INTEGER">
+                            <a:da name="TOOLTIP" value="Channel Id of the ADC channel. This value will be assigned to the symbolic name derived of the AdcChannel container short name."/>
+                            <a:a name="DESC" 
+                                 value="EN: Channel Id of the ADC channel. This value will be assigned to the symbolic name derived of the AdcChannel container short name."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                            <a:a name="UUID" 
+                                 value="196df61d-f4c4-4534-8677-76999f26faf0"/>
+                            <a:da name="DEFAULT" type="XPath" expr="node:fallback(node:current()/../@index,'0')"/> 
+                            <a:da name="INVALID" type="Range">
+                                <a:tst expr="&lt;=255"/>
+                                <a:tst expr="&gt;=0"/>
+                            </a:da>
+                            <a:da name="RANGE" type="XPath">
+                              <a:tst expr="(.&gt;= 0 ) and (.&lt; num:i(count(node:current()/../../*)))"
+                               false="Value out of range: must be in range 0 to N-1 (N is number of configured channels)."/>
+                              <a:tst expr="text:uniq(../../*/AdcChannelId,.)"  false="Duplicated value, AdcChannelId must be unique across all channels."/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="AdcChannelLimitCheck" type="BOOLEAN">
+                            <a:da name="TOOLTIP" value="Pre-processor switch to enable / disable the Limit checking for an Adc channel"/>
+                            <a:a name="DESC">
+                              <a:v>EN: Pre-processor switch to enable / disable the Limit checking for an Adc channel
+          true: Limit checking is enabled for Adc channel.
+          false: Limit checking is disabled for Adc channel.</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" value="d42ed3a7-c933-483f-8b10-390e26b1d366"/>
+                            <a:da name="DEFAULT" value="false"/>
+                            <a:da name="EDITABLE" type="XPath">                    
+                             <a:tst expr= "(../../../../../../../AdcGeneral/AdcEnableLimitCheck = 'true')"/>
+                            </a:da> 
+                            <a:da name="INVALID" type="XPath">
+                             <a:tst expr= "((../../../../../../../AdcGeneral/AdcEnableLimitCheck = 'false') and (.='true'))" true="Invalid configuration. AdcEnableLimitCheck needs to be enabled"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="AdcChannelLowLimit" type="INTEGER">
+                            <a:da name="TOOLTIP" value="Low limit value used for limit checking"/>
+                            <a:a name="DESC" 
+                                 value="EN: Low limit value used for limit checking"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="196df31d-f4c4-4534-8667-76299f26faf0"/>
+                            <a:da name="DEFAULT" value="0"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=4095"/>
+                              <a:tst expr="&gt;=0"/>
+                            </a:da>
+                            <a:da name="EDITABLE" type="XPath"> 
+                             <a:tst expr="((../../../../../../../AdcGeneral/AdcEnableLimitCheck = 'true') and (../AdcChannelLimitCheck = 'true') and (../AdcChannelRangeSelect != 'ADC_RANGE_OVER_HIGH') and (../AdcChannelRangeSelect != 'ADC_RANGE_NOT_OVER_HIGH'))"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="AdcChannelRangeSelect" 
+                                 type="ENUMERATION">
+                            <a:da name="TOOLTIP" value="In case of active limit checking: defines which conversion values are taken into account related to the boarders"/>
+                            <a:a name="DESC">
+                                 <a:v>EN: In case of active limit checking: defines which conversion values are taken into account related to the boarders
+                                 defined with AdcChannelHighLimit and AdcChannelLowLimit</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="UUID" 
+                                 value="d7b734d5-b9e7-413b-b9d4-e427016560b5"/>
+                            <a:da name="DEFAULT" value="ADC_RANGE_ALWAYS"/>
+                            <a:da name="RANGE">
+                              <a:v>ADC_RANGE_ALWAYS</a:v>
+                              <a:v>ADC_RANGE_BETWEEN</a:v>
+                              <a:v>ADC_RANGE_NOT_BETWEEN</a:v>
+                              <a:v>ADC_RANGE_NOT_OVER_HIGH</a:v>
+                              <a:v>ADC_RANGE_NOT_UNDER_LOW</a:v>
+                              <a:v>ADC_RANGE_OVER_HIGH</a:v>
+                              <a:v>ADC_RANGE_UNDER_LOW</a:v>
+                            </a:da>
+                            <a:da name="EDITABLE" type="XPath"> 
+                             <a:tst expr="((../../../../../../../AdcGeneral/AdcEnableLimitCheck = 'true') and (../AdcChannelLimitCheck = 'true'))"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="AdcChannelRefVoltsrcHigh" 
+                                 type="ENUMERATION">
+                            <a:da name="TOOLTIP" value="Upper reference voltage source for each channel"/>
+                            <a:a name="DESC" 
+                                 value="EN: Upper reference voltage source for each channel"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="UUID" 
+                                 value="d7b734d5-b9d7-413b-b9d4-e4270165a0b5"/>
+                            <a:da name="DEFAULT" value="REF_VOLTAGE_VAREF"/>
+                            <a:da name="RANGE" type="XPath" expr="ecu:list('Adc.RefVoltSrc')">
+                            </a:da>
+                            <a:da name="INVALID" type="XPath">
+                              <a:tst expr="(../../../AdcHwUnitId = 'HWUNIT_ADC0') and (.= 'REF_VOLTAGE_CH0') and (contains( ecu:get('Adc.NoAltRefChannels_Adc0'), concat('_', ../AdcAnChannelNum , '_' )))" true="Alternate reference is not available for channels 4 to 7 of ADC0"/>
+                              <a:tst expr="(../../../AdcHwUnitId = 'HWUNIT_ADC4') and (.= 'REF_VOLTAGE_CH0') and (contains( ecu:get('Adc.NoAltRefChannels_Adc4'), concat('_', ../AdcAnChannelNum , '_' )))" true="Alternate reference is not available for channel 3 (35) of ADC4"/>
+                            </a:da>
+                            <a:da name="EDITABLE" type="XPath"> 
+                              <a:tst expr="not(contains( ecu:get('Adc.NoAltRefChannels_Adc'), concat('_', ../AdcAnChannelNum , '_' )))"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="AdcChannelRefVoltsrcLow" 
+                                 type="ENUMERATION">
+                            <a:da name="TOOLTIP" value="Lower reference voltage source for each channel"/>
+                            <a:a name="DESC" 
+                                 value="EN: Lower reference voltage source for each channel."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="UUID" 
+                                 value="766ad275-5255-46fd-84fe-11b87a10d774"/>
+                            <a:da name="DEFAULT" value="REF_VOLTAGE_VAGND"/>
+                            <a:da name="RANGE" value="REF_VOLTAGE_VAGND"/>
+                            <a:da name="EDITABLE" value="false"/> 
+                          </v:var>
+                          <v:lst name="AdcChannelResolution">
+                          <a:da name="EDITABLE" value="false"/>
+                            <a:da name="MAX" value="1"/>
+                            <v:var name="AdcChannelResolution" type="INTEGER">
+                              <a:da name="TOOLTIP" value="NOT SUPPORTED. Channel resolution configuration is moved to Input class container"/>
+                              <a:a name="DESC">
+                                <a:v>EN: NOT SUPPORTED
+Channel resolution in bits.
+In Aurix, Channel resolution configuration is moved to Input class container and a reference parameter is provided to select one of 4 input class.</a:v>
+                              </a:a>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                                <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                              <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                              <a:a name="UUID" 
+                                   value="f9f203dc-4f4b-4a5f-bf9e-42f6aa9252b0"/>
+                              <a:da name="DEFAULT" value="1"/>
+                              <a:da name="INVALID" type="Range">
+                                <a:tst expr="&lt;=63"/>
+                                <a:tst expr="&gt;=1"/>
+                              </a:da>
+                              <a:da name="EDITABLE" value="false"/>
+                            </v:var>
+                          </v:lst>
+                          <v:lst name="AdcChannelSampTime">
+                          <a:da name="EDITABLE" value="false"/>
+                            <a:da name="MAX" value="1"/>
+                            <v:var name="AdcChannelSampTime" type="INTEGER">
+                              <a:da name="TOOLTIP" value="NOT SUPPORTED. Channel sampling configuration is moved to Input class container"/>
+                              <a:a name="DESC">
+                                <a:v>EN: NOT SUPPORTED
+Configuration of sampling time (in clock cycles) for each channel, i.e. the time during which the value is sampled if supported by hardware.
+In Aurix, Channel sampling time configuration is moved to Input class container and a reference parameter is provided to select one of 4 input class.</a:v>
+                              </a:a>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                                <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                              <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                              <a:a name="UUID" 
+                                   value="fb426bb2-b151-4738-a8d4-6fd136afb96a"/>
+                              <a:da name="DEFAULT" value="0"/>
+                              <a:da name="INVALID" type="Range">
+                                <a:tst expr="&lt;=31"/>
+                                <a:tst expr="&gt;=0"/>
+                              </a:da>
+                            <a:da name="EDITABLE" value="false"/>
+                            </v:var>
+                          </v:lst>
+                          <v:ref name="AdcInputClassSelection" 
+                                 type="CHOICE-REFERENCE">
+                            <a:da name="TOOLTIP" value="Reference to the Input class containing Channel resolution and sampling time"/>
+                            <a:a name="DESC" 
+                                 value="EN: Reference to the Input class containing Channel resolution and sampling time."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="UUID" 
+                                 value="dfad88a5-beb5-44a9-a88d-fc8903f221ce"/>
+                            <a:da name="REF">
+                              <a:v>ASPathDataOfSchema:/AURIX/Adc/AdcConfigSet/AdcHwUnit/AdcKernelInputClass</a:v>                                                
+                              <a:v>ASPathDataOfSchema:/AURIX/Adc/AdcConfigSet/AdcGlobInputClass</a:v>  
+                            </a:da>
+                          </v:ref>
+                          <v:var name="AdcSyncChannel" type="BOOLEAN">
+                            <a:da name="TOOLTIP" value="Pre-processor switch to enable / disable the Synchronized conversion of the selected channels in the MASTER and SLAVE kernels"/>
+                            <a:a name="DESC">
+                              <a:v>EN: Pre-processor switch to enable / disable the Synchronized conversion of the selected channels in the MASTER and SLAVE kernels
+          true: Synchronized conversion is enabled for Adc channel.
+          false: Synchronized conversion is disabled for Adc channel.</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" value="d42ed3a7-c933-483f-8b19-390e26b1d366"/>
+                            <a:da name="DEFAULT" value="false"/>
+                            <a:da name="EDITABLE" type="XPath">                    
+                             <a:tst expr= "(../../../../../../../AdcGeneral/AdcMasterSlaveSync = 'true') and (../../../AdcSyncConvMode = 'ADC_MASTER')"/>
+                            </a:da> 
+                          </v:var>
+                        </v:ctr>
+                      </v:lst>
+                      <v:lst name="AdcGroup" type="MAP">
+                        <a:da name="MIN" value="1"/>
+                        <a:da name="MAX" value="32"/>
+                        <v:ctr name="AdcGroup" type="IDENTIFIABLE">
+                          <a:da name="TOOLTIP" value="This container contains the Group configuration parameters"/>
+                          <a:a name="DESC" 
+                               value="EN: This container contains the Group configuration (parameters)."/>
+                          <a:a name="UUID" 
+                               value="f8630d3c-27a2-4d13-a208-de95de01d379"/>
+                          <a:da name="INVALID" type="XPath">
+                            <a:tst 
+                              expr="
+                              not
+                              (
+                                contains(substring-before(concat(text:join(../../../*/AdcGroup/*/@name, ','), ','), concat(name(.), ',')), concat(name(.), ',')) 
+                                or 
+                                contains(substring-after(concat(text:join(../../../*/AdcGroup/*/@name, ','), ','), concat(name(.), ',')), concat(name(.), ','))
+                              )
+                              "
+                              false="Duplicate AdcGroup Names, Group names names must be unique across HWUnits"
+                            />
+                          </a:da>                               
+                          <v:var name="AdcChannelEmuxSelect" type="INTEGER">
+                            <a:da name="TOOLTIP" value="Configuration of channel select line, if external multiplexer is used."/>
+                            <a:a name="DESC" 
+                                 value="EN: Its is the configuration of channel select line, if external multiplexer is used."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="UUID" 
+                                 value="11ef4ddd-9ed7-40f9-8bd0-7ada810ee5b8"/>
+                            <a:da name="DEFAULT" value="0"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=7"/>
+                              <a:tst expr="&gt;=0"/>
+                            </a:da>
+                            <a:da name="ENABLE" type="XPath"> 
+                              <a:tst expr="((../../../../../../../AdcGeneral/AdcUseEmux = 'true')and ((../../../AdcHwUnitId = ../../../../../AdcEmuxSelectGrp0) or (../../../AdcHwUnitId = ../../../../../AdcEmuxSelectGrp1)))"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="AdcEmuxScanEnable" type="BOOLEAN">
+                            <a:da name="TOOLTIP" value="Enable / Disable of EMUX scan mode"/>
+                            <a:a name="DESC">
+                              <a:v>EN: Enable / Disable of EMUX scan mode.
+When Enable:
+1. GroupDefinition should contain one channel with Emux select line configured
+2. Group should be configured for continuous conversion mode
+
+This will facilitate the Group with many virtual channles starting from configured AdcChannelEmuxSelect value till 0 connected to the multiplexer.
+For example: 
+Consider AdcChannelEmuxSelect = 3 for analog channel 3 in a group with AdcEmuxScanEnable = TRUE.
+i.e. this group on conversion will scan 4 channels connected to multiplexer of analog channel 3 starting from select line 3 to 0.
+
+When Disable:
+1. GroupDefinition can contain one or more channels.
+2. For the channels with Emux select line configured should be of same value.</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="UUID" 
+                                 value="08b4d5c8-d7be-481a-a676-6fc23a384a8a"/>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:da name="DEFAULT" value="false"/>
+                            <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="((../../../../../../../AdcGeneral/AdcUseEmux = 'true') and ((../../../AdcHwUnitId = ../../../../../AdcEmuxSelectGrp0) or (../../../AdcHwUnitId = ../../../../../AdcEmuxSelectGrp1)) and (../../../../../../../AdcGeneral/AdcNonAutosarDmaResultHandling = 'false') and (../../../../../../../AdcGeneral/AdcNonAutosarResultPolling = 'false'))"/>       
+                            </a:da>
+                            <a:da name="INVALID" type="XPath">
+                              <a:tst expr="(. = 'true' and ( (../AdcGroupConversionMode = 'ADC_CONV_MODE_ONESHOT' and ../AdcGroupTriggSrc = 'ADC_TRIGG_SRC_SW') or num:i(count(../AdcGroupDefinition/*) &gt; 1) ))" true="Invalid Configuration. GroupDefinition should contain one channel and Group conversion mode should be ADC_CONV_MODE_CONTINUOUS."/>       
+                              <a:tst expr="(. = 'true' and ../../../../../../../AdcSafety/AdcSafetyEnable = 'true')" true="Invalid Configuration. AdcEmuxScanEnable can't be set to true, if AdcSafetyEnable is true."/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="AdcGroupAccessMode" type="ENUMERATION">
+                            <a:da name="TOOLTIP" value="Type of access mode to group conversion results"/>
+                            <a:a name="DESC" 
+                                 value="EN: Type of access mode to group conversion results."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="7aa10777-374b-4b55-9f8b-402e95a992b8"/>
+                            <a:da name="DEFAULT" value="ADC_ACCESS_MODE_SINGLE"/>
+                            <a:da name="RANGE">
+                              <a:v>ADC_ACCESS_MODE_SINGLE</a:v>
+                              <a:v>ADC_ACCESS_MODE_STREAMING</a:v>
+                            </a:da>
+                            <a:da name="EDITABLE" type="XPath"> 
+                            <a:tst expr="(../../../../../../../AdcGeneral/AdcNonAutosarDmaResultHandling = 'false') and (../../../../../../../AdcGeneral/AdcNonAutosarResultPolling = 'false')"/>
+                            </a:da>
+                            <a:da name="INVALID" type="XPath">
+                            <a:tst expr="(../AdcGroupTriggSrc = 'ADC_TRIGG_SRC_SW') and (../AdcGroupConversionMode = 'ADC_CONV_MODE_ONESHOT') and (.='ADC_ACCESS_MODE_STREAMING')" true="Invalid Configuration, Streaming is not applicable for SW trigger group with oneshot conversion mode. "/>       
+                            </a:da>
+                          </v:var>
+                          <v:var name="AdcGroupBufferMarker" type="INTEGER">
+                            <a:da name="TOOLTIP" value="Marker value of the Buffer per Adc channel group. The marker is used for validating the correct buffer pointer."/>
+                            <a:a name="DESC">
+                              <a:v>EN: Marker value of the Buffer per Adc channel group. The marker is used for validating the correct buffer pointer.</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="c3124a36-431e-4183-9de1-a241c7262c02"/>
+                            <a:da name="DEFAULT" value="0"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=255"/>
+                              <a:tst expr="&gt;=0"/>
+                            </a:da>
+                            <a:da name="ENABLE" type="XPath"> 
+                              <a:tst expr="(../../../../../../../AdcSafety/AdcSafetyEnable = 'true')"/>
+                            </a:da> 
+                          </v:var>
+                          <v:var name="AdcGroupConversionMode" 
+                                 type="ENUMERATION">
+                            <a:da name="TOOLTIP" value="Type of Group Conversion mode: Oneshot / Continuous"/>
+                            <a:a name="DESC" 
+                                 value="EN: Type of Group Conversion mode: Oneshot / Continuous"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="5a992266-cbff-43dc-9f3b-b191392ba531"/>
+                            <a:da name="DEFAULT" value="ADC_CONV_MODE_ONESHOT"/>
+                            <a:da name="RANGE">
+                              <a:v>ADC_CONV_MODE_CONTINUOUS</a:v>
+                              <a:v>ADC_CONV_MODE_ONESHOT</a:v>
+                            </a:da>
+                            <a:da name="INVALID" type="XPath">
+                             <a:tst expr="../AdcGroupTriggSrc = 'ADC_TRIGG_SRC_HW' and (.='ADC_CONV_MODE_CONTINUOUS')" true="Invalid Configuration, For Group with ADC_TRIGG_SRC_HW, conversion mode configurable is only ADC_CONV_MODE_ONESHOT. "/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="AdcGroupId" type="INTEGER">
+                            <a:da name="TOOLTIP" value="Numeric Id of the ADC channel group"/>
+                            <a:a name="DESC">
+                              <a:v>EN: Numeric Id of the ADC channel group  This value will be assigned to the symbolic name derived of the AdcGroup container short name.
+The range of IDs for each ADC Hw Unit:
+ADC0: 0 to 31
+ADC1: 32 to 63
+ADC2: 64 to 95
+ADC3: 96 to 127
+ADC4: 128 to 159
+ADC5: 160 to 191
+ADC6: 192 to 223
+ADC7: 224 to 255
+ADC8: 256 to 287
+ADC9: 288 to 319
+ADC10: 320 to 351
+
+Note: The value will be automatically generated by the tool and user should refer the groups using symbolic name (i.e AdcGroup container name).</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                            <a:a name="UUID" 
+                                 value="2a6b42db-a004-426a-92ba-a2f41b73c2e8"/>
+                            <a:da name="DEFAULT" value="0"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=ecu:get('Adc.MaxGroupId')"/>
+                              <a:tst expr="&gt;=0"/>
+                            </a:da>
+                            <a:da name="EDITABLE" value="false"/>
+                          </v:var>
+                          <v:lst name="AdcGroupPriority">
+                            <a:da name="MAX" value="1"/>
+                            <v:var name="AdcGroupPriority" type="INTEGER">
+                              <a:da name="TOOLTIP" value="Priority level of the group"/>
+                              <a:a name="DESC">
+                                <a:v>EN: Priority level of the group.
+  This parameter is valid only when HW_SW_PRIORITY considered.
+  Maximum value is limited to 254, Since the priority level 255 is assigned to Adc channel group with HW trigger source</a:v>
+                              </a:a>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                                <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                              <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                              <a:a name="UUID" 
+                                   value="c2124036-481e-4483-9dec-a247c726ec02"/>
+                              <a:da name="DEFAULT" value="0"/>
+                              <a:da name="INVALID" type="Range">
+                                <a:tst expr="&lt;=254"/>
+                                <a:tst expr="&gt;=0"/>
+                              </a:da>
+                              <a:da name="EDITABLE" type="XPath"> 
+                               <a:tst expr="../../AdcGroupTriggSrc = 'ADC_TRIGG_SRC_SW' and ../../../../../../../../AdcGeneral/AdcPriorityImplementation = 'ADC_PRIORITY_HW_SW'"/>
+                              </a:da> 
+                            </v:var>
+                          </v:lst>
+                          <v:lst name="AdcGroupReplacement">
+                            <a:da name="MAX" value="1"/>
+                            <v:var name="AdcGroupReplacement" type="ENUMERATION">
+                              <a:da name="TOOLTIP" value="Replacement mechanism, which is used on ADC group level, if a group conversion is interrupted by a group which has a higher priority."/>
+                              <a:a name="DESC">
+                                <a:v>EN: Replacement mechanism, which is used on ADC group level, if a group
+  conversion is interrupted by a group which has a higher priority.</a:v>
+                              </a:a>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                                <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                              <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                              <a:a name="UUID" 
+                                   value="6edcfea1-d455-4168-a1da-d1b0effdb7d2"/>
+                              <a:da name="DEFAULT" 
+                                    value="ADC_GROUP_REPL_ABORT_RESTART"/>
+                              <a:da name="RANGE">
+                                <a:v>ADC_GROUP_REPL_ABORT_RESTART</a:v>
+                              </a:da>
+                              <a:da name="EDITABLE" type="XPath"> 
+                                <a:tst expr="../../AdcGroupTriggSrc = 'ADC_TRIGG_SRC_SW' and ../../../../../../../../AdcGeneral/AdcPriorityImplementation = 'ADC_PRIORITY_HW_SW'"/>
+                              </a:da> 
+                            </v:var>
+                          </v:lst>
+                          <v:var name="AdcGroupRequestSource" 
+                                 type="ENUMERATION">
+                            <a:da name="TOOLTIP" value="Microcontroller specific request source selection"/>
+                            <a:a name="DESC" 
+                                 value="EN: Microcontroller specific request source selection"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="UUID" 
+                                 value="23d88f4d-8be3-47e5-82a5-edd2d41e5d69"/>
+                            <a:da name="DEFAULT" value="REQSRC0_8STG_QUE"/>
+                            <a:da name="RANGE" type="XPath" expr="ecu:list('Adc.GroupReqSrc')"/>
+                            <a:da name="INVALID" type="XPath"> 
+                              <a:tst expr="(. = 'REQSRC2_BGND_SCAN' and ../../../../../../../AdcSafety/AdcSafetyEnable = 'true')" true="Invalid Configuration. AdcGroupRequestSource can't be set as REQSRC2_BGND_SCAN, if AdcSafetyEnable is true."/>
+                            </a:da> 
+                          </v:var>
+                          <v:var name="AdcGroupTriggSrc" type="ENUMERATION">
+                            <a:da name="TOOLTIP" value="Triggering type of ADC Group - Software API call / external or timer request"/>
+                            <a:a name="DESC" 
+                                 value="EN: Triggering type of ADC Group - Software API call / external or timer request"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="6cdf4d12-a4c6-4d49-bdaa-307b48e5cbc9"/>
+                            <a:da name="DEFAULT" value="ADC_TRIGG_SRC_SW"/>
+                            <a:da name="RANGE">
+                              <a:v>ADC_TRIGG_SRC_HW</a:v>
+                              <a:v>ADC_TRIGG_SRC_SW</a:v>
+                            </a:da>
+                            <a:da name="INVALID" type="XPath">
+                              <a:tst expr="(. = 'ADC_TRIGG_SRC_HW') and (../../../../../../../AdcGeneral/AdcHwTriggerApi = 'false')" true="Invalid Configuration, HW trigger source is not applicable if AdcHwTriggerApi is set to false."/>       
+                              <a:tst expr="(. = 'ADC_TRIGG_SRC_SW') and (../../../../../../../AdcGeneral/AdcEnableStartStopGroupApi = 'false')" true="Invalid Configuration, SW trigger source is not applicable if AdcEnableStartStopGroupApi is set to false."/>       
+                            </a:da>
+                          </v:var>
+                          <v:var name="AdcGtmTimerPeriod" type="FLOAT">
+                            <a:da name="TOOLTIP" value="The Timer period for Group periodic conversion. unit milliseconds"/>
+                            <a:a name="DESC" 
+                                 value="EN: The Timer period for Group periodic conversion. unit milliseconds."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="UUID" 
+                                 value="112bd4f1-8416-4c2c-a325-4563ac9284a9"/>
+                            <a:da name="DEFAULT" value="5"/>
+                            <a:da name="ENABLE" type="XPath"> 
+                              <a:tst expr="(../AdcGroupTriggSrc = 'ADC_TRIGG_SRC_HW' and ../AdcHwTrigType = 'HW_TRIGG_TIMER')"/>
+                            </a:da>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=65535"/>
+                              <a:tst expr="&gt;=0"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="AdcHwExtTrigSelect" type="ENUMERATION">
+                            <a:da name="TOOLTIP" value="External request trigger pin/signal selection"/>
+                            <a:a name="DESC">
+                              <a:v>EN: External request pin/signal selection
+Selection should depend on the configured group request source (RS) and ADC Hw Unit.
+For example: To select for ADC0 and RS1, the selected values should have ADC0 and RS1 in the Literals</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="UUID" 
+                                 value="872a1b74-d486-464f-b99e-5d6359e0e5c7"/>
+                            <a:da name="DEFAULT" type="XPath" expr="ecu:get(concat('Adc.ExtTrigSignalDefault',node:fallback((node:current()/../../../AdcHwUnitId),'HWUNIT_ADC0')))"/>
+                            <a:da name="RANGE" type="XPath" expr="ecu:list(concat('Adc.ExtTrigSignals',node:fallback((node:current()/../../../AdcHwUnitId),'BMD')))">
+                            </a:da>
+                            <a:da name="ENABLE" type="XPath"> 
+                              <a:tst expr="(../AdcGroupTriggSrc = 'ADC_TRIGG_SRC_HW') and (../AdcHwTrigType = 'HW_TRIGG_EXT_REQ')"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="AdcHwGatePin" type="ENUMERATION">
+                            <a:da name="TOOLTIP" value="Request source gating pin selection"/>
+                            <a:a name="DESC">
+                              <a:v>EN: Request source gating pin selection
+Selection should depend on the configured group request source (RS) and ADC Hw Unit.
+For example: To select for ADC0 and RS1, the selected values should have ADC0 and RS1 in the Literals</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="UUID" 
+                                 value="2e7672ff-7aac-4616-8c3f-8c871cb52df4"/>
+                            <a:da name="DEFAULT" type="XPath" expr="ecu:get(concat('Adc.GatePinDefault',node:fallback((node:current()/../../../AdcHwUnitId),'HWUNIT_ADC0')))"/>
+                            <a:da name="RANGE" type="XPath" expr="ecu:list(concat('Adc.GatePins',node:fallback((node:current()/../../../AdcHwUnitId),'BMD')))">
+                            </a:da>
+                            <a:da name="ENABLE" type="XPath"> 
+                            <a:tst expr="../AdcGroupTriggSrc = 'ADC_TRIGG_SRC_HW' and ((../AdcHwGateSignal != 'ADC_GATE_SIGNAL_NONE' and ../AdcHwTrigType = 'HW_TRIGG_EXT_REQ') or (../AdcHwTrigType = 'HW_TRIGG_TIMER') or (../AdcHwExtTrigSelect = 'ADC_USE_GATE_PIN_TO_TRIG'))"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="AdcHwGateSignal" type="ENUMERATION">
+                            <a:da name="TOOLTIP" value="Request source gate signal level type"/>
+                            <a:a name="DESC">
+                              <a:v>EN: Request source gate signal level type.
+If NONE is selected, The request source issues conversion if at least one pending bit is set.</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="UUID" 
+                                 value="caef9505-ae57-466c-932c-0c4979bada2a"/>
+                            <a:da name="DEFAULT" value="ADC_GATE_SIGNAL_NONE"/>
+                            <a:da name="RANGE">
+                              <a:v>ADC_GATE_SIGNAL_HIGH</a:v>
+                              <a:v>ADC_GATE_SIGNAL_LOW</a:v>
+                              <a:v>ADC_GATE_SIGNAL_NONE</a:v>
+                            </a:da>
+                            <a:da name="EDITABLE" type="XPath"> 
+                            <a:tst expr="../AdcGroupTriggSrc = 'ADC_TRIGG_SRC_HW'  and ../AdcHwTrigType = 'HW_TRIGG_EXT_REQ' and ../AdcHwExtTrigSelect != 'ADC_USE_GATE_PIN_TO_TRIG' and ../AdcHwExtTrigSelect != 'ADC_USE_INTERNAL_TRIG_TO_TRIG_RS3'"/>
+                            </a:da>
+                          </v:var>
+                          <v:lst name="AdcHwTrigSignal">
+                            <a:da name="MAX" value="1"/>
+                            <v:var name="AdcHwTrigSignal" type="ENUMERATION">
+                              <a:da name="TOOLTIP" value="Configures on which edge of the hardware trigger signal the driver should start the conversion"/>
+                              <a:a name="DESC" 
+                                   value="EN: Configures on which edge of the hardware trigger signal the driver should start the conversion (only if supported by the ADC hardware)"/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                                <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                              <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                              <a:a name="UUID" 
+                                   value="6967fb5e-6e0a-4351-8037-1fdd7f821e9b"/>
+                              <a:da name="DEFAULT" value="ADC_HW_TRIG_RISING_EDGE"/>
+                              <a:da name="RANGE">
+                                <a:v>ADC_HW_TRIG_BOTH_EDGES</a:v>
+                                <a:v>ADC_HW_TRIG_FALLING_EDGE</a:v>
+                                <a:v>ADC_HW_TRIG_RISING_EDGE</a:v>
+                              </a:da>
+                              <a:da name="EDITABLE" type="XPath"> 
+                               <a:tst expr="../../AdcGroupTriggSrc = 'ADC_TRIGG_SRC_HW' and ../../AdcHwTrigType = 'HW_TRIGG_EXT_REQ'"/>
+                              </a:da>
+                            </v:var>
+                          </v:lst>
+                          <v:lst name="AdcHwTrigTimer">
+                          <a:da name="EDITABLE" value="false"/>
+                            <a:da name="MAX" value="1"/>
+                            <v:var name="AdcHwTrigTimer" type="INTEGER">
+                              <a:da name="TOOLTIP" value="NOT SUPPORTED"/>
+                              <a:a name="DESC">
+                                <a:v>EN: NOT SUPPORTED
+Reload value of the ADC module embedded timer (only if supported by hardware).
+Aurix do not have any ADC module embedded timer and hence using microcontroller GTM module for time trigger purpose. So, configuration of timer reload value is at parameter AdcGtmTimerPeriod in milliseconds.</a:v>
+                              </a:a>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                                <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                              <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                              <a:a name="UUID" 
+                                   value="612db05c-3a02-483f-adf9-6d426eb080eb"/>
+                              <a:da name="EDITABLE" value="false"/>
+                              <a:da name="DEFAULT" value="0"/>
+                              <a:da name="INVALID" type="Range">
+                                <a:tst expr="&lt;=65535"/>
+                                <a:tst expr="&gt;=0"/>
+                              </a:da>
+                            </v:var>
+                          </v:lst>
+                          <v:var name="AdcHwTrigType" type="ENUMERATION">
+                            <a:da name="TOOLTIP" value="HW trigger type : External request or Timer"/>
+                            <a:a name="DESC" 
+                                 value="EN: HW trigger type : External request or Timer"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="UUID" 
+                                 value="4a3394ce-0149-4632-bd38-f63f02dbe1e7"/>
+                            <a:da name="DEFAULT" value="HW_TRIGG_EXT_REQ"/>
+                            <a:da name="RANGE">
+                              <a:v>HW_TRIGG_EXT_REQ</a:v>
+                              <a:v>HW_TRIGG_TIMER</a:v>
+                            </a:da>
+                            <a:da name="ENABLE" type="XPath"> 
+                            <a:tst expr="../AdcGroupTriggSrc = 'ADC_TRIGG_SRC_HW'"/>
+                            </a:da>
+                          </v:var>
+                          <v:lst name="AdcNotification">
+                            <a:da name="MAX" value="1"/>
+                            <v:var name="AdcNotification" type="FUNCTION-NAME">
+                              <a:da name="TOOLTIP" value="Callback function for each group"/>
+                              <a:a name="DESC" 
+                                   value="EN: Callback function for each group"/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                                <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                              <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                              <a:a name="UUID" 
+                                   value="cdcdf097-dad4-4701-8c7f-c55e3a38e91d"/>
+                              <a:da name="DEFAULT" value="NULL_PTR"/>
+                              <a:da name="EDITABLE" type="XPath"> 
+                               <a:tst expr="../../../../../../../../AdcGeneral/AdcGrpNotifCapability = 'true'"/>
+                              </a:da>
+                              <a:da name="INVALID" type="XPath">
+                                <a:tst expr="((. = 'NULL_PTR') or (. = 'NULL') or (. = '')) and (../../../../../../../../AdcGeneral/AdcGrpNotifCapability = 'true')" true="Invalid Configuration, If Notification is not desired, then remove the Notification container. Notification of NULL , NULL_PTR or empty field is not allowed."/>       
+                              </a:da>
+                            </v:var>
+                          </v:lst>                          
+                          <v:var name="AdcRS3InternalTrigger" type="ENUMERATION">
+                            <a:da name="TOOLTIP" value="Defines the Internal triggers of RS3, generated by the respective source events"/>
+                            <a:a name="DESC" 
+                                 value="EN: Defines the Internal triggers of RS3, generated by the respective source events."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="7aa10767-37ab-4b55-9f4b-402e95a292b8"/>
+                            <a:da name="DEFAULT" value="REQSRC0_8STG_QUE"/>
+                            <a:da name="RANGE">
+                              <a:v>REQSRC0_8STG_QUE</a:v>
+                              <a:v>REQSRC1_NCH_SCAN</a:v>
+                              <a:v>REQSRC2_BGND_SCAN</a:v>
+                            </a:da>
+                            <a:da name="ENABLE" type="XPath"> 
+                              <a:tst expr="(../AdcGroupTriggSrc = 'ADC_TRIGG_SRC_HW') and (../AdcGroupRequestSource = 'REQSRC3_8STG_QUE') and (ecu:get('Adc.ReqSrcCount') = '4') and (../AdcHwExtTrigSelect = 'ADC_USE_INTERNAL_TRIG_TO_TRIG_RS3')"/>
+                            </a:da> 
+                          </v:var>
+                          <v:var name="AdcRS3TriggerSeqCount" type="INTEGER">
+                            <a:da name="TOOLTIP" value="Initial value of the trigger sequence counter TSC"/>
+                            <a:a name="DESC">
+                              <a:v>EN: Defines the initial value of the trigger sequence counter TSC and Controls the effect of an incoming internal trigger.
+TSC is reloaded with the value in TSCSET, when a trigger occurs while TSC = 00H.
+If the parameter value is 00H, Issue conversion requests immediately.
+Otherwise, decrement trigger counter.</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="c3124a36-431a-4583-9de1-a261c7262c12"/>
+                            <a:da name="DEFAULT" value="0"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=63"/>
+                              <a:tst expr="&gt;=0"/>
+                            </a:da>
+                            <a:da name="ENABLE" type="XPath"> 
+                              <a:tst expr="(../AdcGroupTriggSrc = 'ADC_TRIGG_SRC_HW') and (../AdcGroupRequestSource = 'REQSRC3_8STG_QUE') and (ecu:get('Adc.ReqSrcCount') = '4') and (../AdcHwExtTrigSelect = 'ADC_USE_INTERNAL_TRIG_TO_TRIG_RS3')"/>
+                            </a:da> 
+                          </v:var>
+                          <v:var name="AdcStreamingBufferMode" 
+                                 type="ENUMERATION">
+                            <a:da name="TOOLTIP" value="Configure streaming buffer as linear or circular buffer"/>
+                            <a:a name="DESC" 
+                                 value="EN: Configure streaming buffer as linear buffer; (i.e. the ADC Driver stops the conversion as soon as the stream buffer is full) or as ring buffer; (wraps around if the end of the stream buffer is reached)."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="391ec6ca-8554-428a-9b4e-55c3ee2002ae"/>
+                            <a:da name="DEFAULT" 
+                                  value="ADC_STREAM_BUFFER_LINEAR"/>
+                            <a:da name="RANGE">
+                              <a:v>ADC_STREAM_BUFFER_CIRCULAR</a:v>
+                              <a:v>ADC_STREAM_BUFFER_LINEAR</a:v>
+                            </a:da>
+                            <a:da name="EDITABLE" type="XPath"> 
+                            <a:tst expr="(../../../../../../../AdcGeneral/AdcNonAutosarDmaResultHandling = 'false') and (../../../../../../../AdcGeneral/AdcNonAutosarResultPolling = 'false')"/>
+                            </a:da>
+                            <a:da name="INVALID" type="XPath">
+                             <a:tst expr="../AdcGroupTriggSrc = 'ADC_TRIGG_SRC_SW' and ../AdcGroupConversionMode = 'ADC_CONV_MODE_ONESHOT' and ../AdcGroupAccessMode='ADC_ACCESS_MODE_SINGLE' and  .= 'ADC_STREAM_BUFFER_CIRCULAR'" true="StreamingBuffer  mode  cannot be circular change to linear"/>
+                             <a:tst expr="(../../../../../../../AdcGeneral/AdcNonAutosarDmaResultHandling = 'false') and ../AdcGroupTriggSrc = 'ADC_TRIGG_SRC_SW' and ../AdcGroupConversionMode = 'ADC_CONV_MODE_CONTINUOUS' and ../AdcGroupAccessMode='ADC_ACCESS_MODE_SINGLE' and .= 'ADC_STREAM_BUFFER_LINEAR'" true="StreamingBuffer  mode  cannot be linear change to circular"/>
+                             <a:tst expr="(../../../../../../../AdcGeneral/AdcNonAutosarResultPolling = 'false') and ../AdcGroupTriggSrc = 'ADC_TRIGG_SRC_SW' and ../AdcGroupConversionMode = 'ADC_CONV_MODE_CONTINUOUS' and ../AdcGroupAccessMode='ADC_ACCESS_MODE_SINGLE' and .= 'ADC_STREAM_BUFFER_LINEAR'" true="StreamingBuffer  mode  cannot be linear change to circular"/>
+                             <a:tst expr="../AdcGroupTriggSrc = 'ADC_TRIGG_SRC_HW' and ../AdcGroupAccessMode='ADC_ACCESS_MODE_SINGLE' and .= 'ADC_STREAM_BUFFER_LINEAR'" true="StreamingBuffer  mode  cannot be linear. Change to circular"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="AdcStreamingNumSamples" type="INTEGER">
+                            <a:da name="TOOLTIP" value="Number of ADC values to be acquired per channel in streaming access mode"/>
+                            <a:a name="DESC" 
+                                 value="EN: Number of ADC values to be acquired per channel in streaming access mode."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="3a301094-b9b9-4242-853b-eacab0ab3003"/>
+                            <a:da name="DEFAULT" value="1"/>
+                            <a:da name="EDITABLE" type="XPath"> 
+                            <a:tst expr="(../../../../../../../AdcGeneral/AdcNonAutosarDmaResultHandling = 'false') and (../../../../../../../AdcGeneral/AdcNonAutosarResultPolling = 'false')"/>
+                            </a:da>
+                            <a:da name="INVALID" type="Multi"> 
+                              <mt:xpath expr="../AdcGroupAccessMode = 'ADC_ACCESS_MODE_SINGLE' and (.!='1')" true = "Invalid configuration. For single access mode, number of samples is always 1."/>
+                              <mt:xpath expr="../AdcGroupAccessMode = 'ADC_ACCESS_MODE_STREAMING' and (. &lt;= '1')" true = "Invalid configuration. For streaming access mode, number of samples is always greater than 1."/>
+                              <mt:range>
+                                <mt:tst expr="&gt;=1"/>
+                                <mt:tst expr="&lt;=255"/>
+                              </mt:range>
+                            </a:da>
+                          </v:var>
+                          <v:ref name="AdcEruGateRef" type="CHOICE-REFERENCE">
+                            <a:da name="TOOLTIP" value="ERU Gate signal selection through which ERU unit"/>
+                            <a:a name="DESC" 
+                                 value="EN: For ERU Gate signal through which ERU unit"/>
+                            <a:a name="UUID" 
+                                 value="330cfc7c-252f-46e4-8453-3a645f7e1d53"/>
+                            <a:da name="REF">
+                              <a:v>ASPathDataOfSchema:/AURIX/Mcu/McuModuleConfiguration/EruConfiguration/ERU0</a:v>
+                              <a:v>ASPathDataOfSchema:/AURIX/Mcu/McuModuleConfiguration/EruConfiguration/ERU1</a:v>
+                              <a:v>ASPathDataOfSchema:/AURIX/Mcu/McuModuleConfiguration/EruConfiguration/ERU2</a:v>
+                              <a:v>ASPathDataOfSchema:/AURIX/Mcu/McuModuleConfiguration/EruConfiguration/ERU3</a:v>
+                              <a:v>ASPathDataOfSchema:/AURIX/Mcu/McuModuleConfiguration/EruConfiguration/ERU4</a:v>
+                              <a:v>ASPathDataOfSchema:/AURIX/Mcu/McuModuleConfiguration/EruConfiguration/ERU5</a:v>
+                              <a:v>ASPathDataOfSchema:/AURIX/Mcu/McuModuleConfiguration/EruConfiguration/ERU6</a:v>
+                              <a:v>ASPathDataOfSchema:/AURIX/Mcu/McuModuleConfiguration/EruConfiguration/ERU7</a:v>
+                            </a:da>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:da name="ENABLE" type="XPath"> 
+                            <a:tst expr="(../AdcGroupTriggSrc = 'ADC_TRIGG_SRC_HW' and ../AdcHwTrigType = 'HW_TRIGG_EXT_REQ' and ../AdcGroupRequestSource !='REQSRC2_BGND_SCAN' and ((../AdcHwGateSignal != 'ADC_GATE_SIGNAL_NONE' and contains(../AdcHwGatePin,'PDOUT')) or ((../AdcHwExtTrigSelect = 'ADC_USE_GATE_PIN_TO_TRIG') and contains(../AdcHwGatePin,'PDOUT'))))"/>
+                            </a:da>
+                          </v:ref>
+                          <v:ref name="AdcEruTriggRef" type="CHOICE-REFERENCE">
+                            <a:da name="TOOLTIP" value="ERU trigger signal selection through which ERU unit"/>
+                            <a:a name="DESC" 
+                                 value="EN: For ERU trigger signal through which ERU unit"/>
+                            <a:a name="UUID" 
+                                 value="330cfc7c-258f-46e4-8483-3a645f7e1d53"/>
+                            <a:da name="REF">
+                              <a:v>ASPathDataOfSchema:/AURIX/Mcu/McuModuleConfiguration/EruConfiguration/ERU0</a:v>
+                              <a:v>ASPathDataOfSchema:/AURIX/Mcu/McuModuleConfiguration/EruConfiguration/ERU1</a:v>
+                              <a:v>ASPathDataOfSchema:/AURIX/Mcu/McuModuleConfiguration/EruConfiguration/ERU2</a:v>
+                              <a:v>ASPathDataOfSchema:/AURIX/Mcu/McuModuleConfiguration/EruConfiguration/ERU3</a:v>
+                              <a:v>ASPathDataOfSchema:/AURIX/Mcu/McuModuleConfiguration/EruConfiguration/ERU4</a:v>
+                              <a:v>ASPathDataOfSchema:/AURIX/Mcu/McuModuleConfiguration/EruConfiguration/ERU5</a:v>
+                              <a:v>ASPathDataOfSchema:/AURIX/Mcu/McuModuleConfiguration/EruConfiguration/ERU6</a:v>
+                              <a:v>ASPathDataOfSchema:/AURIX/Mcu/McuModuleConfiguration/EruConfiguration/ERU7</a:v>
+                            </a:da>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:da name="ENABLE" type="XPath"> 
+                            <a:tst expr="(../AdcGroupTriggSrc = 'ADC_TRIGG_SRC_HW' and ../AdcHwTrigType = 'HW_TRIGG_EXT_REQ' and contains(../AdcHwExtTrigSelect,'IOUT'))"/>
+                            </a:da>
+                          </v:ref>
+                          <v:lst name="AdcGroupDefinition">
+                            <a:da name="MAX" type="XPath" expr="ecu:get('Adc.NumOfChInGrp')"/>
+                            <a:da name="MIN" value="1"/>
+                            <v:ref name="AdcGroupDefinition" type="REFERENCE">
+                              <a:da name="TOOLTIP" value="Assignment of channels to a channel group"/>
+                              <a:a name="DESC" 
+                                   value="EN: Assignment of channels to a channel group. For each AdcChannel that should belong to the group, a reference needs to be defined."/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                                <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                              <a:a name="UUID" 
+                                   value="0126056a-3f4c-41e1-9731-98be9531f3d6"/>
+                              <a:da name="REF" 
+                                    value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Adc/AdcConfigSet/AdcHwUnit/AdcChannel"/>
+                              <a:da name="INVALID" type="XPath">
+                                <a:tst expr="contains(., ../../../../@name)" false="The Channel must be mapped on the same Hw Unit Group"/>
+                                <a:tst expr="contains(., ../../../../../../@name)" false="The Channel must be mapped on the same Config Set Group"/>
+                              </a:da>
+                            </v:ref>
+                          </v:lst>
+                          <v:ref name="AdcGtmTriggerRef" type="CHOICE-REFERENCE">
+                            <a:da name="TOOLTIP" value="ADC external timer trigger reference i.e GTM"/>
+                            <a:a name="DESC" 
+                                 value="EN: For ADC external timer trigger reference i.e GTM"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="UUID" 
+                                 value="6daadffb-2f59-406a-982f-c060aa081b62"/>
+                            <a:da name="REF">
+                              <a:v>ASPathDataOfSchema:/AURIX/Mcu/McuModuleConfiguration/GtmConfiguration/GtmConnections/GtmTriggerForAdc</a:v>
+                            </a:da>
+                            <a:da name="ENABLE" type="XPath"> 
+                         <a:tst expr="(../AdcGroupTriggSrc = 'ADC_TRIGG_SRC_HW' and ../AdcHwTrigType = 'HW_TRIGG_TIMER')"/>
+                         </a:da>
+                          </v:ref>
+                        </v:ctr>
+                      </v:lst>
+                      <v:lst name="AdcKernelInputClass" type="MAP">
+                        <a:da name="MAX" value="2"/>
+                        <a:da name="MIN" value="2"/>
+                        <v:ctr name="AdcKernelInputClass" type="IDENTIFIABLE">
+                          <a:a name="DESC">
+                            <a:v>EN: This container contains the Sample Time and Resolution configuration (parameters) of channels. GxICLASS register is configured via this container.</a:v>
+                          </a:a>
+                          <a:a name="UUID" 
+                               value="86e6ad09-f2da-4824-b2e0-ecc3dc70e5a3"/>
+                          <v:var name="AdcKernelChSampleTime" type="INTEGER">
+                            <a:da name="TOOLTIP" value="The time during which the value is sampled"/>
+                            <a:a name="DESC" 
+                                 value="EN: The time during which the value is sampled, (in clock-cycles)."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="UUID" 
+                                 value="5d2c2c5f-1638-4a69-b7d8-531a888e7acc"/>
+                            <a:da name="DEFAULT" value="0"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=31"/>
+                              <a:tst expr="&gt;=0"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="AdcKernelChResolution" type="ENUMERATION">
+                            <a:da name="TOOLTIP" value="ADC Channel resolution in bits"/>
+                            <a:a name="DESC" 
+                                 value="EN: ADC Channel resolution in bits."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="UUID" 
+                                 value="4fec07fb-560f-421e-3528-cb02a2e4eda6"/>
+                            <a:da name="DEFAULT" type="XPath" expr="ecu:get('Adc.DefaultResolution')"/>
+                            <a:da name="RANGE" type="XPath" expr="ecu:list('Adc.Resolution')">
+                            </a:da>
+                          </v:var>
+                          <v:var name="AdcKernelEmuxChSampleTime" type="INTEGER">
+                            <a:da name="TOOLTIP" value="The time during which the Emux channel value is sampled"/>
+                            <a:a name="DESC" 
+                                 value="EN: The time during which the Emux channel value is sampled, (in clock-cycles)."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="UUID" 
+                                 value="5d4cdc5f-16e8-4661-b7d8-531a848e7acc"/>
+                            <a:da name="DEFAULT" value="0"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=31"/>
+                              <a:tst expr="&gt;=0"/>
+                            </a:da>
+                            <a:da name="ENABLE" type="XPath"> 
+                              <a:tst expr="((../../../../../../../AdcGeneral/AdcUseEmux = 'true')and ((../../../AdcHwUnitId = ../../../../../AdcEmuxSelectGrp0) or (../../../AdcHwUnitId = ../../../../../AdcEmuxSelectGrp1)))"/>
+                            </a:da>
+                          </v:var>
+                        </v:ctr>
+                      </v:lst>
+                    </v:ctr>
+                  </v:lst>
+                </v:ctr>
+              </v:lst>
+              <v:ctr name="AdcGeneral" type="IDENTIFIABLE">
+                <a:a name="DESC" 
+                     value="EN: General configuration (parameters) of the ADC Driver software module."/>
+                <a:a name="UUID" value="1ca7abca-6ba4-4d14-befd-8bb9350fe86f"/>
+                <v:var name="AdcCcu6Synchronization" type="BOOLEAN">
+                  <a:da name="TOOLTIP" value="Pre-processor switch to enable / disable the CCU6x T13 to generate 20MHz Synchronization signal to all VADCs"/>
+                  <a:a name="DESC">
+                    <a:v>EN: Enable / Disable the CCU6x T13 to generate 20MHz Synchronization signal to all VADCs. 
+This parameter should be set to true only for the devices (e.g: TC29xBB, TC26xBB and TC27xDB) with metal fix for Cross coupling effect.
+
+true: Enables the CCU6x T13 to generate 20MHz Synchronization signal to all VADCs.
+false: Disables the CCU6x T13 to generate 20MHz Synchronization signal to all VADCs.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a423d3a7-c933-4d3f-8b9a-390e46f1d366"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="WARNING" type="XPath">
+                    <a:tst expr="(. = 'true')" true="The parameter AdcCcu6Synchronization should be set to true, only for devices (e.g., TC26xBB, TC27xDB, TC29xBB) with metal fix for cross coupling effect to initalize the CCU6 module to generate 20MHz synchronization signal."/>
+                  </a:da>
+                </v:var>
+                <v:var name="AdcDeInitApi" type="BOOLEAN">
+                  <a:da name="TOOLTIP" value="Pre-processor switch to enable / disable the Adc_DeInit() API"/>
+                  <a:a name="DESC">
+                    <a:v>EN: Adds / removes the service Adc_DeInit() from the code.
+true: Adc_DeInit() can be used.
+false: Adc_DeInit() can not be used.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="d42ed3a7-c933-483f-8b90-390e46b1d366"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="AdcDebugSupport" type="BOOLEAN">
+                  <a:da name="TOOLTIP" value="Pre-processor switch to enable / disable the Debugging support"/>
+                  <a:a name="DESC">
+                    <a:v>EN: Adds / removes the Debugging support from the code.
+true: Debugging support is available.
+false: Debugging support is not available.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="021db8da-97cc-4ad8-a8c3-187626822714"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="AdcDevErrorDetect" type="BOOLEAN">
+                  <a:da name="TOOLTIP" value="Pre-processor switch to enable/disable the Development Error Detection and Notification"/>
+                  <a:a name="DESC">
+                    <a:v>EN: Switches the Development Error Detection and Notification ON or OFF.
+true: Enabled.
+false: Disabled.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="de9ce730-c48a-499a-8eff-8b03a15032cc"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="AdcEnableLimitCheck" type="BOOLEAN">
+                  <a:da name="TOOLTIP" value="Pre-processor switch to enable / disable the Limit checking feature."/>
+                  <a:a name="DESC">
+                    <a:v>EN: Enable / Disable the Limit checking feature of ADC driver.
+true: The Limit checking feature is enabled for Adc driver.
+false: The Limit checking feature is disabled for Adc driver.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="021db8da-97dc-4ad8-a8c3-187626822716"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="EDITABLE" type="XPath"> 
+                    <a:tst expr="(../AdcNonAutosarDmaResultHandling = 'false') and (../AdcNonAutosarResultPolling = 'false')"/>
+                  </a:da>
+                  <a:da name="INVALID" type="XPath"> 
+                    <a:tst expr="(../AdcNonAutosarDmaResultHandling = 'true' and . = 'true')" true="Invalid Configuration. Limit checking is not allowed in Non Autosar result handling. Do not set to true AdcNonAutosarDmaResultHandling when AdcEnableLimitCheck is true."/>
+                    <a:tst expr="(../AdcNonAutosarResultPolling = 'true' and . = 'true')" true="Invalid Configuration. Limit checking is not allowed in Non Autosar result polling mode. Do not set to true AdcNonAutosarResultPolling when AdcEnableLimitCheck is true."/>
+                  </a:da>
+                </v:var>
+                <v:var name="AdcEnableQueuing" type="BOOLEAN">
+                  <a:da name="TOOLTIP" value="Pre-processor switch to enable/disable the queuing mechanism"/>
+                  <a:a name="DESC">
+                    <a:v>EN: Determines, if the queuing mechanism is active in case of priority mechanism disabled.
+Note: If priority mechanism is enabled, queuing mechanism is always active and the parameter ADC_ENABLE_QUEUING is not evaluated.
+true: Enabled.
+false: Disabled.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="274fd1b0-19bd-4093-86eb-32cb35bfcf84"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="EDITABLE" type="XPath"> 
+                  <a:tst expr="((../AdcNonAutosarDmaResultHandling = 'false') and (../AdcNonAutosarResultPolling = 'false') and (../AdcPriorityImplementation = 'ADC_PRIORITY_NONE'))"/>
+                  </a:da>
+                </v:var>
+                <v:var name="AdcEnableStartStopGroupApi" type="BOOLEAN">
+                  <a:da name="TOOLTIP" value="Pre-processor switch to enable / disable the APIs Adc_StartGroupConversion() and Adc_StopGroupConversion()"/>
+                  <a:a name="DESC">
+                    <a:v>EN: Adds / removes the services Adc_StartGroupConversion() and Adc_StopGroupConversion() from the code.
+true: Adc_StartGroupConversion() and Adc_StopGroupConversion() can be used.
+false: Adc_StartGroupConversion() and Adc_StopGroupConversion() can not be used.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="b0c04334-e15c-4d46-ae04-e8c00ff54663"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="AdcGrpNotifCapability" type="BOOLEAN">
+                  <a:da name="TOOLTIP" value="Pre-processor switch to enable/disable the Adc group notification mechanism"/>
+                  <a:a name="DESC">
+                    <a:v>EN: Determines, if the group notification mechanism (the functions to enable and disable the notifications) is available at runtime.
+true: Enabled.
+false: Disabled.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="2ba512b2-6585-4f61-973a-7266caf969dc"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="INVALID" type="XPath"> 
+                    <a:tst expr="((.='true') and (../AdcNonAutosarResultPolling = 'true'))" true="Notification is not supported if AdcNonAutosarResultPolling is on."/>
+                  </a:da>
+                </v:var>
+                <v:var name="AdcHwTriggerApi" type="BOOLEAN">
+                  <a:da name="TOOLTIP" value="Pre-processor switch to enable / disable the APIs Adc_EnableHardwareTrigger() and Adc_DisableHardwareTrigger()"/>
+                  <a:a name="DESC">
+                    <a:v>EN: Adds / removes the services Adc_EnableHardwareTrigger() and Adc_DisableHardwareTrigger() from the code.
+true: Adc_EnableHardwareTrigger() and Adc_DisableHardwareTrigger() can be used.
+false: Adc_EnableHardwareTrigger() and Adc_DisableHardwareTrigger() can not be used.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="f80a62ea-4288-4d01-b7cf-15c43afd7d13"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="AdcMasterSlaveSync" type="BOOLEAN">
+                  <a:da name="TOOLTIP" value="Pre-processor switch to enable/disable the Synchronization of conversion feature"/>
+                  <a:a name="DESC">
+                    <a:v>EN: Enables/Disables the Synchronization of conversion (Parallel sampling) feature.
+true: Synchronization of conversion Enabled.
+false: Synchronization of conversion Disabled.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="2ba512b2-6586-4f61-973a-7266caf969dc"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="AdcMaxChConvTimeCount" type="INTEGER">
+                  <a:da name="TOOLTIP" value="On stop of conversion request, the ongoing channel conversion in the A/D converter can not be stopped. Insted the API / software needs to wait for atleast the converter to become idle. Only when the converter is idle, the stop request is completely serviced. Inorder to ensure the converter is idle, a wait on coverter status polling is required and its maximum wait time is defined by the value entered in the AdcMaxChConvTimeCount"/>
+                  <a:a name="DESC">
+                    <a:v>EN: On stop of conversion request, the ongoing channel conversion in the A/D converter can not be stopped. Insted the API / software needs to wait for atleast the converter to become idle. Only when the converter is idle, the stop request is completely serviced. Inorder to ensure the converter is idle, a wait on coverter status polling is required and its maximum wait time is defined by the value entered in the AdcMaxChConvTimeCount.
+
+Note: If the entered value is 0, the wait on Stop in the driver is not performed. In such a case user has to ensure that new start of a Group is called only when ADC HW Unit is Idle. 
+Switching off of driver to wait on stop is applicable in ADC_PRIORITY_NONE (Queue is OFF) and ADC_PRIORITY_HW.
+
+  Conversion time = 2 * tADC + (4 + STC + n) * tADCI + sample phase length
+  where: 
+  n = 8, 10, 12 for n bit resolution
+  tADC = ADC module clock = system clock
+  tADCI = Analog clock
+  STC = Sample time control (Value - 0, 1, 2 ... 16, 32, 48, 64, 80, 96, 112, 128,
+        144, 160, 176, 192, 208, 224, 240, 256)
+
+  sample phase length = (2 + STC) / fADCI
+  STC = Sample time control (Value - 0, 1, 2 ... 16, 32, 48, 64, 80, 96, 112, 128,
+        144, 160, 176, 192, 208, 224, 240, 256)
+             fADCI : Analog clock frequency
+             1/fADCI = tADCI
+
+  Maximum sample phase length value:
+  STC = 256
+  tADCI = 32*tADC
+  tADC = tSYS (System clock time)
+  No. of sampling time count = 32*tSYS (2+256) / tSYS = 8256
+  
+  Minimum sample phase length value:
+  STC = 0
+  tADCI = 1*tADC
+  tADC = tSYS (System clock time)
+  No. of sampling time count = 1*tSYS (2+0) / tSYS = 2
+
+  Maximum Conversion time value:
+  tADC = tSYS (System clock time)
+  tADCI = 32 * tADC
+  STC = 256
+  n =  12 bit resolution
+  No. of conversion time count = tSYS (2+(4+256+12)32) / tSYS + 
+                                 Maximum sample phase length value 
+                               = 8706 + 8256 = 16962
+  Minimum Conversion time value:
+  tADC = tSYS (System clock time)
+  tADCI = 1* tADC
+  STC = 0
+  n =  8 bit resolution
+  No. of conversion time count = tSYS (2+(4+0+8)1) / tSYS + 
+                                 Minimum sample phase length value 
+                               = 14 + 2 = 16
+</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="UUID" value="c54c319d-5379-469e-b59a-bcb896632a4a"/>
+                  <a:da name="DEFAULT" value="10000"/>
+                  <a:da name="INVALID" type="Multi">
+                    <mt:xpath expr="( (../AdcPriorityImplementation = 'ADC_PRIORITY_HW_SW') or ((../AdcPriorityImplementation = 'ADC_PRIORITY_NONE') and (../AdcEnableQueuing = 'true')) ) and ((. &lt; 16) or (. &gt; 16962))" true="Invalid Configuration, In ADC_PRIORITY_HW_SW and ADC_PRIORITY_NONE with Queue enabled, the entered value should be from 16 to 16962 . The formula to calculate the value is in the description. "/>       
+                    <mt:xpath expr="( (../AdcPriorityImplementation = 'ADC_PRIORITY_HW') or ((../AdcPriorityImplementation = 'ADC_PRIORITY_NONE') and (../AdcEnableQueuing = 'false')) ) and ((. &lt; 0) or (. &gt; 16962))" true="Invalid Configuration, In ADC_PRIORITY_HW and ADC_PRIORITY_NONE with Queue disabled, the entered value should be be from 0 to 16962. The formula to calculate the value is in the description. "/>       
+                    <mt:range>
+                      <mt:tst expr="&gt;=0"/>
+                      <mt:tst expr="&lt;=16962"/>
+                    </mt:range>
+                  </a:da>
+                </v:var>
+                <v:var name="AdcNonAutosarDmaResultHandling" type="BOOLEAN">
+                  <a:da name="TOOLTIP" value="Pre-processor switch to enable / disable the non AUTOSAR result handling mode"/>
+                  <a:a name="DESC">
+                    <a:v>EN: Enable / Disable the non AUTOSAR result handling mode.
+true: Non AUTOSAR specific result handling using DMA driver.
+false: AUTOSAR specific result handing.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="021db8da-97cc-4ad8-a8c3-187626822715"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="INVALID" type="XPath"> 
+                    <a:tst expr="((.='true') and (../AdcMasterSlaveSync = 'true'))" true="Non autosar DMA result handling is not supported if AdcMasterSlaveSync is on (Parallel sampling)."/>
+                    <a:tst expr="((.='true') and (../../AdcSafety/AdcSafetyEnable = 'true'))" true="Non autosar DMA result handling is not supported if AdcSafety is on."/>
+                  </a:da>
+                </v:var>
+                <v:var name="AdcNonAutosarResultPolling" type="BOOLEAN">
+                  <a:da name="TOOLTIP" value="Pre-processor switch to enable / disable the non AUTOSAR result polling mode"/>
+                  <a:a name="DESC">
+                    <a:v>EN: Enable / Disable the non AUTOSAR result polling mode.
+true: Services Adc_17_GetGroupResult() and Adc_17_GetChannelStatus() are available to read the result in polling mode.
+false: AUTOSAR specific result handing.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="021db8da-97cc-4ae8-a8c3-183626829715"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="INVALID" type="XPath"> 
+                    <a:tst expr="((.='true') and (../AdcMasterSlaveSync = 'true'))" true="Non autosar result polling mode is not supported if AdcMasterSlaveSync is on (Parallel sampling)."/>
+                    <a:tst expr="((.='true') and (../AdcNonAutosarDmaResultHandling = 'true'))" true="Non autosar result polling mode is not supported if AdcNonAutosarDmaResultHandling is on."/>
+                  </a:da>
+                </v:var>
+                <v:var name="AdcPBFixedAddress" type="BOOLEAN">
+                  <a:da name="TOOLTIP" value="Pre-processor switch to enable / disable the Loadable fixed address feature."/>
+                  <a:a name="DESC">
+                    <a:v>EN: Enable / Disable the fixed address usage of the configuration.
+true: The configuration address is fixed at compile time.
+false: Dynamic selection of configurations is possible.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="021db8da-97cc-4ad8-a8c3-187626822716"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="INVALID" type="XPath">
+                  <a:tst expr="(num:i(count(../../AdcConfigSet/*))) > 1 and . = 'true'" 
+                   true="Wrong Configuration. When AdcPBFixedAddress is enabled then only 1 Config set is permitted. Remove the other Config sets."/>
+                  </a:da>                  
+                </v:var>
+                <v:var name="AdcPriorityImplementation" type="ENUMERATION">
+                  <a:da name="TOOLTIP" value="Determines whether a priority mechanism is available for prioritization of the conversion requests and if available, the type of prioritization mechanism"/>
+                  <a:a name="DESC">
+                    <a:v>EN: Determines whether a priority mechanism is available for prioritization of the conversion requests and if available, the type of prioritization mechanism. The selection applies for groups with trigger source software and trigger source hardware. Two
+types of prioritization mechanism can be selected. The hardware prioritization mechanism (AdcPriorityHw) uses the ADC hardware features for prioritization of the software conversion requests and hardware trigger signals for groups with trigger source hardware. The mixed hardware and software prioritization mechanism (AdcPriorityHwSw) uses the ADC hardware features for prioritization of ADC hardware trigger for groups with trigger source hardware and a software implemented prioritization mechanism for groups with trigger source software. The group priorities for software triggered groups are typically configured with lower priority levels than the group priorities for hardware triggered groups.
+If ADC Group result handling is Non AUTOSAR then Driver priority is always ADC_PRIORITY_NONE
+
+ImplementationType: Adc_PriorityImplementationType</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="d6379f40-19a7-49f6-b7fc-94df8641acb1"/>
+                  <a:da name="DEFAULT" value="ADC_PRIORITY_NONE"/>
+                  <a:da name="RANGE">
+                    <a:v>ADC_PRIORITY_HW</a:v>
+                    <a:v>ADC_PRIORITY_HW_SW</a:v>
+                    <a:v>ADC_PRIORITY_NONE</a:v>
+                  </a:da>
+                  <a:da name="EDITABLE" type="XPath"> 
+                    <a:tst expr="(../AdcNonAutosarDmaResultHandling = 'false') and (../AdcNonAutosarResultPolling = 'false')"/>
+                  </a:da>
+                  <a:da name="INVALID" type="XPath"> 
+                    <a:tst expr="../AdcMasterSlaveSync = 'true' and . = 'ADC_PRIORITY_HW_SW'" true="Invalid Configuration, For AdcMasterSlaveSync is true,AdcPriorityImplementation should be ADC_PRIORITY_HW "/>
+                  </a:da>
+                </v:var>
+                <v:var name="AdcReadGroupApi" type="BOOLEAN">
+                  <a:da name="TOOLTIP" value="Pre-processor switch to enable / disable the API Adc_ReadGroup()"/>
+                  <a:a name="DESC">
+                    <a:v>EN: Adds / removes the service Adc_ReadGroup() and from the code.
+true: Adc_ReadGroup() can be used.
+false: Adc_ReadGroup() can not be used.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="9f283e64-b678-42b3-bd25-2c893f78be81"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="EDITABLE" type="XPath"> 
+                  <a:tst expr="(../AdcNonAutosarDmaResultHandling = 'false') and (../AdcNonAutosarResultPolling = 'false')"/>
+                  </a:da>
+                </v:var>
+                <v:var name="AdcResetSfrAtInit" type="BOOLEAN">
+                  <a:da name="TOOLTIP" value="Pre-processor switch to enable / disable the resetting of SFRs used by ADC driver to its reset value in the Adc_Init() API"/>
+                  <a:a name="DESC">
+                    <a:v>EN: Enable / Disable the resetting of SFRs used by ADC driver to its reset value in the Adc_Init() API.
+true: Enables the resetting of SFRs used by ADC driver to its reset value in the Adc_Init() API.
+false: Disables the resetting of SFRs used by ADC driver to its reset value in the Adc_Init() API.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="2fa83e64-b671-42b3-bd25-2c893f48be81"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="AdcResultAccumulation" type="ENUMERATION">
+                  <a:da name="TOOLTIP" value="In non AUTOSAR specific result handling mode, the user can select the number of result accumulation over conversions"/>
+                  <a:a name="DESC">
+                    <a:v>EN: In non AUTOSAR specific result handling mode, the user can select the number of result accumulation over conversions.
+This value is maintained uniform across the drive for all group channels.
+For Oneshot, SW Triggered ADC Group, the result accumulation is always considered to be None irrespective of configured AdcResultAccumulation.
+Options:
+ADC_RES_ACCUMULATION_NONE: No accumulation of the result. Result register will have only one conversion value.
+ADC_RES_ACCUMULATION_TWO: Accumulation of the results upto two conversions.
+ADC_RES_ACCUMULATION_THREE: Accumulation of the results upto three conversions.
+ADC_RES_ACCUMULATION_FOUR: Accumulation of the results upto four conversions.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="d6379f40-19a7-49f6-b7fc-84df8641acb1"/>
+                  <a:da name="DEFAULT" value="ADC_RES_ACCUMULATION_NONE"/>
+                  <a:da name="RANGE">
+                    <a:v>ADC_RES_ACCUMULATION_NONE</a:v>
+                    <a:v>ADC_RES_ACCUMULATION_TWO</a:v>
+                    <a:v>ADC_RES_ACCUMULATION_THREE</a:v>
+                    <a:v>ADC_RES_ACCUMULATION_FOUR</a:v>
+                  </a:da>
+                  <a:da name="ENABLE" type="XPath"> 
+                  <a:tst expr="(../AdcNonAutosarDmaResultHandling = 'true') or (../AdcNonAutosarResultPolling = 'true')"/>
+                  </a:da>
+                </v:var>
+                <v:var name="AdcResultAlignment" type="ENUMERATION">
+                  <a:da name="TOOLTIP" value="Alignment of Adc raw results in result buffer"/>
+                  <a:a name="DESC">
+                    <a:v>EN: Alignment of Adc raw results in result buffer (left/right alignment)
+                    </a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="d6373f40-19a7-49f6-b7fc-84df8641acb1"/>
+                  <a:da name="DEFAULT" value="ADC_ALIGN_RIGHT"/>
+                  <a:da name="RANGE">
+                    <a:v>ADC_ALIGN_LEFT</a:v>
+                    <a:v>ADC_ALIGN_RIGHT</a:v>
+                  </a:da>
+                  <a:da name="INVALID" type="XPath">
+                    <a:tst expr="((../AdcResultAlignment = 'ADC_ALIGN_RIGHT') and (../AdcEnableLimitCheck = 'true'))" true="Invalid Configuration. Limit checking is allowed only on Left Aligned data. AdcResultAlignment must be ADC_ALIGN_LEFT when AdcEnableLimitCheck is true."/>
+                  </a:da>
+                </v:var>
+                
+                <v:var name="AdcRunningInUser0Mode" type="BOOLEAN">
+                <a:a name="TOOLTIP"  value="EN: Pre-processor switch to enable / disable the driver run in User-0 Mode."/>
+                <a:a name="DESC"
+                       value="If this parameter is set to TRUE, then the driver run in Uer-0 Mode."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="bfef9f3f-cf0f-4f7f-9f1f-6f1fbfcfff1f"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+
+                <v:var name="AdcSameChannelQueuing" type="BOOLEAN">
+                  <a:da name="TOOLTIP" value="Pre-processor switch to enable / disable the support of converting the same analog channel more than once"/>
+                  <a:a name="DESC">
+                    <a:v>EN: Enable / Disable the support of converting the same analog input channel more than once in Queue Request source (RS0).
+If enabled, Standard data reduction mode is used to accumulate the result of the channel conversion.
+true: Enables the support of converting the same analog input channel more than once in Queue Request source (RS0).
+false: Disables the support of converting the same analog input channel more than once in Queue Request source (RS0).</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="021db8da-97cc-4ad8-a8c3-187626592714"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="INVALID" type="XPath"> 
+                    <a:tst expr="(../AdcNonAutosarDmaResultHandling = 'true' and . = 'true')" true="Invalid Configuration. Same channel queing is not allowed in Non Autosar result handling. Do not set to true AdcNonAutosarDmaResultHandling when AdcSameChannelQueuing is true."/>
+                    <a:tst expr="(../AdcNonAutosarResultPolling = 'true' and . = 'true')" true="Invalid Configuration. Same channel queing is not allowed in Non Autosar result polling mode. Do not set to true AdcNonAutosarResultPolling when AdcSameChannelQueuing is true."/>
+                  </a:da>
+                  <a:da name="EDITABLE" type="XPath"> 
+                    <a:tst expr="(../AdcNonAutosarDmaResultHandling = 'false') and (../AdcNonAutosarResultPolling = 'false')"/>
+                  </a:da>
+                </v:var>
+                <v:var name="AdcUseEmux" type="BOOLEAN">
+                  <a:da name="TOOLTIP" value="Pre-processor switch to enable / disable the use of External multilplexer"/>
+                  <a:a name="DESC" 
+                       value="EN: Enables / Disables the use of External multilplexer"/>
+                  <a:a name="UUID" value="cbf15882-e985-4670-9e1a-cb6f945bbad3"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="AdcUserModeDeInitApiEnable" type="BOOLEAN">
+                  <a:a name="TOOLTIP" value="EN: Pre-processor switch to enable / disable the execution of DeInit API in User-1 Mode."/>                 
+                  <a:a name="DESC" 
+                       value="Pre-processor switch to enable / disable the execution of DeInit API in User-1 Mode."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="bfef9f3f-bf0f-4f7f-9f1f-6f1fbfcfff1f"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="AdcUserModeInitApiEnable" type="BOOLEAN">
+                  <a:a name="TOOLTIP" value="EN: Pre-processor switch to enable / disable the execution of Init API in User-1 Mode."/>
+                  <a:a name="DESC"
+                       value="Pre-processor switch to enable / disable the execution of Init API in User-1 Mode."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="bfef9f3f-cf0f-4f7f-bf1f-6f1fbfcfff1f"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="AdcUserModeRuntimeApiEnable" type="BOOLEAN">
+                  <a:a name="TOOLTIP"
+                       value="EN: Pre-processor switch to enable / disable the execution of all APIs other than Init and DeInit in User-1 Mode."/>
+                  <a:a name="DESC"
+                       value="Pre-processor switch to enable / disable protected register access in all the APIs other than Init/Deinit APIs"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="bfef9f3f-cf0f-4f7f-9f1f-bf1fbfcfff1f"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="AdcVersionInfoApi" type="BOOLEAN">
+                  <a:da name="TOOLTIP" value="Pre-processor switch to enable / disable the API Adc_GetVersionInfo()"/>
+                  <a:a name="DESC">
+                    <a:v>EN: Adds / removes the service Adc_GetVersionInfo() from the code.
+true: Adc_GetVersionInfo() can be used.
+false: Adc_GetVersionInfor() can not be used.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="021db8da-974c-4ad8-a8c3-181626822714"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="AdcSafety" type="IDENTIFIABLE">
+                <a:a name="DESC" 
+                     value="EN: Safety configuration (parameters) of the ADC Driver software module."/>
+                <a:a name="UUID" value="1ca72bca-6be4-4d14-befd-85b9350fe86f"/>
+                <v:var name="AdcSafetyEnable" type="BOOLEAN">
+                  <a:da name="TOOLTIP" value="Pre-processor switch to enable/disable the Safety feature"/>
+                  <a:a name="DESC">
+                    <a:v>EN: Switches the Safety feature ON or OFF.
+true: Safety feature Enabled.
+false: Safety feature Disabled.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="de9c6730-c42a-499a-8ef7-8b03a15092cc"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="AdcInitCheckApi" type="BOOLEAN">
+                  <a:da name="TOOLTIP" value="Pre-processor switch to enable/disable the Adc_InitCheck Api"/>
+                  <a:a name="DESC">
+                    <a:v>EN: Switches the Adc_InitCheck Api ON or OFF.
+true: Adc_InitCheck Api Enabled.
+false: Adc_InitCheck Api Disabled.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="ce9c6730-d42a-499a-8ef7-8a03a15092cc"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="ENABLE" type="XPath"> 
+                    <a:tst expr="../AdcSafetyEnable = 'true'"/>
+                  </a:da>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="AdcPublishedInformation" type="IDENTIFIABLE">
+                  <a:da name="TOOLTIP" value="Additional published parameters not covered by CommonPublishedInformation container"/>
+                <a:a name="DESC">
+                  <a:v>EN: Additional published parameters not covered by CommonPublishedInformation container.
+
+Note that these parameters do not have any configuration class setting, since they are published information.</a:v>
+                </a:a>
+                <a:a name="UUID" value="6b7370fc-6dd2-4b90-a754-188ab88f8aa4"/>
+                <v:var name="AdcChannelValueSigned" type="BOOLEAN_LABEL">
+                  <a:a name="DESC" 
+                       value="EN: Information whether the result value of the ADC driver has sign information (true) or not (false). If the result shall be interpreted as signed value it shall apply to C-language rules."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="fda19239-3b78-4c72-b0e2-a03a429c30e9"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="AdcGroupFirstChannelFixed" type="BOOLEAN_LABEL">
+                  <a:a name="DESC" 
+                       value="EN: Information whether the first channel of an ADC Channel group can be configured (false) or is fixed (true) to a value determined by the ADC HW Unit."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="0f5ef631-e06c-474a-afeb-607c2674aaa5"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="AdcMaxChannelResolution" type="INTEGER_LABEL">
+                  <a:a name="DESC" 
+                       value="EN: Maximum Channel resolution in bits (does not specify accuracy)."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="7731d60b-a8ce-41ce-949d-e0aedae87e3f"/>
+                  <a:da name="DEFAULT" type="XPath" expr="ecu:get('Adc.MaxResolution')"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=12"/>
+                    <a:tst expr="&gt;=8"/>
+                  </a:da>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC" value="EN: Common container, aggregated by all modules. It contains published information about vendor and versions."/>
+                <a:a name="UUID" value="492f8482-3e2c-4bf1-b27f-01fd7ac35788"/>
+                <v:var name="ArMajorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Major version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="bd0a8d38-4d8c-4ee9-88fe-1166b258bb8a"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="4"/>
+                </v:var>
+                <v:var name="ArMinorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Minor version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="73f87c7f-e230-4178-bff0-eb2704aae656"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="2"/>
+                </v:var>
+                <v:var name="ArPatchVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Patch level version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="2380135d-6778-417a-a34b-e10017d4dd54"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="SwMajorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Major version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="fca015e3-5f28-4cbe-8949-8f4b87d86827"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="3"/>
+                </v:var>
+                <v:var name="SwMinorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Minor version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="14ab81e0-3d80-43dc-8b92-247e5a542df9"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="2"/>
+                </v:var>
+                <v:var name="SwPatchVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="32e37bfd-18b6-41d1-9248-a81dbe0fe4c5"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="ModuleId" type="INTEGER">
+                  <a:a name="DESC" value="EN: Module ID of this module from Module List"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="3b407478-6902-4f80-b7cf-f33b0854e638"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="123"/>
+                </v:var>
+                <v:var name="VendorId" type="INTEGER">
+                  <a:a name="DESC" value="EN: Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="7d650b2d-4adb-41f0-a68e-5f0c416501d1"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="17"/>
+                </v:var>
+                <v:var name="VendorApiInfix" type="STRING">
+                  <a:a name="DESC">
+                    <a:v>EN: In driver modules which can be instantiated several times on a single ECU, BSW00347 requires that the name of APIs is extended by the VendorId and a vendor specific name. 
+This parameter is used to specify the vendor specific name. In total, the implementation specific name is generated as follows:
+&lt;ModuleName&gt;_&gt;VendorId&gt;_&lt;VendorApiInfix&gt;&lt;Api name from SWS&gt;.
+
+E.g.  assuming that the VendorId of the implementor is 123 and the implementer chose a VendorApiInfix of &quot;v11r456&quot; a api name Can_Write defined in the SWS will translate to Can_123_v11r456Write. 
+
+This parameter is mandatory for all modules with upper multiplicity &gt; 1. It shall not be used for modules with upper multiplicity =1.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="ad363b41-e945-4717-b12f-c2f800ef138e"/>
+                  <a:da name="ENABLE" value="false"/>
+                  <a:da name="DEFAULT" value=""/>
+                </v:var>
+                <v:var name="Release" type="STRING">
+                  <a:a name="DESC" value="EN: Aurix derivative used for the implementation"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="3b407478-6902-4f40-b7cf-f33b0854e638"/>
+                  <a:da name="DEFAULT" type="XPath" expr="ecu:get('Rel.Derivate')"/>
+                </v:var>
+              </v:ctr>
+            </v:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+</datamodel>

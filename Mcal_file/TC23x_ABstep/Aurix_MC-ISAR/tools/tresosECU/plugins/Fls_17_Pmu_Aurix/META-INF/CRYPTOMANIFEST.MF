@@ -1,0 +1,29 @@
+
+Name: generate/Fls_17_Pmu_Bswmd.arxml
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 11313377421003189402726966670670460249012920896752430076623
+ 9835493040402846350746061537176252843439120336036449
+SignatureKeyID: Infineon
+
+Name: generate/src/Fls_17_Pmu_PBCfg.c
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 11313377426256221717165773609292697111774281673302957580126
+ 1422938828403471951391697694348856327686642322059706
+SignatureKeyID: Infineon
+
+Name: config/Fls_17_Pmu.xdm
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 11313377423785735952879472146454995315636154475787042911633
+ 2646864792024725318234417803166469775277387379010674
+SignatureKeyID: Infineon
+
+Name: generate/inc/Fls_17_Pmu_Cfg.h
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 11313377425814778691844426700468210217736136667719832286414
+ 3954548417731720399748527379761032775120864792395039
+SignatureKeyID: Infineon
+

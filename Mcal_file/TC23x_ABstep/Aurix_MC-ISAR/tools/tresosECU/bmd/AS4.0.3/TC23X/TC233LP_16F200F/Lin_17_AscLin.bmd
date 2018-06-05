@@ -1,0 +1,837 @@
+<?xml version='1.0'?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-0-3.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE UUID="2a9139a9-ca44-4838-b426-149466518712">
+      <SHORT-NAME>AURIX</SHORT-NAME>
+      <ELEMENTS>
+        <ECUC-MODULE-DEF UUID="955e4b7b-4198-4f7c-a27e-aec48703cd58">
+          <SHORT-NAME>Lin</SHORT-NAME>
+          <DESC>
+            <L-2 L="EN">Configuration of the Lin (LIN driver) module.</L-2>
+          </DESC>
+          <ADMIN-DATA>
+            <DOC-REVISIONS>
+              <DOC-REVISION>
+                <REVISION-LABEL>4.2.0</REVISION-LABEL>
+                <ISSUED-BY>AUTOSAR</ISSUED-BY>
+                <DATE>2011-11-09</DATE>
+              </DOC-REVISION>
+            </DOC-REVISIONS>
+          </ADMIN-DATA>
+          <REFINED-MODULE-DEF-REF DEST="ECUC-MODULE-DEF">/AUTOSAR/EcucDefs/Lin</REFINED-MODULE-DEF-REF>
+          <SUPPORTED-CONFIG-VARIANTS>
+            <SUPPORTED-CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</SUPPORTED-CONFIG-VARIANT>
+            <SUPPORTED-CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</SUPPORTED-CONFIG-VARIANT>
+          </SUPPORTED-CONFIG-VARIANTS>
+          <CONTAINERS>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="a878aef7-04f0-4e20-9412-3b9f2ba77cb2">
+              <SHORT-NAME>LinGeneral</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">This container contains the parameters related to each LIN Driver Unit.</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="5af0e7e1-3fe9-4e1f-8112-45821dc8e9b0">
+                  <SHORT-NAME>LinDevErrorDetect</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Switches the Development Error Detection and Notification ON or OFF.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="a9361f42-ca28-4ec5-8a32-aca0597add15">
+                  <SHORT-NAME>LinIndex</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Specifies the InstanceId of this module instance. </L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                  <MAX>255</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="967b5282-8ce1-4638-9586-3a3a28391b69">
+                  <SHORT-NAME>LinTimeoutDuration</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Specifies the maximum number of loops for blocking function until a timeout is raised in short term wait loops</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="3f812ba7-4f88-4580-951b-a3117f65e087">
+                  <SHORT-NAME>LinVersionInfoApi</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Switches the Lin_GetVersionInfo function ON or OFF.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="7e18c5e2-13bb-4abb-aa16-5fbc825abfc6">
+                  <SHORT-NAME>LinPBFixedAddress</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Enable/Disable parameter for the selection of fixed adress. ON: fixed address used, OFF: Post build configuration selected.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="01eee1fb-1589-455e-9b2b-cead4d920436">
+                  <SHORT-NAME>LinDebugSupport</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Pre-processor switch for enabling/disabling the debugging support.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="13cc6127-ef8d-4493-b0e5-495c0b3a7765">
+                  <SHORT-NAME>LinHwMcuTrigSleepEnable</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Enable/Disable parameter for the ASCLIN Hw module Sleep triggered by SCU</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="13cc6127-ef8d-4493-b0e5-495c0b3a7767">
+                  <SHORT-NAME>LinResetSfrAtInit</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Enable/Disable parameter to reset all SFRs in Initialization function.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="13cc6127-ef8d-4493-b0e5-495c0b3a7768">
+                  <SHORT-NAME>LinUserModeRuntimeApiEnable</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Pre-processor switch to enable / disable protected register access in all the APIs other than Init/DeInit APIs</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="13cc6127-ef8d-4493-b0e5-495c0b3a7769">
+                  <SHORT-NAME>LinUserModeInitApiEnable</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Pre-processor switch to enable / disable protected register access in Init API</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="13cc6127-ef8d-4493-b0e5-495c0b3a776b">
+                  <SHORT-NAME>LinRunningInUser0Mode</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Pre-processor switch to enable / disable user0 mode</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+              </PARAMETERS>
+              <REFERENCES>
+                <ECUC-REFERENCE-DEF UUID="025f1a36-4aee-45cc-ab54-48c8ec315b39">
+                  <SHORT-NAME>LinSysClockRef</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">This parameter is a reference parameter to System clock.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/Mcu/McuModuleConfiguration/McuClockSettingConfig/McuClockReferencePoint</DESTINATION-REF>
+                </ECUC-REFERENCE-DEF>
+              </REFERENCES>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="479b82fd-f72f-4ad7-b7d6-8e4c48735021">
+              <SHORT-NAME>LinGlobalConfig</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">This container contains the global configuration parameter of the Lin driver. This container is a MultipleConfigurationContainer, i.e. this container and its sub-containers exit once per configuration set.</L-2>
+              </DESC>
+              <MULTIPLE-CONFIGURATION-CONTAINER>true</MULTIPLE-CONFIGURATION-CONTAINER>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF UUID="ee01d64f-d2a3-4b79-a5bd-c142334dea3c">
+                  <SHORT-NAME>LinChannel</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">This container contains the configuration (parameters) of the LIN Controller(s).</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>2</UPPER-MULTIPLICITY>
+                  <PARAMETERS>
+                    <ECUC-INTEGER-PARAM-DEF UUID="8eb8ebce-1a4b-4315-8d1b-eaad50f02cb1">
+                      <SHORT-NAME>LinChannelBaudRate</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Specifies the baud rate of the LIN channel</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>1000</DEFAULT-VALUE>
+                      <MAX>20000</MAX>
+                      <MIN>1000</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="575c4e2f-2aba-43b2-be2d-e3b62b07a6e7">
+                      <SHORT-NAME>LinChannelId</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Identifies the LIN channel.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>true</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>255</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF UUID="237a2172-c7af-4ba2-85a6-5cdf116e78c6">
+                      <SHORT-NAME>LinChannelWakeupSupport</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Specifies if the LIN hardware channel supports wake up functionality. Only Wakeup validation is supported.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="982b798d-d7b4-470e-903c-b8474ac98b63">
+                      <SHORT-NAME>LinChanAssignedHw</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter selects the hardware unit used to tranfer lin data.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>ASCLIN1</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>ASCLIN0</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>ASCLIN1</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF UUID="13cc2127-ef8d-4493-b0e5-495c0b3a7765">
+                      <SHORT-NAME>LinAutoCalcBaudParams</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Enable/Disable Automatic calculation of Asclin Baudrate params LinChanBaudNumerator, LinChanBaudDenominator, LinChanBaudPrescalar. BITCON.OVERSAMPLING is fixed to value of 16 .</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="967b5282-8ce2-4638-9586-3a3a28391b69">
+                      <SHORT-NAME>LinChanBaudNumerator</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Specifies the BRG register numerator value used for Baudrate calculation. This parameter shall be disabled when &apos;LinAutoCalcBaudParams&apos; is true</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                      <MAX>4095</MAX>
+                      <MIN>1</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="967b528b-8ce2-4638-9586-3a3a28394b69">
+                      <SHORT-NAME>LinChanBaudDenominator</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Specifies the BRG register Denominator value used for Baudrate calculation. This parameter shall be disabled when &apos;LinAutoCalcBaudParams&apos; is true</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                      <MAX>4095</MAX>
+                      <MIN>1</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="967b5282-8ce2-4638-9586-3a3a28394b69">
+                      <SHORT-NAME>LinChanBaudPrescalar</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Specifies the BITCON register Prescalar value used for Baudrate calculation. This parameter shall be disabled when &apos;LinAutoCalcBaudParams&apos; is true</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                      <MAX>4095</MAX>
+                      <MIN>1</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="967b5482-8ce2-4638-9586-3a3a28394b69">
+                      <SHORT-NAME>LinInterByteSpace</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Specifies the Interbyte or response space. It is used to program the IDLE value in ASCLIN Hw</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>4</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="575e4e2f-2aba-43b2-be2d-e2b62b07a6e7">
+                      <SHORT-NAME>LinRxAlternateInputSignal</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Selects the alternate input for the RX signal for the given Lin channel</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>SELECT_DATALINE_A</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>SELECT_DATALINE_A</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>SELECT_DATALINE_B</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>SELECT_DATALINE_C</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>SELECT_DATALINE_E</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>SELECT_DATALINE_F</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>SELECT_DATALINE_G</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                  </PARAMETERS>
+                  <REFERENCES>
+                    <ECUC-REFERENCE-DEF UUID="08e9a374-da68-4a3e-9b19-581e0205487a">
+                      <SHORT-NAME>LinClockRef</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Reference to the LIN clock source configuration, which is set in the MCU driver configuration.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/Mcu/McuModuleConfiguration/McuClockSettingConfig/McuClockReferencePoint</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                    <ECUC-SYMBOLIC-NAME-REFERENCE-DEF UUID="8218cc39-9962-4560-ac73-b56034dac213">
+                      <SHORT-NAME>LinChannelEcuMWakeupSource</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter contains a reference to the Wakeup Source for this controller as defined in the ECU State Manager.
+Implementation Type: reference to EcuM_WakeupSourceType</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/EcuM/EcuMConfiguration/EcuMCommonConfiguration/EcuMWakeupSource</DESTINATION-REF>
+                    </ECUC-SYMBOLIC-NAME-REFERENCE-DEF>
+                  </REFERENCES>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+                <ECUC-PARAM-CONF-CONTAINER-DEF UUID="839ee3e2-0468-4973-a8f2-266646790dc9">
+                  <SHORT-NAME>LinDemEventParameterRefs</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">This container contains the references to DemEventParameter elements. </L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <REFERENCES>
+                    <ECUC-SYMBOLIC-NAME-REFERENCE-DEF UUID="ECUC:66C8E910-6197-42a3-8E25-A695AA21788E">
+                      <SHORT-NAME>LIN_E_TIMEOUT</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Reference to configured DEM event Timeout caused by hardware error. This parameter is unused since there is no dem reporting in Lin Driver</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter</DESTINATION-REF>
+                    </ECUC-SYMBOLIC-NAME-REFERENCE-DEF>
+                  </REFERENCES>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="492f8482-3e2c-4bf1-b27f-01fd7ac35788">
+              <SHORT-NAME>CommonPublishedInformation</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">Common container, aggregated by all modules. It contains published information about vendor and versions.</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-INTEGER-PARAM-DEF UUID="bd0a8d38-4d8c-4ee9-88fe-1166b258bb8a">
+                  <SHORT-NAME>ArMajorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Major version number of AUTOSAR specification on which the appropriate implementation is based on.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="73f87c7f-e230-4178-bff0-eb2704aae656">
+                  <SHORT-NAME>ArMinorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Minor version number of AUTOSAR specification on which the appropriate implementation is based on.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>5</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="2380135d-6778-417a-a34b-e10017d4dd54">
+                  <SHORT-NAME>ArPatchVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Patch level version number of AUTOSAR specification on which the appropriate implementation is based on.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="fca015e3-5f28-4cbe-8949-8f4b87d86827">
+                  <SHORT-NAME>SwMajorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Major version number of the vendor specific implementation of the module. The numbering is vendor specific.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>2</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="14ab81e0-3d80-43dc-8b92-247e5a542df9">
+                  <SHORT-NAME>SwMinorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Minor version number of the vendor specific implementation of the module. The numbering is vendor specific.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>3</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="32e37bfd-18b6-41d1-9248-a81dbe0fe4c5">
+                  <SHORT-NAME>SwPatchVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="3b407478-6902-4f80-b7cf-f33b0854e638">
+                  <SHORT-NAME>ModuleId</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Module ID of this module from Module List</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>82</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="7d650b2d-4adb-41f0-a68e-5f0c416501d1">
+                  <SHORT-NAME>VendorId</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>17</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-STRING-PARAM-DEF UUID="ad363b41-e945-4717-b12f-c2f800ef138e">
+                  <SHORT-NAME>VendorApiInfix</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">In driver modules which can be instantiated several times on a single ECU, BSW00347 requires that the name of APIs is extended by the VendorId and a vendor specific name. 
+This parameter is used to specify the vendor specific name. In total, the implementation specific name is generated as follows:
+&lt;ModuleName&gt;_&gt;VendorId&gt;_&lt;VendorApiInfix&gt;&lt;Api name from SWS&gt;.
+
+E.g.  assuming that the VendorId of the implementor is 123 and the implementer chose a VendorApiInfix of &quot;v11r456&quot; a api name Can_Write defined in the SWS will translate to Can_123_v11r456Write. 
+
+This parameter is mandatory for all modules with upper multiplicity &gt; 1. It shall not be used for modules with upper multiplicity =1.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <ECUC-STRING-PARAM-DEF-VARIANTS>
+                    <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                      <DEFAULT-VALUE>AscLin</DEFAULT-VALUE>
+                    </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                  </ECUC-STRING-PARAM-DEF-VARIANTS>
+                </ECUC-STRING-PARAM-DEF>
+                <ECUC-STRING-PARAM-DEF UUID="3b407478-6902-4f40-b7cf-f33b0854e638">
+                  <SHORT-NAME>Release</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Aurix derivative used for thr implementation</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <ECUC-STRING-PARAM-DEF-VARIANTS>
+                    <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                      <DEFAULT-VALUE>_TRICORE_TC233</DEFAULT-VALUE>
+                    </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                  </ECUC-STRING-PARAM-DEF-VARIANTS>
+                </ECUC-STRING-PARAM-DEF>
+              </PARAMETERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+          </CONTAINERS>
+        </ECUC-MODULE-DEF>
+      </ELEMENTS>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

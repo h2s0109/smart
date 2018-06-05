@@ -1,0 +1,2985 @@
+<?xml version='1.0'?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-0-3.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE UUID="93d9a8be-9d4c-47b6-98cb-fe5aec24c8b0">
+      <SHORT-NAME>AURIX</SHORT-NAME>
+      <ELEMENTS>
+        <ECUC-MODULE-DEF UUID="03eaa7b4-137e-402e-823d-8d7776c1de4d">
+          <SHORT-NAME>Adc</SHORT-NAME>
+          <DESC>
+            <L-2 L="EN">Configuration of the Adc (Analog Digital Conversion) module.</L-2>
+          </DESC>
+          <ADMIN-DATA>
+            <DOC-REVISIONS>
+              <DOC-REVISION>
+                <REVISION-LABEL>4.2.0</REVISION-LABEL>
+                <ISSUED-BY>AUTOSAR</ISSUED-BY>
+                <DATE>2011-11-09</DATE>
+              </DOC-REVISION>
+            </DOC-REVISIONS>
+          </ADMIN-DATA>
+          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+          <REFINED-MODULE-DEF-REF DEST="ECUC-MODULE-DEF">/AUTOSAR/EcucDefs/Adc</REFINED-MODULE-DEF-REF>
+          <SUPPORTED-CONFIG-VARIANTS>
+            <SUPPORTED-CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</SUPPORTED-CONFIG-VARIANT>
+            <SUPPORTED-CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</SUPPORTED-CONFIG-VARIANT>
+          </SUPPORTED-CONFIG-VARIANTS>
+          <CONTAINERS>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="ccda81dc-46cf-4145-858b-7c947884702f">
+              <SHORT-NAME>AdcConfigSet</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">This is the base container that contains the post-build selectable configuration parameters</L-2>
+              </DESC>
+              <MULTIPLE-CONFIGURATION-CONTAINER>true</MULTIPLE-CONFIGURATION-CONTAINER>
+              <PARAMETERS>
+                <ECUC-INTEGER-PARAM-DEF UUID="171b3e35-c300-4bcf-b609-59e2e0a349c0">
+                  <SHORT-NAME>AdcAnalogClockDivider</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Defines the number of fADC clock cycles to generate the fADCI clock for the converter (used as internal base for the conversions and the sample time calculation).
+00H fADCI = fADC
+01H fADCI = fADC / 2
+02H fADCI = fADC / 3
+...
+1FH fADCI = fADC / 32
+
+fADCI: Analog clock frequency
+fADC: ADC module clock = System clock</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <DEFAULT-VALUE>10</DEFAULT-VALUE>
+                  <MAX>31</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="87ce928e-6ed1-4968-93b2-21d90b1fa49d">
+                  <SHORT-NAME>AdcDigitalArbiterClockDivider</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Defines the number of fADC clock cycles within each arbitration slot (each arbitration slots last one periods of fADCD). It is recommended to use the default setting 0 to obtain the minimum arbiter reaction time.
+
+00B fADCD = fADC
+01B fADCD = fADC / 2
+10B fADCD = fADC / 3
+11B fADCD = fADC / 4
+
+fADCD: Digital clock frequency
+fADC: ADC module clock = System clock</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                  <MAX>3</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-ENUMERATION-PARAM-DEF UUID="2c8f0be9-1a8c-4107-bba8-2f8e88e9278e">
+                  <SHORT-NAME>AdcEmuxSelectGrp0</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Numeric ID of the HW Unit where the Emux select line group 0 is routed
+                               Value of the AdcEmuxSelectGrp0 and AdcEmuxSelectGrp1 should not be the same Adc kernel.</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <DEFAULT-VALUE>HWUNIT_ADC0</DEFAULT-VALUE>
+                  <LITERALS>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>HWUNIT_ADC0</SHORT-NAME>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>HWUNIT_ADC1</SHORT-NAME>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                  </LITERALS>
+                </ECUC-ENUMERATION-PARAM-DEF>
+                <ECUC-ENUMERATION-PARAM-DEF UUID="2c8f0be9-1a8c-4107-b3a8-2f8e88e9278e">
+                  <SHORT-NAME>AdcEmuxSelectGrp1</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Numeric ID of the HW Unit where the Emux select line group 1 is routed
+                               Value of the AdcEmuxSelectGrp0 and AdcEmuxSelectGrp1 should not be the same Adc kernel.</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <DEFAULT-VALUE>HWUNIT_ADC1</DEFAULT-VALUE>
+                  <LITERALS>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>HWUNIT_ADC0</SHORT-NAME>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>HWUNIT_ADC1</SHORT-NAME>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                  </LITERALS>
+                </ECUC-ENUMERATION-PARAM-DEF>
+                <ECUC-ENUMERATION-PARAM-DEF UUID="5d48a32a-2145-4616-9d2f-64b9a3aa1af3">
+                  <SHORT-NAME>AdcLowPowerSupplyVoltage</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Adjusts the analog circuitry to the supply voltage used in the application system.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <DEFAULT-VALUE>POWER_SUPPLY_5V</DEFAULT-VALUE>
+                  <LITERALS>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>POWER_SUPPLY_5V</SHORT-NAME>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>POWER_SUPPLY_3_3V</SHORT-NAME>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                  </LITERALS>
+                </ECUC-ENUMERATION-PARAM-DEF>
+                <ECUC-ENUMERATION-PARAM-DEF UUID="5da8a32a-2145-4619-9d9f-65b9a35a1af3">
+                  <SHORT-NAME>AdcRefPrechargeControl</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Defines the Reference Precharge Control of the converter.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <DEFAULT-VALUE>USE_VDDM_PRECH_VAREF_ADJ</DEFAULT-VALUE>
+                  <LITERALS>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>USE_VDDM_PRECH_VAREF_ADJ</SHORT-NAME>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>USE_VAREF_CONVERSION</SHORT-NAME>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                  </LITERALS>
+                </ECUC-ENUMERATION-PARAM-DEF>
+                <ECUC-ENUMERATION-PARAM-DEF UUID="ebb80fa0-b275-4e65-8281-43bca04b66f8">
+                  <SHORT-NAME>AdcSleepMode</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Adc driver accepts / rejects the sleep mode request from Mcu driver.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <DEFAULT-VALUE>SLEEP_MODE_ACCEPT</DEFAULT-VALUE>
+                  <LITERALS>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>SLEEP_MODE_ACCEPT</SHORT-NAME>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>SLEEP_MODE_REJECT</SHORT-NAME>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                  </LITERALS>
+                </ECUC-ENUMERATION-PARAM-DEF>
+              </PARAMETERS>
+              <REFERENCES>
+                <ECUC-CHOICE-REFERENCE-DEF UUID="390bf770-a72b-456a-8a16-75b7daf5b3f9">
+                  <SHORT-NAME>AdcCcu6ModuleRef</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">This parameter refers to the CCU6x module (T13) used to generate Synchronization signal to all VADCs.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <DESTINATION-REFS>
+                    <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AURIX/Mcu/McuModuleConfiguration/CcuConfiguration/Ccu6</DESTINATION-REF>
+                  </DESTINATION-REFS>
+                </ECUC-CHOICE-REFERENCE-DEF>
+                <ECUC-CHOICE-REFERENCE-DEF UUID="f90bf770-872b-456a-8a16-15b7daf533f9">
+                  <SHORT-NAME>AdcSystemClock</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">This parameter refers to the system clock configured using the Mcu_ClockInit function.
+
+ This parameter should refer to a vaild McuClockSetting Configuration (/Mcu/McuModuleConfiguration/McuClockSettingConf/McuClockReferencePoint)
+Also the ADC module will work correctly only for this system clock setting. No changes should be done to the system clock if ADC is to be kept functioning.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <DESTINATION-REFS>
+                    <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/Mcu/McuModuleConfiguration/McuClockSettingConfig/McuClockReferencePoint</DESTINATION-REF>
+                  </DESTINATION-REFS>
+                </ECUC-CHOICE-REFERENCE-DEF>
+              </REFERENCES>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF UUID="86e6fd09-f2da-4844-b2e0-ecc3dc70e5a3">
+                  <SHORT-NAME>AdcGlobInputClass</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">This container contains the Sample Time and Resolution configuration (parameters) of channels. GLOBICLASS register is configured via this container.</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>2</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>2</UPPER-MULTIPLICITY>
+                  <PARAMETERS>
+                    <ECUC-INTEGER-PARAM-DEF UUID="5d2cdc5f-16e8-4669-b7d8-531a888e7acc">
+                      <SHORT-NAME>AdcGlobChSampleTime</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">The time during which the value is sampled, (in clock-cycles).This has been used globally for all the available Adc hardware units.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>31</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="bfec07fb-550f-421e-b568-cb02a2e4eda6">
+                      <SHORT-NAME>AdcGlobChResolution</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">ADC Channel resolution in bits.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <DEFAULT-VALUE>CH_RES_10BIT</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CH_RES_8BIT</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CH_RES_10BIT</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CH_RES_12BIT</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="5d2c3c5f-16e8-4659-b7d8-531a888e7acc">
+                      <SHORT-NAME>AdcGlobEmuxChSampleTime</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">The time during which the Emux channel value is sampled, (in clock-cycles). This has been used globally for all the available Adc hardware units.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>31</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                  </PARAMETERS>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+                <ECUC-PARAM-CONF-CONTAINER-DEF UUID="b9809e8a-1208-49a1-954a-2aa3803c8f17">
+                  <SHORT-NAME>AdcHwUnit</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">This container contains the Driver configuration (parameters) depending on grouping of channels
+This container could contain HW specific parameters which are not defined in the Standardized Module Definition. They must be added in the Vendor Specific Module Definition.
+AURIX has 1..* ADC HW Units.</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>2</UPPER-MULTIPLICITY>
+                  <PARAMETERS>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="21e1445f-3eb8-4911-87f8-215464630ba0">
+                      <SHORT-NAME>AdcArbitrationRoundLength</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Defines the number of arbitration slots per arbitration round.
+
+only 4 slots (i.e. ARBITRATION_SLOTS_4) are required for 3 request sources (i.e. RS0, RS1, RS2).
+
+RS - Request Source</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <DEFAULT-VALUE>ARBITRATION_SLOTS_4</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>ARBITRATION_SLOTS_4</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>ARBITRATION_SLOTS_8</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>ARBITRATION_SLOTS_16</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>ARBITRATION_SLOTS_20</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="6aa301df-56f8-4144-99a4-be96b8c32e3b">
+                      <SHORT-NAME>AdcClockSource</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">The ADC module specific clock input. 
+  AURIX provides only system clock as module input clock.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <DEFAULT-VALUE>CLK_SRC_SYS_CLK</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CLK_SRC_SYS_CLK</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="3c8f0be9-1a8c-4107-b7a8-2f8e88e9278e">
+                      <SHORT-NAME>AdcHwUnitId</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Numeric ID of the HW Unit. 
+This symbolic name allows accessing and configuring the Hw Unit data.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <DEFAULT-VALUE>HWUNIT_ADC0</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>HWUNIT_ADC0</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>HWUNIT_ADC1</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="478e73a0-1a3e-413b-8dce-351a87ce0129">
+                      <SHORT-NAME>AdcPostCal</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Enable / Disable the HW calibration which happens in regular intervals.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <DEFAULT-VALUE>POST_CAL_DISABLE</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>POST_CAL_ENABLE</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>POST_CAL_DISABLE</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="25a639ce-80ab-4a3b-95ca-f7e30c5e4ccb">
+                      <SHORT-NAME>AdcPrescale</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">NOT SUPPORTED
+For AURIX, the configuration of clock prescale is not required. Insted configuration of divider value is required at AdcAnalogClockDivider and AdcDigitalArbiterClockDivider.
+Optional ADC module specific clock prescale factor, if supported by hardware.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>65535</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="5da8ae2a-2115-4669-9d9f-65b9a35d1af3">
+                      <SHORT-NAME>AdcRequestSource0Prio</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Priority for the request source.
+Arbitration between the request sources is taken care by the ADC HW Unit.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <DEFAULT-VALUE>REQSRC_PRIORITY_0_LOWEST</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>REQSRC_PRIORITY_0_LOWEST</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>REQSRC_PRIORITY_1</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>REQSRC_PRIORITY_2</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>REQSRC_PRIORITY_3_HIGHEST</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="abdb45c9-db94-4d8b-9921-a360a38f90b1">
+                      <SHORT-NAME>AdcRequestSource1Prio</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Priority for the request source.
+Arbitration between the request sources is taken care by the ADC HW Unit.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <DEFAULT-VALUE>REQSRC_PRIORITY_0_LOWEST</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>REQSRC_PRIORITY_0_LOWEST</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>REQSRC_PRIORITY_1</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>REQSRC_PRIORITY_2</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>REQSRC_PRIORITY_3_HIGHEST</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="abdc45c9-da94-4ddb-9321-a360a78f90b1">
+                      <SHORT-NAME>AdcRequestSource3Prio</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Priority for the request source.
+Arbitration between the request sources is taken care by the ADC HW Unit.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <DEFAULT-VALUE>REQSRC_PRIORITY_0_LOWEST</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>REQSRC_PRIORITY_0_LOWEST</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>REQSRC_PRIORITY_1</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>REQSRC_PRIORITY_2</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>REQSRC_PRIORITY_3_HIGHEST</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF UUID="ec9c6730-d32a-491a-8ef7-8a04a15092c5">
+                      <SHORT-NAME>AdcSafetySignal</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Defines the type of the signal (ASIL/QM) used in the Adc kernel.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="5da8ae2a-2515-4669-9d9f-65b9a35d1af3">
+                      <SHORT-NAME>AdcSyncConvMode</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Defines the conversion mode of the Adc kernel for Synchronization of conversion (Parallel sampling) feature.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <DEFAULT-VALUE>ADC_STANDALONE</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>ADC_MASTER</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>ADC_SLAVE</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>ADC_STANDALONE</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                  </PARAMETERS>
+                  <REFERENCES>
+                    <ECUC-CHOICE-REFERENCE-DEF UUID="618afad1-d85d-6f81-82f8-12b976d162fa">
+                      <SHORT-NAME>AdcDmaChannelRef</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">In Non AUTOSAR specific result handling mode, the user needs to configure and handle the DMA peripheral using IFX DMA Complex driver. Selection between DMA channels 6 and DMA channel 7 is provided. Note: The selected DMA Channel should match with the DMA channel configuration which needs to be used for ADC result handling.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <DESTINATION-REFS>
+                        <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AURIX/Mcu/McuModuleConfiguration/DmaConfiguration/DmaChannel</DESTINATION-REF>
+                      </DESTINATION-REFS>
+                    </ECUC-CHOICE-REFERENCE-DEF>
+                  </REFERENCES>
+                  <SUB-CONTAINERS>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="33a8ca61-43cf-40f1-b8ec-c9e42f16bd7f">
+                      <SHORT-NAME>AdcChannel</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This container contains the channel configuration (parameters) depending on the hardware capability.
+The organization of this data structure could contain dependencies to the microcontroller so this is left up to the implementer and its location is left up to the configuration. 
+Note: Since a AdcChannel can be part of several AdcGroups, this container is not realized as a subcontainer of AdcGroup but instead as a subcontainer of AdcHwUnit.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>256</UPPER-MULTIPLICITY>
+                      <PARAMETERS>
+                        <ECUC-INTEGER-PARAM-DEF UUID="55b16180-ed10-4e98-a14d-f205643c08a0">
+                          <SHORT-NAME>AdcAnChannelNum</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Analog Input Channel Number.
+8 analog inputs for each ADC HW Units are connected.
+Note: All unused analog input pins should be connected to a fixed potential either VAGND or VAREF to avoid disturbance of active analog inputs.
+
+Values:
+For HWUNIT_ADC0: 0 - 7 for TC27x / TC29x and 0 - 15 for TC26x
+For HWUNIT_ADC1: 8 - 15 for TC27x / TC29x and 16 - 31 for TC26x
+For HWUNIT_ADC2: 16 - 23 for TC27x / TC29x and 32 - 47 for TC26x
+For HWUNIT_ADC3: 24 - 31 for TC27x / TC29x and 48 - 63 for TC26x
+For HWUNIT_ADC4: 32 - 39 for TC27x / TC29x
+For HWUNIT_ADC5: 40 - 47 for TC27x / TC29x
+For HWUNIT_ADC6: 48 - 55 for TC27x / TC29x
+For HWUNIT_ADC7: 56 - 63 for TC27x / TC29x
+For HWUNIT_ADC8: 64 - 71 for TC29x
+For HWUNIT_ADC9: 72 - 79 for TC29x
+For HWUNIT_ADC10: 80 - 87 for TC29x</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                          <MAX>31</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="868ee59b-03dc-44b1-8f0f-65c897c3895b">
+                          <SHORT-NAME>AdcChannelConvTime</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">NOT SUPPORTED
+Configuration of conversion time, including sample time (in clockcycles) for each channel, if supported by hardware .
+Aurix will not support the configuration of this parameter.</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                          <MAX>65535</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="196df31d-f4c4-4534-8677-76299f26faf0">
+                          <SHORT-NAME>AdcChannelHighLimit</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">High limit value used for limit checking</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>255</DEFAULT-VALUE>
+                          <MAX>4095</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="196df61d-f4c4-4534-8677-76999f26faf0">
+                          <SHORT-NAME>AdcChannelId</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Channel Id of the ADC channel. This value will be assigned to the symbolic name derived of the AdcChannel container short name.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>true</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                          <MAX>255</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-BOOLEAN-PARAM-DEF UUID="d42ed3a7-c933-483f-8b10-390e26b1d366">
+                          <SHORT-NAME>AdcChannelLimitCheck</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Pre-processor switch to enable / disable the Limit checking for an Adc channel
+          true: Limit checking is enabled for Adc channel.
+          false: Limit checking is disabled for Adc channel.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                        </ECUC-BOOLEAN-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="196df31d-f4c4-4534-8667-76299f26faf0">
+                          <SHORT-NAME>AdcChannelLowLimit</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Low limit value used for limit checking</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                          <MAX>4095</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="d7b734d5-b9e7-413b-b9d4-e427016560b5">
+                          <SHORT-NAME>AdcChannelRangeSelect</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">In case of active limit checking: defines which conversion values are taken into account related to the boarders
+                                 defined with AdcChannelHighLimit and AdcChannelLowLimit</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <DEFAULT-VALUE>ADC_RANGE_ALWAYS</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADC_RANGE_ALWAYS</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADC_RANGE_BETWEEN</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADC_RANGE_NOT_BETWEEN</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADC_RANGE_NOT_OVER_HIGH</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADC_RANGE_NOT_UNDER_LOW</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADC_RANGE_OVER_HIGH</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADC_RANGE_UNDER_LOW</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="d7b734d5-b9d7-413b-b9d4-e4270165a0b5">
+                          <SHORT-NAME>AdcChannelRefVoltsrcHigh</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Upper reference voltage source for each channel</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <DEFAULT-VALUE>REF_VOLTAGE_VAREF</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>REF_VOLTAGE_VAREF</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>REF_VOLTAGE_CH0</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="766ad275-5255-46fd-84fe-11b87a10d774">
+                          <SHORT-NAME>AdcChannelRefVoltsrcLow</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Lower reference voltage source for each channel.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <DEFAULT-VALUE>REF_VOLTAGE_VAGND</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>REF_VOLTAGE_VAGND</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="f9f203dc-4f4b-4a5f-bf9e-42f6aa9252b0">
+                          <SHORT-NAME>AdcChannelResolution</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">NOT SUPPORTED
+Channel resolution in bits.
+In Aurix, Channel resolution configuration is moved to Input class container and a reference parameter is provided to select one of 4 input class.</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                          <MAX>63</MAX>
+                          <MIN>1</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="fb426bb2-b151-4738-a8d4-6fd136afb96a">
+                          <SHORT-NAME>AdcChannelSampTime</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">NOT SUPPORTED
+Configuration of sampling time (in clock cycles) for each channel, i.e. the time during which the value is sampled if supported by hardware.
+In Aurix, Channel sampling time configuration is moved to Input class container and a reference parameter is provided to select one of 4 input class.</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                          <MAX>31</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-BOOLEAN-PARAM-DEF UUID="d42ed3a7-c933-483f-8b19-390e26b1d366">
+                          <SHORT-NAME>AdcSyncChannel</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Pre-processor switch to enable / disable the Synchronized conversion of the selected channels in the MASTER and SLAVE kernels
+          true: Synchronized conversion is enabled for Adc channel.
+          false: Synchronized conversion is disabled for Adc channel.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                        </ECUC-BOOLEAN-PARAM-DEF>
+                      </PARAMETERS>
+                      <REFERENCES>
+                        <ECUC-CHOICE-REFERENCE-DEF UUID="dfad88a5-beb5-44a9-a88d-fc8903f221ce">
+                          <SHORT-NAME>AdcInputClassSelection</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Reference to the Input class containing Channel resolution and sampling time.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <DESTINATION-REFS>
+                            <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AURIX/Adc/AdcConfigSet/AdcHwUnit/AdcKernelInputClass</DESTINATION-REF>
+                            <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AURIX/Adc/AdcConfigSet/AdcGlobInputClass</DESTINATION-REF>
+                          </DESTINATION-REFS>
+                        </ECUC-CHOICE-REFERENCE-DEF>
+                      </REFERENCES>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="f8630d3c-27a2-4d13-a208-de95de01d379">
+                      <SHORT-NAME>AdcGroup</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This container contains the Group configuration (parameters).</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>32</UPPER-MULTIPLICITY>
+                      <PARAMETERS>
+                        <ECUC-INTEGER-PARAM-DEF UUID="11ef4ddd-9ed7-40f9-8bd0-7ada810ee5b8">
+                          <SHORT-NAME>AdcChannelEmuxSelect</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Its is the configuration of channel select line, if external multiplexer is used.</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                          <MAX>7</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-BOOLEAN-PARAM-DEF UUID="08b4d5c8-d7be-481a-a676-6fc23a384a8a">
+                          <SHORT-NAME>AdcEmuxScanEnable</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Enable / Disable of EMUX scan mode.
+When Enable:
+1. GroupDefinition should contain one channel with Emux select line configured
+2. Group should be configured for continuous conversion mode
+
+This will facilitate the Group with many virtual channles starting from configured AdcChannelEmuxSelect value till 0 connected to the multiplexer.
+For example: 
+Consider AdcChannelEmuxSelect = 3 for analog channel 3 in a group with AdcEmuxScanEnable = TRUE.
+i.e. this group on conversion will scan 4 channels connected to multiplexer of analog channel 3 starting from select line 3 to 0.
+
+When Disable:
+1. GroupDefinition can contain one or more channels.
+2. For the channels with Emux select line configured should be of same value.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                        </ECUC-BOOLEAN-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="7aa10777-374b-4b55-9f8b-402e95a992b8">
+                          <SHORT-NAME>AdcGroupAccessMode</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Type of access mode to group conversion results.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>ADC_ACCESS_MODE_SINGLE</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADC_ACCESS_MODE_SINGLE</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADC_ACCESS_MODE_STREAMING</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="c3124a36-431e-4183-9de1-a241c7262c02">
+                          <SHORT-NAME>AdcGroupBufferMarker</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Marker value of the Buffer per Adc channel group. The marker is used for validating the correct buffer pointer.</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                          <MAX>255</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="5a992266-cbff-43dc-9f3b-b191392ba531">
+                          <SHORT-NAME>AdcGroupConversionMode</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Type of Group Conversion mode: Oneshot / Continuous</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>ADC_CONV_MODE_ONESHOT</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADC_CONV_MODE_CONTINUOUS</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADC_CONV_MODE_ONESHOT</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="2a6b42db-a004-426a-92ba-a2f41b73c2e8">
+                          <SHORT-NAME>AdcGroupId</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Numeric Id of the ADC channel group  This value will be assigned to the symbolic name derived of the AdcGroup container short name.
+The range of IDs for each ADC Hw Unit:
+ADC0: 0 to 31
+ADC1: 32 to 63
+ADC2: 64 to 95
+ADC3: 96 to 127
+ADC4: 128 to 159
+ADC5: 160 to 191
+ADC6: 192 to 223
+ADC7: 224 to 255
+ADC8: 256 to 287
+ADC9: 288 to 319
+ADC10: 320 to 351
+
+Note: The value will be automatically generated by the tool and user should refer the groups using symbolic name (i.e AdcGroup container name).</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>true</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                          <MAX>63</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="c2124036-481e-4483-9dec-a247c726ec02">
+                          <SHORT-NAME>AdcGroupPriority</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Priority level of the group.
+  This parameter is valid only when HW_SW_PRIORITY considered.
+  Maximum value is limited to 254, Since the priority level 255 is assigned to Adc channel group with HW trigger source</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                          <MAX>254</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="6edcfea1-d455-4168-a1da-d1b0effdb7d2">
+                          <SHORT-NAME>AdcGroupReplacement</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Replacement mechanism, which is used on ADC group level, if a group
+  conversion is interrupted by a group which has a higher priority.</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>ADC_GROUP_REPL_ABORT_RESTART</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADC_GROUP_REPL_ABORT_RESTART</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="23d88f4d-8be3-47e5-82a5-edd2d41e5d69">
+                          <SHORT-NAME>AdcGroupRequestSource</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Microcontroller specific request source selection</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <DEFAULT-VALUE>REQSRC0_8STG_QUE</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>REQSRC0_8STG_QUE</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>REQSRC1_NCH_SCAN</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>REQSRC2_BGND_SCAN</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>REQSRC3_8STG_QUE</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="6cdf4d12-a4c6-4d49-bdaa-307b48e5cbc9">
+                          <SHORT-NAME>AdcGroupTriggSrc</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Triggering type of ADC Group - Software API call / external or timer request</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>ADC_TRIGG_SRC_SW</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADC_TRIGG_SRC_HW</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADC_TRIGG_SRC_SW</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-FLOAT-PARAM-DEF UUID="112bd4f1-8416-4c2c-a325-4563ac9284a9">
+                          <SHORT-NAME>AdcGtmTimerPeriod</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">The Timer period for Group periodic conversion. unit milliseconds.</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <DEFAULT-VALUE>5</DEFAULT-VALUE>
+                          <MAX>65535.0</MAX>
+                          <MIN>0.0</MIN>
+                        </ECUC-FLOAT-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="872a1b74-d486-464f-b99e-5d6359e0e5c7">
+                          <SHORT-NAME>AdcHwExtTrigSelect</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">External request pin/signal selection
+Selection should depend on the configured group request source (RS) and ADC Hw Unit.
+For example: To select for ADC0 and RS1, the selected values should have ADC0 and RS1 in the Literals</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <DEFAULT-VALUE>ADC0_TRSEL_RS0_RS1_RS3_IOUT0</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADC0_TRSEL_RS0_RS1_RS3_IOUT0</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADC1_TRSEL_RS0_RS1_RS3_IOUT1</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADCx_TRSEL_RS2_IOUT3</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADCx_TRSEL_RS2_IOUT4</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADCx_TRSEL_RS2_IOUT6</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADCx_TRSEL_RS2_IOUT7</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADCx_TRSEL_RS0_RS1_RS2_RS3_CCU60_SR3</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADCx_TRSEL_RS0_RS1_RS2_RS3_CCU61_SR3</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADC0_TRSEL_RS0_RS1_RS3_G0_SR1</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADC1_TRSEL_RS0_RS1_RS3_G1_SR1</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADCx_TRSEL_RS0_RS1_RS2_RS3_C0_SR1</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADC_USE_INTERNAL_TRIG_TO_TRIG_RS3</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADC_USE_GATE_PIN_TO_TRIG</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="2e7672ff-7aac-4616-8c3f-8c871cb52df4">
+                          <SHORT-NAME>AdcHwGatePin</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Request source gating pin selection
+Selection should depend on the configured group request source (RS) and ADC Hw Unit.
+For example: To select for ADC0 and RS1, the selected values should have ADC0 and RS1 in the Literals</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <DEFAULT-VALUE>ADC0_GTSEL_RS0_RS1_RS3_PDOUT0</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADC0_GTSEL_RS0_RS1_RS3_PDOUT0</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADC1_GTSEL_RS0_RS1_RS3_PDOUT1</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADC0_GTSEL_RS0_RS1_RS3_TIM_TRIG0</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADC0_GTSEL_RS0_RS1_RS3_TIM_TRIG1</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADC1_GTSEL_RS0_RS1_RS3_TIM_TRIG0</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADC1_GTSEL_RS0_RS1_RS3_TIM_TRIG1</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADCx_GTSEL_RS2_TIM_TRIG0</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADCx_GTSEL_RS2_TIM_TRIG1</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADCx_GTSEL_RS0_RS1_RS2_RS3_CCU6061_TRIG0</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADCx_GTSEL_RS0_RS1_RS2_RS3_CCU6061_TRIG1</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADCx_GTSEL_RS0_RS1_RS2_RS3_CCU6061_TRIG2</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="caef9505-ae57-466c-932c-0c4979bada2a">
+                          <SHORT-NAME>AdcHwGateSignal</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Request source gate signal level type.
+If NONE is selected, The request source issues conversion if at least one pending bit is set.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <DEFAULT-VALUE>ADC_GATE_SIGNAL_NONE</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADC_GATE_SIGNAL_HIGH</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADC_GATE_SIGNAL_LOW</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADC_GATE_SIGNAL_NONE</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="6967fb5e-6e0a-4351-8037-1fdd7f821e9b">
+                          <SHORT-NAME>AdcHwTrigSignal</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Configures on which edge of the hardware trigger signal the driver should start the conversion (only if supported by the ADC hardware)</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>ADC_HW_TRIG_RISING_EDGE</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADC_HW_TRIG_BOTH_EDGES</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADC_HW_TRIG_FALLING_EDGE</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADC_HW_TRIG_RISING_EDGE</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="612db05c-3a02-483f-adf9-6d426eb080eb">
+                          <SHORT-NAME>AdcHwTrigTimer</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">NOT SUPPORTED
+Reload value of the ADC module embedded timer (only if supported by hardware).
+Aurix do not have any ADC module embedded timer and hence using microcontroller GTM module for time trigger purpose. So, configuration of timer reload value is at parameter AdcGtmTimerPeriod in milliseconds.</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                          <MAX>65535</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="4a3394ce-0149-4632-bd38-f63f02dbe1e7">
+                          <SHORT-NAME>AdcHwTrigType</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">HW trigger type : External request or Timer</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <DEFAULT-VALUE>HW_TRIGG_EXT_REQ</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>HW_TRIGG_EXT_REQ</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>HW_TRIGG_TIMER</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-FUNCTION-NAME-DEF UUID="cdcdf097-dad4-4701-8c7f-c55e3a38e91d">
+                          <SHORT-NAME>AdcNotification</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Callback function for each group</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <ECUC-FUNCTION-NAME-DEF-VARIANTS>
+                            <ECUC-FUNCTION-NAME-DEF-CONDITIONAL>
+                              <DEFAULT-VALUE>NULL_PTR</DEFAULT-VALUE>
+                            </ECUC-FUNCTION-NAME-DEF-CONDITIONAL>
+                          </ECUC-FUNCTION-NAME-DEF-VARIANTS>
+                        </ECUC-FUNCTION-NAME-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="7aa10767-37ab-4b55-9f4b-402e95a292b8">
+                          <SHORT-NAME>AdcRS3InternalTrigger</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Defines the Internal triggers of RS3, generated by the respective source events.</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>REQSRC0_8STG_QUE</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>REQSRC0_8STG_QUE</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>REQSRC1_NCH_SCAN</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>REQSRC2_BGND_SCAN</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="c3124a36-431a-4583-9de1-a261c7262c12">
+                          <SHORT-NAME>AdcRS3TriggerSeqCount</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Defines the initial value of the trigger sequence counter TSC and Controls the effect of an incoming internal trigger.
+TSC is reloaded with the value in TSCSET, when a trigger occurs while TSC = 00H.
+If the parameter value is 00H, Issue conversion requests immediately.
+Otherwise, decrement trigger counter.</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                          <MAX>63</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="391ec6ca-8554-428a-9b4e-55c3ee2002ae">
+                          <SHORT-NAME>AdcStreamingBufferMode</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Configure streaming buffer as linear buffer; (i.e. the ADC Driver stops the conversion as soon as the stream buffer is full) or as ring buffer; (wraps around if the end of the stream buffer is reached).</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>ADC_STREAM_BUFFER_LINEAR</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADC_STREAM_BUFFER_CIRCULAR</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>ADC_STREAM_BUFFER_LINEAR</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="3a301094-b9b9-4242-853b-eacab0ab3003">
+                          <SHORT-NAME>AdcStreamingNumSamples</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Number of ADC values to be acquired per channel in streaming access mode.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                          <MAX>255</MAX>
+                          <MIN>1</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                      </PARAMETERS>
+                      <REFERENCES>
+                        <ECUC-CHOICE-REFERENCE-DEF UUID="330cfc7c-252f-46e4-8453-3a645f7e1d53">
+                          <SHORT-NAME>AdcEruGateRef</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">For ERU Gate signal through which ERU unit</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <DESTINATION-REFS>
+                            <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AURIX/Mcu/McuModuleConfiguration/EruConfiguration/ERU0</DESTINATION-REF>
+                            <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AURIX/Mcu/McuModuleConfiguration/EruConfiguration/ERU1</DESTINATION-REF>
+                            <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AURIX/Mcu/McuModuleConfiguration/EruConfiguration/ERU2</DESTINATION-REF>
+                            <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AURIX/Mcu/McuModuleConfiguration/EruConfiguration/ERU3</DESTINATION-REF>
+                            <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AURIX/Mcu/McuModuleConfiguration/EruConfiguration/ERU4</DESTINATION-REF>
+                            <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AURIX/Mcu/McuModuleConfiguration/EruConfiguration/ERU5</DESTINATION-REF>
+                            <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AURIX/Mcu/McuModuleConfiguration/EruConfiguration/ERU6</DESTINATION-REF>
+                            <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AURIX/Mcu/McuModuleConfiguration/EruConfiguration/ERU7</DESTINATION-REF>
+                          </DESTINATION-REFS>
+                        </ECUC-CHOICE-REFERENCE-DEF>
+                        <ECUC-CHOICE-REFERENCE-DEF UUID="330cfc7c-258f-46e4-8483-3a645f7e1d53">
+                          <SHORT-NAME>AdcEruTriggRef</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">For ERU trigger signal through which ERU unit</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <DESTINATION-REFS>
+                            <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AURIX/Mcu/McuModuleConfiguration/EruConfiguration/ERU0</DESTINATION-REF>
+                            <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AURIX/Mcu/McuModuleConfiguration/EruConfiguration/ERU1</DESTINATION-REF>
+                            <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AURIX/Mcu/McuModuleConfiguration/EruConfiguration/ERU2</DESTINATION-REF>
+                            <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AURIX/Mcu/McuModuleConfiguration/EruConfiguration/ERU3</DESTINATION-REF>
+                            <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AURIX/Mcu/McuModuleConfiguration/EruConfiguration/ERU4</DESTINATION-REF>
+                            <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AURIX/Mcu/McuModuleConfiguration/EruConfiguration/ERU5</DESTINATION-REF>
+                            <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AURIX/Mcu/McuModuleConfiguration/EruConfiguration/ERU6</DESTINATION-REF>
+                            <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AURIX/Mcu/McuModuleConfiguration/EruConfiguration/ERU7</DESTINATION-REF>
+                          </DESTINATION-REFS>
+                        </ECUC-CHOICE-REFERENCE-DEF>
+                        <ECUC-REFERENCE-DEF UUID="0126056a-3f4c-41e1-9731-98be9531f3d6">
+                          <SHORT-NAME>AdcGroupDefinition</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Assignment of channels to a channel group. For each AdcChannel that should belong to the group, a reference needs to be defined.</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>16</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/Adc/AdcConfigSet/AdcHwUnit/AdcChannel</DESTINATION-REF>
+                        </ECUC-REFERENCE-DEF>
+                        <ECUC-CHOICE-REFERENCE-DEF UUID="6daadffb-2f59-406a-982f-c060aa081b62">
+                          <SHORT-NAME>AdcGtmTriggerRef</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">For ADC external timer trigger reference i.e GTM</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <DESTINATION-REFS>
+                            <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AURIX/Mcu/McuModuleConfiguration/GtmConfiguration/GtmConnections/GtmTriggerForAdc</DESTINATION-REF>
+                          </DESTINATION-REFS>
+                        </ECUC-CHOICE-REFERENCE-DEF>
+                      </REFERENCES>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="86e6ad09-f2da-4824-b2e0-ecc3dc70e5a3">
+                      <SHORT-NAME>AdcKernelInputClass</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This container contains the Sample Time and Resolution configuration (parameters) of channels. GxICLASS register is configured via this container.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>2</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>2</UPPER-MULTIPLICITY>
+                      <PARAMETERS>
+                        <ECUC-INTEGER-PARAM-DEF UUID="5d2c2c5f-1638-4a69-b7d8-531a888e7acc">
+                          <SHORT-NAME>AdcKernelChSampleTime</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">The time during which the value is sampled, (in clock-cycles).</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                          <MAX>31</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="4fec07fb-560f-421e-3528-cb02a2e4eda6">
+                          <SHORT-NAME>AdcKernelChResolution</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">ADC Channel resolution in bits.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <DEFAULT-VALUE>CH_RES_10BIT</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>CH_RES_8BIT</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>CH_RES_10BIT</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>CH_RES_12BIT</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="5d4cdc5f-16e8-4661-b7d8-531a848e7acc">
+                          <SHORT-NAME>AdcKernelEmuxChSampleTime</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">The time during which the Emux channel value is sampled, (in clock-cycles).</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                          <MAX>31</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                      </PARAMETERS>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                  </SUB-CONTAINERS>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="1ca7abca-6ba4-4d14-befd-8bb9350fe86f">
+              <SHORT-NAME>AdcGeneral</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">General configuration (parameters) of the ADC Driver software module.</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="a423d3a7-c933-4d3f-8b9a-390e46f1d366">
+                  <SHORT-NAME>AdcCcu6Synchronization</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Enable / Disable the CCU6x T13 to generate 20MHz Synchronization signal to all VADCs. 
+This parameter should be set to true only for the devices (e.g: TC29xBB, TC26xBB and TC27xDB) with metal fix for Cross coupling effect.
+
+true: Enables the CCU6x T13 to generate 20MHz Synchronization signal to all VADCs.
+false: Disables the CCU6x T13 to generate 20MHz Synchronization signal to all VADCs.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="d42ed3a7-c933-483f-8b90-390e46b1d366">
+                  <SHORT-NAME>AdcDeInitApi</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Adds / removes the service Adc_DeInit() from the code.
+true: Adc_DeInit() can be used.
+false: Adc_DeInit() can not be used.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="021db8da-97cc-4ad8-a8c3-187626822714">
+                  <SHORT-NAME>AdcDebugSupport</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Adds / removes the Debugging support from the code.
+true: Debugging support is available.
+false: Debugging support is not available.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="de9ce730-c48a-499a-8eff-8b03a15032cc">
+                  <SHORT-NAME>AdcDevErrorDetect</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Switches the Development Error Detection and Notification ON or OFF.
+true: Enabled.
+false: Disabled.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="021db8da-97dc-4ad8-a8c3-187626822716">
+                  <SHORT-NAME>AdcEnableLimitCheck</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Enable / Disable the Limit checking feature of ADC driver.
+true: The Limit checking feature is enabled for Adc driver.
+false: The Limit checking feature is disabled for Adc driver.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="274fd1b0-19bd-4093-86eb-32cb35bfcf84">
+                  <SHORT-NAME>AdcEnableQueuing</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Determines, if the queuing mechanism is active in case of priority mechanism disabled.
+Note: If priority mechanism is enabled, queuing mechanism is always active and the parameter ADC_ENABLE_QUEUING is not evaluated.
+true: Enabled.
+false: Disabled.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="b0c04334-e15c-4d46-ae04-e8c00ff54663">
+                  <SHORT-NAME>AdcEnableStartStopGroupApi</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Adds / removes the services Adc_StartGroupConversion() and Adc_StopGroupConversion() from the code.
+true: Adc_StartGroupConversion() and Adc_StopGroupConversion() can be used.
+false: Adc_StartGroupConversion() and Adc_StopGroupConversion() can not be used.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="2ba512b2-6585-4f61-973a-7266caf969dc">
+                  <SHORT-NAME>AdcGrpNotifCapability</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Determines, if the group notification mechanism (the functions to enable and disable the notifications) is available at runtime.
+true: Enabled.
+false: Disabled.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="f80a62ea-4288-4d01-b7cf-15c43afd7d13">
+                  <SHORT-NAME>AdcHwTriggerApi</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Adds / removes the services Adc_EnableHardwareTrigger() and Adc_DisableHardwareTrigger() from the code.
+true: Adc_EnableHardwareTrigger() and Adc_DisableHardwareTrigger() can be used.
+false: Adc_EnableHardwareTrigger() and Adc_DisableHardwareTrigger() can not be used.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="2ba512b2-6586-4f61-973a-7266caf969dc">
+                  <SHORT-NAME>AdcMasterSlaveSync</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Enables/Disables the Synchronization of conversion (Parallel sampling) feature.
+true: Synchronization of conversion Enabled.
+false: Synchronization of conversion Disabled.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="c54c319d-5379-469e-b59a-bcb896632a4a">
+                  <SHORT-NAME>AdcMaxChConvTimeCount</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">On stop of conversion request, the ongoing channel conversion in the A/D converter can not be stopped. Insted the API / software needs to wait for atleast the converter to become idle. Only when the converter is idle, the stop request is completely serviced. Inorder to ensure the converter is idle, a wait on coverter status polling is required and its maximum wait time is defined by the value entered in the AdcMaxChConvTimeCount.
+
+Note: If the entered value is 0, the wait on Stop in the driver is not performed. In such a case user has to ensure that new start of a Group is called only when ADC HW Unit is Idle. 
+Switching off of driver to wait on stop is applicable in ADC_PRIORITY_NONE (Queue is OFF) and ADC_PRIORITY_HW.
+
+  Conversion time = 2 * tADC + (4 + STC + n) * tADCI + sample phase length
+  where: 
+  n = 8, 10, 12 for n bit resolution
+  tADC = ADC module clock = system clock
+  tADCI = Analog clock
+  STC = Sample time control (Value - 0, 1, 2 ... 16, 32, 48, 64, 80, 96, 112, 128,
+        144, 160, 176, 192, 208, 224, 240, 256)
+
+  sample phase length = (2 + STC) / fADCI
+  STC = Sample time control (Value - 0, 1, 2 ... 16, 32, 48, 64, 80, 96, 112, 128,
+        144, 160, 176, 192, 208, 224, 240, 256)
+             fADCI : Analog clock frequency
+             1/fADCI = tADCI
+
+  Maximum sample phase length value:
+  STC = 256
+  tADCI = 32*tADC
+  tADC = tSYS (System clock time)
+  No. of sampling time count = 32*tSYS (2+256) / tSYS = 8256
+  
+  Minimum sample phase length value:
+  STC = 0
+  tADCI = 1*tADC
+  tADC = tSYS (System clock time)
+  No. of sampling time count = 1*tSYS (2+0) / tSYS = 2
+
+  Maximum Conversion time value:
+  tADC = tSYS (System clock time)
+  tADCI = 32 * tADC
+  STC = 256
+  n =  12 bit resolution
+  No. of conversion time count = tSYS (2+(4+256+12)32) / tSYS + 
+                                 Maximum sample phase length value 
+                               = 8706 + 8256 = 16962
+  Minimum Conversion time value:
+  tADC = tSYS (System clock time)
+  tADCI = 1* tADC
+  STC = 0
+  n =  8 bit resolution
+  No. of conversion time count = tSYS (2+(4+0+8)1) / tSYS + 
+                                 Minimum sample phase length value 
+                               = 14 + 2 = 16</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <DEFAULT-VALUE>10000</DEFAULT-VALUE>
+                  <MAX>16962</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="021db8da-97cc-4ad8-a8c3-187626822715">
+                  <SHORT-NAME>AdcNonAutosarDmaResultHandling</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Enable / Disable the non AUTOSAR result handling mode.
+true: Non AUTOSAR specific result handling using DMA driver.
+false: AUTOSAR specific result handing.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="021db8da-97cc-4ae8-a8c3-183626829715">
+                  <SHORT-NAME>AdcNonAutosarResultPolling</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Enable / Disable the non AUTOSAR result polling mode.
+true: Services Adc_17_GetGroupResult() and Adc_17_GetChannelStatus() are available to read the result in polling mode.
+false: AUTOSAR specific result handing.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="021db8da-97cc-4ad8-a8c3-187626822716">
+                  <SHORT-NAME>AdcPBFixedAddress</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Enable / Disable the fixed address usage of the configuration.
+true: The configuration address is fixed at compile time.
+false: Dynamic selection of configurations is possible.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-ENUMERATION-PARAM-DEF UUID="d6379f40-19a7-49f6-b7fc-94df8641acb1">
+                  <SHORT-NAME>AdcPriorityImplementation</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Determines whether a priority mechanism is available for prioritization of the conversion requests and if available, the type of prioritization mechanism. The selection applies for groups with trigger source software and trigger source hardware. Two
+types of prioritization mechanism can be selected. The hardware prioritization mechanism (AdcPriorityHw) uses the ADC hardware features for prioritization of the software conversion requests and hardware trigger signals for groups with trigger source hardware. The mixed hardware and software prioritization mechanism (AdcPriorityHwSw) uses the ADC hardware features for prioritization of ADC hardware trigger for groups with trigger source hardware and a software implemented prioritization mechanism for groups with trigger source software. The group priorities for software triggered groups are typically configured with lower priority levels than the group priorities for hardware triggered groups.
+If ADC Group result handling is Non AUTOSAR then Driver priority is always ADC_PRIORITY_NONE
+
+ImplementationType: Adc_PriorityImplementationType</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>ADC_PRIORITY_NONE</DEFAULT-VALUE>
+                  <LITERALS>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>ADC_PRIORITY_HW</SHORT-NAME>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>ADC_PRIORITY_HW_SW</SHORT-NAME>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>ADC_PRIORITY_NONE</SHORT-NAME>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                  </LITERALS>
+                </ECUC-ENUMERATION-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="9f283e64-b678-42b3-bd25-2c893f78be81">
+                  <SHORT-NAME>AdcReadGroupApi</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Adds / removes the service Adc_ReadGroup() and from the code.
+true: Adc_ReadGroup() can be used.
+false: Adc_ReadGroup() can not be used.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="2fa83e64-b671-42b3-bd25-2c893f48be81">
+                  <SHORT-NAME>AdcResetSfrAtInit</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Enable / Disable the resetting of SFRs used by ADC driver to its reset value in the Adc_Init() API.
+true: Enables the resetting of SFRs used by ADC driver to its reset value in the Adc_Init() API.
+false: Disables the resetting of SFRs used by ADC driver to its reset value in the Adc_Init() API.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-ENUMERATION-PARAM-DEF UUID="d6379f40-19a7-49f6-b7fc-84df8641acb1">
+                  <SHORT-NAME>AdcResultAccumulation</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">In non AUTOSAR specific result handling mode, the user can select the number of result accumulation over conversions.
+This value is maintained uniform across the drive for all group channels.
+For Oneshot, SW Triggered ADC Group, the result accumulation is always considered to be None irrespective of configured AdcResultAccumulation.
+Options:
+ADC_RES_ACCUMULATION_NONE: No accumulation of the result. Result register will have only one conversion value.
+ADC_RES_ACCUMULATION_TWO: Accumulation of the results upto two conversions.
+ADC_RES_ACCUMULATION_THREE: Accumulation of the results upto three conversions.
+ADC_RES_ACCUMULATION_FOUR: Accumulation of the results upto four conversions.</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>ADC_RES_ACCUMULATION_NONE</DEFAULT-VALUE>
+                  <LITERALS>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>ADC_RES_ACCUMULATION_NONE</SHORT-NAME>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>ADC_RES_ACCUMULATION_TWO</SHORT-NAME>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>ADC_RES_ACCUMULATION_THREE</SHORT-NAME>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>ADC_RES_ACCUMULATION_FOUR</SHORT-NAME>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                  </LITERALS>
+                </ECUC-ENUMERATION-PARAM-DEF>
+                <ECUC-ENUMERATION-PARAM-DEF UUID="d6373f40-19a7-49f6-b7fc-84df8641acb1">
+                  <SHORT-NAME>AdcResultAlignment</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Alignment of Adc raw results in result buffer (left/right alignment)</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>ADC_ALIGN_RIGHT</DEFAULT-VALUE>
+                  <LITERALS>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>ADC_ALIGN_LEFT</SHORT-NAME>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>ADC_ALIGN_RIGHT</SHORT-NAME>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                  </LITERALS>
+                </ECUC-ENUMERATION-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="bfef9f3f-cf0f-4f7f-9f1f-6f1fbfcfff1f">
+                  <SHORT-NAME>AdcRunningInUser0Mode</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">If this parameter is set to TRUE, then the driver run in Uer-0 Mode.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="021db8da-97cc-4ad8-a8c3-187626592714">
+                  <SHORT-NAME>AdcSameChannelQueuing</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Enable / Disable the support of converting the same analog input channel more than once in Queue Request source (RS0).
+If enabled, Standard data reduction mode is used to accumulate the result of the channel conversion.
+true: Enables the support of converting the same analog input channel more than once in Queue Request source (RS0).
+false: Disables the support of converting the same analog input channel more than once in Queue Request source (RS0).</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="cbf15882-e985-4670-9e1a-cb6f945bbad3">
+                  <SHORT-NAME>AdcUseEmux</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Enables / Disables the use of External multilplexer</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="bfef9f3f-bf0f-4f7f-9f1f-6f1fbfcfff1f">
+                  <SHORT-NAME>AdcUserModeDeInitApiEnable</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">Pre-processor switch to enable / disable the execution of DeInit API in User-1 Mode.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="bfef9f3f-cf0f-4f7f-bf1f-6f1fbfcfff1f">
+                  <SHORT-NAME>AdcUserModeInitApiEnable</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">Pre-processor switch to enable / disable the execution of Init API in User-1 Mode.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="bfef9f3f-cf0f-4f7f-9f1f-bf1fbfcfff1f">
+                  <SHORT-NAME>AdcUserModeRuntimeApiEnable</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">Pre-processor switch to enable / disable protected register access in all the APIs other than Init/Deinit APIs</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="021db8da-974c-4ad8-a8c3-181626822714">
+                  <SHORT-NAME>AdcVersionInfoApi</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Adds / removes the service Adc_GetVersionInfo() from the code.
+true: Adc_GetVersionInfo() can be used.
+false: Adc_GetVersionInfor() can not be used.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+              </PARAMETERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="1ca72bca-6be4-4d14-befd-85b9350fe86f">
+              <SHORT-NAME>AdcSafety</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">Safety configuration (parameters) of the ADC Driver software module.</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="de9c6730-c42a-499a-8ef7-8b03a15092cc">
+                  <SHORT-NAME>AdcSafetyEnable</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Switches the Safety feature ON or OFF.
+true: Safety feature Enabled.
+false: Safety feature Disabled.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="ce9c6730-d42a-499a-8ef7-8a03a15092cc">
+                  <SHORT-NAME>AdcInitCheckApi</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Switches the Adc_InitCheck Api ON or OFF.
+true: Adc_InitCheck Api Enabled.
+false: Adc_InitCheck Api Disabled.</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+              </PARAMETERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="6b7370fc-6dd2-4b90-a754-188ab88f8aa4">
+              <SHORT-NAME>AdcPublishedInformation</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">Additional published parameters not covered by CommonPublishedInformation container.
+
+Note that these parameters do not have any configuration class setting, since they are published information.</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="fda19239-3b78-4c72-b0e2-a03a429c30e9">
+                  <SHORT-NAME>AdcChannelValueSigned</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Information whether the result value of the ADC driver has sign information (true) or not (false). If the result shall be interpreted as signed value it shall apply to C-language rules.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="0f5ef631-e06c-474a-afeb-607c2674aaa5">
+                  <SHORT-NAME>AdcGroupFirstChannelFixed</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Information whether the first channel of an ADC Channel group can be configured (false) or is fixed (true) to a value determined by the ADC HW Unit.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="7731d60b-a8ce-41ce-949d-e0aedae87e3f">
+                  <SHORT-NAME>AdcMaxChannelResolution</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Maximum Channel resolution in bits (does not specify accuracy).</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>12</DEFAULT-VALUE>
+                  <MAX>12</MAX>
+                  <MIN>8</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+              </PARAMETERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="492f8482-3e2c-4bf1-b27f-01fd7ac35788">
+              <SHORT-NAME>CommonPublishedInformation</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">Common container, aggregated by all modules. It contains published information about vendor and versions.</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-INTEGER-PARAM-DEF UUID="bd0a8d38-4d8c-4ee9-88fe-1166b258bb8a">
+                  <SHORT-NAME>ArMajorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Major version number of AUTOSAR specification on which the appropriate implementation is based on.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>4</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="73f87c7f-e230-4178-bff0-eb2704aae656">
+                  <SHORT-NAME>ArMinorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Minor version number of AUTOSAR specification on which the appropriate implementation is based on.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>2</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="2380135d-6778-417a-a34b-e10017d4dd54">
+                  <SHORT-NAME>ArPatchVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Patch level version number of AUTOSAR specification on which the appropriate implementation is based on.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="fca015e3-5f28-4cbe-8949-8f4b87d86827">
+                  <SHORT-NAME>SwMajorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Major version number of the vendor specific implementation of the module. The numbering is vendor specific.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>3</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="14ab81e0-3d80-43dc-8b92-247e5a542df9">
+                  <SHORT-NAME>SwMinorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Minor version number of the vendor specific implementation of the module. The numbering is vendor specific.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>2</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="32e37bfd-18b6-41d1-9248-a81dbe0fe4c5">
+                  <SHORT-NAME>SwPatchVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="3b407478-6902-4f80-b7cf-f33b0854e638">
+                  <SHORT-NAME>ModuleId</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Module ID of this module from Module List</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>123</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="7d650b2d-4adb-41f0-a68e-5f0c416501d1">
+                  <SHORT-NAME>VendorId</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>17</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-STRING-PARAM-DEF UUID="ad363b41-e945-4717-b12f-c2f800ef138e">
+                  <SHORT-NAME>VendorApiInfix</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">In driver modules which can be instantiated several times on a single ECU, BSW00347 requires that the name of APIs is extended by the VendorId and a vendor specific name. 
+This parameter is used to specify the vendor specific name. In total, the implementation specific name is generated as follows:
+&lt;ModuleName&gt;_&gt;VendorId&gt;_&lt;VendorApiInfix&gt;&lt;Api name from SWS&gt;.
+
+E.g.  assuming that the VendorId of the implementor is 123 and the implementer chose a VendorApiInfix of &quot;v11r456&quot; a api name Can_Write defined in the SWS will translate to Can_123_v11r456Write. 
+
+This parameter is mandatory for all modules with upper multiplicity &gt; 1. It shall not be used for modules with upper multiplicity =1.</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <ECUC-STRING-PARAM-DEF-VARIANTS>
+                    <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                      <DEFAULT-VALUE></DEFAULT-VALUE>
+                    </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                  </ECUC-STRING-PARAM-DEF-VARIANTS>
+                </ECUC-STRING-PARAM-DEF>
+                <ECUC-STRING-PARAM-DEF UUID="3b407478-6902-4f40-b7cf-f33b0854e638">
+                  <SHORT-NAME>Release</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Aurix derivative used for the implementation</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <ECUC-STRING-PARAM-DEF-VARIANTS>
+                    <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                      <DEFAULT-VALUE>_TRICORE_TC234</DEFAULT-VALUE>
+                    </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                  </ECUC-STRING-PARAM-DEF-VARIANTS>
+                </ECUC-STRING-PARAM-DEF>
+              </PARAMETERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+          </CONTAINERS>
+        </ECUC-MODULE-DEF>
+      </ELEMENTS>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

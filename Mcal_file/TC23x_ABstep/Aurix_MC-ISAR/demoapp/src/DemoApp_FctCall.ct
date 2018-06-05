@@ -1,0 +1,62 @@
+/*******************************************************************************
+**                                                                            **
+** Copyright (C) Infineon Technologies (2012)                                 **
+**                                                                            **
+** All rights reserved.                                                       **
+**                                                                            **
+** This document contains proprietary information belonging to Infineon       **
+** Technologies. Passing on and copying of this document, and communication   **
+** of its contents is not permitted without prior written authorization.      **
+**                                                                            **
+********************************************************************************
+**                                                                            **
+**  FILENAME  : DemoApp_FctCall.ct                                            **
+**                                                                            **
+**  VERSION   : 0.0.1                                                         **
+**                                                                            **
+**  DATE      : 2012-03-12                                                    **
+**                                                                            **
+**  VARIANT   : VariantPB                                                     **
+**                                                                            **
+**  PLATFORM  : Aurix                                                         **
+**                                                                            **
+**  COMPILER  : Tasking                                                       **
+**                                                                            **
+**  AUTHOR    : DL-AUTOSAR-Engineering                                        **
+**                                                                            **
+**  VENDOR    : Infineon Technologies                                         **
+**                                                                            **
+**  DESCRIPTION  : This file contains the type defitions required for Demoapp **
+**                                                                            **
+**  SPECIFICATION(S) :                                                        **
+**                                                                            **
+**  MAY BE CHANGED BY USER [Yes/No]: No                                       **
+*******************************************************************************/
+/*******************************************************************************
+**                      Author(s) Identity                                    **
+********************************************************************************
+**                                                                            **
+** Initials     Name                                                          **
+** ---------------------------------------------------------------------------**
+**  VS          Vinod Shankar                                                 **
+*******************************************************************************/
+/*******************************************************************************
+**                      Revision Control History                              **
+********************************************************************************
+**  V0.0.1: 2012-03-12,  VS:  Initial Version - AI00064361 -                  **
+**                            According to Laurent's design                   **
+**                                                                            **
+*******************************************************************************/
+/*******************************************************************************
+**                      Includes                                              **
+*******************************************************************************/
+#include "Std_Types.h"
+#include "DemoApp_FctCall.h"
+
+DEMO_ANY_FCT_IN_PAR_LIST_STR
+
+DEMO_ANY_FCT_LIST_STR
+
+const uint32 DemoApp_AnyFctListSize = sizeof (DemoApp_AllFctList) / \
+                                      sizeof (DemoApp_AnyFctListType);
+

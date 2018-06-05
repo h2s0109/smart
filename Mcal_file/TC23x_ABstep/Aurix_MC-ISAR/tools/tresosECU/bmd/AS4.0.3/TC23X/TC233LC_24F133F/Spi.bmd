@@ -1,0 +1,3084 @@
+<?xml version='1.0'?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-0-3.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE UUID="9a8b82b6-c3a9-4a4d-b2d3-617b2e1b4a0c">
+      <SHORT-NAME>AURIX</SHORT-NAME>
+      <ELEMENTS>
+        <ECUC-MODULE-DEF UUID="739a7374-887e-4990-bb70-3ef0ae98eb91">
+          <SHORT-NAME>Spi</SHORT-NAME>
+          <DESC>
+            <L-2 L="EN">Configuration of the Spi (Serial Peripheral Interface) module.</L-2>
+          </DESC>
+          <ADMIN-DATA>
+            <DOC-REVISIONS>
+              <DOC-REVISION>
+                <REVISION-LABEL>4.2.0</REVISION-LABEL>
+                <ISSUED-BY>AUTOSAR</ISSUED-BY>
+                <DATE>2011-11-09</DATE>
+              </DOC-REVISION>
+            </DOC-REVISIONS>
+          </ADMIN-DATA>
+          <REFINED-MODULE-DEF-REF DEST="ECUC-MODULE-DEF">/AUTOSAR/EcucDefs/Spi</REFINED-MODULE-DEF-REF>
+          <SUPPORTED-CONFIG-VARIANTS>
+            <SUPPORTED-CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</SUPPORTED-CONFIG-VARIANT>
+            <SUPPORTED-CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</SUPPORTED-CONFIG-VARIANT>
+          </SUPPORTED-CONFIG-VARIANTS>
+          <CONTAINERS>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="564fe124-75c8-40a1-b55f-e39bf801966c">
+              <SHORT-NAME>SpiGeneral</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">General configuration settings for SPI-Handler</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="6ef30998-101c-4cfe-a0fb-d8b6a23527ac">
+                  <SHORT-NAME>SpiDevErrorDetect</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Switches the Development Error Detection and Notification ON or OFF.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="7e18c5e2-13bb-4abb-aa16-5fbc825abfc5">
+                  <SHORT-NAME>SpiVersionInfoApi</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Switches the Spi_GetVersionInfo function ON or OFF.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="5ca39235-baef-4f28-afe6-0d3752fa724d">
+                  <SHORT-NAME>SpiChannelBuffersAllowed</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Selects the SPI Handler/Driver Channel Buffers usage allowed and delivered.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>2</DEFAULT-VALUE>
+                  <MAX>2</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="1d02bb89-a7de-4ce0-884c-fb87f9c891b0">
+                  <SHORT-NAME>SpiHwStatusApi</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Switches the Spi_GetHWUnitStatus function ON or OFF.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="708f8799-a4c4-4ec4-9747-e44bc2866c3b">
+                  <SHORT-NAME>SpiLevelDelivered</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Selects the SPI Handler/Driver level of scalable functionality that is
+available and delivered.
+SpiLevelDelivered is 0(LEVEL0): The driver handles only simple synchronous transmission on all available SPI busses(QSPIx)
+SpiLevelDelivered is 1(LEVEL1): The driver handles only simple asynchronous transmission on all available SPI busses(QSPIx)
+SpiLevelDelivered is 2(LEVEL2): The LEVEL2 which is an enhanced behavior of the driver will handle both synchronous and asynchronous
+transmissions.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                  <MAX>2</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="6ef30498-101c-4cfe-a0fb-d8b6a23527ac">
+                  <SHORT-NAME>SpiSupportConcurrentSyncTransmit</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Specifies whether concurrent Spi_SyncTransmit() calls for different se-quences shall be configurable.</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="7e7252aa-f7e6-4607-a4af-11892d5194e2">
+                  <SHORT-NAME>SpiInterruptibleSeqAllowed</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Switches the Interruptible Sequences handling functionality ON or OFF.</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="d2f52233-0a95-4863-8c21-8c1ea554c81d">
+                  <SHORT-NAME>SpiCancelApi</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Switches the Spi_Cancel function ON or OFF.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="6da18a69-ebb2-42d3-abb2-b63e218cac9e">
+                  <SHORT-NAME>SpiMaxJobTriggerQueueLength</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Number of jobs that needs to be executed or serviced.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>2</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>1</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="7e18c5e2-13bb-4abb-aa16-5fbc825abfc6">
+                  <SHORT-NAME>SpiPBFixedAddress</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Enable/Disable parameter for the selection of fixed adress. ON: fixed address used, OFF: Post build configuration selected.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="01eee1fb-1589-455e-9b2b-cead4d920436">
+                  <SHORT-NAME>SpiDebugSupport</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Pre-processor switch for enabling/disabling the debugging support.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="01abc1fb-1589-455e-9b2b-cead4d920436">
+                  <SHORT-NAME>SpiAsyncParallelTransmit</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Pre-processor switch for enabling/disabling Parallel Asynchronous Transmission Editiable Only in Level 1 and 2
+By Enabling SpiAsyncParallelTransmit restrictions are applicable on Autosar usage.
+A sequence cannot have the Jobs which are belonging to a different QSPI modules.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="01abc1fb-1589-455e-9b2b-cebb4d920436">
+                  <SHORT-NAME>SpiBaudrateConfigAtRuntime</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Pre-processor switch for setting up ECON sfr during Spi_Init()[DISABLED] or before starting of a new Job during runtime [ENABLED]</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="01abc1fb-1589-455e-9b2b-cfbb4d920436">
+                  <SHORT-NAME>SpiResetSfrAtInit</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Pre-processor switch to enable/disable resetting SFR to its reset value in the init function [STD_ON/STD_OFF]</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="6da13a69-ebb2-42d3-abb2-b63e218cac9e">
+                  <SHORT-NAME>SpiSyncTransmitTimeoutDuration</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">The parameter is used as timeout loop counter while waiting for data transmission/reception of 1 data element.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>1048575</DEFAULT-VALUE>
+                  <MAX>4294967295</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-ENUMERATION-PARAM-DEF UUID="9a3246b8-2b22-4b16-9364-c79f3b01b30e">
+                  <SHORT-NAME>SpiSlaveSelectRef</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">SPI HW Slave module </L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>SPI_SLAVE_UNUSED</DEFAULT-VALUE>
+                  <LITERALS>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>SPI_SLAVE_UNUSED</SHORT-NAME>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>QSPI0</SHORT-NAME>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>QSPI1</SHORT-NAME>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>QSPI2</SHORT-NAME>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>QSPI3</SHORT-NAME>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                  </LITERALS>
+                </ECUC-ENUMERATION-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="7e18c5e2-13bb-4abb-aa16-5fbc825abfc1">
+                  <SHORT-NAME>SpiSlaveFlipTransferStart</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Flips the MSB-&gt;LSB or LSB-&gt;MSB on slave reception. i.e inverse of on Master module configuration.                         Configurable only when SpiSafetyEnable = ON</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-ENUMERATION-PARAM-DEF UUID="9a3246b8-2b22-4b16-9364-c79f3b01b301">
+                  <SHORT-NAME>SpiSafetyMasterRef</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">SPI HW Safety Master module. Configurable only when SpiSafetyEnable = ON</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>QSPI0</DEFAULT-VALUE>
+                  <LITERALS>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>QSPI0</SHORT-NAME>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>QSPI1</SHORT-NAME>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>QSPI2</SHORT-NAME>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>QSPI3</SHORT-NAME>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                  </LITERALS>
+                </ECUC-ENUMERATION-PARAM-DEF>
+                <ECUC-FLOAT-PARAM-DEF UUID="5f1cbf20-db77-4d50-a44e-30753c1e1673">
+                  <SHORT-NAME>SpiMainFunctionPeriod</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">This parameter defines the cycle time of the function Spi_MainFunction_Handling in seconds. The parameter is not used by the driver it self, but it is used by upper layer.</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>0.01</DEFAULT-VALUE>
+                  <MAX>1.0</MAX>
+                  <MIN>1.0E-7</MIN>
+                </ECUC-FLOAT-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="2486a537-5ef8-487e-51e0-0234c58e9bf0">
+                  <SHORT-NAME>SpiRunningInUser0Mode</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">If this parameter is set to FALSE, then Protected Mode(user mode) register access will not be done and API is run in Supervisor mode.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="2496a537-5ef8-487e-51e0-0254c58e9bf0">
+                  <SHORT-NAME>SpiUserModeInitApiEnable</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">Pre-processor switch to enable / disable protected register access in all the Init API.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="2496a537-5ef8-487e-51e1-0234c58e9bf0">
+                  <SHORT-NAME>SpiUserModeDeInitApiEnable</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">Pre-processor switch to enable / disable protected register access in all the DeInit API.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="2496a537-5ef8-487e-51e0-0434c58e9bf0">
+                  <SHORT-NAME>SpiUserModeRuntimeApiEnable</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">Pre-processor switch to enable / disable protected register access in all the APIs other than Init/Deinit APIs.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+              </PARAMETERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="564fe124-75c8-40a1-b55f-e39bf8019661">
+              <SHORT-NAME>SpiSafety</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">General Safety configuration settings for SPI-Handler</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="6ef30998-101c-4cfe-a0fb-d8b6a23527a1">
+                  <SHORT-NAME>SpiSafetyEnable</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Switches the Safety ON or OFF.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="7e18c5e2-13bb-4abb-aa16-5fbc825abfc2">
+                  <SHORT-NAME>SpiInitCheckApi</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Switches the Spi Init Check API ON or OFF.</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+              </PARAMETERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="6374e8d2-b2d7-4c08-8a32-b68f54bda4ca">
+              <SHORT-NAME>SpiDriver</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">Configuration settings for SpiDriver</L-2>
+              </DESC>
+              <MULTIPLE-CONFIGURATION-CONTAINER>true</MULTIPLE-CONFIGURATION-CONTAINER>
+              <PARAMETERS>
+                <ECUC-INTEGER-PARAM-DEF UUID="ab000ab4-a03e-4365-ab99-a3b38d66f182">
+                  <SHORT-NAME>SpiMaxChannel</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">This parameter contains the number of Channels configured. It will be gathered by tools during the configuration stage.</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <MAX>255</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="e06d3af8-dc2b-4dc3-a3ff-3b02cc4c6eba">
+                  <SHORT-NAME>SpiMaxJob</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Maximum number of jobs. Autocalculated by tool.</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="efa05d2e-8021-4fb1-80ed-6fe14ecdb218">
+                  <SHORT-NAME>SpiMaxSequence</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Maximum number of Sequences. Autocalculated by tool.</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <MAX>255</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+              </PARAMETERS>
+              <REFERENCES>
+                <ECUC-REFERENCE-DEF UUID="7a12e6a7-f02f-4d95-8b8a-87a36bed8fb9">
+                  <SHORT-NAME>SpiSystemClock</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">This parameter refer MCU read the System clock configured</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/Mcu/McuModuleConfiguration/McuClockSettingConfig/McuClockReferencePoint</DESTINATION-REF>
+                </ECUC-REFERENCE-DEF>
+              </REFERENCES>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF UUID="a8ff4a3e-d932-4f31-b319-2a7e34c01f02">
+                  <SHORT-NAME>SpiChannel</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">All data needed to configure one SPI-channel</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>255</UPPER-MULTIPLICITY>
+                  <PARAMETERS>
+                    <ECUC-INTEGER-PARAM-DEF UUID="61ea525c-a919-46b3-834d-bdc06f1ec2ff">
+                      <SHORT-NAME>SpiChannelId</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This is ID number assigned to SPI channel</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>true</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>255</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="eeb96b62-9133-479f-9070-8382f60c36fc">
+                      <SHORT-NAME>SpiChannelType</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Buffer usage with EB/IB channel</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>EB</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>EB</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>IB</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="ea83e38c-1fd0-4493-90a8-f2bdc80c3aac">
+                      <SHORT-NAME>SpiDataWidth</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter is the width of a transmitted data unit.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>8</DEFAULT-VALUE>
+                      <MAX>32</MAX>
+                      <MIN>2</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="9a539114-4b57-46ab-9980-f5c35c3939cd">
+                      <SHORT-NAME>SpiDefaultData</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter is the default value to transmit.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>4294967295</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="d7770de0-e0b9-4d54-877a-a741c5393c7f">
+                      <SHORT-NAME>SpiEbMaxLength</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter contains the maximum size of data buffers in case of
+EB Channels. Enabled only for EB.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>511</DEFAULT-VALUE>
+                      <MAX>65535</MAX>
+                      <MIN>1</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="26853f64-81ac-4c8e-a3e1-adfe909b9ab9">
+                      <SHORT-NAME>SpiIbNBuffers</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter contains the maximum number of data buffers in case
+of IB Channels.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>10</DEFAULT-VALUE>
+                      <MAX>65535</MAX>
+                      <MIN>1</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="bb1ff1dd-d2a4-450f-94b9-d04eb50bc611">
+                      <SHORT-NAME>SpiTransferStart</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter defines the first starting bit for transmission.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>LSB</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>LSB</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>MSB</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="d7770de0-e0b9-4d54-877a-a741c5393c71">
+                      <SHORT-NAME>SpiSafetyBufferMarker</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter contains the marker for buffer. Enabled only if Safety Enabled.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>165</DEFAULT-VALUE>
+                      <MAX>255</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                  </PARAMETERS>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+                <ECUC-PARAM-CONF-CONTAINER-DEF UUID="91a17236-e5c5-4ef6-a712-a4857621814a">
+                  <SHORT-NAME>SpiExternalDevice</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">The communication settings of an external device. Closely linked to SpiJob.</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY-INFINITE>1</UPPER-MULTIPLICITY-INFINITE>
+                  <PARAMETERS>
+                    <ECUC-FLOAT-PARAM-DEF UUID="1180d680-cfd2-4f23-8cc8-bf196dcc3b79">
+                      <SHORT-NAME>SpiBaudrate</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter is the communication baudrate - This parameter allows
+using a range of values, from the point of view of configuration tools,
+from Hz up to MHz.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>9600.0</DEFAULT-VALUE>
+                      <MAX>5.0E7</MAX>
+                      <MIN>0.0</MIN>
+                    </ECUC-FLOAT-PARAM-DEF>
+                    <ECUC-STRING-PARAM-DEF UUID="73b29e9f-9c95-41ee-bbe5-e56d06f71416">
+                      <SHORT-NAME>SpiCsIdentifier</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter is the symbolic name to identify the Chip Select (CS) allocated to this Job.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>true</SYMBOLIC-NAME-VALUE>
+                    </ECUC-STRING-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="a64deb81-f92e-4ba5-98b0-c301a8becdd2">
+                      <SHORT-NAME>SpiCsPolarity</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter defines the active polarity of Chip Select.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>LOW</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>HIGH</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>LOW</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="2d4c0abe-41c9-4308-a2e2-b6c1661e9661">
+                      <SHORT-NAME>SpiDataShiftEdge</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter defines the SPI data shift edge.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>LEADING</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>LEADING</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>TRAILING</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="3a1e8f30-5da0-490a-833a-9b9c307127e8">
+                      <SHORT-NAME>SpiShiftClockIdleLevel</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter defines the SPI shift clock idle level.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>LOW</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>HIGH</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>LOW</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF UUID="d8a811c9-2c44-4532-b207-03e295103c7a">
+                      <SHORT-NAME>SpiAutoCalcBaudParams</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter enables or not the automatic calculation of qspi baudrate parameters.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="993206b8-2a62-4b16-9314-c89f3b01b30e">
+                      <SHORT-NAME>SpiQSpiParamTq</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter defines Qspi TQ Hw parameter</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>2</DEFAULT-VALUE>
+                      <MAX>255</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="993206b8-2b62-4b16-9314-c89f3b01b30e">
+                      <SHORT-NAME>SpiQSpiParamQ</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter defines Qspi Q Hw parameter</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>10</DEFAULT-VALUE>
+                      <MAX>63</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="9a3206b8-2b62-4b16-9314-c89f3b01b30e">
+                      <SHORT-NAME>SpiQSpiParamA</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter defines Qspi A Hw parameter</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                      <MAX>3</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="9a3506b8-2b62-4b16-9314-c89f3b01b30e">
+                      <SHORT-NAME>SpiQSpiParamB</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Qspi B Hw parameter</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>3</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="9a3246b8-2b62-4b16-9314-c89f3b01b30e">
+                      <SHORT-NAME>SpiQSpiParamC</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Qspi C Hw parameter</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                      <MAX>3</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF UUID="d8a811c9-2c44-4532-b207-03e295123c7a">
+                      <SHORT-NAME>SpiAutoCalcDelayParams</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter enables or not the automatic calculation of qspi Delay parameters.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-FLOAT-PARAM-DEF UUID="ce2100ab-166a-4676-891e-07d8bd1a7255">
+                      <SHORT-NAME>SpiTimeClk2Cs</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Timing between clock and chip select or Lead Time- This parameter allows to use a range of values from 0 up to 100 microSec.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0.0</DEFAULT-VALUE>
+                      <MAX>1.0E-4</MAX>
+                      <MIN>0.0</MIN>
+                    </ECUC-FLOAT-PARAM-DEF>
+                    <ECUC-FLOAT-PARAM-DEF UUID="ce2120ab-166a-4676-891e-07d8bd1b7255">
+                      <SHORT-NAME>SpiTrailingTime</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Trailing Time .</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0.0000001</DEFAULT-VALUE>
+                      <MAX>0.0033</MAX>
+                      <MIN>0.0</MIN>
+                    </ECUC-FLOAT-PARAM-DEF>
+                    <ECUC-FLOAT-PARAM-DEF UUID="ce2120ab-166a-4676-891e-07d8bd1b7275">
+                      <SHORT-NAME>SpiIdleTime</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">IDLEA / IDLEB Time .</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0.0000001</DEFAULT-VALUE>
+                      <MAX>0.0033</MAX>
+                      <MIN>0.0</MIN>
+                    </ECUC-FLOAT-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="9a3246b8-2b62-4b16-9364-c89f3b11b30e">
+                      <SHORT-NAME>SpiQSpiParamIPre</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Qspi Idle delay prescalar Hw parameter</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                      <MAX>7</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="9a3246b8-2b62-4b16-9364-c89f3b11b31e">
+                      <SHORT-NAME>SpiQSpiParamIdle</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Qspi IDLE delay Hw parameter</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                      <MAX>7</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="9a3246b8-2b62-4b16-9384-c89f3b11b30e">
+                      <SHORT-NAME>SpiQSpiParamLPre</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Qspi Lead delay prescalar Hw parameter</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>7</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="9a3246b8-2b62-4b16-9364-c89f3b21b31e">
+                      <SHORT-NAME>SpiQSpiParamLead</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Qspi LEAD delay Hw parameter</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                      <MAX>7</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="9a3246b8-2b62-4b16-9384-c89f3b14b30e">
+                      <SHORT-NAME>SpiQSpiParamTPre</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Qspi Trail delay prescalar Hw parameter</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>7</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="9a3246b8-2b62-4b16-9364-c89f3b01b30e">
+                      <SHORT-NAME>SpiQSpiParamTrail</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Qspi Trail Hw parameter</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                      <MAX>7</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF UUID="d8a81ac9-2c44-4532-b207-03e295103c7a">
+                      <SHORT-NAME>SpiEnableCs</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter enables or not the Chip Select handling functions.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>true</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="d8a81ac9-2b44-4532-b207-03e295103c7a">
+                      <SHORT-NAME>SpiCsSelection</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">When the Chip select handling is enabled (see SpiEnableCs), then this parameter specifies if the chip select is handled automatically by Peripheral HW engine or via general purpose IO by Spi driver.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>CS_VIA_PERIPHERAL_ENGINE</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CS_VIA_PERIPHERAL_ENGINE</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CS_VIA_GPIO</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="d8a81ac9-2b44-4555-b207-03e295103c7a">
+                      <SHORT-NAME>SpiParitySupport</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">When the SpiParitySupport is selected SPI data Transmission/Reception incorporates an additional bit making the parity EVEN or ODD based on selection</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>Unused</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>Unused</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>Even</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>Odd</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                  </PARAMETERS>
+                  <SUB-CONTAINERS>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="DCE:d8394d8c-6029-69ac-b7ce-1b57c6a97003">
+                      <SHORT-NAME>SpiHwUnit</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FOR-ALL">SpiHwUnit</L-4>
+                      </LONG-NAME>
+                      <DESC>
+                        <L-2 L="EN">Container for the SpiHwUnit</L-2>
+                      </DESC>
+                      <PARAMETERS>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="9a3246b8-2b22-4b16-9364-c79f3b01b302">
+                          <SHORT-NAME>SpiAssignedHwModule</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">SPI Hw module</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>QSPI0</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>QSPI0</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>QSPI1</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>QSPI2</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>QSPI3</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="9a3246b8-2b22-4b16-9364-c79f3b31b30e">
+                          <SHORT-NAME>SpiAssignedHwChannel</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">SPI Hw module channel no</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>Channel0</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>Channel0</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>Channel1</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>Channel2</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>Channel3</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>Channel4</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>Channel5</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>Channel6</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>Channel7</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>Channel8</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>Channel9</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>Channel10</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>Channel11</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>Channel12</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>Channel13</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>Channel14</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>Channel15</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                      </PARAMETERS>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="DCE:d8394d8c-6029-69ac-b7ce-0b57c6a97003">
+                      <SHORT-NAME>SpiCsGpio</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FOR-ALL">SpiCsGpio</L-4>
+                      </LONG-NAME>
+                      <DESC>
+                        <L-2 L="EN">Container for the selection of Chipselect</L-2>
+                      </DESC>
+                      <PARAMETERS>
+                        <ECUC-INTEGER-PARAM-DEF UUID="9a3246b8-2b22-4b16-9364-c89f3b01b30e">
+                          <SHORT-NAME>SpiCsGpioPortSelection</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Gpio port no used for Chipselect</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                          <MAX>40</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="9a3246b8-2b22-4b16-9364-c89f3b21b30e">
+                          <SHORT-NAME>SpiCsGpioPinSelection</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Gpio port pin no used for Chipselect</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                          <MAX>15</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                      </PARAMETERS>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                  </SUB-CONTAINERS>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+                <ECUC-PARAM-CONF-CONTAINER-DEF UUID="9ea42a4c-e5a5-4a27-aeb5-e56f23325aa6">
+                  <SHORT-NAME>SpiJob</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">All data needed to configure one SPI-Job, amongst others the connection between the internal SPI unit and the special settings for an external device is done.</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>65535</UPPER-MULTIPLICITY>
+                  <PARAMETERS>
+                    <ECUC-FUNCTION-NAME-DEF UUID="999fcf11-8b4f-4719-abee-2f2d75e8614a">
+                      <SHORT-NAME>SpiJobEndNotification</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter is a reference to a notification function.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <ECUC-FUNCTION-NAME-DEF-VARIANTS>
+                        <ECUC-FUNCTION-NAME-DEF-CONDITIONAL>
+                          <DEFAULT-VALUE>NULL_PTR</DEFAULT-VALUE>
+                        </ECUC-FUNCTION-NAME-DEF-CONDITIONAL>
+                      </ECUC-FUNCTION-NAME-DEF-VARIANTS>
+                    </ECUC-FUNCTION-NAME-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="f19865d3-c9b8-46f8-9fe4-4e0190259b4e">
+                      <SHORT-NAME>SpiJobId</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Parameter for the SpiJobId. Generated by the tool</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>true</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>65535</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="993406b8-2a62-4b16-9314-c89f3b01b30e">
+                      <SHORT-NAME>SpiJobPriority</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Priority of the Job</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>3</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="2d4a2abe-41c9-4308-a2e2-b6c1261e9661">
+                      <SHORT-NAME>SpiHwUnitSynchronous</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter defines whether the Job is Synchronous/ASynchronous.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>Asynchronous</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>Synchronous</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>Asynchronous</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="eeb96b62-9133-479f-9170-8382f60c36fc">
+                      <SHORT-NAME>SpiChannelBasedCS</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Enabling will toggle the Chip select after each data of the channel is transmitted(violates Autosar req:SPI263). Note: If channel based chip select is needed then SpiExternalDevice-&gt;SpiCsSelection  must be configured as CS_VIA_PERIPHERAL_ENGINE</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>Disabled</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>Disabled</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>Enabled</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                  </PARAMETERS>
+                  <REFERENCES>
+                    <ECUC-REFERENCE-DEF UUID="ac64715b-a773-4a4d-ab8a-eb7eb3b5169b">
+                      <SHORT-NAME>SpiDeviceAssignment</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Reference to the external device used by this job</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/Spi/SpiDriver/SpiExternalDevice</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                  </REFERENCES>
+                  <SUB-CONTAINERS>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="DCE:d83a4d8c-6029-69ac-b7ce-0b57c6a97003">
+                      <SHORT-NAME>SpiChannelList</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FOR-ALL">SpiChannelList</L-4>
+                      </LONG-NAME>
+                      <DESC>
+                        <L-2 L="EN">Container for the List of Spi Channels.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>255</UPPER-MULTIPLICITY>
+                      <PARAMETERS>
+                        <ECUC-INTEGER-PARAM-DEF UUID="a962a7e3-410c-411d-8f19-accbc09f096e">
+                          <SHORT-NAME>SpiChannelIndex</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Parameter for the Spi Channel Index. Specifies the order of Channels within the Job</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>true</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                          <MAX>255</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                      </PARAMETERS>
+                      <REFERENCES>
+                        <ECUC-REFERENCE-DEF UUID="42d94cf6-9bbe-4b83-a833-bddbf3d6bad2">
+                          <SHORT-NAME>SpiChannelAssignment</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">A job reference to a SPI channel.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/Spi/SpiDriver/SpiChannel</DESTINATION-REF>
+                        </ECUC-REFERENCE-DEF>
+                      </REFERENCES>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                  </SUB-CONTAINERS>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+                <ECUC-PARAM-CONF-CONTAINER-DEF UUID="2a3d2174-8a4c-414d-af29-8c7796e01cbb">
+                  <SHORT-NAME>SpiSequence</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">All data needed to configure one SPI-sequence</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY-INFINITE>1</UPPER-MULTIPLICITY-INFINITE>
+                  <PARAMETERS>
+                    <ECUC-BOOLEAN-PARAM-DEF UUID="b73fce7d-73df-4c5e-820d-d9ddbc878a0e">
+                      <SHORT-NAME>SpiInterruptibleSequence</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter allows or not this Sequence to be suspended by another one.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-FUNCTION-NAME-DEF UUID="cc12fb6f-7073-463d-af12-a790e1e4b56a">
+                      <SHORT-NAME>SpiSeqEndNotification</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter is a reference to a notification function.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <ECUC-FUNCTION-NAME-DEF-VARIANTS>
+                        <ECUC-FUNCTION-NAME-DEF-CONDITIONAL>
+                          <DEFAULT-VALUE>NULL_PTR</DEFAULT-VALUE>
+                        </ECUC-FUNCTION-NAME-DEF-CONDITIONAL>
+                      </ECUC-FUNCTION-NAME-DEF-VARIANTS>
+                    </ECUC-FUNCTION-NAME-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="a962a7e2-410c-411d-8f19-accbc09f096e">
+                      <SHORT-NAME>SpiSequenceId</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">The tool generates the ID for the sequence.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>true</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>255</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                  </PARAMETERS>
+                  <REFERENCES>
+                    <ECUC-REFERENCE-DEF UUID="80d853bd-33c8-4d50-8b8e-ba2cb37b5fe8">
+                      <SHORT-NAME>SpiJobAssignment</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">A sequence references several jobs, which are executed during a communication sequence</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY-INFINITE>1</UPPER-MULTIPLICITY-INFINITE>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/Spi/SpiDriver/SpiJob</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                  </REFERENCES>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+                <ECUC-PARAM-CONF-CONTAINER-DEF UUID="ECUC:4C697A47-02D8-42df-8696-0C9F592008C7">
+                  <SHORT-NAME>SpiDemEventParameterRefs</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Container for the references to DemEventParameter elements which shall be invoked using the API Dem_ReportErrorStatus API in case the corresponding error occurs. The EventId is taken from the referenced DemEventParameter&apos;s DemEventId value. The standardized errors are provided in the container and can be extended by vendor specific error references.</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <REFERENCES>
+                    <ECUC-SYMBOLIC-NAME-REFERENCE-DEF UUID="ECUC:66C8E910-6197-42a3-8E25-A695AA21788E">
+                      <SHORT-NAME>SPI_E_HARDWARE_ERROR</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Reference to configured DEM event to report Spi receive error.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter</DESTINATION-REF>
+                    </ECUC-SYMBOLIC-NAME-REFERENCE-DEF>
+                    <ECUC-SYMBOLIC-NAME-REFERENCE-DEF UUID="ECUC:66C8E900-6192-42a3-8E25-A695AA21788E">
+                      <SHORT-NAME>SPI_E_DMA_TRANSFER</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Reference to configured DEM event to report &quot;Clock source failure&quot;.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter</DESTINATION-REF>
+                    </ECUC-SYMBOLIC-NAME-REFERENCE-DEF>
+                  </REFERENCES>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="e4358dc6-3015-455d-9499-0fb82a8c6b26">
+              <SHORT-NAME>SpiHwConfiguration</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FOR-ALL">SpiHwConfiguration</L-4>
+              </LONG-NAME>
+              <DESC>
+                <L-2 L="EN">Container for the SpiHwConfiguration</L-2>
+              </DESC>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF UUID="DCE:46354a81-d2f8-6a3d-9a0a-546962bdd907">
+                  <SHORT-NAME>SpiHwConfigurationQspi0</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FOR-ALL">SpiHwConfigurationQspi0</L-4>
+                  </LONG-NAME>
+                  <DESC>
+                    <L-2 L="EN">Container for the SpiHwConfigurationQspi0</L-2>
+                  </DESC>
+                  <SUB-CONTAINERS>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="DCE:33eb03cf-2df6-6c54-b867-396d3df4c2a1">
+                      <SHORT-NAME>SpiClockConfiguration</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FOR-ALL">SpiClockConfiguration</L-4>
+                      </LONG-NAME>
+                      <DESC>
+                        <L-2 L="EN">Spi Clock Configuration For QSPI node</L-2>
+                      </DESC>
+                      <PARAMETERS>
+                        <ECUC-BOOLEAN-PARAM-DEF UUID="20398301-18ac-4596-83ef-b364ac76a8c1">
+                          <SHORT-NAME>SpiSleepEnable</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">To control QSPIx sleep mode</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                        </ECUC-BOOLEAN-PARAM-DEF>
+                      </PARAMETERS>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="DCE:1da9ffda-ce19-6053-b203-c7cc4651411e">
+                      <SHORT-NAME>SpiHwPinConfiguration</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FOR-ALL">SpiHwPinConfiguration</L-4>
+                      </LONG-NAME>
+                      <DESC>
+                        <L-2 L="EN">Spi HW Pin Configuration For QSPI node</L-2>
+                      </DESC>
+                      <PARAMETERS>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="8cb2b502-2224-4dd2-917b-f73778ef1854">
+                          <SHORT-NAME>SpiHWPinMISO</SHORT-NAME>
+                          <LONG-NAME>
+                            <L-4 L="FOR-ALL">MRSTA_PORT10_PIN0: MRSTA_PORT10_PIN0</L-4>
+                          </LONG-NAME>
+                          <DESC>
+                            <L-2 L="EN">Port Pin selection for MISO</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>MRST0A_PORT20_PIN12</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>MRST0A_PORT20_PIN12</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>MRST0D_PORT14_PIN6</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="8cb2b502-2224-4dd2-917b-f73778efffee">
+                          <SHORT-NAME>SPISlaveHwPinMOSI</SHORT-NAME>
+                          <LONG-NAME>
+                            <L-4 L="FOR-ALL">MTSR0A_PORT20_PIN14: MTSR0A_PORT20_PIN14</L-4>
+                          </LONG-NAME>
+                          <DESC>
+                            <L-2 L="EN">Port Pin selection for Slave MTSR</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>MTSR0A_PORT20_PIN14</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>MTSR0A_PORT20_PIN14</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="8cb2b502-2224-4dd2-917b-f73778effefe">
+                          <SHORT-NAME>SPISlaveHwPinSCLK</SHORT-NAME>
+                          <LONG-NAME>
+                            <L-4 L="FOR-ALL">SCLK0A_PORT20_PIN11: SCLK0A_PORT20_PIN11</L-4>
+                          </LONG-NAME>
+                          <DESC>
+                            <L-2 L="EN">Port Pin selection for Slave SCLK</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>SCLK0A_PORT20_PIN11</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>SCLK0A_PORT20_PIN11</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                      </PARAMETERS>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="DCE:d4d23ce0-5d7f-6675-8216-3ae14eb45983">
+                      <SHORT-NAME>SpiHwDmaConfiguration</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FOR-ALL">SpiHwDmaConfiguration</L-4>
+                      </LONG-NAME>
+                      <DESC>
+                        <L-2 L="EN">Spi DMA Configuration For QSPI node</L-2>
+                      </DESC>
+                      <REFERENCES>
+                        <ECUC-REFERENCE-DEF UUID="083bfb84-a97f-421f-ad57-5bee661ea350">
+                          <SHORT-NAME>SpiHwDmaChannelReceptionRef</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">This parameter refer DMA channel configuration in MCU. Used for SPI reception.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AURIX/Mcu/McuModuleConfiguration/DmaConfiguration/DmaChannel</DESTINATION-REF>
+                        </ECUC-REFERENCE-DEF>
+                        <ECUC-REFERENCE-DEF UUID="d27b20e2-b898-4d7a-bb7c-3833cb3dfbe5">
+                          <SHORT-NAME>SpiHwDmaChannelTransmissionRef</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">This parameter refer DMA channel configuration in MCU. Used for SPI transmission.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AURIX/Mcu/McuModuleConfiguration/DmaConfiguration/DmaChannel</DESTINATION-REF>
+                        </ECUC-REFERENCE-DEF>
+                      </REFERENCES>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                  </SUB-CONTAINERS>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+                <ECUC-PARAM-CONF-CONTAINER-DEF UUID="593a4a79-89c3-431a-a7bd-a01b06b8f104">
+                  <SHORT-NAME>SpiHwConfigurationQspi1</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FOR-ALL">SpiHwConfigurationQspi1</L-4>
+                  </LONG-NAME>
+                  <DESC>
+                    <L-2 L="EN">Container for the SpiHwConfigurationQspi1</L-2>
+                  </DESC>
+                  <SUB-CONTAINERS>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="DCE:33eb03cf-2df6-6c54-b867-396d3df4c2a2">
+                      <SHORT-NAME>SpiClockConfiguration</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FOR-ALL">SpiClockConfiguration</L-4>
+                      </LONG-NAME>
+                      <DESC>
+                        <L-2 L="EN">Spi Clock Configuration For QSPI node</L-2>
+                      </DESC>
+                      <PARAMETERS>
+                        <ECUC-BOOLEAN-PARAM-DEF UUID="20398301-18ac-4596-83ef-b364ac76a8cc">
+                          <SHORT-NAME>SpiSleepEnable</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">To control QSPIx sleep mode</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                        </ECUC-BOOLEAN-PARAM-DEF>
+                      </PARAMETERS>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="DCE:1da9ffda-ce19-6053-b203-c7cc46514111">
+                      <SHORT-NAME>SpiHwPinConfiguration</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FOR-ALL">SpiHwPinConfiguration</L-4>
+                      </LONG-NAME>
+                      <DESC>
+                        <L-2 L="EN">Spi HW Pin Configuration For QSPI node</L-2>
+                      </DESC>
+                      <PARAMETERS>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="8cb2b502-2224-4dd2-917b-f73778ef1851">
+                          <SHORT-NAME>SpiHWPinMISO</SHORT-NAME>
+                          <LONG-NAME>
+                            <L-4 L="FOR-ALL">MRSTA_PORT6_PIN5: MRSTA_PORT10_PIN0MRSTA_PORT10_PIN0</L-4>
+                          </LONG-NAME>
+                          <DESC>
+                            <L-2 L="EN">Port Pin selection for MISO</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>MRST1B_PORT11_PIN3</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>MRST1B_PORT11_PIN3</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="8cb2b502-2224-4dd2-917b-f73778feefee">
+                          <SHORT-NAME>SPISlaveHwPinMOSI</SHORT-NAME>
+                          <LONG-NAME>
+                            <L-4 L="FOR-ALL">MTSR1A_PORT10_PIN3: MTSR1A_PORT10_PIN3</L-4>
+                          </LONG-NAME>
+                          <DESC>
+                            <L-2 L="EN">Port Pin selection for Slave MTSR</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>MTSR1B_PORT11_PIN9</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>MTSR1C_PORT11_PIN8</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>MTSR1B_PORT11_PIN9</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="8cb2b502-2224-4dd2-917b-f7377811fefe">
+                          <SHORT-NAME>SPISlaveHwPinSCLK</SHORT-NAME>
+                          <LONG-NAME>
+                            <L-4 L="FOR-ALL">SCLK1A_PORT10_PIN2: SCLK1A_PORT10_PIN2</L-4>
+                          </LONG-NAME>
+                          <DESC>
+                            <L-2 L="EN">Port Pin selection for Slave SCLK</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>SCLK1B_PORT11_PIN6</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>SCLK1A_PORT10_PIN2</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>SCLK1B_PORT11_PIN6</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                      </PARAMETERS>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="DCE:d4d23ce0-5d7f-6675-8216-3ae14eb45984">
+                      <SHORT-NAME>SpiHwDmaConfiguration</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FOR-ALL">SpiHwDmaConfiguration</L-4>
+                      </LONG-NAME>
+                      <DESC>
+                        <L-2 L="EN">Spi DMA Configuration For QSPI node</L-2>
+                      </DESC>
+                      <REFERENCES>
+                        <ECUC-REFERENCE-DEF UUID="083bfb84-a97f-421f-ad57-5bee661ea351">
+                          <SHORT-NAME>SpiHwDmaChannelReceptionRef</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">This parameter refer DMA channel configuration in MCU. Used for SPI reception.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AURIX/Mcu/McuModuleConfiguration/DmaConfiguration/DmaChannel</DESTINATION-REF>
+                        </ECUC-REFERENCE-DEF>
+                        <ECUC-REFERENCE-DEF UUID="593a4a79-89c3-431a-a7cd-a01b06b8f104">
+                          <SHORT-NAME>SpiHwDmaChannelTransmissionRef</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">This parameter refer DMA channel configuration in MCU. Used for SPI transmission.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AURIX/Mcu/McuModuleConfiguration/DmaConfiguration/DmaChannel</DESTINATION-REF>
+                        </ECUC-REFERENCE-DEF>
+                      </REFERENCES>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                  </SUB-CONTAINERS>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+                <ECUC-PARAM-CONF-CONTAINER-DEF UUID="593a4a79-89c3-431a-a7cd-a01b06b8f101">
+                  <SHORT-NAME>SpiHwConfigurationQspi2</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FOR-ALL">SpiHwConfigurationQspi2</L-4>
+                  </LONG-NAME>
+                  <DESC>
+                    <L-2 L="EN">Container for the SpiHwConfigurationQspi2</L-2>
+                  </DESC>
+                  <SUB-CONTAINERS>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="DCE:33eb03cf-2df6-6c54-b867-396d7df4c2a1">
+                      <SHORT-NAME>SpiClockConfiguration</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FOR-ALL">SpiClockConfiguration</L-4>
+                      </LONG-NAME>
+                      <DESC>
+                        <L-2 L="EN">Spi Clock Configuration For QSPI node</L-2>
+                      </DESC>
+                      <PARAMETERS>
+                        <ECUC-BOOLEAN-PARAM-DEF UUID="20398341-18ac-4596-83ef-b364ac76a8cc">
+                          <SHORT-NAME>SpiSleepEnable</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">To control QSPIx sleep mode</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                        </ECUC-BOOLEAN-PARAM-DEF>
+                      </PARAMETERS>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="DCE:1da9ffda-ce19-6053-b223-c7cc4651411e">
+                      <SHORT-NAME>SpiHwPinConfiguration</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FOR-ALL">SpiHwPinConfiguration</L-4>
+                      </LONG-NAME>
+                      <DESC>
+                        <L-2 L="EN">Spi HW Pin Configuration For QSPI node</L-2>
+                      </DESC>
+                      <PARAMETERS>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="8cb2b502-2224-4dd2-917b-f73678ef1854">
+                          <SHORT-NAME>SpiHWPinMISO</SHORT-NAME>
+                          <LONG-NAME>
+                            <L-4 L="FOR-ALL">MRSTA_PORT6_PIN5: MRSTA_PORT10_PIN0MRSTA_PORT10_PIN0</L-4>
+                          </LONG-NAME>
+                          <DESC>
+                            <L-2 L="EN">Port Pin selection for MISO</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>MRST2E_PORT15_PIN2</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>MRST2E_PORT15_PIN2</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="8cb2b502-2224-4dd2-917b-f73778f1134e">
+                          <SHORT-NAME>SPISlaveHwPinMOSI</SHORT-NAME>
+                          <LONG-NAME>
+                            <L-4 L="FOR-ALL">MTSR2A_PORT15_PIN5: MTSR2A_PORT15_PIN5</L-4>
+                          </LONG-NAME>
+                          <DESC>
+                            <L-2 L="EN">Port Pin selection for Slave MTSR</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>MTSR2A_PORT15_PIN5</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>MTSR2A_PORT15_PIN5</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="8cb2b502-2224-4dd2-917b-f7377811f33e">
+                          <SHORT-NAME>SPISlaveHwPinSCLK</SHORT-NAME>
+                          <LONG-NAME>
+                            <L-4 L="FOR-ALL">SCLK2A_PORT15_PIN3: SCLK2A_PORT15_PIN3</L-4>
+                          </LONG-NAME>
+                          <DESC>
+                            <L-2 L="EN">Port Pin selection for Slave SCLK</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>SCLK2A_PORT15_PIN3</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>SCLK2A_PORT15_PIN3</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                      </PARAMETERS>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="DCE:d4d23ce0-5d7f-6675-8216-3ae14ee45983">
+                      <SHORT-NAME>SpiHwDmaConfiguration</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FOR-ALL">SpiHwDmaConfiguration</L-4>
+                      </LONG-NAME>
+                      <DESC>
+                        <L-2 L="EN">Spi DMA Configuration For QSPI node</L-2>
+                      </DESC>
+                      <REFERENCES>
+                        <ECUC-REFERENCE-DEF UUID="083bfb84-a97f-421f-ad57-5bee661aa350">
+                          <SHORT-NAME>SpiHwDmaChannelReceptionRef</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">This parameter refer DMA channel configuration in MCU. Used for SPI reception.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AURIX/Mcu/McuModuleConfiguration/DmaConfiguration/DmaChannel</DESTINATION-REF>
+                        </ECUC-REFERENCE-DEF>
+                        <ECUC-REFERENCE-DEF UUID="d27b20e2-b898-4d7a-ba7c-3833cb3dfbe5">
+                          <SHORT-NAME>SpiHwDmaChannelTransmissionRef</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">This parameter refer DMA channel configuration in MCU. Used for SPI transmission.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AURIX/Mcu/McuModuleConfiguration/DmaConfiguration/DmaChannel</DESTINATION-REF>
+                        </ECUC-REFERENCE-DEF>
+                      </REFERENCES>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                  </SUB-CONTAINERS>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+                <ECUC-PARAM-CONF-CONTAINER-DEF UUID="593a4a79-89c3-431a-a7cd-a11b06b8f104">
+                  <SHORT-NAME>SpiHwConfigurationQspi3</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FOR-ALL">SpiHwConfigurationQspi3</L-4>
+                  </LONG-NAME>
+                  <DESC>
+                    <L-2 L="EN">Container for the SpiHwConfigurationQspi3</L-2>
+                  </DESC>
+                  <SUB-CONTAINERS>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="DCE:33eb03cf-2df6-6c54-b967-396d7df4c2a1">
+                      <SHORT-NAME>SpiClockConfiguration</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FOR-ALL">SpiClockConfiguration</L-4>
+                      </LONG-NAME>
+                      <DESC>
+                        <L-2 L="EN">Spi Clock Configuration For QSPI node</L-2>
+                      </DESC>
+                      <PARAMETERS>
+                        <ECUC-BOOLEAN-PARAM-DEF UUID="20198341-18ac-4596-83ef-b334ac76a8cc">
+                          <SHORT-NAME>SpiSleepEnable</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">To control QSPIx sleep mode</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                        </ECUC-BOOLEAN-PARAM-DEF>
+                      </PARAMETERS>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="DCE:1da9feda-ce19-6053-b223-c7cc4651411e">
+                      <SHORT-NAME>SpiHwPinConfiguration</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FOR-ALL">SpiHwPinConfiguration</L-4>
+                      </LONG-NAME>
+                      <DESC>
+                        <L-2 L="EN">Spi HW Pin Configuration For QSPI node</L-2>
+                      </DESC>
+                      <PARAMETERS>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="8cb2a502-2224-4dd2-917b-f73678ef1854">
+                          <SHORT-NAME>SpiHWPinMISO</SHORT-NAME>
+                          <LONG-NAME>
+                            <L-4 L="FOR-ALL">MRSTA_PORT6_PIN5: MRSTA_PORT10_PIN0MRSTA_PORT10_PIN0</L-4>
+                          </LONG-NAME>
+                          <DESC>
+                            <L-2 L="EN">Port Pin selection for MISO</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>MRST3A_PORT02_PIN5</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>MRST3A_PORT02_PIN5</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="8cb2b502-2224-4dd2-917b-f73778f22fef">
+                          <SHORT-NAME>SPISlaveHwPinMOSI</SHORT-NAME>
+                          <LONG-NAME>
+                            <L-4 L="FOR-ALL">MTSR3A_PORT2_PIN6: MTSR3A_PORT2_PIN6</L-4>
+                          </LONG-NAME>
+                          <DESC>
+                            <L-2 L="EN">Port Pin selection for Slave MTSR</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>MTSR3A_PORT2_PIN6</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>MTSR3A_PORT2_PIN6</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>MTSR3B_PORT10_PIN6</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>MTSR3C_PORT1_PIN6</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="8cb2b502-2224-4dd2-917b-f7377811f22f">
+                          <SHORT-NAME>SPISlaveHwPinSCLK</SHORT-NAME>
+                          <LONG-NAME>
+                            <L-4 L="FOR-ALL">SCLK3A_PORT2_PIN7: SCLK3A_PORT2_PIN7</L-4>
+                          </LONG-NAME>
+                          <DESC>
+                            <L-2 L="EN">Port Pin selection for Slave SCLK</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>SCLK3A_PORT2_PIN7</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>SCLK3A_PORT2_PIN7</SHORT-NAME>
+                              <ORIGIN>INFINEON_AURIX</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                      </PARAMETERS>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="DCE:d4d23ce0-5d7f-6575-8216-3ae14ee45983">
+                      <SHORT-NAME>SpiHwDmaConfiguration</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FOR-ALL">SpiHwDmaConfiguration</L-4>
+                      </LONG-NAME>
+                      <DESC>
+                        <L-2 L="EN">Spi DMA Configuration For QSPI node</L-2>
+                      </DESC>
+                      <REFERENCES>
+                        <ECUC-REFERENCE-DEF UUID="183bfb84-a97f-421f-ad57-5bee661aa350">
+                          <SHORT-NAME>SpiHwDmaChannelReceptionRef</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">This parameter refer DMA channel configuration in MCU. Used for SPI reception.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AURIX/Mcu/McuModuleConfiguration/DmaConfiguration/DmaChannel</DESTINATION-REF>
+                        </ECUC-REFERENCE-DEF>
+                        <ECUC-REFERENCE-DEF UUID="d27420e2-b898-4d7a-ba7c-3833cb3dfbe5">
+                          <SHORT-NAME>SpiHwDmaChannelTransmissionRef</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">This parameter refer DMA channel configuration in MCU. Used for SPI transmission.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AURIX/Mcu/McuModuleConfiguration/DmaConfiguration/DmaChannel</DESTINATION-REF>
+                        </ECUC-REFERENCE-DEF>
+                      </REFERENCES>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                  </SUB-CONTAINERS>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="6985f177-fe69-4ba3-8e4e-5be27814177b">
+              <SHORT-NAME>SpiPublishedInformation</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">This container contains the published information of the Spi driver.</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-INTEGER-PARAM-DEF UUID="f5bfe0aa-bdd7-43d5-8427-c23bcb39b44a">
+                  <SHORT-NAME>SpiMaxHwUnit</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">The parameter represents Maximum supported Spi HW units.</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>4</DEFAULT-VALUE>
+                </ECUC-INTEGER-PARAM-DEF>
+              </PARAMETERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="492f8482-3e2c-4bf1-b27f-01fd7ac35788">
+              <SHORT-NAME>CommonPublishedInformation</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">Common container, aggregated by all modules. It contains published information about vendor and versions.</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-INTEGER-PARAM-DEF UUID="bd0a8d38-4d8c-4ee9-88fe-1166b258bb8a">
+                  <SHORT-NAME>ArMajorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Major version number of AUTOSAR specification on which the appropriate implementation is based on.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>3</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="73f87c7f-e230-4178-bff0-eb2704aae656">
+                  <SHORT-NAME>ArMinorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Minor version number of AUTOSAR specification on which the appropriate implementation is based on.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>2</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="2380135d-6778-417a-a34b-e10017d4dd54">
+                  <SHORT-NAME>ArPatchVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Patch level version number of AUTOSAR specification on which the appropriate implementation is based on.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="fca015e3-5f28-4cbe-8949-8f4b87d86827">
+                  <SHORT-NAME>SwMajorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Major version number of the vendor specific implementation of the module. The numbering is vendor specific.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>4</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="14ab81e0-3d80-43dc-8b92-247e5a542df9">
+                  <SHORT-NAME>SwMinorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Minor version number of the vendor specific implementation of the module. The numbering is vendor specific.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>7</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="32e37bfd-18b6-41d1-9248-a81dbe0fe4c5">
+                  <SHORT-NAME>SwPatchVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="3b407478-6902-4f80-b7cf-f33b0854e638">
+                  <SHORT-NAME>ModuleId</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Module ID of this module from Module List</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>83</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="7d650b2d-4adb-41f0-a68e-5f0c416501d1">
+                  <SHORT-NAME>VendorId</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>17</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-STRING-PARAM-DEF UUID="ad363b41-e945-4717-b12f-c2f800ef138e">
+                  <SHORT-NAME>VendorApiInfix</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">In driver modules which can be instantiated several times on a single ECU, BSW00347 requires that the name of APIs is extended by the VendorId and a vendor specific name. 
+              This parameter is used to specify the vendor specific name. In total, the implementation specific name is generated as follows:
+              &lt;ModuleName&gt;_&gt;VendorId&gt;_&lt;VendorApiInfix&gt;&lt;Api name from SWS&gt;.
+              
+              E.g.  assuming that the VendorId of the implementor is 123 and the implementer chose a VendorApiInfix of &quot;v11r456&quot; a api name Can_Write defined in the SWS will translate to Can_123_v11r456Write. 
+              
+              This parameter is mandatory for all modules with upper multiplicity &gt; 1. It shall not be used for modules with upper multiplicity =1.</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <ECUC-STRING-PARAM-DEF-VARIANTS>
+                    <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                      <DEFAULT-VALUE></DEFAULT-VALUE>
+                    </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                  </ECUC-STRING-PARAM-DEF-VARIANTS>
+                </ECUC-STRING-PARAM-DEF>
+                <ECUC-STRING-PARAM-DEF UUID="3b407478-6902-4f40-b7cf-f33b0854e638">
+                  <SHORT-NAME>Release</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Aurix derivative used for thr implementation</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <ECUC-STRING-PARAM-DEF-VARIANTS>
+                    <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                      <DEFAULT-VALUE>_TRICORE_TC233</DEFAULT-VALUE>
+                    </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                  </ECUC-STRING-PARAM-DEF-VARIANTS>
+                </ECUC-STRING-PARAM-DEF>
+              </PARAMETERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+          </CONTAINERS>
+        </ECUC-MODULE-DEF>
+      </ELEMENTS>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

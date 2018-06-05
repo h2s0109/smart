@@ -1,0 +1,927 @@
+<?xml version='1.0'?>
+<!--
+/******************************************************************************
+**                                                                           **
+** Copyright (C) Infineon Technologies (2013)                                **
+**                                                                           **
+** All rights reserved.                                                      **
+**                                                                           **
+** This document contains proprietary information belonging to Infineon      **
+** Technologies. Passing on and copying of this document, and communication  **
+** of its contents is not permitted without prior written authorization.     **
+**                                                                           **
+*******************************************************************************
+**                                                                           **
+**  $FILENAME   : Fee.xdm $                                                  **
+**                                                                           **
+**  $CC VERSION : \main\38 $                                                 **
+**                                                                           **
+**  $DATE       : 2016-05-27 $                                               **
+**                                                                           **
+**  AUTHOR      : DL-AUTOSAR-Engineering                                     **
+**                                                                           **
+**  VENDOR      : Infineon Technologies                                      **
+**                                                                           **
+**  DESCRIPTION  : XML Data Model for FEE driver                             **
+**                                                                           **
+**  MAY BE CHANGED BY USER [yes/no]: No                                      **
+**                                                                           **
+******************************************************************************/
+/*******************************************************************************
+   Traceability:
+                  [cover parentID=DS_NAS_FEE_PR655,DS_NAS_FEE_PR712,
+                   DS_AS_FEE167,DS_AS_FEE103,DS_NAS_FEE_PR647,DS_NAS_FEE_PR643,
+                   DS_NAS_FEE_PR122,DS_AS_FEE,DS_AS_FEE111_Conf,
+                   DS_AS_FEE011_FEE062,DS_AS_FEE152_Conf,DS_AS403_FEE112_Conf,
+                   DS_AS403_FEE113_Conf,DS_AS_FEE114_Conf,DS_AS_FEE119_Conf,
+                   DS_AS_FEE115_Conf,DS_AS_FEE116_Conf,DS_AS_FEE040_Conf,
+                   DS_NAS_FEE_PR483,DS_AS_FEE150_Conf,DS_AS_FEE006,
+                   DS_AS_FEE148_Conf,DS_AS_FEE151_Conf,DS_AS_FEE110_Conf,
+                   DS_AS_FEE149_Conf,DS_AS_FEE043_Conf,DS_AS_FEE117_Conf,
+                   DS_AS_FEE070_Conf,DS_AS_FEE118_Conf,DS_NAS_FEE_PR228_1,
+                   DS_NAS_FEE_PR228_2,DS_NAS_FEE_PR228_3,DS_NAS_FEE_PR228_4,
+                   DS_NAS_FEE_PR228_5,DS_NAS_FEE_PR1054,DS_NAS_FEE_PR228_6,
+                   DS_NAS_FEE_PR228_8,DS_NAS_FEE_PR228_9,DS_NAS_FEE_PR228_10,
+                   DS_NAS_FEE_PR228_11,DS_NAS_FEE_PR228_12,DS_NAS_FEE_PR228_13,
+                   DS_AS403_FEE001_PI,DS_NAS_FEE_PR714,DS_NAS_FEE_PR719,
+                   DS_NAS_FEE_PR919,DS_AS_FEE_PR5167,SAS_NAS_FEE_PR69,
+                   SAS_NAS_FEE_PR123,SAS_NAS_FEE_PR656,SAS_NAS_FEE_PR725,
+                   SAS_NAS_FEE_PR64,SAS_NAS_FEE_PR77,SAS_NAS_FEE_PR227,
+                   SAS_NAS_FEE_PR640,SAS_NAS_FEE_PR667,SAS_NAS_FEE_PR646,
+                   SAS_NAS_FEE_PR621,SAS_NAS_FEE_PR65,SAS_NAS_FEE_PR1649]
+                  [/cover]
+*******************************************************************************/
+-->
+<datamodel version="3.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/08/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/08/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar" 
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd" 
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd" >
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="AURIX" type="AR-PACKAGE">
+        <a:a name="UUID" value="82bdf58f-0307-66f1-a324-445ce894dd23"/>
+        <d:lst type="ELEMENTS">
+          <d:chc name="Fee" type="AR-ELEMENT" value="MODULE-DEF">
+            <v:ctr type="MODULE-DEF">
+              <a:a name="ADMIN-DATA" type="ADMIN-DATA">
+                <ad:ADMIN-DATA>
+                  <ad:DOC-REVISIONS>
+                    <ad:DOC-REVISION>
+                      <ad:REVISION-LABEL>4.2.0</ad:REVISION-LABEL>
+                      <ad:ISSUED-BY>AUTOSAR</ad:ISSUED-BY>
+                      <ad:DATE>2011-11-09</ad:DATE>
+                    </ad:DOC-REVISION>
+                  </ad:DOC-REVISIONS>
+                </ad:ADMIN-DATA>
+              </a:a>
+              <a:a name="DESC" 
+                   value="EN: Configuration of the Fee (Flash EEPROM Emulation) module."/>
+              <a:a name="RELEASE" value="asc:4.0"/>            
+              <a:a name="UUID" value="ECUC:25e46613-7e63-4604-a81c-33867a9d91f8"/>
+              <d:ref type="REFINED_MODULE_DEF" value="ASPath:/AUTOSAR/EcucDefs/Fee"/>
+              <v:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION">
+			  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                     type="IMPLEMENTATIONCONFIGCLASS">
+                   <icc:v class="PreCompile">VariantPreCompile</icc:v>
+              </a:a>
+                <a:a name="LABEL" value="Config Variant"/>
+                <a:da name="DEFAULT" value="VariantPreCompile"/>
+                <a:da name="RANGE" value="VariantPreCompile"/>
+              </v:var>
+              <v:lst name="FeeBlockConfiguration" type="MAP">
+                <a:da name="MAX" type="XPath" expr="ecu:get('Fee.NumberOfBlocks')"/>
+                <a:da name="MIN" value="1"/>
+                <v:ctr name="FeeBlockConfiguration" type="IDENTIFIABLE">
+                  <a:a name="DESC" 
+                       value="EN: Configuration of block specific parameters for the Flash EEPROM Emulation module."/>
+                  <a:a name="UUID" value="ECUC:3e3f6a41-1274-4d00-b94d-504e69110cfb"/>
+                  <v:var name="FeeBlockNumber" type="INTEGER">
+                    <a:a name="DESC" 
+                         value="EN: This parameter defines the block number of a particular logical block Block identifier (handle). 0x0000 and 0xFFFF shall not be used for block numbers. "/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                    <a:a name="UUID" 
+                         value="ECUC:0a407883-2fc6-4823-a26e-ea079aa7e730"/>
+                    <a:da name="DEFAULT" value="1"/>
+                    <a:da name="INVALID" type="Range">
+                      <a:tst expr="&lt;=65534"/>
+                      <a:tst expr="&gt;=1"/>
+                    </a:da>
+                  </v:var>
+                  <v:var name="FeeBlockSize" type="INTEGER">
+                    <a:a name="DESC" 
+                         value="EN: This parameter defines the block size of a particular logical block in bytes"/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:a name="UUID" 
+                         value="ECUC:24bf18c3-8512-4334-8585-6c7937444d1e"/>
+                    <a:da name="DEFAULT" value="7"/>
+                    <a:da name="INVALID" type="Range">
+                      <a:tst expr="&lt;=ecu:get('Fee.BlockSize')"/>
+                      <a:tst expr="&gt;=1"/>
+                    </a:da>
+                  </v:var>
+                  <v:var name="FeeImmediateData" type="BOOLEAN">
+                    <a:a name="DESC" 
+                         value="EN: This parameter defines the type of a particular logical block. TRUE: Immediate data block, FALSE: Normal data block"/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:a name="UUID" 
+                         value="ECUC:b1116e04-53cd-44a7-8056-f43434aa82c9"/>
+                    <a:da name="DEFAULT" value="false"/>
+                  </v:var>
+                  <v:var name="FeeNumberOfWriteCycles" type="INTEGER">
+                    <a:a name="DESC" 
+                         value="EN: This parameter defines the block cycle count of a particular logical block. It denotes the maximum number of times a particular logical block can be written, invalidated.
+However , the value 0 denotes that this block is not bound by any limit and can be written as many times as desired by the user"/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:a name="UUID" 
+                         value="ECUC:b55e41d9-f6b5-4613-937e-2b83fe37a655"/>
+                    <a:da name="DEFAULT" value="0"/>
+                    <a:da name="INVALID" type="Range">
+                      <a:tst expr="&lt;=16777215"/>
+                      <a:tst expr="&gt;=0"/>
+                    </a:da>
+                  </v:var>
+                  <v:ref name="FeeDeviceIndex" type="SYMBOLIC-NAME-REFERENCE">
+                    <a:a name="DESC" 
+                         value="EN: Device index (handle). Range: 0 .. 254 (0xFF reserved for broadcast call to GetStatus function). This information is needed by the NVRAM manager respectively the Memory Abstraction Interface to address a certain logical block."/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    <a:a name="UUID" 
+                         value="ECUC:f3bfa469-e131-4f58-bb89-ca7fc4548d26"/>
+                    <a:da name="REF" 
+                          value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Fls/FlsGeneral"/>
+                  </v:ref>
+                </v:ctr>
+              </v:lst>
+              <v:ctr name="FeeGeneral" type="IDENTIFIABLE">
+                <a:a name="DESC" 
+                     value="EN: Container for general parameters. These parameters are not specific to a block."/>
+                <a:a name="UUID" value="ECUC:40da9e07-9e9a-4777-85e7-a111b37d8454"/>
+                <v:var name="FeeDevErrorDetect" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="EN: Pre-processor switch to enable and disable development error detection."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="ECUC:f262f806-4d29-4ef6-b4c1-6167282e1f22"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="FeeIndex" type="INTEGER">
+                  <a:a name="DESC" 
+                       value="EN: Specifies the InstanceId of this module instance. Since only one instance is present, it is preconfigured (fixed) to Id 0."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="ECUC:0de3db3d-02d0-4bbd-a4df-8e82cfa0ec49"/>
+                  <a:da name="DEFAULT" value="0"/>
+                  <a:da name="EDITABLE"  value="false"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=254"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                </v:var>
+                <v:lst name="FeeNvmJobEndNotification">
+                  <a:da name="MAX" value="1"/>
+                  <v:var name="FeeNvmJobEndNotification" type="FUNCTION-NAME">
+                    <a:a name="DESC" 
+                       value="EN: This parameter is the Job End notification function name and is called if the job is successfully completed. The user must define a function by this name. If no notification is required this parameter must be configured as NULL_PTR"/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:a name="UUID"  value="ECUC:3b4f73c8-354a-4d0e-86e6-0e2d07ba5591"/>
+                  <a:da name="DEFAULT" value="NULL_PTR"/>
+                  </v:var>
+                </v:lst>
+                <v:lst name="FeeNvmJobErrorNotification">
+                  <a:da name="MAX" value="1"/>
+                  <v:var name="FeeNvmJobErrorNotification" type="FUNCTION-NAME">
+                    <a:a name="DESC" 
+                       value="EN: This parameter is the Job Error notification function name and is called if the job is NOT completed successfully. The user must define a function by this name. If no notification is required this parameter must be configured as NULL_PTR"/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:a name="UUID" value="ECUC:9a658f03-834b-4dd3-add7-58b968076e7e"/>
+                  <a:da name="DEFAULT" value="NULL_PTR"/>
+                  </v:var>
+                </v:lst>
+                <v:var name="FeePollingMode" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="EN: Switch to enable/disable Polling Mode. As callback functions are always provided to the FLS module, this parameter is pre-configured (fixed) as FALSE."/>
+                  <a:da name="TOOLTIP" value=" NOT SUPPORTED: FeePollingMode is always disabled, as callback functions are always provided to the FLS module."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="ECUC:cbbd2e13-d937-4e0f-8546-6ea5cc3b7eec"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="EDITABLE" value="false"/>
+                </v:var>
+                <v:var name="FeeSetModeSupported" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="EN: Pre-processor switch to enable / disable the API to set FEE mode. TRUE: Fee_SetMode API enabled. FALSE: Fee_SetMode API disabled. Note: FeeSetModeSupported can be TRUE only if FlsSetModeApi is TRUE."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="ECUC:f064e794-edd8-4288-b518-84c07839383e"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="FeeVersionInfoApi" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="EN: Pre-processor switch to enable / disable the API to read out the module's version information. TRUE: Version info API enabled. FALSE: Version info API disabled."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="ECUC:e66783a5-0bb8-4060-83ed-985d387af3a6"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="FeeVirtualPageSize" type="INTEGER">
+                  <a:a name="DESC" 
+                       value="EN: The size in bytes to which logical blocks will be aligned. This AUTOSAR requirement is violated by the implementation.
+Due to the usage of double-sector algorithm with implementation specific block management pages for each of the logical blocks, blocks will not be aligned as per the relation between FeeBlockNumber and FeeVirtualPageSize specified by AUTOSAR."/>
+                  <a:da name="TOOLTIP" value="The value of this parameter is fixed to 8 i.e., the page size of DF_EEPROM."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="ECUC:cfc06841-4637-4082-9f2e-57de66655c60"/>
+                  <a:da name="DEFAULT" value="8"/>
+                  <a:da name="EDITABLE" value="false"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=8"/>
+                    <a:tst expr="&gt;=8"/>
+                  </a:da>
+                </v:var>
+                <v:var name="FeeDebugSupport" type="BOOLEAN">
+                  <a:a name="DESC" value="EN: Switches the debug support ON or OFF."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                    type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="1b785e91-339b-4171-b872-a3d8c2be4bcd"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="FeePublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC" 
+                     value="EN: Additional published parameters not covered by CommonPublishedInformation container.  Note that these parameters do not have any configuration class setting, since they are published information."/>
+                <a:a name="UUID" value="ECUC:c99d74b3-e634-4c09-b512-87583d22c24a"/>
+                <v:var name="FeeBlockOverhead" type="INTEGER_LABEL">
+                  <a:a name="DESC" 
+                       value="EN: Management overhead per logical block in bytes. The actual overhead per block is calculated as:
+(i) If ((FeeBlockSize % 7) == 0): FeeBlockOverhead = ((FeeBlockSize / 7) * 8) + 16 - FeeBlockSize.
+(ii)If ((FeeBlockSize % 7) != 0): FeeBlockOverhead = (((FeeBlockSize / 7) + 1) * 8) + 16 - FeeBlockSize.
+Note: Integer arithmetic is used in the above calculation."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="ECUC:05f4fdfa-6b05-4960-973e-f62746494b3e"/>
+                  <a:da name="DEFAULT" value="17"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=17"/>
+                    <a:tst expr="&gt;=17"/>
+                  </a:da>
+                </v:var>
+                <v:var name="FeeMaximumBlockingTime" type="FLOAT_LABEL">
+                  <a:a name="DESC" 
+                       value="EN: The maximum time (in ms) the FEE module's API routines shall be blocked (delayed) by internal operations. 
+Note: Following scenarios may result in a blocking time exceeding the value specified:
+Here, job execution delay is mentioned and not the blocking time of the API (i.e., API will not be blocked without returning):
+(i)  During initialization, for the configuration FEE_GC_RESTART_WRITE: For the first FEE job after Fee_Init, time would be consumed for reading the state pages as well as for updating the cache table. A write request will be pending until this time.
+(ii) During GC copy state: Start of the immediate block's write operation will be delayed until the current block being copied is completely copied. So, the worst case depends upon the maximum block size configured.
+(iii)If erase suspend feature is not enabled then the user request's execution will be delayed until the FEE sector is erased."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="ECUC:4c8210b6-42e3-416f-a8cc-f2c6b95f3132"/>
+                  <a:da name="DEFAULT" value="10.0"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=1000"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                </v:var>
+                <v:var name="FeePageOverhead" type="INTEGER_LABEL">
+                  <a:a name="DESC" 
+                       value="EN: Block management overhead per page in bytes.
+Note: This value is applicable only for the pages containing logical block data bytes (i.e., it is not applicable for the pages which contain only implementation specific management data)."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="ECUC:ff042c2b-4ea3-4cc9-b210-6b4956da10da"/>
+                  <a:da name="DEFAULT" value="1"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=1"/>
+                    <a:tst expr="&gt;=1"/>
+                  </a:da>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="FeeIfxSpecificConfig" type="IDENTIFIABLE">
+                <a:a name="DESC" value="This container has IFX specific parameters required for the working of FEE"/>
+                <a:a name="UUID" 
+                     value="02f948d0-42c6-6e44-af25-89cd4d729345"/>
+                <v:var name="FeeThresholdValue" type="INTEGER">
+                  <a:a name="DESC" 
+                       value="EN: This parameter describes the threshold value (in bytes from the end of FEE sector) for triggering garbage collection/sector change."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="fb7ccac3-78f4-49ae-92ec-8c3332ee39f2"/>
+                  <a:da name="DEFAULT" value="200"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=ecu:get('Fee.ThresholdSize')"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                </v:var>
+                <v:var name="FeeMaxBlockCount" type="INTEGER">
+                  <a:a name="DESC" 
+                       value="EN: This configuration parameter specifies the total number of blocks throughout all configurations; Note that the blocks which are shared across configurations are counted only once. 
+This parameter decides the cache table size at pre-compile time. The cache table holds the information of both configured and un-configured blocks.
+Configuration of this parameter shall be carefully done. Higher value implies higher RAM area consumption for cache table. Lower value would result in loss of un-configured block(s) during GC (if FeeUnConfigBlkOverflowHandle is FEE_CONTINUE) or illegal state of FEE (if FeeUnConfigBlkOverflowHandle is FEE_STOP_AT_GC).
+
+Example 1: Configuration sets having mutually exclusive blocks:
+Configuration A: Number of blocks configured is 10.
+Configuration B: Number of blocks configured is 25.
+Then, FeeMaxBlockCount = 35.
+
+Example 2: 5 blocks are shared/used by both Configuration A and Configuration B:
+Configuration A: Number of blocks configured is 10.
+Configuration B: Number of blocks configured is 25.
+Then, FeeMaxBlockCount = 30 (i.e., shared blocks are counted only once)."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="4a2531c3-429a-4527-8cd6-4fbe7bc6c4e1"/>
+                  <a:da name="DEFAULT" value="1"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=ecu:get('Fee.NumberOfBlocks')" true="FeeMaxBlockCount exceeded the allowed limit"/>
+                    <a:tst expr="&gt;=1" true="FeeMaxBlockCount should not be less than 1"/>
+                  </a:da>
+                </v:var>
+                <v:var name="FeeUseEraseSuspend" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="EN: This parameter specifies the usage of the erase suspend feature provided by the DFLASH hardware.
+If it is configured as TRUE, then the read/write requests from the user are serviced during the erase operation of the GC. 
+If it is configured as FALSE, then the user request is kept pending till the erase operation is completed.
+Note: This parameter can be true only if FlsUseEraseSuspend is true."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a4e7e16f-97ac-4db0-aeea-76aed97f9998"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="FeeStateVarStructure" type="STRING">
+                  <a:a name="DESC" 
+                       value="EN: This parameter is the name of the structure, which would contain all the global variables of FEE. Using this user can allocate the space for the variables at his behest to avoid any possible linking problems."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="51030966-6cef-4965-98c6-09d2163e46ff"/>
+                  <a:da name="DEFAULT" value="Fee_StateVar"/>
+                </v:var>
+                <v:var name="FeeUnConfigBlock" type="ENUMERATION">
+                  <a:a name="DESC" 
+                       value="EN: This parameter is used to configure if unconfigured blocks should be copied or not during GC operation"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="87cc1eb8-09f0-401c-92ff-abb71996004d"/>
+                  <a:da name="DEFAULT" value="FEE_UNCONFIG_BLOCK_IGNORE"/>
+                  <a:da name="RANGE">
+                    <a:v>FEE_UNCONFIG_BLOCK_IGNORE</a:v>
+                    <a:v>FEE_UNCONFIG_BLOCK_KEEP</a:v>
+                  </a:da>
+                </v:var>
+                <v:var name="FeeUnConfigBlkOverflowHandle" type="ENUMERATION">
+                  <a:a name="DESC" 
+                       value="EN: This parameter is used to configure the behavior of FEE upon detection of overflow of number of unconfigured blocks.
+FEE_CONTINUE: Un-configured blocks which could not be accommodated in the cache table, will be lost after the GC. FEE will continue as expected for the currently active configuration.
+FEE_STOP_AT_GC: During GC, FEE will enter a pseudo illegal state where only read is allowed but write is not allowed."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="87cc1eb8-09f0-401c-92ff-abb71996004f"/>
+                  <a:da name="DEFAULT" value="FEE_CONTINUE"/>
+                  <a:da name="RANGE">
+                    <a:v>FEE_CONTINUE</a:v>
+                    <a:v>FEE_STOP_AT_GC</a:v>
+                  </a:da>
+                </v:var>
+                <v:var name="FeeGcRestart" type="ENUMERATION">
+                  <a:a name="DESC" 
+                       value="EN: This parameter is used to configure Garbage Collection restarting point.
+FEE_GC_RESTART_INIT: (if GC was interrupted in previous run) Restart GC after FEE Initialization. Hence, internal activities like repairing state pages, building lookup table are done after Fee_Init is called.
+FEE_GC_RESTART_WRITE: (if GC was interrupted in previous run) Restart GC when the first read/write/invalidate request is issued. Also, other internal activities like repairing state pages, building lookup table are done only after the first Read/write/invalidate request is issued"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="ccb0731b-222b-4118-8c48-f7046b8328c1"/>
+                  <a:da name="DEFAULT" value="FEE_GC_RESTART_INIT"/>
+                  <a:da name="RANGE">
+                    <a:v>FEE_GC_RESTART_INIT</a:v>
+                    <a:v>FEE_GC_RESTART_WRITE</a:v>
+                  </a:da>
+                </v:var>
+                <v:var name="FeeGetCycleCountApi" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="EN: Pre-processor switch to enable / disable the API to get the block cycle count and erase cycle count."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="8b82d416-42ea-4413-a123-a1f7b0c503b0"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="FeeEraseAllEnable" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="EN: This parameter allows the user to configure if the sectors should be erased when FEE reaches an illegal state. 
+TRUE: An erase all (DF_EEPROM Erase and Format) is performed. In such a case FEE shall resume back to normal state but previous data (if any) cannot be recovered.
+FALSE: FEE settles in the illegal state and cannot continue normally. However, data is kept intact in DF_EEPROM and may be recovered."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="20632ea9-0cad-4426-a0f4-e236e9c507eb"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="FeeGetPrevDataApi" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="EN: This parameter allows the user to read old copy (one instance old) of the required block."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="20632ea9-0cad-4426-a0f4-e236e9c507ec"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="FeeMaxBytesPerCycle" type="ENUMERATION">
+                  <a:a name="DESC" 
+                       value="EN: This parameter allows user to configure maximum number of bytes to be processed in one FEE MAIN Function cycle.
+                  The value is including the extra FEE overhead like header, consecutive page id etc "/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="20632ea9-0acd-4426-4f0a-e236e9c507ec"/>
+                  <a:da name="DEFAULT" value="FEE_MAX_BYTES_64"/>
+                  <a:da name="RANGE">
+                    <a:v>FEE_MAX_BYTES_64</a:v>
+                    <a:v>FEE_MAX_BYTES_128</a:v>
+                    <a:v>FEE_MAX_BYTES_256</a:v>
+                    <a:v>FEE_MAX_BYTES_512</a:v>
+                  </a:da>				  
+                </v:var>                
+                <v:var name="FeeIllegalStateNotification" type="FUNCTION-NAME">
+                  <a:a name="DESC" 
+                       value="EN: This parameter is a pointer to a notification API which is called when Fee reaches an Illegal state. Illegal state here means that FEE is not able to proceed and user should do a power-on reset.
+Illegal notification can also be raised due to HW errors during FEE's internal activities like GC, Initialisation of GC"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="6a28daf7-b174-4e5c-a3fd-e10e22a84bce"/>
+                  <a:da name="DEFAULT" value="NULL_PTR"/>
+                </v:var>
+                <v:var name="FeeVirginFlashIllegalState" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="EN: This parameter enables FEE to reach illegal state upon detection of virgin flash (DF_EEPROM). 
+TRUE: Upon detection of virgin flash (DF_EEPROM) - FEE reaches illegal state and calls the configured illegal state notification function.
+FALSE: Upon detection of virgin flash (DF_EEPROM) - FEE programs the initial state pages and will be available for user requests."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="20632ea9-0cad-4426-a0f4-e236e9c507ed"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+              </v:ctr>
+              <v:lst name="FeeDemEventParameterRefs" type="MAP">
+                <a:da name="MAX" value="1"/>
+                <v:ctr name="FeeDemEventParameterRefs" type="IDENTIFIABLE">
+                  <a:a name="DESC" 
+                      value="EN: This container contains the references to DemEventParameter elements. "/>
+                  <a:a name="UUID" 
+                      value="5175093a-f1fc-4ba7-9e6f-9564215bb9fa"/>
+                  <v:lst name="FEE_E_GC_INIT">
+                    <a:da name="MAX" value="1"/>
+                    <v:ref name="FEE_E_GC_INIT" 
+                           type="SYMBOLIC-NAME-REFERENCE">
+                      <a:a name="DESC" 
+                           value="EN:Reference to DemEventParameter for the production error FEE_E_GC_INIT."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="UUID" 
+                           value="8dad21b3-69a0-49d9-8e35-ae145a074f38"/>
+                      <a:da name="REF" 
+                            value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter"/>
+                    </v:ref>
+                  </v:lst>
+                  <v:lst name="FEE_E_WRITE">
+                    <a:da name="MAX" value="1"/>
+                    <v:ref name="FEE_E_WRITE" 
+                           type="SYMBOLIC-NAME-REFERENCE">
+                      <a:a name="DESC" 
+                           value="EN:Reference to DemEventParameter for the production error FEE_E_WRITE."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="UUID" 
+                           value="8dad21b3-69a0-49d9-8e35-ae135a074f38"/>
+                      <a:da name="REF" 
+                            value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter"/>
+                    </v:ref>
+                  </v:lst>
+                  <v:lst name="FEE_E_READ">
+                    <a:da name="MAX" value="1"/>
+                    <v:ref name="FEE_E_READ" 
+                           type="SYMBOLIC-NAME-REFERENCE">
+                      <a:a name="DESC" 
+                           value="EN:Reference to DemEventParameter for the production error FEE_E_READ."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="UUID" 
+                           value="93cbda9d-85f7-46a2-a76f-98a6e718f5f4"/>
+                      <a:da name="REF" 
+                            value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter"/>
+                    </v:ref>
+                  </v:lst>
+                  <v:lst name="FEE_E_GC_READ">
+                    <a:da name="MAX" value="1"/>
+                    <v:ref name="FEE_E_GC_READ" 
+                           type="SYMBOLIC-NAME-REFERENCE">
+                      <a:a name="DESC" 
+                           value="EN:Reference to DemEventParameter for the production error FEE_E_GC_READ."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="UUID" 
+                           value="93cbda9d-85f7-46a2-a76f-98a6e718f5f5"/>
+                      <a:da name="REF" 
+                            value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter"/>
+                    </v:ref>
+                  </v:lst>
+                  <v:lst name="FEE_E_GC_WRITE">
+                    <a:da name="MAX" value="1"/>
+                    <v:ref name="FEE_E_GC_WRITE" 
+                           type="SYMBOLIC-NAME-REFERENCE">
+                      <a:a name="DESC" 
+                           value="EN:Reference to DemEventParameter for the production error FEE_E_GC_WRITE."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="UUID" 
+                           value="8dad21b3-69a0-49d9-8e35-ae145a174f38"/>
+                      <a:da name="REF" 
+                            value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter"/>
+                    </v:ref>
+                  </v:lst>
+                  <v:lst name="FEE_E_GC_ERASE">
+                    <a:da name="MAX" value="1"/>
+                    <v:ref name="FEE_E_GC_ERASE" 
+                           type="SYMBOLIC-NAME-REFERENCE">
+                      <a:a name="DESC" 
+                           value="EN:Reference to DemEventParameter for the production error FEE_E_GC_ERASE."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="UUID" 
+                           value="8dad21b3-69a0-49d9-8e35-ae145a064f38"/>
+                      <a:da name="REF" 
+                            value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter"/>
+                    </v:ref>
+                  </v:lst>
+                  <v:lst name="FEE_E_INVALIDATE">
+                    <a:da name="MAX" value="1"/>
+                    <v:ref name="FEE_E_INVALIDATE" 
+                           type="SYMBOLIC-NAME-REFERENCE">
+                      <a:a name="DESC" 
+                           value="EN:Reference to DemEventParameter for the production error FEE_E_INVALIDATE."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="UUID" 
+                           value="8dad21b3-69a0-49d9-8e35-ae145a074f98"/>
+                      <a:da name="REF" 
+                            value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter"/>
+                    </v:ref>
+                  </v:lst>
+                  <v:lst name="FEE_E_WRITE_CYCLES_EXHAUSTED">
+                   <a:da name="MAX" value="1"/>
+                   <v:ref name="FEE_E_WRITE_CYCLES_EXHAUSTED" 
+                          type="SYMBOLIC-NAME-REFERENCE">
+                     <a:a name="DESC" 
+                          value="EN:Reference to DemEventParameter for the production error FEE_E_WRITE_CYCLES_EXHAUSTED."/>
+                     <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                          type="IMPLEMENTATIONCONFIGCLASS">
+                       <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                     </a:a>
+                     <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                     <a:a name="UUID" 
+                          value="8dad21b3-69a0-49d9-8e35-ae145a074e38"/>
+                     <a:da name="REF" 
+                           value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter"/>
+                   </v:ref>
+                 </v:lst>
+                  <v:lst name="FEE_E_GC_TRIG">
+                    <a:da name="MAX" value="1"/>
+                    <v:ref name="FEE_E_GC_TRIG" 
+                           type="SYMBOLIC-NAME-REFERENCE">
+                      <a:a name="DESC" 
+                           value="EN:Reference to DemEventParameter for the production error FEE_E_GC_TRIG."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="UUID" 
+                           value="8dad21b3-69a0-49d9-8e35-ae145a074e9a"/>
+                      <a:da name="REF" 
+                            value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter"/>
+                    </v:ref>
+                  </v:lst>
+                  <v:lst name="FEE_E_UNCONFIG_BLK_EXCEEDED">
+                    <a:da name="MAX" value="1"/>
+                    <v:ref name="FEE_E_UNCONFIG_BLK_EXCEEDED" 
+                           type="SYMBOLIC-NAME-REFERENCE">
+                      <a:a name="DESC" 
+                           value="EN:Reference to DemEventParameter for the production error FEE_E_UNCONFIG_BLK_EXCEEDED."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="UUID" 
+                           value="8dad21b3-69a0-49d9-8e35-ae145a074e99"/>
+                      <a:da name="REF" 
+                            value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter"/>
+                    </v:ref>
+                  </v:lst>
+                </v:ctr>
+              </v:lst>
+              <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC" value="EN: Common container, aggregated by all modules. It contains published information about vendor and versions."/>
+                <a:a name="UUID" value="492f8482-3e2c-4bf1-b27f-01fd7a235788"/>
+                <v:var name="ArMajorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Major version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="bd0a8d38-4d8c-4ee9-88fe-1166b258bb8a"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="2"/>
+                </v:var>
+                <v:var name="ArMinorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Minor version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="73f87c7f-e230-4178-bff0-ea2704aae656"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="ArPatchVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Patch level version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="2380135d-6778-417a-a34b-e100aad4dd54"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="SwMajorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Major version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="fca015e3-5f28-4cbe-8949-8fab87d86827"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="2"/>
+                </v:var>
+                <v:var name="SwMinorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Minor version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="14ab81e0-3d80-43dc-8b92-2a7e5a542df9"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="4"/>
+                </v:var>
+                <v:var name="SwPatchVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="32e37bfd-18b6-41d1-9248-a81dae0fe4c5"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="ModuleId" type="INTEGER">
+                  <a:a name="DESC" value="EN: Module ID of this module from Module List"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="3b407478-6902-4f80-b7cf-f33b0854e638"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="21"/>
+                </v:var>
+                <v:var name="VendorId" type="INTEGER">
+                  <a:a name="DESC" value="EN: Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="7d650b2d-4adb-41f0-aa8e-5f0c416501d1"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="17"/>
+                </v:var>
+                <v:var name="VendorApiInfix" type="STRING">
+                  <a:a name="DESC">
+                    <a:v>EN: In driver modules which can be instantiated several times on a single ECU, BSW00347 requires that the name of APIs is extended by the VendorId and a vendor specific name. 
+This parameter is used to specify the vendor specific name. In total, the implementation specific name is generated as follows:
+&lt;ModuleName&gt;_&gt;VendorId&gt;_&lt;VendorApiInfix&gt;&lt;Api name from SWS&gt;.
+E.g.  assuming that the VendorId of the implementor is 123 and the implementer chose a VendorApiInfix of &quot;v11r456&quot; a api name Can_Write defined in the SWS will translate to Can_123_v11r456Write. 
+This parameter is mandatory for all modules with upper multiplicity &gt; 1. It shall not be used for modules with upper multiplicity =1.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="ad363b41-e945-4717-b12f-c2f800ef138e"/>
+                  <a:da name="ENABLE" value="true"/>
+                  <a:da name="DEFAULT" value=""/>
+                </v:var>
+                <v:var name="Release" type="STRING">
+                  <a:a name="DESC" value="EN: Aurix derivative used for the implementation"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="3b407478-6902-4f40-b7cf-f33b0854e638"/>
+                  <a:da name="DEFAULT" type="XPath" expr="ecu:get('Rel.Derivate')"/>
+                </v:var>
+              </v:ctr>
+            </v:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+</datamodel>

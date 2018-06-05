@@ -1,0 +1,36 @@
+
+Name: generate/Spi_Bswmd.arxml
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 11313377423283091782852956658885014046458854154355738654027
+ 4817162714158334804176226545142586159742195739167181
+SignatureKeyID: Infineon
+
+Name: config/Spi.xdm
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 28964594741164332935587857112265179219653204145172064117786
+ 056507481701289467854030571308453677153651327899578929
+SignatureKeyID: Infineon
+
+Name: generate/Spi_ConfigDoc.html
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 11313377423939670527986482874973398344446797596099448772892
+ 0912189563699908373540543254494997268279954373740463
+SignatureKeyID: Infineon
+
+Name: generate/inc/Spi_Cfg.h
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 28964594773970545784292813910159828771264699239912587820454
+ 940850379908567211779403007080082094336449275151549673
+SignatureKeyID: Infineon
+
+Name: generate/src/Spi_PBCfg.c
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 11313377420634759631987517711860866013862951532135448696653
+ 0003339806830552913312454471127128134997656725865275
+SignatureKeyID: Infineon
+

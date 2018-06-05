@@ -1,0 +1,1529 @@
+<?xml version='1.0'?>
+<!--
+/******************************************************************************
+**                                                                           **
+** Copyright (C) Infineon Technologies (2013)                                **
+**                                                                           **
+** All rights reserved.                                                      **
+**                                                                           **
+** This document contains proprietary information belonging to Infineon      **
+** Technologies. Passing on and copying of this document, and communication  **
+** of its contents is not permitted without prior written authorization.     **
+**                                                                           **
+*******************************************************************************
+**                                                                           **
+**  $FILENAME   : Fr_17_Eray.xdm $                                           **
+**                                                                           **
+**  $CC VERSION : \main\47 $                                                 **
+**                                                                           **
+**  $DATE       : 2016-07-08 $                                               **
+**                                                                           **
+**  AUTHOR    : DL-AUTOSAR-Engineering                                       **
+**                                                                           **
+**  VENDOR    : Infineon Technologies                                        **
+**                                                                           **
+**  DESCRIPTION  : XML Data Model for FlexRay driver                         **
+**                                                                           **
+**  MAY BE CHANGED BY USER [yes/no]: No                                      **
+**                                                                           **
+******************************************************************************/
+
+/** Traceability : [cover parentID=DS_AS_FR392_Conf,DS_AS40X_FR063_FR443_Conf,
+   DS_AS40X_FR001_Conf,DS_AS_FR026_FR029_FR393_Conf,DS_AS_FR439_Conf,DS_AS_FR394_Conf,
+   DS_AS40X_FR002_Conf,DS_AS40X_FR016_Conf,DS_AS_FR396_Conf,DS_AS_FR397_Conf,
+   DS_AS_FR083_Conf,DS_AS_FR075_FR400_Conf_FR467,DS_AS_FR402_Conf,DS_AS_FR403_Conf,
+   DS_AS_FR404_Conf,DS_AS_FR405_Conf,DS_AS_FR406_Conf,DS_AS_FR407_Conf,
+   DS_AS_FR408_Conf,DS_AS_FR448_Conf,DS_AS_FR447_Conf,DS_AS_FR411_Conf,
+   DS_AS_FR425_Conf,DS_AS_FR412_Conf,DS_AS_FR413_Conf,DS_AS_FR414_Conf,
+   DS_AS_FR415_Conf,DS_AS_FR416_Conf,DS_AS_FR417_Conf,DS_AS_FR418_Conf,
+   DS_AS_FR419_Conf,DS_AS_FR444_Conf,DS_AS_FR421_Conf,DS_AS_FR450_Conf,
+   DS_AS_FR422_Conf,DS_AS_FR423_Conf,DS_AS_FR424_Conf,DS_AS_FR445_Conf,
+   DS_AS_FR446_Conf,DS_AS_FR426_Conf,DS_AS_FR427_Conf,DS_AS_FR428_Conf,
+   DS_AS_FR429_Conf,DS_AS_FR431_Conf,DS_AS_FR432_Conf,DS_AS_FR433_Conf,
+   DS_AS_FR028_FR126_FR452_Conf,DS_AS40X_FR005_Conf,
+   DS_AS_FR009_Conf,DS_AS_FR007_Conf,DS_AS_FR449_Conf,
+   DS_AS_FR008_Conf,DS_AS_FR010_Conf,DS_AS_FR003,DS_NAS_FR_PR69_PR469,DS_NAS_FR_PR647,
+   DS_NAS_FR_PR127,DS_NAS_FR_PR122_1,DS_NAS_FR_PR122_2,DS_NAS_FR_PR122_3,DS_NAS_FR_PR483,
+   DS_NAS_FR_PR655,DS_NAS_FR_PR719,DS_NAS_FR_PR720,
+   SAS_NAS_FR_PR656,SAS_NAS_FR_PR64,SAS_NAS_FR_PR725,
+  SAS_NAS_FR_PR726,SAS_NAS_FR_PR77,SAS_NAS_FR_PR227,SAS_NAS_FR_PR65,
+  SAS_NAS_FR_PR640,SAS_NAS_FR_PR621,SAS_NAS_FR_PR82,
+  SAS_NAS_FR_PR667,SAS_NAS_FR_PR646,DS_NAS_FR_PR2848,DS_NAS_FR_PR643
+   DS_AS_PR2848,DS_NAS_HE2_FR_PR3017,DS_NAS_EP_FR_PR3017,SAS_NAS_EP_FR_PR3054_1,
+   SAS_NAS_EP_FR_PR3054_2,SAS_NAS_EP_FR_PR3054_4,SAS_NAS_HE2_FR_PR3054_1,
+   SAS_NAS_HE2_FR_PR3054_2,SAS_NAS_HE2_FR_PR3054_4]
+ [/cover]                                                                   **/
+
+-->
+<datamodel version="3.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/08/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/08/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar"  
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="AURIX" type="AR-PACKAGE">
+        <a:a name="UUID" value="5aeb53c9-948a-4587-ad87-bafa68274075"/>
+        <d:lst type="ELEMENTS">
+          <d:chc name="Fr" type="AR-ELEMENT" value="MODULE-DEF">
+            <v:ctr type="MODULE-DEF">
+              <a:a name="ADMIN-DATA" type="ADMIN-DATA">
+                <ad:ADMIN-DATA>
+                  <ad:DOC-REVISIONS>
+                    <ad:DOC-REVISION>
+                      <ad:REVISION-LABEL>4.1.0</ad:REVISION-LABEL>
+                      <ad:ISSUED-BY>AUTOSAR</ad:ISSUED-BY>
+                      <ad:DATE>2010-12-03</ad:DATE>
+                    </ad:DOC-REVISION>
+                  </ad:DOC-REVISIONS>
+                </ad:ADMIN-DATA>
+              </a:a>
+              <a:a name="DESC" 
+                   value="EN: Configuration of the Fr (FlexRay driver) module."/>
+              <a:a name="LOWER-MULTIPLICITY" value="0"/>
+              <a:a name="RELEASE" value="asc:4.0"/>
+              <a:a name="UPPER-MULTIPLICITY" value="*"/>
+              <a:a name="UUID" value="e4a01b36-d552-4466-a21a-b12fb2b7fc18"/>
+              <d:ref type="REFINED_MODULE_DEF" value="ASPath:/AUTOSAR/EcucDefs/Fr"/>
+              <v:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION">
+			  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+					<icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                </a:a>
+                <a:a name="LABEL" value="Config Variant"/>
+                <a:da name="DEFAULT" value="VariantPostBuildSelectable"/>
+                <a:da name="RANGE">
+                  <a:v>VariantPostBuildLoadable</a:v>
+                  <a:v>VariantPostBuildSelectable</a:v>
+                </a:da>
+              </v:var>
+              <v:ctr name="FrGeneral" type="IDENTIFIABLE">
+                <a:a name="DESC" 
+                     value="EN: General configuration (parameters) of the FlexRay Driver module."/>
+                <a:a name="UUID" value="d6bf29db-12db-4c11-8918-a5ae5039adf3"/>
+               <v:var name="FrBufferReconfig" type="BOOLEAN">
+               <a:da name="TOOLTIP" value="Enables or disables buffer reconfiguration at runtime"/>
+                  <a:a name="DESC" 
+                       value="EN: Enables or disables buffer reconfiguration at runtime through Fr_PrepareLPdu. Pre-compile switch FR_RECONFIG_BUFFER is derived from this configuration parameter."/>
+                  <a:a name="UUID" value="ec9cb6b6-5c2f-4e49-912a-9f4196a9d27d"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="FrCtrlTestCount" type="INTEGER">
+                <a:da name="TOOLTIP" value="Maxmimum number of iterations the FlexRay controller hardware test is performed"/>
+                  <a:a name="DESC" 
+                       value="EN: Maxmimum number of iterations the FlexRay controller hardware test is performed during controller initialization."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:f7190b81-1f47-444c-9d32-9e0e82e0d9f7"/>
+                  <a:da name="DEFAULT" value="1"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=255"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                </v:var>
+                <v:var name="FrDevErrorDetect" type="BOOLEAN">
+                <a:da name="TOOLTIP" value="Enables or disables Development Error Detection"/>
+                  <a:a name="DESC">
+                    <a:v>EN: Switches the Development Error Detection and Notification 
+on or off.
+true: Development Error Detection and Notification enabled.
+false: Development Error Detection and Notification disabled.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="e7138176-79ba-4d4b-b4b8-ced0dc414321"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="FrIndex" type="INTEGER">
+                <a:da name="TOOLTIP" value="InstanceId of this module instance"/>
+                  <a:a name="DESC" 
+                       value="EN: Specifies the InstanceId of this module instance. If only one instance is present it shall have the Id 0."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="b2933d20-ffeb-45b7-a8e7-982dddbcab7e"/>
+                   <a:da name="EDITABLE" value="false"/>
+                  <a:da name="DEFAULT" value="0"/>
+                   <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=255"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                </v:var>
+                <v:var name="FrTimeoutDurationFactor" type="INTEGER">
+                <a:da name="TOOLTIP" value="maximum number of loops for blocking function until a timeout is raised"/>
+                  <a:a name="DESC" 
+                       value="EN: Specifies the maximum number of loops for blocking function until a timeout is raised in short term wait loops."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="UUID" value="358212ed-9daa-4175-9fda-0f16e02dde5a"/>
+                  <a:da name="DEFAULT" value="100"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=4294967295"/>
+                    <a:tst expr="&gt;=100"/>
+                  </a:da>
+                </v:var>
+                <v:var name="FrNumCtrlSupported" type="INTEGER">
+                <a:da name="TOOLTIP" value="maximum number of communication controllers"/>
+                  <a:a name="DESC" 
+                       value="EN: Determines the maximum number of communication controllers that the driver supports."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="33284286-1fd3-4ed3-9f30-cab2c17e895f"/>
+                   <a:da name="EDITABLE" value="true"/>
+                  <a:da name="DEFAULT" value="1"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=ecu:get('Eray.MaxControllers')"/>
+                    <a:tst expr="&gt;=1"/>
+                  </a:da>
+                </v:var>
+                 <v:var name="FrRxStringentCheck" type="BOOLEAN">
+                 <a:da name="TOOLTIP" value="Enables or Disables Stringent Check for recieved frames"/>
+                  <a:a name="DESC" 
+                       value="EN:If stringent check is enabled (true), received frames are only accepted if no slot status error occured."/>
+		   <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a> 
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>   
+                  <a:a name="UUID" value="ec9cb6b6-5c2f-4e49-912a-9f4196a9d27e"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="FrRxStringentLengthCheck" type="BOOLEAN">
+                <a:da name="TOOLTIP" value="Enables or Disables Stringent Length Check for recieved frames"/>
+                  <a:a name="DESC" 
+                       value="EN:If stringent check is enabled (true), received frames are only accepted the received payload length matches the configured payload length."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>  
+		<a:a name="UUID" value="ec9cb6b6-5c2f-4e49-912a-9f4196a9d27f"/>
+                <a:da name="DEFAULT" value="false"/>
+                </v:var>
+               <v:var name="FrNmVectorEnable" type="BOOLEAN">
+               <a:da name="TOOLTIP" value="Enables/disables the existence of the Fr_GetNmVector API"/>
+                  <a:a name="DESC" 
+                       value="EN: Enables/disables the existence of the Fr_GetNmVector API. Pre-compile switch FR_NMVECTOR_ENABLE is derived from this configuration parameter."/>
+                 <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+		  <a:a name="UUID" value="b004eb10-016b-41e0-8b7c-9146f1017b8b"/>
+                  <a:da name="DEFAULT" value="false"/>
+               </v:var>
+               <v:var name="FrVersionInfoApi" type="BOOLEAN">
+                 <a:a name="DESC">
+                 <a:v>EN: Enables/disables the existence of the Fr_GetVersionInfo API.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="e7138176-79ba-4d4b-b4b8-ced0dc414323"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="FrDebugSupport" type="BOOLEAN">
+                 <a:a name="DESC">
+                 <a:v>EN: Enables/disables the Debug support of variables that shall be debugged by AUTOSAR Debugging</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="e7138176-79ba-4d4b-b4b8-abd0dc414323"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="FrPBFixedAddress" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>EN: The fixed address feature supports the optimization of a post build configuration with a fixed address by avoiding pointer indirection. 
+                        True: Fixed Address is used (Deviates from AUTOSAR).
+                        False:PostBuild Configuration selected (AUTOSAR compliant)</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="26affa9b-f445-4719-bb13-421950e150f8"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="INVALID" type="XPath">
+                  <a:tst expr="(num:i(count(../../FrMultipleConfiguration/*))) > 1 and . = 'true'" 
+                   true="Wrong Configuration. When FrPBFixedAddress is enabled then only 1 Config set is permitted. Remove the other Config sets."/>
+                  </a:da>
+                </v:var>
+                <v:var name="FrResetSfrAtInit" type="BOOLEAN">
+                 <a:a name="DESC">
+                 <a:v>EN: Enables / Disables the FR Kernel Registers reset feature in the Initialization function</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="e7138176-79ba-4d4b-b4b8-abd0ec424323"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>                
+                <v:var name="FrRunningInUser0Mode" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="If this parameter is set to FALSE, then Protected Mode(user mode) register access will not be done and API is run in Supervisor mode."/>
+                  <a:a name="TOOLTIP"
+                       value="EN: Pre-processor switch to enable/disable the Normal/Protected mode."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="bde3973f-c106-4b0f-901c-6f15b3cff715"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="FrUserModeInitApiEnable" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="Pre-processor switch to enable / disable protected register access in all the Init API."/>
+                  <a:a name="TOOLTIP"
+                       value="EN: Pre-processor switch to enable / disable protected register access in all the Init API."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="bde3973f-c106-4b9f-901c-6f15b3cff715"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="FrUserModeRuntimeApiEnable" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="Pre-processor switch to enable / disable protected register access in all the APIs other than Init/Deinit APIs"/>
+                  <a:a name="TOOLTIP"
+                       value="EN: Pre-processor switch to enable / disable protected register access in all the APIs other than Init/Deinit APIs."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="bde3973f-c106-4b7f-902c-6f15b3cff715"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>                
+              </v:ctr>
+              <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC" value="EN: Common container, aggregated by all modules. It contains published information about vendor and versions."/>
+                <a:a name="UUID" value="492f8482-3e2c-4bf1-b27f-01fd7ac35788"/>
+                <v:var name="ArMajorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Major version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="bd0a8d38-4d8c-4ee9-88fe-1166b258bb8a"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="2"/>
+                </v:var>
+                <v:var name="ArMinorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Minor version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="73f87c7f-e230-4178-bff0-eb2704aae656"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="5"/>
+                </v:var>
+                <v:var name="ArPatchVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Patch level version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="2380135d-6778-417a-a34b-e10017d4dd54"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="SwMajorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Major version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="fca015e3-5f28-4cbe-8949-8f4b87d86827"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="2"/>
+                </v:var>
+                <v:var name="SwMinorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Minor version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="14ab81e0-3d80-43dc-8b92-247e5a542df9"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="3"/>
+                </v:var>
+                <v:var name="SwPatchVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="32e37bfd-18b6-41d1-9248-a81dbe0fe4c5"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="ModuleId" type="INTEGER">
+                  <a:a name="DESC" value="EN: Module ID of this module from Module List"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="3b407478-6902-4f80-b7cf-f33b0854e638"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="81"/>
+                </v:var>
+                <v:var name="VendorId" type="INTEGER">
+                  <a:a name="DESC" value="EN: Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="7d650b2d-4adb-41f0-a68e-5f0c416501d1"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="17"/>
+                </v:var>
+                <v:var name="VendorApiInfix" type="STRING">
+                  <a:a name="DESC">
+                    <a:v>EN: In driver modules which can be instantiated several times on a single ECU, BSW00347 requires that the name of APIs is extended by the VendorId and a vendor specific name. 
+This parameter is used to specify the vendor specific name. In total, the implementation specific name is generated as follows:
+&lt;ModuleName&gt;_&gt;VendorId&gt;_&lt;VendorApiInfix&gt;&lt;Api name from SWS&gt;.
+
+E.g.  assuming that the VendorId of the implementor is 123 and the implementer chose a VendorApiInfix of &quot;v11r456&quot; a api name Can_Write defined in the SWS will translate to Can_123_v11r456Write. 
+
+This parameter is mandatory for all modules with upper multiplicity &gt; 1. It shall not be used for modules with upper multiplicity =1.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="ad363b41-e945-4717-b12f-c2f800ef138e"/>
+                  <a:da name="ENABLE" value="true"/>
+                  <a:da name="DEFAULT" value="Eray"/>
+                </v:var>
+                <v:var name="Release" type="STRING">
+                  <a:a name="DESC" value="EN: Aurix derivative used for thr implementation"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="3b407478-6902-4f40-b7cf-f33b0854e638"/>
+                  <a:da name="DEFAULT" type="XPath" expr="ecu:get('Rel.Derivate')"/>
+                </v:var>
+              </v:ctr>
+              <v:lst name="FrMultipleConfiguration" 
+                     type="MULTIPLE-CONFIGURATION-CONTAINER">
+                <a:da name="MIN" value="1"/>
+                <v:ctr name="FrMultipleConfiguration" 
+                       type="MULTIPLE-CONFIGURATION-CONTAINER">
+                  <a:a name="DESC" 
+                       value="EN: Configuration of the individual controllers."/>
+                  <a:a name="UUID" value="e5636942-7f7c-44b0-9a4a-5cebd912843d"/>
+                  <v:lst name="FrController" type="MAP">
+                    <a:da name="MIN" value="1"/>
+                    <a:da name="MAX" type="XPath" expr="ecu:get('Eray.MaxControllers')"/>
+                  <v:ctr name="FrController" type="IDENTIFIABLE">
+                    <a:a name="DESC" 
+                         value="EN: Configuration of the individual controller."/>
+                    <a:a name="UUID" 
+                         value="6cb702ac-2c3f-4217-953b-a1974d53a705"/>
+                    <v:var name="FrCtrlIdx" type="INTEGER">
+                      <a:a name="DESC" 
+                           value="EN: Determines index of CC within Fr."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                      <a:a name="UUID" 
+                           value="6f4f7a61-017a-405c-88ed-f9dc2a0e615f"/>
+                      <a:da name="DEFAULT" value="0"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;ecu:get('Eray.MaxControllers')"/>
+                        <a:tst expr="&gt;=0"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="FrPAllowHaltDueToClock" type="BOOLEAN">
+                      <a:a name="DESC" 
+                           value="EN: Boolean flag that controls the transition to the POC:halt state due to a clock synchronization errors. If set to true, the CC is allowed to transition to POC:halt. If set to false, the CC will not transition to the POC:halt state but will enter or remain in the POC:normal passive state (self healing would still be possible)"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="34d278f2-4c4f-4279-9e4e-97404c9b057d"/>
+                      <a:da name="DEFAULT" value="false"/>
+                    </v:var>
+                    <v:var name="FrPAllowPassiveToActive" type="INTEGER">
+                      <a:a name="DESC" 
+                           value="EN: Number of consecutive even/odd cycle pairs that must have valid clock correction terms before the CC will be allowed to transition from the POC:normal passive state to POC:normal active state. If set to zero, the CC is not allowed to transition from POC:normal passive to POC:normal active"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="8074f103-6235-415e-8fea-72d4aa47e7df"/>
+                      <a:da name="DEFAULT" value="10"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=31"/>
+                        <a:tst expr="&gt;=0"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="FrPChannels" type="ENUMERATION">
+                        <a:a name="DESC" 
+                             value="EN: Channels to which the node is connected."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="b0431fb7-06ee-4bb9-8ec5-4ae292085774"/>
+                      <a:da name="DEFAULT" value="FR_CHANNEL_AB"/>
+                      <a:da name="RANGE">
+                        <a:v>FR_CHANNEL_A</a:v>
+                        <a:v>FR_CHANNEL_AB</a:v>
+                        <a:v>FR_CHANNEL_B</a:v>
+                      </a:da>
+                    </v:var>
+                    <v:var name="FrPClusterDriftDamping" type="INTEGER">
+                      <a:a name="DESC" 
+                           value="EN: Local cluster drift damping factor used for rate correction [Microticks]."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="e4b27410-00d9-4b72-8757-382015b9d4cc"/>
+                      <a:da name="DEFAULT" value="1"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=20"/>
+                        <a:tst expr="&gt;=0"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="FrPDecodingCorrection" type="INTEGER">
+                      <a:a name="DESC" 
+                           value="EN: Value used by the receiver to calculate the difference between primary time reference point and secondary time reference point [Microticks]"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="1983f047-ec50-49db-8fab-f603500351bd"/>
+                      <a:da name="DEFAULT" value="14"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=143"/>
+                        <a:tst expr="&gt;=14"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="FrPDelayCompensationA" type="INTEGER">
+                      <a:a name="DESC" 
+                           value="EN: Value used to compensate for reception delays on the indicated channel. This covers assumed propagation delay up to cPropagationDelayMax for microticks in the range of 0.0125 ?s to 0.05 ?s. In practice, the minimum of the propagation delays of all sync nodes should be applied [Microticks]."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="fef96fe6-d972-4818-9883-42e449c5e2f5"/>
+                      <a:da name="DEFAULT" value="0"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=200"/>
+                        <a:tst expr="&gt;=0"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="FrPDelayCompensationB" type="INTEGER">
+                      <a:a name="DESC" 
+                           value="EN: Value used to compensate for reception delays on the indicated channel. This covers assumed propagation delay up to cPropagationDelayMax for microticks in the range of 0.0125 ?s to 0.05 ?s. In practice, the minimum of the propagation delays of all sync nodes should be applied [Microticks]."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="1e0a8255-7858-4047-b8f5-00f80c483f0e"/>
+                      <a:da name="DEFAULT" value="0"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=200"/>
+                        <a:tst expr="&gt;=0"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="FrPExternalSync" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>EN: Flag indicating whether the node is externally synchronized 
+                    Remarks: Set to 'false' for FlexRay Protocol 2.1 Rev. A compliance.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="26affa9b-f445-4719-bb13-421950e150f9"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="EDITABLE" value="false"/>
+                </v:var>
+                <v:var name="FrPFallBackInternal" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>EN: Flag indicating whether a time gateway sink node will switch to local clock operation 
+                    when synchronization with the time gateway source node is lost 
+                    Remarks: Set to 'false' for FlexRay Protocol 2.1 Rev. A compliance.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="26affa9b-f445-4719-bb13-421950e150fa"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="EDITABLE" value="false"/>
+                </v:var>
+                      <v:var name="FrPKeySlotId" type="INTEGER">
+                        <a:a name="DESC" 
+                             value="EN: ID of the slot used to transmit the startup frame, sync frame, or designated single slot frame"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                       </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="9c5ed87e-1c7f-4502-904b-f4eedd9f7e8a"/>
+                        <a:da name="DEFAULT" value="1"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=1023"/>
+                          <a:tst expr="&gt;=0"/>                          
+                        </a:da>
+                      </v:var>
+                     <v:var name="FrPKeySlotOnlyEnabled" type="BOOLEAN">
+                      <a:a name="DESC" 
+                           value="EN: maps to pSingleSlotEnabled. Flag indicating whether or not the node shall enter single slot mode following startup"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="644468d0-d244-415a-8283-2ec150198bdb"/>
+                      <a:da name="DEFAULT" value="false"/>
+                    </v:var>
+                    <v:var name="FrPKeySlotUsedForStartup" type="BOOLEAN">
+                      <a:a name="DESC" 
+                           value="EN: Flag indicating whether the Key Slot is used to transmit a startup frame"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="61a9172f-06f3-4913-8189-ffa150294f97"/>
+                      <a:da name="DEFAULT" value="false"/>
+                      <a:da name="INVALID" type="XPath">                              
+                        <a:tst expr="(not(node:exists(../FrPKeySlotId)) and (.='true'))"  true="If is FrPKeySlotId not configured, then PKeySlotUsedForStartup should be false." />
+                      </a:da>                       
+                    </v:var>
+                    <v:var name="FrPKeySlotUsedForSync" type="BOOLEAN">
+                      <a:a name="DESC" 
+                           value="EN: Flag indicating whether the Key Slot is used to transmit a sync frame"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="98067038-ccd1-4853-82b4-1d3693ac6135"/>
+                      <a:da name="DEFAULT" value="false"/>
+                      <a:da name="INVALID" type="XPath">                              
+                        <a:tst expr="(not(node:exists(../FrPKeySlotId)) and (.='true'))"  true="If is FrPKeySlotId not configured, then PKeySlotUsedForSync should be false." />
+                      </a:da> 
+                    </v:var>
+                    <v:var name="FrPLatestTx" type="INTEGER">
+                      <a:a name="DESC" 
+                           value="EN: Number of the last minislot in which a frame transmission can start in the dynamic segment [Minislots]."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="22a31ea4-79ef-4fd4-9489-a92db72db79e"/>
+                      <a:da name="DEFAULT" value="0"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=7980"/>
+                        <a:tst expr="&gt;=0"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="FrPMacroInitialOffsetA" type="INTEGER">
+                      <a:a name="DESC" 
+                           value="EN: Integer number of macroticks between the static slot boundary and the following macrotick boundary of the secondary time reference point based on the nominal macrotick duration [Macroticks]."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="816147e3-7230-49dd-b103-dd38bdef73b0"/>
+                      <a:da name="DEFAULT" value="2"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=68"/>
+                        <a:tst expr="&gt;=2"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="FrPMacroInitialOffsetB" type="INTEGER">
+                      <a:a name="DESC" 
+                           value="EN: Integer number of macroticks between the static slot boundary and the following macrotick boundary of the secondary time reference point based on the nominal macrotick duration [Macroticks]."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="232a4dbb-1139-40e7-b5e4-9e1ac7e298cd"/>
+                      <a:da name="DEFAULT" value="2"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=68"/>
+                        <a:tst expr="&gt;=2"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="FrPMicroInitialOffsetA" type="INTEGER">
+                      <a:a name="DESC" 
+                           value="EN: Number of microticks between the closest macrotick boundary described by pMacroInitialOffset[Ch] and the secondary time reference point. The parameter depends on pDelayCompensation[Ch] and therefore it has to be set independently for each channel [Microticks]."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="9840cacf-a627-488a-a189-443164837887"/>
+                        <a:da name="DEFAULT" value="1"/>
+                        <a:da name="WARNING" type="XPath">
+                        <a:tst expr=".= 0 " true="Errata FlexRay AI.092: Initial rate correction value of an integrating node is zero, if pMicroInitialOffsetA,B = 0x00."/>
+                        </a:da>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=239"/>
+                        <a:tst expr="&gt;=0"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="FrPMicroInitialOffsetB" type="INTEGER">
+                      <a:a name="DESC" 
+                           value="EN: Number of microticks between the closest macrotick boundary described by pMacroInitialOffset[Ch] and the secondary time reference point. The parameter depends on pDelayCompensation[Ch] and therefore it has to be set independently for each channel [Microticks]."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="3842aca6-46c1-49e1-93d9-f7cd5858857c"/>
+                        <a:da name="DEFAULT" value="1"/>
+                        <a:da name="WARNING" type="XPath">
+                        <a:tst expr=".= 0 " true="Errata FlexRay AI.092: Initial rate correction value of an integrating node is zero, if pMicroInitialOffsetA,B = 0x00."/>
+                        </a:da>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=239"/>
+                        <a:tst expr="&gt;=0"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="FrPMicroPerCycle" type="INTEGER">
+                      <a:a name="DESC" 
+                           value="EN: Nominal number of microticks in the communication cycle of the local node. If nodes have different microtick durations this number will differ from node to node [Microticks]."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="683796aa-c8be-4cd3-ac9d-ca66ab396f79"/>
+                      <a:da name="DEFAULT" value="640"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=640000"/>
+                        <a:tst expr="&gt;=640"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="FrPNmVectorEarlyUpdate" type="BOOLEAN">
+                       <a:a name="DESC">
+                        <a:v>EN: Flag indicating when the update of the Network Management Vector in the CHI shall take place. 
+                                 Remarks: Set to 'false' for FlexRay Protocol 2.1 Rev. A compliance.</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                          type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" value="26affa9b-f445-4719-bb13-421950e150ef"/>
+                        <a:da name="DEFAULT" value="false"/>
+                        <a:da name="EDITABLE" value="false"/>
+                    </v:var>
+                    <v:var name="FrPOffsetCorrectionOut" type="INTEGER">
+                      <a:a name="DESC" 
+                           value="EN: Magnitude of the maximum permissible offset correction value [Microticks]."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="0b27e327-8da8-422a-80a9-849376f78ee8"/>
+                      <a:da name="DEFAULT" value="15"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=15567"/>
+                        <a:tst expr="&gt;=15"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="FrPOffsetCorrectionStart" type="INTEGER">
+                      <a:a name="DESC" 
+                           value="EN: gOffsetCorectionStart. Magnitude of the maximum permissible offset correction value [Microticks]."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="0b27e327-8da8-422b-80a9-849376f78ee8"/>
+                      <a:da name="DEFAULT" value="9"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=15999"/>
+                        <a:tst expr="&gt;=9"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="FrPPayloadLengthDynMax" type="INTEGER">
+                      <a:a name="DESC" 
+                           value="EN: Maximum payload length for dynamic frames [16 bit words]."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="01a69259-41ed-403a-8915-1eab3a2ba4bb"/>
+                      <a:da name="DEFAULT" value="0"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=127"/>
+                        <a:tst expr="&gt;=0"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="FrPRateCorrectionOut" type="INTEGER">
+                      <a:a name="DESC" 
+                           value="EN: Magnitude of the maximum permissible rate correction value [Microticks]."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="03e0bfa0-3703-4c01-bf8d-3d42618b0499"/>
+                      <a:da name="DEFAULT" value="2"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=1923"/>
+                        <a:tst expr="&gt;=2"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="FrPSamplesPerMicrotick" type="ENUMERATION">
+                      <a:a name="DESC" 
+                           value="EN: Number of samples per microtick"/>
+                             value="EN: Number of samples per microtick. Remark: Allowed range N1SAMPLES, N2SAMPLES for FlexRay Protocol 3.0 compliance."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="2550925e-5c69-4cb1-a272-b498163ad2ca"/>
+                   <a:da name="EDITABLE" value="false"/>
+                      <a:da name="DEFAULT" value="N2SAMPLES"/>
+                      <a:da name="RANGE">
+                        <a:v>N1SAMPLES</a:v>
+                        <a:v>N2SAMPLES</a:v>
+                        <a:v>N4SAMPLES</a:v>
+                      </a:da>
+                    </v:var>  
+                    <v:var name="FrPSecondKeySlotId" type="INTEGER">
+                      <a:a name="DESC" 
+                           value="EN: Magnitude of the maximum permissible rate correction value [Microticks]."/>
+                       <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="03e0bfa0-3703-4c01-bf8c-3d42618b049a"/>
+                      <a:da name="DEFAULT" value="0"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=1023"/>
+                        <a:tst expr="&gt;=0"/>
+                      <a:da name="EDITABLE" value="false"/>  
+                      </a:da>
+                    </v:var> 
+                    <v:var name="FrPTwoKeySlotMode" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>EN: Flag indicating whether node operates as a coldstart node in a TT-E or TT-L cluster. 
+                             Remarks: Set to 'false' for FlexRay Protocol 2.1 Rev. A compliance.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="26affa9b-f445-4719-dd13-421950e150fa"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="EDITABLE" value="false"/> 
+                </v:var>                 
+                    <v:var name="FrPWakeupChannel" type="ENUMERATION">
+                      <a:a name="DESC" 
+                           value="EN: Channel used by the node to send a wakeup pattern."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="5928e281-6ffa-4fae-8d6d-0c662af1a14b"/>
+                      <a:da name="DEFAULT" value="FR_CHANNEL_A"/>
+                      <a:da name="RANGE">
+                        <a:v>FR_CHANNEL_A</a:v>
+                        <a:v>FR_CHANNEL_B</a:v>
+                      </a:da>
+                    </v:var>
+                    <v:var name="FrPWakeupPattern" type="INTEGER">
+                      <a:a name="DESC" 
+                           value="EN: Number of repetitions of the wakeup symbol that are combined to form a wakeup pattern when the node enters the POC:wakeup send state"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="f29f8f2c-f9f2-45ac-a0b2-bb3508b2f5ee"/>
+                      <a:da name="DEFAULT" value="2"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=63"/>
+                        <a:tst expr="&gt;=2"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="FrPdAcceptedStartupRange" type="INTEGER">
+                      <a:a name="DESC" 
+                           value="EN: Expanded range of measured clock deviation allowed for startup frames during integration [Microticks]."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="919fda4a-8e9a-4cb8-a025-6d02a7d48fad"/>
+                      <a:da name="DEFAULT" value="0"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=1875"/>
+                        <a:tst expr="&gt;=0"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="FrPdListenTimeout" type="INTEGER">
+                      <a:a name="DESC" 
+                           value="EN: Upper limit for the start up listen timeout and wake up listen timeout [Microticks]."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="198ef5fc-f2f5-4eb1-ac87-00e843bfcd76"/>
+                      <a:da name="DEFAULT" value="1284"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=1283846"/>
+                        <a:tst expr="&gt;=1284"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="FrPdMicrotick" type="ENUMERATION">
+                      <a:a name="DESC" value="EN: Duration of a microtick."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="68e0dc5b-db49-4f35-bb1e-c7ebf612a0d0"/>
+                      <a:da name="DEFAULT" value="T25NS"/>
+                      <a:da name="RANGE">
+                        <a:v>T100NS</a:v>
+                        <a:v>T12_5NS</a:v>
+                        <a:v>T25NS</a:v>
+                        <a:v>T50NS</a:v>
+                      </a:da>
+                    </v:var>                    
+                    <v:var name="FrRxInputSelectionA" type="ENUMERATION">
+                        <a:a name="DESC" 
+                             value="EN: Provides alternate Port Pin selection for Flex Ray Recieve input line for Channel A"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="1b7aa112-460a-44ac-a9ba-ca4f568aba2f"/>
+                         <a:da name="DEFAULT" value="FR_RXSEL0"/>
+                         <a:da name="RANGE">
+                          <a:v>FR_RXSEL0</a:v>
+                          <a:v>FR_RXSEL1</a:v>
+                          <a:v>FR_RXSEL2</a:v>
+                          <a:v>FR_RXSEL3</a:v>
+                        </a:da>
+                    <a:da name="EDITABLE" type="XPath">
+                			<a:tst expr="../FrPChannels  != 'FR_CHANNEL_B'"/>
+    			          </a:da>
+                      </v:var>   
+                    <v:var name="FrRxInputSelectionB" type="ENUMERATION">
+                        <a:a name="DESC" 
+                             value="EN: Provides alternate Port Pin selection for Flex Ray Recieve input line for Channel B"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="e79edddf-095a-46b4-ac8d-c41351bf4adb"/>
+                         <a:da name="DEFAULT" value="FR_RXSEL0"/>
+                         <a:da name="RANGE">
+                          <a:v>FR_RXSEL0</a:v>
+                          <a:v>FR_RXSEL1</a:v>
+                          <a:v>FR_RXSEL2</a:v>
+                          <a:v>FR_RXSEL3</a:v>
+                        </a:da>
+                      <a:da name="EDITABLE" type="XPath">
+                			  <a:tst expr="../FrPChannels  != 'FR_CHANNEL_A'"/>
+    			            </a:da>  
+                      </v:var>           
+                    <v:lst name="FrAbsoluteTimer" type="MAP">
+                      <a:da name="MIN" value="1"/>
+                      <a:da name="MAX" value="1"/>
+                    <v:ctr name="FrAbsoluteTimer" type="IDENTIFIABLE">
+                      <a:a name="DESC" 
+                           value="EN: Specifies the absolute timer configuration parameters of the Fr."/>
+                      <a:a name="UUID" 
+                           value="8f8638bd-66d6-4090-9666-c0ad91554e7b"/>
+                      <v:var name="FrAbsTimerIdx" type="INTEGER">
+                        <a:a name="DESC" 
+                             value="EN: Contains the index of an absolute timer contained in Fr on a certain FlexRay CC."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                        <a:a name="UUID" 
+                             value="fc43f7e6-61c0-4942-ae3e-7a7f9c64b574"/>
+                        <a:da name="DEFAULT" value="0"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=0"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                      </v:var>
+                    </v:ctr>
+                   </v:lst>                   
+                   <v:lst name="FrControllerDemEventParameterRefs" type="MAP">
+                    <a:da name="MAX" value="1"/>
+                    <v:ctr name="FrControllerDemEventParameterRefs" type="IDENTIFIABLE">
+                      <a:a name="DESC" 
+                           value="EN: This container contains the references to DemEventParameter elements.  Please see MCU187_Conf for more information on this parameter."/>
+                      <a:a name="UUID" 
+                           value="ECUC:4C697A37-02D8-42df-8696-0C9F592008C8"/>
+                      <v:lst name="FrDemCtrlTestResultRef">
+                        <a:da name="MAX" value="1"/>
+                        <v:ref name="FrDemCtrlTestResultRef" 
+                               type="SYMBOLIC-NAME-REFERENCE">
+                          <a:a name="DESC" 
+                               value="EN:Reference to the DemEventParameter which shall be issued on FlexRay controller hardware test failure"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                                <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="UUID" 
+                               value="ECUC:66C8E900-6197-42a3-8E25-A695AA21788E"/>
+                          <a:da name="REF" 
+                                value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter"/>
+                        </v:ref>
+                      </v:lst>
+                      <v:lst name="FrDemTimeoutRef">
+                        <a:da name="MAX" value="1"/>
+                        <v:ref name="FrDemTimeoutRef" 
+                               type="SYMBOLIC-NAME-REFERENCE">
+                          <a:a name="DESC" 
+                               value="EN:Reference to the DemEventParameter which shall be issued when there is a Timeout in Hardware response."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID" 
+                               value="ECUC:69fd4110-9760-498d-9fdf-823e17edbdae"/>
+                          <a:da name="REF" 
+                                value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter"/>
+                        </v:ref>
+                      </v:lst>
+                    </v:ctr>
+                   </v:lst> 
+                  <v:lst name="FrFifo" type="MAP">
+                  <a:da name="EDITABLE" value="true"/>    
+                      <a:da name="MIN" value="0"/>
+                      <a:da name="MAX" value="1"/>                      
+                    <v:ctr name="FrFifo" type="IDENTIFIABLE">
+                      <a:a name="DESC" 
+                           value="EN: One First In First Out (FIFO) queued receive structure, defining the admittance criteria to the FIFO, and mandating the ability to admit messages into the FIFO based on Message Id filtering criteria."/>
+                      <a:a name="UUID" 
+                           value="8f8638bd-66d6-4090-9667-c0ad91554e7e"/>
+                     <v:var name="FrAdmitWithoutMessageId" type="BOOLEAN">
+                      <a:a name="DESC" 
+                                 value="EN: Determines whether or not frames received in the dynamic segment that don&apos;t contain a message ID will be admitted into the FIFO."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="644468d0-d244-415a-8283-2ec150198bec"/>
+                      <a:da name="DEFAULT" value="false"/>
+                      <a:da name="EDITABLE" value="false"/>
+                    </v:var>                      
+                    <v:var name="FrBaseCycle" type="INTEGER">
+                      <a:a name="DESC" 
+                           value="EN: FIFO cycle counter acceptance criteria."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="UUID" 
+                           value="198ef5fc-f2f5-4eb1-ac87-00e843bfcd87"/>
+                      <a:da name="DEFAULT" value="0"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=63"/>
+                        <a:tst expr="&gt;=0"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="FrChannels" type="ENUMERATION">
+                      <a:a name="DESC" value="EN: FIFO channel admittance criteria."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="UUID" 
+                           value="68e0dc5b-db49-4f36-bb1f-c7ebf612a0d0"/>
+                      <a:da name="DEFAULT" value="FR_CHANNEL_A"/>
+                      <a:da name="RANGE">
+                        <a:v>FR_CHANNEL_A</a:v>
+                        <a:v>FR_CHANNEL_AB</a:v>
+                        <a:v>FR_CHANNEL_B</a:v>
+                      </a:da>
+                    </v:var>  
+                    <v:var name="FrCycleRepetition" type="INTEGER">
+                      <a:a name="DESC" 
+                           value="EN: FIFO cylce counter acceptance criteria. Valid values are 1,2,4,8,16,32,64."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="UUID" 
+                           value="198ef5fc-f2f5-4eb1-ac87-00e843bfcd9"/>
+                      <a:da name="DEFAULT" value="1"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=64"/>
+                        <a:tst expr="&gt;=1"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="FrFifoDepth" type="INTEGER">
+                            <a:a name="DESC" value="EN: Fifo Depth."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="UUID" 
+                           value="198ef5fc-f2f5-4eb1-ac87-00e843bfcd98"/>
+                      <a:da name="DEFAULT" value="1"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=127"/>
+                        <a:tst expr="&gt;=1"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="FrMsgIdMask" type="INTEGER">
+                      <a:a name="DESC" 
+                           value="EN: FIFO message identifier acceptance criteria (Mask filter)."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="UUID" 
+                           value="198ef5fc-f2f5-4eb1-ac87-00e843bfef87"/>
+                      <a:da name="DEFAULT" value="0"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=65535"/>
+                        <a:tst expr="&gt;=0"/>
+                      </a:da>
+                      <a:da name="EDITABLE" value="false"/>
+                    </v:var>
+                    <v:var name="FrMsgIdMatch" type="INTEGER">
+                      <a:a name="DESC" 
+                           value="EN: FIFO message identifier acceptance criteria (Match filter)."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="UUID" 
+                           value="198ef5fc-f2f5-4eef-ac87-00e843bfcd87"/>
+                      <a:da name="DEFAULT" value="0"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=65535"/>
+                        <a:tst expr="&gt;=0"/>
+                      </a:da>
+                      <a:da name="EDITABLE" value="false"/>
+                    </v:var>               
+                    <v:var name="FrFrameIdRejectionFilter" type="INTEGER">
+                      <a:a name="DESC" 
+                           value="EN: FIFO FrameId rejection criteria, frame ID to be rejected by the FIFO."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="UUID" 
+                           value="198ef5fc-f2f5-4eef-ac87-00E843Bfcd85"/>
+                      <a:da name="DEFAULT" value="0"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=2047"/>
+                        <a:tst expr="&gt;=0"/>
+                      </a:da>
+                    </v:var>               
+                    <v:var name="FrFrameIdRejectionFilterMask" type="INTEGER">
+                      <a:a name="DESC" 
+                           value="EN: FIFO FrameId rejection mask, For all the bits that are 0, corresponding bits are considered in the FrFrameIdRejectionFilter for FrameId rejection "/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="UUID" 
+                           value="198ef5fc-f2f5-4eef-ac87-00E843Bfcd90"/>
+                      <a:da name="DEFAULT" value="2047"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=2047"/>
+                        <a:tst expr="&gt;=0"/>
+                      </a:da>
+                    </v:var>               
+                     <v:var name="FrRejectStaticSegment" type="BOOLEAN">
+                      <a:a name="DESC" 
+                           value="EN: Determines whether or not frames received in the static segment are considered for FIFO."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="644468d0-d244-415a-8283-2ec150198bef"/>
+                      <a:da name="DEFAULT" value="false"/>
+                    </v:var>                      
+                    <v:var name="FrRejectNullFrames" type="BOOLEAN">
+                      <a:a name="DESC" 
+                           value="EN: Determines whether or not null frames received are considered for FIFO."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="644468d0-d244-415a-8283-2ec150198b45"/>
+                      <a:da name="DEFAULT" value="false"/>
+                    </v:var>                      
+                    <v:lst name="FrRange" type="MAP">
+                      <a:da name="MIN" value="1"/>
+                      <a:da name="MAX" value="1"/>
+                    <v:ctr name="FrRange" type="IDENTIFIABLE">
+                      <a:a name="DESC" 
+                           value="EN: FIFO Frame Id range acceptance criteria."/>
+                      <a:a name="UUID" 
+                           value="8f8638bd-66d6-4090-9666-c0ad91554e8c"/>
+                      <v:var name="FrRangeMax" type="INTEGER">
+                        <a:a name="DESC" 
+                             value="EN: Last FrameId of this range that will be accepted by the FIFO."/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                     type="IMPLEMENTATIONCONFIGCLASS">
+                                  <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                                  <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                                </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="UUID" 
+                             value="fc43f7e6-61c0-4942-ae3e-7a7f9c64b585"/>
+                        <a:da name="DEFAULT" value="0"/>
+                        <a:da name="EDITABLE" value="false"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=2047"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                      </v:var>
+                      <v:var name="FrRangeMin" type="INTEGER">
+                        <a:a name="DESC" 
+                             value="EN: First FrameId of this range that will be accepted by the FIFO."/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                     type="IMPLEMENTATIONCONFIGCLASS">
+                                  <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                                  <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                                </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="UUID" 
+                             value="fc43f7e6-61c0-4943-ae3e-7a7f9c64b585"/>
+                        <a:da name="DEFAULT" value="0"/>
+                        <a:da name="EDITABLE" value="false"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=2047"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                      </v:var> 
+                     </v:ctr>
+                    </v:lst>
+                    </v:ctr>
+                   </v:lst>                       
+                  </v:ctr>
+                  </v:lst>
+                  <v:ctr name="FrClockConfiguration" type="IDENTIFIABLE">
+                    <a:a name="LONG-NAME" value="FrClockConfiguration"/>
+                    <a:a name="DESC" 
+                         value="EN: Clock Configuration of the individual controller."/>
+                    <a:a name="UUID" 
+                         value="da0a594d-be4d-4441-8785-a5b238f167e2"/>
+                    <v:var name="FrClockDivider" type="INTEGER">
+                      <a:a name="DESC">
+                        <a:v>EN: Module clock divider. 
+1 - Clock fCLC_ERAY = fSYS selected
+2 - Clock fCLC_ERAY = fSYS /2 selected
+3 - Clock fCLC_ERAY = fSYS /3 selected
+4 - Clock fCLC_ERAY = fSYS /4 selected
+5 - Clock fCLC_ERAY = fSYS /5 selected
+6 - Clock fCLC_ERAY = fSYS /6 selected
+7 - Clock fCLC_ERAY = fSYS /7 selected
+Note: This configuration parameter only controls the kernel clock fCLC_ERAY and not the sampling clock fSCLK.</a:v>
+                      </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="UUID" 
+                           value="6584632d-87ac-405c-bcb6-e3f8ae229de2"/>
+                      <a:da name="DEFAULT" value="1"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=7"/>
+                        <a:tst expr="&gt;=1"/>
+                      </a:da>
+                    </v:var>                                     
+                  </v:ctr>
+                </v:ctr>
+              </v:lst>
+            </v:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+
+</datamodel>

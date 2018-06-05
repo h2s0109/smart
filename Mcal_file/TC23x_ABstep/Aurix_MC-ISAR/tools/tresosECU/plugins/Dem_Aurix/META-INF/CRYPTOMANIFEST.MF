@@ -1,0 +1,15 @@
+
+Name: config/Dem.xdm
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 28964594773964341138891464618688058709845191985087106020212
+ 971799722350846358275831146474622897071987741896558692
+SignatureKeyID: Infineon
+
+Name: generate/inc/Dem_PBcfg.h
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 28964594747536115471066718451360539772161119356009039664756
+ 911221944889224730448886454879341836042860807467266589
+SignatureKeyID: Infineon
+

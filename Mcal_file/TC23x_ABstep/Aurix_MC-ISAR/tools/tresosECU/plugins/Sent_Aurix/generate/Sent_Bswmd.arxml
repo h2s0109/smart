@@ -1,0 +1,1063 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!--
+/******************************************************************************
+**                                                                           **
+** Copyright (C) Infineon Technologies (2015)                                **
+**                                                                           **
+** All rights reserved.                                                      **
+**                                                                           **
+** This document contains proprietary information belonging to Infineon      **
+** Technologies. Passing on and copying of this document, and communication  **
+** of its contents is not permitted without prior written authorization.     **
+**                                                                           **
+*******************************************************************************
+**                                                                           **
+**  $FILENAME   : Sent_Bswmd.arxml $                                         **
+**                                                                           **
+**  $CC VERSION : \main\27 $                                                 **
+**                                                                           **
+**  $DATE       : 2015-11-30 $                                               **
+**                                                                           **
+**  AUTHOR    : DL-AUTOSAR-Engineering                                       **
+**                                                                           **
+**  VENDOR    : Infineon Technologies                                        **
+**                                                                           **
+**  DESCRIPTION  : BSWMD for Sent driver                            **
+**                                                                           **
+**  MAY BE CHANGED BY USER [yes/no]: No                                      **
+**                                                                           **
+******************************************************************************/
+/******************************************************************************
+**  Traceability   :                                                         **
+** 
+                                                                             **
+******************************************************************************/
+-->
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-0-3.xsd"> 
+[!AUTOSPACING!][!//
+[!NOCODE!][!//
+[!SELECT " as:modconf('Sent')[1]"!][!//"!][!//
+[!VAR "Sent_SpcFeatureSupport_Xpath" = "SentGeneral/SentSpcFeatureSupport"!][!//
+[!VAR "Sent_DeInit_Xpath" = "SentGeneral/SentDeInitApi"!][!//
+[!VAR "Sent_AccessEnable_Xpath" = "SentGeneral/SentAccessEnable"!][!//
+[!ENDSELECT!][!//
+[!ENDNOCODE!][!//
+<AR-PACKAGES>
+    <AR-PACKAGE>
+        <SHORT-NAME>AURIX_Sent</SHORT-NAME>
+        <AR-PACKAGES>
+            <AR-PACKAGE>
+                <SHORT-NAME>BswModuleDescriptions</SHORT-NAME>
+                <CATEGORY>STANDARD</CATEGORY>
+                <ELEMENTS>
+                    <BSW-MODULE-DESCRIPTION>
+                        <SHORT-NAME>Sent</SHORT-NAME>
+                        <LONG-NAME>
+                            <L-4 L="EN">Single Edge Nibble Transmission Driver</L-4>
+                        </LONG-NAME>
+                        <CATEGORY>BSW_MODULE</CATEGORY>
+                        <MODULE-ID>255</MODULE-ID>
+                        <PROVIDED-ENTRYS>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Sent/BswModuleEntrys/Sent_Init</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Sent/BswModuleEntrys/Sent_SetChannel</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Sent/BswModuleEntrys/Sent_ReadData</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Sent/BswModuleEntrys/Sent_ReadSerialData</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Sent/BswModuleEntrys/Sent_ReadChannelStatus</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+[!IF "$Sent_SpcFeatureSupport_Xpath = 'true'"!]                              
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Sent/BswModuleEntrys/Sent_SpcGenPulse</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+[!ENDIF!][!//
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Sent/BswModuleEntrys/Sent_SetWdgTimer</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Sent/BswModuleEntrys/Sent_GetVersionInfo</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+[!IF "$Sent_AccessEnable_Xpath = 'SENT_ACCEN_API'"!]                              
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Sent/BswModuleEntrys/Sent_GetAccessEnable</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+[!ENDIF!][!//
+[!IF "$Sent_AccessEnable_Xpath = 'SENT_ACCEN_API'"!]                              
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Sent/BswModuleEntrys/Sent_SetAccessEnable</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+[!ENDIF!][!//
+[!IF "$Sent_DeInit_Xpath = 'true'"!]                              
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Sent/BswModuleEntrys/Sent_DeInit</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+[!ENDIF!][!//
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Sent/BswModuleEntrys/Sent_Isr</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                            <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Sent/BswModuleEntrys/Sent_NotificationFn</BSW-MODULE-ENTRY-REF>
+                            </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                        </PROVIDED-ENTRYS>
+                        <BSW-MODULE-DEPENDENCYS>
+                            <BSW-MODULE-DEPENDENCY>
+                                <SHORT-NAME>DetDependency</SHORT-NAME>
+                                <TARGET-MODULE-ID>15</TARGET-MODULE-ID>
+                                <REQUIRED-ENTRYS>
+                                    <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                        <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_Det/BswModuleEntrys/Det_ReportError</BSW-MODULE-ENTRY-REF>
+                                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                                </REQUIRED-ENTRYS>
+                            </BSW-MODULE-DEPENDENCY>
+                        </BSW-MODULE-DEPENDENCYS>
+                        <INTERNAL-BEHAVIORS>
+                          <BSW-INTERNAL-BEHAVIOR>
+                            <SHORT-NAME>SentBehavior</SHORT-NAME>
+                            <CONSTANT-MEMORYS>
+                              <PARAMETER-DATA-PROTOTYPE>
+                                <SHORT-NAME>Sent_kConfigPtr</SHORT-NAME>
+                                <CATEGORY>DATA_REFERENCE</CATEGORY>
+                                <SW-DATA-DEF-PROPS>
+                                  <SW-DATA-DEF-PROPS-VARIANTS>
+                                    <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                    <SW-POINTER-TARGET-PROPS>
+                                <TARGET-CATEGORY>TYPE_REFERENCE</TARGET-CATEGORY>
+                                    <SW-DATA-DEF-PROPS>
+                                    <SW-DATA-DEF-PROPS-VARIANTS>
+                                    <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                      <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AURIX_Sent/ImplementationDataTypes/Sent_ConfigType</IMPLEMENTATION-DATA-TYPE-REF>
+                                    </SW-DATA-DEF-PROPS-CONDITIONAL>
+                                    </SW-DATA-DEF-PROPS-VARIANTS>
+                                    </SW-DATA-DEF-PROPS>
+                                    </SW-POINTER-TARGET-PROPS>
+                                    </SW-DATA-DEF-PROPS-CONDITIONAL>
+                                  </SW-DATA-DEF-PROPS-VARIANTS>
+                                </SW-DATA-DEF-PROPS>
+                                <TYPE-TREF DEST = "IMPLEMENTATION-DATA-TYPE">/AURIX_Sent/ImplementationDataTypes/Sent_ConfigType</TYPE-TREF>
+                              </PARAMETER-DATA-PROTOTYPE>
+                            </CONSTANT-MEMORYS>
+                            <STATIC-MEMORYS>
+                              <VARIABLE-DATA-PROTOTYPE>
+                                <SHORT-NAME>Sent_FnCbkPtr</SHORT-NAME>
+                                <SW-DATA-DEF-PROPS>
+                                  <SW-DATA-DEF-PROPS-VARIANTS>
+                                    <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                    <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AURIX_Std/ImplementationDataTypes/Sent_NotifFnPtrType</IMPLEMENTATION-DATA-TYPE-REF>
+                                    </SW-DATA-DEF-PROPS-CONDITIONAL>
+                                  </SW-DATA-DEF-PROPS-VARIANTS>
+                                </SW-DATA-DEF-PROPS>
+                                <TYPE-TREF DEST = "IMPLEMENTATION-DATA-TYPE">/AURIX_Std/ImplementationDataTypes/Sent_NotifFnPtrType</TYPE-TREF>
+                              </VARIABLE-DATA-PROTOTYPE>
+                              <VARIABLE-DATA-PROTOTYPE>
+                                <SHORT-NAME>Sent_InitStatus</SHORT-NAME>
+                                <SW-DATA-DEF-PROPS>
+                                  <SW-DATA-DEF-PROPS-VARIANTS>
+                                    <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                    <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                    </SW-DATA-DEF-PROPS-CONDITIONAL>
+                                  </SW-DATA-DEF-PROPS-VARIANTS>
+                                </SW-DATA-DEF-PROPS>
+                                <TYPE-TREF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</TYPE-TREF>
+                              </VARIABLE-DATA-PROTOTYPE>
+                              <VARIABLE-DATA-PROTOTYPE>
+                                <SHORT-NAME>Sent_ChannelMap</SHORT-NAME>
+                                <SW-DATA-DEF-PROPS>
+                                  <SW-DATA-DEF-PROPS-VARIANTS>
+                                    <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                    <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/sint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                    </SW-DATA-DEF-PROPS-CONDITIONAL>
+                                  </SW-DATA-DEF-PROPS-VARIANTS>
+                                </SW-DATA-DEF-PROPS>
+                                <TYPE-TREF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/sint8</TYPE-TREF>
+                              </VARIABLE-DATA-PROTOTYPE>
+                            </STATIC-MEMORYS>
+                            <ENTITYS>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Sent_Init</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Sent/BswModuleEntrys/Sent_Init</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Sent_SetChannel</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Sent/BswModuleEntrys/Sent_SetChannel</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Sent_ReadData</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Sent/BswModuleEntrys/Sent_ReadData</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Sent_ReadSerialData</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Sent/BswModuleEntrys/Sent_ReadSerialData</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Sent_ReadChannelStatus</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Sent/BswModuleEntrys/Sent_ReadChannelStatus</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+[!IF "$Sent_SpcFeatureSupport_Xpath = 'true'"!]                              
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Sent_SpcGenPulse</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Sent/BswModuleEntrys/Sent_SpcGenPulse</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+[!ENDIF!][!//
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Sent_SetWdgTimer</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Sent/BswModuleEntrys/Sent_SetWdgTimer</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Sent_GetVersionInfo</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Sent/BswModuleEntrys/Sent_GetVersionInfo</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+[!IF "$Sent_AccessEnable_Xpath = 'SENT_ACCEN_API'"!]                              
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Sent_GetAccessEnable</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Sent/BswModuleEntrys/Sent_GetAccessEnable</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+[!ENDIF!][!//
+[!IF "$Sent_AccessEnable_Xpath = 'SENT_ACCEN_API'"!]                              
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Sent_SetAccessEnable</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Sent/BswModuleEntrys/Sent_SetAccessEnable</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+[!ENDIF!][!//
+[!IF "$Sent_DeInit_Xpath = 'true'"!]                              
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Sent_DeInit</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Sent/BswModuleEntrys/Sent_DeInit</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+[!ENDIF!][!//
+                              <BSW-CALLED-ENTITY>
+                                <SHORT-NAME>Sent_NotificationFn</SHORT-NAME>
+                                <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Sent/BswModuleEntrys/Sent_NotificationFn</IMPLEMENTED-ENTRY-REF>
+                              </BSW-CALLED-ENTITY>
+                              <BSW-INTERRUPT-ENTITY>
+                                  <SHORT-NAME>Sent_Isr</SHORT-NAME>
+                                  <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                  <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AURIX_Sent/BswModuleEntrys/Sent_Isr</IMPLEMENTED-ENTRY-REF>
+                                  <INTERRUPT-CATEGORY>CAT-1</INTERRUPT-CATEGORY>
+                                  <INTERRUPT-SOURCE>SRC_SENTm</INTERRUPT-SOURCE>
+                              </BSW-INTERRUPT-ENTITY>
+                            </ENTITYS>
+                          </BSW-INTERNAL-BEHAVIOR>
+                        </INTERNAL-BEHAVIORS>
+                    </BSW-MODULE-DESCRIPTION>
+                </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE>
+                <SHORT-NAME>BswModuleEntrys</SHORT-NAME>
+                <CATEGORY>STANDARD</CATEGORY>
+                <ELEMENTS>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Sent_Init</SHORT-NAME>
+                        <SERVICE-ID>0</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>ConfigPtr</SHORT-NAME>
+                            <CATEGORY>DATA_REFERENCE</CATEGORY>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <SW-POINTER-TARGET-PROPS>
+                                <TARGET-CATEGORY>TYPE_REFERENCE</TARGET-CATEGORY>
+                                <SW-DATA-DEF-PROPS>
+                                <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AURIX_Sent/ImplementationDataTypes/Sent_ConfigType</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                                </SW-DATA-DEF-PROPS-VARIANTS>
+                                </SW-DATA-DEF-PROPS>
+                                </SW-POINTER-TARGET-PROPS>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Sent_SetChannel</SHORT-NAME>
+                        <SERVICE-ID>1</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>ChannelId</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AURIX_Sent/ImplementationDataTypes/Sent_ChannelIdxType</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>Operation</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AURIX_Sent/ImplementationDataTypes/Sent_ChanOpType</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Sent_ReadData</SHORT-NAME>
+                        <SERVICE-ID>2</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <RETURN-TYPE>
+                          <SHORT-NAME>Return</SHORT-NAME>
+                          <SW-DATA-DEF-PROPS>
+                            <SW-DATA-DEF-PROPS-VARIANTS>
+                              <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint32</IMPLEMENTATION-DATA-TYPE-REF>
+                              </SW-DATA-DEF-PROPS-CONDITIONAL>
+                            </SW-DATA-DEF-PROPS-VARIANTS>
+                          </SW-DATA-DEF-PROPS>
+                        </RETURN-TYPE>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>ChannelId</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AURIX_Sent/ImplementationDataTypes/Sent_ChannelIdxType</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Sent_ReadSerialData</SHORT-NAME>
+                        <SERVICE-ID>3</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>ChannelId</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AURIX_Sent/ImplementationDataTypes/Sent_ChannelIdxType</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>DataPtr</SHORT-NAME>
+                            <CATEGORY>DATA_REFERENCE</CATEGORY>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <SW-POINTER-TARGET-PROPS>
+                                <TARGET-CATEGORY>TYPE_REFERENCE</TARGET-CATEGORY>
+                                <SW-DATA-DEF-PROPS>
+                                <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AURIX_Sent/ImplementationDataTypes/Sent_RxSerialDataType</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                                </SW-DATA-DEF-PROPS-VARIANTS>
+                                </SW-DATA-DEF-PROPS>
+                                </SW-POINTER-TARGET-PROPS>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Sent_ReadChannelStatus</SHORT-NAME>
+                        <SERVICE-ID>4</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>ChannelId</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AURIX_Sent/ImplementationDataTypes/Sent_ChannelIdxType</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>StatPtr</SHORT-NAME>
+                            <CATEGORY>DATA_REFERENCE</CATEGORY>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <SW-POINTER-TARGET-PROPS>
+                                <TARGET-CATEGORY>TYPE_REFERENCE</TARGET-CATEGORY>
+                                <SW-DATA-DEF-PROPS>
+                                <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AURIX_Sent/ImplementationDataTypes/Sent_ChanStatusType</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                                </SW-DATA-DEF-PROPS-VARIANTS>
+                                </SW-DATA-DEF-PROPS>
+                                </SW-POINTER-TARGET-PROPS>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+[!IF "$Sent_SpcFeatureSupport_Xpath = 'true'"!]                              
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Sent_SpcGenPulse</SHORT-NAME>
+                        <SERVICE-ID>5</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>ChannelId</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AURIX_Sent/ImplementationDataTypes/Sent_ChannelIdxType</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>SpcCfgPtr</SHORT-NAME>
+                            <CATEGORY>DATA_REFERENCE</CATEGORY>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <SW-POINTER-TARGET-PROPS>
+                                <TARGET-CATEGORY>TYPE_REFERENCE</TARGET-CATEGORY>
+                                <SW-DATA-DEF-PROPS>
+                                <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AURIX_Sent/ImplementationDataTypes/Sent_SpcType</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                                </SW-DATA-DEF-PROPS-VARIANTS>
+                                </SW-DATA-DEF-PROPS>
+                                </SW-POINTER-TARGET-PROPS>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+[!ENDIF!][!//
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Sent_SetWdgTimer</SHORT-NAME>
+                        <SERVICE-ID>6</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>ChannelId</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AURIX_Sent/ImplementationDataTypes/Sent_ChannelIdxType</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>WdgTimerReloadVal</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint16</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Sent_GetVersionInfo</SHORT-NAME>
+                        <SERVICE-ID>7</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>MACRO</SW-SERVICE-IMPL-POLICY>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>VersionInfoPtr</SHORT-NAME>
+                            <CATEGORY>DATA_REFERENCE</CATEGORY>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <SW-POINTER-TARGET-PROPS>
+                                <TARGET-CATEGORY>TYPE_REFERENCE</TARGET-CATEGORY>
+                                <SW-DATA-DEF-PROPS>
+                                <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Std/ImplementationDataTypes/Std_VersionInfoType</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                                </SW-DATA-DEF-PROPS-VARIANTS>
+                                </SW-DATA-DEF-PROPS>
+                                </SW-POINTER-TARGET-PROPS>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+[!IF "$Sent_AccessEnable_Xpath = 'SENT_ACCEN_API'"!]                              
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Sent_GetAccessEnable</SHORT-NAME>
+                        <SERVICE-ID>8</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <RETURN-TYPE>
+                          <SHORT-NAME>Return</SHORT-NAME>
+                          <SW-DATA-DEF-PROPS>
+                            <SW-DATA-DEF-PROPS-VARIANTS>
+                              <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint32</IMPLEMENTATION-DATA-TYPE-REF>
+                              </SW-DATA-DEF-PROPS-CONDITIONAL>
+                            </SW-DATA-DEF-PROPS-VARIANTS>
+                          </SW-DATA-DEF-PROPS>
+                        </RETURN-TYPE>
+                    </BSW-MODULE-ENTRY>
+[!ENDIF!][!//
+[!IF "$Sent_AccessEnable_Xpath = 'SENT_ACCEN_API'"!]                              
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Sent_SetAccessEnable</SHORT-NAME>
+                        <SERVICE-ID>9</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>AccenRegVal</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint32</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+[!ENDIF!][!//
+[!IF "$Sent_DeInit_Xpath = 'true'"!]                              
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Sent_DeInit</SHORT-NAME>
+                        <SERVICE-ID>10</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                    </BSW-MODULE-ENTRY>
+[!ENDIF!][!//
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Sent_Isr</SHORT-NAME>
+                        <SERVICE-ID>0</SERVICE-ID>
+                        <IS-REENTRANT>true</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>INTERRUPT</CALL-TYPE>
+                        <EXECUTION-CONTEXT>INTERRUPT-CAT-1</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                        <ARGUMENTS>
+                          <SW-SERVICE-ARG>
+                            <SHORT-NAME>ChannelId</SHORT-NAME>
+                            <SW-DATA-DEF-PROPS>
+                              <SW-DATA-DEF-PROPS-VARIANTS>
+                                <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                <IMPLEMENTATION-DATA-TYPE-REF DEST = "IMPLEMENTATION-DATA-TYPE">/AURIX_Sent/ImplementationDataTypes/Sent_ChannelIdxType</IMPLEMENTATION-DATA-TYPE-REF>
+                                </SW-DATA-DEF-PROPS-CONDITIONAL>
+                              </SW-DATA-DEF-PROPS-VARIANTS>
+                            </SW-DATA-DEF-PROPS>
+                          </SW-SERVICE-ARG>
+                        </ARGUMENTS>
+                    </BSW-MODULE-ENTRY>
+                    <BSW-MODULE-ENTRY>
+                        <SHORT-NAME>Sent_NotificationFn</SHORT-NAME>
+                        <SERVICE-ID>255</SERVICE-ID>
+                        <IS-REENTRANT>false</IS-REENTRANT>
+                        <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                        <CALL-TYPE>REGULAR</CALL-TYPE>
+                        <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                        <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                    </BSW-MODULE-ENTRY>
+                </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE>
+                <SHORT-NAME>Implementations</SHORT-NAME>
+                <ELEMENTS>
+                    <BSW-IMPLEMENTATION>
+                        <SHORT-NAME>Sent</SHORT-NAME>
+                        <CODE-DESCRIPTORS>
+                            <CODE>
+                                <SHORT-NAME>Files</SHORT-NAME>
+                                <ARTIFACT-DESCRIPTORS>
+                                    <AUTOSAR-ENGINEERING-OBJECT>
+                                        <SHORT-LABEL>ssc::src::Sent.c</SHORT-LABEL>
+                                        <CATEGORY>SWSRC</CATEGORY>
+                                    </AUTOSAR-ENGINEERING-OBJECT>
+                                    <AUTOSAR-ENGINEERING-OBJECT>
+                                        <SHORT-LABEL>ssc::inc::Sent.h</SHORT-LABEL>
+                                        <CATEGORY>SWHDR</CATEGORY>
+                                    </AUTOSAR-ENGINEERING-OBJECT>
+                                    <AUTOSAR-ENGINEERING-OBJECT>
+                                        <SHORT-LABEL>ssc::inc::Sent_Types.h</SHORT-LABEL>
+                                        <CATEGORY>SWHDR</CATEGORY>
+                                    </AUTOSAR-ENGINEERING-OBJECT>
+                                    <AUTOSAR-ENGINEERING-OBJECT>
+                                        <SHORT-LABEL>integration_general::src::Sent_Callout.c</SHORT-LABEL>
+                                        <CATEGORY>SWSRC</CATEGORY>
+                                    </AUTOSAR-ENGINEERING-OBJECT>
+                                    <AUTOSAR-ENGINEERING-OBJECT>
+                                        <SHORT-LABEL>integration_general::inc::Sent_Callout.h</SHORT-LABEL>
+                                        <CATEGORY>SWHDR</CATEGORY>
+                                    </AUTOSAR-ENGINEERING-OBJECT>
+                                    <AUTOSAR-ENGINEERING-OBJECT>
+                                        <SHORT-LABEL>irq_infineon_tricore::ssc::src::Sent_Irq.c</SHORT-LABEL>
+                                        <CATEGORY>SWSRC</CATEGORY>
+                                    </AUTOSAR-ENGINEERING-OBJECT>
+                                    <AUTOSAR-ENGINEERING-OBJECT>
+                                        <SHORT-LABEL>ssc::mak::infineon_sent_cfg.mak</SHORT-LABEL>
+                                        <CATEGORY>SWMAKE</CATEGORY>
+                                    </AUTOSAR-ENGINEERING-OBJECT>
+                                    <AUTOSAR-ENGINEERING-OBJECT>
+                                        <SHORT-LABEL>ssc::mak::infineon_sent_check.mak</SHORT-LABEL>
+                                        <CATEGORY>SWMAKE</CATEGORY>
+                                    </AUTOSAR-ENGINEERING-OBJECT>
+                                    <AUTOSAR-ENGINEERING-OBJECT>
+                                        <SHORT-LABEL>ssc::mak::infineon_sent_defs.mak</SHORT-LABEL>
+                                        <CATEGORY>SWMAKE</CATEGORY>
+                                    </AUTOSAR-ENGINEERING-OBJECT>
+                                    <AUTOSAR-ENGINEERING-OBJECT>
+                                        <SHORT-LABEL>ssc::mak::infineon_sent_rules.mak</SHORT-LABEL>
+                                        <CATEGORY>SWMAKE</CATEGORY>
+                                    </AUTOSAR-ENGINEERING-OBJECT>
+                                </ARTIFACT-DESCRIPTORS>
+                            </CODE>
+                        </CODE-DESCRIPTORS>
+                        <COMPILERS>
+                            <COMPILER>
+                                <SHORT-NAME>TASKING_COMPILE</SHORT-NAME>
+                                <NAME>TASKING</NAME>
+                                <OPTIONS>&quot;-c --core=tc1.6.x -t -Wa-gAHLs --emit-locals=-equ,-symbols -Wa-Ogs -Wa--error-limit=42 --iso=90 --eabi-compliant --integer-enumeration --language=-comments,-gcc,+volatile,-strings --switch=auto --align=0 --default-near-size=0 --default-a0-size=0 --default-a1-size=0 -O2ROPYG --tradeoff=4 -g --source -D_TASKING_C_TRICORE_=1 $(CALLFUNCTION)&quot;</OPTIONS>
+                                <VENDOR>Tasking</VENDOR>
+                                <VERSION>Tasking</VERSION>
+                            </COMPILER>
+                            <COMPILER>
+                                <SHORT-NAME>DIAB_COMPILE</SHORT-NAME>
+                                <NAME>DIAB</NAME>
+                                <OPTIONS>&quot;-c -tTC27xAstep16PMG:cross -Xdialect-c89 -Xno-common -Xalign-functions=4 -Xfp-fast -Xsection-split=1 -Xkeep-assembly-file=2 -g3 -ew4084 -ei4177,4550,4549,4068,5388 -XO -D_DIABDATA_C_TRICORE_=1 $(CALLFUNCTION)&quot;</OPTIONS>
+                                <VENDOR>WindRiver</VENDOR>
+                                <VERSION>WindRiver</VERSION>
+                            </COMPILER>
+                            <COMPILER>
+                                <SHORT-NAME>GNU_COMPILE</SHORT-NAME>
+                                <NAME>GNU</NAME>
+                                <OPTIONS>&quot;-c -save-temps=obj -std=iso9899:1990 -ansi -fno-asm -ffreestanding -Wundef -Wp,-std=iso9899:1990 -fno-short-enums -fpeel-loops -falign-functions=4 -frecord-gcc-switches -fsection-anchors -funsigned-bitfields -ffunction-sections -fno-ivopts -fno-peephole2 -nostartfiles -O3 -g3 -W -Wall -Wuninitialized -DTRIBOARD_TC27XX -mcpu=tc27xx -D_GNU_C_TRICORE_=1 $(CALLFUNCTION)&quot;</OPTIONS>
+                                <VENDOR>Hightec</VENDOR>
+                                <VERSION>Hightec</VERSION>
+                            </COMPILER>
+                        </COMPILERS>
+                        <GENERATED-ARTIFACTS>
+                            <DEPENDENCY-ON-ARTIFACT>
+                                <SHORT-NAME>Sent_PBCfg_c</SHORT-NAME>
+                                <ARTIFACT-DESCRIPTOR>
+                                    <SHORT-LABEL>generate::src::Sent_PBCfg.c</SHORT-LABEL>
+                                    <CATEGORY>SWSRC</CATEGORY>
+                                </ARTIFACT-DESCRIPTOR>
+                                <USAGES>
+                                    <USAGE>CODEGENERATION</USAGE>
+                                </USAGES>
+                            </DEPENDENCY-ON-ARTIFACT>
+                            <DEPENDENCY-ON-ARTIFACT>
+                                <SHORT-NAME>Sent_Cfg_h</SHORT-NAME>
+                                <ARTIFACT-DESCRIPTOR>
+                                    <SHORT-LABEL>generate::inc::Sent_Cfg.h</SHORT-LABEL>
+                                    <CATEGORY>SWHDR</CATEGORY>
+                                </ARTIFACT-DESCRIPTOR>
+                                <USAGES>
+                                    <USAGE>CODEGENERATION</USAGE>
+                                </USAGES>
+                            </DEPENDENCY-ON-ARTIFACT>
+                            <DEPENDENCY-ON-ARTIFACT>
+                                <SHORT-NAME>Sent_xdm</SHORT-NAME>
+                                <ARTIFACT-DESCRIPTOR>
+                                    <SHORT-LABEL>config::Sent.xdm</SHORT-LABEL>
+                                    <CATEGORY>SWTOOL</CATEGORY>
+                                </ARTIFACT-DESCRIPTOR>
+                                <USAGES>
+                                    <USAGE>CODEGENERATION</USAGE>
+                                </USAGES>
+                            </DEPENDENCY-ON-ARTIFACT>
+                            <DEPENDENCY-ON-ARTIFACT>
+                                <SHORT-NAME>Sent_bmd</SHORT-NAME>
+                                <ARTIFACT-DESCRIPTOR>
+                                    <SHORT-LABEL>autosar::Sent.bmd</SHORT-LABEL>
+                                    <CATEGORY>SWTOOL</CATEGORY>
+                                </ARTIFACT-DESCRIPTOR>
+                                <USAGES>
+                                    <USAGE>CODEGENERATION</USAGE>
+                                </USAGES>
+                            </DEPENDENCY-ON-ARTIFACT>
+                            <DEPENDENCY-ON-ARTIFACT>
+                                <SHORT-NAME>Sent_m</SHORT-NAME>
+                                <ARTIFACT-DESCRIPTOR>
+                                    <SHORT-LABEL>generate::Sent.m</SHORT-LABEL>
+                                    <CATEGORY>SWTOOL</CATEGORY>
+                                </ARTIFACT-DESCRIPTOR>
+                                <USAGES>
+                                    <USAGE>CODEGENERATION</USAGE>
+                                </USAGES>
+                            </DEPENDENCY-ON-ARTIFACT>
+                        </GENERATED-ARTIFACTS>
+                        <LINKERS>
+                            <LINKER>
+                                <SHORT-NAME>TASKING_LINK</SHORT-NAME>
+                                <NAME>TASKING</NAME>
+                                <OPTIONS>&quot;-t -d_mcal_pjt.lsl -D__CPU__=tc27x -Cmpe:vtc -Otxycl --error-limit=42 -M -mcrfiklsmnoduq -lc -lfp -lrt&quot;</OPTIONS>
+                                <VENDOR>Tasking</VENDOR>
+                                <VERSION>Tasking</VERSION>
+                            </LINKER>
+                            <LINKER>
+                                <SHORT-NAME>DIAB_LINK</SHORT-NAME>
+                                <NAME>DIAB</NAME>
+                                <OPTIONS>&quot;-m6 &quot;_mcal_pjt.dld&quot; -lc&quot;</OPTIONS>
+                                <VENDOR>WindRiver</VENDOR>
+                                <VERSION>WindRiver</VERSION>
+                            </LINKER>
+                            <LINKER>
+                                <SHORT-NAME>GNU_LINK</SHORT-NAME>
+                                <NAME>GNU</NAME>
+                                <OPTIONS>&quot;-T&quot;_mcal_pjt.ld&quot; -nostartfiles -Wl,--allow-multiple-definition -Wl,--cref -Wl,--oformat=elf32-tricore -Wl,--mcpu=tc161 -Wl,--mem-holes -Wl,--extmap=&quot;a&quot;&quot;</OPTIONS>
+                                <VENDOR>Hightec</VENDOR>
+                                <VERSION>Hightec</VERSION>
+                            </LINKER>
+                        </LINKERS>
+                        <PROGRAMMING-LANGUAGE>C</PROGRAMMING-LANGUAGE>
+                        <RESOURCE-CONSUMPTION>
+                            <SHORT-NAME>ResourceConsumption</SHORT-NAME>
+                            <MEMORY-SECTIONS>
+                                <MEMORY-SECTION>
+                                    <SHORT-NAME>SENT_VAR_8BIT</SHORT-NAME>
+                                    <ALIGNMENT>8</ALIGNMENT>
+                                    <SIZE>11</SIZE>
+                                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR</SW-ADDRMETHOD-REF>
+                                </MEMORY-SECTION>
+                                <MEMORY-SECTION>
+                                    <SHORT-NAME>SENT_VAR_32BIT</SHORT-NAME>
+                                    <ALIGNMENT>32</ALIGNMENT>
+                                    <SIZE>44</SIZE>
+                                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR</SW-ADDRMETHOD-REF>
+                                </MEMORY-SECTION>
+                                <MEMORY-SECTION>
+                                    <SHORT-NAME>SENT_CODE</SHORT-NAME>
+                                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                                    <SIZE>1486</SIZE>
+                                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CODE</SW-ADDRMETHOD-REF>
+                                </MEMORY-SECTION>
+                                <MEMORY-SECTION>
+                                    <SHORT-NAME>SENT_POSTBUILDCFG</SHORT-NAME>
+                                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                                    <SIZE>270</SIZE>
+                                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CONFIG_DATA</SW-ADDRMETHOD-REF>
+                                </MEMORY-SECTION>
+                            </MEMORY-SECTIONS>
+                            <SECTION-NAME-PREFIXS>
+                                <SECTION-NAME-PREFIX>
+                                    <SHORT-NAME>SENT</SHORT-NAME>
+                                    <SYMBOL>SENT</SYMBOL>
+                                </SECTION-NAME-PREFIX>
+                            </SECTION-NAME-PREFIXS>
+                        </RESOURCE-CONSUMPTION>
+                        <SW-VERSION>0.0.0</SW-VERSION>
+                        <VENDOR-ID>17</VENDOR-ID>
+                        <AR-RELEASE-VERSION>4.0.3</AR-RELEASE-VERSION>
+                        <BEHAVIOR-REF DEST="BSW-INTERNAL-BEHAVIOR">/AURIX_Sent/BswModuleDescriptions/Sent/SentBehavior</BEHAVIOR-REF>
+                        <VENDOR-SPECIFIC-MODULE-DEF-REFS>
+                                <VENDOR-SPECIFIC-MODULE-DEF-REF DEST="ECUC-MODULE-DEF">/AURIX/Sent</VENDOR-SPECIFIC-MODULE-DEF-REF>
+                        </VENDOR-SPECIFIC-MODULE-DEF-REFS>
+                    </BSW-IMPLEMENTATION>
+                </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE>
+                <SHORT-NAME>ImplementationDataTypes</SHORT-NAME>
+                <CATEGORY>STANDARD</CATEGORY>
+                <ELEMENTS>
+                    <IMPLEMENTATION-DATA-TYPE>
+                     <SHORT-NAME>Sent_ChannelIdxType</SHORT-NAME>
+                     <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                     <SW-DATA-DEF-PROPS>
+                       <SW-DATA-DEF-PROPS-VARIANTS>
+                         <SW-DATA-DEF-PROPS-CONDITIONAL>
+                           <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                         </SW-DATA-DEF-PROPS-CONDITIONAL>
+                       </SW-DATA-DEF-PROPS-VARIANTS>
+                     </SW-DATA-DEF-PROPS>
+                     <TYPE-EMITTER>BSW</TYPE-EMITTER>
+                    </IMPLEMENTATION-DATA-TYPE>
+                    <IMPLEMENTATION-DATA-TYPE>
+                     <SHORT-NAME>Sent_NotifType</SHORT-NAME>
+                     <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                     <SW-DATA-DEF-PROPS>
+                       <SW-DATA-DEF-PROPS-VARIANTS>
+                         <SW-DATA-DEF-PROPS-CONDITIONAL>
+                           <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint32</IMPLEMENTATION-DATA-TYPE-REF>
+                         </SW-DATA-DEF-PROPS-CONDITIONAL>
+                       </SW-DATA-DEF-PROPS-VARIANTS>
+                     </SW-DATA-DEF-PROPS>
+                     <TYPE-EMITTER>BSW</TYPE-EMITTER>
+                    </IMPLEMENTATION-DATA-TYPE>
+                    <IMPLEMENTATION-DATA-TYPE>
+                     <SHORT-NAME>Sent_ChanOpType</SHORT-NAME>
+                     <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                     <SW-DATA-DEF-PROPS>
+                       <SW-DATA-DEF-PROPS-VARIANTS>
+                         <SW-DATA-DEF-PROPS-CONDITIONAL>
+                           <COMPU-METHOD-REF DEST="COMPU-METHOD">/AURIX_Sent/CompuMethods/Sent_ChanOpType</COMPU-METHOD-REF>
+                           <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint32</IMPLEMENTATION-DATA-TYPE-REF>
+                         </SW-DATA-DEF-PROPS-CONDITIONAL>
+                       </SW-DATA-DEF-PROPS-VARIANTS>
+                     </SW-DATA-DEF-PROPS>
+                     <TYPE-EMITTER>BSW</TYPE-EMITTER>
+                    </IMPLEMENTATION-DATA-TYPE>
+                    <IMPLEMENTATION-DATA-TYPE>
+                     <SHORT-NAME>Sent_ChannelCfgType</SHORT-NAME>
+                     <CATEGORY>STRUCTURE</CATEGORY>
+                     <SUB-ELEMENTS>
+                       <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                         <SHORT-NAME>uint32</SHORT-NAME>
+                       </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                     </SUB-ELEMENTS>
+                     <TYPE-EMITTER>BSW</TYPE-EMITTER>
+                    </IMPLEMENTATION-DATA-TYPE>
+                    <IMPLEMENTATION-DATA-TYPE>
+                     <SHORT-NAME>Sent_ConfigType</SHORT-NAME>
+                     <CATEGORY>STRUCTURE</CATEGORY>
+                     <SUB-ELEMENTS>
+                       <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                         <SHORT-NAME>Sent_ChannelCfgType</SHORT-NAME>
+                       </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                     </SUB-ELEMENTS>
+                     <TYPE-EMITTER>BSW</TYPE-EMITTER>
+                    </IMPLEMENTATION-DATA-TYPE>
+                    <IMPLEMENTATION-DATA-TYPE>
+                     <SHORT-NAME>Sent_RxSerialDataType</SHORT-NAME>
+                     <CATEGORY>STRUCTURE</CATEGORY>
+                     <SUB-ELEMENTS>
+                       <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                         <SHORT-NAME>uint16</SHORT-NAME>
+                       </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                     </SUB-ELEMENTS>
+                     <TYPE-EMITTER>BSW</TYPE-EMITTER>
+                    </IMPLEMENTATION-DATA-TYPE>
+                    <IMPLEMENTATION-DATA-TYPE>
+                     <SHORT-NAME>Sent_ChanStateType</SHORT-NAME>
+                     <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                     <SW-DATA-DEF-PROPS>
+                       <SW-DATA-DEF-PROPS-VARIANTS>
+                         <SW-DATA-DEF-PROPS-CONDITIONAL>
+                           <COMPU-METHOD-REF DEST="COMPU-METHOD">/AURIX_Sent/CompuMethods/Sent_ChanStateType</COMPU-METHOD-REF>
+                           <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint32</IMPLEMENTATION-DATA-TYPE-REF>
+                         </SW-DATA-DEF-PROPS-CONDITIONAL>
+                       </SW-DATA-DEF-PROPS-VARIANTS>
+                     </SW-DATA-DEF-PROPS>
+                     <TYPE-EMITTER>BSW</TYPE-EMITTER>
+                    </IMPLEMENTATION-DATA-TYPE>
+                    <IMPLEMENTATION-DATA-TYPE>
+                     <SHORT-NAME>Sent_ChanStatusType</SHORT-NAME>
+                     <CATEGORY>STRUCTURE</CATEGORY>
+                     <SUB-ELEMENTS>
+                       <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                         <SHORT-NAME>Sent_ChanStateType</SHORT-NAME>
+                       </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                     </SUB-ELEMENTS>
+                     <TYPE-EMITTER>BSW</TYPE-EMITTER>
+                    </IMPLEMENTATION-DATA-TYPE>
+                    <IMPLEMENTATION-DATA-TYPE>
+                     <SHORT-NAME>Sent_SpcType</SHORT-NAME>
+                     <CATEGORY>STRUCTURE</CATEGORY>
+                     <SUB-ELEMENTS>
+                       <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                         <SHORT-NAME>Sent_SpcMode</SHORT-NAME>
+                       </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                     </SUB-ELEMENTS>
+                     <TYPE-EMITTER>BSW</TYPE-EMITTER>
+                    </IMPLEMENTATION-DATA-TYPE>
+                    <IMPLEMENTATION-DATA-TYPE>
+                     <SHORT-NAME>Sent_SpcTrigSrcType</SHORT-NAME>
+                     <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                     <SW-DATA-DEF-PROPS>
+                       <SW-DATA-DEF-PROPS-VARIANTS>
+                         <SW-DATA-DEF-PROPS-CONDITIONAL>
+                           <COMPU-METHOD-REF DEST="COMPU-METHOD">/AURIX_Sent/CompuMethods/Sent_SpcTrigSrcType</COMPU-METHOD-REF>
+                           <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint32</IMPLEMENTATION-DATA-TYPE-REF>
+                         </SW-DATA-DEF-PROPS-CONDITIONAL>
+                       </SW-DATA-DEF-PROPS-VARIANTS>
+                     </SW-DATA-DEF-PROPS>
+                     <TYPE-EMITTER>BSW</TYPE-EMITTER>
+                    </IMPLEMENTATION-DATA-TYPE>
+                    <IMPLEMENTATION-DATA-TYPE>
+                     <SHORT-NAME>Sent_SpcTimeBaseType</SHORT-NAME>
+                     <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                     <SW-DATA-DEF-PROPS>
+                       <SW-DATA-DEF-PROPS-VARIANTS>
+                         <SW-DATA-DEF-PROPS-CONDITIONAL>
+                           <COMPU-METHOD-REF DEST="COMPU-METHOD">/AURIX_Sent/CompuMethods/Sent_SpcTimeBaseType</COMPU-METHOD-REF>
+                           <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint32</IMPLEMENTATION-DATA-TYPE-REF>
+                         </SW-DATA-DEF-PROPS-CONDITIONAL>
+                       </SW-DATA-DEF-PROPS-VARIANTS>
+                     </SW-DATA-DEF-PROPS>
+                     <TYPE-EMITTER>BSW</TYPE-EMITTER>
+                    </IMPLEMENTATION-DATA-TYPE>
+                </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE>
+                <SHORT-NAME>CompuMethods</SHORT-NAME>
+                <CATEGORY>STANDARD</CATEGORY>
+                <ELEMENTS>
+                    <COMPU-METHOD>
+                      <SHORT-NAME>Sent_ChanOpType</SHORT-NAME>
+                      <CATEGORY>TEXTTABLE</CATEGORY>
+                      <COMPU-INTERNAL-TO-PHYS>
+                        <COMPU-SCALES>
+                          <COMPU-SCALE>
+                            <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</LOWER-LIMIT>
+                            <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0</UPPER-LIMIT>
+                            <COMPU-CONST><VT>SENT_DISABLE</VT></COMPU-CONST>
+                          </COMPU-SCALE>
+                          <COMPU-SCALE>
+                            <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</LOWER-LIMIT>
+                            <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0</UPPER-LIMIT>
+                            <COMPU-CONST><VT>SENT_ENABLE</VT></COMPU-CONST>
+                          </COMPU-SCALE>
+                        </COMPU-SCALES>
+                      </COMPU-INTERNAL-TO-PHYS>
+                    </COMPU-METHOD>
+                    <COMPU-METHOD>
+                      <SHORT-NAME>Sent_ChanStateType</SHORT-NAME>
+                      <CATEGORY>TEXTTABLE</CATEGORY>
+                      <COMPU-INTERNAL-TO-PHYS>
+                        <COMPU-SCALES>
+                          <COMPU-SCALE>
+                            <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</LOWER-LIMIT>
+                            <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0</UPPER-LIMIT>
+                            <COMPU-CONST><VT>STOP</VT></COMPU-CONST>
+                          </COMPU-SCALE>
+                          <COMPU-SCALE>
+                            <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</LOWER-LIMIT>
+                            <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0</UPPER-LIMIT>
+                            <COMPU-CONST><VT>INITIALIZED</VT></COMPU-CONST>
+                          </COMPU-SCALE>
+                          <COMPU-SCALE>
+                            <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</LOWER-LIMIT>
+                            <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0</UPPER-LIMIT>
+                            <COMPU-CONST><VT>RUNNING</VT></COMPU-CONST>
+                          </COMPU-SCALE>
+                          <COMPU-SCALE>
+                            <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</LOWER-LIMIT>
+                            <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0</UPPER-LIMIT>
+                            <COMPU-CONST><VT>SYNCHRONIZED</VT></COMPU-CONST>
+                          </COMPU-SCALE>
+                        </COMPU-SCALES>
+                      </COMPU-INTERNAL-TO-PHYS>
+                    </COMPU-METHOD>
+                    <COMPU-METHOD>
+                      <SHORT-NAME>Sent_SpcTrigSrcType</SHORT-NAME>
+                      <CATEGORY>TEXTTABLE</CATEGORY>
+                      <COMPU-INTERNAL-TO-PHYS>
+                        <COMPU-SCALES>
+                          <COMPU-SCALE>
+                            <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</LOWER-LIMIT>
+                            <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0</UPPER-LIMIT>
+                            <COMPU-CONST><VT>PULSE_STOP</VT></COMPU-CONST>
+                          </COMPU-SCALE>
+                          <COMPU-SCALE>
+                            <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</LOWER-LIMIT>
+                            <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0</UPPER-LIMIT>
+                            <COMPU-CONST><VT>PULSE_START_IMMED</VT></COMPU-CONST>
+                          </COMPU-SCALE>
+                          <COMPU-SCALE>
+                            <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</LOWER-LIMIT>
+                            <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0</UPPER-LIMIT>
+                            <COMPU-CONST><VT>PULSE_START_SYNC</VT></COMPU-CONST>
+                          </COMPU-SCALE>
+                          <COMPU-SCALE>
+                            <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</LOWER-LIMIT>
+                            <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0</UPPER-LIMIT>
+                            <COMPU-CONST><VT>PULSE_START_EXT_TRIGGER</VT></COMPU-CONST>
+                          </COMPU-SCALE>
+                        </COMPU-SCALES>
+                      </COMPU-INTERNAL-TO-PHYS>
+                    </COMPU-METHOD>
+                    <COMPU-METHOD>
+                      <SHORT-NAME>Sent_SpcTimeBaseType</SHORT-NAME>
+                      <CATEGORY>TEXTTABLE</CATEGORY>
+                      <COMPU-INTERNAL-TO-PHYS>
+                        <COMPU-SCALES>
+                          <COMPU-SCALE>
+                            <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</LOWER-LIMIT>
+                            <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0</UPPER-LIMIT>
+                            <COMPU-CONST><VT>PULSE_NOMINAL_FREQ</VT></COMPU-CONST>
+                          </COMPU-SCALE>
+                          <COMPU-SCALE>
+                            <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</LOWER-LIMIT>
+                            <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0</UPPER-LIMIT>
+                            <COMPU-CONST><VT>PULSE_LAST_SYNC_FREQ</VT></COMPU-CONST>
+                          </COMPU-SCALE>
+                        </COMPU-SCALES>
+                      </COMPU-INTERNAL-TO-PHYS>
+                    </COMPU-METHOD>
+                </ELEMENTS>
+            </AR-PACKAGE>
+        </AR-PACKAGES>
+    </AR-PACKAGE>
+</AR-PACKAGES>
+</AUTOSAR>

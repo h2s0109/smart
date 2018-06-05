@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+/******************************************************************************
+**                                                                           **
+** Copyright (C) Infineon Technologies (2013)                                **
+**                                                                           **
+** All rights reserved.                                                      **
+**                                                                           **
+** This document contains proprietary information belonging to Infineon      **
+** Technologies. Passing on and copying of this document, and communication  **
+** of its contents is not permitted without prior written authorization.     **
+**                                                                           **
+*******************************************************************************
+**                                                                           **
+**  $FILENAME   : plugin.xml $                                               **
+**                                                                           **
+**  $CC VERSION : \main\dev_tc23x_as4.0.3\5 $                                **
+**                                                                           **
+**  $DATE       : 2014-05-27 $                                               **
+**                                                                           **
+**  AUTHOR    : DL-AUTOSAR-Engineering                                       **
+**                                                                           **
+**  VENDOR    : Infineon Technologies                                        **
+**                                                                           **
+**  DESCRIPTION  : This file contains                                        **
+**                 - tresosECU plug-in description for FrIf driver           **
+**                                                                           **
+**  MAY BE CHANGED BY USER [Yes/No]: No                                      **
+**                                                                           **
+******************************************************************************/
+
+
+-->
+
+<plugin>
+
+  <!--
+    ** brief AUTOSAR FrIf_Aurix plugin
+    ** project AUTOSAR Standard Core
+    **
+    ** All rights exclusively reserved for Elektrobit Automotive GmbH,
+    ** unless expressly agreed to otherwise.
+  -->
+
+
+
+ <extension point="dreisoft.tresos.launcher2.plugin.module"
+             id="FrIf_AurixAS403_ModuleExt"
+             name="FrIf Module with template generator">
+
+    <module id="FrIf_AurixAS403"
+            label="%ModuleLabel"
+            mandatory="false"
+            allowMultiple="true"
+            description="%ModuleDesc"
+            copyright="(c) 2012 Infineon Technologies"
+            swVersionMajor="0"
+            swVersionMinor="0"
+            swVersionPatch="0"
+            swVersionSuffix=""
+            specVersionMajor="3"
+            specVersionMinor="3"
+            specVersionPatch="0"
+            specVersionSuffix=""
+            relVersionMajor="4"
+            relVersionMinor="0"
+            relVersionPatch="3"
+            relVersionSuffix=""
+            categoryType="FrIf"
+            categoryLayer="MCAL"
+            categoryCategory="ECU Firmware"
+            categoryComponent="ECUC">
+      <cluster name="FlexRay Stack"/>
+
+      <ecuType target="AURIX" derivate="TC234"/>
+      <ecuType target="AURIX" derivate="TC233"/>
+      <ecuType target="AURIX" derivate="TC237"/>
+    </module>
+  </extension>
+
+    <extension point="dreisoft.tresos.launcher2.plugin.configuration"
+             id="FrIf_AurixAS403_ConfigExt"
+             name="FrIf_Aurix Configuration">
+    <configuration moduleId="FrIf_AurixAS403">
+      <schema>
+        <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarSchemaManager"/>
+        <resource value="config/FrIf.xdm" type="xdm"/>
+      </schema>
+
+      <data>
+        <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarConfigManager"/>
+        <schemaNode path="ASPath:/AURIX/FrIf"/>
+      </data>
+
+      <editor id="FrIf_AurixAS403_Edit"
+              label="%ModuleName"
+              tooltip="%ModuleDesc">
+        <class class="dreisoft.tresos.launcher2.editor.GenericConfigEditor">
+          <parameter name="schema" value="ASPath:/AURIX/FrIf"/>
+          <parameter name="title" value="FrIf"/>
+          <parameter name="noTabs" value="false"/>
+          <parameter name="noLinks" value="true"/>
+          <parameter name="groupLinks" value="false"/>
+          <parameter name="groupContainers" value="false"/>
+          <parameter name="groupTables" value="true"/>
+          <parameter name="optionalGeneralTab" value="true"/>
+        </class>
+      </editor>
+    </configuration>
+  </extension>
+
+   <!-- 
+     This extension draws the connection between the module, and the com importer.
+   -->   
+  <extension point="dreisoft.tresos.comimporter.api.plugin.comtransformer">
+    <comtransformer
+           id="ComTransformer_FrIf_AurixAS403"
+           moduleId="FrIf_AurixAS403">
+      <transformer
+             class="dreisoft.tresos.comimporter.api.transformer.asr40.FrIfTransformer">
+      </transformer>
+    </comtransformer>
+  </extension>   
+  
+  <extension point="dreisoft.tresos.launcher2.plugin.generator"
+              id="FrIf_AurixAS403_GenExt"
+              name="FrIf_Aurix Generator">
+    <generator moduleId="FrIf_AurixAS403"
+               class="dreisoft.tresos.launcher2.generator.TemplateBasedCodeGenerator">
+
+
+      <!-- common template path parameters -->
+      <parameter name="templates"
+                 mode="generate,verify" value="generate"/>
+
+      <!-- swcd modes and template path parameters -->
+      <parameter name="mode_type"
+                 mode="generate_swcd" value="generate"/>
+
+      <parameter name="mode_type"
+                 mode="verify_swcd" value="verify"/>
+
+      <parameter name="templates"
+                 mode="generate_swcd,verify_swcd" value="generate_swcd"/>
+
+    </generator>
+  </extension>
+
+</plugin>
+

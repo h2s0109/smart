@@ -1,0 +1,809 @@
+<?xml version='1.0'?>
+<!--
+/*******************************************************************************
+**                                                                            **
+** Copyright (C) Infineon Technologies (2013)                                 **
+**                                                                            **
+** All rights reserved.                                                       **
+**                                                                            **
+** This document contains proprietary information belonging to Infineon       **
+** Technologies. Passing on and copying of this document, and communication   **
+** of its contents is not permitted without prior written authorization.      **
+**                                                                            **
+********************************************************************************
+**                                                                            **
+**  $FILENAME   : Gpt.xdm $                                                  **
+**                                                                            **
+**  $CC VERSION : \main\dev_tc23x_as4.0.3\19 $                               **
+**                                                                            **
+**  $DATE       : 2016-04-23 $                                               **
+**                                                                            **
+**  AUTHOR      : DL-AUTOSAR-Engineering                                      **
+**                                                                            **
+**  VENDOR      : Infineon Technologies                                       **
+**                                                                            **
+**  DESCRIPTION  : XML Data Model for GPT driver                              **
+**                                                                            **
+**  MAY BE CHANGED BY USER [yes/no]: No                                       **
+**                                                                            **
+*******************************************************************************/
+/*  TRACEABILITY: [cover parentID=SAS_AS40X_GPT331_Conf,SAS_AS40X_GPT332_Conf,
+    SAS_AS40X_GPT333_Conf,SAS_AS40X_GPT330_Conf,
+    SAS_AS40X_GPT329_Conf,SAS_AS_GPT324,
+    SAS_AS_GPT175,SAS_AS_GPT322_GPT322_Conf,
+    SAS_AS_GPT319_Conf,SAS_AS_GPT182,SAS_AS_GPT194_GPT314_Conf,
+    SAS_AS_GPT195_GPT317_Conf,SAS_AS_GPT196_GPT318_Conf,SAS_AS_GPT315_Conf,
+    SAS_AS_GPT199_GPT200,SAS_AS_GPT201_GPT202_GPT203_GPT320_Conf,
+    SAS_AS_GPT308_Conf,SAS_AS_GPT311_Conf,SAS_AS_GPT309_Conf,
+    SAS_AS_GPT292_GPT362,SAS_AS40X_GPT312_Conf,SAS_AS_GPT086_GPT209,
+    SAS_AS_GPT313_Conf,SAS_AS_GPT183_Conf,SAS_AS_GPT193_Conf,SAS_AS_GPT269_Conf,
+    SAS_AS_GPT184_Conf,DS_AS_GPT342_GPT270_GPT277,DS_NAS_PR228,
+    DS_NAS_PR69_PR469,SAS_NAS_GPT_PR127,SAS_NAS_GPT_PR122,DS_NAS_GPT_PR912_1,
+    SAS_AS_GPT235_Conf,SAS_NAS_GPT_PR647,SAS_NAS_GPT_PR913,DS_NAS_GPT_PR655,
+    SAS_AS_GPT321_Conf,SAS_AS_GPT236,DS_NAS_PR915,SAS_NAS_GPT_PR483,
+    SAS_MCAL_GPT_0124,SAS_MCAL_GPT_0125,SAS_MCAL_GPT_0126,
+    DS_NAS_GPT_PR2848,SAS_NAS_GPT_PR656,SAS_AS4XX_GPT_PR668,SAS_NAS_GPT_PR725,
+    SAS_NAS_GPT_PR726,SAS_NAS_GPT_PR64,SAS_NAS_GPT_PR77,SAS_NAS_GPT_PR82,
+    SAS_NAS_GPT_PR227,SAS_NAS_GPT_PR640,SAS_NAS_GPT_PR667,SAS_NAS_GPT_PR646,
+    SAS_NAS_GPT_PR621,SAS_NAS_GPT_PR65,SAS_NAS_EP_GPT_PR3054_1,
+    SAS_NAS_EP_GPT_PR3054_2,SAS_NAS_EP_GPT_PR3054_3,SAS_NAS_EP_GPT_PR3054_4]
+**                                                                            **
+**  [/cover]                                                                  */
+-->
+<datamodel version="3.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/08/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/08/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar"  
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd"
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd" >
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="AURIX" type="AR-PACKAGE">
+        <a:a name="UUID" value="5bc40450-f049-414b-a5ad-e1a28ae906d4"/>
+        <d:lst type="ELEMENTS">
+          <d:chc name="Gpt" type="AR-ELEMENT" value="MODULE-DEF">
+            <v:ctr type="MODULE-DEF">
+              <a:a name="ADMIN-DATA" type="ADMIN-DATA">
+                <ad:ADMIN-DATA>
+                  <ad:DOC-REVISIONS>
+                    <ad:DOC-REVISION>
+                      <ad:REVISION-LABEL>4.2.0</ad:REVISION-LABEL>
+                      <ad:ISSUED-BY>AUTOSAR</ad:ISSUED-BY>
+                      <ad:DATE>2011-11-09</ad:DATE>
+                    </ad:DOC-REVISION>
+                  </ad:DOC-REVISIONS>
+                </ad:ADMIN-DATA>
+              </a:a>
+             <a:a name="RELEASE" value="asc:4.0"/>            
+              <a:a name="UUID" value="b372be49-2724-4b2b-865e-683eb83ff84e"/>
+              <d:ref type="REFINED_MODULE_DEF" value="ASPath:/AUTOSAR/EcucDefs/Gpt"/>
+              <v:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION">
+                <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                     type="IMPLEMENTATIONCONFIGCLASS">
+                  <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                  <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                </a:a>
+                <a:a name="LABEL" value="Config Variant"/>
+                <a:da name="DEFAULT" value="VariantPostBuildSelectable"/>
+                <a:da name="RANGE">
+                  <a:v>VariantPostBuildLoadable</a:v>
+                  <a:v>VariantPostBuildSelectable</a:v>
+                </a:da>
+              </v:var>
+              <v:lst name="GptChannelConfigSet" 
+                     type="MULTIPLE-CONFIGURATION-CONTAINER">
+                <a:da name="MIN" value="1"/>
+                <v:ctr name="GptChannelConfigSet" 
+                       type="MULTIPLE-CONFIGURATION-CONTAINER">
+                  <a:a name="DESC" 
+                       value="EN: This container is the base of an Configuration Set which contains the configured GPT channels. This way, different configuration sets can be defined for post-build process."/>
+                  <a:a name="UUID" value="b389628a-ef0b-4301-890e-65f68a49c432"/>
+                 <v:lst name="GptChannelConfiguration" type="MAP">
+                    <a:da name="MIN" value="1"/>
+                    <v:ctr name="GptChannelConfiguration" type="IDENTIFIABLE">
+                      <a:a name="DESC" 
+                           value="EN: This container contains the channel-wide configuration (parameters) of the GPT Driver. 
+This parameter is not supported, User can configure clock source in GTM Configuration of MCU Driver."/>
+                      <a:a name="UUID" 
+                           value="b72fdf9a-b443-4784-b669-44c8e3b812e8"/>
+                      <v:var name="GptChannelId" type="INTEGER">
+                        <a:a name="DESC">
+                          <a:v>EN: Channel Id of the GPT channel. This value will be assigned to the symbolic name derived of the GptChannelConfiguration container short name.</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                        <a:a name="UUID" 
+                             value="f5534267-242a-44eb-9ce9-36c696081acb"/>
+                        <a:da name="TOOLTIP" value="Channel Id of the GPT channel. This value will be assigned to the symbolic name derived of the GptChannelConfiguration container short name"/>     
+                        <a:da name="INVALID" type="Multi">
+                         <mt:xpath expr="text:uniq(../../*/GptChannelId,.)" false="GptChannelId should be unique.Enter diff Number"/> 
+                         <mt:xpath expr="node:isconsecutive(../../*/GptChannelId,0)" false="not Consecutive"/>
+                         <mt:range>
+                          <mt:tst expr="&gt;=0"/>
+                          <mt:tst expr="&lt;=255"/>
+                         </mt:range>
+                        </a:da>
+                         <a:da name="DEFAULT" type="XPath" expr="num:i((node:fallback((node:current()/../@index),0))+0)"/>
+
+                      </v:var>
+                      <v:var name="GptChannelMode" type="ENUMERATION">
+                        <a:a name="DESC" 
+                             value="EN: Specifies the behaviour of the timerchannel after the timeout has expired"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="e03d91fc-1eed-435f-a52a-c33f687c3a58"/>
+                        <a:da name="DEFAULT" value="GPT_CH_MODE_CONTINUOUS"/>
+                        <a:da name="RANGE">
+                          <a:v>GPT_CH_MODE_CONTINUOUS</a:v>
+                          <a:v>GPT_CH_MODE_ONESHOT</a:v>
+                        </a:da>
+                      </v:var>
+                      <v:var name="GptChannelTickFrequency" type="FLOAT">
+                        <a:a name="DESC" 
+                             value="EN: Specifies the tick frequency of the timer channel in Hz."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="f5534267-242a-44eb-9ce9-36c696081acc"/>
+                        <a:da name="DEFAULT" value="0"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=0.0"/>
+                          <a:tst expr="&gt;=0.0"/>
+                        </a:da>	                  
+                        <a:da name="TOOLTIP" value="This parameter is not supported, User can get the frequency based on MCU clock and global GTM clock divider vlaues and configured clock (for the TOM channel) divider values in GTM Configuration of MCU Driver."/>
+                       <a:da name="EDITABLE" value="false"/>
+                      </v:var>
+                      <v:var name="GptChannelTickValueMax" type="INTEGER">
+                        <a:a name="DESC" 
+                             value="EN: Maximum value in ticks, the timer channel is able to count. With the next tick, the timer rolls over to zero."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="f5534267-242a-44eb-9ce9-36c696081acd"/>
+                        <a:da name="TOOLTIP" value="This parameter is not supported, The value for this parameter will be 0xFFFF for a TOM Channel"/>     
+                        <a:da name="DEFAULT" value="0"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=65535"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>                        
+                       <a:da name="EDITABLE" value="false"/>
+                      </v:var>
+
+                      <v:var name="GptEnableWakeup" type="BOOLEAN">
+                        <a:a name="DESC" 
+                             value="EN: GPT188: Enables wakeup capability of CPU for a channel when timeout period expires. This might be different to enabling the notification depending on hardware capabilities"/>
+                        <a:da name="TOOLTIP" value="Enables wakeup capability of CPU for a channel when timeout period expires."/>     
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="f4c64dd0-e2bc-4f9f-a2c7-4cd541f3c25a"/>
+                        <a:da name="DEFAULT" value="false"/>
+                      </v:var>
+                      <v:lst name="GptNotification">
+                        <a:da name="MAX" value="1"/>
+	                      <v:var name="GptNotification" type="FUNCTION-NAME">
+	                        <a:a name="DESC" 
+	                             value="EN: Function pointer to callback function"/>
+	                        <a:da name="TOOLTIP" value="Function pointer to callback function."/>
+	                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+	                             type="IMPLEMENTATIONCONFIGCLASS">
+	                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+	                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+	                        </a:a>
+	                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+	                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+	                        <a:a name="UUID" 
+	                             value="0c4b2054-d5d5-402f-9025-4517b74d191a"/>
+	                        <a:da name="DEFAULT" value="NULL_PTR"/>
+	                      </v:var>
+                      </v:lst>
+                      <v:ref name="GptChannelClkSrcRef" type="REFERENCE">
+                        <a:a name="DESC" 
+                             value="EN: Reference to the GptClockReferencePoint from which the channel. This parameter is not supported, User can configure clock source in GTM Configuration of MCU Driver."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="UUID" 
+                             value="ECUC:28265a09-7e26-491d-95dd-8e4122a9fb98"/>
+                        <a:da name="REF" 
+                              value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Gpt/GptDriverConfiguration/GptClockReferencePoint"/>
+                        <a:da name="TOOLTIP" value="This parameter is not supported, User can configure clock source in GTM Configuration of MCU Driver."/>     
+                      <a:da name="EDITABLE" value="false"/>
+                      <a:da name="ENABLE" value="false"/>
+                      <a:da name="READONLY" value="true"/>                              
+                      </v:ref>                      
+
+                      <v:lst name="GptWakeupConfiguration" type="MAP">
+                        <a:da name="MAX" value="1"/>
+                        <v:ctr name="GptWakeupConfiguration" 
+                               type="IDENTIFIABLE">
+                          <a:a name="DESC" 
+                               value="EN: Function pointer to callback function (for non-wakeup notification)."/>
+                          <a:a name="UUID" 
+                               value="27db9186-f007-4189-a7a1-8f8dabe8754c"/>
+                          <v:ref name="GptWakeupSourceRef" 
+                                 type="SYMBOLIC-NAME-REFERENCE">
+                            <a:a name="DESC" 
+                                 value="EN: In case the wakeup-capability is true this value is transmitted to the Ecu State Manager."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="UUID" 
+                                 value="5efbdde0-ee0a-4e0f-9958-1af173e78205"/>
+                            <a:da name="REF" 
+                                  value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/EcuM/EcuMConfiguration/EcuMCommonConfiguration/EcuMWakeupSource"/>
+                            <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="../../../GptEnableWakeup = 'true'"/>
+                         </a:da> 
+                          </v:ref>
+                        </v:ctr>
+                      </v:lst>
+                      <v:ref name="GptAssignedHwUnit" type="CHOICE-REFERENCE">
+                        <a:a name="DESC">
+                          <a:v>FR: The required GTM TOM channel used to realize the GPT channel.
+                          </a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>                        
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="UUID" 
+                             value="6f437ed0-d2ae-4a8e-b431-f86d5d448728"/>
+                        <a:da name="REF">
+                          <a:v>ASPathDataOfSchema:/AURIX/Mcu/McuModuleConfiguration/GtmConfiguration/Tom/TomChannel</a:v>
+                        </a:da>
+                       <a:a name="INVALID" type="XPath" expr="node:refvalid(.)"  false="The configured node does not exist or may not be referenced."/>
+                      </v:ref>
+                      <v:var name="GptSignalType" type="ENUMERATION">
+                        <a:a name="DESC" 
+                             value="EN: Specifies the signal type of the timer channel"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="e03d91fc-1eed-435f-a52a-c33f687c3a5a"/>
+                        <a:da name="DEFAULT" value="GPT_QM_SIGNAL"/>
+                        <a:da name="RANGE">
+                          <a:v>GPT_QM_SIGNAL</a:v>
+                          <a:v>GPT_ASIL_SIGNAL</a:v>
+                        </a:da>
+                        <a:da name="TOOLTIP" value="This parameter is supported only if GptSafetyEnable is enabled. It specifies the signal type of the GPT channel"/>                          
+                        <a:da name="EDITABLE" type="XPath">
+                          <a:tst expr="../../../../../GptSafety/GptSafetyEnable  = 'true'"/>
+                        </a:da>                        
+                      </v:var>                                        
+                    </v:ctr>
+                  </v:lst> 
+                </v:ctr>
+              </v:lst>
+              <v:ctr name="GptConfigurationOfOptApiServices" 
+                     type="IDENTIFIABLE">
+                <a:a name="DESC" 
+                     value="EN: This container contains all configuration switches for configuring optional API services of the GPT driver"/>
+                <a:a name="UUID" value="8c784086-6c9d-4347-866a-03a9b8f76a16"/>
+                <v:var name="GptDeinitApi" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="EN: Adds / removes the service Gpt_DeInit() from the code."/>
+                  <a:da name="TOOLTIP" value="Adds / removes the service Gpt_DeInit() from the code."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a8f54cb7-a732-46a0-8059-4baa9b58c7ca"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="GptEnableDisableNotificationApi" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="EN: Adds / removes the services Gpt_EnableNotification() and Gpt_DisableNotification from the code."/>
+                  <a:da name="TOOLTIP" value="Adds / removes the services Gpt_EnableNotification() and Gpt_DisableNotification from the code."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="1bc1355d-72ef-4e4f-ad38-7a847af75142"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="GptTimeElapsedApi" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="EN: Adds / removes the service Gpt_GetTimeElapsed() from the code."/>
+                  <a:da name="TOOLTIP" value="Adds / removes the service Gpt_GetTimeElapsed() from the code."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="5aeb5ea8-1650-40c1-95c3-ff51aab93c65"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="GptTimeRemainingApi" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="EN: Adds / removes the service Gpt_GetTimeRemaining() from the code."/>
+                  <a:da name="TOOLTIP" value="Adds / removes the service Gpt_GetTimeRemaining() from the code."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="390541ff-a8d9-40ad-951a-5a44e4ba6e0d"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="GptVersionInfoApi" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="EN: Adds / removes the service Gpt_GetVersionInfo() from the code."/>
+                  <a:da name="TOOLTIP" value="Adds / removes the service Gpt_GetVersionInfo() from the code."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="4a3cf893-774d-4aef-b394-2d9ea60f299f"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="GptWakeupFunctionalityApi" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="EN: Adds / removes the services Gpt_SetMode(), Gpt_EnableWakeup() Gpt_DisableWakeup() and Gpt_CheckWakeup() from the code."/>
+                       <a:da name="TOOLTIP" value="Adds / removes the services Gpt_SetMode(), Gpt_EnableWakeup() Gpt_DisableWakeup() and Gpt_CheckWakeup() from the code."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="df4c60ce-789e-4528-aac6-c1301c7c79fb"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="INVALID" type="XPath">                              
+                  <a:tst expr="(num:i(count(../../GptChannelConfigSet/*/GptChannelConfiguration/*[GptEnableWakeup ='true']))) > 0 and .!='true'"
+                  true="(1)Wrong Configuration. You have  configured atleast one channel as  GptEnableWakeup to true but  GptWakeupFunctionalityApi is false so set to true "/>
+
+                  <a:tst expr="(num:i(count(../../GptChannelConfigSet/*/GptChannelConfiguration/*[GptEnableWakeup ='true']))) = 0  and  .='true'"
+                  true="(2)Wrong Configuration. You have not configured one channel for GptEnablewakeup,but GptWakeupFunctionalityApi is true so set it to false "/>			
+                  </a:da>
+                </v:var>  
+                <v:var name="GptRunningInUser0Mode" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="If this parameter is set to FALSE, then Protected Mode(user mode) register access will not be done and API is run in Supervisor mode."/>
+                  <a:a name="TOOLTIP"
+                       value="EN: Pre-processor switch to enable/disable the Normal/Protected mode."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="bde3973f-c106-4b7f-901c-6f15b3cff715"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="GptUserModeInitApiEnable" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="Pre-processor switch to enable / disable protected register access in all the Init API."/>
+                  <a:a name="TOOLTIP"
+                       value="EN: Pre-processor switch to enable / disable protected register access in all the Init API."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="bde3973f-c106-4b7f-991c-6f15b3cff715"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="GptUserModeDeInitApiEnable" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="Pre-processor switch to enable / disable protected register access in all the DeInit API."/>
+                  <a:a name="TOOLTIP"
+                       value="EN: Pre-processor switch to enable / disable protected register access in all the DeInit API."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="bde3973f-c106-4b7f-981c-6f15b3cff715"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="GptUserModeRuntimeApiEnable" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="Pre-processor switch to enable / disable protected register access in all the APIs other than Init/Deinit APIs"/>
+                  <a:a name="TOOLTIP"
+                       value="EN: Pre-processor switch to enable / disable protected register access in all the APIs other than Init/Deinit APIs."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="bde3973f-c106-4b7f-971c-6f15b3cff715"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="GptDriverConfiguration" type="IDENTIFIABLE">
+                <a:a name="DESC" 
+                     value="EN: This container contains the module-wide configuration (parameters) of the GPT Driver"/>
+                <a:a name="UUID" value="5f4bfd69-43ff-4b04-9d11-308666cd2977"/>
+                <v:var name="GptDevErrorDetect" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="EN: Enables/Disables development error detection."/>
+                  <a:da name="TOOLTIP" value=" Enables/Disables development error detection."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="90d7a308-1920-4491-8c2f-4ce2803a08ed"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="GptDebugSupport" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="EN: Pre-processor switch for enabling/disabling the debugging support."/>
+                  <a:a name="TOOLTIP" 
+                       value="Pre-processor switch for enabling/disabling the debugging support."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="01eee1fb-1589-455e-9b2b-cead4d920436"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="GptPBFixedAddress" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="EN: This parameter enables the user to fix the PB config pointer to first instance of configuration"/>
+                  <a:a name="TOOLTIP" 
+                       value="Pre-processor switch for Enables/Disables the user to fix the PB config pointer to first instance of configuration."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="e15c50c2-14c6-492b-8d8d-c6075dcfd576"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="INVALID" type="XPath">
+                  <a:tst expr="(num:i(count(../../GptChannelConfigSet/*))) > 1 and . = 'true'" 
+                   true="Wrong Configuration. When GptPBFixedAddress is enabled then only 1 Config set is permitted. Remove the other Config sets."/>
+                  </a:da>                  
+                  
+                </v:var>
+                <v:var name="GptReportWakeupSource" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="EN: Enables/Disables wakeup source reporting"/>
+                  <a:a name="TOOLTIP" 
+                       value="Pre-processor switch for Enables/Disables wakeup source reporting."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="13e9171b-689b-41c1-bf3a-32b468990bdc"/>
+                  <a:da name="EDITABLE" type="XPath">   
+                  <a:tst expr="../../GptConfigurationOfOptApiServices/GptWakeupFunctionalityApi = 'true'"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+
+                <v:lst name="GptClockReferencePoint" type="MAP">
+                  <a:da name="MIN" value="1"/>
+                  <v:ctr name="GptClockReferencePoint" type="IDENTIFIABLE">
+                    <a:a name="DESC" 
+                         value="EN: This container contains a parameter, which represents a reference to a container of the type McuClockReferencePoint (defined in module MCU).
+This parameter is not supported, User can configure clock source in GTM Configuration of MCU Driver."/>
+                    <a:a name="UUID" 
+                         value="ECUC:8eb48a5f-43d7-4a7a-bedb-9f520c5165b3"/>
+                    <v:ref name="GptClockReference" type="REFERENCE">
+                      <a:a name="DESC" 
+                           value="EN: Reference to a container of the type McuClockReferencePoint, to select an input clock.
+This parameter is not supported, User can configure clock source in GTM Configuration of MCU Driver."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                        <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="UUID" 
+                           value="ECUC:ff94d0f2-e4d4-4b60-b980-6ea07438f2bc"/>
+                      <a:da name="REF" 
+                            value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Mcu/McuModuleConfiguration/McuClockSettingConfig/McuClockReferencePoint"/>
+                        <a:da name="TOOLTIP" value="This parameter is not supported, User can configure clock source in GTM Configuration of MCU Driver."/>     
+                      <a:da name="EDITABLE" value="false"/>
+                      <a:da name="ENABLE" value="false"/>
+                      <a:da name="READONLY" value="true"/>                            
+                    </v:ref>
+                  </v:ctr>
+                </v:lst>
+
+                
+              </v:ctr>
+              <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC" value="EN: Common container, aggregated by all modules. It contains published information about vendor and versions."/>
+                <a:a name="UUID" value="492f8482-3e2c-4bf1-b27f-01fd7ac35788"/>
+                <v:var name="ArMajorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Major version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="bd0a8d38-4d8c-4ee9-88fe-1166b258bb8a"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="3"/>
+                </v:var>
+                <v:var name="ArMinorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Minor version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="73f87c7f-e230-4178-bff0-eb2704aae656"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="2"/>
+                </v:var>
+                <v:var name="ArPatchVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Patch level version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="2380135d-6778-417a-a34b-e10017d4dd54"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="SwMajorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Major version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="fca015e3-5f28-4cbe-8949-8f4b87d86827"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="3"/>
+                </v:var>
+                <v:var name="SwMinorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Minor version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="14ab81e0-3d80-43dc-8b92-247e5a542df9"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="2"/>
+                </v:var>
+                <v:var name="SwPatchVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="32e37bfd-18b6-41d1-9248-a81dbe0fe4c5"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="ModuleId" type="INTEGER">
+                  <a:a name="DESC" value="EN: Module ID of this module from Module List"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="3b407478-6902-4f80-b7cf-f33b0854e638"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="100"/>
+                </v:var>
+                <v:var name="VendorId" type="INTEGER">
+                  <a:a name="DESC" value="EN: Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="7d650b2d-4adb-41f0-a68e-5f0c416501d1"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="17"/>
+                </v:var>
+                <v:var name="Release" type="STRING">
+                  <a:a name="DESC" value="EN: Aurix derivative used for thr implementation"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="3b407478-6902-4f40-b7cf-f33b0854e638"/>
+                  <a:da name="DEFAULT" type="XPath" expr="ecu:get('Rel.Derivate')"/>
+                </v:var>
+                <v:var name="VendorApiInfix" type="STRING">
+                  <a:a name="DESC">
+                    <a:v>EN: In driver modules which can be instantiated several times on a single ECU, BSW00347 requires that the name of APIs is extended by the VendorId and a vendor specific name.
+              This parameter is used to specify the vendor specific name. In total, the implementation specific name is generated as follows:
+              &lt;ModuleName&gt;_&gt;VendorId&gt;_&lt;VendorApiInfix&gt;&lt;Api name from SWS&gt;.
+
+              E.g.  assuming that the VendorId of the implementor is 123 and the implementer chose a VendorApiInfix of &quot;v11r456&quot; a api name Can_Write defined in the SWS will translate to Can_123_v11r456Write.
+
+              This parameter is mandatory for all modules with upper multiplicity &gt; 1. It shall not be used for modules with upper multiplicity =1.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="ad363b41-e945-4717-b12f-c2f800ef138e"/>
+                  <a:da name="ENABLE" value="false"/>
+                  <a:da name="DEFAULT" value=""/>
+                </v:var>
+              </v:ctr> 
+              <v:ctr name="GptSafety" type="IDENTIFIABLE">
+                <a:a name="DESC"
+                     value="EN: This container contains the configuration for the safety features of the GPT driver."/>
+                <a:a name="UUID" value="6991f288-fe69-4ba3-8e4e-5be27814177b"/>
+                <v:var name="GptSafetyEnable" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="EN: Pre-processor switch for enabling/disabling the GPT driver safety features. By default, 
+                       - Range check on API parameters shall be done
+                       - GPT configuration structure shall have a unique marker field which will be verified by the driver
+                       - Publish the safety usage of GPT driver for user to set the respective MPU settings"/>
+                  <a:a name="TOOLTIP"
+                       value="Pre-processor switch for enabling/disabling the GPT driver safety features."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="01fab1fb-1589-455e-9b2b-cead4d920436"/>
+                  <a:da name="DEFAULT" value="false"/>                
+                </v:var> 
+                <v:var name="GptInitCheckApi" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="If this parameter is set to TRUE, the GPT initialization check will be done as a safety measure.  If this parameter is set to FALSE, the GPT driver shall not verify the initialization."/>
+                  <a:a name="TOOLTIP"
+                       value="EN: Pre-processor switch to enable/disable the API Gpt_InitCheck."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="e16d60b2-14c6-492b-8d8d-c6365dcfd976"/>
+                  <a:da name="DEFAULT" value="true"/>
+                  <a:da name="EDITABLE" type="XPath" expr="../GptSafetyEnable='true'"/>
+                </v:var>     
+                <v:var name="GptGetModeApi" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="If this parameter is set to TRUE, the Gpt_GetMode API shall be enabled. If this parameter is set to FALSE, the Gpt_GetMode API shall not be enabled."/>                
+                  <a:a name="TOOLTIP"
+                       value="EN: Pre-processor switch to enable/disable the API Gpt_GetMode."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="e16d71c2-14c6-492b-8d8d-c6365dcfd976"/>
+                  <a:da name="DEFAULT" value="true"/>
+                  <a:da name="EDITABLE" type="XPath" expr="../GptSafetyEnable='true'"/>
+                </v:var>                                         
+              </v:ctr>                           
+            </v:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+
+</datamodel>

@@ -1,0 +1,983 @@
+<?xml version='1.0'?>
+<!--
+/*******************************************************************************
+**                                                                            **
+** Copyright (C) Infineon Technologies (2015)                                 **
+**                                                                            **
+** All rights reserved.                                                       **
+**                                                                            **
+** This document contains proprietary information belonging to Infineon       **
+** Technologies. Passing on and copying of this document, and communication   **
+** of its contents is not permitted without prior written authorization.      **
+**                                                                            **
+********************************************************************************
+**                                                                            **
+**   $FILENAME   : Wdg_17_Scu.xdm $                                           **
+**                                                                            **
+**   $CC VERSION : \main\dev_tc23x_as4.0.3\28 $                               **
+**                                                                            **
+**   $DATE       : 2016-05-27 $                                               **
+**                                                                            **
+**   AUTHOR      : DL-AUTOSAR-Engineering                                     **
+**                                                                            **
+**   VENDOR      : Infineon Technologies                                      **
+**                                                                            **
+**   DESCRIPTION : XML Data Model for WDG driver                              **
+**                                                                            **
+**   MAY BE CHANGED BY USER [yes/no]: No                                      **
+**                                                                            **
+*******************************************************************************/
+/*  TRACEABILITY: [cover parentID= DS_AS_WDG086,
+    DS_AS_WDG171, DS_AS40X_WDG114_Conf_WDG073_Conf, SAS_AS_WDG115_Conf,
+    SAS_AS_WDG045, SAS_AS_WDG116_Conf, SAS_AS_WDG118_Conf,SAS_AS40X_WDG148_Conf,
+    SAS_AS_WDG119_Conf, SAS_AS_WDG117_Conf, SAS_AS40X_WDG130_Conf,
+    SAS_AS40X_WDG131_Conf, SAS_AS40X_WDG147_Conf, SAS_AS40X_WDG082_Conf,
+    
+    SAS_AS_WDG121_Conf, SAS_AS_WDG123_Conf,DS_AS40X_WDG105,
+    SAS_AS_WDG122_Conf, SAS_AS_WDG112_Conf, SAS_AS_WDG113_Conf,DS_NAS_WDG_PR915,
+    SAS_AS40X_WDG074_Conf,SAS_AS40X_WDG150_Conf,SAS_NAS_WDG_PR913,
+    SAS_NAS_WDG_PR483,SAS_AS40X_WDG127_Conf, DS_AS40X_WDG149_Conf,DS_NAS_WDG_PR446,
+    SAS_NAS_WDG_PR919,SAS_NAS_WDG_PR127,SAS_NAS_WDG_PR228_1,SAS_AS_EP_WDG120_Conf_1,
+    SAS_NAS_EP_WDG_PR228_2,SAS_NAS_EP_WDG_PR228_3,DS_AS40X_WDG151, DS_AS_WDG159,
+    DS_NAS_WDG_PR647,DS_AS_PR2848,SAS_NAS_WDG_PR656,
+	SAS_AS4XX_WDG_PR670,SAS_AS4XX_WDG_PR668,SAS_NAS_WDG_PR725,SAS_NAS_WDG_PR726,
+	SAS_NAS_WDG_PR64,SAS_NAS_WDG_PR77,SAS_NAS_WDG_PR82,SAS_NAS_WDG_PR227,
+	SAS_NAS_WDG_PR640,SAS_NAS_WDG_PR667,SAS_NAS_WDG_PR646,DS_AS_WDG_PR2848,
+	SAS_NAS_WDG_PR621,SAS_NAS_WDG_PR65,SAS_NAS_HE2_WDG_PR3054_1,
+	SAS_NAS_EP_WDG_PR3054_1,SAS_NAS_HE2_WDG_PR3054_2,SAS_NAS_EP_WDG_PR3054_2,
+    SAS_NAS_HE2_WDG_PR3054_3,SAS_NAS_EP_WDG_PR3054_3] [/cover]   */
+-->
+<datamodel version="3.0"
+           xmlns="http://www.tresos.de/_projects/DataModel2/08/root.xsd"
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/08/attribute.xsd"
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd"
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar"
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd"
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd"
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd" >
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="AURIX" type="AR-PACKAGE">
+        <a:a name="UUID" value="05ea1b12-0cdd-4366-8b56-45684d0f2cc7"/>
+        <d:lst type="ELEMENTS">
+          <d:chc name="Wdg" type="AR-ELEMENT" value="MODULE-DEF">
+            <v:ctr type="MODULE-DEF">
+              <a:a name="ADMIN-DATA" type="ADMIN-DATA">
+                <ad:ADMIN-DATA>
+                  <ad:DOC-REVISIONS>
+                    <ad:DOC-REVISION>
+                      <ad:REVISION-LABEL>4.2.0</ad:REVISION-LABEL>
+                      <ad:ISSUED-BY>AUTOSAR</ad:ISSUED-BY>
+                      <ad:DATE>2011-11-09</ad:DATE>
+                    </ad:DOC-REVISION>
+                  </ad:DOC-REVISIONS>
+                </ad:ADMIN-DATA>
+              </a:a>
+              <a:a name="RELEASE" value="asc:4.0.3"/>
+              <a:a name="UUID" value="29fb3605-abf0-409f-b333-4efedfd1fb68"/>
+              <v:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION">
+                <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                     type="IMPLEMENTATIONCONFIGCLASS">
+                   <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                   <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                 </a:a>
+                <a:a name="LABEL" value="Config Variant"/>
+                <a:da name="DEFAULT" value="VariantPostBuildSelectable"/>
+                <a:da name="EDITABLE" value="true"/>
+                <a:da name="RANGE">
+                   <a:v>VariantPostBuildLoadable</a:v>
+                   <a:v>VariantPostBuildSelectable</a:v>
+                 </a:da>
+              </v:var>
+              <d:ref type="REFINED_MODULE_DEF" value="ASPath:/AUTOSAR/EcucDefs/Wdg"/>
+              <v:ctr name="WdgGeneral" type="IDENTIFIABLE">
+                <a:a name="DESC"
+                     value="EN: All general parameters of the watchdog driver are collected here."/>
+                <a:a name="UUID" value="a9636539-a01b-4aef-a049-ce50f4b2813d"/>
+                <v:var name="WdgDevErrorDetect" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>EN: Compile switch to enable / disable development error detection for this module.
+
+True: Development error detection enabled
+False: Development error detection disabled</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="945af739-40d0-4d71-8adc-250e053100dd"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="WdgDisableAllowed" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>EN: Compile switch to allow / forbid disabling the watchdog driver during runtime.
+
+True: Disabling the watchdog driver at runtime is allowed.
+False: Disabling the watchdog driver at runtime is not allowed.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="c2ec6a16-c903-4125-811e-df164accf984"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="WdgIndex" type="INTEGER">
+                  <a:a name="DESC"
+                       value="EN: Represents the watchdog driver&apos;s ID so that it can be referenced by the watchdog interface."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                  <a:a name="UUID" value="db48ae8e-48bc-408f-b2b0-20859a6d5d33"/>
+                  <a:da name="DEFAULT" value="0"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=255"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                </v:var>
+                <v:var name="WdgTriggerLocation" type="FUNCTION-NAME">
+                  <a:a name="DESC"
+                       value="EN: Location (memory address) of the watchdog trigger routine."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="1e9b9363-6628-470d-ab93-116e19381518"/>
+                  <a:da name="EDITABLE" value="false"/>
+                </v:var>
+                <v:var name="WdgVersionInfoApi" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>EN: Compile switch to enable / disable the version information API
+                          True: API enabled
+                          False: API disables</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="26affa9b-f445-4719-bb13-421950e150f7"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="WdgPBFixedAddress" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>EN: This parameter indicates whether the Wdg configuration to be used is decided at link time or changeable by user at runtime.
+           ON : WDG Configuration to be used is fixed i.e Wdg_ConfigRoot[0]
+           OFF: The user has to choose the WDG configuration to be used and pass the same as a parameter to Wdg_Init..</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="26affa9b-f445-4719-bb13-421950e150f8"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="INVALID" type="XPath">
+                  <a:tst expr="(num:i(count(../../WdgSettingsConfig/*))) > 1 and . = 'true'"
+                   true="Wrong Configuration. When WdgPBFixedAddress is enabled then only 1 Config set is permitted. Remove the other Config sets."/>
+                  </a:da>
+                </v:var> 
+                 
+                 <v:var name="WdgMaxTimeout" type="FLOAT">
+                  <a:a name="DESC"
+                       value="EN: The maximum timeout (sec) to which the watchdog trigger condition can be initialized."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="db48ae8e-48bc-408f-b2b0-20949a6d5d33"/>
+                  <a:da name="DEFAULT" value="32.0"/>
+                  <a:da name="INVALID" type="Multi">
+                    <mt:xpath expr=". > 65.535" true="WdgMaxTimeout should be less than or equal to 65.535"/>
+                    <mt:xpath expr=". &lt; 0.001" true="WdgMaxTimeout should not be less than 0.001"/>
+                    <mt:xpath expr=". = 0" true="WdgMaxTimeout cannot be 0"/>
+                    <mt:range>
+                    <mt:tst expr="&gt;=0.001"/>
+                    <mt:tst expr="&lt;=65.535"/>
+                    </mt:range>
+                  </a:da>
+                </v:var>
+                     
+                <v:var name="WdgInitialTimeout" type="FLOAT">
+                  <a:a name="DESC"
+                       value="EN: The initial timeout (sec) for the trigger condition to be initialized during Init function. It shall be not larger than WdgMaxTimeout."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="db48ae8e-48bc-408f-b2b0-20856a6d5d33"/>
+                  <a:da name="DEFAULT" value="5.0"/>
+                  <a:da name="INVALID" type="Multi">
+                    
+                    <mt:xpath expr=". > ../WdgMaxTimeout" true="WdgInitialTimeout should be less than or equal to WdgMaxTimeout"/>
+                    
+                    <mt:range>
+                    <mt:tst expr="&gt;=0.001"/>
+                    <mt:tst expr="&lt;=65.535"/>
+                    </mt:range>
+                  </a:da>
+                </v:var>
+                <v:var name="WdgDebugSupport" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="EN: Pre-processor switch for enabling/disabling the debugging support."/>
+                  <a:a name="TOOLTIP"
+                       value="Pre-processor switch for enabling/disabling the debugging support."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="01eee1fb-1589-455e-9b2b-cead4d920436"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="WdgRunArea" type="ENUMERATION">
+                  <a:a name="DESC">
+                    <a:v>EN: Represents the watchdog driver execution area which is either from ROM(Flash) or RAM as required with the particular microcontroller.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID"
+                       value="6295e90d-7299-4a17-b80f-a8646663041g"/>
+                  <a:da name="DEFAULT" value="ROM"/>
+                  <a:da name="EDITABLE" value="false"/>
+                  <a:da name="RANGE">
+                    <a:v>ROM</a:v>
+                    <a:v>RAM</a:v>
+                  </a:da>
+                </v:var>
+         <v:var name="WdgUnlockRestriction" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>EN: Request to enable/disable SMU restriction of WDT unlock
+                         True: Watchdog driver is enabled with SMU restriction of WDT unlock
+                         False: Watchdog driver is disabled with SMU restriction of WDT unlock.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="c2ec6a16-c903-6247-811e-df164accf984"/>
+                  <a:da name="DEFAULT" value="true"/>
+                </v:var>
+               <v:var name="WdgRunningInUser0Mode" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="If this parameter is set to FALSE, then Protected Mode(user mode) register access will not be done and API is run in Supervisor mode."/>
+                  <a:a name="TOOLTIP"
+                       value="EN:Pre-processor switch to enable/disable the Normal/Protected mode."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                   <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                   <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="2496a517-5ef8-487e-51e0-0234c58e9bf0"/>
+                  <a:da name="DEFAULT" value="false"/>
+               </v:var>
+               <v:var name="WdgUserModeInitApiEnable" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="Pre-processor switch to enable / disable protected register access in all the Init API."/>
+                  <a:a name="TOOLTIP"
+                       value="EN:Pre-processor switch to enable / disable protected register access in all the Init API."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                   <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                   <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="2496a587-5ef8-487e-51e0-0234c58e9bf0"/>
+                  <a:da name="DEFAULT" value="false"/>
+               </v:var>
+               <v:var name="WdgUserModeRuntimeApiEnable" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="Pre-processor switch to enable / disable protected register access in all the APIs other than Init APIs."/>
+                  <a:a name="TOOLTIP"
+                       value="EN:Pre-processor switch to enable / disable protected register access in all the APIs other than Init APIs."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                   <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                   <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="3496a537-5ef8-487e-51e0-0234c58e9bf0"/>
+                  <a:da name="DEFAULT" value="false"/>
+               </v:var>
+              </v:ctr>
+              <v:lst name="WdgSettingsConfig" type="MULTIPLE-CONFIGURATION-CONTAINER">
+                <a:da name="MIN" value="1"/>
+                <v:ctr name="WdgSettingsConfig" type="MULTIPLE-CONFIGURATION-CONTAINER">
+                  <a:a name="DESC"
+                       value="EN: Configuration items for the different watchdog modes"/>
+                  <a:a name="UUID" value="d567be7b-4f29-4c2a-a3af-2ef6f8f97404"/>
+                  <v:ref name="WdgSystemClockRef" type="REFERENCE">
+                  <a:a name="DESC">
+                   <a:v>FR: This parameter refers to the system clock configured using the Mcu_InitClock function.
+
+This parameter should refer to a valid McuClockSetting Configuration (/AUTOSAR/EcucDefs/Mcu/McuModuleConfiguration/McuClockSettingConfig/McuClockReferencePoint)
+
+Also the WDG module will work correctly only for this system clock setting. No changes should be done to the system clock if WDG is to be kept functioning.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                      type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                      <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="UUID" value="9ef075e8-51b4-4d4b-bb53-fc516d8f2b23"/>
+                  <a:da name="REF"
+                      value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Mcu/McuModuleConfiguration/McuClockSettingConfig/McuClockReferencePoint"/>
+                  </v:ref>
+                  <v:var name="WdgDefaultMode" type="ENUMERATION">
+                    <a:a name="DESC">
+                      <a:v>EN: Default mode for watchdog driver initialization for CPU core 0.
+
+ImplementationType: WdgIf_ModeType</a:v>
+                    </a:a>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                      <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:a name="UUID"
+                         value="6295e90d-7299-4a17-b80f-a8646663041e"/>
+                    <a:da name="DEFAULT" value="WDGIF_FAST_MODE"/>
+                    <a:da name="RANGE">
+                      <a:v>WDGIF_FAST_MODE</a:v>
+                      <a:v>WDGIF_OFF_MODE</a:v>
+                      <a:v>WDGIF_SLOW_MODE</a:v>
+                    </a:da>
+                   <a:da name="INVALID" type="XPath">
+                   <a:tst expr="(//WdgDisableAllowed = 'false' or //Wdg0SafetyEnable = 'true') and .= 'WDGIF_OFF_MODE'" true="WDGIF_OFF_MODE is only possible if disabling of Watchdog Driver is allowed"/>
+                   </a:da>
+                  </v:var>
+                  <v:ctr name="WdgSettingsFast" type="IDENTIFIABLE">
+                    <a:a name="DESC"
+                         value="EN: Hardware dependent settings for the watchdog driver&apos;s &quot;fast&quot; mode."/>
+                    <a:a name="UUID"
+                         value="5db8c2ef-b44b-439c-8713-1b3e2578d7ed"/>
+                    <v:var name="Wdg0FastModeTimeoutValue" type="FLOAT">
+                      <a:a name="DESC">
+                        <a:v>EN: The timeout value given in millisecond for WDG0.
+
+Maximum Timeout value for Fast mode in Milliseconds can be calculated by the formulae
+
+WDG_MAX_TIMEOUT_FAST_MODE  = (65536 * WDG_CLK_DIVIDER_FAST) / ( SystemClock*1000).
+
+Where, WDG_CLK_DIVIDER_FAST value is 256 and System Clock is in MHZ.</a:v>
+                      </a:a>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                         <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                         <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="UUID"
+                           value="7a8b15ac-c9f6-4ac5-81d5-304a38296057"/>
+                      <a:da name="DEFAULT" value="10"/>
+                      <a:da name="INVALID" type="Multi">
+                        <mt:xpath expr=". = 0" true="Wdg0FastModeTimeoutValue should be greater than 0."/>
+                        <mt:xpath expr=". &lt; 0" true="Wdg0FastModeTimeoutValue should be greater than 0."/>
+                         <mt:range>
+                          <mt:tst expr="&gt;=1.0"/>
+                         <mt:tst expr="&lt;=65535.0"/>
+                        </mt:range>                     
+                     </a:da>
+                    </v:var>
+                   
+                  </v:ctr>
+                  <v:ctr name="WdgSettingsOff" type="IDENTIFIABLE">
+                    <a:a name="DESC"
+                         value="EN: Hardware dependent settings for the watchdog driver&apos;s &quot;off&quot; mode."/>
+                    <a:a name="UUID"
+                         value="d43c03d3-8e19-4e83-b4c3-f4ed781a9864"/>
+                  </v:ctr>
+                  <v:ctr name="WdgSettingsSlow" type="IDENTIFIABLE">
+                    <a:a name="DESC"
+                         value="EN: Hardware dependent settings for the watchdog driver&apos;s &quot;slow&quot; mode."/>
+                    <a:a name="UUID"
+                         value="f6a260f7-38dc-437b-b13a-e92dd3ba58c6"/>
+                    <v:var name="Wdg0SlowModeTimeoutValue" type="FLOAT">
+                      <a:a name="DESC">
+                        <a:v>EN: Timeout value for Slow mode in Milliseconds for WDG0.
+
+Maximum Timeout value for Slow mode in Milliseconds can be calculated by the formulae:
+
+WDG_MAX_TIMEOUT_SLOW_MODE  = (65536 * WDG_CLK_DIVIDER_SLOW) / ( SystemClock*1000).
+
+Where, WDG_CLK_DIVIDER_SLOW  value is 16384 and System Clock is in MHZ.</a:v>
+                      </a:a>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                         <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                         <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="UUID"
+                           value="0c7609d5-0960-4a73-b682-1e9aadedfa1c"/>
+                      <a:da name="DEFAULT" value="20"/>
+                      <a:da name="INVALID" type="Multi">
+                        <mt:xpath expr=". = 0" true="Wdg0SlowModeTimeoutValue should be greater than 0."/>
+                        <mt:xpath expr="../../WdgSettingsFast/Wdg0FastModeTimeoutValue >= ." true="Wdg0FastModeTimeoutValue should be less than Wdg0SlowModeTimeoutValue."/>
+                        <mt:xpath expr=". &lt; 0" true="Wdg0SlowModeTimeoutValue should be greater than 0."/>
+                         <mt:range>
+                          <mt:tst expr="&gt;=1.0"/>
+                         <mt:tst expr="&lt;=65535.0"/>
+                        </mt:range>                       
+                     </a:da>
+                    </v:var>
+                  </v:ctr> 
+                   <v:ctr name="WdgInitialPassword" type="IDENTIFIABLE">
+                           <a:a name="DESC"
+                                value="EN: Initial pasword for the password access.Editable only if WDGx safety is enabled"/>
+                              
+                           <a:a name="UUID"
+                                value="f6a260f7-38dc-437b-b13a-e92dd3db58c6"/>
+                      <v:var name="Wdg0InitialPassword" type="INTEGER">
+                           <a:a name="DESC">
+                              <a:v>EN: Initial password for WDG0.</a:v>
+                          </a:a>
+                           <a:da name="ENABLE" type="XPath">
+                            <a:tst expr="../../../../WdgSafety/Wdg0SafetyEnable = 'true'"
+                                     true = "true" false = "false"/> 
+                           </a:da> 
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                             <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                             <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID"
+                               value="0c7609d5-0960-2a73-b682-1e9aadedfa1c"/>
+                          <a:da name="DEFAULT" value="60"/>
+                          <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=16383"/>
+                          <a:tst expr="&gt;=1"/>
+                          </a:da>
+                      </v:var>
+                               
+              </v:ctr>
+                  <v:ctr name="WdgTimerCheckTolerance" type="IDENTIFIABLE">
+                           <a:a name="DESC"
+                                value="EN: Timer tolerance to service WDG. This enabled only if WdgEnableTimecheck is true "/>
+                           
+                           <a:a name="UUID"
+                                value="f6a260f7-38dc-437b-b13a-e92ef2db58c6"/>
+                      <v:var name="Wdg0TimerTolerance" type="INTEGER">
+                           <a:a name="DESC">
+                              <a:v>EN: Timer tolerance value for WDG 0.</a:v>
+                          </a:a>
+                          <a:da name="ENABLE" type="XPath">
+                            <a:tst expr="../../../../WdgSafety/Wdg0SafetyEnable = 'true' and ../../../../WdgSafety/WdgEnableTimecheck = 'true'"
+                                     true = "true" false = "false"/> 
+                           </a:da> 
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                             <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                             <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID"
+                               value="0c7609d5-0960-2a73-b682-1e9aad11fa1c"/>
+                          <a:da name="DEFAULT" value="3"/>
+                          <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=127"/>
+                          <a:tst expr="&gt;=1"/>
+                          </a:da>
+                      </v:var>
+                                
+                </v:ctr>
+                  <v:ctr name="WdgGtmSettings" type="IDENTIFIABLE">
+                    <a:a name="DESC"
+                         value="EN: Collection of all the Gtm related configiration parameters.If WDGx safety is enabled then respective parameters are not generated"/>
+                    <a:a name="UUID"
+                         value="f6a260f7-38dc-437b-b13a-e92db5ba58c6"/>
+                    <v:var name="Wdg0SlowServiceGtmCbkTime" type="FLOAT">
+                      <a:a name="DESC">
+                        <a:v>EN: This is the Gtm callback period(ms) for servicing Wdg0 H/W while in slow mode. If WDG0 safety is enabled, this parameter is not generated
+						GTM_Clock = ( GTM_Clock * (GtmGlobalClkDivDenominator) ) / (GtmGlobalClkDivNumerator)
+						 if Wdg0ServiceGtmChannelRef selected as TOM channel
+							if CmuFxdClkSourceSelect == "GTM_GLOBAL_CLOCK" 
+								GTM_Fixed_Clock = GTM_Clock
+							 else
+							   GTM_Fixed_Clock = GTM_Clock /(CmuConfigurableClknDiv+1) (where n = 0 to 7)
+							  
+							TicksPerMs = ((GTM_Fixed_Clock) / (2 Exponet(4*n)))/1000 (GTM_FIXED_CLOCK_n where n = 0 to 4)
+							True condition for selction of Wdg0SlowServiceGtmCbkTime : (Wdg0SlowServiceGtmCbkTime * TicksPerMs) value should be less than 65535
+						 
+						 </a:v>
+                      </a:a>
+                      <a:da name="ENABLE" type="XPath">
+                            <a:tst expr="../../../../WdgSafety/Wdg0SafetyEnable = 'false'"
+                                     true = "true" false = "false"/> 
+                           </a:da> 
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                         <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                         <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="UUID"
+                           value="0c7609d5-0960-4a73-b682-1e9ab6edfa1c"/>
+                      <a:da name="DEFAULT" value="15"/>
+                      <a:da name="INVALID" type="Multi">
+                        <mt:xpath expr=". >= ../../WdgSettingsSlow/Wdg0SlowModeTimeoutValue" true="Wdg0SlowServiceGtmCbkTime should be less than Wdg0SlowModeTimeoutValue."/>
+                        <mt:xpath expr="../Wdg0FastServiceGtmCbkTime >= ." true="Wdg0FastServiceGtmCbkTime should be less than Wdg0SlowServiceGtmCbkTime."/>
+                        <mt:xpath expr=". &lt;=1" true="Wdg0SlowServiceGtmCbkTime should be greater than 1."/>
+                          <mt:range>
+                          <mt:tst expr="&gt;=1.0"/>
+                         <mt:tst expr="&lt;=65535.0"/>
+                         </mt:range>                    
+                     </a:da>
+                    </v:var>
+                   
+                    <v:var name="Wdg0FastServiceGtmCbkTime" type="FLOAT">
+                      <a:a name="DESC">
+                        <a:v>EN: This is the Gtm callback period(ms) for servicing Wdg0 H/W while in fast mode. If WDG0 safety is enabled, this parameter is not generated
+						GTM_Clock = ( GTM_Clock * (GtmGlobalClkDivDenominator) ) / (GtmGlobalClkDivNumerator)
+						 if Wdg0ServiceGtmChannelRef selected as TOM channel
+							if CmuFxdClkSourceSelect == "GTM_GLOBAL_CLOCK" 
+								GTM_Fixed_Clock = GTM_Clock
+							 else
+							   GTM_Fixed_Clock = GTM_Clock /(CmuConfigurableClknDiv+1) (where n = 0 to 7)
+							  
+							TicksPerMs = ((GTM_Fixed_Clock) / (2 Exponet(4*n)))/1000 (GTM_FIXED_CLOCK_n where n = 0 to 4)
+							True condition for selction of Wdg0FastServiceGtmCbkTime : (Wdg0FastServiceGtmCbkTime * TicksPerMs) value should be less than 65535
+						   
+						</a:v>
+                      </a:a>
+                       <a:da name="ENABLE" type="XPath">
+                            <a:tst expr="../../../../WdgSafety/Wdg0SafetyEnable = 'false'"
+                                     true = "true" false = "false"/> 
+                           </a:da> 
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                         <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                         <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="UUID"
+                           value="0c7609d5-0960-4a73-b682-1e9c1dedfa1c"/>
+                      <a:da name="DEFAULT" value="7"/>
+                      <a:da name="INVALID" type="Multi">
+                        <mt:xpath expr=". >= ../../WdgSettingsFast/Wdg0FastModeTimeoutValue" true="Wdg0FastServiceGtmCbkTime should be less than Wdg0FastModeTimeoutValue."/>
+                        <mt:xpath expr=". &lt;=1" true="Wdg0FastServiceGtmCbkTime should be greater than 1."/>
+                        <mt:range>
+                          <mt:tst expr="&gt;=1.0"/>
+                         <mt:tst expr="&lt;=65535.0"/>
+                         </mt:range>                      
+                    </a:da>
+                    </v:var>
+                    <v:ref name="Wdg0ServiceGtmChannelRef" type="CHOICE-REFERENCE">
+                      <a:a name="DESC">
+                        <a:v>EN: Ref. to the Gtm channel that is responsible to service the Wdg0 H/W. If WDG0 safety is enabled, this parameter is not generated</a:v>
+                      </a:a>
+                      <a:da name="ENABLE" type="XPath">
+                            <a:tst expr="../../../../WdgSafety/Wdg0SafetyEnable = 'false'"
+                                     true = "true" false = "false"/> 
+                           </a:da> 
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                         <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                         <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="UUID" value="9ef075e8-51b4-4d4b-bb53-fa456d8f2b23"/>
+                     <a:da name="REF">
+                            <a:v>ASPathDataOfSchema:/AURIX/Mcu/McuModuleConfiguration/GtmConfiguration/Tom/TomChannel</a:v>
+                     </a:da>
+                      <a:da name="INVALID" type="XPath">
+                        <a:tst expr="(((../Wdg1ServiceGtmChannelRef = .) or (../Wdg2ServiceGtmChannelRef = .)) and (. != ''))" true="Wdg0ServiceGtmChannelRef should be different from Wdg1ServiceGtmChannelRef and Wdg2ServiceGtmChannelRef."/>
+                        <a:tst expr="(. = '')" true="Wdg0ServiceGtmChannelRef should be configured."/>
+                      </a:da>
+                    </v:ref>
+                  </v:ctr>
+
+                <v:lst name="WdgExternalConfiguration" type="MAP">
+                   <a:da name="MIN" value="0"/>
+                   <a:da name="MAX" value="1"/>
+                
+                  <a:da name="EDITABLE" value="false"/>
+                  <v:ctr name="WdgExternalConfiguration" type="IDENTIFIABLE">
+                    <a:a name="DESC"
+                         value="EN: Configuration items for an external watchdog hardware"/>
+                    <a:a name="UUID" value="0cef7cc7-e710-4ca4-bb94-69dc067fe6d8"/>
+                    
+                   <v:lst name="WdgExternalContainerRef">
+                    <a:da name="MIN" value="0"/>
+                    <a:da name="MAX" value="1"/>
+ 
+                    <v:ref name="WdgExternalContainerRef" type="CHOICE-REFERENCE">
+                      <a:a name="DESC">
+                        <a:v>EN: Reference to either
+    - a DioChannelGroup container in case the hardware watchdog is connected via DIO pins
+    - a SpiSequenceConfiguration container in case the watchdog hardware is accessed via SPI</a:v>
+                      </a:a>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                        <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="UUID" value="602d3a0b-b44f-42c0-96be-d8e1f543c842"/>
+                      <a:da name="REF">
+                        <a:v>ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dio/DioConfig/DioPort/DioChannelGroup</a:v>
+                        <a:v>ASPathDataOfSchema:/AUTOSAR/EcucDefs/Spi/SpiDriver/SpiSequence</a:v>
+                      </a:da>
+                      <a:da name="EDITABLE" value="false"/>
+                     </v:ref>
+                   </v:lst>
+                  </v:ctr>
+                 </v:lst>
+                </v:ctr>
+              </v:lst> 
+              
+               <v:ctr name="WdgSafety" type="IDENTIFIABLE">
+                <a:a name="DESC"
+                     value="EN: All general parameters of the watchdog driver are collected here."/>
+                <a:a name="UUID" value="a9636539-a01b-4aef-a049-be50f5b2823d"/>
+                <v:var name="Wdg0SafetyEnable" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>EN: Enable safety features
+                             True: Enable watchdog0 driver with safety features.
+                             False: Disable watchdog0 driver with safety features.
+                             If true user shall not configure TOM channel</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="c2ec6a16-c903-4130-811e-df164accf984"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="WdgSetOffModeApi" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>EN: Switch to enable WDG OFF mode API
+                         True: Watchdog driver with safety features can be switched in OFF mode.
+                         False: Watchdog driver with safety features cannot be switched in OFF mode.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="c2ec6a16-c903-4130-811e-df1643dcf984"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="WdgEnableTimecheck" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>EN: Used to enable execution time checking
+                         True: Watchdog driver is enabled with time checking.
+                         False: Watchdog driver is disabled with time checking.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="c2ec6a16-c903-5130-811e-df164accf984"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+               </v:ctr>
+              
+              <v:lst name="WdgDemEventParameterRefs" type="MAP">
+                <a:da name="MAX" value="1"/>
+                <v:ctr name="WdgDemEventParameterRefs" type="IDENTIFIABLE">
+                  <a:a name="DESC"
+                       value="EN: Configuration container for the selection of DEM."/>
+                  <a:a name="UUID" value="a9636539-a01b-4aef-a049-ce50f4b2813e"/>
+
+                  <v:lst name="WDG_E_DISABLE_REJECTED">
+                    <a:da name="MAX" value="1"/>
+                    <v:ref name="WDG_E_DISABLE_REJECTED"
+                           type="SYMBOLIC-NAME-REFERENCE">
+                      <a:a name="DESC"
+                           value="EN: Reference to configured DEM event to report disable reject event"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                        <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="UUID"
+                        value="ECUC:66C8E900-6197-42a3-8E25-A695AA21788E"/>
+                      <a:da name="REF"
+                        value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter"/>
+                    </v:ref>
+                  </v:lst>
+                  <v:lst name="WDG_E_MODE_FAILED">
+                    <a:da name="MAX" value="1"/>
+                    <v:ref name="WDG_E_MODE_FAILED"
+                           type="SYMBOLIC-NAME-REFERENCE">
+                      <a:a name="DESC"
+                           value="EN: Reference to configured DEM event to report mode switch fail event"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                        <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="UUID"
+                           value="ECUC:66C8E900-6197-42a3-8E25-A795AA21788E"/>
+                      <a:da name="REF"
+                            value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter"/>
+                    </v:ref>
+                  </v:lst>
+                  <v:lst name="WDG_E_INIT_FAILED">
+                    <a:da name="MAX" value="1"/>
+                    <v:ref name="WDG_E_INIT_FAILED"
+                           type="SYMBOLIC-NAME-REFERENCE">
+                      <a:a name="DESC"
+                           value="EN: Reference to configured DEM event to report disable INIT_FAILED event"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                        <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                      <a:a name="UUID"
+                        value="ECUC:66C8E900-6197-42a3-8E24-A695AA217888"/>
+                      <a:da name="REF"
+                        value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter"/>
+                    </v:ref>
+                  </v:lst>
+                </v:ctr>
+              </v:lst>
+              <v:ctr name="WdgPublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC"
+                     value="EN: Container holding all Wdg specific published information parameters"/>
+                <a:a name="UUID" value="4feaa509-db72-40d2-bd81-2e24f9f5ecda"/>
+                <v:var name="WdgTriggerMode" type="ENUMERATION_LABEL">
+                  <a:a name="DESC"
+                       value="EN: Watchdog trigger mode (toggle/window/both)"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="bc0c4018-2c09-46be-8a6f-6ba2fe22e27f"/>
+                  <a:da name="DEFAULT" value="WDG_TOGGLE"/>
+                  <a:da name="RANGE">
+                    <a:v>WDG_BOTH</a:v>
+                    <a:v>WDG_TOGGLE</a:v>
+                    <a:v>WDG_WINDOW</a:v>
+                  </a:da>
+                  <a:da name="ENABLE" value="false"/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC" value="EN: Common container, aggregated by all modules. It contains published information about vendor and versions."/>
+                <a:a name="UUID" value="492f8482-3e2c-4bf1-b27f-01fd7a235788"/>
+                <v:var name="ArMajorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Major version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="bd0a8d38-4d8c-4ee9-88fe-1166b258bb8a"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="2"/>
+                </v:var>
+                <v:var name="ArMinorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Minor version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="73f87c7f-e230-4178-bff0-ea2704aae656"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="5"/>
+                </v:var>
+                <v:var name="ArPatchVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Patch level version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="2380135d-6778-417a-a34b-e100aad4dd54"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="SwMajorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Major version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="fca015e3-5f28-4cbe-8949-8fab87d86827"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="3"/>
+                </v:var>
+                <v:var name="SwMinorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Minor version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="14ab81e0-3d80-43dc-8b92-2a7e5a542df9"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="4"/>
+                </v:var>
+                <v:var name="SwPatchVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="32e37bfd-18b6-41d1-9248-a81dae0fe4c5"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="ModuleId" type="INTEGER">
+                  <a:a name="DESC" value="EN: Module ID of this module from Module List"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="3b407478-6902-4f80-b7cf-f33b0854e638"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="102"/>
+                </v:var>
+                <v:var name="VendorId" type="INTEGER">
+                  <a:a name="DESC" value="EN: Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="7d650b2d-4adb-41f0-aa8e-5f0c416501d1"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="17"/>
+                </v:var>
+                <v:var name="VendorApiInfix" type="STRING">
+                  <a:a name="DESC">
+                    <a:v>EN: In driver modules which can be instantiated several times on a single ECU, BSW00347 requires that the name of APIs is extended by the VendorId and a vendor specific name. 
+This parameter is used to specify the vendor specific name. In total, the implementation specific name is generated as follows:
+&lt;ModuleName&gt;_&gt;VendorId&gt;_&lt;VendorApiInfix&gt;&lt;Api name from SWS&gt;.
+E.g.  assuming that the VendorId of the implementor is 123 and the implementer chose a VendorApiInfix of &quot;v11r456&quot; a api name Can_Write defined in the SWS will translate to Can_123_v11r456Write. 
+This parameter is mandatory for all modules with upper multiplicity &gt; 1. It shall not be used for modules with upper multiplicity =1.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="ad363b41-e945-4717-b12f-c2f800ef138e"/>
+                  <a:da name="ENABLE" value="true"/>
+                  <a:da name="DEFAULT" value="Scu"/>
+                </v:var>
+                <v:var name="Release" type="STRING">
+                  <a:a name="DESC" value="EN: Aurix derivative used for thr implementation"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="3b407478-6902-4f40-b7cf-f33b0854e638"/>
+                  <a:da name="DEFAULT" type="XPath" expr="ecu:get('Rel.Derivate')"/>
+                </v:var>
+              </v:ctr>
+            </v:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+
+</datamodel>

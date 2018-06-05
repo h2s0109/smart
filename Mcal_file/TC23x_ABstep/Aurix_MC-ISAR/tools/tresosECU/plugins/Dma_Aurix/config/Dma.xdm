@@ -1,0 +1,1285 @@
+<?xml version='1.0'?>
+<!--
+/*******************************************************************************
+**                                                                            **
+** Copyright (C) Infineon Technologies (2015)                                 **
+**                                                                            **
+** All rights reserved.                                                       **
+**                                                                            **
+** This document contains proprietary information belonging to Infineon       **
+** Technologies. Passing on and copying of this document, and communication   **
+** of its contents is not permitted without prior written authorization.      **
+**                                                                            **
+********************************************************************************
+**                                                                            **
+**  $FILENAME   : Dma.xdm $                                                  **
+**                                                                            **
+**  $CC VERSION : \main\41 $                                                 **
+**                                                                            **
+**  $DATE       : 2016-05-27 $                                               **
+**                                                                            **
+**  PLATFORM  : Infineon Aurix                                                **
+**                                                                            **
+**  AUTHOR      : DL-AUTOSAR-Engineering                                      **
+**                                                                            **
+**  VENDOR      : Infineon Technologies                                       **
+**                                                                            **
+**  DESCRIPTION : This file contains                                          **
+**                XML Data Model of DMA driver.                               **
+**                                                                            **
+**  MAY BE CHANGED BY USER [yes/no]: No                                       **
+**                                                                            **
+*******************************************************************************/
+/*******************************************************************************
+    TRACEABILITY : [cover parentID=DS_NAS_DMA_PR647,DS_NAS_DMA_PR483,
+    DS_NAS_DMA_PR127,DS_NAS_DMA_PR228_1,DS_NAS_DMA_PR228_2,DS_NAS_DMA_PR228_3,
+    DS_NAS_DMA_PR228_4,DS_NAS_DMA_PR228_5,DS_NAS_DMA_PR228_6,DS_NAS_DMA_PR228_7,
+    DS_NAS_DMA_PR228_8,DS_NAS_DMA_PR228_9,DS_NAS_DMA_PR228_10,
+    DS_NAS_DMA_PR228_11,DS_NAS_DMA_PR228_12,DS_NAS_DMA_PR228_13,
+    DS_NAS_DMA_PR228_14,DS_NAS_DMA_PR228_15,DS_NAS_DMA_PR228_16,
+    DS_NAS_DMA_PR228_17,DS_NAS_DMA_PR228_18,DS_NAS_DMA_PR228_19,
+    DS_NAS_DMA_PR228_20,DS_NAS_DMA_PR228_21,DS_NAS_DMA_PR228_22,
+    DS_NAS_DMA_PR228_23,DS_NAS_DMA_PR228_24,DS_NAS_DMA_PR228_25,
+    DS_NAS_DMA_PR228_26,DS_NAS_DMA_PR228_27,DS_NAS_DMA_PR228_28,
+    DS_NAS_DMA_PR228_29,DS_NAS_DMA_PR228_30,DS_NAS_DMA_PR228_31,
+    DS_NAS_DMA_PR228_32,DS_NAS_DMA_PR228_33,DS_NAS_DMA_PR228_34,
+    DS_NAS_DMA_PR228_35,DS_NAS_DMA_PR228_36,DS_NAS_DMA_PR228_37,
+    DS_NAS_DMA_PR228_38,DS_NAS_DMA_PR228_39,DS_NAS_DMA_PR228_40,
+    DS_NAS_DMA_PR63_2,DS_NAS_DMA_PR63_3,DS_NAS_DMA_PR63_4,DS_NAS_DMA_PR63_5,
+    DS_NAS_DMA_PR700,DS_NAS_DMA_PR701,DS_NAS_DMA_PR704,DS_NAS_DMA_PR707,
+    DS_NAS_DMA_PR708,DS_NAS_DMA_PR712,DS_NAS_DMA_PR713,DS_NAS_DMA_PR716,
+    DS_NAS_DMA_PR717,DS_NAS_DMA_PR719,DS_NAS_DMA_PR720,DS_NAS_DMA_PR723,
+    DS_NAS_DMA_PR724,DS_NAS_DMA_PR728,DS_NAS_DMA_PR655,SAS_NAS_DMA_PR646,
+    SAS_NAS_DMA_PR65,DS_NAS_DMA_PR2848,SAS_NAS_DMA_PR667,
+    SAS_NAS_DMA_PR725,SAS_NAS_DMA_PR726,SAS_NAS_DMA_PR77,SAS_NAS_DMA_PR227,
+    SAS_NAS_DMA_PR640,DS_NAS_DMA_PR913,DS_NAS_DMA_PR69_PR469_PR122_PR123,
+    SAS_NAS_HE2_DMA_PR3017,SAS_NAS_EP_DMA_PR3017,SAS_NAS_HE2_DMA_PR3054_1,
+    SAS_NAS_EP_DMA_PR3054_1,SAS_NAS_HE2_DMA_PR3054_2,SAS_NAS_EP_DMA_PR3054_2,
+    SAS_NAS_HE2_DMA_PR3054_3,SAS_NAS_EP_DMA_PR3054_3,SAS_NAS_HE2_DMA_PR3054_4,
+    SAS_NAS_EP_DMA_PR3054_4]
+    [/cover]                                                                 **
+******************************************************************************/
+-->                                 
+<datamodel version="3.0"            
+           xmlns="http://www.tresos.de/_projects/DataModel2/08/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/08/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar"
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd"
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd"
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd" >
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="AURIX" type="AR-PACKAGE">
+        <a:a name="UUID" value="DCE:3ae9f400-6b6b-42ec-8312-f89a678b9617"/>
+        <d:lst type="ELEMENTS">     
+          <d:chc name="DmaParameterDefinition" type="AR-ELEMENT" 
+                 value="ECU_PARAMETER_DEFINITION">
+            <d:ctr type="AR-ELEMENT">
+              <a:a name="DEF"
+                   value="ASPath:/AR_PACKAGE_SCHEMA/ECU_PARAMETER_DEFINITION"/>
+              <a:a name="UUID" value="ECUC:4c30de73-30fc-43b3-a1b3-e74211eedff3"/>
+            </d:ctr>
+          </d:chc>
+          <d:chc name="Dma" type="AR-ELEMENT" value="MODULE-DEF">
+            <v:ctr type="MODULE-DEF">
+              <a:a name="RELEASE" value="asc:4.0.3"/>            
+              <a:a name="UUID" value="DCE:d9c9a60e-d7b6-4d89-9688-5de76e41a4c1"/>
+              <v:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION">
+			  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                     type="IMPLEMENTATIONCONFIGCLASS">
+			        <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+               </a:a>
+                <a:a name="LABEL" value="Config Variant"/>
+                <a:da name="DEFAULT" value="VariantPostBuildSelectable"/>
+                <a:da name="RANGE">
+                  <a:v>VariantPostBuildLoadable</a:v>
+                  <a:v>VariantPostBuildSelectable</a:v>
+                </a:da>
+              </v:var>
+              <v:ctr name="DmaGeneralConfiguration" type="IDENTIFIABLE">
+              <a:a name="DESC"
+                       value="EN: General configuration of DMA Driver module"/>
+                <a:a name="UUID" 
+                     value="DCE:dcc39b88-cc2b-4358-ba88-30120722c6c3"/>
+                <v:var name="DmaIndex" type="INTEGER">
+                  <a:a name="DESC" 
+                       value="EN: Specifies the InstanceId of this module instance. "/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a9361f42-ca28-4ec5-8a32-aca0597add15"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=255"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="3"/>
+                  <a:da name="TOOLTIP" value="Specifies the InstanceId of this module instance. "/>
+                 </v:var>     
+                <v:var name="DmaDevErrorDetect" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="FR: Enables/Disables the Development Error Detection in the DMA Driver"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="UUID" 
+                       value="DCE:a4e850e4-be6b-4d72-b360-c13bb0bff7f6"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="DmaVersionInfoApi" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="FR: This parameter decides the availability of the API Dma_GetVersionInfo in the code"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="UUID" 
+                       value="DCE:9812df82-892b-4abc-99d9-66bfcc61986b"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="DmaDoubleBufferEnable" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="FR: This parameter decides the availability of the API Dma_SwitchBuffer in the code"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="UUID" 
+                       value="DCE:9812df82-892b-4abc-99d9-66bfcc61981b"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>                
+                <v:var name="DmaDeInitApi" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="FR: This parameter decides the availability of the API Dma_DeInit"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="UUID" 
+                       value="DCE:b8ede77d-3270-4da8-b3b5-3bf169de9ae9"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="DmaLinkedListEnable" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="FR: This parameter decides the availability of the API Dma_ConfigChannelLinkList"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="UUID" 
+                       value="DCE:b8ede77d-3270-4da8-b3b5-3bf169de9ae6"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="DmaPBFixedAddress" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="FR: This parameter decides if PB Fixed Address is ON"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="UUID" 
+                       value="d6bc53ea-3f72-47ae-8863-20d3c393d4db"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="INVALID" type="XPath">
+                  <a:tst expr="(num:i(count(../../DmaConfigSet/*))) > 1 and . = 'true'"
+                   true="Wrong Configuration. When DmaPBFixedAddress is enabled then only 1 Config set is permitted. Remove the other Config sets."/>
+                  </a:da>
+                </v:var>
+                <v:var name="DmaDebugSupport" type="BOOLEAN">
+                  <a:a name="DESC" 
+                       value="FR: This parameter decides if Dma variables are available for debug"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="UUID" 
+                       value="DCE:b8ede77d-3270-4da8-b3b5-3bf169de4ae6"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="DmaResetSfrAtInit" type="BOOLEAN">
+                  <a:a name="DESC">
+                  <a:v>EN: Pre-processor switch to enable/disable resetting SFR to its reset value in the init function [STD_ON/STD_OFF]</a:v>
+                  </a:a>
+                   <a:a name="TOOLTIP" 
+                        value="Pre-processor switch enable/disable resetting SFR to its reset value in the Dma_Init API"/>
+                   <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                        type="IMPLEMENTATIONCONFIGCLASS">
+                     <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                     <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                   </a:a>
+                   <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                   <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                   <a:a name="UUID" value="01abc1fb-1589-455e-9b2b-cfbb4d920436"/>
+                   <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="DmaRunningInUser0Mode" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="If this parameter is set to FALSE, then Protected Mode(user mode) register access will not be done and API is run in Supervisor mode."/>
+                  <a:a name="TOOLTIP"
+                       value="EN: Pre-processor switch to enable/disable the Normal/Protected mode."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="01abc1fb-1589-455e-9b2b-cfbb4d920450"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="DmaUserModeInitApiEnable" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="Pre-processor switch to enable / disable protected register access in all the Init API."/>
+                  <a:a name="TOOLTIP"
+                       value="EN: Pre-processor switch to enable / disable protected register access in all the Init API."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="01abc1fb-1589-455e-9b2e-cfbb4d920436"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="DmaUserModeDeInitApiEnable" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="Pre-processor switch to enable / disable protected register access in all the DeInit API."/>
+                  <a:a name="TOOLTIP"
+                       value="EN: Pre-processor switch to enable / disable protected register access in all the DeInit API."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="01abc1fb-1589-455e-9b2b-cfee4d920436"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="DmaUserModeRuntimeApiEnable" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="Pre-processor switch to enable / disable protected register access in all the APIs other than Init/Deinit APIs"/>
+                  <a:a name="TOOLTIP"
+                       value="EN: Pre-processor switch to enable / disable protected register access in all the APIs other than Init/Deinit APIs."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="01abc1fb-1589-455e-9b2b-efbb4d920436"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>                
+              </v:ctr>
+            <v:lst name="DmaConfigSet" type="MULTIPLE-CONFIGURATION-CONTAINER">
+               <a:da name="MIN" value="1"/>
+                <v:ctr name="DmaConfigSet" type="MULTIPLE-CONFIGURATION-CONTAINER">
+                <a:a name="DESC" 
+                       value="FR: This provides the list of various Dma configurations configured by user."/>
+                  <a:a name="UUID" 
+                       value="DCE:de4e4d33-13eb-4ca2-ae8c-e1a5bd519721"/>
+                  <v:ctr name="DmaConfigReferencetoMcu" type="IDENTIFIABLE">
+                  <a:a name="DESC" 
+                       value="FR: This container contains DmaReferenceValue variable, which is used to provide reference to MCU dma configuration ."/>
+              		  <a:a name="UUID" 
+                	     value="a50ea506-355f-4800-afa0-26753f67277e"/>
+              		  <v:ref name="DmaReferenceValue" type="REFERENCE">
+              		    <a:a name="DESC" 
+              	         value="FR: This parameter reads the Mcu configuration that has been used for Dma Channles"/>
+                		  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+	                       type="IMPLEMENTATIONCONFIGCLASS">
+	                       <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+	                       <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+	                   </a:a>
+               	 	 	 <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+               	  		 <a:a name="UUID" 
+                       value="733c010b-911a-4ac2-8feb-ad7705349dc6"/>
+                       <a:da name="REF" 
+                            value="ASPathDataOfSchema:/AURIX/Mcu/McuModuleConfiguration/DmaConfiguration"/>
+                        <a:da name="TOOLTIP" value="This parameter refers to the Dma Channels configured in MCU module."/>
+                 			</v:ref>                     
+                  </v:ctr>                            
+                      <v:ctr name="DmaMoveEngineConfiguration" 
+                             type="IDENTIFIABLE">
+                        <a:a name="DESC" 
+                             value="FR: This container contains the configurations for a Dma move engine"/>
+                        <a:a name="UUID" 
+                             value="deb0c285-f177-479b-94a9-f628aabddf5f"/>
+
+                       <v:ctr name="DmaPatternConfig" 
+                             type="IDENTIFIABLE">
+                        <a:a name="DESC" 
+                             value="FR: This container contains the configurations for a pattern registers to be processed by move engine pattern detection logic"/>
+                        <a:a name="UUID" 
+                             value="4e1266d9-b203-441f-8f17-3cbff9bfc874"/>                            	                             
+                        <v:var name="DmaPat00" type="INTEGER">
+                          <a:a name="DESC" 
+                               value="FR: configures bits[0 to 7] of  pattern read register0"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                   <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                                   <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID" 
+                               value="9f8ad791-b40a-4974-9497-44b6f78ef075"/>
+                          <a:da name="DEFAULT" value="0"/>
+                          <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=255"/>
+                            <a:tst expr="&gt;=0"/>
+                          </a:da>
+                        </v:var>
+                        <v:var name="DmaPat01" type="INTEGER">
+                          <a:a name="DESC" 
+                               value="FR: configures bits[8 to 15] of pattern read register0"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                   <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                                   <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID" 
+                               value="6e2d11a2-5e54-45a4-9437-89526d4cf7db"/>
+                          <a:da name="DEFAULT" value="0"/>
+                          <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=255"/>
+                            <a:tst expr="&gt;=0"/>
+                          </a:da>
+                        </v:var>   
+                        <v:var name="DmaPat02" type="INTEGER">
+                          <a:a name="DESC" 
+                               value="FR: configures bits[16 to 23] of pattern read register0"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                   <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                                   <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID" 
+                               value="5512686a-fad7-4ca6-a8b7-2fa4e2cca26c"/>
+                          <a:da name="DEFAULT" value="0"/>
+                          <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=255"/>
+                            <a:tst expr="&gt;=0"/>
+                          </a:da>
+                        </v:var> 
+                        <v:var name="DmaPat03" type="INTEGER">
+                          <a:a name="DESC" 
+                               value="FR: configures bits[24 to 31] of pattern read register0"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                   <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                                   <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID" 
+                               value="2765034a-4956-4ffb-81f7-af194fe7e2ed"/>
+                          <a:da name="DEFAULT" value="0"/>
+                          <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=255"/>
+                            <a:tst expr="&gt;=0"/>
+                          </a:da>
+                        </v:var> 
+                        <v:var name="DmaPat10" type="INTEGER">
+                          <a:a name="DESC" 
+                               value="FR: configures bits[0 to 7] of pattern read register1"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                   <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                                   <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID" 
+                               value="943d2e9f-49b3-4e8d-a4a7-00a07caf73af"/>
+                          <a:da name="DEFAULT" value="0"/>
+                          <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=255"/>
+                            <a:tst expr="&gt;=0"/>
+                          </a:da>
+                        </v:var>
+                        <v:var name="DmaPat11" type="INTEGER">
+                          <a:a name="DESC" 
+                               value="FR: configures bits[8 to 15] of pattern read register1"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                   <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                                   <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID" 
+                               value="96c2e5d4-1dca-4892-9a7f-8b155bc14e62"/>
+                          <a:da name="DEFAULT" value="0"/>
+                          <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=255"/>
+                            <a:tst expr="&gt;=0"/>
+                          </a:da>
+                        </v:var>   
+                        <v:var name="DmaPat12" type="INTEGER">
+                          <a:a name="DESC" 
+                               value="FR: configures bits[16 to 23] of pattern read register1"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                   <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                                   <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID" 
+                               value="fa224a89-d472-4079-b8bb-c81fb6849829"/>
+                          <a:da name="DEFAULT" value="0"/>
+                          <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=255"/>
+                            <a:tst expr="&gt;=0"/>
+                          </a:da>
+                        </v:var> 
+                        <v:var name="DmaPat13" type="INTEGER">
+                          <a:a name="DESC" 
+                               value="FR: configures bits[24 to 31] of pattern read register1"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                   <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                                   <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID" 
+                               value="0fcf0534-79ff-4af8-afe1-7798837fca1c"/>
+                          <a:da name="DEFAULT" value="0"/>
+                          <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=255"/>
+                            <a:tst expr="&gt;=0"/>
+                          </a:da>
+                        </v:var>                      
+                       </v:ctr>
+                    
+                       <v:ctr name="DmaErrorEnableConfiguration" 
+                             type="IDENTIFIABLE">
+                        <a:a name="DESC" 
+                             value="FR: It contains the configurations related to various move engine error enable/disable flags"/>
+                        <a:a name="UUID" 
+                             value="DCE:bc00ae72-c510-433a-b751-90ce2325523f"/>
+                        <v:var name="DmaMovEng0SrcError" type="ENUMERATION">
+                              <a:a name="DESC" 
+                                   value="FR: This parameter is used to enable or disable the move engine0 source error interrupt"/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                   <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                                   <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                              <a:a name="UUID" 
+                                   value="b9b702ed-bcff-4be1-8cc0-1b73affb2166"/>
+                              <a:da name="DEFAULT" value="TRUE"/>
+                              <a:da name="RANGE">
+                                <a:v>TRUE</a:v>
+                                <a:v>FALSE</a:v>
+                              </a:da>
+                        </v:var>
+                        <v:var name="DmaMovEng0DstError" type="ENUMERATION">
+                              <a:a name="DESC" 
+                                   value="FR: This parameter is used to enable or disable the move engine1 destination error interrupt"/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                   <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                                   <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                              <a:a name="UUID" 
+                                   value="83cb191e-61c1-40a3-be83-6153883ca874"/>
+                              <a:da name="DEFAULT" value="TRUE"/>
+                              <a:da name="RANGE">
+                                <a:v>TRUE</a:v>
+                                <a:v>FALSE</a:v>
+                              </a:da>
+                        </v:var>  
+
+                         <v:var name="DmaMovEng0LinkListError" type="ENUMERATION">
+                              <a:a name="DESC" 
+                                   value="FR: This parameter is used to enable or disable the move engine0 linked list error interrupt."/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                   <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                                   <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                              <a:a name="UUID" 
+                                   value="44481ce3-0f92-4889-aa13-c4f5cb298808"/>
+                              <a:da name="DEFAULT" value="TRUE"/>
+                              <a:da name="RANGE">
+                                <a:v>TRUE</a:v>
+                                <a:v>FALSE</a:v>
+                              </a:da>
+                        </v:var>
+                        <v:var name="DmaMovEng0RAMError" type="ENUMERATION">
+                              <a:a name="DESC" 
+                                   value="FR: This parameter is used to enable or disable the move engine0 RAM error interrupt."/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                   <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                                   <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                              <a:a name="UUID" 
+                                   value="3396dd17-2c57-4d62-8ded-d7e7f3d4f531"/>
+                              <a:da name="DEFAULT" value="TRUE"/>
+                              <a:da name="RANGE">
+                                <a:v>TRUE</a:v>
+                                <a:v>FALSE</a:v>
+                              </a:da>
+                        </v:var> 
+                        <v:var name="DmaMovEng1SrcError" type="ENUMERATION">
+                              <a:a name="DESC" 
+                                   value="FR: This parameter is used to enable or disable the move engine1 source error interrupt"/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                   <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                                   <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                              <a:a name="UUID" 
+                                   value="79ae27d4-795e-45bb-b8b4-73da2d2ac606"/>
+                              <a:da name="DEFAULT" value="TRUE"/>
+                              <a:da name="RANGE">
+                                <a:v>TRUE</a:v>
+                                <a:v>FALSE</a:v>
+                              </a:da>
+                        </v:var>  
+                        <v:var name="DmaMovEng1DstError" type="ENUMERATION">
+                              <a:a name="DESC" 
+                                   value="FR: This parameter is used to enable or disable the move engine1 destination error interrupt"/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                   <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                                   <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                              <a:a name="UUID" 
+                                   value="1a2feaa9-822b-4608-9f13-e7777cce022b"/>
+                              <a:da name="DEFAULT" value="TRUE"/>
+                              <a:da name="RANGE">
+                                <a:v>TRUE</a:v>
+                                <a:v>FALSE</a:v>
+                              </a:da>
+                        </v:var>                         
+                        <v:var name="DmaMovEng1LinkListError" type="ENUMERATION">
+                              <a:a name="DESC" 
+                                   value="FR: This parameter is used to enable or disable the move engine1 linked list error interrupt."/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                   <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                                   <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                              <a:a name="UUID" 
+                                   value="a8195a3e-1292-4c28-b768-054572f0e715"/>
+                              <a:da name="DEFAULT" value="TRUE"/>
+                              <a:da name="RANGE">
+                                <a:v>TRUE</a:v>
+                                <a:v>FALSE</a:v>
+                              </a:da>
+                        </v:var>  
+                        <v:var name="DmaMovEng1RAMError" type="ENUMERATION">
+                              <a:a name="DESC" 
+                                   value="FR: This parameter is used to enable or disable the move engine1 RAM error interrupt."/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                   <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                                   <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                              <a:a name="UUID" 
+                                   value="c65bd907-4399-4f56-85a2-e9abc390fe3d"/>
+                              <a:da name="DEFAULT" value="TRUE"/>
+                              <a:da name="RANGE">
+                                <a:v>TRUE</a:v>
+                                <a:v>FALSE</a:v>
+                              </a:da>
+                        </v:var>
+                       </v:ctr>
+                      </v:ctr>
+                                           
+               <v:lst name="DmaChannelConfiguration" type="MAP">
+                    <a:da name="MIN" value="1"/>
+                    <a:da name="MAX" type="XPath" expr="ecu:get('Dma.NoOfChannels')"/>
+                      <v:ctr name="DmaChannelConfiguration" 
+                             type="IDENTIFIABLE">
+                        <a:a name="DESC" 
+                             value="FR: This container contains the configurations for a Dma Channel"/>
+                        <a:a name="UUID" 
+                             value="3ef5b2d6-7307-484b-abdb-7ac884901674"/>                             
+                        <v:var name="DmaChannelNumber" type="INTEGER">
+                          <a:a name="DESC" 
+                               value="FR: Selects the channel number"/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                   <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                                   <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                              </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID" 
+                               value="DCE:a971022f-6462-4325-9caa-708b582b3269"/>
+                          <a:da name="DEFAULT" value="0"/>
+                          <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;ecu:get('Dma.NoOfChannels')"/>
+                            <a:tst expr="&gt;=0"/>
+                          </a:da>
+                        </v:var>                                
+                        <v:var name="DmaChannelWidth" type="ENUMERATION">
+                          <a:a name="DESC" 
+                               value="FR: Selects the channel data width for one DMA move"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                           <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                           <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID" 
+                               value="24a0904a-415a-4152-9f0c-7282b1a5b60b"/>
+                          <a:da name="DEFAULT" value="WIDTH_8BITS"/>
+                          <a:da name="RANGE">
+                            <a:v>WIDTH_8BITS</a:v>
+                            <a:v>WIDTH_16BITS</a:v>
+                            <a:v>WIDTH_32BITS</a:v>
+                            <a:v>WIDTH_64BITS</a:v>
+                            <a:v>WIDTH_128BITS</a:v>
+                            <a:v>WIDTH_256BITS</a:v>
+                          </a:da>
+                        </v:var>                                                                       
+                        <v:var name="DmaNoOfMoves" type="ENUMERATION">
+                          <a:a name="DESC" 
+                               value="FR: Selects the number of moves in one transfer"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                           <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                           <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID" 
+                               value="DCE:15f65c5f-2368-4a39-8dd4-b41bb73466cf"/>
+                          <a:da name="DEFAULT" value="MOVES_1"/>
+                          <a:da name="RANGE">
+                            <a:v>MOVES_1</a:v>
+                            <a:v>MOVES_2</a:v>
+                            <a:v>MOVES_4</a:v>
+                            <a:v>MOVES_8</a:v>
+                            <a:v>MOVES_16</a:v>
+                            <a:v>MOVES_3</a:v>
+                            <a:v>MOVES_5</a:v>
+                            <a:v>MOVES_9</a:v>
+                          </a:da>
+                        </v:var>                        
+                        <v:var name="DmaChannelHwMode" type="ENUMERATION">
+                          <a:a name="DESC" 
+                               value="FR: Determines the hardware mode of the channel"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                           <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                           <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID" 
+                               value="19b9a413-63c1-4f27-8ca6-8d15c55467c9"/>
+                          <a:da name="DEFAULT" value="HARDWARE_SINGLE_MODE"/>
+                          <a:da name="RANGE">
+                            <a:v>HARDWARE_SINGLE_MODE</a:v>
+                            <a:v>HARDWARE_CONTINOUS_MODE</a:v>
+                          </a:da>
+                        </v:var>                       
+                        <v:var name="DmaBusPriority" type="ENUMERATION">
+                          <a:a name="DESC" 
+                               value="FR: Determines the on chip bus priority"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                           <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                           <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID" 
+                               value="76d1225b-ee47-460d-8dc0-01047d1b9533"/>
+                          <a:da name="DEFAULT" value="LOW"/>
+                          <a:da name="RANGE">
+                            <a:v>LOW</a:v>
+                            <a:v>MEDIUM</a:v>
+                            <a:v>HIGH</a:v>
+                          </a:da>
+                        </v:var>                        
+                        <v:var name="DmaPeripheralRequest" type="ENUMERATION">
+                          <a:a name="DESC" 
+                               value="FR: Determines the hardware request which can be either hardware trigger or daisy chain"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                           <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                           <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID" 
+                               value="81faacce-5692-43a0-ac5f-2e72dd19276d"/>
+                          <a:da name="DEFAULT" value="HARDWARE_TRIGGER_SELECT"/>
+                          <a:da name="RANGE">
+                            <a:v>HARDWARE_TRIGGER_SELECT</a:v>
+                            <a:v>DAISY_CHAIN_SELECT</a:v>
+                          </a:da>
+                        </v:var>                       
+                        <v:var name="DmaPatternSelection" type="ENUMERATION">
+                          <a:a name="DESC" 
+                               value="FR: Selects the mode of pattern detection logic"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                           <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                           <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID" 
+                               value="bfbe2aed-f9d5-4f6a-b20f-6794449401a8"/>
+                          <a:da name="DEFAULT" value="DISABLED"/>
+                          <a:da name="RANGE">
+                            <a:v>DISABLED</a:v>
+                            <a:v>PAT00_PAT02_8BIT</a:v>     
+                            <a:v>PAT01_PAT03_8BIT</a:v>
+                            <a:v>PAT00_PAT02_N_PAT01_PAT03_8BIT</a:v> 
+                            <a:v>PAT10_PAT12_8BIT</a:v>
+                            <a:v>PAT11_PAT13_8BIT</a:v>      
+                            <a:v>PAT10_PAT12_N_PAT11_PAT13_8BIT</a:v>
+                            <a:v>ALIGNED_MODE_PAT0_16BIT</a:v>
+                            <a:v>UNALIGNED_MODE_PAT0_16BIT</a:v>
+                            <a:v>COMBINED_MODE_PAT0_16BIT</a:v>
+                            <a:v>ALIGNED_MODE_PAT1_16BIT</a:v>
+                            <a:v>UNALIGNED_MODE_PAT1_16BIT</a:v>
+                            <a:v>COMBINED_MODE_PAT1_16BIT</a:v>
+                            <a:v>RD0_10_PAT0_10_32BIT</a:v>
+                            <a:v>RD0_32_PAT0_32_32BIT</a:v>
+                            <a:v>RD0_30_PAT0_30_32BIT</a:v>
+                            <a:v>RD0_10_PAT1_10_32BIT</a:v>
+                            <a:v>RD0_32_PAT1_32_32BIT</a:v>
+                            <a:v>RD0_30_PAT1_30_32BIT</a:v>                                                       
+                          </a:da>
+                        </v:var>                        
+                        <v:var name="DmaSourceAddrMod" type="ENUMERATION">
+                          <a:a name="DESC" 
+                               value="FR: Defines an address offset value by which the source address is modified after each DMA move"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                           <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                           <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID" 
+                               value="c5ff1a92-fbee-4b62-96a1-30fc1549ba5c"/>
+                          <a:da name="DEFAULT" value="FACTOR_1"/>
+                          <a:da name="RANGE">
+                            <a:v>FACTOR_1</a:v>
+                            <a:v>FACTOR_2</a:v>
+                            <a:v>FACTOR_4</a:v>
+                            <a:v>FACTOR_8</a:v>
+                            <a:v>FACTOR_16</a:v>
+                            <a:v>FACTOR_32</a:v>
+                            <a:v>FACTOR_64</a:v>
+                            <a:v>FACTOR_128</a:v>
+                          </a:da>
+                        </v:var>                        
+                        <v:var name="DmaSourceCircularLength" type="INTEGER">
+                          <a:a name="DESC" 
+                               value="FR: Defines which part of the source address register remains unchanged after a move operation"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                           <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                           <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID" 
+                               value="37545346-a102-40fa-a07a-6bc223fb04ee"/>
+                          <a:da name="DEFAULT" value="0"/>
+                          <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=15"/>
+                            <a:tst expr="&gt;=0"/>
+                          </a:da>
+                        </v:var>                                             
+                        <v:var name="DmaAddSubSrcAddr" type="ENUMERATION">
+                          <a:a name="DESC" 
+                               value="FR: determines whether the address offset will be added to or subtracted from the source address after each DMA move."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                           <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                           <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID" 
+                               value="c4910c21-e3d1-4e0d-a8d4-62b40663f8dc"/>
+                          <a:da name="DEFAULT" value="INCREMENT_SRC_ADDR"/>
+                          <a:da name="RANGE">
+                            <a:v>DECREMENT_SRC_ADDR</a:v>
+                            <a:v>INCREMENT_SRC_ADDR</a:v>
+                          </a:da>
+                        </v:var>                       
+                        <v:var name="DmaDestinationAddrMod" type="ENUMERATION">
+                          <a:a name="DESC" 
+                               value="FR: Defines an address offset value by which the destination address is modified after each DMA move"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                           <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                           <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID" 
+                               value="87407d43-b88d-4e7f-b296-ee2a8f919434"/>
+                          <a:da name="DEFAULT" value="FACTOR_1"/>
+                          <a:da name="RANGE">
+                            <a:v>FACTOR_1</a:v>
+                            <a:v>FACTOR_2</a:v>
+                            <a:v>FACTOR_4</a:v>
+                            <a:v>FACTOR_8</a:v>
+                            <a:v>FACTOR_16</a:v>
+                            <a:v>FACTOR_32</a:v>
+                            <a:v>FACTOR_64</a:v>
+                            <a:v>FACTOR_128</a:v>
+                          </a:da>
+                        </v:var>                    
+                        <v:var name="DmaTransferReqStateReset" type="ENUMERATION">
+                          <a:a name="DESC" 
+                               value="FR: determines when the transfer request state flag is reset i.e. after each transfer or after completion of transaction"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                           <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                           <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID" 
+                               value="21d06c88-79f1-43a6-a805-c69544b2464b"/>
+                          <a:da name="DEFAULT" value="RESET_ONLY_AFTER_TRANSFER"/>
+                          <a:da name="RANGE">
+                            <a:v>RESET_ONLY_AFTER_TRANSFER</a:v>
+                            <a:v>RESET_ONLY_AFTER_TRANSACTION</a:v>
+                          </a:da>
+                        </v:var>    
+                        <v:var name="DmaDestinationCircularLength" type="INTEGER">
+                          <a:a name="DESC" 
+                               value="FR: Defines which part of the destination address register remains unchanged after a move operation"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                           <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                           <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID" 
+                               value="b83f46e3-5584-47bb-832a-beede5fc4846"/>
+                          <a:da name="DEFAULT" value="0"/>
+                          <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=15"/>
+                            <a:tst expr="&gt;=0"/>
+                          </a:da>
+                        </v:var>                                             
+                        <v:var name="DmaAddSubDstAddr" type="ENUMERATION">
+                          <a:a name="DESC" 
+                               value="FR: determines whether the address offset will be added to or subtracted from the destination address after each DMA move."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                           <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                           <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID" 
+                               value="8b2df284-c5e4-469d-b572-d9ff2f005f3a"/>
+                          <a:da name="DEFAULT" value="INCREMENT_DEST_ADDR"/>
+                          <a:da name="RANGE">
+                            <a:v>DECREMENT_DEST_ADDR</a:v>
+                            <a:v>INCREMENT_DEST_ADDR</a:v>
+                          </a:da>
+                        </v:var>   
+                        <v:var name="DmaTransactionReqLostEn" type="ENUMERATION">
+                          <a:a name="DESC" 
+                               value="FR: This parameter determines whether interrupt should be generated on transaction request lost."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                           <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                           <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID" 
+                               value="DCE:25c1f0e1-234b-4e51-bfda-f83354ada516"/>
+                          <a:da name="DEFAULT" value="DISABLE"/>
+                          <a:da name="RANGE">
+                            <a:v>DISABLE</a:v>
+                            <a:v>ENABLE</a:v>
+                          </a:da>
+                        </v:var>                                                                    
+                        <v:var name="DmaInterruptControl" type="ENUMERATION">
+                          <a:a name="DESC" 
+                               value="FR: This parameter selects when the interrupt should be generated"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                           <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                           <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID" 
+                               value="6b041b36-bac5-4377-ac99-34088ae1276a"/>
+                          <a:da name="DEFAULT" value="INT_DISABLED_TCOUNT_IRDV"/>
+                          <a:da name="RANGE">
+                            <a:v>INT_DISABLED_TCOUNT_IRDV</a:v>
+                            <a:v>INT_DISABLED_TCOUNT_DECREMENT</a:v>
+                            <a:v>INT_ENABLED_TCOUNT_IRDV</a:v>
+                            <a:v>INT_ENABLED_TCOUNT_DECREMENT</a:v>
+                          </a:da>
+                        </v:var>                        
+                        <v:var name="DmaInterruptRaiseValue" type="INTEGER">
+                          <a:a name="DESC" 
+                               value="FR: Defines a value for which the interrupt is set when the transfer count matches the threshold limit "/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                           <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                           <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID" 
+                               value="f4cad7f8-53bc-470f-b2aa-d0d9f4ee09ef"/>
+                          <a:da name="DEFAULT" value="0"/>
+                          <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=15"/>
+                            <a:tst expr="&gt;=0"/>
+                          </a:da>
+                        </v:var>                       
+                        <v:var name="DmaWrapSourceEn" type="ENUMERATION">
+                          <a:a name="DESC" 
+                               value="FR: determines whether to enable/disable wrap source buffer interrupt "/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                           <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                           <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID" 
+                               value="0acf7042-4105-4806-8b87-2306262cd51a"/>
+                          <a:da name="DEFAULT" value="DISABLE"/>
+                          <a:da name="RANGE">
+                            <a:v>DISABLE</a:v>
+                            <a:v>ENABLE</a:v>
+                          </a:da>
+                        </v:var>                       
+                        <v:var name="DmaWrapDestinationEn" type="ENUMERATION">
+                          <a:a name="DESC" 
+                               value="FR: determines whether to enable/disable wrap destination buffer interrupt "/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                           <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                           <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID" 
+                               value="84fc9ed7-5186-4f90-89eb-92bc5bfe0cf4"/>
+                          <a:da name="DEFAULT" value="DISABLE"/>
+                          <a:da name="RANGE">
+                            <a:v>DISABLE</a:v>
+                            <a:v>ENABLE</a:v>
+                          </a:da>
+                        </v:var>                        
+                        <v:var name="DmaSrcCircularBufEn" type="ENUMERATION">
+                          <a:a name="DESC" 
+                               value="FR: determines whether to enable/disable source circular buffer "/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                           <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                           <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID" 
+                               value="cf5d3e74-65e5-4d02-ace0-69247e9e3972"/>
+                          <a:da name="DEFAULT" value="DISABLE"/>
+                          <a:da name="RANGE">
+                            <a:v>DISABLE</a:v>
+                            <a:v>ENABLE</a:v>
+                          </a:da>
+                        </v:var>                       
+                        <v:var name="DmaDstCircularBufEn" type="ENUMERATION">
+                          <a:a name="DESC" 
+                               value="FR: determines whether to enable/disable destination circular buffer "/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                           <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                           <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID" 
+                               value="98d320ed-493d-4e89-a698-49a79c197ffa"/>
+                          <a:da name="DEFAULT" value="DISABLE"/>
+                          <a:da name="RANGE">
+                            <a:v>DISABLE</a:v>
+                            <a:v>ENABLE</a:v>
+                          </a:da>
+                        </v:var>                        
+                        <v:var name="DmaShadowControlConfig" type="ENUMERATION">
+                          <a:a name="DESC" 
+                               value="FR: Defines the functionality of the shadow address register "/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                           <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                           <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                          <a:a name="UUID" 
+                               value="59bf059c-adc5-4aaa-9ecc-aea44b60ba77"/>
+                          <a:da name="DEFAULT" value="DISABLE"/>
+                          <a:da name="RANGE">
+                            <a:v>DISABLE</a:v>
+                            <a:v>SOURCE_ADDRESS_BUFF_RD</a:v>
+                            <a:v>DESTINATION_ADDRESS_BUFF_RD</a:v>
+                            <a:v>SOURCE_ADDRESS_BUFF_WR</a:v>
+                            <a:v>DESTINATION_ADDRESS_BUFF_WR</a:v>
+                            <a:v>DOUBLE_SOURCE_BUFF_SW</a:v>
+                            <a:v>DOUBLE_SOURCE_BUFF_AUTO</a:v>
+                            <a:v>DOUBLE_DESTINATION_BUFF_SW</a:v>
+                            <a:v>DOUBLE_DESTINATION_BUFF_AUTO</a:v>
+                            <a:v>LINKED_LIST</a:v>
+                            <a:v>ACCUMULATED_LINKED_LIST</a:v>
+                            <a:v>SAFE_LINKED_LIST</a:v>
+                            <a:v>CONDITIONAL_LINKED_LIST</a:v>
+                          </a:da>
+                        </v:var>
+                                                                                    
+                         <v:ctr name="DmaChannelHwResourceConfig" 
+                                 type="IDENTIFIABLE">
+                                 <a:a name="DESC" 
+                             value="FR: This container contains the configurations hardware resource partition related configurations for a Dma Channel"/>
+                            <a:a name="UUID" 
+                                 value="512e0444-ba40-4860-8165-da1854a158f6"/>                                 
+                            <v:var name="DmaHwResourceMode" type="ENUMERATION">
+                              <a:a name="DESC" 
+                                   value="FR: This parameter controls whether hardware resources access the on chip buses in supervisor/user mode"/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                   <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                                   <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                              <a:a name="UUID" 
+                                   value="d1efdd2e-12f4-4949-ac14-9b293a6816a6"/>
+                              <a:da name="DEFAULT" value="SUPERVISOR_MODE"/>
+                              <a:da name="RANGE">
+                                <a:v>USER_MODE</a:v>
+                                <a:v>SUPERVISOR_MODE</a:v>
+                                </a:da>
+                            </v:var>                            
+                            <v:var name="DmaChannelHwResourcePartition" type="ENUMERATION">
+                              <a:a name="DESC" 
+                                   value="FR: This parameter assigns DMA channels to one of the four hardware resource partitions"/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                   <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                                   <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                              <a:a name="UUID" 
+                                   value="DCE:78fc8d1d-efd4-446d-ae4f-a07e62ad6a2a"/>
+                              <a:da name="DEFAULT" value="HW_RESOURCE_PARTITION_0"/>
+                              <a:da name="RANGE">
+                                <a:v>HW_RESOURCE_PARTITION_0</a:v>
+                                <a:v>HW_RESOURCE_PARTITION_1</a:v>
+                                <a:v>HW_RESOURCE_PARTITION_2</a:v>
+                                <a:v>HW_RESOURCE_PARTITION_3</a:v>
+                              </a:da>
+                            </v:var>                
+                         </v:ctr>
+                              
+                     </v:ctr> 
+                
+               </v:lst> 
+               </v:ctr>
+            </v:lst> 
+            <v:ctr name="DmaPublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC"
+                  value="EN: This container contains the published information of the DMA driver."/>
+                <a:a name="UUID" value="6981f177-fe69-4ba3-8e4e-5be27814175b"/>
+              </v:ctr>
+              <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+  						<a:a name="DESC" value="EN: Common container, aggregated by all modules. It contains published information about vendor and versions."/>
+									  <a:a name="UUID" value="492f8482-3e2c-4bf1-b27f-01fd7ac35788"/>
+									  <v:var name="ArMajorVersion" type="INTEGER">
+									    <a:a name="DESC" value="EN: Major version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                               type="IMPLEMENTATIONCONFIGCLASS">
+                                            <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                                            <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                                          </a:a>									    
+									    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+									    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+									    <a:a name="UUID" value="bd0a8d38-4d8c-4ee9-88fe-1166b258bb8a"/>
+									    <a:da name="INVALID" type="Range">
+						      <a:tst expr="&lt;=65535"/>
+						      <a:tst expr="&gt;=0"/>
+						    </a:da>
+						    <a:da name="DEFAULT" value="0"/>
+						  </v:var>
+						  <v:var name="ArMinorVersion" type="INTEGER">
+						    <a:a name="DESC" value="EN: Minor version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                                <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                              </a:a>						    
+						    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+						    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						    <a:a name="UUID" value="73f87c7f-e230-4178-bff0-eb2704aae656"/>
+						    <a:da name="INVALID" type="Range">
+						      <a:tst expr="&lt;=65535"/>
+						      <a:tst expr="&gt;=0"/>
+						    </a:da>
+						    <a:da name="DEFAULT" value="0"/>
+						  </v:var>
+						  <v:var name="ArPatchVersion" type="INTEGER">
+						    <a:a name="DESC" value="EN: Patch level version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                                <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                              </a:a>						    
+						    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+						    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						    <a:a name="UUID" value="2380135d-6778-417a-a34b-e10017d4dd54"/>
+						    <a:da name="INVALID" type="Range">
+						      <a:tst expr="&lt;=65535"/>
+						      <a:tst expr="&gt;=0"/>
+						    </a:da>
+						    <a:da name="DEFAULT" value="0"/>
+						  </v:var>
+						  <v:var name="SwMajorVersion" type="INTEGER">
+						    <a:a name="DESC" value="EN: Major version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                                <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                              </a:a>						    
+						    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+						    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						    <a:a name="UUID" value="fca015e3-5f28-4cbe-8949-8f4b87d86827"/>
+						    <a:da name="INVALID" type="Range">
+						      <a:tst expr="&lt;=65535"/>
+						      <a:tst expr="&gt;=0"/>
+						    </a:da>
+						    <a:da name="DEFAULT" value="1"/>
+						  </v:var>
+						  <v:var name="SwMinorVersion" type="INTEGER">
+						    <a:a name="DESC" value="EN: Minor version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                                <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                              </a:a>						    
+						    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+						    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						    <a:a name="UUID" value="14ab81e0-3d80-43dc-8b92-247e5a542df9"/>
+						    <a:da name="INVALID" type="Range">
+						      <a:tst expr="&lt;=65535"/>
+						      <a:tst expr="&gt;=0"/>
+						    </a:da>
+						    <a:da name="DEFAULT" value="2"/>
+						  </v:var>
+						  <v:var name="SwPatchVersion" type="INTEGER">
+						    <a:a name="DESC" value="EN: Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                                <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                              </a:a>						    
+						    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+						    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						    <a:a name="UUID" value="32e37bfd-18b6-41d1-9248-a81dbe0fe4c5"/>
+						    <a:da name="INVALID" type="Range">
+						      <a:tst expr="&lt;=65535"/>
+						      <a:tst expr="&gt;=0"/>
+						    </a:da>
+						    <a:da name="DEFAULT" value="0"/>
+						  </v:var>
+						  <v:var name="ModuleId" type="INTEGER">
+						    <a:a name="DESC" value="EN: Module ID of this module from Module List"/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                                <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                              </a:a>						    
+						    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+						    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						    <a:a name="UUID" value="3b407478-6902-4f80-b7cf-f33b0854e638"/>
+						    <a:da name="INVALID" type="Range">
+						      <a:tst expr="&lt;=65535"/>
+						      <a:tst expr="&gt;=0"/>
+						    </a:da>
+						    <a:da name="DEFAULT" value="255"/>
+						  </v:var>
+						  <v:var name="VendorId" type="INTEGER">
+						    <a:a name="DESC" value="EN: Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list"/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                                <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                              </a:a>						    
+						    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+						    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						    <a:a name="UUID" value="7d650b2d-4adb-41f0-a68e-5f0c416501d1"/>
+						    <a:da name="INVALID" type="Range">
+						      <a:tst expr="&lt;=65535"/>
+						      <a:tst expr="&gt;=0"/>
+						    </a:da>
+						    <a:da name="DEFAULT" value="17"/>
+						  </v:var>
+						  <v:var name="VendorApiInfix" type="STRING">
+						    <a:a name="DESC">
+						      <a:v>EN: In driver modules which can be instantiated several times on a single ECU, BSW00347 requires that the name of APIs is extended by the VendorId and a vendor specific name. 
+						This parameter is used to specify the vendor specific name. In total, the implementation specific name is generated as follows:
+						&lt;ModuleName&gt;_&gt;VendorId&gt;_&lt;VendorApiInfix&gt;&lt;Api name from SWS&gt;.
+						
+						E.g.  assuming that the VendorId of the implementor is 123 and the implementer chose a VendorApiInfix of &quot;v11r456&quot; a api name Can_Write defined in the SWS will translate to Can_123_v11r456Write. 
+						
+						This parameter is mandatory for all modules with upper multiplicity &gt; 1. It shall not be used for modules with upper multiplicity =1.</a:v>
+						    </a:a>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                                <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                              </a:a>						    
+						    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+						    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						    <a:a name="UUID" value="ad363b41-e945-4717-b12f-c2f800ef138e"/>
+						    <a:da name="ENABLE" value="false"/>
+						    <a:da name="DEFAULT" value=""/>
+						  </v:var>
+						  <v:var name="Release" type="STRING">
+						    <a:a name="DESC" value="EN: Aurix derivative used for thr implementation"/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                                <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                              </a:a>						    
+						    <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+						    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						    <a:a name="UUID" value="3b407478-6902-4f40-b7cf-f33b0854e638"/>
+						    <a:da name="DEFAULT" type="XPath" expr="ecu:get('Rel.Derivate')"/>
+						  </v:var>
+						</v:ctr>             
+           </v:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+
+</datamodel>

@@ -1,0 +1,2596 @@
+<?xml version='1.0'?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-0-3.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE UUID="da67ab07-f6eb-43e7-8e7c-598d861a1f25">
+      <SHORT-NAME>AURIX</SHORT-NAME>
+      <ELEMENTS>
+        <ECUC-MODULE-DEF UUID="bc324be9-5580-46d9-9f12-87d1f90e8b34">
+          <SHORT-NAME>Can</SHORT-NAME>
+          <ADMIN-DATA>
+            <DOC-REVISIONS>
+              <DOC-REVISION>
+                <REVISION-LABEL>4.2.0</REVISION-LABEL>
+                <ISSUED-BY>AUTOSAR</ISSUED-BY>
+                <DATE>2011-11-09</DATE>
+              </DOC-REVISION>
+            </DOC-REVISIONS>
+          </ADMIN-DATA>
+          <REFINED-MODULE-DEF-REF DEST="ECUC-MODULE-DEF">/AUTOSAR/EcucDefs/Can</REFINED-MODULE-DEF-REF>
+          <SUPPORTED-CONFIG-VARIANTS>
+            <SUPPORTED-CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</SUPPORTED-CONFIG-VARIANT>
+            <SUPPORTED-CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</SUPPORTED-CONFIG-VARIANT>
+          </SUPPORTED-CONFIG-VARIANTS>
+          <CONTAINERS>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="01ea5973-e37c-49d5-bdca-c9e827d1663e">
+              <SHORT-NAME>CanConfigSet</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">This is the multiple configuration set container for CAN Driver</L-2>
+              </DESC>
+              <MULTIPLE-CONFIGURATION-CONTAINER>true</MULTIPLE-CONFIGURATION-CONTAINER>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF UUID="f2447d73-1d64-49a8-9905-7cab9519ca34">
+                  <SHORT-NAME>CanController</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">This container contains the configuration parameters of the CAN controller(s).</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>6</UPPER-MULTIPLICITY>
+                  <PARAMETERS>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="eee36f14-373d-44df-91cd-4ff09a1e8dbd">
+                      <SHORT-NAME>CanBusoffProcessing</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Specifies the way in which busoff event is handled.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>INTERRUPT</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>INTERRUPT</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>POLLING</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF UUID="c37e5f8c-2ef2-472a-98b5-dcc18cbea5b1">
+                      <SHORT-NAME>CanControllerLoopbackEnable</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter specifies whether to use CAN internal bus or external bus.If this parameter is enabled, it will use internal bus.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF UUID="d69c9f88-536b-403a-b100-ac6c5f91462f">
+                      <SHORT-NAME>CanControllerActivation</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Defines if a CAN controller is used in the configuration.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="e9afaa0c-2dc7-4390-a7c9-c605ae01c22f">
+                      <SHORT-NAME>CanControllerBaseAddress</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Specifies the CAN controller base address. This parameter is not used by the CAN driver</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>4294967295</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="e2ba0706-bc65-4c5b-bf17-18a65d52122a">
+                      <SHORT-NAME>CanControllerId</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter provides the controller ID which is unique in a given CAN Driver. The value for this parameter starts with 0 and continue without any gaps.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>true</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>5</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="e2ba0706-bc65-4c5b-bf17-18a65d52122b">
+                      <SHORT-NAME>CanHwControllerId</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">CAN controller hardware to be used</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>CONTROLLER_0_MULTICANPLUS_NODE0</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CONTROLLER_0_MULTICANPLUS_NODE0</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CONTROLLER_1_MULTICANPLUS_NODE1</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CONTROLLER_2_MULTICANPLUS_NODE2</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CONTROLLER_3_MULTICANPLUS_NODE0</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CONTROLLER_4_MULTICANPLUS_NODE1</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CONTROLLER_5_MULTICANPLUS_NODE2</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="cba09ffc-943a-4f6d-a103-218aa8917920">
+                      <SHORT-NAME>CanRxProcessing</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Specifies the way in which CAN frame/FIFO reception events is handled.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>INTERRUPT</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>INTERRUPT</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>POLLING</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="8ed3f3ad-18fa-43fd-b46a-b15317768438">
+                      <SHORT-NAME>CanTxProcessing</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Specifies the in which PDU transmission successful events are handled.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>INTERRUPT</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>INTERRUPT</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>POLLING</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="91dd5060-f100-4a91-8341-4825be101f7e">
+                      <SHORT-NAME>CanWakeupProcessing</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Specifies the way in which wakeup (CAN frame reception when the controller is in SLEEP state) event is handled.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>INTERRUPT</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>INTERRUPT</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>POLLING</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF UUID="bf3e4123-a208-4261-aaac-01e12d16447e">
+                      <SHORT-NAME>CanWakeupSupport</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">CAN driver support for wakeup over CAN Bus.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="1b7aa112-460a-44ac-a9ba-ca4f568aba2f">
+                      <SHORT-NAME>CanRxInputSelection</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Provides alternate Pin selection for CAN Node Recieve input line</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>RXDCANxA</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>RXDCANxA</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>RXDCANxB</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>RXDCANxC</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>RXDCANxD</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>RXDCANxE</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>RXDCANxF</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>RXDCANxG</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>RXDCANxH</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                  </PARAMETERS>
+                  <REFERENCES>
+                    <ECUC-REFERENCE-DEF UUID="8f832c6b-f51a-4faa-808c-3cf87d9be7fb">
+                      <SHORT-NAME>CanCpuClockRef</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Reference to the CPU clock configuration, which is set in the MCU driver configuration. Ensure that McuClockSPBFrequency is properly configured in the referenced node</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/Mcu/McuModuleConfiguration/McuClockSettingConfig/McuClockReferencePoint</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                    <ECUC-REFERENCE-DEF UUID="8f832c6b-f51a-4faa-808c-3cf87d9be7fc">
+                      <SHORT-NAME>CanControllerDefaultBaudrate</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Reference to baudrate configuration container configured for the Can Controller.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/Can/CanConfigSet/CanController/CanControllerBaudrateConfig</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                    <ECUC-SYMBOLIC-NAME-REFERENCE-DEF UUID="ab59fc82-b7d5-48be-9ed4-48a6db4c60c6">
+                      <SHORT-NAME>CanWakeupSourceRef</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&quot;EN: This parameter contains a reference to the Wakeup Source for this controller as defined in the ECU State Manager. Implementation Type: reference to EcuM_WakeupSourceType.&quot;</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/EcuM/EcuMConfiguration/EcuMCommonConfiguration/EcuMWakeupSource</DESTINATION-REF>
+                    </ECUC-SYMBOLIC-NAME-REFERENCE-DEF>
+                  </REFERENCES>
+                  <SUB-CONTAINERS>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="e380e54a-e891-4fb8-88e8-459dc7c59aaf">
+                      <SHORT-NAME>CanControllerBaudrateConfig</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This container contains bit timing related configuration parameters of the CAN controller(s).</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>254</UPPER-MULTIPLICITY>
+                      <PARAMETERS>
+                        <ECUC-INTEGER-PARAM-DEF UUID="d25b4fbd-81bf-4a15-9ab3-341737514768">
+                          <SHORT-NAME>CanControllerBaudRate</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Specifies the buadrate of the controller in kbps.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>500</DEFAULT-VALUE>
+                          <MAX>1000</MAX>
+                          <MIN>25</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="2679654f-2b2d-427c-a11a-76b457ab2edb">
+                          <SHORT-NAME>CanControllerPropSeg</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Specifies propagation delay in time quantas.
+                               CanControllerPropSeg should be in the range (0 to 15) if CAN FD is disabled and (0 to 48) if CAN FD is enabled.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>2</DEFAULT-VALUE>
+                          <MAX>48</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="3b80179e-1028-48b1-a380-23fffed7c7b3">
+                          <SHORT-NAME>CanControllerSeg1</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Specifies phase segment 1 in time quantas.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>5</DEFAULT-VALUE>
+                          <MAX>16</MAX>
+                          <MIN>1</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="05d5341b-b278-44f8-8284-120fe34a5b0e">
+                          <SHORT-NAME>CanControllerSeg2</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Specifies phase segment 2 in time quantas.
+                               CanControllerSeg2 should be in the range (2 to 8) if CAN FD is disabled and (2 to 32) if CAN FD is enabled.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>4</DEFAULT-VALUE>
+                          <MAX>32</MAX>
+                          <MIN>2</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="e0cfe32e-1160-408d-be3c-9e8a789a5bb9">
+                          <SHORT-NAME>CanControllerSyncJumpWidth</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Specifies the synchronization jump width for the controller in time quantas.
+                               CanControllerSyncJumpWidth should be in the range (1 to 4) if CAN FD is disabled and (1 to 16) if CAN FD is enabled.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                          <MAX>16</MAX>
+                          <MIN>1</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                      </PARAMETERS>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="e380e54a-e891-4fb8-88e8-459dc7c59faf">
+                      <SHORT-NAME>CanControllerFdBaudrateConfig</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This container contains bit timing related configuration parameters of the CAN controller(s) for FD frame.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <PARAMETERS>
+                        <ECUC-INTEGER-PARAM-DEF UUID="d25b4fbd-81bf-4a15-9ab3-341737514968">
+                          <SHORT-NAME>CanControllerFdBaudRate</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Specifies the buadrate of the controller in kbps.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>2500</DEFAULT-VALUE>
+                          <MAX>5000</MAX>
+                          <MIN>1000</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="2679654f-2b2d-427c-a11a-76b457ab2adb">
+                          <SHORT-NAME>CanControllerPropSeg</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Specifies propagation delay in time quantas.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>2</DEFAULT-VALUE>
+                          <MAX>15</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="3b80179e-1028-48b1-a380-23fffed7c9b3">
+                          <SHORT-NAME>CanControllerSeg1</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Specifies phase segment 1 in time quantas.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>5</DEFAULT-VALUE>
+                          <MAX>16</MAX>
+                          <MIN>1</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="05d5341b-b278-44f8-8284-120fe34a5e0e">
+                          <SHORT-NAME>CanControllerSeg2</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Specifies phase segment 2 in time quantas.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>4</DEFAULT-VALUE>
+                          <MAX>8</MAX>
+                          <MIN>2</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="e0cfe32e-1160-408d-be3c-9e8a789a5db9">
+                          <SHORT-NAME>CanControllerSyncJumpWidth</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Specifies the synchronization jump width for the controller in time quantas. This parameter is not used by the CAN driver.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                          <MAX>4</MAX>
+                          <MIN>1</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="e0cfe32e-1160-408d-be3c-9e8a789a5eb9">
+                          <SHORT-NAME>CanControllerTrcvDelayCompensationOffset</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Specifies the Transceiver Delay Compensation Offset in ns.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                          <MAX>400</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-BOOLEAN-PARAM-DEF UUID="e0cfe32e-1160-408d-be3c-9e8a789a56b9">
+                          <SHORT-NAME>CanControllerTxBitRateSwitch</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Specifies if the bit rate switching shall be used for transmissions.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>true</DEFAULT-VALUE>
+                        </ECUC-BOOLEAN-PARAM-DEF>
+                      </PARAMETERS>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="aefac3a8-c5c8-4c4e-9514-fd3b9ba418fc">
+                      <SHORT-NAME>CanFilterMask</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This container contains the configuration (parameters) of the CAN Filter Mask(s).</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>256</UPPER-MULTIPLICITY>
+                      <PARAMETERS>
+                        <ECUC-INTEGER-PARAM-DEF UUID="bb21a1d6-1600-402e-b0be-ec273918645e">
+                          <SHORT-NAME>CanFilterMaskValue</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Describes a mask for hardware-based filtering of CAN identifiers.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                          <MAX>536870911</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                      </PARAMETERS>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="ECUC:03522dfa-716f-4cae-b216-c32f5ff584cf">
+                      <SHORT-NAME>CanTTController</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This container is only included and valid if TTCAN SWS is used and TTCAN is enabled.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <PARAMETERS>
+                        <ECUC-INTEGER-PARAM-DEF UUID="ECUC:58bdc478-e74c-42df-8d3d-0ba19ae24009">
+                          <SHORT-NAME>CanTTControllerApplWatchdogLimit</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Defines the maximum time period (unit is 256 times NTU) after which the application has to serve the watchdog.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                          <MAX>255</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="ECUC:fafa672b-b0c5-4c09-9035-06e2461576c0">
+                          <SHORT-NAME>CanTTControllerCycleCountMax</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Defines the value for cycle_count_max.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                          <MAX>63</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="ECUC:91b067db-e57d-432f-9093-262d567242ed">
+                          <SHORT-NAME>CanTTControllerExpectedTxTrigger</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Number of expected_tx_trigger.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                          <MAX>255</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-BOOLEAN-PARAM-DEF UUID="ECUC:1f319887-2617-4190-b5d6-95b9e555b181">
+                          <SHORT-NAME>CanTTControllerExternalClockSynchronisation</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Enables/disables the external clock synchronization.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                        </ECUC-BOOLEAN-PARAM-DEF>
+                        <ECUC-BOOLEAN-PARAM-DEF UUID="ECUC:ced20e88-c426-42a9-bce0-ed1a2a5f3798">
+                          <SHORT-NAME>CanTTControllerGlobalTimeFiltering</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Enables/disables the global time filtering.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                        </ECUC-BOOLEAN-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="ECUC:25750102-31df-4bed-91cf-01253dc78fa0">
+                          <SHORT-NAME>CanTTControllerInitialRefOffset</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Defines the initial value for ref trigger offset.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                          <MAX>127</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="ECUC:6d752b5f-31aa-4e11-915c-cbe1e1a0f01b">
+                          <SHORT-NAME>CanTTControllerInterruptEnable</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Enables/disables the respective interrupts.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                          <MAX>1023</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-BOOLEAN-PARAM-DEF UUID="ECUC:91462836-5301-42da-8b89-dad7c7ddeb2d">
+                          <SHORT-NAME>CanTTControllerLevel2</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Defines whether Level 2 or Level 1 is used.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                        </ECUC-BOOLEAN-PARAM-DEF>
+                        <ECUC-FLOAT-PARAM-DEF UUID="ECUC:fc8b7d0e-677b-4c04-b547-ef6602271c34">
+                          <SHORT-NAME>CanTTControllerNTUConfig</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Defines the config value for NTU (network time unit).</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>0.0</DEFAULT-VALUE>
+                          <MAX>100.0</MAX>
+                          <MIN>0.0</MIN>
+                        </ECUC-FLOAT-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="ECUC:fd04f084-a5cc-4c27-9d75-7e1a46e86bfb">
+                          <SHORT-NAME>CanTTControllerOperationMode</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Defines the operation mode.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>CAN_TT_TIME_TRIGGERED</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>CAN_TT_EVENT_SYNC_TIME_TRIGGERED</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>CAN_TT_EVENT_TRIGGERED</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>CAN_TT_TIME_TRIGGERED</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-FLOAT-PARAM-DEF UUID="ECUC:26f778c8-15de-4c4a-b05e-fff49e20b234">
+                          <SHORT-NAME>CanTTControllerSyncDeviation</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Defines the maximum synchronization deviation:</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>0.0</DEFAULT-VALUE>
+                          <MAX>100.0</MAX>
+                          <MIN>0.0</MIN>
+                        </ECUC-FLOAT-PARAM-DEF>
+                        <ECUC-BOOLEAN-PARAM-DEF UUID="ECUC:e5b66746-4e6e-47f5-b62b-ab6452a49083">
+                          <SHORT-NAME>CanTTControllerTURRestore</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Enables/disables the TUR restore.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                        </ECUC-BOOLEAN-PARAM-DEF>
+                        <ECUC-BOOLEAN-PARAM-DEF UUID="ECUC:68c24e85-bb75-4b38-b9af-05947b2f0f28">
+                          <SHORT-NAME>CanTTControllerTimeMaster</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Defines whether the controller acts as a potential time master.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                        </ECUC-BOOLEAN-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="ECUC:64837877-30b7-48a4-9f87-a7e4e9590100">
+                          <SHORT-NAME>CanTTControllerTimeMasterPriority</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Defines the time master priority.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                          <MAX>7</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="ECUC:432b3c85-542c-48e3-ab51-3944e1d6e422">
+                          <SHORT-NAME>CanTTControllerTxEnableWindowLength</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Length of the tx enable window given in CAN bit times.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                          <MAX>16</MAX>
+                          <MIN>1</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="ECUC:a880dad8-6591-4dbc-a3d4-8057ff9b6932">
+                          <SHORT-NAME>CanTTControllerWatchTriggerGapTimeMark</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">watch trigger time mark after a gap</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                          <MAX>65535</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="ECUC:496f1799-9365-4e5b-878a-dd8cab58f339">
+                          <SHORT-NAME>CanTTControllerWatchTriggerTimeMark</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">watch trigger time mark</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                          <MAX>65535</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="ECUC:089059db-bfe6-43a7-9fa7-99b4b583a2b0">
+                          <SHORT-NAME>CanTTIRQProcessing</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Enables / disables API Can_MainFunction_BusOff() for handling busoff events in polling mode.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>INTERRUPT</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>INTERRUPT</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>POLLING</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                      </PARAMETERS>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                  </SUB-CONTAINERS>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+                <ECUC-PARAM-CONF-CONTAINER-DEF UUID="5f8561e5-25df-4bda-8d7f-23f78525f89f">
+                  <SHORT-NAME>CanHardwareObject</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">This container contains the configuration (parameters) of CAN Hardware Objects.</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>256</UPPER-MULTIPLICITY>
+                  <PARAMETERS>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="af9850d2-61a1-41de-b4b8-cc8881ef8281">
+                      <SHORT-NAME>CanHandleType</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Specifies the type (Full-CAN or Basic-CAN) of a hardware object.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>FULL</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>BASIC</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>FULL</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="1b7aa112-460a-44ab-a9ba-ca4f568aba2e">
+                      <SHORT-NAME>CanIdType</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Specifies whether the IdValue is of type [1]Standard identifier [2]Extended identifier or [3]Mixed mode. ImplementationType: Can_IdType</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>STANDARD</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>EXTENDED</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>MIXED</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>STANDARD</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="316bfd67-4e3c-4415-8bfb-7aac0a02f5e3">
+                      <SHORT-NAME>CanIdValue</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Specifies (together with the filter mask) the identifiers range that passes the hardware filter.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>536870911</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="dfecb0cd-bfae-47f0-af3b-04f21b6d0a36">
+                      <SHORT-NAME>CanObjectId</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&quot;EN: Holds the handle ID of HRH or HTH. The value of this parameter is unique in a given CAN Driver, and it should start with 0 and continue without any gaps.&quot;</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>true</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>255</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="7f91cbf2-72e3-4a7f-b1ba-9a504dae09fe">
+                      <SHORT-NAME>CanObjectType</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Specifies if the HardwareObject is used as Transmit or as Receive object</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>RECEIVE</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>RECEIVE</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>TRANSMIT</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="ac520ea9-0872-4d4a-8ff9-5043e9600659">
+                      <SHORT-NAME>CanMultiplexedHwObjects</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter determines the number of message objects associated with the HTH.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                      <MAX>255</MAX>
+                      <MIN>1</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                  </PARAMETERS>
+                  <REFERENCES>
+                    <ECUC-REFERENCE-DEF UUID="4e8f054e-d56f-4410-b256-6dc3e70169d6">
+                      <SHORT-NAME>CanControllerRef</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Reference to CAN Controller to which the HOH is associated to.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/Can/CanConfigSet/CanController</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                    <ECUC-REFERENCE-DEF UUID="0dec09cc-3d20-4fc1-8d5a-1fdec3ccaa37">
+                      <SHORT-NAME>CanFilterMaskRef</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Reference to the filter mask that is used for hardware filtering togerther with the CanIdValue.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/Can/CanConfigSet/CanController/CanFilterMask</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                    <ECUC-REFERENCE-DEF UUID="efa284a2-911f-4001-adf0-b0c1af96a95b">
+                      <SHORT-NAME>CanMainFunctionRWPeriodRef</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Reference to read/write polling raster to which the HOH is associated.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/Can/CanGeneral/CanMainFunctionRWPeriods</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                  </REFERENCES>
+                  <SUB-CONTAINERS>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="ECUC:5c10353d-3ba8-4140-adf6-b5c02d28c9f1">
+                      <SHORT-NAME>CanTTHardwareObjectTrigger</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This container is only included and valid if TTCAN SWS is used and TTCAN is enabled.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY-INFINITE>1</UPPER-MULTIPLICITY-INFINITE>
+                      <PARAMETERS>
+                        <ECUC-INTEGER-PARAM-DEF UUID="ECUC:bbb7fda0-3f86-4144-b471-33793652290f">
+                          <SHORT-NAME>CanTTHardwareObjectBaseCycle</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Defines the cycle_offset.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                          <MAX>63</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="ECUC:6f58e444-b305-47d4-899b-38971bc77aa7">
+                          <SHORT-NAME>CanTTHardwareObjectCycleRepetition</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Defines the repeat_factor.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                          <MAX>64</MAX>
+                          <MIN>1</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="ECUC:737166e8-39c4-4d60-ac3f-00672a8ebf67">
+                          <SHORT-NAME>CanTTHardwareObjectTimeMark</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Defines the point in time, when the trigger will be activated.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                          <MAX>65535</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="ECUC:0da05573-613f-45fd-94f7-68688e7bcf19">
+                          <SHORT-NAME>CanTTHardwareObjectTriggerId</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Sequential number which allows separation of different TTCAN triggers configured for one and the same hardware object.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>true</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                          <MAX>63</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="ECUC:b15710a4-a4ef-45a8-830a-33d47a8b386d">
+                          <SHORT-NAME>CanTTHardwareObjectTriggerType</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">Defines the type of the trigger associated with the hardware object. This parameter depends on plain CAN parameter CAN_OBJECT_TYPE.</L-2>
+                          </DESC>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>CAN_TT_RX_TRIGGER</DEFAULT-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>CAN_TT_RX_TRIGGER</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>CAN_TT_TX_REF_TRIGGER</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>CAN_TT_TX_REF_TRIGGER_GAP</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>CAN_TT_TX_TRIGGER_EXCLUSIVE</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>CAN_TT_TX_TRIGGER_MERGED</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>CAN_TT_TX_TRIGGER_SINGLE</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                      </PARAMETERS>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                  </SUB-CONTAINERS>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+                <ECUC-PARAM-CONF-CONTAINER-DEF UUID="DCE:ed748ec1-d72a-66d8-a760-990505545472">
+                  <SHORT-NAME>CanClockConfiguration</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Container for CAN Driver module clock configuration.</L-2>
+                  </DESC>
+                  <PARAMETERS>
+                    <ECUC-INTEGER-PARAM-DEF UUID="22c89d9b-2aac-45c6-a8db-d32784c53922">
+                      <SHORT-NAME>CanClockStepValue</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter specifies Prescale value for CAN module clock.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>1023</DEFAULT-VALUE>
+                      <MAX>1023</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="2f4b7e64-f4ee-4f25-8269-a087056aed43">
+                      <SHORT-NAME>CanClockDividerMode</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter specifies Divider mode for CAN module clock (NORMAL_DIVIDER/FRACTIONAL_DIVIDER).</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>NORMAL_DIVIDER</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>NORMAL_DIVIDER</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>FRACTIONAL_DIVIDER</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                  </PARAMETERS>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+                <ECUC-PARAM-CONF-CONTAINER-DEF UUID="DCE:ed748ec1-d72a-66d8-a760-990505545471">
+                  <SHORT-NAME>CanFifoConfiguration</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">CAN FIFO Container. FIFO is supported only for reception.</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY-INFINITE>1</UPPER-MULTIPLICITY-INFINITE>
+                  <PARAMETERS>
+                    <ECUC-INTEGER-PARAM-DEF UUID="dfecb0cd-bfae-47f0-af3b-04f21b6d0a37">
+                      <SHORT-NAME>CanFifoObjectId</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&quot;EN: Hardware FIFO Handle (HFH), this should be greater than CanObjectId of all the HTHs and HRHs&quot;</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>true</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>255</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="22c89d9b-2aac-45c6-a8db-d32784c53921">
+                      <SHORT-NAME>CanFifoSize</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Size of the FIFO to be used. This includes the size of both FIFO base object and slave objects</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                      <MAX>256</MAX>
+                      <MIN>1</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="22c89d9b-2aac-45c6-a8db-d32784c53911">
+                      <SHORT-NAME>CanFifoThreshold</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Threshold size (less than or equal to FIFO size) at which interrupt is triggered to copy the data.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                      <MAX>255</MAX>
+                      <MIN>1</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="1b7aa112-460a-44ab-a9ba-ca4f568aba2f">
+                      <SHORT-NAME>CanFifoIdType</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Specifies whether the IdValue is of type [1]Standard identifier [2]Extended identifier or [3]Mixed mode. ImplementationType: Can_IdType</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>STANDARD</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>EXTENDED</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>MIXED</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>STANDARD</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="316bfd67-4e3c-4415-8bfb-7aac0a02f5e4">
+                      <SHORT-NAME>CanFifoIdValue</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Specifies (together with the filter mask) the identifiers range that passes the hardware filter.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>536870911</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                  </PARAMETERS>
+                  <REFERENCES>
+                    <ECUC-REFERENCE-DEF UUID="4e8f054e-d56f-4410-b256-6dc3e70169d7">
+                      <SHORT-NAME>CanFifoControllerRef</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Reference to CAN Controller to which the FIFO is associated to.</L-2>
+                      </DESC>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/Can/CanConfigSet/CanController</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                    <ECUC-REFERENCE-DEF UUID="0dec09cc-3d20-4fc1-8d5a-1fdec3ccaa38">
+                      <SHORT-NAME>CanFifoFilterMaskRef</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Reference to the filter mask that is used for hardware filtering togerther with CanFifoIdValue.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/Can/CanConfigSet/CanController/CanFilterMask</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                    <ECUC-REFERENCE-DEF UUID="efa284a2-911f-4001-adf0-b0c1af96a95c">
+                      <SHORT-NAME>CanFifoMainFunctionReadPeriodRef</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Reference to the read polling raster to which the FIFO is associated with. This parameter is not used by the CAN driver.</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>INFINEON_AURIX</ORIGIN>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/Can/CanGeneral/CanMainFunctionRWPeriods</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                  </REFERENCES>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="852ce0b1-81f8-4e5c-947f-510003b2b311">
+              <SHORT-NAME>CanGeneral</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">This container contains the parameters related each CAN Driver Unit.</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="1b785e91-339b-4171-b872-a3d8c2be4bcb">
+                  <SHORT-NAME>CanDevErrorDetection</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Switches the Development Error Detection and Notification ON or OFF.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="1b785e91-339b-4171-b872-a3d8c2ba5bdb">
+                  <SHORT-NAME>CanBaudRateClkSelErayPll</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">ERAY PLL is used for CAN Module timer clock.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="1b785e91-339b-4171-b872-a3d8c2ba5bdd">
+                  <SHORT-NAME>CanBaudRateClkSelExtOsc</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">EXT OSCLTR is used for CAN Module timer clock.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="e3535c2a-32fb-4ec7-885a-10e3c246a21f">
+                  <SHORT-NAME>CanHardwareCancellation</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Specifies if hardware cancellation shall be supported. Since it is not supported, it is always OFF.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="e3156f66-0274-4236-b05b-8cca84e9844f">
+                  <SHORT-NAME>CanIdenticalIdCancellation</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Enables/disables cancellation of pending PDUs with identical ID. This feature is not supported hence it is always OFF.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="ac520ea9-0872-4d4a-8ff9-5043e960065a">
+                  <SHORT-NAME>CanIndex</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Specifies the InstanceId of this module instance. If only one instance is present it shall have the Id 0.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                  <MAX>255</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-FUNCTION-NAME-DEF UUID="e0b712d9-c92e-4cc8-961c-734dad056de6">
+                  <SHORT-NAME>CanLPduReceiveCalloutFunction</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">This parameter defines the existence and the name of a callout function that is called after a successful reception of a CAN L-PDU. If this parameter is omitted no callout shall take place.</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <ECUC-FUNCTION-NAME-DEF-VARIANTS>
+                    <ECUC-FUNCTION-NAME-DEF-CONDITIONAL>
+                      <DEFAULT-VALUE>NULL_PTR</DEFAULT-VALUE>
+                    </ECUC-FUNCTION-NAME-DEF-CONDITIONAL>
+                  </ECUC-FUNCTION-NAME-DEF-VARIANTS>
+                </ECUC-FUNCTION-NAME-DEF>
+                <ECUC-FLOAT-PARAM-DEF UUID="8761b426-6c0a-4d97-b5a4-4fa1789d0ea8">
+                  <SHORT-NAME>CanMainFunctionBusoffPeriod</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">This parameter describes the period for cyclic call to Can_MainFunction_Busoff. Unit is seconds. This parameter is not used by the CAN driver</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>0.001</DEFAULT-VALUE>
+                  <MAX>65.535</MAX>
+                  <MIN>0.0010</MIN>
+                </ECUC-FLOAT-PARAM-DEF>
+                <ECUC-FLOAT-PARAM-DEF UUID="a4a82737-e923-4dd2-a0c3-8e56b5c0ce7c">
+                  <SHORT-NAME>CanMainFunctionModePeriod</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">This parameter describes the period for cyclic call to Can_MainFunction_Mode. Unit is seconds. This parameter is not used by the CAN driver</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>0.001</DEFAULT-VALUE>
+                  <MAX>65.535</MAX>
+                  <MIN>0.0010</MIN>
+                </ECUC-FLOAT-PARAM-DEF>
+                <ECUC-FLOAT-PARAM-DEF UUID="e11a81ba-406c-41b9-861b-c9075841d3b3">
+                  <SHORT-NAME>CanMainFunctionWakeupPeriod</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">This parameter describes the period for cyclic call to Can_MainFunction_Wakeup. Unit is seconds. This parameter is not used by the CAN driver</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>0.001</DEFAULT-VALUE>
+                  <MAX>65.535</MAX>
+                  <MIN>0.0010</MIN>
+                </ECUC-FLOAT-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="217267a1-496d-4f37-b73e-4c42a62a24bc">
+                  <SHORT-NAME>CanMultiplexedTransmission</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Specifies if multiplexed transmission shall be supported.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-FLOAT-PARAM-DEF UUID="e7cac63c-c0db-4b72-a6e9-fa18d83d7a7f">
+                  <SHORT-NAME>CanTimeoutDuration</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Specifies the maximum time for blocking function until a timeout is detected. Unit is seconds. This parameter is not used by the CAN driver; CanTimeoutDurationFactor is used instead of CanTimeoutDuration.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>0.001</DEFAULT-VALUE>
+                  <MAX>65.535</MAX>
+                  <MIN>0.0010</MIN>
+                </ECUC-FLOAT-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="6cff5058-466a-4e62-89bc-2edc313391e4">
+                  <SHORT-NAME>CanTimeoutDurationFactor</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Specifies the maximum number of loops for blocking function (Can_17_MCanP_Init) until a timeout is detected in short term wait loops.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>400</DEFAULT-VALUE>
+                  <MAX>4294967295</MAX>
+                  <MIN>100</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="47c1581c-e5df-40d6-b4bc-313da492db6f">
+                  <SHORT-NAME>CanVersionInfoApi</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Switches the Can_17_MCanP_GetVersionInfo() API ON or OFF.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="e15c50c2-14c6-492b-8d8d-c6075dcfd576">
+                  <SHORT-NAME>CanPBFixedAddress</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">This parameter enables the user to fix the PB config pointer to first instance of configuration</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="1b785e91-339b-4171-b872-a3d8c2be4bcc">
+                  <SHORT-NAME>CanDebugSupport</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Switches the debug support ON or OFF.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="1b785e91-339b-4171-b872-a3d8c2be4bcd">
+                  <SHORT-NAME>CanChangeBaudrateApi</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Switches the Can_17_MCanP_CheckBaudrate and Can_17_MCanP_ChangeBaudrate APIs ON or OFF.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="1b785e91-339b-4171-b872-a3d8c2bf4bac">
+                  <SHORT-NAME>CanResetSfrAtInit</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Switches the CAN Kernel Registers reset feature ON or OFF.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="1b785e91-339b-4171-b872-a3d8c3be1bcc">
+                  <SHORT-NAME>CanDeInitApi</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">enables / disables the CAN De-initialization API.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="d69c9f88-536b-403a-b100-ac6c5f92573e">
+                  <SHORT-NAME>CanISOFrameSupport</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Defines if a CAN module used supports ISO frame format.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="d69c9f88-536b-403a-b100-ac6c5f034574">
+                  <SHORT-NAME>CanProtocolExceptionFeature</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Defines if a CAN module used supports Protocol Exception feature.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="2496a537-5ef8-487e-51e0-0234c58e9bf0">
+                  <SHORT-NAME>CanRunningInUser0Mode</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">If this parameter is set to FALSE, then Protected Mode(user mode) register access will not be done and API is run in Supervisor mode.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="2496a537-5ef8-487e-51e0-0234c58e9bf0">
+                  <SHORT-NAME>CanUserModeInitApiEnable</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">Pre-processor switch to enable / disable protected register access in all the Init API.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="2496a537-5ef8-487e-51e0-0234c58e9bf0">
+                  <SHORT-NAME>CanUserModeDeInitApiEnable</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">Pre-processor switch to enable / disable protected register access in all the DeInit API.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="2496a537-5ef8-487e-51e0-0234c58e9bf0">
+                  <SHORT-NAME>CanUserModeRuntimeApiEnable</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">Pre-processor switch to enable / disable protected register access in all the APIs other than Init/Deinit APIs.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+              </PARAMETERS>
+              <REFERENCES>
+                <ECUC-REFERENCE-DEF UUID="ef0c8933-6ce9-4a53-90cc-31b61ca90e25">
+                  <SHORT-NAME>CanCounterRef</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">This parameter contains a reference to the counter. This parameter is not used by the CAN driver.</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/Os/OsCounter</DESTINATION-REF>
+                </ECUC-REFERENCE-DEF>
+                <ECUC-REFERENCE-DEF UUID="ECUC:3fc9831b-0db6-41a2-8700-1b0dbcf79da5">
+                  <SHORT-NAME>CanSupportTTCANRef</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">The parameter refers to CanIfSupportTTCAN parameter in the CAN Interface Module configuration. This parameter is not used by the CAN driver</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/CanIf/CanIfPrivateCfg</DESTINATION-REF>
+                </ECUC-REFERENCE-DEF>
+              </REFERENCES>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF UUID="DCE:ed748ec1-d72a-66d8-a760-990505545473">
+                  <SHORT-NAME>CanMainFunctionRWPeriods</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Container for CAN Driver&apos;s Read, Write main function period configuration.</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <PARAMETERS>
+                    <ECUC-FLOAT-PARAM-DEF UUID="5f1cbf20-db77-4d50-ab4e-30753c1e1672">
+                      <SHORT-NAME>CanMainFunctionReadPeriod</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter describes the period for cyclic call to Can_MainFunction_Read. Unit is seconds. This parameter is not used by the CAN driver</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0.001</DEFAULT-VALUE>
+                      <MAX>65.535</MAX>
+                      <MIN>0.0010</MIN>
+                    </ECUC-FLOAT-PARAM-DEF>
+                    <ECUC-FLOAT-PARAM-DEF UUID="5f1cbf20-db77-4d50-ab4e-30753c1e1673">
+                      <SHORT-NAME>CanMainFunctionWritePeriod</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter describes the period for cyclic call to Can_MainFunction_Write. Unit is seconds. This parameter is not used by the CAN driver</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0.001</DEFAULT-VALUE>
+                      <MAX>65.535</MAX>
+                      <MIN>0.0010</MIN>
+                    </ECUC-FLOAT-PARAM-DEF>
+                  </PARAMETERS>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="522ad0f7-951e-412e-91c4-2f09577f667e">
+              <SHORT-NAME>CanDemEventParameterRefs</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">Configuration container for the selection of DEM for CAN Hardware Timeout Error.</L-2>
+              </DESC>
+              <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+              <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+              <REFERENCES>
+                <ECUC-SYMBOLIC-NAME-REFERENCE-DEF UUID="1afc7fa9-2d93-470a-a7e9-d183ba72fb34">
+                  <SHORT-NAME>CAN_E_TIMEOUT</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Reference to configured DEM event to report CAN time out error.</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter</DESTINATION-REF>
+                </ECUC-SYMBOLIC-NAME-REFERENCE-DEF>
+              </REFERENCES>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="492f8482-3e2c-4bf1-b27f-01fd7a235788">
+              <SHORT-NAME>CommonPublishedInformation</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">Common container, aggregated by all modules. It contains published information about vendor and versions.</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-INTEGER-PARAM-DEF UUID="bd0a8d38-4d8c-4ee9-88fe-1166b258bb8a">
+                  <SHORT-NAME>ArMajorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Major version number of AUTOSAR specification on which the appropriate implementation is based on.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>4</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="73f87c7f-e230-4178-bff0-ea2704aae656">
+                  <SHORT-NAME>ArMinorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Minor version number of AUTOSAR specification on which the appropriate implementation is based on.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="2380135d-6778-417a-a34b-e100aad4dd54">
+                  <SHORT-NAME>ArPatchVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Patch level version number of AUTOSAR specification on which the appropriate implementation is based on.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="fca015e3-5f28-4cbe-8949-8fab87d86827">
+                  <SHORT-NAME>SwMajorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Major version number of the vendor specific implementation of the module. The numbering is vendor specific.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>2</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="14ab81e0-3d80-43dc-8b92-2a7e5a542df9">
+                  <SHORT-NAME>SwMinorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Minor version number of the vendor specific implementation of the module. The numbering is vendor specific.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>4</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="32e37bfd-18b6-41d1-9248-a81dae0fe4c5">
+                  <SHORT-NAME>SwPatchVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="3b407478-6902-4f80-b7cf-f33b0854e638">
+                  <SHORT-NAME>ModuleId</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Module ID of this module from Module List</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>80</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="7d650b2d-4adb-41f0-aa8e-5f0c416501d1">
+                  <SHORT-NAME>VendorId</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>17</DEFAULT-VALUE>
+                  <MAX>65535</MAX>
+                  <MIN>0</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-STRING-PARAM-DEF UUID="ad363b41-e945-4717-b12f-c2f800ef138e">
+                  <SHORT-NAME>VendorApiInfix</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">In driver modules which can be instantiated several times on a single ECU, BSW00347 requires that the name of APIs is extended by the VendorId and a vendor specific name.
+This parameter is used to specify the vendor specific name. In total, the implementation specific name is generated as follows:
+&lt;ModuleName&gt;_&gt;VendorId&gt;_&lt;VendorApiInfix&gt;&lt;Api name from SWS&gt;.
+E.g.  assuming that the VendorId of the implementor is 123 and the implementer chose a VendorApiInfix of &quot;v11r456&quot; a api name Can_Write defined in the SWS will translate to Can_123_v11r456Write.
+This parameter is mandatory for all modules with upper multiplicity &gt; 1. It shall not be used for modules with upper multiplicity =1.</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <ECUC-STRING-PARAM-DEF-VARIANTS>
+                    <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                      <DEFAULT-VALUE>MCanP</DEFAULT-VALUE>
+                    </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                  </ECUC-STRING-PARAM-DEF-VARIANTS>
+                </ECUC-STRING-PARAM-DEF>
+                <ECUC-STRING-PARAM-DEF UUID="3b407478-6902-4f40-b7cf-f33b0854e638">
+                  <SHORT-NAME>Release</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Aurix derivative used for thr implementation</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-LOADABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>INFINEON_AURIX</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <ECUC-STRING-PARAM-DEF-VARIANTS>
+                    <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                      <DEFAULT-VALUE>_TRICORE_TC234</DEFAULT-VALUE>
+                    </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                  </ECUC-STRING-PARAM-DEF-VARIANTS>
+                </ECUC-STRING-PARAM-DEF>
+              </PARAMETERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+          </CONTAINERS>
+        </ECUC-MODULE-DEF>
+      </ELEMENTS>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

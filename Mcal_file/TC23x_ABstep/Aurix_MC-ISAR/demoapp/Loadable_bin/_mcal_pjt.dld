@@ -1,0 +1,618 @@
+/* ----------------------------------------------------------------------------
+ *
+ * Target: TriCore
+ *
+ * This is a sample linker command file . 
+ *
+ * For a description of the different statements in this file, please refer
+ * to the D-LD Linker User's Manual.
+ * ------------------------------------------------------------------------- */
+
+
+/* The MEMORY command defines memory areas using a name intended
+ * to suggest its purpose:
+ *
+ * ------------------------------------------------------------------------ */
+
+-Xgenerate-copytables
+
+__ISTACK_SIZE = 0x2000;
+__USTACK_SIZE = 0x2000;
+__HEAP_SIZE = 4K ;
+__CSA_SIZE = 4K ;
+
+__INTTAB_START_ADDR        = 0x800F0000 ;
+
+MEMORY
+{
+  /* - 0x(8)A0000000--0x(8)A000001F ABM Header Start */
+  /* - 0x(8)A0000020 Boot Address */
+  /* - 0x(A)80000020--0x(A)80017FFF Code Application Pattern */
+  PMU_PFLASH0_BMI:     org = 0x80000000, len = 32
+  PMU_STARTUP:         org = 0x80000020, len = 0xE0
+  PMU_TRAPTAB:         org = 0x80000100, len = 0x300    
+  FLS_ERASE_PFLASH0:   org = 0x80001100, len = 0x200
+  FLS_WRITE_PFLASH0:   org = 0x80001300, len = 0x200  
+  PMU_USER_FUNCS :     org = 0x8002E000, len = 0x2000  
+  PMU_PFLASH0:         org = 0x80030000, len = 576K
+  PMU_PFLASH0_CONST:   org = 0x800C0000, len = 128K  
+  PMU_INTTAB_TC0 :     org = 0x800F0000, len = 0x2000
+  CONFIG_DATA:         org = 0xa0100000, len = 20K
+  CONFIG_DIO_DATA:     org = 0xa0140000, len = 0x200
+  PMU_PFLASH1:         org = 0x80200000, len = 2M
+
+  CPU0_PMI_PSPR:      org = 0x70100000, len = 24K
+  CPU0_DMI_DSPR:      org = 0x70000000, len = 112K - 12K
+
+}
+
+
+SECTIONS
+{
+  /* Some sections below are used only by certain targets supported by
+   * Diab Data, or only for certain options. If not used by your
+   * target, they will be ignored.
+   *
+   * Section names beginning with ".j_" are for the Diab Data FastJ
+   * compiler for the Java language.
+   *
+   * The first GROUP contains code and constant data, and is
+   * allocated in the "rom" area.
+   */
+
+    
+   
+  GROUP : {
+    .BMD_HDR_CONST_FAR_UNSPECIFIED (CONST) : {
+      KEEP(*(.BMD_HDR_CONST_FAR_UNSPECIFIED))
+    }
+  } > PMU_PFLASH0_BMI
+  
+  GROUP : {
+    .startup (TEXT) : {
+      KEEP(*(.startup_code))
+    }
+  } > PMU_STARTUP
+  
+    GROUP ALIGN(256): { 
+    .traptab.cpu0 (TEXT) : {
+      KEEP(*(.text[cpu0_trap_0]))
+    }
+  } > PMU_TRAPTAB
+  
+
+  /* Interrupt vector table */
+  GROUP BIND(__INTTAB_START_ADDR + 0x0)   : { .inttab_tc0_000 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x0)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x20)   : { .inttab_tc0_001 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x1)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x40)   : { .inttab_tc0_002 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x2)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x60)   : { .inttab_tc0_003 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x3)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x80)   : { .inttab_tc0_004 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x4)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xA0)   : { .inttab_tc0_005 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x5)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xC0)   : { .inttab_tc0_006 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x6)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xE0)   : { .inttab_tc0_007 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x7)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x100)   : { .inttab_tc0_008 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x8)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x120)   : { .inttab_tc0_009 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x9)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x140)   : { .inttab_tc0_00A (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xa)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x160)   : { .inttab_tc0_00B (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xb)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x180)   : { .inttab_tc0_00C (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xc)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1A0)   : { .inttab_tc0_00D (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xd)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1C0)   : { .inttab_tc0_00E (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xe)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1E0)   : { .inttab_tc0_00F (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xf)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x200)   : { .inttab_tc0_010 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x10)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x220)   : { .inttab_tc0_011 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x11)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x240)   : { .inttab_tc0_012 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x12)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x260)   : { .inttab_tc0_013 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x13)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x280)   : { .inttab_tc0_014 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x14)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x2A0)   : { .inttab_tc0_015 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x15)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x2C0)   : { .inttab_tc0_016 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x16)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x2E0)   : { .inttab_tc0_017 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x17)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x300)   : { .inttab_tc0_018 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x18)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x320)   : { .inttab_tc0_019 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x19)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x340)   : { .inttab_tc0_01A (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x1a)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x360)   : { .inttab_tc0_01B (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x1b)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x380)   : { .inttab_tc0_01C (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x1c)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x3A0)   : { .inttab_tc0_01D (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x1d)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x3C0)   : { .inttab_tc0_01E (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x1e)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x3E0)   : { .inttab_tc0_01F (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x1f)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x400)   : { .inttab_tc0_020 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x20)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x420)   : { .inttab_tc0_021 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x21)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x440)   : { .inttab_tc0_022 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x22)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x460)   : { .inttab_tc0_023 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x23)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x480)   : { .inttab_tc0_024 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x24)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x4A0)   : { .inttab_tc0_025 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x25)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x4C0)   : { .inttab_tc0_026 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x26)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x4E0)   : { .inttab_tc0_027 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x27)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x500)   : { .inttab_tc0_028 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x28)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x520)   : { .inttab_tc0_029 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x29)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x540)   : { .inttab_tc0_02A (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x2a)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x560)   : { .inttab_tc0_02B (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x2b)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x580)   : { .inttab_tc0_02C (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x2c)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x5A0)   : { .inttab_tc0_02D (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x2d)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x5C0)   : { .inttab_tc0_02E (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x2e)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x5E0)   : { .inttab_tc0_02F (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x2f)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x600)   : { .inttab_tc0_030 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x30)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x620)   : { .inttab_tc0_031 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x31)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x640)   : { .inttab_tc0_032 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x32)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x660)   : { .inttab_tc0_033 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x33)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x680)   : { .inttab_tc0_034 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x34)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x6A0)   : { .inttab_tc0_035 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x35)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x6C0)   : { .inttab_tc0_036 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x36)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x6E0)   : { .inttab_tc0_037 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x37)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x700)   : { .inttab_tc0_038 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x38)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x720)   : { .inttab_tc0_039 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x39)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x740)   : { .inttab_tc0_03A (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x3a)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x760)   : { .inttab_tc0_03B (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x3b)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x780)   : { .inttab_tc0_03C (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x3c)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x7A0)   : { .inttab_tc0_03D (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x3d)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x7C0)   : { .inttab_tc0_03E (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x3e)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x7E0)   : { .inttab_tc0_03F (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x3f)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x800)   : { .inttab_tc0_040 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x40)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x820)   : { .inttab_tc0_041 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x41)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x840)   : { .inttab_tc0_042 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x42)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x860)   : { .inttab_tc0_043 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x43)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x880)   : { .inttab_tc0_044 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x44)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x8A0)   : { .inttab_tc0_045 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x45)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x8C0)   : { .inttab_tc0_046 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x46)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x8E0)   : { .inttab_tc0_047 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x47)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x900)   : { .inttab_tc0_048 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x48)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x920)   : { .inttab_tc0_049 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x49)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x940)   : { .inttab_tc0_04A (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x4a)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x960)   : { .inttab_tc0_04B (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x4b)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x980)   : { .inttab_tc0_04C (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x4c)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x9A0)   : { .inttab_tc0_04D (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x4d)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x9C0)   : { .inttab_tc0_04E (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x4e)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x9E0)   : { .inttab_tc0_04F (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x4f)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xA00)   : { .inttab_tc0_050 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x50)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xA20)   : { .inttab_tc0_051 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x51)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xA40)   : { .inttab_tc0_052 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x52)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xA60)   : { .inttab_tc0_053 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x53)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xA80)   : { .inttab_tc0_054 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x54)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xAA0)   : { .inttab_tc0_055 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x55)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xAC0)   : { .inttab_tc0_056 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x56)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xAE0)   : { .inttab_tc0_057 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x57)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xB00)   : { .inttab_tc0_058 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x58)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xB20)   : { .inttab_tc0_059 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x59)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xB40)   : { .inttab_tc0_05A (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x5a)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xB60)   : { .inttab_tc0_05B (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x5b)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xB80)   : { .inttab_tc0_05C (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x5c)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xBA0)   : { .inttab_tc0_05D (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x5d)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xBC0)   : { .inttab_tc0_05E (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x5e)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xBE0)   : { .inttab_tc0_05F (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x5f)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xC00)   : { .inttab_tc0_060 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x60)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xC20)   : { .inttab_tc0_061 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x61)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xC40)   : { .inttab_tc0_062 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x62)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xC60)   : { .inttab_tc0_063 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x63)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xC80)   : { .inttab_tc0_064 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x64)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xCA0)   : { .inttab_tc0_065 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x65)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xCC0)   : { .inttab_tc0_066 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x66)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xCE0)   : { .inttab_tc0_067 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x67)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xD00)   : { .inttab_tc0_068 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x68)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xD20)   : { .inttab_tc0_069 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x69)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xD40)   : { .inttab_tc0_06A (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x6a)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xD60)   : { .inttab_tc0_06B (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x6b)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xD80)   : { .inttab_tc0_06C (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x6c)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xDA0)   : { .inttab_tc0_06D (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x6d)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xDC0)   : { .inttab_tc0_06E (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x6e)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xDE0)   : { .inttab_tc0_06F (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x6f)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xE00)   : { .inttab_tc0_070 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x70)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xE20)   : { .inttab_tc0_071 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x71)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xE40)   : { .inttab_tc0_072 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x72)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xE60)   : { .inttab_tc0_073 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x73)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xE80)   : { .inttab_tc0_074 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x74)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xEA0)   : { .inttab_tc0_075 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x75)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xEC0)   : { .inttab_tc0_076 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x76)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xEE0)   : { .inttab_tc0_077 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x77)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xF00)   : { .inttab_tc0_078 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x78)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xF20)   : { .inttab_tc0_079 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x79)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xF40)   : { .inttab_tc0_07A (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x7a)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xF60)   : { .inttab_tc0_07B (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x7b)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xF80)   : { .inttab_tc0_07C (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x7c)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xFA0)   : { .inttab_tc0_07D (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x7d)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xFC0)   : { .inttab_tc0_07E (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x7e)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0xFE0)   : { .inttab_tc0_07F (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x7f)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1000)   : { .inttab_tc0_080 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x80)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1020)   : { .inttab_tc0_081 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x81)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1040)   : { .inttab_tc0_082 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x82)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1060)   : { .inttab_tc0_083 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x83)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1080)   : { .inttab_tc0_084 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x84)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x10A0)   : { .inttab_tc0_085 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x85)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x10C0)   : { .inttab_tc0_086 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x86)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x10E0)   : { .inttab_tc0_087 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x87)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1100)   : { .inttab_tc0_088 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x88)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1120)   : { .inttab_tc0_089 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x89)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1140)   : { .inttab_tc0_08A (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x8a)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1160)   : { .inttab_tc0_08B (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x8b)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1180)   : { .inttab_tc0_08C (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x8c)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x11A0)   : { .inttab_tc0_08D (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x8d)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x11C0)   : { .inttab_tc0_08E (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x8e)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x11E0)   : { .inttab_tc0_08F (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x8f)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1200)   : { .inttab_tc0_090 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x90)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1220)   : { .inttab_tc0_091 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x91)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1240)   : { .inttab_tc0_092 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x92)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1260)   : { .inttab_tc0_093 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x93)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1280)   : { .inttab_tc0_094 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x94)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x12A0)   : { .inttab_tc0_095 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x95)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x12C0)   : { .inttab_tc0_096 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x96)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x12E0)   : { .inttab_tc0_097 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x97)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1300)   : { .inttab_tc0_098 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x98)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1320)   : { .inttab_tc0_099 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x99)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1340)   : { .inttab_tc0_09A (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x9a)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1360)   : { .inttab_tc0_09B (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x9b)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1380)   : { .inttab_tc0_09C (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x9c)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x13A0)   : { .inttab_tc0_09D (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x9d)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x13C0)   : { .inttab_tc0_09E (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x9e)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x13E0)   : { .inttab_tc0_09F (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0x9f)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1400)   : { .inttab_tc0_0A0 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xa0)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1420)   : { .inttab_tc0_0A1 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xa1)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1440)   : { .inttab_tc0_0A2 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xa2)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1460)   : { .inttab_tc0_0A3 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xa3)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1480)   : { .inttab_tc0_0A4 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xa4)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x14A0)   : { .inttab_tc0_0A5 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xa5)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x14C0)   : { .inttab_tc0_0A6 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xa6)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x14E0)   : { .inttab_tc0_0A7 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xa7)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1500)   : { .inttab_tc0_0A8 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xa8)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1520)   : { .inttab_tc0_0A9 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xa9)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1540)   : { .inttab_tc0_0AA (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xaa)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1560)   : { .inttab_tc0_0AB (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xab)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1580)   : { .inttab_tc0_0AC (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xac)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x15A0)   : { .inttab_tc0_0AD (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xad)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x15C0)   : { .inttab_tc0_0AE (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xae)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x15E0)   : { .inttab_tc0_0AF (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xaf)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1600)   : { .inttab_tc0_0B0 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xb0)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1620)   : { .inttab_tc0_0B1 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xb1)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1640)   : { .inttab_tc0_0B2 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xb2)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1660)   : { .inttab_tc0_0B3 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xb3)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1680)   : { .inttab_tc0_0B4 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xb4)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x16A0)   : { .inttab_tc0_0B5 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xb5)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x16C0)   : { .inttab_tc0_0B6 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xb6)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x16E0)   : { .inttab_tc0_0B7 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xb7)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1700)   : { .inttab_tc0_0B8 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xb8)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1720)   : { .inttab_tc0_0B9 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xb9)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1740)   : { .inttab_tc0_0BA (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xba)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1760)   : { .inttab_tc0_0BB (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xbb)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1780)   : { .inttab_tc0_0BC (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xbc)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x17A0)   : { .inttab_tc0_0BD (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xbd)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x17C0)   : { .inttab_tc0_0BE (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xbe)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x17E0)   : { .inttab_tc0_0BF (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xbf)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1800)   : { .inttab_tc0_0C0 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xc0)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1820)   : { .inttab_tc0_0C1 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xc1)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1840)   : { .inttab_tc0_0C2 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xc2)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1860)   : { .inttab_tc0_0C3 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xc3)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1880)   : { .inttab_tc0_0C4 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xc4)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x18A0)   : { .inttab_tc0_0C5 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xc5)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x18C0)   : { .inttab_tc0_0C6 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xc6)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x18E0)   : { .inttab_tc0_0C7 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xc7)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1900)   : { .inttab_tc0_0C8 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xc8)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1920)   : { .inttab_tc0_0C9 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xc9)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1940)   : { .inttab_tc0_0CA (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xca)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1960)   : { .inttab_tc0_0CB (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xcb)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1980)   : { .inttab_tc0_0CC (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xcc)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x19A0)   : { .inttab_tc0_0CD (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xcd)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x19C0)   : { .inttab_tc0_0CE (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xce)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x19E0)   : { .inttab_tc0_0CF (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xcf)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1A00)   : { .inttab_tc0_0D0 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xd0)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1A20)   : { .inttab_tc0_0D1 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xd1)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1A40)   : { .inttab_tc0_0D2 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xd2)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1A60)   : { .inttab_tc0_0D3 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xd3)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1A80)   : { .inttab_tc0_0D4 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xd4)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1AA0)   : { .inttab_tc0_0D5 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xd5)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1AC0)   : { .inttab_tc0_0D6 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xd6)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1AE0)   : { .inttab_tc0_0D7 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xd7)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1B00)   : { .inttab_tc0_0D8 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xd8)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1B20)   : { .inttab_tc0_0D9 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xd9)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1B40)   : { .inttab_tc0_0DA (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xda)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1B60)   : { .inttab_tc0_0DB (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xdb)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1B80)   : { .inttab_tc0_0DC (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xdc)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1BA0)   : { .inttab_tc0_0DD (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xdd)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1BC0)   : { .inttab_tc0_0DE (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xde)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1BE0)   : { .inttab_tc0_0DF (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xdf)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1C00)   : { .inttab_tc0_0E0 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xe0)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1C20)   : { .inttab_tc0_0E1 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xe1)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1C40)   : { .inttab_tc0_0E2 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xe2)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1C60)   : { .inttab_tc0_0E3 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xe3)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1C80)   : { .inttab_tc0_0E4 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xe4)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1CA0)   : { .inttab_tc0_0E5 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xe5)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1CC0)   : { .inttab_tc0_0E6 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xe6)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1CE0)   : { .inttab_tc0_0E7 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xe7)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1D00)   : { .inttab_tc0_0E8 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xe8)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1D20)   : { .inttab_tc0_0E9 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xe9)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1D40)   : { .inttab_tc0_0EA (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xea)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1D60)   : { .inttab_tc0_0EB (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xeb)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1D80)   : { .inttab_tc0_0EC (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xec)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1DA0)   : { .inttab_tc0_0ED (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xed)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1DC0)   : { .inttab_tc0_0EE (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xee)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1DE0)   : { .inttab_tc0_0EF (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xef)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1E00)   : { .inttab_tc0_0F0 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xf0)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1E20)   : { .inttab_tc0_0F1 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xf1)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1E40)   : { .inttab_tc0_0F2 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xf2)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1E60)   : { .inttab_tc0_0F3 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xf3)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1E80)   : { .inttab_tc0_0F4 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xf4)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1EA0)   : { .inttab_tc0_0F5 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xf5)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1EC0)   : { .inttab_tc0_0F6 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xf6)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1EE0)   : { .inttab_tc0_0F7 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xf7)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1F00)   : { .inttab_tc0_0F8 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xf8)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1F20)   : { .inttab_tc0_0F9 (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xf9)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1F40)   : { .inttab_tc0_0FA (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xfa)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1F60)   : { .inttab_tc0_0FB (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xfb)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1F80)   : { .inttab_tc0_0FC (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xfc)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1FA0)   : { .inttab_tc0_0FD (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xfd)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1FC0)   : { .inttab_tc0_0FE (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xfe)) }}> PMU_INTTAB_TC0
+  GROUP BIND(__INTTAB_START_ADDR + 0x1FE0)   : { .inttab_tc0_0FF (TEXT) ALIGN(8) : { KEEP (*(.intvec_tc0_0xff)) }}> PMU_INTTAB_TC0    
+
+  __INTTAB_CPU0 = __INTTAB_START_ADDR;
+
+
+  GROUP BIND(0x8002e000): {
+    .Pwm_NotifCh00 (TEXT) : { *(.text[Pwm_NotifCh00]) }
+  }> PMU_USER_FUNCS
+
+    GROUP BIND(0x8002e050): {
+    .EepTest_EndOfCmdSeq (TEXT) : { *(.text[EepTest_EndOfCmdSeq]) }
+  }> PMU_USER_FUNCS
+
+  GROUP BIND(0x8002e060): {
+    .EepTest_EndOfStatSeq (TEXT) : { *(.text[EepTest_EndOfStatSeq]) }
+  }> PMU_USER_FUNCS
+
+  GROUP BIND(0x8002e070): {
+    .EepTest_EndOfDataSeq (TEXT) : { *(.text[EepTest_EndOfDataSeq]) }
+  }> PMU_USER_FUNCS
+
+  GROUP BIND(0x8002e080): {
+    .Gpt_Notification (TEXT) : { *(.text[Gpt_Notification]) }
+  }> PMU_USER_FUNCS
+
+  GROUP BIND(0x8002e0e0): {
+    .Gpt_MulticoreNotif (TEXT) : { *(.text[Gpt_MulticoreNotif]) }
+  }> PMU_USER_FUNCS
+
+  GROUP BIND(0x8002e110): {
+    .Gpt_WdgNotification (TEXT) : { *(.text[Gpt_WdgNotification]) }
+  }> PMU_USER_FUNCS
+  
+  GROUP BIND(0x8002e200) : {
+    .PWM_NOTIFICATION (TEXT) : {
+      KEEP(*(.text.PWM_NOTIFICATION))
+    }
+  } > PMU_USER_FUNCS
+  
+  GROUP BIND(0x8002e300) : {
+    .ICU_NOTIFICATION (TEXT) : {
+      KEEP(*(.text.ICU_NOTIFICATION))
+    }
+  } > PMU_USER_FUNCS
+  
+  GROUP BIND(0x8002e500) : {
+    .GPT_NOTIFICATION (TEXT) : {
+      KEEP(*(.text.GPT_NOTIFICATION))
+    }
+  } > PMU_USER_FUNCS
+  
+  GROUP BIND(0x8002e700) : {
+    .WDG_NOTIFICATION (TEXT) : {
+      KEEP(*(.text.WDG_NOTIFICATION))
+    }
+  } > PMU_USER_FUNCS
+
+  GROUP BIND(0x8002e900) : {
+    .FEE_JOBENDNOTIF_CODE (TEXT) : { *(.text[Fee_JobEndNotification]) }
+  } > PMU_USER_FUNCS
+
+  GROUP BIND(0x8002eB00) : {
+    .FEE_JOBERRNOTIF_CODE (TEXT) : { *(.text[Fee_JobErrorNotification]) }
+  } > PMU_USER_FUNCS
+
+  GROUP BIND(0x8002eD00) : {
+    .FEE_ILLEGALNOTIF_CODE (TEXT) : { *(.text[Fee_IllegalStateNotification]) }
+  } > PMU_USER_FUNCS
+
+  GROUP BIND(0x8002eE00) : {
+    .FLS_JOBENDNOTIF_CODE (TEXT) : { *(.text[DemoNotifJobEnd]) }
+  } > PMU_USER_FUNCS
+
+  GROUP BIND(0x8002f000) : {
+    .FLS_JOBERRNOTIF_CODE (TEXT) : { *(.text[DemoNotifJobError]) }
+  } > PMU_USER_FUNCS
+
+  GROUP BIND(0x8002f200) : {
+    .Sent_Callout_Chan0 (TEXT) : { *(.text[Sent_Callout_Chan0]) }
+  } > PMU_USER_FUNCS
+
+  GROUP BIND(0x8002f300) : {
+    .Sent_Callout_Chan5 (TEXT) : { *(.text[Sent_Callout_Chan5]) }
+  } > PMU_USER_FUNCS 
+
+    GROUP BIND(0xa0140000) : {
+    .CONFIGURATION_DIO (CONST) : {
+      KEEP(*(.rodata.CPU0.Private.CONFIGURATION_PB))
+      . = ALIGN(4) ;
+    }
+  } > CONFIG_DIO_DATA
+  
+
+  GROUP  : {
+    .DEFAULT_RAM_FAST_32BIT (DATA) : {
+      KEEP(*(.DEFAULT_RAM_FAST_32BIT))
+      . = ALIGN(4) ;
+    }
+  } > CPU0_DMI_DSPR
+
+  GROUP : {
+    .DEFAULT_CONST_32BIT (CONST) : {
+      KEEP(*(.DEFAULT_CONST_32BIT))
+    }
+  } > PMU_PFLASH0_CONST
+
+  GROUP : {
+    .DEFAULT_CONST_16BIT (CONST) : {
+      KEEP(*(.DEFAULT_CONST_16BIT))
+    }
+  } > PMU_PFLASH0_CONST
+
+  GROUP : {
+    .DEFAULT_CONST_8BIT (CONST) : {
+      KEEP(*(.DEFAULT_CONST_8BIT))
+    }
+  } > PMU_PFLASH0_CONST
+
+
+  GROUP : {
+    .DEFAULT_CONST_FAR_UNSPECIFIED (CONST) : {
+      KEEP(*(.DEFAULT_CONST_FAR_UNSPECIFIED))
+    }
+  } > PMU_PFLASH0_CONST
+
+
+  /* Code across cores */
+  GROUP : {
+    .CPU0_PRIVATE_CODE (TEXT) : {
+    __CPU0_PRIVATE_CODE_start = .;
+    KEEP(*(".text.CPU0.Private.*"))
+    /* KEEP(*(".text.CPU0.Private.*")) */
+    __CPU0_PRIVATE_CODE_end = .;
+    }
+  } > PMU_PFLASH0
+  
+  GROUP : {
+    .DEFAULT_CODE (TEXT) : {
+    __DEFAULT_CODE_start = .;
+    *(.text)
+    KEEP(*(".text.*"))
+    *(.frame_info)
+    *(.j_class_table)
+    *(.init)
+    *(.fini)    
+    __DEFAULT_CODE_end = .;
+    __SOURCE = .;
+    }
+  } > PMU_PFLASH0 
+  
+
+  GROUP : {
+      .RODATA (CONST) : {
+      KEEP(*(.rodata))
+      KEEP(*(".rodata.*"))      
+      }
+      
+      .ctors (CONST) ALIGN(4) : { ctordtor.o(.ctors) *(.ctors) }
+      .dtors (CONST) ALIGN(4) : { ctordtor.o(.dtors) *(.dtors) }
+
+      .copytable (CONST) : {}
+      __DATA_ROM = .;     
+      
+  } > PMU_PFLASH0_CONST
+  
+  GROUP : {
+             __DESTINATION = .;
+            .FLSLOADEROUTPUT (TEXT) LOAD(__SOURCE) : {*(.FLSLOADERRAMCODE)}
+            __END_SOURCE = .;
+  } > CPU0_DMI_DSPR
+
+ GROUP LOAD(>PMU_PFLASH0) COPYTABLE[__CORE0]: {
+    .CPU0_PRIVATE_SDATA (DATA) : { KEEP(*(".sdata.*")) }
+    .CPU0_PRIVATE_SBSS  (BSS) : { *(".sbss.*")  }   
+    __CPU0_SMALL_DATA    = ADDR(.CPU0_PRIVATE_SDATA) + 0x7ff0;    
+    .CPU0_PRIVATE_SDATA2 (DATA) ALIGN(4) : { *(".sdata.*") }
+    __CPU0_SMALL_DATA2  = ADDR(.CPU0_PRIVATE_SDATA2) + 0x7ff0;   
+    .CPU0_PRIVATE_ZBSS (BSS)  : { KEEP(*(".zbss.*")) }
+    .CPU0_PRIVATE_BSS (BSS) : { KEEP(*(".bss.*"))  }
+    .CPU0_PRIVATE_ZDATA (DATA) : { *(".zdata.*") }
+    .CPU0_PRIVATE_DATA (DATA) : { KEEP(*(".data.*")) }
+    .zdata (DATA) : { *(.zdata) }
+    .zbss  (BSS) : { *(.zbss)  }
+
+    .SPI_RAM_FAST_32BIT (DATA) : {
+          . = ALIGN(4) ;
+          KEEP(*(.SPI_RAM_FAST_32BIT))
+        }
+    .DEFAULT_SMALL_DATA (DATA) :{
+      *(.sdata)
+      *(".sdata.*")     
+     }
+
+    .DEFAULT_BSS (BSS) : {
+      *(.sbss)
+      *(".sbss.*")
+      }
+
+    .DEFAULT_BSS1 (BSS): {
+      *(.zbss)
+      *(".zbss.*")
+      *(.bss)
+      *(".bss.*")
+      }
+
+    .DEFAULT_DATA (DATA) : {
+      *(.data)
+      *(".data.*")
+      *(.zdata)
+      *(".zdata.*")
+      }
+    .j_pdata (DATA): {}
+    /* Allocate uninitialized sections.         */
+    /* this values are not cleared in cstart, therefore outside of __BSS... */
+    .bss_noclear  (BSS) : {}
+    /* all variables begins here will be cleared in cstart */
+    __BSS_START = .;
+    _SBSS_CONFIG_START = .;
+    .sbss_config (BSS) : {}
+    _SBSS_CONFIG_END = .;
+    .bss  (BSS) : {}
+    .tibss (BSS)  : {}
+    __BSS_END = .;    
+    .lbss ALIGN(4) : { *(.bss) }
+    .ldata ALIGN(4) : { *(.ldata) }
+    _LITERAL_DATA_  = ADDR(.ldata) + 0x7ff0;
+    __HEAP_START  = .;
+    . = . + __HEAP_SIZE;
+    __HEAP_END = .;
+    __SP_END  = __HEAP_END;
+  } > CPU0_DMI_DSPR
+
+
+  GROUP : {
+    FLS_AC_ERASE_SOURCE_START = .;    
+    .FLS_AC_ERASE_SOURCE (TEXT) : {
+      KEEP(*(.FLS_AC_ERASE_SOURCE))
+    }
+    FLS_AC_ERASE_SOURCE_END = .;      
+  } > FLS_ERASE_PFLASH0
+
+  GROUP : {
+    FLS_AC_WRITE_SOURCE_START = .;    
+    .FLS_AC_WRITE_SOURCE (TEXT) : {
+      KEEP(*(.FLS_AC_WRITE_SOURCE))
+    }
+    FLS_AC_WRITE_SOURCE_END = .;      
+  } > FLS_WRITE_PFLASH0
+
+  GROUP BIND(0x701011C8): {
+    FLS_RESERVED_START = .;
+    . = . + 499;
+    FLS_RESERVED_END = .;
+  } > CPU0_PMI_PSPR
+
+
+  GROUP : {
+     . = ALIGN(64);
+    __CPU0_CSA_BEGIN = .;
+    . = . + __CSA_SIZE;
+    __CPU0_CSA_END  = .;
+  } > CPU0_DMI_DSPR
+
+    GROUP : {
+    . =  ALIGN(8);    
+    __CPU0_ISTACK_END    = .;
+    . = . + __ISTACK_SIZE;
+    __CPU0_ISTACK   = .;
+  } > CPU0_DMI_DSPR
+
+
+      GROUP : {
+    . =  ALIGN(8);    
+    __CPU0_USTACK_END    = .;
+    . = . + __USTACK_SIZE;
+    __CPU0_USTACK   = .;
+  } > CPU0_DMI_DSPR 
+    
+}

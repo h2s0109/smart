@@ -1,0 +1,983 @@
+<?xml version='1.0'?>
+<!--
+/*******************************************************************************
+**                                                                            **
+** Copyright (C) Infineon Technologies (2014)                                 **
+**                                                                            **
+** All rights reserved.                                                       **
+**                                                                            **
+** This document contains proprietary information belonging to Infineon       **
+** Technologies. Passing on and copying of this document, and communication   **
+** of its contents is not permitted without prior written authorization.      **
+**                                                                            **
+********************************************************************************
+**                                                                            **
+**  $FILENAME   : Port.xdm $                                                 **
+**                                                                            **
+**  $CC VERSION : \main\dev_tc23x_as4.0.3\14 $                               **
+**                                                                            **
+**  $DATE       : 2016-05-27 $                                               **
+**                                                                            **
+**  AUTHOR       : DL-AUTOSAR-Engineering                                     **
+**                                                                            **
+**  VENDOR       : Infineon Technologies                                      **
+**                                                                            **
+**  DESCRIPTION  : XML Data Model for Port driver                             **
+**                                                                            **
+**  MAY BE CHANGED BY USER [yes/no]: No                                       **
+**                                                                            **
+*******************************************************************************/
+/*  TRACEABILITY : [cover parentID=SAS_AS_PORT117_Conf,
+    SAS_AS_PORT121_Conf,SAS_AS_PORT122_Conf,SAS_AS_PORT124_Conf,SAS_AS4XX_PORT118_Conf,
+    SAS_AS_PORT127_Conf,SAS_AS_PORT207,SAS_NAS_PORT_PR913,
+    SAS_AS_PORT126_Conf,SAS_AS_PORT125_Conf,SAS_AS_PORT081_1,SAS_AS_PORT081_2,
+    SAS_AS_PORT129_Conf,SAS_AS_PORT128_Conf,SAS_AS_PORT004,SAS_AS_PORT134_Conf,
+    SAS_AS_PORT130_Conf,SAS_AS_PORT081_3,SAS_AS_PORT081_4,SAS_NAS_PORT_PR621
+    SAS_AS_PORT123_Conf,SAS_AS_PORT133_Conf,SAS_AS_PORT131_Conf,DS_AS_PORT,
+    SAS_AS_PORT132_Conf,DS_NAS_PORT_PR647,SAS_NAS_PORT_PR69_PR469,
+    SAS_NAS_PORT_PR122_1,SAS_NAS_PORT_PR122_2,SAS_NAS_PORT_PR122_3,
+    SAS_NAS_PORT_PR122_4,SAS_NAS_PORT_PR122_5,SAS_NAS_PORT_PR122_6,
+    SAS_NAS_PORT_PR122_7,SAS_NAS_PORT_PR122_8,DS_NAS_PORT_PR446,
+    SAS_NAS_PORT_PR122_9,SAS_NAS_PORT_PR65,
+    SAS_NAS_PORT_PR122_10,SAS_NAS_PORT_PR122_11,SAS_NAS_PORT_PR122_12,
+    SAS_NAS_PORT_PR122_13,SAS_NAS_PORT_PR122_14,SAS_NAS_PORT_PR122_15,
+    SAS_NAS_PORT_PR122_16,SAS_NAS_PORT_PR122_17,SAS_NAS_PORT_PR122_18,
+    SAS_NAS_PORT_PR122_19,SAS_NAS_PORT_PR122_20,SAS_NAS_PORT_PR122_21,SAS_NAS_PORT_PR725,SAS_NAS_PORT_PR726,
+    SAS_NAS_PORT_PR122_22,DS_NAS_PORT_PR655,DS_NAS_PORT_PR699,
+    DS_NAS_PORT_PR700,DS_NAS_PORT_PR701,DS_NAS_PORT_PR704,
+    DS_NAS_PORT_PR707,DS_NAS_PORT_PR708,DS_NAS_PORT_PR709,DS_NAS_PORT_PR712,
+    DS_NAS_PORT_PR713,DS_NAS_PORT_PR714,DS_NAS_PORT_PR716,DS_NAS_PORT_PR717,
+    DS_NAS_PORT_PR719,DS_NAS_PORT_PR720,DS_NAS_PORT_PR723,DS_NAS_PORT_PR724,
+    DS_NAS_PORT_PR728,DS_NAS_PORT_PR741,DS_NAS_PORT_PR69_PR469,SAS_NAS_PORT_PR656,
+    DS_NAS_PORT_PR647, DS_AS_PORT_PR2848,SAS_AS4XX_PORT_PR668,SAS_AS4XX_PORT_PR670,
+    SAS_NAS_PORT_PR64,SAS_NAS_PORT_PR77,SAS_NAS_PORT_PR82,SAS_NAS_PORT_PR227,
+    SAS_NAS_PORT_PR640,SAS_NAS_PORT_PR667,SAS_NAS_PORT_PR646,SAS_AS_PORT006,
+    SAS_NAS_ALL_PR1647,SAS_NAS_ALL_PR471,SAS_NAS_ALL_PR470,SAS_NAS_EP_PORT_PR3054_1
+    ,SAS_NAS_EP_PORT_PR3054_2,SAS_NAS_EP_PORT_PR3054_4]
+    [/cover]                                                          */                                    
+                    
+-->
+<datamodel version="3.0"
+           xmlns="http://www.tresos.de/_projects/DataModel2/08/root.xsd"
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/08/attribute.xsd"
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd"
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar"
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd"
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd"
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="AURIX" type="AR-PACKAGE">
+        <a:a name="UUID" value="e656b9a5-1655-40db-ad91-29dd3b34035e"/>
+        <d:lst type="ELEMENTS">
+          <d:chc name="Port" type="AR-ELEMENT" value="MODULE-DEF">
+            <v:ctr type="MODULE-DEF">
+              <a:a name="ADMIN-DATA" type="ADMIN-DATA">
+                <ad:ADMIN-DATA>
+                  <ad:DOC-REVISIONS>
+                    <ad:DOC-REVISION>
+                      <ad:REVISION-LABEL>3.2.0</ad:REVISION-LABEL>
+                      <ad:ISSUED-BY>AUTOSAR</ad:ISSUED-BY>
+                      <ad:DATE>2010-11-03</ad:DATE>
+                    </ad:DOC-REVISION>
+                  </ad:DOC-REVISIONS>
+                </ad:ADMIN-DATA>
+              </a:a>
+              <a:a name="RELEASE" value="asc:4.0"/>
+              <a:a name="UUID" value="77b88fa1-a26a-47b1-842b-48059e84f41e"/>
+              <d:ref type="REFINED_MODULE_DEF" value="ASPath:/AUTOSAR/EcucDefs/Port"/>
+              <v:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION">
+			  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                     type="IMPLEMENTATIONCONFIGCLASS">
+                  <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                  <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+				</a:a>  
+                <a:a name="LABEL" value="ConfigVariant"/>
+                <a:da name="DEFAULT" value="VariantPostBuildSelectable"/>
+                <a:da name="RANGE">
+                  <a:v>VariantPostBuildLoadable</a:v>
+                  <a:v>VariantPostBuildSelectable</a:v>
+                </a:da>
+                <a:da name="EDITABLE" value="true"/>
+              </v:var>
+              <v:lst name="PortConfigSet"
+                     type="MULTIPLE-CONFIGURATION-CONTAINER">
+                <a:da name="MIN" value="1"/>
+                <v:ctr name="PortConfigSet"
+                       type="MULTIPLE-CONFIGURATION-CONTAINER">
+                  <a:a name="DESC"
+                       value="EN: This container is the base of a multiple configuration set"/>
+                  <a:a name="UUID" value="2b7f9475-2cf3-4de7-a0dd-acdeac7c902e"/>
+                  <v:lst name="PortContainer" type="MAP">
+                    <a:da name="MIN" type="XPath" expr="ecu:get('Port.TotalNumOfPort')"/>
+                    <a:da name="MAX" type="XPath" expr="ecu:get('Port.TotalNumOfPort')"/>
+                    <v:ctr name="PortContainer" type="IDENTIFIABLE">
+                      <a:a name="DESC"
+                           value="EN: Container collecting the PortPins."/>
+                      <a:a name="UUID"
+                           value="58c0d0d6-418a-437b-b59a-d4cba3e4d1f2"/>
+                      <v:var name="PortNumber" type="INTEGER">
+                        <a:da name="TOOLTIP" value="The number of specified Port in this PortContainer."/>
+                        <a:a name="DESC"
+                             value="EN: The number of specified Port in this PortContainer."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID"
+                             value="2b452b26-b125-4997-8a7f-b50e9d257ca4"/>
+                        <a:da name="EDITABLE" value="false"/>
+                        <a:da name="DEFAULT" type="XPath">
+                        <a:tst expr="text:split(ecu:get('Port.AvailablePorts'), ' ')[position()-1 = node:fallback(node:current()/../@index,'0')]"/>
+                        </a:da>
+                        <a:da name="INVALID" type="Multi">
+                          <mt:xpath expr="contains(ecu:get('Port.PortsAvailable'),concat('_',.,'_'))" false="The Specified PortNumber is not available in the MC"/>
+                          <mt:range>
+                            <mt:tst expr="&gt;=0"/>
+                            <mt:tst expr="&lt;=ecu:get('Port.MaxAvailablePort')"/>
+                          </mt:range>
+                        </a:da>
+                      </v:var>
+                      <v:var name="PortNumberOfPortPins" type="INTEGER">
+                        <a:da name="TOOLTIP" value="The number of PortPins available in this Port."/>
+                        <a:a name="DESC"
+                             value="EN: The number of PortPins available in this Port."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                          <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID"
+                             value="2b452b26-b1b5-4997-8a7f-b50e9d257ca4"/>
+                        <a:da name="EDITABLE" value="false"/>
+                        <a:da name="DEFAULT" type="XPath">
+                          <a:tst expr="text:split(ecu:get('Port.PortNoOfpins'), ' ')[position()-1 = node:fallback(node:current()/../@index,'0')]"/>
+                        </a:da>
+                        <a:da name="INVALID" type="Multi">
+                          <mt:xpath expr="num:i(count(text:split(ecu:get(concat('Port.Port',../PortNumber,'_AvailablePins')),' '))) = num:i(.)" false="Incorrect number of pins"/>
+                          <mt:range>
+                            <mt:tst expr="&gt;=1"/>
+                            <mt:tst expr="&lt;=16"/>
+                          </mt:range>
+                        </a:da>
+                      </v:var>
+                      <v:lst name="PortPin" type="MAP">
+                       <a:da name="MIN" type="XPath" expr="node:fallback(node:current()/../PortNumberOfPortPins,'1')"/>
+                       <a:da name="MAX" type="XPath" expr="node:fallback(node:current()/../PortNumberOfPortPins,'16')"/>
+                        <v:ctr name="PortPin" type="IDENTIFIABLE">
+                          <a:a name="DESC">
+                            <a:v>EN: Configuration of the individual port pins.
+                            </a:v>
+                          </a:a>
+                          <a:a name="UUID"
+                               value="805d3334-920b-4f9b-b18f-ce2e8a6c2f9f"/>
+                          <v:var name="PortPinId" type="INTEGER">
+                            <a:da name="TOOLTIP" value="Pin Id of the port pin. This value will be assigned to the symbolic name derived from the port pin container short name."/>
+                            <a:a name="DESC"
+                                 value="EN: Pin Id of the port pin. This value will be assigned to the symbolic name derived from the port pin container short name."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                              <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="630cfba7-0e08-47ab-a9af-b8441e19b081"/>
+                            <a:da name="EDITABLE" value="false"/>
+                            <a:da name="DEFAULT" type="XPath">
+                            <a:tst expr="text:split(ecu:get(concat('Port.PinId_Port',(node:fallback(node:current()/../../../PortNumber,'0')))), ' ')[position()-1 = node:fallback(node:current()/../@index,'0')]"/>
+                            </a:da>
+                            <a:da name="INVALID" type="Multi">
+                              <mt:xpath expr="contains(ecu:get(concat('Port.PinId_Port',../../../PortNumber)),.)" false="Incorrect PortPinID"/>
+                              <mt:range>
+                                <mt:tst expr="&gt;=0"/>
+                                <mt:tst expr="&lt;=672"/>
+                              </mt:range>
+                            </a:da>
+                          </v:var>
+                          <v:var name="PortPinSymbolicName" type="STRING">
+                            <a:da name="TOOLTIP" value="Symbolic name of the Port Pin."/>
+                            <a:a name="DESC"
+                                 value="EN: Symbolic name of the Port Pin."/>
+                            <a:a name="UUID"
+                                 value="c7902328-d273-4512-9bad-0e756751ad73"/>
+                                 <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:da name="EDITABLE" value="true"/>
+                            <a:da name="DEFAULT" type="XPath">
+                               <a:tst expr="concat('PORT_',(node:fallback(node:current()/../../../PortNumber,'0')),'_PIN_',((node:fallback(node:current()/../PortPinId,'0')) mod 16))"/>
+                            </a:da>
+                            <a:da name="INVALID" type="XPath">
+                               <a:tst expr="text:grep(., '^[A-Z][a-zA-Z0-9_]*$')" false="Must start with a capital letter. Special characters other than '_' is not supported"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="PortPinDirection" type="ENUMERATION">
+                           <a:da name="TOOLTIP" value="The initial direction of the pin (IN or OUT). If the direction is not changeable, the value configured here is fixed.
+The direction must match the pin mode. E.g. a pin used for an ADC must be configured to be an in port.
+Implementation Type: Port_PinDirectionType">
+                             </a:da>
+                            <a:a name="DESC">
+                              <a:v>EN: The initial direction of the pin (IN or OUT). If the direction is not changeable, the value configured here is fixed.
+The direction must match the pin mode. E.g. a pin used for an ADC must be configured to be an in port.
+Implementation Type: Port_PinDirectionType
+                            </a:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="53170d11-cda1-4f50-8754-4453e1904683"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:da name="DEFAULT" value="PORT_PIN_IN"/>
+                            <a:da name="RANGE">
+                              <a:v>PORT_PIN_IN</a:v>
+                              <a:v>PORT_PIN_OUT</a:v>
+                            </a:da>
+                            <a:da name="INVALID" type="XPath">
+                             <a:tst expr="((../../../PortNumber = '40') or (../../../PortNumber = '41'))and (.='PORT_PIN_OUT')" true="Invalid configuration, Port 40 and 41 only PORT_PIN_IN configuration is allowed. "/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="PortPinDirectionChangeable" type="BOOLEAN">
+                            <a:da name="TOOLTIP" value="Parameter to indicate if the direction is changeable on a port pin during runtime.
+true: Port Pin direction changeable enabled.
+false: Port Pin direction changeable disabled.">
+                             </a:da>
+                            <a:a name="DESC">
+                              <a:v>EN: Parameter to indicate if the direction is changeable on a port pin during runtime.
+true: Port Pin direction changeable enabled.
+false: Port Pin direction changeable disabled.
+                            </a:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="48dcc5c1-f7c6-417f-a2b1-e8cd402dcc28"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:da name="DEFAULT" value="false"/>
+                            <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr= "(../../../../../../../PortGeneral/PortSetPinDirectionApi = 'true') and ((../../../PortNumber != '40') and (../../../PortNumber != '41'))"/>
+                            </a:da>
+                            <a:da name="INVALID" type="XPath">
+                            <a:tst expr= "(../../../../../../../PortGeneral/PortSetPinDirectionApi = 'false') and (.='true')" true="Invalid configuration. PortSetPinDirectionApi needs to be enabled"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="PortPinInputCharacteristic" type="ENUMERATION">
+                            <a:da name="TOOLTIP" value="Configuration of input characteristics (electrical) for input pins.
+If the pin direction is initialized as input, this configuration parameter is taken during initialization (by Port_Init API).">
+                            </a:da>
+                            <a:a name="DESC">
+                             <a:v>Configuration of input characteristics (electrical) for input pins.
+If the pin direction is initialized as input, this configuration parameter is taken during initialization (by Port_Init API). The user must configure this.
+If the pin direction is initialized as output, this configuration parameter is ignored during initialization.
+If direction changeable is set to true, this parameter is used for configurating of pin to input during runtime.
+PORT_PIN_IN_NO_PULL: No input pull device connected
+PORT_PIN_IN_PULL_DOWN: Input pull-down device connected
+PORT_PIN_IN_PULL_UP: Input pull-up device connected
+                             </a:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="70907698-b2f6-49b0-bd1a-456c1b30de95"/>
+                                 <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:da name="ENABLE" type="XPath">
+                            <a:tst expr= "((../PortPinDirection = 'PORT_PIN_IN') or (../PortPinDirectionChangeable = 'true'))" />
+                            </a:da>
+                            <a:da name="DEFAULT" value="PORT_PIN_IN_PULL_UP"/>
+                            <a:da name="RANGE">
+                              <a:v>PORT_PIN_IN_NO_PULL</a:v>
+                              <a:v>PORT_PIN_IN_PULL_DOWN</a:v>
+                              <a:v>PORT_PIN_IN_PULL_UP</a:v>
+                            </a:da>
+                          </v:var>
+                          <v:var name="PortPinOutputCharacteristic" type="ENUMERATION">
+                            <a:da name="TOOLTIP" value="Configuration of output characteristic (electrical) for the output pins.
+If the pin direction is initialized as output, this configuration parameter is taken during initialization (by Port_Init API).">
+                            </a:da>
+                            <a:a name="DESC">
+                             <a:v>Configuration of output characteristic (electrical) for the output pins.
+If the pin direction is initialized as output, this configuration parameter is taken during initialization (by Port_Init API). The user must configure this.
+If the pin direction is initialized as input, this configuration parameter is ignored during initialization.
+If direction changeable is set to true, this parameter is used for configurating of pin to output during runtime.
+PORT_PIN_OUT_PUSHPULL: Push-pull functionality for output pins
+PORT_PIN_OUT_OPENDRAIN: Open-drain functionality for output pins
+                             </a:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="ed12eb00-b2f7-434c-8ad0-0001a509a0af"/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:da name="ENABLE" type="XPath">
+                            <a:tst expr= "((../PortPinDirection = 'PORT_PIN_OUT') or (../PortPinDirectionChangeable = 'true'))" />
+                            </a:da>
+                            <a:da name="DEFAULT" value="PORT_PIN_OUT_PUSHPULL"/>
+                            <a:da name="RANGE">
+                              <a:v>PORT_PIN_OUT_PUSHPULL</a:v>
+                              <a:v>PORT_PIN_OUT_OPENDRAIN</a:v>
+                            </a:da>
+                          </v:var>
+                          <v:var name="PortPinLevelValue" type="ENUMERATION">
+                            <a:da name="TOOLTIP" value="Port Pin Level value from Port pin list."/>
+                            <a:a name="DESC"
+                                 value="EN: Port Pin Level value from Port pin list."/>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="63dbd4d6-5fe1-4eac-9c3f-e82e81000d1d"/>
+                                 <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:da name="DEFAULT" value="PORT_PIN_LEVEL_LOW"/>
+                            <a:da name="RANGE">
+                              <a:v>PORT_PIN_LEVEL_HIGH</a:v>
+                              <a:v>PORT_PIN_LEVEL_LOW</a:v>
+                            </a:da>
+                          </v:var>
+                          <v:var name="PortPinInitialMode" type="ENUMERATION">
+                            <a:a name="DESC"
+                                 value="EN: Port pin mode from mode list to be used in Port_Init() function. Keep the mouse over the parametername to know the supported modes of the pin."/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="ac00d2a8-d0e3-4329-9639-90b918215f31"/>
+                                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:da name="TOOLTIP" type="XPath" expr="ecu:get(concat('Port.InitialModes',(../../../PortNumber),'_',((../PortPinId) mod 16)))"/>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:da name="INVALID" type="XPath">
+                            <a:tst expr="../PortPinDirection = 'PORT_PIN_IN' and (.!='PORT_PIN_MODE_GPIO')" true="Invalid configuration, If PortPinDirection is PortPinIn then PortPinInitialMode should be PORT_PIN_MODE_GPIO only . "/>
+                            </a:da>
+                            <a:da name="DEFAULT" value="PORT_PIN_MODE_GPIO"/>
+                            <a:da name="EDITABLE" type="XPath" expr="(../../../PortNumber != '40') and (../../../PortNumber != '41')"/>
+                            <a:da name="RANGE">
+                              <a:v>PORT_PIN_MODE_GPIO</a:v>
+                              <a:v>PORT_PIN_MODE_ALT1</a:v>
+                              <a:v>PORT_PIN_MODE_ALT2</a:v>
+                              <a:v>PORT_PIN_MODE_ALT3</a:v>
+                              <a:v>PORT_PIN_MODE_ALT4</a:v>
+                              <a:v>PORT_PIN_MODE_ALT5</a:v>
+                              <a:v>PORT_PIN_MODE_ALT6</a:v>
+                              <a:v>PORT_PIN_MODE_ALT7</a:v>
+                            </a:da>
+                          </v:var>
+                          <v:var name="PortPinModeChangeable" type="BOOLEAN">
+                            <a:da name="TOOLTIP" value="Parameter to indicate is the mode is changeable on a port pin during runtime.
+true: Port Pin mode changeable enabled.
+false: Port Pin mode changeable disabled.">
+                            </a:da>
+                            <a:a name="DESC">
+                              <a:v>EN: Parameter to indicate is the mode is changeable on a port pin during runtime.
+true: Port Pin mode changeable enabled.
+false: Port Pin mode changeable disabled.
+                              </a:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="48dcc5c1-f7c6-417f-a2b1-e8ad402dcc28"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:da name="DEFAULT" value="false"/>
+                            <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr= "(../../../../../../../PortGeneral/PortSetPinModeApi = 'true') and (../../../PortNumber != '40') and (../../../PortNumber != '41')"/>
+                            </a:da>
+                            <a:da name="INVALID" type="XPath">
+                            <a:tst expr= "(../../../../../../../PortGeneral/PortSetPinModeApi = 'false') and (.='true')" true="Invalid configuration. PortSetPinModeApi needs to be enabled"/>
+                            </a:da>
+                          </v:var>
+                          <v:lst name="PortPinMode">
+                            <a:da name="MIN" value="1"/>
+                            <a:da name="MAX" value="8"/>
+                            <a:da name="EDITABLE" type="XPath">
+                             <a:tst expr= "(../PortPinModeChangeable = 'true')" />
+                            </a:da>
+                            <a:da name="ENABLE" type="XPath">
+                             <a:tst expr= "(../../../PortNumber != '40') and (../../../PortNumber != '41')" />
+                            </a:da>
+                          <v:var name="PortPinMode" type="ENUMERATION">
+                            <a:da name="TOOLTIP" value="Port pin mode from mode list.
+Note that more than one mode is allowed by default. That way it is e.g. possible to combine DIO with another mode such as ICU.">
+                            </a:da>
+                            <a:a name="DESC">
+                              <a:v>EN:
+Port pin mode from mode list.
+Note that more than one mode is allowed by default. That way it is e.g. possible to combine DIO with another mode such as ICU.
+More HW specific literals may be added by module implementor.
+E.g. SPI may be further broken down into SpiCsHw, SpiCsSw, etc. if necessary.
+                              </a:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="UUID"
+                                 value="89c2b63a-349b-43ad-a51c-d7451e361038"/>
+                            <a:da name="DEFAULT" value="PORT_PIN_MODE_ALL"/>
+                            <a:da name="EDITABLE" type="XPath" expr="(../../../PortNumber != '40') and (../../../PortNumber != '41')"/>
+                            <a:da name="RANGE">
+                              <a:v>PORT_PIN_MODE_ALL</a:v>
+                              <a:v>PORT_PIN_MODE_GPIO</a:v>
+                              <a:v>PORT_PIN_MODE_ALT1</a:v>
+                              <a:v>PORT_PIN_MODE_ALT2</a:v>
+                              <a:v>PORT_PIN_MODE_ALT3</a:v>
+                              <a:v>PORT_PIN_MODE_ALT4</a:v>
+                              <a:v>PORT_PIN_MODE_ALT5</a:v>
+                              <a:v>PORT_PIN_MODE_ALT6</a:v>
+                              <a:v>PORT_PIN_MODE_ALT7</a:v>
+                            </a:da>
+                            <a:da name="ENABLE" value="true"/>
+                             <a:da name="INVALID" type="XPath">
+                               <a:tst
+                                 expr="not(
+                                   contains(substring-before(concat(text:join(../*, ','), ','), concat(., ',')), concat(., ','))
+                                   or
+                                   contains(substring-after(concat(text:join(../*, ','), ','), concat(., ',')), concat(., ','))
+                                   )"
+                                 false="PortPinMode is repeated, define a mode only once"
+                               />
+                               <a:tst
+                                 expr="not(
+                                   (
+                                   contains(substring-before(concat(text:join(../*, ','), ','), concat(., ',')), 'PORT_PIN_MODE_ALL')
+                                   or
+                                   contains(substring-after(concat(text:join(../*, ','), ','), concat(., ',')), 'PORT_PIN_MODE_ALL')
+                                   )
+                                 and
+                                 (count(../*) > 1)
+                                   )"
+                                 false="PORT_PIN_MODE_ALL selects all the modes available for this PortPin, no need to add any other modes"
+                               />
+                               <a:tst
+                                 expr="not(
+                                   contains(ecu:get(concat('Port.InitialModes',(../../../../PortNumber),'_',((../../PortPinId) mod 16))),
+                                   concat(substring-after(.,'PORT_PIN_MODE_'),' = RESERVED')
+                                   )
+                                   )"
+                                 false="Mode is not available for this PortPin"
+                               />
+                             </a:da>
+                          </v:var>
+                          </v:lst>
+                          <v:var name="PortPinDriverStrength" type="ENUMERATION">
+                            <a:da name="TOOLTIP" value="Port pin pad driver mode selection"/>
+                            <a:a name="DESC">
+                              <a:v>EN: Port pin pad driver mode selection.
+                              </a:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                               value="89c2b63a-349b-43ad-a51c-d7451e351036"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:da name="DEFAULT" value="PORT_CMOS_SPEED_GRADE1"/>
+                            <a:da name="EDITABLE" type="XPath">
+                                                            <a:tst expr="((../../../PortNumber != '40') and (../../../PortNumber != '41')) and ((../PortPinDirection = 'PORT_PIN_OUT') or (../PortPinDirectionChangeable = 'true'))"/>
+                                                            </a:da>
+                            <a:da name="RANGE">
+                              <a:v>PORT_CMOS_SPEED_GRADE1</a:v>
+                              <a:v>PORT_CMOS_SPEED_GRADE2</a:v>
+                              <a:v>PORT_CMOS_SPEED_GRADE3</a:v>
+                              <a:v>PORT_CMOS_SPEED_GRADE4</a:v>
+                            </a:da>
+                          </v:var>
+                          <v:var name="PortPinPadLevel" type="ENUMERATION">
+                            <a:da name="TOOLTIP" value="Port pin pad level selection
+                              Selecting PORT_PDR_CMOS_AUTOMOTIVE_LEVEL writes 0 into PLx bit of PDR Register of a Port pin">
+                            </a:da>
+                            <a:a name="DESC">
+                              <a:v>EN: Port pin pad level selection
+                              Selecting PORT_PDR_CMOS_AUTOMOTIVE_LEVEL writes 0 into PLx bit of PDR Register of a Port pin
+                              </a:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="89c2b63a-349b-43ad-a51c-d7451e351038"/>
+                                 <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                            <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:da name="DEFAULT" value="PORT_PDR_CMOS_AUTOMOTIVE_LEVEL"/>
+                            <a:da name="EDITABLE" type="XPath" expr="(../../../PortNumber != '40') and (../../../PortNumber != '41')"/>
+                            <a:da name="RANGE">
+                              <a:v>PORT_PDR_CMOS_AUTOMOTIVE_LEVEL</a:v>
+                            </a:da>
+                          </v:var>
+                          <v:var name="PortPinAnalogInput" type="ENUMERATION">
+                            <a:da name="TOOLTIP" value="This parameter allows configuration of the PDISC register.
+ENABLE: Pin has support for Analog Input.
+DISABLE: Pin do not have support for Analog Input.">
+                            </a:da>
+                            <a:a name="DESC">
+                              <a:v>EN: This parameter allows configuration of the PDISC register.
+Range:
+ENABLE: Pin has support for Analog Input.
+DISABLE: Pin do not have support for Analog Input.
+                              </a:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="48dcc5c1-f7c6-417f-a2b2-e8cd402dcc28"/>
+                                 <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                type="IMPLEMENTATIONCONFIGCLASS">
+                             <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                             <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:da name="DEFAULT" value="DISABLE"/>
+                            <a:da name="EDITABLE" type="XPath" expr="(../../../PortNumber = '40') or (../../../PortNumber = '41')"/>
+                            <a:da name="RANGE">
+                              <a:v>ENABLE</a:v>
+                              <a:v>DISABLE</a:v>
+                            </a:da>
+                          </v:var>
+                          <v:var name="PortPinControllerSelect" type="ENUMERATION">
+                            <a:da name="TOOLTIP" value="This parameter selects Ethernet output signals through ports alternate output or RMII mode.
+Also, it is used to enable or disable the VADC Pull Down Diagnostics (PDD) / Multiplexer Diagnostics (MD) feature">
+                            </a:da>
+                            <a:a name="DESC">
+                              <a:v>EN: This parameter selects Ethernet output signals through ports alternate output or RMII mode.
+Also, it is used to enable or disable the VADC Pull Down Diagnostics (PDD) / Multiplexer Diagnostics (MD) feature
+                              </a:v>
+                            </a:a>
+                            <a:a name="UUID"
+                                 value="48dc15c1-f4c6-417f-a2b2-e8cd402dcc28"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                             <icc:v class="PostBuild">VariantPostBuildLoadable</icc:v>
+                             <icc:v class="PostBuild">VariantPostBuildSelectable</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                            <a:da name="DEFAULT" value="DISABLE"/>
+                            <a:da name="EDITABLE" type="XPath">
+                              <a:tst expr= "(contains(ecu:get('Port.AvailablePCSREth'),concat('_',../../../PortNumber,'_'))
+                                  or
+                                            contains(ecu:get('Port.AvailablePCSRVADC'),concat('_',../../../PortNumber,'_')))
+                                  and
+                                            text:contains(text:split(ecu:get(concat('Port.Port',../../../PortNumber,'_AvailablePinPCSR')),' '),num:i(num:mod(../PortPinId,16)))
+                                           "/>
+                            </a:da>
+                            <a:da name="RANGE">
+                              <a:v>ENABLE</a:v>
+                              <a:v>DISABLE</a:v>
+                            </a:da>
+                          </v:var>
+                        </v:ctr>
+                      </v:lst>
+                    </v:ctr>
+                  </v:lst>
+                </v:ctr>
+              </v:lst>
+              <v:ctr name="PortSafety" type="IDENTIFIABLE">
+                <a:a name="DESC"
+                     value="EN: This container contains the configuration for the safety features of the PORT driver."/>
+                <a:a name="UUID" value="6991f288-fe69-4ba3-8e4e-5be27814188b"/>
+                <v:var name="PortSafetyEnable" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="EN: Pre-processor switch for enabling/disabling the PORT driver safety features. By default, 
+                       - Range check on API parameters shall be done
+                       - PORT configuration structure shall have a unique marker field which will be verified by the driver
+                       - Publish the safety usage of PORT driver for user to set the respective MPU settings"/>
+                  <a:a name="TOOLTIP"
+                       value="Pre-processor switch for enabling/disabling the PORT driver safety features."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="01fab1fb-1589-455e-9b2b-cead4d928886"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="PortInitCheckApi" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="If this parameter is set to TRUE, the PORT initialization check will be done as a safety measure.  If this parameter is set to FALSE, the PORT driver shall not verify the initialization."/>
+                  <a:a name="TOOLTIP"
+                       value="EN: Pre-processor switch to enable/disable the API Port_InitCheck."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="e16d60b2-14c6-492b-8d8d-c6365dcff976"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="EDITABLE" type="XPath" expr="../PortSafetyEnable='true'"/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="PortGeneral" type="IDENTIFIABLE">
+                <a:a name="DESC"
+                     value="EN: Module wide configuration parameters of the PORT driver."/>
+                <a:a name="UUID" value="4acbfb61-2a6a-4a90-a065-3ac83f20e9b1"/>
+                <v:var name="PortDevErrorDetect" type="BOOLEAN">
+                  <a:da name="TOOLTIP" value="Switches the Development Error Detection and Notification on or off.
+true: Enabled.
+false: Disabled.">
+                  </a:da>
+                  <a:a name="DESC">
+                    <a:v>EN: Switches the Development Error Detection and Notification on or off.
+true: Enabled.
+false: Disabled.
+                    </a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="898346ba-c349-4abe-8ef6-9fd7e0753a0c"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="PortPBFixedAddress" type="BOOLEAN">
+                  <a:da name="TOOLTIP" value="This parameter indicates whether the Port configuration to be used is decided at link time or changeable by user at runtime.
+ON : PORT Configuration to be used is fixed i.e Port_ConfigRoot[0]
+OFF: The user has to choose the PORT configuration to be used and pass the same as a parameter to Port_Init.">
+                  </a:da>
+                  <a:a name="DESC">
+                    <a:v>EN: This parameter indicates whether the Port configuration to be used is decided at link time or changeable by user at runtime.
+ON : PORT Configuration to be used is fixed i.e Port_ConfigRoot[0]
+OFF: The user has to choose the PORT configuration to be used and pass the same as a parameter to Port_Init.
+                    </a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="3b0b791b-2364-4186-be0f-c040864ed0bc"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="INVALID" type="XPath">
+                    <a:tst expr="(num:i(count(../../PortConfigSet/*))) > 1 and . = 'true'"
+                     true="Wrong Configuration. When PortPBFixedAddress is enabled then only 1 Config set is permitted. Remove the other Config sets."/>
+                  </a:da>
+                </v:var>
+                <v:var name="PortSetPinDirectionApi" type="BOOLEAN">
+                  <a:da name="TOOLTIP" value="Pre-processor switch to enable / disable the use of the function Port_SetPinDirection().
+TRUE: Enabled - Function Port_SetPinDirection() is available.
+FALSE: Disabled - Function Port_SetPinDirection() is not available.">
+                  </a:da>
+                  <a:a name="DESC">
+                    <a:v>EN: Pre-processor switch to enable / disable the use of the function Port_SetPinDirection().
+TRUE: Enabled - Function Port_SetPinDirection() is available.
+FALSE: Disabled - Function Port_SetPinDirection() is not available.
+                    </a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="82b5a039-207e-4a47-a0da-43553e716e14"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="PortSetPinModeApi" type="BOOLEAN">
+                  <a:da name="TOOLTIP" value="Pre-processor switch to enable / disable the use of the function Port_SetPinMode().
+true: Enabled - Function Port_SetPinMode() is available.
+false: Disabled - Function Port_SetPinMode() is not available.">
+                  </a:da>
+                  <a:a name="DESC">
+                    <a:v>EN: Pre-processor switch to enable / disable the use of the function Port_SetPinMode().
+true: Enabled - Function Port_SetPinMode() is available.
+false: Disabled - Function Port_SetPinMode() is not available.
+                    </a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="8446ad6c-4266-4593-b1a1-db33057b2c82"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="PortVersionInfoApi" type="BOOLEAN">
+                  <a:da name="TOOLTIP" value="Pre-processor switch to enable / disable the API to read out the modules version information.
+true: Version info API enabled.
+false: Version info API disabled.">
+                  </a:da>
+                  <a:a name="DESC">
+                    <a:v>EN: Pre-processor switch to enable / disable the API to read out the modules version information.
+true: Version info API enabled.
+false: Version info API disabled.
+                    </a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="3b0b791b-2364-4186-be0f-c040864ed0bb"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="PortRunningInUser0Mode" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="If this parameter is set to FALSE, then Protected Mode(user mode) register access will not be done and API is run in Supervisor mode."/>
+                  <a:a name="TOOLTIP"
+                       value="EN: Pre-processor switch to enable/disable the Normal/Protected mode."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="bde3973f-c106-4b0f-901c-6f15b3cff715"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="PortUserModeInitApiEnable" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="Pre-processor switch to enable / disable protected register access in all the Init API."/>
+                  <a:a name="TOOLTIP"
+                       value="EN: Pre-processor switch to enable / disable protected register access in all the Init API."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="bde3973f-c106-4b9f-901c-6f15b3cff715"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="PortUserModeRuntimeApiEnable" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="Pre-processor switch to enable / disable protected register access in all the APIs other than Init/Deinit APIs"/>
+                  <a:a name="TOOLTIP"
+                       value="EN: Pre-processor switch to enable / disable protected register access in all the APIs other than Init/Deinit APIs."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PreCompile">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="bde3973f-c106-4b7f-902c-6f15b3cff715"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC" value="EN: Common container, aggregated by all modules. It contains published information about vendor and versions."/>
+                <a:a name="UUID" value="492f8482-3e2c-4bf1-b27f-01fd7ac35788"/>
+                <v:var name="ArMajorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Major version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="bd0a8d38-4d8c-4ee9-88fe-1166b258bb8a"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="3"/>
+                </v:var>
+                <v:var name="ArMinorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Minor version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="73f87c7f-e230-4178-bff0-eb2704aae656"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="2"/>
+                </v:var>
+                <v:var name="ArPatchVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Patch level version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="2380135d-6778-417a-a34b-e10017d4dd54"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="SwMajorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Major version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="fca015e3-5f28-4cbe-8949-8f4b87d86827"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="3"/>
+                </v:var>
+                <v:var name="SwMinorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Minor version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="14ab81e0-3d80-43dc-8b92-247e5a542df9"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:var name="SwPatchVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="32e37bfd-18b6-41d1-9248-a81dbe0fe4c5"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="ModuleId" type="INTEGER">
+                  <a:a name="DESC" value="EN: Module ID of this module from Module List"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="3b407478-6902-4f80-b7cf-f33b0854e638"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="124"/>
+                </v:var>
+                <v:var name="VendorId" type="INTEGER">
+                  <a:a name="DESC" value="EN: Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="7d650b2d-4adb-41f0-a68e-5f0c416501d1"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="17"/>
+                </v:var>
+                <v:var name="Release" type="STRING">
+                  <a:a name="DESC" value="EN: Aurix derivative used for thr implementation"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="3b407478-6902-4f40-b7cf-f33b0854e638"/>
+                  <a:da name="DEFAULT" type="XPath" expr="ecu:get('Rel.Derivate')"/>
+                </v:var>
+                <v:var name="VendorApiInfix" type="STRING">
+                  <a:a name="DESC">
+                    <a:v>EN: In driver modules which can be instantiated several times on a single ECU, BSW00347 requires that the name of APIs is extended by the VendorId and a vendor specific name.
+              This parameter is used to specify the vendor specific name. In total, the implementation specific name is generated as follows:
+              &lt;ModuleName&gt;_&gt;VendorId&gt;_&lt;VendorApiInfix&gt;&lt;Api name from SWS&gt;.
+
+              E.g.  assuming that the VendorId of the implementor is 123 and the implementer chose a VendorApiInfix of &quot;v11r456&quot; a api name Can_Write defined in the SWS will translate to Can_123_v11r456Write.
+
+              This parameter is mandatory for all modules with upper multiplicity &gt; 1. It shall not be used for modules with upper multiplicity =1.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPostBuildLoadable</icc:v>
+                    <icc:v class="PublishedInformation">VariantPostBuildSelectable</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="ad363b41-e945-4717-b12f-c2f800ef138e"/>
+                  <a:da name="ENABLE" value="false"/>
+                  <a:da name="DEFAULT" value=""/>
+                </v:var>
+              </v:ctr>
+            </v:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+
+</datamodel>

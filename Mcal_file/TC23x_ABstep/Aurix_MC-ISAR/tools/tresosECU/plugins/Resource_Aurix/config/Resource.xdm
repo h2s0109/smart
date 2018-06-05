@@ -1,0 +1,79 @@
+<?xml version='1.0'?>
+<!--
+/*******************************************************************************
+**                                                                            **
+** Copyright (C) Infineon Technologies (2015)                                 **
+**                                                                            **
+** All rights reserved.                                                       **
+**                                                                            **
+** This document contains proprietary information belonging to Infineon       **
+** Technologies. Passing on and copying of this document, and communication   **
+** of its contents is not permitted without prior written authorization.      **
+**                                                                            **
+********************************************************************************
+**                                                                            **
+**  $FILENAME   : Resource.xdm $                                             **
+**                                                                            **
+**  $CC VERSION : \main\3 $                                                  **
+**                                                                            **
+**  $DATE       : 2015-07-13 $                                               **
+**                                                                            **
+**  AUTHOR      : DL-AUTOSAR-Engineering                                      **
+**                                                                            **
+**  VENDOR      : Infineon Technologies                                       **
+**                                                                            **
+**  DESCRIPTION : This file contains the Configuration description of         **
+**                Resource derivates                                          **
+**                                                                            **
+**  MAY BE CHANGED BY USER [yes/no]: No                                       **
+**                                                                            **
+*******************************************************************************/
+-->
+<datamodel version="3.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/08/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/08/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr name="AUTOSAR" type="AUTOSAR" factory="autosar" 
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd" 
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd" >
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="AURIX" type="AR-PACKAGE">
+        <a:a name="UUID" value="e657b9a5-1655-40db-ad91-29ed3b34035e"/>
+        <d:lst type="ELEMENTS">
+          <d:chc name="Resource" type="AR-ELEMENT" value="MODULE-DEF">
+            <v:ctr type="MODULE-DEF">
+              <a:a name="UUID" value="77b88fa1-a26a-47b1-842b-58159a84f41e"/>
+              <a:a name="RELEASE" value="asc:4.0.3"/>
+              <v:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION">
+                <a:a name="LABEL" value="Config Variant"/>
+                <a:da name="DEFAULT" value="VariantPreCompile"/>
+                <a:da name="RANGE">
+                  <a:v>VariantPreCompile</a:v>
+                </a:da>
+              </v:var>
+              <v:ctr name="ResourceGeneral" type="IDENTIFIABLE">
+                <a:a name="DESC"
+                     value="EN: General container to select sub derivate."/>
+                <a:a name="UUID" value="4acbfb61-2a6a-4a90-a065-4ac83f20d9b1"/>
+                <v:var name="ResourceSubDerivative" type="ENUMERATION">
+                  <a:da name="TOOLTIP" value="Parameter to configure Sub derivates"/>
+                  <a:a name="DESC"
+                       value="EN: Parameter to configure Sub derivates"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" value="PreCompile"/>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:da name="RANGE" type="XPath" expr="ecu:list('Rel.SubDerivate')"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID"
+                       value="2b452b26-b1b5-4997-8a7f-b51e8d257ca4"/>
+                </v:var>
+              </v:ctr>
+           </v:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+</datamodel>

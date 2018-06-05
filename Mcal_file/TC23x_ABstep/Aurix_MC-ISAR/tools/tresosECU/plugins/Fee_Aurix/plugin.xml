@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+/******************************************************************************
+**                                                                           **
+** Copyright (C) Infineon Technologies (2013)                                **
+**                                                                           **
+** All rights reserved.                                                      **
+**                                                                           **
+** This document contains proprietary information belonging to Infineon      **
+** Technologies. Passing on and copying of this document, and communication  **
+** of its contents is not permitted without prior written authorization.     **
+**                                                                           **
+*******************************************************************************
+**                                                                           **
+**  $FILENAME   : plugin.xml $                                               **
+**                                                                           **
+**  $CC VERSION : \main\dev_tc23x_as4.0.3\16 $                               **
+**                                                                           **
+**  $DATE       : 2016-04-18 $                                               **
+**                                                                           **
+**  AUTHOR      : DL-AUTOSAR-Engineering                                     **
+**                                                                           **
+**  VENDOR      : Infineon Technologies                                      **
+**                                                                           **
+**  DESCRIPTION : This file contains                                         **
+**                 - tresosECU plug-in description for FEE driver            **
+**                                                                           **
+**  MAY BE CHANGED BY USER [yes/no]: No                                      **
+**                                                                           **
+******************************************************************************/
+/******************************************************************************
+   Traceability   :
+                    [cover parentID=DS_NAS_FEE_PR741,SAS_NAS_HE1_ALL_PR71,
+                     SAS_NAS_FEE_PR79_PR80_PR623,SAS_NAS_FEE_PR739,
+                     SAS_NAS_FEE_PR740,SAS_NAS_FEE_PR60]
+                    [/cover]
+******************************************************************************/
+-->
+<plugin>
+
+  <!--
+    ** brief AUTOSAR Fee_Aurix plugin
+    ** project AUTOSAR Standard Core
+    **
+    ** All rights exclusively reserved for Elektrobit Automotive GmbH,
+    ** unless expressly agreed to otherwise.
+  -->
+
+  <extension point="dreisoft.tresos.launcher2.plugin.module"
+             id="Fee_AurixAS403_ModuleExt"
+             name="Fee Module with template generator">
+
+    <module id="Fee_AurixAS403"
+            label="%ModuleLabel"
+            mandatory="false"
+            allowMultiple="true"
+            description="%ModuleDesc"
+            copyright="(c) 2012 Infineon Technologies"
+            swVersionMajor="2"
+            swVersionMinor="4"
+            swVersionPatch="0"
+            swVersionSuffix=""
+            specVersionMajor="2"
+            specVersionMinor="0"
+            specVersionPatch="0"
+            specVersionSuffix=""
+            relVersionMajor="4"
+            relVersionMinor="0"
+            relVersionPatch="3"
+            relVersionSuffix=""
+            categoryType="Fee"
+            categoryLayer="MCAL"
+            categoryCategory="ECU Firmware"
+            categoryComponent="ECUC">
+      <cluster name="Memory Stack"/>
+
+      <ecuType target="AURIX" derivate="TC234"/>
+      <ecuType target="AURIX" derivate="TC233"/>
+      <ecuType target="AURIX" derivate="TC237"/>
+
+    </module>
+  </extension>
+
+  <extension point="dreisoft.tresos.launcher2.plugin.configuration"
+             id="Fee_AurixAS403_ConfigExt"
+             name="Fee_Aurix Configuration">
+    <configuration moduleId="Fee_AurixAS403">
+      <schema>
+        <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarSchemaManager"/>
+        <resource value="config/Fee.xdm" type="xdm"/>
+      </schema>
+
+      <data>
+        <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarConfigManager"/>
+        <schemaNode path="ASPath:/AURIX/Fee"/>
+      </data>
+
+      <editor id="Fee_AurixAS403_Edit"
+              label="%ModuleName"
+              tooltip="%ModuleDesc">
+        <class class="dreisoft.tresos.launcher2.editor.GenericConfigEditor">
+          <parameter name="schema" value="ASPath:/AURIX/Fee"/>
+          <parameter name="title" value="Fee"/>
+          <parameter name="noTabs" value="false"/>
+          <parameter name="noLinks" value="true"/>
+          <parameter name="groupLinks" value="false"/>
+          <parameter name="groupContainers" value="false"/>
+          <parameter name="groupTables" value="true"/>
+          <parameter name="optionalGeneralTab" value="true"/>
+        </class>
+      </editor>
+    </configuration>
+  </extension>
+
+  <extension point="dreisoft.tresos.launcher2.plugin.generator"
+              id="Fee_AurixAS403_GenExt"
+              name="Fee_Aurix Generator">
+    <generator moduleId="Fee_AurixAS403"
+               class="dreisoft.tresos.launcher2.generator.TemplateBasedCodeGenerator">
+
+      <!-- common template path parameters -->
+      <parameter name="templates"
+                 mode="generate,verify" value="generate"/>
+
+      <!-- swcd modes and template path parameters -->
+      <parameter name="mode_type"
+                 mode="generate_swcd" value="generate"/>
+
+      <parameter name="mode_type"
+                 mode="verify_swcd" value="verify"/>
+
+      <parameter name="templates"
+                 mode="generate_swcd,verify_swcd" value="generate_swcd"/>
+
+    </generator>
+  </extension>
+
+</plugin>
+

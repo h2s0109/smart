@@ -1,0 +1,610 @@
+<!--
+[!/*****************************************************************************
+**                                                                            **
+** Copyright (C) Infineon Technologies (2014)                                 **
+**                                                                            **
+** All rights reserved.                                                       **
+**                                                                            **
+** This document contains proprietary information belonging to Infineon       **
+** Technologies. Passing on and copying of this document, and communication   **
+** of its contents is not permitted without prior written authorization.      **
+**                                                                            **
+********************************************************************************
+**                                                                            **
+**  $FILENAME   : Spi_ConfigDoc.html $                                       **
+**                                                                            **
+**  $CC VERSION : \main\8 $                                                  **
+**                                                                           **
+**  $DATE       : 2014-11-05 $                                               **
+**                                                                           **
+**  AUTHOR      : DL-AUTOSAR-Engineering                                     **
+**                                                                           **
+**  VENDOR      : Infineon Technologies                                      **
+**                                                                           **
+**  DESCRIPTION : This file contains the information of                      **
+**                the HW SW mapping and MPU settings required for SPI driver **
+**                                                                           **
+**  MAY BE CHANGED BY USER [yes/no]: No                                      **
+**                                                                           **
+*******************************************************************************
+*******************************************************************************
+**  TRACEABILITY :                                                           **
+**  DESCRIPTION  : This file contains the information of                     **
+**                 the HW SW mapping and MPU settings required for SPI driver**
+*******************************************************************************
+-->
+
+[!//
+[!/* Select MODULE-CONFIGURATION as context-node */!][!//
+[!SELECT "as:modconf('Spi')[1]"!][!//
+
+<html>
+  <head>
+    <title>SPI Driver Details</title>
+  </head>
+  <body>
+    <style type="text/css">
+table{table-layout: fixed;width: 300px;}
+table.curvedEdges { border:10px solid ;-webkit-border-radius:13px;-moz-border-radius:13px;-ms-border-radius:13px;-o-border-radius:13px;border-radius:13px; }
+table.curvedEdges td, table.curvedEdges th { border-bottom:1px dotted black;overflow: hidden;width: 400px;padding:5px; }
+</style>
+    <style type="text/css">
+table{table-layout: fixed;width: 300px;}
+table.curvedEdgesSpi { border:10px solid ;-webkit-border-radius:13px;-moz-border-radius:13px;-ms-border-radius:13px;-o-border-radius:13px;border-radius:13px; }
+table.curvedEdgesSpi td, table.curvedEdgesSpi th { border-bottom:1px dotted black; padding:3px; }
+</style>
+<!-- Be sure to place the above styles (i.e. everything between the <style></style> tags) into the document 'head' (i.e. between the <head></head> tags. Everything below goes inside the <body></body> tags) -->		
+    <p>
+      &nbsp;</p>  
+    <h2>
+      /************************************ SPI HW-SW MAP ************************************/</h2>
+    <table border="3" cellpadding="5" cellspacing="0" class="curvedEdgesSpi">
+      <caption><strong>
+        Table 1: Configured QSPI modules</strong></caption>
+      <thead>
+        <tr>
+          <th scope="col" width=200px>
+            QSPI Module</th>
+          <th scope="col" width=200px>
+            Configured/Available</th>
+          <th scope="col" width=200px>
+            Safety Level</th>
+        </tr>
+      </thead>
+      <tbody>
+[!VAR "SpiDriverName" = "'SpiDriver'"!][!//
+[!VAR "SpiChannelName" = "'SpiChannel'"!][!//
+[!VAR "SpiJobName" = "'SpiJob'"!][!//
+[!VAR "SpiJobAssignmentName" = "'SpiJobAssignment'"!][!//
+[!VAR "SpiDeviceAssignmentName" = "'SpiDeviceAssignment'"!][!//
+[!VAR "MajorVersion" = "text:split($moduleReleaseVer, '.')[position()-1 = 0]"!][!//
+[!IF "SpiSafety/SpiSafetyEnable = 'true'"!][!//
+[!VAR "SpiSafetyMasterQSPI" = "node:value(./SpiGeneral/SpiSafetyMasterRef)"!][!//
+[!ELSE!][!//
+[!VAR "SpiSafetyMasterQSPI" = "'NoSafetyMaster'"!][!//
+[!ENDIF!][!//
+
+[!IF "SpiSafety/SpiSafetyEnable = 'true'"!][!//
+[!VAR "SpiInitCheckAPI" = "node:value(./SpiSafety/SpiInitCheckApi)"!][!//
+[!ELSE!][!//
+[!VAR "SpiInitCheckAPI" = "'false'"!][!//
+[!ENDIF!][!//
+
+[!IF "SpiGeneral/SpiCancelApi = 'true'"!][!//
+[!VAR "SpiCancelAPI" = "'true'"!][!//
+[!ELSE!][!//
+[!VAR "SpiCancelAPI" = "'false'"!][!//
+[!ENDIF!][!//
+
+[!IF "SpiGeneral/SpiHwStatusApi = 'true'"!][!//
+[!VAR "SpiHwStatusAPI" = "'true'"!][!//
+[!ELSE!][!//
+[!VAR "SpiHwStatusAPI" = "'false'"!][!//
+[!ENDIF!][!//
+
+[!IF "SpiGeneral/SpiVersionInfoApi = 'true'"!][!//
+[!VAR "SpiVersionInfoAPI" = "'true'"!][!//
+[!ELSE!][!//
+[!VAR "SpiVersionInfoAPI" = "'false'"!][!//
+[!ENDIF!][!//
+
+[!IF "SpiSafety/SpiSafetyEnable = 'true'"!][!//
+[!IF "SpiGeneral/SpiSlaveSelectRef != 'SPI_SLAVE_UNUSED'"!][!//
+[!VAR "SpiSlaveUsed" = "'true'"!][!//
+[!ELSE!][!//
+[!VAR "SpiSlaveUsed" = "'false'"!][!//
+[!ENDIF!][!//
+[!ELSE!][!//
+[!VAR "SpiSlaveUsed" = "'false'"!][!//
+[!ENDIF!][!//
+
+[!IF "SpiGeneral/SpiChannelBuffersAllowed = 0 or SpiGeneral/SpiChannelBuffersAllowed = 2"!][!//
+[!VAR "SpiIBUsed" = "'true'"!][!//
+[!ELSE!][!//
+[!VAR "SpiIBUsed" = "'false'"!][!//
+[!ENDIF!][!//
+[!IF "SpiGeneral/SpiChannelBuffersAllowed = 1 or SpiGeneral/SpiChannelBuffersAllowed = 2"!][!//
+[!VAR "SpiEBUsed" = "'true'"!][!//
+[!ELSE!][!//
+[!VAR "SpiEBUsed" = "'false'"!][!//
+[!ENDIF!][!//
+
+[!IF "SpiGeneral/SpiLevelDelivered = 1 or SpiGeneral/SpiLevelDelivered = 2"!][!//
+[!VAR "SpiAsyncLevel" = "'true'"!][!//
+[!ELSE!][!//
+[!VAR "SpiAsyncLevel" = "'false'"!][!//
+[!ENDIF!][!//
+[!IF "SpiGeneral/SpiLevelDelivered = 0 or SpiGeneral/SpiLevelDelivered = 2"!][!//
+[!VAR "SpiSyncLevel" = "'true'"!][!//
+[!ELSE!][!//
+[!VAR "SpiSyncLevel" = "'false'"!][!//
+[!ENDIF!][!//
+
+[!VAR "QSPI0" = "num:i(0)"!][!//
+[!VAR "QSPI1" = "num:i(0)"!][!//
+[!VAR "QSPI2" = "num:i(0)"!][!//
+[!VAR "QSPI3" = "num:i(0)"!][!//
+[!VAR "QSPI4" = "num:i(0)"!][!//
+[!VAR "QSPI5" = "num:i(0)"!][!//
+
+
+[!FOR "Index" = "num:i(0)" TO "num:i(count(node:ref($SpiDriverName)/*)) - num:i(1)"!][!//
+[!SELECT "node:ref($SpiDriverName)/*[@index =$Index]"!][!//
+  [!IF "node:exists(../../SpiHwConfiguration/SpiHwConfigurationQspi0)"!][!//
+  [!IF "num:i(count(node:ref($SpiJobName)/*[node:ref(node:ref($SpiDeviceAssignmentName))/SpiHwUnit/SpiAssignedHwModule='QSPI0']) )>0"!][!//
+  [!VAR "QSPI0" = "num:i(1)"!][!//
+  [!ENDIF!][!//
+  [!ENDIF!][!//
+  [!IF "node:exists(../../SpiHwConfiguration/SpiHwConfigurationQspi1)"!][!//
+  [!IF "num:i(count(node:ref($SpiJobName)/*[node:ref(node:ref($SpiDeviceAssignmentName))/SpiHwUnit/SpiAssignedHwModule='QSPI1']) )>0"!][!//
+  [!VAR "QSPI1" = "num:i(1)"!][!//
+  [!ENDIF!][!//
+  [!ENDIF!][!//
+  [!IF "node:exists(../../SpiHwConfiguration/SpiHwConfigurationQspi2)"!][!//
+  [!IF "num:i(count(node:ref($SpiJobName)/*[node:ref(node:ref($SpiDeviceAssignmentName))/SpiHwUnit/SpiAssignedHwModule='QSPI2']) )>0"!][!//
+  [!VAR "QSPI2" = "num:i(1)"!][!//
+  [!ENDIF!][!//
+  [!ENDIF!][!//
+  [!IF "node:exists(../../SpiHwConfiguration/SpiHwConfigurationQspi3)"!][!//
+  [!IF "num:i(count(node:ref($SpiJobName)/*[node:ref(node:ref($SpiDeviceAssignmentName))/SpiHwUnit/SpiAssignedHwModule='QSPI3']) )>0"!][!//
+  [!VAR "QSPI3" = "num:i(1)"!][!//
+  [!ENDIF!][!//
+  [!ENDIF!][!//
+  [!IF "node:exists(../../SpiHwConfiguration/SpiHwConfigurationQspi4)"!][!//
+  [!IF "num:i(count(node:ref($SpiJobName)/*[node:ref(node:ref($SpiDeviceAssignmentName))/SpiHwUnit/SpiAssignedHwModule='QSPI4']) )>0"!][!//
+  [!VAR "QSPI4" = "num:i(1)"!][!//
+  [!ENDIF!][!//
+  [!ENDIF!][!//
+  [!IF "node:exists(../../SpiHwConfiguration/SpiHwConfigurationQspi5)"!][!//
+  [!IF "num:i(count(node:ref($SpiJobName)/*[node:ref(node:ref($SpiDeviceAssignmentName))/SpiHwUnit/SpiAssignedHwModule='QSPI5']) )>0"!][!//
+  [!VAR "QSPI5" = "num:i(1)"!][!//
+  [!ENDIF!][!//
+  [!ENDIF!][!//
+[!ENDSELECT!][!//
+[!ENDFOR!][!//  
+
+<!-- This snippet must be checked before we assign slave related values to QSPIn variables. -->		
+[!VAR "SpiAsilQmVal" = "num:i(0)"!][!//
+[!IF "SpiSafety/SpiSafetyEnable = 'true'"!][!//
+<!-- num:i(1): Both ASIL and QM, num:i(2): QM Only, num:i(3): ASIL only,   -->		
+[!IF "$QSPI0 + $QSPI1 + $QSPI2 + $QSPI3 + $QSPI5 > num:i(1)"!][!//
+[!VAR "SpiAsilQmVal" = "num:i(1)"!][!//
+[!ELSE!][!//
+[!VAR "SpiAsilQmVal" = "num:i(3)"!][!//
+[!ENDIF!][!//
+[!ELSE!][!//
+[!VAR "SpiAsilQmVal" = "num:i(2)"!][!//
+[!ENDIF!][!//
+
+[!IF "SpiSafety/SpiSafetyEnable = 'true'"!][!//
+[!IF "SpiGeneral/SpiSlaveSelectRef = 'QSPI0'"!][!//
+[!VAR "QSPI0" = "num:i(2)"!][!//
+[!ENDIF!][!//
+[!IF "SpiGeneral/SpiSlaveSelectRef = 'QSPI1'"!][!//
+[!VAR "QSPI1" = "num:i(2)"!][!//
+[!ENDIF!][!//
+[!IF "SpiGeneral/SpiSlaveSelectRef = 'QSPI2'"!][!//
+[!VAR "QSPI2" = "num:i(2)"!][!//
+[!ENDIF!][!//
+[!IF "SpiGeneral/SpiSlaveSelectRef = 'QSPI3'"!][!//
+[!VAR "QSPI3" = "num:i(2)"!][!//
+[!ENDIF!][!//
+[!IF "SpiGeneral/SpiSlaveSelectRef = 'QSPI4'"!][!//
+[!VAR "QSPI4" = "num:i(2)"!][!//
+[!ENDIF!][!//
+[!IF "SpiGeneral/SpiSlaveSelectRef = 'QSPI5'"!][!//
+[!VAR "QSPI5" = "num:i(2)"!][!//
+[!ENDIF!][!//
+[!ENDIF!][!//
+
+[!SELECT "node:ref($SpiDriverName)/*[@index =$Index]"!][!//
+        <tr>
+        	<td>QSPI0</td>
+        	[!IF "$QSPI0 = num:i(1)"!][!//
+          <td>Configured: Master</td>
+        	  [!IF "$SpiSafetyMasterQSPI = 'QSPI0'"!][!//
+            <td>ASIL</td>
+            [!ELSE!][!//
+            <td>QM</td>
+            [!ENDIF!][!//
+          [!ELSEIF "$QSPI0 = num:i(2)"!][!//
+          <td>Configured: Slave</td>
+          <td>ASIL</td>          
+          [!ELSEIF "node:exists(../../SpiHwConfiguration/SpiHwConfigurationQspi0)"!][!//
+          <td>Not Configured</td>
+          <td> -- </td>            
+          [!ELSE!][!//
+          <td>Not Available</td>
+          <td> -- </td>
+          [!ENDIF!][!//
+        </tr>
+        <tr>
+        	<td>QSPI1</td>
+        	[!IF "$QSPI1 = num:i(1)"!][!//
+          <td>Configured: Master</td>
+        	  [!IF "$SpiSafetyMasterQSPI = 'QSPI1'"!][!//
+            <td>ASIL</td>
+            [!ELSE!][!//
+            <td>QM</td>
+            [!ENDIF!][!//
+          [!ELSEIF "$QSPI1 = num:i(2)"!][!//
+          <td>Configured: Slave</td>
+          <td>ASIL</td>          
+          [!ELSEIF "node:exists(../../SpiHwConfiguration/SpiHwConfigurationQspi1)"!][!//
+          <td>Not Configured</td>
+          <td> -- </td>            
+          [!ELSE!][!//
+          <td>Not Available</td>
+          <td> -- </td>
+          [!ENDIF!][!//
+        </tr>
+        <tr>
+        	<td>QSPI2</td>
+        	[!IF "$QSPI2 = num:i(1)"!][!//
+          <td>Configured: Master</td>
+        	  [!IF "$SpiSafetyMasterQSPI = 'QSPI2'"!][!//
+            <td>ASIL</td>
+            [!ELSE!][!//
+            <td>QM</td>
+            [!ENDIF!][!//
+          [!ELSEIF "$QSPI2 = num:i(2)"!][!//
+          <td>Configured: Slave</td>
+          <td>ASIL</td>          
+          [!ELSEIF "node:exists(../../SpiHwConfiguration/SpiHwConfigurationQspi2)"!][!//
+          <td>Not Configured</td>
+          <td> -- </td>            
+          [!ELSE!][!//
+          <td>Not Available</td>
+          <td> -- </td>
+          [!ENDIF!][!//
+        </tr>
+        <tr>
+        	<td>QSPI3</td>
+        	[!IF "$QSPI3 = num:i(1)"!][!//
+          <td>Configured: Master</td>
+        	  [!IF "$SpiSafetyMasterQSPI = 'QSPI3'"!][!//
+            <td>ASIL</td>
+            [!ELSE!][!//
+            <td>QM</td>
+            [!ENDIF!][!//
+          [!ELSEIF "$QSPI3 = num:i(2)"!][!//
+          <td>Configured: Slave</td>
+          <td>ASIL</td>          
+          [!ELSEIF "node:exists(../../SpiHwConfiguration/SpiHwConfigurationQspi3)"!][!//
+          <td>Not Configured</td>
+          <td> -- </td>            
+          [!ELSE!][!//
+          <td>Not Available</td>
+          <td> -- </td>
+          [!ENDIF!][!//
+        </tr>
+        <tr>
+        	<td>QSPI4</td>
+        	[!IF "$QSPI4 = num:i(1)"!][!//
+          <td>Configured: Master</td>
+        	  [!IF "$SpiSafetyMasterQSPI = 'QSPI4'"!][!//
+            <td>ASIL</td>
+            [!ELSE!][!//
+            <td>QM</td>
+            [!ENDIF!][!//
+          [!ELSEIF "$QSPI4 = num:i(2)"!][!//
+          <td>Configured: Slave</td>
+          <td>ASIL</td>          
+          [!ELSEIF "node:exists(../../SpiHwConfiguration/SpiHwConfigurationQspi4)"!][!//
+          <td>Not Configured</td>
+          <td> -- </td>            
+          [!ELSE!][!//
+          <td>Not Available</td>
+          <td> -- </td>
+          [!ENDIF!][!//
+        </tr>
+        <tr>
+        	<td>QSPI5</td>
+        	[!IF "$QSPI5 = num:i(1)"!][!//
+          <td>Configured: Master</td>
+        	  [!IF "$SpiSafetyMasterQSPI = 'QSPI5'"!][!//
+            <td>ASIL</td>
+            [!ELSE!][!//
+            <td>QM</td>
+            [!ENDIF!][!//
+          [!ELSEIF "$QSPI5 = num:i(2)"!][!//
+          <td>Configured: Slave</td>
+          <td>ASIL</td>          
+          [!ELSEIF "node:exists(../../SpiHwConfiguration/SpiHwConfigurationQspi5)"!][!//
+          <td>Not Configured</td>
+          <td> -- </td>            
+          [!ELSE!][!//
+          <td>Not Available</td>
+          <td> -- </td>
+          [!ENDIF!][!//
+        </tr>
+[!ENDSELECT!][!//
+
+    <table border="3" cellpadding="5" cellspacing="0" class="curvedEdgesSpi">
+      <caption><strong>
+        Table 2: SPI SFR Usage API wise</strong></caption>
+      <thead>
+        <tr>
+          <th scope="col" width=200px>
+            API Name</th>
+          <th scope="col" width=200px>
+            SFR's Used</th>
+          <th scope="col" width=200px>
+            Remarks</th>
+        </tr>
+
+      </thead>
+      <tbody>
+[!IF "$SpiAsyncLevel = 'true'"!][!//          	      	
+          <td>Spi_Init</td>
+          <td>BACONENTRY, CLC, GLOBALCON, PISEL, DATAENTRY[0], RXEXIT, ECON 
+          	<br>DMA:CLC, DMA:ERRINTR 
+          	<br>SRC_QSPImTX, SRC_QSPImRX</td>
+          <td>where <br>'m' : QSPI Module(see Table 1)</td>		  
+[!ELSE!][!//      
+          <td>Spi_Init</td>
+          <td>BACONENTRY, CLC, GLOBALCON, PISEL, DATAENTRY[0], RXEXIT, ECON
+          <td>--</td>		  
+[!ENDIF!][!//
+
+    [!IF "$SpiInitCheckAPI = 'true'"!][!//
+[!IF "$SpiAsyncLevel = 'true'"!][!//          	      	
+      <tr>
+          <td>Spi_InitCheck</td>
+          <td>BACONENTRY, CLC, GLOBALCON, PISEL, DATAENTRY[0], RXEXIT, ECON
+          	<br>DMA:CLC, DMA:ERRINTR 
+          	<br>SRC_QSPImTX, SRC_QSPImRX</td>
+          <td>where <br>'m' : QSPI Module(see Table 1)</td>		  
+      </tr>
+[!ELSE!][!//      
+      <tr>
+          <td>Spi_InitCheck</td>
+          <td>BACONENTRY, CLC, GLOBALCON, PISEL, DATAENTRY[0], RXEXIT, ECON
+          <td>--</td>		  
+      </tr>
+    [!ENDIF!][!//
+[!ENDIF!][!//    
+[!IF "$SpiAsyncLevel = 'true'"!][!//          	
+      <tr>
+          <td>Spi_DeInit</td>
+          <td>SSOC, GLOBALCON, CLC, ECON
+          	<br>SRC_QSPImTX, SRC_QSPImRX, SRC_QSPImERR
+          	<br>Port: OMR</td>
+          <td>where <br>'m' : QSPI Module(see Table 1)</td>		  
+      </tr>
+[!ELSE!][!//      
+      <tr>
+          <td>Spi_DeInit</td>
+          <td>SSOC, GLOBALCON, CLC, ECON
+          	<br>Port: OMR</td>
+          <td>--</td>		  
+      </tr>
+[!ENDIF!][!// 
+    [!IF "$SpiIBUsed = 'true'"!][!//          
+      <tr>
+          <td>Spi_WriteIB</td>
+          <td>No SFR's Used</td>
+          <td>--</td>		  
+      </tr>
+    [!ENDIF!][!//        
+     [!IF "$SpiAsyncLevel = 'true'"!][!//
+      <tr>
+          <td>Spi_AsyncTransmit</td>
+          <td>SRC_DMACHn, Port: OMR
+          	<br>SSOC, ERR
+          	<br>SRC_QSPImTX, SRC_QSPImRX
+          	<br>BACON, BACONENTRY, DATAENTRY[0], FLAGSCLEAR, GLOBALCON, GLOBALCON1, STATUS, RXEXIT</td>
+          <td>where <br>'m' : QSPI Module(see Table 1)<br>
+                    'n' : DMA Channel Number </td>
+      </tr>
+    [!ENDIF!][!//  
+    [!IF "$SpiIBUsed = 'true'"!][!//     
+      <tr>
+          <td>Spi_ReadIB</td>
+          <td>No SFR's Used</td>
+          <td>--</td>		  
+      </tr>
+    [!ENDIF!][!//        
+    [!IF "$SpiEBUsed = 'true'"!][!//         
+      <tr>
+          <td>Spi_SetupEB</td>
+          <td>No SFR's Used</td>
+          <td>--</td>		  
+      </tr>
+    [!ENDIF!][!//              
+      <tr>
+          <td>Spi_GetStatus</td>
+          <td>STATUS</td>
+          <td>--</td>		  
+      </tr>
+      <tr>
+          <td>Spi_GetJobResult</td>
+          <td>No SFR's Used</td>
+          <td>--</td>		  
+      </tr>
+      <tr>
+          <td>Spi_GetSequenceResult</td>
+          <td>No SFR's Used</td>
+          <td>--</td>		  
+      </tr>
+    [!IF "$SpiVersionInfoAPI = 'true'"!][!//      
+      <tr>
+          <td>Spi_GetVersionInfo</td>
+          <td>No SFR's Used</td>
+          <td>--</td>		  
+      </tr>
+    [!ENDIF!][!//       
+     [!IF "$SpiSyncLevel = 'true'"!][!//      
+      <tr>
+          <td>Spi_SyncTransmit</td>
+          <td>BACON, BACONENTRY, DATAENTRY[0], FLAGSCLEAR, GLOBALCON, GLOBALCON1, STATUS, RXEXIT, SSOC
+          	<br>Port: OMR
+          <td>--</td>		  
+      </tr>
+    [!ENDIF!][!//       
+     [!IF "$SpiHwStatusAPI = 'true'"!][!//            
+      <tr>
+          <td>Spi_GetHWUnitStatus</td>
+          <td>STATUS</td>
+          <td>--</td>		  
+      </tr>
+    [!ENDIF!][!// 
+    [!IF "$SpiCancelAPI = 'true'"!][!//            
+      <tr>
+          <td>Spi_Cancel</td>
+          <td>No SFR's Used</td>
+          <td>--</td>		  
+      </tr>
+    [!ENDIF!][!//
+    [!IF "SpiGeneral/SpiLevelDelivered = 2"!][!//    
+      <tr>
+          <td>Spi_SetAsyncMode</td>
+          <td>SRC_DMACHn
+          	<br>SRC_QSPImTX, SRC_QSPImRX, SRC_QSPImERR</td>
+          <td>where <br>'m' : QSPI Module(see Table 1)<br>
+                    'n' : DMA Channel Number </td>
+      </tr>
+     [!ENDIF!][!//      
+     [!IF "$SpiSlaveUsed = 'true'"!][!//      
+      <tr>
+          <td>Spi_SlaveSetupEB</td>
+          <td>No SFR's Used</td>
+          <td>--</td>		  
+      </tr>
+      <tr>
+          <td>Spi_SlaveReadPrepare</td>
+          <td>SRC_QSPImRX, SRC_QSPImERR
+          	<br>BACON, BACONENTRY, DATAENTRY[0], FLAGSCLEAR, GLOBALCON</td>
+          <td>where <br>'m' : QSPI Module(see Table 1) </td>		  
+      </tr>
+    [!ENDIF!][!//      
+    [!IF "$SpiAsyncLevel = 'true' and $SpiSyncLevel = 'true'"!][!//
+      <tr>
+          <td>Spi_MainFunction_Handling</td>
+          <td>BACONENTRY, FLAGSCLEAR, STATUS, DATAENTRY[0], ECON, GLOBALCON, GLOBALCON1, SSOC 
+          	<br>SRC_DMACHn, SRC_DMAERR
+          	<br>SRC_QSPImPT, SRC_QSPImTX, SRC_QSPImRX, SRC_QSPImU, SRC_QSPImERR</td>
+          <td>where <br>'m' : QSPI Module(see Table 1)<br>
+                    'n' : DMA Channel Number </td>
+      </tr>
+    [!ENDIF!][!//            
+  </body>
+</html>                                    
+<br><br>
+    <table border="3" cellpadding="5" cellspacing="0" class="curvedEdgesSpi">
+      <caption><strong><br>
+        Table 3: Common SFR and Memory Range</strong></caption>
+      <thead>
+        <tr>
+          <th scope="col" width=200px>
+            Start Address</th>
+          <th scope="col" width=200px>
+            End Address</th>
+          <th scope="col" width=200px>
+            Remarks</th>
+        </tr>
+      </thead>
+      <tbody>
+      [!IF "$SpiAsilQmVal < num:i(3)"!][!//          	      	            	
+      <tr>
+          <td>SPI_HW_MODULE[m].CLC</td>
+          <td>SPI_HW_MODULE[m].RXEXIT</td>
+          <td>where m : QSPI Module. <br>Refer Table 1 for configured QM modules</td>		  
+      </tr>
+      [!ENDIF!][!//                        
+      [!IF "$SpiAsyncLevel = 'true'"!][!//          	      	      
+      <tr>
+          <td>MODULE_DMA.CH[n].CLC</td>
+          <td>MODULE_DMA.CH[n].CHCSR</td>
+          <td>'n' : DMA Channel Number</td>		  
+      </tr>
+      [!ENDIF!][!//                  
+      <tr>
+          <td>SPI_START_SEC_VAR_8BIT</td>
+          <td>SPI_STOP_SEC_VAR_8BIT</td>
+          <td>Variables for Status, Mode and Number of IB channels </td>		  
+      </tr>
+      <tr>
+          <td>SPI_START_SEC_VAR_32BIT</td>
+          <td>SPI_STOP_SEC_VAR_32BIT</td>
+          <td>Variables for configPtr(Only if PB), JobResult</td>		  
+      </tr>
+      <tr>
+          <td>SPI_START_SEC_VAR_FAST_32BIT</td>
+          <td>SPI_STOP_SEC_VAR_FAST_32BIT</td>
+          <td>Variables for Sync Lock and Dummy destPtr</td>		  
+      </tr>
+      <tr>
+          <td>SPI_START_SEC_VAR_UNSPECIFIED</td>
+          <td>SPI_STOP_SEC_VAR_UNSPECIFIED</td>
+          <td>Variables for Status, IB/EB Buffers,Job,Channel,Sequence</td>		  
+      </tr>
+      
+      <h2><br>
+      /************************** SPI MPU Settings **************************/</h2>
+            	
+[!IF "SpiSafety/SpiSafetyEnable = 'true'"!][!//            	
+    <table border="3" cellpadding="5" cellspacing="0" class="curvedEdgesSpi">
+      <caption><strong><br>
+        Table 4: ASIL-B SFR and Memory Range</strong></caption>
+      <thead>
+        <tr>
+          <th scope="col" width=200px>
+            Start Address</th>
+          <th scope="col" width=200px>
+            End Address</th>
+          <th scope="col" width=200px>
+            Remarks</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr>
+          <td>SPI_HW_MODULE[m].CLC</td>
+          <td>SPI_HW_MODULE[m].RXEXIT</td>
+          <td>where m : QSPI Module. <br>Refer Table 1 for configured ASIL module</td>		  
+      </tr>
+      <tr>
+          <td>SPI_START_SEC_ASIL0_VAR_32BIT</td>
+          <td>SPI_STOP_SEC_ASIL0_VAR_32BIT</td>
+          <td>Variables for JobResult</td>		  
+      </tr>
+      <tr>
+          <td>SPI_START_SEC_ASIL0_VAR_UNSPECIFIED</td>
+          <td>SPI_STOP_SEC_ASIL0_VAR_UNSPECIFIED</td>
+          <td>Variables for Status, Job,Channel,Sequence</td>		  
+      </tr>
+     [!IF "$SpiSlaveUsed = 'true'"!][!//            
+      <tr>
+          <td>SPI_START_SEC_ASIL1_VAR_UNSPECIFIED</td>
+          <td>SPI_STOP_SEC_ASIL1_VAR_UNSPECIFIED</td>
+          <td>Variables for Slave Status, Job,Channel,Sequence</td>		  
+      </tr>
+      <tr>
+          <td>SPI_START_SEC_ASIL1_VAR_FAST_32BIT</td>
+          <td>SPI_STOP_SEC_ASIL1_VAR_FAST_32BIT</td>
+          <td>Variables for Slave configPtr(Only if PB), JobResult</td>		  
+      </tr>
+      [!ENDIF!][!//                              
+[!ENDIF!][!//      
+
+[!ENDSELECT!][!//

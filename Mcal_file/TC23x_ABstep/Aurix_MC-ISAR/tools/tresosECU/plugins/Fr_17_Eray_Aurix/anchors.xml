@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+<!--
+/*******************************************************************************
+**                                                                            **
+** Copyright (C) Infineon Technologies (2012)                                 **
+**                                                                            **
+** All rights reserved.                                                       **
+**                                                                            **
+** This document contains proprietary information belonging to Infineon       **
+** Technologies. Passing on and copying of this document, and communication   **
+** of its contents is not permitted without prior written authorization.      **
+**                                                                            **
+********************************************************************************
+**                                                                            **
+**  $FILENAME   : anchors.xml $                                              **
+**                                                                            **
+**  $CC VERSION : \main\3 $                                                  **
+**                                                                            **
+**  $DATE       : 2014-05-21 $                                               **
+**                                                                            **
+**  AUTHOR    : DL-AUTOSAR-Engineering                                        **
+**                                                                            **
+**  VENDOR    : Infineon Technologies                                         **
+**                                                                            **
+**  DESCRIPTION  : This file contains reference to User Manual                **
+**                                                                            **
+**                                                                            **
+**  MAY BE CHANGED BY USER [Yes/No]: No                                       **
+**                                                                            **
+*******************************************************************************/
+/*******************************************************************************
+**  Traceability   :                                                          **
+**  [cover parentID=SAS_NAS_FR_PR745]
+    [/cover]                                                                  **
+*******************************************************************************/
+
+-->
+<toc label="Fr Aurix/TC27x" link_to="../eb.tresos.doc.autocore.mcal.releasenotes/anchors.xml#EB_tresos_AutoCore_MCAL_releasenotes" topic="$nl$/index.html">
+ <topic label="Fr" href="">
+   <topic label="Users Guide &quot; Aurix_MC-ISAR_UM_FR_17_ERAYDriver.pdf &quot; (.doc)" href="doc/Aurix_MC-ISAR_UM_FR_17_ERAYDriver.pdf"/>
+ </topic>
+</toc>

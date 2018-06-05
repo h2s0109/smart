@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*******************************************************************************
+**                                                                            **
+** Copyright (C) Infineon Technologies (2015)                                 **
+**                                                                            **
+** All rights reserved.                                                       **
+**                                                                            **
+** This document contains proprietary information belonging to Infineon       **
+** Technologies. Passing on and copying of this document, and communication   **
+** of its contents is not permitted without prior written authorization.      **
+**                                                                            **
+********************************************************************************
+**                                                                            **
+**  FILENAME  : Crc_Catalog.xml                                               **
+**                                                                            **
+**  VERSION   : 0.0.1                                                         **
+**                                                                            **
+**  DATE      : 2013.1.16                                                    **
+**                                                                            **
+**  AUTHOR    : DL-AUTOSAR-Engineering                                        **
+**                                                                            **
+**  VENDOR    : Infineon Technologies                                         **
+**                                                                            **
+**  DESCRIPTION  : This file contains the mapping of                          **
+**                 AUTOSAR-ENGINEERING-OBJECTs to the respective Files        **
+**                                                                            **
+**  MAY BE CHANGED BY USER [Yes/No]: No                                       **
+**                                                                            **
+*******************************************************************************/
+
+/*******************************************************************************
+**                      Author(s) Identity                                    **
+********************************************************************************
+**                                                                            **
+** Initials     Name                                                          **
+********************************************************************************
+** KP           Kaushal Purohit                                               **
+*******************************************************************************/
+
+
+/******************************************************************************
+**                      Revision Control History                              *
+******************************************************************************/
+/*
+ * V0.0.1: 2013.1.16  KP : Initial version 
+ *
+*******************************************************************************/
+/*  TRACEABILITY: [cover parentID=SAS_AS4XX_CRC_PR696,SAS_AS4XX_CRC_PR697,
+    SAS_AS4XX_CRC_PR698]
+    [/cover]                                                                  */
+-->
+<CATALOG xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="catalog_V3_0_0.ml.xsd">
+    <SHORT-NAME>CrcCatalog</SHORT-NAME>
+    <ABLOCKS>
+        <ABLOCK>
+            <SHORT-NAME>ssc::src::Crc.c</SHORT-NAME>
+            <CATEGORY>SWSRC</CATEGORY>
+            <FILES>
+                <FILE>ssc/src/Crc.c</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>ssc::inc::Crc.h</SHORT-NAME>
+            <CATEGORY>SWHDR</CATEGORY>
+            <FILES>
+                <FILE>ssc/inc/Crc.h</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>generate::inc::Crc_Cfg.h</SHORT-NAME>
+            <CATEGORY>SWHDR</CATEGORY>
+            <FILES>
+                <FILE>generate/inc/Crc_Cfg.h</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>config::Crc.xdm</SHORT-NAME>
+            <CATEGORY>SWTOOL</CATEGORY>
+            <FILES>
+                <FILE>config/Crc.xdm</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>autosar::Crc.bmd</SHORT-NAME>
+            <CATEGORY>SWTOOL</CATEGORY>
+            <FILES>
+                <FILE>autosar/Crc.bmd</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>mak::crc_infineon_tricore::ssc::mak::infineon_crc_cfg.mak</SHORT-NAME>
+            <CATEGORY>SWMAKE</CATEGORY>
+            <FILES>
+                <FILE>mak/crc_infineon_tricore/ssc/mak/infineon_crc_cfg.mak</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>mak::crc_infineon_tricore::ssc::mak::infineon_crc_check.mak</SHORT-NAME>
+            <CATEGORY>SWMAKE</CATEGORY>
+            <FILES>
+                <FILE>mak/crc_infineon_tricore/ssc/mak/infineon_crc_check.mak</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>mak::crc_infineon_tricore::ssc::mak::infineon_crc_defs.mak</SHORT-NAME>
+            <CATEGORY>SWMAKE</CATEGORY>
+            <FILES>
+                <FILE>mak/crc_infineon_tricore/ssc/mak/infineon_crc_defs.mak</FILE>
+            </FILES>
+        </ABLOCK>
+        <ABLOCK>
+            <SHORT-NAME>mak::crc_infineon_tricore::ssc::mak::infineon_crc_rules.mak</SHORT-NAME>
+            <CATEGORY>SWMAKE</CATEGORY>
+            <FILES>
+                <FILE>mak/crc_infineon_tricore/ssc/mak/infineon_crc_rules.mak</FILE>
+            </FILES>
+        </ABLOCK>
+    </ABLOCKS>
+</CATALOG>

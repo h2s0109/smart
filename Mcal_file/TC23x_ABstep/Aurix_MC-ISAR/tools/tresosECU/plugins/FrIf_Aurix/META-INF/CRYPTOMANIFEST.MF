@@ -1,0 +1,8 @@
+
+Name: config/FrIf.xdm
+SignatureAlgorithmID: DSA
+SignatureKeyProviderID: plugin.launcher2.licenseFileKeyProvider
+Signature: 11313377420733342666904416497329806389573487089046067053510
+ 5881744013155152923282165063597646497224761879982394
+SignatureKeyID: Infineon
+

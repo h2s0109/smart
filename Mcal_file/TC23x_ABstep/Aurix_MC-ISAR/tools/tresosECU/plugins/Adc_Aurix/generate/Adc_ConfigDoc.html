@@ -1,0 +1,850 @@
+<!--
+*******************************************************************************
+**                                                                           **
+** Copyright (C) Infineon Technologies (2013)                                **
+**                                                                           **
+** All rights reserved.                                                      **
+**                                                                           **
+** This document contains proprietary information belonging to Infineon      **
+** Technologies. Passing on and copying of this document, and communication  **
+** of its contents is not permitted without prior written authorization.     **
+**                                                                           **
+*******************************************************************************
+**                                                                           **
+**  $FILENAME   : Adc_ConfigDoc.html $                                       **
+**                                                                           **
+**  $CC VERSION : \main\9 $                                                  **
+**                                                                           **
+**  $DATE       : 2015-04-28 $                                               **
+**                                                                           **
+**  AUTHOR      : DL-AUTOSAR-Engineering                                     **
+**                                                                           **
+**  VENDOR      : Infineon Technologies                                      **
+**                                                                           **
+**  DESCRIPTION : This file contains the information of                      **
+**                the HW SW mapping and MPU settings required for ADC driver **
+**                                                                           **
+**  MAY BE CHANGED BY USER [yes/no]: No                                      **
+**                                                                           **
+*******************************************************************************
+*******************************************************************************
+**  TRACEABILITY :[cover parentID=DS_MCAL_ADC_0410_0411,
+DS_NAS_ADC_PR115_PR131]                                                      **
+**  DESCRIPTION  : This file contains the information of                     **
+**                 the HW SW mapping and MPU settings required for ADC driver**
+**                [/cover]                                                   **
+*******************************************************************************
+-->
+
+[!//
+[!/* Select MODULE-CONFIGURATION as context-node */!][!//
+[!SELECT "as:modconf('Adc')"!][!//
+
+<html>
+  <head>
+    <title>ADC Driver Details</title>
+  </head>
+  <body>
+    <style type="text/css">
+table{table-layout: fixed;width: 300px;}
+table.curvedEdges { border:10px solid ;-webkit-border-radius:13px;-moz-border-radius:13px;-ms-border-radius:13px;-o-border-radius:13px;border-radius:13px; }
+table.curvedEdges td, table.curvedEdges th { border-bottom:1px dotted black;overflow: hidden;width: 400px;padding:5px; }
+</style>
+    <style type="text/css">
+table{table-layout: fixed;width: 300px;}
+table.curvedEdgesAdc { border:10px solid ;-webkit-border-radius:13px;-moz-border-radius:13px;-ms-border-radius:13px;-o-border-radius:13px;border-radius:13px; }
+table.curvedEdgesAdc td, table.curvedEdgesAdc th { border-bottom:1px dotted black; padding:3px; }
+</style>
+<!-- Be sure to place the above styles (i.e. everything between the <style></style> tags) into the document 'head' (i.e. between the <head></head> tags. Everything below goes inside the <body></body> tags) -->		
+    <p>
+      &nbsp;</p>  
+    <h2>
+      /*****************************************ADC HW-SW MAP*****************************************/</h2>
+    <table border="3" cellpadding="5" cellspacing="0" class="curvedEdgesAdc">
+      <caption><strong>
+        Table 1: Configured Adc channel groups</strong></caption>
+      <thead>
+        <tr>
+          <th scope="col" width=425px>
+            Group Symbolic Name</th>
+          <th scope="col" width=150px>
+            Group ID</th>
+          <th scope="col" width=150px>
+            Adc Kernel Number</th>
+          <th scope="col" width=270px>
+            Adc Channel Number</th>
+          <th scope="col" width=200px>
+            Safety Level</th>
+        </tr>
+      </thead>
+      <tbody>
+[!VAR "MajorVersion" = "text:split($moduleReleaseVer, '.')[position()-1 = 0]"!][!//
+[!VAR "AdcHwTrigApi" = "AdcGeneral/AdcHwTriggerApi"!][!//
+[!SELECT "AdcConfigSet/*[1]"!][!//
+[!VAR "TotalAdcUnit" = "num:i(count(AdcHwUnit/*))"!][!//
+[!FOR "AdcId" ="num:i(1)" TO "num:i($TotalAdcUnit)"!][!//
+[!SELECT "AdcHwUnit/*[num:i($AdcId)]"!][!//
+[!//
+[!NOCODE!][!//
+[!VAR "AsilBSet0Available" = "'false'"!][!//
+[!VAR "AsilBSet1Available" = "'false'"!][!//
+[!VAR "QmAvailable" = "'false'"!][!//
+[!VAR "AsilLevel" = "'QM'"!][!//
+[!IF "./AdcHwUnitId = 'HWUNIT_ADC0'"!][!//
+[!VAR "GrpID" = "num:i(0)"!][!//
+[!VAR "KernelID" = "num:i(0)"!][!//
+[!IF "./AdcSafetySignal = 'true'"!][!//
+[!VAR "AsilLevel" = "'ASIL B Set 0'"!][!//
+[!VAR "AsilBSet0Available" = "'true'"!][!//
+[!ELSE!][!//
+[!VAR "QmAvailable" = "'true'"!][!//
+[!ENDIF!][!//
+[!ELSEIF "./AdcHwUnitId = 'HWUNIT_ADC1'"!][!//
+[!VAR "GrpID" = "num:i(32)"!][!//
+[!VAR "KernelID" = "num:i(1)"!][!//
+[!IF "./AdcSafetySignal = 'true'"!][!//
+[!VAR "AsilLevel" = "'ASIL B Set 0'"!][!//
+[!VAR "AsilBSet0Available" = "'true'"!][!//
+[!ELSE!][!//
+[!VAR "QmAvailable" = "'true'"!][!//
+[!ENDIF!][!//
+[!ELSEIF "./AdcHwUnitId = 'HWUNIT_ADC2'"!][!//
+[!VAR "GrpID" = "num:i(64)"!][!//
+[!VAR "KernelID" = "num:i(2)"!][!//
+[!IF "./AdcSafetySignal = 'true'"!][!//
+[!IF "(ecu:get('Adc.HwUnitPerCluster') = num:i(4))"!][!//
+[!VAR "AsilLevel" = "'ASIL B Set 0'"!][!//
+[!VAR "AsilBSet0Available" = "'true'"!][!//
+[!ELSE!][!//
+[!VAR "AsilLevel" = "'ASIL B Set 1'"!][!//
+[!VAR "AsilBSet1Available" = "'true'"!][!//
+[!ENDIF!][!//
+[!ELSE!][!//
+[!VAR "QmAvailable" = "'true'"!][!//
+[!ENDIF!][!//
+[!ELSEIF "./AdcHwUnitId = 'HWUNIT_ADC3'"!][!//
+[!VAR "GrpID" = "num:i(96)"!][!//
+[!VAR "KernelID" = "num:i(3)"!][!//
+[!IF "./AdcSafetySignal = 'true'"!][!//
+[!IF "(ecu:get('Adc.HwUnitPerCluster') = num:i(4))"!][!//
+[!VAR "AsilLevel" = "'ASIL B Set 0'"!][!//
+[!VAR "AsilBSet0Available" = "'true'"!][!//
+[!ELSE!][!//
+[!VAR "AsilLevel" = "'ASIL B Set 1'"!][!//
+[!VAR "AsilBSet1Available" = "'true'"!][!//
+[!ENDIF!][!//
+[!ELSE!][!//
+[!VAR "QmAvailable" = "'true'"!][!//
+[!ENDIF!][!//
+[!ELSEIF "./AdcHwUnitId = 'HWUNIT_ADC4'"!][!//
+[!VAR "GrpID" = "num:i(128)"!][!//
+[!VAR "KernelID" = "num:i(4)"!][!//
+[!IF "./AdcSafetySignal = 'true'"!][!//
+[!VAR "AsilLevel" = "'ASIL B Set 1'"!][!//
+[!VAR "AsilBSet1Available" = "'true'"!][!//
+[!ELSE!][!//
+[!VAR "QmAvailable" = "'true'"!][!//
+[!ENDIF!][!//
+[!ELSEIF "./AdcHwUnitId = 'HWUNIT_ADC5'"!][!//
+[!VAR "GrpID" = "num:i(160)"!][!//
+[!VAR "KernelID" = "num:i(5)"!][!//
+[!IF "./AdcSafetySignal = 'true'"!][!//
+[!VAR "AsilLevel" = "'ASIL B Set 1'"!][!//
+[!VAR "AsilBSet1Available" = "'true'"!][!//
+[!ELSE!][!//
+[!VAR "QmAvailable" = "'true'"!][!//
+[!ENDIF!][!//
+[!ELSEIF "./AdcHwUnitId = 'HWUNIT_ADC6'"!][!//
+[!VAR "GrpID" = "num:i(192)"!][!//
+[!VAR "KernelID" = "num:i(6)"!][!//
+[!IF "./AdcSafetySignal = 'true'"!][!//
+[!VAR "AsilLevel" = "'ASIL B Set 1'"!][!//
+[!VAR "AsilBSet1Available" = "'true'"!][!//
+[!ELSE!][!//
+[!VAR "QmAvailable" = "'true'"!][!//
+[!ENDIF!][!//
+[!ELSEIF "./AdcHwUnitId = 'HWUNIT_ADC7'"!][!//
+[!VAR "GrpID" = "num:i(224)"!][!//
+[!VAR "KernelID" = "num:i(7)"!][!//
+[!IF "./AdcSafetySignal = 'true'"!][!//
+[!VAR "AsilLevel" = "'ASIL B Set 1'"!][!//
+[!VAR "AsilBSet1Available" = "'true'"!][!//
+[!ELSE!][!//
+[!VAR "QmAvailable" = "'true'"!][!//
+[!ENDIF!][!//
+[!ELSEIF "./AdcHwUnitId = 'HWUNIT_ADC8'"!][!//
+[!VAR "GrpID" = "num:i(256)"!][!//
+[!VAR "KernelID" = "num:i(8)"!][!//
+[!IF "./AdcSafetySignal = 'true'"!][!//
+[!VAR "AsilLevel" = "'ASIL B Set 1'"!][!//
+[!VAR "AsilBSet1Available" = "'true'"!][!//
+[!ELSE!][!//
+[!VAR "QmAvailable" = "'true'"!][!//
+[!ENDIF!][!//
+[!ELSEIF "./AdcHwUnitId = 'HWUNIT_ADC9'"!][!//
+[!VAR "GrpID" = "num:i(288)"!][!//
+[!VAR "KernelID" = "num:i(9)"!][!//
+[!IF "./AdcSafetySignal = 'true'"!][!//
+[!VAR "AsilLevel" = "'ASIL B Set 1'"!][!//
+[!VAR "AsilBSet1Available" = "'true'"!][!//
+[!ELSE!][!//
+[!VAR "QmAvailable" = "'true'"!][!//
+[!ENDIF!][!//
+[!ELSEIF "./AdcHwUnitId = 'HWUNIT_ADC10'"!][!//
+[!VAR "GrpID" = "num:i(320)"!][!//
+[!VAR "KernelID" = "num:i(10)"!][!//
+[!IF "./AdcSafetySignal = 'true'"!][!//
+[!VAR "AsilLevel" = "'ASIL B Set 1'"!][!//
+[!VAR "AsilBSet1Available" = "'true'"!][!//
+[!ELSE!][!//
+[!VAR "QmAvailable" = "'true'"!][!//
+[!ENDIF!][!//
+[!ENDIF!][!//
+[!ENDNOCODE!][!//
+[!//
+[!FOR "ReqSrcId" = "num:i(0)" TO "num:i(2)"!][!//
+[!IF "$ReqSrcId = num:i(0)"!]
+[!VAR "ReqSrcName" = "'REQSRC0_8STG_QUE'"!][!//
+[!ELSEIF "$ReqSrcId = num:i(1)"!][!//
+[!VAR "ReqSrcName" = "'REQSRC1_NCH_SCAN'"!][!//
+[!ELSEIF "$ReqSrcId = num:i(2)"!][!//
+[!VAR "ReqSrcName" = "'REQSRC2_BGND_SCAN'"!][!//
+[!ENDIF!][!//
+[!LOOP "AdcGroup/*[AdcGroupRequestSource = $ReqSrcName]"!][!//
+[!IF "./AdcGroupTriggSrc = 'ADC_TRIGG_SRC_SW'"!][!//
+[!NOCODE!][!//
+[!VAR "SymbolicName" = "node:name(.)"!]
+[!VAR "TotalAdcGroupDef"= "num:i(count(AdcGroupDefinition/*))"!][!//
+[!ENDNOCODE!][!//
+        <tr>
+[!IF "$MajorVersion != '3'"!][!//
+          <td>AdcConf_AdcGroup_[!"$SymbolicName"!]</td>
+[!ELSE!][!//
+          <td>[!"$SymbolicName"!]</td>
+[!ENDIF!][!//
+          <td>[!"num:i($GrpID)"!]</td>
+          <td>[!"num:i($KernelID)"!]</td>
+          <td>
+[!FOR "GroupDef" = "num:i(0)" TO "num:i($TotalAdcGroupDef)-1"!][!//
+[!VAR "GroupChannelName" = "node:name(node:ref(AdcGroupDefinition/*[@index=$GroupDef]))"!][!//
+[!LOOP "../../AdcChannel/*"!][!//
+[!IF "@name = $GroupChannelName"!][!//
+[!VAR "GroupChannelNum" = "AdcAnChannelNum"!][!//
+[!IF "ecu:get('Adc.NumOfChInGrp') = num:i(8)"!][!// 
+[!VAR "ChannelNum" = "num:i(num:mod($GroupChannelNum,8))"!]
+[!ELSE!][!//
+[!VAR "ChannelNum" = "num:i(num:mod($GroupChannelNum,16))"!]
+[!ENDIF!][!//
+[!ENDIF!][!//
+[!ENDLOOP!][!//
+  [!"num:i($ChannelNum)"!][!IF "$GroupDef != (($TotalAdcGroupDef)-1)"!], [!ENDIF!]
+[!ENDFOR!][!//
+          </td>
+          <td>[!"$AsilLevel"!]</td>
+        </tr>
+[!VAR "GrpID" = "$GrpID + 1"!]
+[!ENDIF!][!//
+[!ENDLOOP!][!//
+[!ENDFOR!][!//
+[!//
+[!IF "$AdcHwTrigApi = 'true'"!][!//
+[!//
+[!FOR "ReqSrcId" = "num:i(0)" TO "num:i(2)"!][!//
+[!IF "$ReqSrcId = num:i(0)"!]
+[!VAR "ReqSrcName" = "'REQSRC0_8STG_QUE'"!][!//
+[!ELSEIF "$ReqSrcId = num:i(1)"!][!//
+[!VAR "ReqSrcName" = "'REQSRC1_NCH_SCAN'"!][!//
+[!ELSEIF "$ReqSrcId = num:i(2)"!][!//
+[!VAR "ReqSrcName" = "'REQSRC2_BGND_SCAN'"!][!//
+[!ENDIF!][!//
+[!LOOP "AdcGroup/*[AdcGroupRequestSource = $ReqSrcName]"!][!//
+[!IF "./AdcGroupTriggSrc = 'ADC_TRIGG_SRC_HW'"!][!//
+[!NOCODE!][!//
+[!VAR "SymbolicName" = "node:name(.)"!]
+[!VAR "TotalAdcGroupDef"= "num:i(count(AdcGroupDefinition/*))"!][!//
+[!ENDNOCODE!][!//
+        <tr>
+[!IF "$MajorVersion != '3'"!][!//
+          <td>AdcConf_AdcGroup_[!"$SymbolicName"!]</td>
+[!ELSE!][!//
+          <td>[!"$SymbolicName"!]</td>
+[!ENDIF!][!//
+          <td>[!"num:i($GrpID)"!]</td>
+          <td>[!"num:i($KernelID)"!]</td>
+          <td>
+[!FOR "GroupDef" = "num:i(0)" TO "num:i($TotalAdcGroupDef)-1"!][!//
+[!VAR "GroupChannelName" = "node:name(node:ref(AdcGroupDefinition/*[@index=$GroupDef]))"!][!//
+[!LOOP "../../AdcChannel/*"!][!//
+[!IF "@name = $GroupChannelName"!][!//
+[!VAR "GroupChannelNum" = "AdcAnChannelNum"!][!//
+[!IF "ecu:get('Adc.NumOfChInGrp') = num:i(8)"!][!// 
+[!VAR "ChannelNum" = "num:i(num:mod($GroupChannelNum,8))"!]
+[!ELSE!][!//
+[!VAR "ChannelNum" = "num:i(num:mod($GroupChannelNum,16))"!]
+[!ENDIF!][!//
+[!ENDIF!][!//
+[!ENDLOOP!][!//
+  [!"num:i($ChannelNum)"!][!IF "$GroupDef != (($TotalAdcGroupDef)-1)"!], [!ENDIF!]
+[!ENDFOR!][!//
+          </td>
+          <td>[!"$AsilLevel"!]</td>
+        </tr>
+[!VAR "GrpID" = "$GrpID + 1"!]
+[!ENDIF!][!//
+[!ENDLOOP!][!//
+[!ENDFOR!][!//
+[!ENDIF!][!//
+[!//
+[!ENDSELECT!][!//
+[!ENDFOR!][!//
+[!ENDSELECT!][!//
+      </tbody>
+    </table>
+    <br><br>
+
+
+    <table border="3" cellpadding="5" cellspacing="0" class="curvedEdges">
+      <caption><strong>
+        Table 2: ADC SFR Usage per API</strong></caption>
+      <thead>
+        <tr>
+          <th scope="col">
+            API Name</th>
+          <th scope="col">
+            SFRs Used</th>
+          <th scope="col">
+            Remarks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Adc_Init</td>
+          <td>VADC_CLC, VADC_GLOBCFG, VADC_GLOBICLASS, VADC_GLOBEVNP, VADC_EMUXSEL, VADC_GxARBCFG, VADC_GxARBPR, VADC_GxICLASS
+[!IF "(AdcGeneral/AdcMasterSlaveSync = 'true')"!][!//
+, VADC_GxSYNCTR[!//
+[!ENDIF!][!//
+, VADC_GxSEVNP
+, SRC_VADCGxSRm
+[!IF "(AdcGeneral/AdcSampleAndHoldUnitAvailable = 'true')"!][!//
+, SHSz_SHSCFG, SHSz_CALCTR, SHSz_TIMCFGn, SHSz_STEPCFG[!//
+[!ENDIF!][!//
+[!IF "(AdcGeneral/AdcCcu6Synchronization = 'true')"!][!//
+, CCU6i_CLC, CCU6i_T13PR, CCU6i_CC63SR, CCU6i_MODCTR, CCU6i_TCTR0, CCU6i_TCTR4, CCU60_MOSEL[!//
+[!ENDIF!][!//
+          </td>
+          <td>Where,<br> x is Adc Kernel number,<br> y is Adc Channel Number,<br> m is VADC Service Request Number[!IF "(AdcGeneral/AdcSampleAndHoldUnitAvailable = 'true')"!],<br> z is Sample Hold Cluster Number,<br> n is Sample Hold Unit Number[!ENDIF!][!IF "(AdcGeneral/AdcCcu6Synchronization = 'true')"!],<br> i is CCU6 Module Number[!ENDIF!].<br><br>
+          Refer Table 1 for the respective Group and Channels.</td>
+        </tr>
+[!IF "(AdcGeneral/AdcDeInitApi = 'true')"!][!//
+        <tr>
+          <td>
+            Adc_DeInit</td>
+          <td>
+            VADC_KRST0, VADC_KRST1, SRC_VADCGxSRm, VADC_CLC
+[!VAR "TotalAdcConfig" = "num:i(count(AdcConfigSet/*))"!][!//
+[!VAR "Flag"= "num:i(0)"!][!//
+[!//
+[!FOR "CfgCount" ="num:i(1)" TO "num:i($TotalAdcConfig)"!][!//
+[!SELECT "AdcConfigSet/*[num:i($CfgCount)]"!][!//
+[!VAR "TotalAdcUnit" = "num:i(count(AdcHwUnit/*))"!][!//
+[!FOR "AdcId" ="num:i(1)" TO "num:i($TotalAdcUnit)"!][!//
+[!SELECT "AdcHwUnit/*[num:i($AdcId)]"!][!//
+[!//
+[!VAR "TotalAdcGroups"= "num:i(count(AdcGroup/*))"!][!//
+[!FOR "GroupId" ="num:i(0)" TO "num:i($TotalAdcGroups)-1"!][!//
+[!VAR "AdcEmuxScan" = "AdcGroup/*[@index = $GroupId]/AdcEmuxScanEnable"!][!//
+[!IF "($AdcEmuxScan = 'true')"!][!//
+[!VAR "Flag" = "num:i(1)"!][!//
+[!ENDIF!][!//
+[!ENDFOR!][!//
+[!//
+[!ENDSELECT!][!//
+[!ENDFOR!][!//
+[!ENDSELECT!][!//
+[!ENDFOR!][!//
+[!IF "$Flag = num:i(1)"!][!//
+, DMA_TSRy
+[!ENDIF!][!//
+[!IF "(AdcGeneral/AdcCcu6Synchronization = 'true')"!][!//
+, CCU60_MOSEL, CCU6i_KRST0, CCU6i_KRST1, CCU6i_CLC[!//
+[!ENDIF!][!//
+          </td>
+          <td>Where,<br> x is Adc Kernel number[!IF "$Flag = num:i(1)"!],<br> y is DMA Channel Number[!ENDIF!],<br> m is VADC Service Request Number[!IF "(AdcGeneral/AdcCcu6Synchronization = 'true')"!],<br> i is CCU6 Module Number[!ENDIF!].<br><br>
+          Refer Table 1 for the respective Group and Channels.</td>
+        </tr>
+[!ENDIF!][!//
+[!IF "(AdcSafety/AdcSafetyEnable = 'true') and (AdcSafety/AdcInitCheckApi = 'true')"!][!//
+        <tr>
+          <td>
+            Adc_InitCheck</td>
+          <td>VADC_CLC, VADC_GLOBCFG, VADC_GLOBICLASS, VADC_GLOBEVNP, VADC_EMUXSEL, VADC_GxARBCFG, VADC_GxARBPR, VADC_GxICLASS
+[!IF "(AdcGeneral/AdcMasterSlaveSync = 'true')"!][!//
+, VADC_GxSYNCTR[!//
+[!ENDIF!][!//
+, VADC_GxSEVNP
+, SRC_VADCGxSRm
+[!IF "(AdcGeneral/AdcSampleAndHoldUnitAvailable = 'true')"!][!//
+, SHSz_SHSCFG, SHSz_CALCTR, SHSz_TIMCFGn, SHSz_STEPCFG[!//
+[!ENDIF!][!//
+[!IF "(AdcGeneral/AdcCcu6Synchronization = 'true')"!][!//
+, CCU6i_CLC, CCU6i_T13PR, CCU6i_CC63SR, CCU6i_MODCTR, CCU6i_TCTR0, CCU60_MOSEL[!//
+[!ENDIF!][!//
+          </td>
+          <td>Where,<br> x is Adc Kernel number,<br> y is Adc Channel Number,<br> m is VADC Service Request Number[!IF "(AdcGeneral/AdcSampleAndHoldUnitAvailable = 'true')"!],<br> z is Sample Hold Cluster Number,<br> n is Sample Hold Unit Number[!ENDIF!][!IF "(AdcGeneral/AdcCcu6Synchronization = 'true')"!],<br> i is CCU6 Module Number[!ENDIF!].<br><br>
+          Refer Table 1 for the respective Group and Channels.</td>
+        </tr>
+[!ENDIF!][!//
+[!IF "(AdcGeneral/AdcNonAutosarDmaResultHandling = 'false') and (AdcGeneral/AdcNonAutosarResultPolling = 'false')"!][!//
+        <tr>
+          <td>
+            Adc_SetupResultBuffer</td>
+          <td>-</td>
+          <td>No SFRs used</td>
+        </tr>
+[!ENDIF!][!//
+[!IF "(AdcGeneral/AdcEnableStartStopGroupApi = 'true')"!][!//
+        <tr>
+          <td>
+            Adc_StartGroupConversion</td>
+          <td>[!IF "(AdcGeneral/AdcUseEmux = 'true')"!]VADC_GxEMUXCTR, [!ENDIF!]VADC_GxCHCTRy, VADC_GxRCRy, VADC_GxREVNP0,[!IF "(AdcGeneral/AdcEnableLimitCheck = 'true')"!] VADC_GxBOUND, VADC_GxCEVNP0, [!ENDIF!]         
+VADC_GLOBEFLAG, VADC_GxSEFCLR, VADC_GxREFCLR, VADC_GxCEFCLR, VADC_GxVFR, VADC_BRSSELx, VADC_BRSMR, VADC_GxASSEL, VADC_GxASMR, VADC_GxQMR0, VADC_GxQINR0
+[!VAR "TotalAdcConfig" = "num:i(count(AdcConfigSet/*))"!][!//
+[!VAR "Flag"= "num:i(0)"!][!//
+[!//
+[!FOR "CfgCount" ="num:i(1)" TO "num:i($TotalAdcConfig)"!][!//
+[!SELECT "AdcConfigSet/*[num:i($CfgCount)]"!][!//
+[!VAR "TotalAdcUnit" = "num:i(count(AdcHwUnit/*))"!][!//
+[!FOR "AdcId" ="num:i(1)" TO "num:i($TotalAdcUnit)"!][!//
+[!SELECT "AdcHwUnit/*[num:i($AdcId)]"!][!//
+[!//
+[!VAR "TotalAdcGroups"= "num:i(count(AdcGroup/*))"!][!//
+[!FOR "GroupId" ="num:i(0)" TO "num:i($TotalAdcGroups)-1"!][!//
+[!VAR "AdcEmuxScan" = "AdcGroup/*[@index = $GroupId]/AdcEmuxScanEnable"!][!//
+[!IF "($AdcEmuxScan = 'true')"!][!//
+[!VAR "Flag" = "num:i(1)"!][!//
+[!ENDIF!][!//
+[!ENDFOR!][!//
+[!//
+[!ENDSELECT!][!//
+[!ENDFOR!][!//
+[!ENDSELECT!][!//
+[!ENDFOR!][!//
+[!IF "$Flag = num:i(1)"!][!//
+, DMA_SADRy, DMA_DADRy, DMA_TSRy, DMA_CHCFGRy, DMA_CHCSRy, DMA_ADICRy, SRC_DMACHy
+[!ENDIF!][!//
+          </td>
+          <td>Where,<br> x is Adc Kernel number,<br> y is Adc Channel Number.<br><br>
+          Refer Table 1 for the respective Group and Channels.</td>
+        </tr>
+        <tr>
+          <td>
+            Adc_StopGroupConversion</td>
+          <td>[!IF "(AdcGeneral/AdcUseEmux = 'true')"!]VADC_GxEMUXCTR, [!ENDIF!]VADC_GxCHCTRy, VADC_GxRCRy, VADC_GxREVNP0, VADC_GxARBCFG[!IF "(AdcGeneral/AdcEnableLimitCheck = 'true')"!] VADC_GxBOUND, VADC_GxCEVNP0, [!ENDIF!]         
+VADC_GLOBEFLAG, VADC_GxSEFCLR, VADC_GxREFCLR, VADC_GxCEFCLR, VADC_GxVFR, VADC_BRSSELx, VADC_BRSMR, VADC_BRSCTRL, VADC_GxASSEL, VADC_GxASMR, VADC_GxASCTRL, VADC_GxQMR0, VADC_GxQCTRL0
+[!IF "(num:i(ecu:get('Adc.ReqSrcCount')) = num:i(4))"!][!//
+, VADC_GxTRCTR
+[!ENDIF!][!//
+[!IF "$Flag = num:i(1)"!][!//
+, DMA_TSRy, DMA_CHCFGRy, DMA_CHCSRy, DMA_ADICRy, SRC_DMACHy
+[!ENDIF!][!//
+          </td>
+          <td>Where,<br> x is Adc Kernel number,<br> y is Adc Channel Number.<br><br>
+          Refer Table 1 for the respective Group and Channels.</td>
+        </tr>
+[!ENDIF!][!//
+[!IF "(AdcGeneral/AdcHwTriggerApi = 'true')"!][!//
+        <tr>
+          <td>
+            Adc_EnableHardwareTrigger</td>
+          <td>[!IF "(AdcGeneral/AdcUseEmux = 'true')"!]VADC_GxEMUXCTR, [!ENDIF!]VADC_GxCHCTRy, VADC_GxRCRy, VADC_GxREVNP0,[!IF "(AdcGeneral/AdcEnableLimitCheck = 'true')"!] VADC_GxBOUND, VADC_GxCEVNP0, [!ENDIF!]         
+VADC_GLOBEFLAG, VADC_GxSEFCLR, VADC_GxREFCLR, VADC_GxCEFCLR, VADC_GxVFR, VADC_BRSSELx, VADC_BRSMR, VADC_BRSCTRL, VADC_GxASSEL, VADC_GxASMR, VADC_GxASCTRL, VADC_GxQMR0, VADC_GxQINR0, VADC_GxQCTRL0
+[!IF "(num:i(ecu:get('Adc.ReqSrcCount')) = num:i(4))"!][!//
+, VADC_GxTRCTR
+[!ENDIF!][!//
+[!VAR "TotalAdcConfig" = "num:i(count(AdcConfigSet/*))"!][!//
+[!VAR "Flag"= "num:i(0)"!][!//
+[!VAR "TimerTrig" = "num:i(0)"!][!//
+[!VAR "EruReqTrig" = "num:i(0)"!][!//
+[!//
+[!FOR "CfgCount" ="num:i(1)" TO "num:i($TotalAdcConfig)"!][!//
+[!SELECT "AdcConfigSet/*[num:i($CfgCount)]"!][!//
+[!VAR "TotalAdcUnit" = "num:i(count(AdcHwUnit/*))"!][!//
+[!FOR "AdcId" ="num:i(1)" TO "num:i($TotalAdcUnit)"!][!//
+[!SELECT "AdcHwUnit/*[num:i($AdcId)]"!][!//
+[!//
+[!VAR "TotalAdcGroups"= "num:i(count(AdcGroup/*))"!][!//
+[!FOR "GroupId" ="num:i(0)" TO "num:i($TotalAdcGroups)-1"!][!//
+[!VAR "AdcEmuxScan" = "AdcGroup/*[@index = $GroupId]/AdcEmuxScanEnable"!][!//
+[!IF "($AdcEmuxScan = 'true')"!][!//
+[!VAR "Flag" = "num:i(1)"!][!//
+[!ENDIF!][!//
+[!VAR "AdcSWType" = "AdcGroup/*[@index = $GroupId]/AdcGroupTriggSrc"!][!//
+[!IF "($AdcSWType = 'ADC_TRIGG_SRC_HW')"!][!//
+[!VAR "HWTrigType" = "AdcGroup/*[@index = $GroupId]/AdcHwTrigType"!][!//
+[!IF "($HWTrigType = 'HW_TRIGG_TIMER')"!][!//
+[!VAR "TimerTrig" = "num:i(1)"!][!//
+[!ELSE!][!//
+[!VAR "AdcTrigSelect" = "AdcGroup/*[@index = $GroupId]/AdcHwExtTrigSelect"!][!//  
+[!IF "contains($AdcTrigSelect,'IOUT')"!][!//
+[!VAR "EruReqTrig" = "num:i(1)"!][!//
+[!ENDIF!][!//
+[!ENDIF!][!//
+[!ENDIF!][!//
+[!ENDFOR!][!//
+[!//
+[!ENDSELECT!][!//
+[!ENDFOR!][!//
+[!ENDSELECT!][!//
+[!ENDFOR!][!//
+[!IF "$Flag = num:i(1)"!][!//
+, DMA_SADRy, DMA_DADRy, DMA_TSRy, DMA_CHCFGRy, DMA_CHCSRy, DMA_ADICRy, SRC_DMACHy
+[!ENDIF!][!//
+[!IF "$TimerTrig = num:i(1)"!]
+, GTM_ATOMz_CHy_CN0, GTM_ATOMz_CHy_CM0, GTM_ATOMz_CHy_CM1, GTM_ATOMz_CHy_SR0, GTM_ATOMz_CHy_SR1, GTM_ATOMz_AGC_ENDIS_STAT, 
+GTM_TOMz_CHy_CN0, GTM_TOMz_CHy_CM0, GTM_TOMz_CHy_CM1, GTM_TOMz_CHy_SR0, GTM_TOMz_CHy_SR1, GTM_TOMz_TGCi_ENDIS_STAT
+[!ENDIF!][!//
+[!IF "$EruReqTrig = num:i(1)"!]
+, SCU_EICRy, SCU_IGCRy
+[!ENDIF!][!//
+          </td>
+          <td>Where,<br> x is Adc Kernel number,<br> y is Adc Channel Number[!IF "$TimerTrig = num:i(1)"!],<br> z is ATOM/TOM Module Number,<br> i is TOM TGC Module Number[!ENDIF!][!//.<br><br>
+          Refer Table 1 for the respective Group and Channels.</td>
+        </tr> 
+        <tr>
+          <td>
+            Adc_DisableHardwareTrigger</td>
+          <td>[!IF "(AdcGeneral/AdcUseEmux = 'true')"!]VADC_GxEMUXCTR, [!ENDIF!]VADC_GxCHCTRy, VADC_GxRCRy, VADC_GxREVNP0,[!IF "(AdcGeneral/AdcEnableLimitCheck = 'true')"!] VADC_GxBOUND, VADC_GxCEVNP0, [!ENDIF!]         
+VADC_GLOBEFLAG, VADC_GxSEFCLR, VADC_GxREFCLR, VADC_GxCEFCLR, VADC_GxVFR, VADC_BRSSELx, VADC_BRSMR, VADC_BRSCTRL, VADC_GxASSEL, VADC_GxASMR, VADC_GxASCTRL, VADC_GxQMR0, VADC_GxQINR0, VADC_GxQCTRL0
+[!IF "(num:i(ecu:get('Adc.ReqSrcCount')) = num:i(4))"!][!//
+, VADC_GxTRCTR
+[!ENDIF!][!//
+[!IF "$Flag = num:i(1)"!][!//
+, DMA_TSRy, DMA_CHCFGRy, DMA_CHCSRy, DMA_ADICRy, SRC_DMACHy
+[!ENDIF!][!//
+[!IF "$TimerTrig = num:i(1)"!]
+, GTM_ATOMz_CHy_CN0, GTM_ATOMz_CHy_CM0, GTM_ATOMz_CHy_CM1, GTM_ATOMz_CHy_SR0, GTM_ATOMz_CHy_SR1, GTM_ATOMz_AGC_ENDIS_STAT, 
+GTM_TOMz_CHy_CN0, GTM_TOMz_CHy_CM0, GTM_TOMz_CHy_CM1, GTM_TOMz_CHy_SR0, GTM_TOMz_CHy_SR1, GTM_TOMz_TGCi_ENDIS_STAT
+[!ENDIF!][!//
+[!IF "$EruReqTrig = num:i(1)"!]
+, SCU_EICRy, SCU_IGCRy
+[!ENDIF!][!//
+          </td>
+          <td>Where,<br> x is Adc Kernel number,<br> y is Adc Channel Number[!IF "$TimerTrig = num:i(1)"!],<br> z is ATOM/TOM Module Number,<br> i is TOM TGC Module Number[!ENDIF!][!//.<br><br>
+          Refer Table 1 for the respective Group and Channels.</td>
+        </tr>
+[!ENDIF!]
+[!IF "(AdcGeneral/AdcReadGroupApi = 'true')"!][!//
+[!IF "(AdcGeneral/AdcNonAutosarDmaResultHandling = 'false') and (AdcGeneral/AdcNonAutosarResultPolling = 'false')"!][!//
+        <tr>
+          <td>
+            Adc_ReadGroup</td>
+          <td>-</td>
+          <td>No SFRs used</td>
+        </tr>
+[!ENDIF!]
+[!ENDIF!]
+[!IF "(AdcGeneral/AdcGrpNotifCapability = 'true')"!][!//
+        <tr>
+          <td>
+            Adc_EnableGroupNotification</td>
+          <td>-</td>
+          <td>No SFRs used</td>
+        </tr>
+        <tr>
+          <td>
+            Adc_DisableGroupNotification</td>
+          <td>-</td>
+          <td>No SFRs used</td>
+        </tr>
+[!ENDIF!]
+[!IF "(AdcGeneral/AdcNonAutosarResultPolling = 'false')"!][!//
+        <tr>
+          <td>
+            Adc_GetGroupStatus</td>
+          <td>-</td>
+          <td>No SFRs used</td>
+        </tr>
+[!ENDIF!]
+[!IF "(AdcGeneral/AdcNonAutosarDmaResultHandling = 'false') and (AdcGeneral/AdcNonAutosarResultPolling = 'false')"!][!//
+        <tr>
+          <td>
+            Adc_GetStreamLastPointer</td>
+          <td>-</td>
+          <td>No SFRs used</td>
+        </tr>
+[!ENDIF!][!//
+[!IF "(AdcGeneral/AdcHwTriggerApi = 'true') and  ($TimerTrig = num:i(1))"!][!//
+        <tr>
+          <td>
+            Adc_17_StartGtmTimer</td>
+          <td>
+GTM_ATOMz_CHy_CN0, GTM_ATOMz_CHy_CM0, GTM_ATOMz_CHy_CM1, GTM_ATOMz_CHy_SR0, GTM_ATOMz_CHy_SR1, GTM_ATOMz_AGC_ENDIS_STAT, 
+GTM_TOMz_CHy_CN0, GTM_TOMz_CHy_CM0, GTM_TOMz_CHy_CM1, GTM_TOMz_CHy_SR0, GTM_TOMz_CHy_SR1, GTM_TOMz_TGCi_ENDIS_STAT
+          </td>
+          <td>Where,<br> y is Adc Channel Number,<br> z is ATOM/TOM Module Number,<br> i is TOM TGC Module Number.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Adc_17_StopGtmTimer</td>
+          <td>
+GTM_ATOMz_CHy_CN0, GTM_ATOMz_CHy_CM0, GTM_ATOMz_CHy_CM1, GTM_ATOMz_CHy_SR0, GTM_ATOMz_CHy_SR1, GTM_ATOMz_AGC_ENDIS_STAT, 
+GTM_TOMz_CHy_CN0, GTM_TOMz_CHy_CM0, GTM_TOMz_CHy_CM1, GTM_TOMz_CHy_SR0, GTM_TOMz_CHy_SR1, GTM_TOMz_TGCi_ENDIS_STAT
+          </td>
+          <td>Where,<br> y is Adc Channel Number,<br> z is ATOM/TOM Module Number,<br> i is TOM TGC Module Number.
+          </td>
+        </tr>
+[!ENDIF!][!//
+[!IF "(AdcGeneral/AdcHwTriggerApi = 'true') and  ($EruReqTrig = num:i(1))"!][!//
+        <tr>
+          <td>
+            Adc_17_SetEruTrigger</td>
+          <td>SCU_EICRy, SCU_IGCRy
+          </td>
+          <td>Where,<br> y is Eru unit Number.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Adc_17_ResetEruTrigger</td>
+          <td>SCU_EICRy, SCU_IGCRy
+          </td>
+          <td>Where,<br> y is Eru unit Number.
+          </td>
+        </tr>
+[!ENDIF!][!//
+        <tr>
+          <td>
+            Adc_17_GetStartupCalStatus</td>
+          <td>VADC_GxARBCFG
+          </td>
+          <td>Where,<br> x is Adc Kernel Number.
+          </td>
+        </tr>
+[!IF "(AdcGeneral/AdcNonAutosarResultPolling = 'true')"!][!//
+        <tr>
+          <td>
+            Adc_17_GetGroupResult</td>
+          <td>VADC_GxRESy
+          </td>
+          <td>Where,<br> x is Adc Kernel Number,<br> y is Adc Channel Number.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Adc_17_GetChannelStatus</td>
+          <td>VADC_GxRESy
+          </td>
+          <td>Where,<br> x is Adc Kernel Number,<br> y is Adc Channel Number.
+          </td>
+        </tr>
+[!ENDIF!][!//
+[!IF "(AdcGeneral/AdcVersionInfoApi = 'true')"!][!//
+        <tr>
+          <td>
+            Adc_GetVersionInfo</td>
+          <td>-</td>
+          <td>No SFRs used</td>
+        </tr>
+[!ENDIF!]
+      </tbody>
+    </table>    
+[!IF "(AdcSafety/AdcSafetyEnable = 'true')"!][!//
+    <p>
+      &nbsp;</p>      
+    <h2>
+      /******************************************ADC MPU Settings******************************************/</h2>        
+    <table border="3" cellpadding="5" cellspacing="0" class="curvedEdges">
+      <caption><strong>
+        Table 3: Common SFR and Memory Range</strong></caption>
+      <thead>
+        <tr>
+          <th scope="col">
+            Start Address</th>
+          <th scope="col">
+            End Address</th>
+          <th scope="col">
+            Remarks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>VADC_CLC</td>
+          <td>VADC_EMUXSEL</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td>
+[!IF "(AdcGeneral/AdcPBFixedAddress = 'true')"!][!//
+            ADC_START_SEC_CONST_32BIT
+[!ELSE!]
+            ADC_START_SEC_VAR_32BIT
+[!ENDIF!]
+          </td>
+          <td>
+[!IF "(AdcGeneral/AdcPBFixedAddress = 'true')"!][!//
+            ADC_STOP_SEC_CONST_32BIT
+[!ELSE!]
+            ADC_STOP_SEC_VAR_32BIT
+[!ENDIF!]
+          </td>
+          <td>
+              Adc driver configuration pointer
+          </td>
+        </tr>
+[!IF "(AdcGeneral/AdcDevErrorDetect = 'true')"!][!//
+        <tr>
+          <td>
+            ADC_START_SEC_VAR_8BIT
+          </td>
+          <td>
+            ADC_STOP_SEC_VAR_8BIT
+          </td>
+          <td>
+              Adc driver Init Status Variable
+          </td>
+        </tr>
+[!ENDIF!]
+      </tbody>
+    </table>
+    <br><br>
+[!IF "$AsilBSet0Available = 'true'"!][!//
+    <table border="3" cellpadding="5" cellspacing="0" class="curvedEdges">
+      <caption><strong>
+        Table 4: ASIL B Set 0 SFR and Memory Range</strong></caption>
+      <thead>
+        <tr>
+          <th scope="col">
+            Start Address</th>
+          <th scope="col">
+            End Address</th>
+          <th scope="col">
+            Remarks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            VADC_GxARBCFG</td>
+          <td>
+            VADC_GxRESDy</td>
+          <td>Where,<br> x is Adc Kernel number.<br><br>
+            Refer Table 1 for the respective Kernel Number.</td>
+        </tr>
+        <tr>
+          <td>
+            ADC_START_SEC_ASIL0_CONST_8BIT</td>
+          <td>
+            ADC_STOP_SEC_ASIL0_CONST_8BIT</td>
+          <td>
+          	Constant for getting the variable array index for particular ASIL B Set 0 ADC Kernel
+          </td>
+        </tr>
+        <tr>
+          <td>
+            ADC_START_SEC_ASIL0_VAR_UNSPECIFIED</td>
+          <td>
+            ADC_STOP_SEC_ASIL0_VAR_UNSPECIFIED</td>
+          <td>
+          	Data variable of ASIL B Set 0 Signals
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br><br>
+[!ENDIF!]
+[!IF "$AsilBSet1Available = 'true'"!][!//
+    <table border="3" cellpadding="5" cellspacing="0" class="curvedEdges">
+      <caption><strong>
+        Table 5: ASIL B Set 1 SFR and Memory Range</strong></caption>
+      <thead>
+        <tr>
+          <th scope="col">
+            Start Address</th>
+          <th scope="col">
+            End Address</th>
+          <th scope="col">
+            Remarks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            VADC_GxARBCFG</td>
+          <td>
+            VADC_GxRESDy</td>
+          <td>Where,<br> x is Adc Kernel number.<br><br>
+            Refer Table 1 for the respective Kernel Number.</td>
+        </tr>
+        <tr>
+          <td>
+            ADC_START_SEC_ASIL1_CONST_8BIT</td>
+          <td>
+            ADC_STOP_SEC_ASIL1_CONST_8BIT</td>
+          <td>
+          	Constant for getting the variable array index for particular ASIL B Set 1 ADC Kernel
+          </td>
+        </tr>
+        <tr>
+          <td>
+            ADC_START_SEC_ASIL1_VAR_UNSPECIFIED</td>
+          <td>
+            ADC_STOP_SEC_ASIL1_VAR_UNSPECIFIED</td>
+          <td>
+          	Data variable of ASIL B Set 1 Signals
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br><br>
+[!ENDIF!]
+[!IF "$QmAvailable = 'true'"!][!//
+    <table border="3" cellpadding="5" cellspacing="0" class="curvedEdges">
+      <caption><strong>
+        Table 6: QM SFR and Memory Range</strong></caption>
+      <thead>
+        <tr>
+          <th scope="col">
+            Start Address</th>
+          <th scope="col">
+            End Address</th>
+          <th scope="col">
+            Remarks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            VADC_GxARBCFG</td>
+          <td>
+            VADC_GxRESDy</td>
+          <td>Where,<br> x is Adc Kernel number.<br><br>
+            Refer Table 1 for the respective Kernel Number.</td>
+        </tr>
+        <tr>
+          <td>
+            ADC_START_SEC_CONST_8BIT</td>
+          <td>
+            ADC_STOP_SEC_CONST_8BIT</td>
+          <td>
+          	Constant for getting the variable array index for particular QM ADC Kernel
+          </td>
+        </tr>
+        <tr>
+          <td>
+            ADC_START_SEC_VAR_UNSPECIFIED</td>
+          <td>
+            ADC_STOP_SEC_VAR_UNSPECIFIED</td>
+          <td>
+          	Data variable of QM Signals
+          </td>
+        </tr>
+      </tbody>
+    </table>
+[!ENDIF!]
+[!ENDIF!]
+  </body>
+</html>                                    
+[!ENDSELECT!][!//
+
