@@ -9,9 +9,15 @@ from license import licensetime_check
 import pathcheck
 from UpdateCombo import Class_UpdateCombo
 from compiler import Class_comiler_path
+from clock import Class_Clock_config
+
 import sort
 import re
-class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
+
+from pathlib import Path
+import sys
+
+class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Class_Clock_config):
     def __init__(self):
         super().__init__()
 
@@ -46,6 +52,8 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
         self.UpdateRecentOpenFile(self.ModuleComboBox, 'Module')
         self.UpdateRecentOpenFile(self.SmoduleComboBox, 'Smodule')
         self.UpdateRecentOpenFile(self.ProjectComboBox, 'PROJECT')
+        self.UpdateRecentOpenFile(self.ClockXLComboBox, 'ClockXl')
+        self.UpdateRecentOpenFile(self.McuXdmComboBox, 'McuXdm')
         
         license_check = licensetime_check(handler, userpath)
 
@@ -59,12 +67,17 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
                 lambda: self.setExistingDirectory(self.SmoduleComboBox, 'Smodule',True))
             self.ProjectDirButton.clicked.connect(
                 lambda: self.setExistingDirectory(self.ProjectComboBox, 'PROJECT',True))
+            self.ClockXL_DirButton.clicked.connect(
+                lambda: self.setExistingfile(self.ClockXLComboBox, 'ClockXl'))
+            self.McuXdm_DirButton.clicked.connect(
+                lambda: self.setExistingfile(self.McuXdmComboBox, 'McuXdm'))            
 
             #data_key_creation is called at here.
             self.McalComboBox.currentIndexChanged.connect(lambda: self.combobox_change(self.McalComboBox))
             self.leftright_button.clicked.connect(lambda:self.left_tree_update(self.leftsideModel, self.rightsideModel))
             self.rightleft_button.clicked.connect(lambda:self.right_tree_update(self.rightsideModel))
             self.CopyButton.clicked.connect(self.CopyProcess)
+            self.ParsingButton.clicked.connect(self.ParsingProcess)
             
             self.righttreeinform = 0
             self.lefttreeinform = 0    
@@ -314,7 +327,29 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
         else:
             #project includes the paths
             return True
-            
+
+    def ParsingProcess(self):
+        parsingpath = dict()
+        parsingpath['ClockXl'] = self.ClockXLComboBox.currentText()             
+        parsingpath['McuXdm'] = self.McuXdmComboBox.currentText()             
+        parsingpath['ClockXl'] = parsingpath['ClockXl'].replace('\\', '/')
+        parsingpath['McuXdm'] = parsingpath['McuXdm'].replace('\\', '/')
+        
+        Pathchek_result = [pathcheck.is_pathname_valid(parsingpath[x]) for x in parsingpath]
+        for temp_path in parsingpath:
+            my_file = Path(parsingpath[temp_path])
+            if my_file.is_file():
+                Pathchek_result = True
+            else:
+                Pathchek_result = False
+                break
+
+        if Pathchek_result is True:
+            clockxl_result = self.clockxl_load(parsingpath['ClockXl'])
+            self.parsing_pll(parsingpath['McuXdm'], clockxl_result)
+            self.Clkprogresstxt.setPlainText("complete")
+            self.show_message_parsing()
+        return
 
     def CopyProcess(self):        
         """File copy process"""
@@ -445,6 +480,18 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
         msg.setWindowIcon(QtGui.QIcon("Ico/smart.ico"))
         msg.setStandardButtons(QMessageBox.Ok)     
         retval = msg.exec_()
+        return
+
+    def show_message_parsing(self):
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Information)
+        msg.setText("Clock Configuration Success")
+        # msg.setInformativeText("This is additional information")
+        msg.setWindowTitle("Result")
+        msg.setWindowIcon(QtGui.QIcon("Ico/smart.ico"))
+        msg.setStandardButtons(QMessageBox.Ok)     
+        retval = msg.exec_()
+        return
 if __name__ == "__main__":
     import sys
     app = QApplication(sys.argv)

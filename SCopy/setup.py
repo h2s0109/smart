@@ -13,18 +13,22 @@
 from cx_Freeze import setup, Executable
 import sys
 base = None
+import os
+
+os.environ['TCL_LIBRARY'] = "C:/Anaconda3/tcl/tcl8.6"
+os.environ['TK_LIBRARY'] = "C:/Anaconda3/tcl/tk8.6"
 if sys.platform == "win32":
     base = "Win32GUI"
 executables = [
     Executable('SmartCopyMain.py', base=base,
                targetName='Smartcopy.exe', icon='Ico\smart.ico')
 ]
-include_files = ['Ico/', 'Database/']
+include_files = ['Ico', 'Database']
 options = {
-    'build_exe': {"include_files": include_files}
+    'build_exe': {"include_files": include_files,"packages": ['lxml', 'gzip']}
 }
 setup(name='Smartcopy',
-      version='1.0',
+      version='2.0',
       description='Smartcopycript',
       executables=executables,
       options=options

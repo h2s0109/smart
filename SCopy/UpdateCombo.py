@@ -48,6 +48,26 @@ class Class_UpdateCombo:
                     self.progresstxt_dest.setPlainText(
                         comboboxname.currentText())
         return
+    def setExistingfile(self, comboboxname, targetcombox):
+        """Select the file and update the combobox"""
+        tempfolder = self.settings.value(
+            targetcombox + '/RECENTFOLDERLIST', [])
+        options = QtWidgets.QFileDialog.DontResolveSymlinks
+        if len(tempfolder) and not "":
+            open_folder = tempfolder[0]
+        else:
+            open_folder = QtCore.QDir.currentPath()
+        if targetcombox == 'ClockXl':
+            directory = QtWidgets.QFileDialog.getOpenFileName(self, targetcombox,
+                                                               open_folder, "xlsm files (*.xlsm)", options=options)
+        elif targetcombox == 'McuXdm':
+            directory = QtWidgets.QFileDialog.getOpenFileName(self, targetcombox,
+                                                               open_folder, "xdm files (*.xdm)", options=options)
+        self.UpdateComboBox(
+            comboboxname, directory[0], tempfolder, targetcombox)
+        self.Clkprogresstxt.setPlainText(
+            comboboxname.currentText())
+        return
 
     def UpdateComboBox(self, comboboxname, directory, tempfolder, targetcombox):
         """Update the combobox and save Mcal.ini file"""
