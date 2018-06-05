@@ -14,13 +14,7 @@ class Class_UpdateCombo:
         self.MaxRecentFiles = numrecent
         self.settings = QtCore.QSettings(
             hd_name, QtCore.QSettings.IniFormat)
-        return
-
-    def timeinstall(self, hd_name, value):
-        self.settings = QtCore.QSettings(
-            hd_name, QtCore.QSettings.IniFormat)
-        self.settings.setValue('DATE' + '/install', value)
-        return
+        return self.settings
 
     def setExistingDirectory(self, comboboxname, targetcombox, scopy=None):
         """Select the directory and update the combobox"""

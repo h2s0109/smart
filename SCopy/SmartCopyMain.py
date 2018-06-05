@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QDialog, QApplication
 from PyQt5.QtCore import Qt, QFile
 
 import os
-
+from license import licensetime_check
 import pathcheck
 from UpdateCombo import Class_UpdateCombo
 from compiler import Class_comiler_path
@@ -39,15 +39,14 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
 
         # Call the folder list which were opened recently
         userpath = os.path.join(userpath,'Mcal.ini')
-        self.create_recent_handler(userpath, 5)
+        handler = self.create_recent_handler(userpath, 5)
         self.UpdateRecentOpenFile(self.McalComboBox, 'Mcal')
         self.UpdateRecentOpenFile(self.ModuleComboBox, 'Module')
         self.UpdateRecentOpenFile(self.SmoduleComboBox, 'Smodule')
+        
+        license_check = licensetime_check(handler, userpath)
 
-        self.license = False
-        self.licensetime_check(userpath)
-
-        if self.license is True:
+        if license_check is True:
             #data_key_creation is called at here
             self.McalDirButton.clicked.connect(
                 lambda: self.setExistingDirectory(self.McalComboBox, 'Mcal', True))
@@ -68,37 +67,6 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
             self.leftsideModel.itemChanged.connect(lambda: self.left_checkbox_click(self.leftsideModel, self.lefttreeinform))
         else:
             self.progresstxt_source.setPlainText("license is expired")
-
-    def licensetime_check(self, userpath):
-        import datetime
-        defaultdaydate = datetime.datetime(2018, 1, 23, 00, 00)
-        setdate = datetime.datetime(2018, 5, 5, 00, 00)
-        todaydate  = datetime.datetime.today()
-        readate = self.settings.value('DATE' + '/install')
-        if readate is None:
-            if todaydate > setdate:
-                print("notvalid")
-                self.license = False
-            else:
-                print("valid")
-                self.license = True
-                self.timeinstall(userpath, setdate)
-            if todaydate < defaultdaydate:
-                print("notvalid")
-                self.license = False             
-        else:
-            # todaydate = datetime.datetime(2018, 5, 5, 00, 00)
-            # expiredate = datetime.timedelta(days=3)
-            if todaydate > readate:
-                print("notvalid")
-                self.license = False
-            else:
-                print("valid")
-                self.license = True
-            if todaydate < defaultdaydate:
-                print("Don`t cheat")
-                self.license = False
-        return
 
     def tree_inform_setup(self, tree, cnt, *uppderidx):
         treeinform = dict()
