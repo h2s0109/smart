@@ -17,7 +17,7 @@ if sys.platform == "win32":
     base = "Win32GUI"
 executables = [
     Executable('SmartCopyMain.py', base=base,
-               targetName='Smartcopy.exe', icon='smart.ico')
+               targetName='Smartcopy.exe', icon='Ico\smart.ico')
 ]
 include_files = ['Ico/', 'Database/']
 options = {
