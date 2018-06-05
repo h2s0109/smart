@@ -90,6 +90,7 @@ class Class_comiler_path:
                             '"${workspace_loc:/${ProjName}/{TEMPLETE}' + re.sub(delete_path[0], '', tmp_dir) + '}"')
                         break
         return includelist
+
     def Compiler_include2(self, dirpath):
         includelist = list()
         for tmp_dir, tmp_folder, tmp_file in os.walk(dirpath):
