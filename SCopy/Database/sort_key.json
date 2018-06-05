@@ -57,7 +57,9 @@
         "stm",
         "tricore_general",
         "wdg_17_scu",
-        "eth_17_ethmac"
+        "eth_17_ethmac",
+        "uart"
+
     ],
     "USER_SELECT_MODULE": [],
     "SORTINGKEY": {
@@ -136,6 +138,9 @@
         "tricore_general": [],
         "wdg_17_scu": [
             "Wdg"
+        ],
+        "uart":[
+            "uart"
         ],
         "etc": [
             "Ccu6",

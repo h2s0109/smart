@@ -9,9 +9,9 @@ import os
 from re import search, sub, match, fullmatch
 from distutils.dir_util import remove_tree
 from UpdateCombo import Class_UpdateCombo
+from compiler import Class_comiler_path
 
-
-class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo):
+class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
     def __init__(self):
         super().__init__()
         # Set up the user interface from Designer
@@ -24,24 +24,26 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo):
             "{0}/Database/sort_key.json".format(THIS_DIR))
         self.TEMP_DATABASE_PATH = os.path.realpath(
             "{0}/Database/data_key.json".format(THIS_DIR))
+
         self.module_sort_result = dict()
         self.refine_result = dict()
         self.CopyProcessValid = False
         self.CopyProcessValid_NoSelect = True
+        
         # Call the folder list which were opened recently
         self.create_recent_handler('Mcal.ini', 5)
         self.UpdateRecentOpenFile(self.McalComboBox, 'Mcal')
         self.UpdateRecentOpenFile(self.ModuleComboBox, 'Module')
         self.UpdateRecentOpenFile(self.SmoduleComboBox, 'Smodule')
-        self.McalComboBox.currentIndexChanged.connect(
-            lambda: self.ComboxBoxClick(self.McalComboBox))
         self.McalDirButton.clicked.connect(
-            lambda: self.setExistingDirectory2(self.McalComboBox, 'Mcal',  'Mcal'))
+            lambda: self.setExistingDirectory(self.McalComboBox, 'Mcal', True))
         self.ModuleDirButton.clicked.connect(
-            lambda: self.setExistingDirectory2(self.ModuleComboBox, 'Module', 'Module'))
+            lambda: self.setExistingDirectory(self.ModuleComboBox, 'Module', True))
         self.SmoduleDirButton.clicked.connect(
-            lambda: self.setExistingDirectory2(self.SmoduleComboBox, 'Smodule', 'Module'))
+            lambda: self.setExistingDirectory(self.SmoduleComboBox, 'Smodule',True))
 
+        self.McalComboBox.currentIndexChanged.connect(
+            lambda: self.ComboxBoxClick(self.McalComboBox))            
         self.SetModuleButton.clicked.connect(lambda: self.SetModuleTreeViewUpdate(
             self.RelieveModuleModel, self.SetModuleModel))
         self.RelieveModuleButton.clicked.connect(lambda: self.SetModuleTreeViewUpdate_Relieve(
@@ -258,9 +260,7 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo):
                         os.makedirs(Temp_Smodule)
                 copy_mcalmodule(self.refine_result, Temp_Smodule, True)
                 copy_mcalmodule(self.module_sort_result, Temp_Module)
-                include = self.belong(Temp_Module, Temp_Smodule)
-                includelist = self.includepath(
-                    Temp_Module, Temp_Smodule, include)
+                includelist = self.Compiler_include(Temp_Module, Temp_Smodule)
                 self.plainTextEdit.clear()
                 for k_list in includelist:
                     self.plainTextEdit.appendPlainText(k_list)
@@ -271,72 +271,7 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo):
             self.plainTextEdit.setPlainText(
                 "Warning: Modules are not configured")
         return
-
-    def includepath(self, firstdir, seconddir, include_inform):
-        pathlist = list()
-        if include_inform[0] is True:
-            if (include_inform[1] == 'BOTH') or (include_inform[1] == 'FIRST'):
-                findresult = self._includepathfind(firstdir)
-                pathlist.append(findresult)
-            elif include_inform[1] == 'SECOND':
-                findresult = self._includepathfind(seconddir)
-                pathlist.append(findresult)
-        else:
-            findresult1 = self._includepathfind(firstdir)
-            findresult2 = self._includepathfind(seconddir)
-            findresult = findresult1 + findresult2
-        return findresult
-
-    def _includepathfind(self, dirpath):
-        includelist = list()
-        delete_path = search('^.*/', dirpath).group()
-        for tmp_dir, tmp_folder, tmp_file in os.walk(dirpath):
-            tmp_dir = tmp_dir.replace('\\', '/')
-            if len(tmp_file):
-                for filelist in tmp_file:
-                    if match('^.*\.h', filelist):
-                        # print(tmp_dir)
-                        print(sub(delete_path, '', tmp_dir))
-                        print('{}{}{}'.format(
-                            '${workspace_loc:/${ProjName}/{TEMPLETE}/', sub(delete_path, '', tmp_dir), '}'))
-                        includelist.append(
-                            '"${workspace_loc:/${ProjName}/{TEMPLETE}/' + sub(delete_path, '', tmp_dir) + '}"')
-                        # '${workspace_loc:/${ProjName}/SourceCode/'+sub(y,'',tmp_dir)+'}'
-                        print(filelist)
-                        break
-        return includelist
-
-    def belong_check(self, firstdir, seconddir):
-        if fullmatch(firstdir, seconddir):
-            # Exactly match with each other
-            return True
-        else:
-            # Partial match check
-            if match(firstdir, seconddir):
-                temp_seconddir = sub(firstdir, '', seconddir)
-                if match('^/', temp_seconddir):
-                    # Partial match
-                    # _belong('C:/Testfolder','C:/Testfolder')
-                    return True
-                else:
-                    # _belong('C:/Testfolder','C:/Testfolderadd')
-                    return False
-            else:
-                # Does not match
-                return False
-
-    def belong(self, firstdir, seconddir):
-        first_include = self.belong_check(firstdir, seconddir)
-        second_include = self.belong_check(seconddir, firstdir)
-        if (first_include and second_include) is True:
-            return (True, 'BOTH')
-        elif first_include is True:
-            return (True, 'FIRST')
-        elif second_include is True:
-            return (True, 'SECOND')
-        else:
-            return (False, 'NONE')
-
+    
     def McalFolderHandlingProcedure(self, directory):
         SORT_PATH = directory
         QFile.remove(self.TEMP_DATABASE_PATH)
@@ -349,6 +284,7 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo):
         displasydata.update({"MODULEDATA": {
                             "BASICMODULE": bmodule_data, "SERVICEMODULE": smodule_data, "MODULELIST": []}})
         # Generate the module data
+        # self.TEMP_DATABASE_PATH is created at here.
         moduledatashow(SORT_PATH, sort_data, displasydata)
 
         if QFile.exists(self.TEMP_DATABASE_PATH):
