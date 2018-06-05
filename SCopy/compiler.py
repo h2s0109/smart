@@ -93,6 +93,7 @@ class Class_comiler_path:
 
     def Compiler_include2(self, dirpath):
         includelist = list()
+        dirpath = dirpath.replace('\\', '/')
         for tmp_dir, tmp_folder, tmp_file in os.walk(dirpath):
             tmp_dir = tmp_dir.replace('\\', '/')
             if len(tmp_file):
