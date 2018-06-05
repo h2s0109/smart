@@ -16,10 +16,12 @@ base = None
 if sys.platform == "win32":
     base = "Win32GUI"
 executables = [
-    Executable('SmartCopyMain.py', base=base, targetName = 'Smartcopy.exe', icon = 'smart.ico')
+    Executable('SmartCopyMain.py', base=base,
+               targetName='Smartcopy.exe', icon='smart.ico')
 ]
+include_files = ['Ico/', 'Database/']
 options = {
-    'build_exe':{}
+    'build_exe': {"include_files": include_files}
 }
 setup(name='Smartcopy',
       version='1.0',

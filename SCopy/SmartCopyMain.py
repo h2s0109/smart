@@ -1,12 +1,11 @@
 from Mcalcopytab import Ui_Dialog
-
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QDialog, QApplication
 from PyQt5.QtCore import Qt, QFile
 
-from distutils.dir_util import remove_tree
 import os
 
+import pathcheck
 from UpdateCombo import Class_UpdateCombo
 from compiler import Class_comiler_path
 import sort
@@ -24,11 +23,14 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
 
         # Module name will be changed at official release.
         #current_dir = os.path.dirname(__file__)
-        current_dir = os.getcwd()
-
+        APPMODE = True
+        if APPMODE is False:
+            userpath = os.getcwd()
+        else:
+            userpath = pathcheck.windowinstallpathini('Smartcopy')
         self.data_handling = dict()
-        self.data_handling.update(SORTKEY_PATH = os.path.join(current_dir,"Database","sort_key.json" ))
-        self.data_handling.update(SORTKEYRESULT_PATH = os.path.join(current_dir,"Database","data_key.json"))
+        self.data_handling.update(SORTKEY_PATH = os.path.join(os.getcwd(),"Database","sort_key.json" ))
+        self.data_handling.update(SORTKEYRESULT_PATH = os.path.join(userpath,"Database","data_key.json"))
         self.data_handling.update(MCAL_PATH = '')
 
         self.copylist = dict()
@@ -36,13 +38,14 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
         self.CopyProcessValid_NoSelect = True
 
         # Call the folder list which were opened recently
-        self.create_recent_handler('Mcal.ini', 5)
+        userpath = os.path.join(userpath,'Mcal.ini')
+        self.create_recent_handler(userpath, 5)
         self.UpdateRecentOpenFile(self.McalComboBox, 'Mcal')
         self.UpdateRecentOpenFile(self.ModuleComboBox, 'Module')
         self.UpdateRecentOpenFile(self.SmoduleComboBox, 'Smodule')
 
         self.license = False
-        self.licensetime_check()
+        self.licensetime_check(userpath)
 
         if self.license is True:
             #data_key_creation is called at here
@@ -66,7 +69,7 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
         else:
             self.progresstxt_source.setPlainText("license is expired")
 
-    def licensetime_check(self):
+    def licensetime_check(self, userpath):
         import datetime
         defaultdaydate = datetime.datetime(2018, 1, 23, 00, 00)
         setdate = datetime.datetime(2018, 5, 5, 00, 00)
@@ -79,7 +82,7 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
             else:
                 print("valid")
                 self.license = True
-                self.timeinstall('Mcal.ini', setdate)
+                self.timeinstall(userpath, setdate)
             if todaydate < defaultdaydate:
                 print("notvalid")
                 self.license = False             
@@ -323,39 +326,31 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
             self.leftsideModel.clear()
             self.CopyProcessValid = False
         return
-
-    def Copypath_creation(self, copypath):
-        if not os.path.exists(copypath):
-            os.makedirs(copypath)
-        else:
-            if self.UpdateCheckBox.checkState() == Qt.Unchecked:
-                remove_tree(copypath)
-                os.makedirs(copypath)
-        return
-
-    def CopyProcess(self):
+        
+    def CopyProcess(self):        
         """File copy process"""
         self.progresstxt_dest.clear()
         if self.CopyProcessValid is True and self.CopyProcessValid_NoSelect is False:
             # To support Korean language.
-            Temp_Module = self.ModuleComboBox.currentText().replace('\\', '/')
-            Temp_Smodule = self.SmoduleComboBox.currentText().replace('\\', '/')
-            if Temp_Module and Temp_Smodule is not "":                
-                self.Copypath_creation(Temp_Module)
-                self.Copypath_creation(Temp_Smodule)
-                sort.copy_mcalmodule(self.copylist['service'], Temp_Smodule, True)
-                sort.copy_mcalmodule(self.copylist['modulebaic'], Temp_Module)
-
-                includelist = self.Compiler_include(Temp_Module, Temp_Smodule)
-                
+            copypath = dict()
+            copypath['module'] = self.ModuleComboBox.currentText()
+            copypath['smodule'] = self.SmoduleComboBox.currentText()            
+            Pathchek_result = [pathcheck.is_pathname_valid(copypath[x]) for x in copypath]
+            if not False in Pathchek_result:
+                pathcheck.Copypath_creation(copypath)
+                sort.copy_mcalmodule(self.copylist['service'], copypath['smodule'], True)
+                sort.copy_mcalmodule(self.copylist['modulebaic'], copypath['module'])
+                copypath['module'] = copypath['module'].replace('\\', '/')
+                copypath['smodule'] = copypath['module'].replace('\\', '/')
+                includelist = self.Compiler_include(copypath['module'], copypath['smodule'])                
                 for k_list in includelist:
                     self.progresstxt_dest.appendPlainText(k_list)
             else:
                 self.progresstxt_dest.setPlainText(
-                    "Warning: There are no destination")
+                    "Warning: The directory path name has a problem")
         else:
             self.progresstxt_dest.setPlainText(
-                "Warning: Modules are not configured")
+                "Warning: The modules are not configured")
         return
     
     def data_key_creation(self, DATA_PATH):
@@ -368,7 +363,7 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path):
         # data_key.json is created at here.
         data_key_templete = dict()
         data_key_templete["MODULEDATA"]={"BASICMODULE": bmodule_data, "SERVICEMODULE": smodule_data, "MODULELIST": []}        
-        sort.moduledatashow(DATA_PATH['MCAL_PATH'], sort_data, data_key_templete)
+        sort.moduledatashow(DATA_PATH['MCAL_PATH'], sort_data, data_key_templete,'Smartcopy')
 
         if QFile.exists(DATA_PATH['SORTKEYRESULT_PATH']):
             data_key_created = True

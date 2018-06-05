@@ -1,5 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+import pathcheck
 __all__ = ["Class_UpdateCombo"]
 
 
@@ -9,11 +9,13 @@ class Class_UpdateCombo:
         super().__init__()
         self.MaxRecentFiles = 5
         return
+
     def create_recent_handler(self, hd_name, numrecent):
         self.MaxRecentFiles = numrecent
         self.settings = QtCore.QSettings(
             hd_name, QtCore.QSettings.IniFormat)
-        return    
+        return
+
     def timeinstall(self, hd_name, value):
         self.settings = QtCore.QSettings(
             hd_name, QtCore.QSettings.IniFormat)
@@ -32,23 +34,25 @@ class Class_UpdateCombo:
 
         directory = QtWidgets.QFileDialog.getExistingDirectory(self, targetcombox,
                                                                open_folder, options=options)
-        if directory is not "":
+        pathcheck_result = pathcheck.is_pathname_valid(directory)
+        if pathcheck_result is True:
             if (scopy is None):
                 self.UpdateComboBox(comboboxname, directory,
                                     tempfolder, targetcombox)
             elif scopy is True:
                 if targetcombox == 'Mcal':
                     self.data_handling['MCAL_PATH'] = directory
-                    #UPDATE:
-                    result = self.data_key_creation(self.data_handling)          
+                    result = self.data_key_creation(self.data_handling)
                     if result is True:
-                        self.BuildTree(result, self.data_handling['SORTKEYRESULT_PATH'])
+                        self.BuildTree(
+                            result, self.data_handling['SORTKEYRESULT_PATH'])
                         self.UpdateComboBox(
                             comboboxname, directory, tempfolder, targetcombox)
                 elif targetcombox == 'Module' or 'Smodule':
                     self.UpdateComboBox(
                         comboboxname, directory, tempfolder, targetcombox)
-                    self.progresstxt_dest.setPlainText(comboboxname.currentText())
+                    self.progresstxt_dest.setPlainText(
+                        comboboxname.currentText())
         return
 
     def UpdateComboBox(self, comboboxname, directory, tempfolder, targetcombox):

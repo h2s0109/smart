@@ -14,7 +14,7 @@
 
 ; MUI Settings
 !define MUI_ABORTWARNING
-!define MUI_ICON "C:\D\Git\Gdrive\Git\SmartCopy\setupsmart.ico"
+!define MUI_ICON "C:\D\Git\Gdrive\Git\SmartCopy\Build\setupsmart.ico"
 !define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\modern-uninstall.ico"
 
 ; Language Selection Dialog Settings

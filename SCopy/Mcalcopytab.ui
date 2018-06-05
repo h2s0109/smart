@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>McalCopy</string>
+   <string>SmartCopy V1.0.0</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>Ico/smart.ico</normaloff>Ico/smart.ico</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
    <item row="0" column="0">
@@ -298,13 +302,6 @@
               </widget>
              </item>
             </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="UpdateCheckBox">
-            <property name="text">
-             <string>Update</string>
-            </property>
            </widget>
           </item>
          </layout>
