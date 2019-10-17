@@ -8,7 +8,11 @@
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
 !define PRODUCT_UNINST_ROOT_KEY "HKLM"
 !define PRODUCT_STARTMENU_REGVAL "NSIS:StartMenuDir"
-!define PROJECTPATH "c:\D\smartcopy"
+
+;USER Environment setting
+!define PROJECTPATH "C:\D\Git\smart"
+!define PYTHON_VER "3.7"
+
 ; MUI 1.67 compatible ------
 !include "MUI.nsh"
 
@@ -65,7 +69,7 @@ FunctionEnd
 Section "MainSection" SEC01
   SetOutPath "$INSTDIR"
   SetOverwrite ifnewer
-  File /r "${PROJECTPATH}\SCopy\build\exe.win-amd64-3.6\*"
+  File /r "${PROJECTPATH}\SCopy\build\exe.win-amd64-${PYTHON_VER}\*"
   CreateDirectory "$PROFILE\AppData\Local\${PRODUCT_NAME}\Database"
   CreateDirectory "$PROFILE\AppData\Local\${PRODUCT_NAME}"
 ; Shortcuts

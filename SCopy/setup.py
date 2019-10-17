@@ -15,8 +15,7 @@ import sys
 base = None
 import os
 
-os.environ['TCL_LIBRARY'] = "C:/Anaconda3/tcl/tcl8.6"
-os.environ['TK_LIBRARY'] = "C:/Anaconda3/tcl/tk8.6"
+
 if sys.platform == "win32":
     base = "Win32GUI"
 executables = [

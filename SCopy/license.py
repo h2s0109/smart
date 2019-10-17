@@ -5,7 +5,7 @@ from PyQt5 import QtCore
 def licensetime_check(handler, userpath):
     import datetime
     defaultdaydate = datetime.datetime(2018, 1, 23, 00, 00)
-    setdate = datetime.datetime(2018, 10, 5, 00, 00)
+    setdate = datetime.datetime(2020, 10, 5, 00, 00)
     todaydate = datetime.datetime.today()
     readate = handler.value('DATE' + '/install')
     if readate is None:
