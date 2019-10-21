@@ -11,7 +11,6 @@
 
 ;USER Environment setting
 !define PROJECTPATH "C:\D\Git\smart"
-!define PYTHON_VER "3.7"
 
 ; MUI 1.67 compatible ------
 !include "MUI.nsh"
@@ -69,7 +68,7 @@ FunctionEnd
 Section "MainSection" SEC01
   SetOutPath "$INSTDIR"
   SetOverwrite ifnewer
-  File /r "${PROJECTPATH}\SCopy\build\exe.win-amd64-${PYTHON_VER}\*"
+  File /r "${PROJECTPATH}\Output\*"
   CreateDirectory "$PROFILE\AppData\Local\${PRODUCT_NAME}\Database"
   CreateDirectory "$PROFILE\AppData\Local\${PRODUCT_NAME}"
 ; Shortcuts
