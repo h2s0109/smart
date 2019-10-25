@@ -1,6 +1,7 @@
 {
-    "SORTING": {
+    "GENERAL_SORTING": {
         "EX_AND": [],
+
         "EX_OR": [
             "mak",
             "tools",
@@ -58,8 +59,9 @@
         "tricore_general",
         "wdg_17_scu",
         "eth_17_ethmac",
-        "uart"
-
+        "uart",
+        "hssl",
+        "dsadc"
     ],
     "USER_SELECT_MODULE": [],
     "SORTINGKEY": {
@@ -135,21 +137,32 @@
         "stm": [
             "Stm"
         ],
-        "tricore_general": [],
+        "tricore_general": [
+            "Mcal"
+        ],
         "wdg_17_scu": [
             "Wdg"
         ],
         "uart":[
             "uart"
         ],
+        "hssl":[
+
+        ],
+        "dsadc":[
+
+        ],
+        "i2c":[
+
+        ],
+        "eru":[
+
+        ],
+        "ccu6":[
+
+        ],
         "etc": [
-            "Ccu6",
-            "Eru",
-            "Hsm",
-            "I2c",
-            "Msc",
-            "hssl",
-            "Dsadc"
+            "Msc"
         ]
     }
 }

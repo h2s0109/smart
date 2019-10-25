@@ -292,6 +292,7 @@ def gen_sort(module_sort_result, smodule_sort_resultcopy, sorkey_datas):
     Remove the unsed item.
     """
     modulekeys = module_sort_result.keys()
+    # TODO: 대소문자가 구분안되는 문제
     sortkey_list = [sorkey_datas[k] for k in modulekeys]
     sortkey_list.append(sorkey_datas["integration_general"])
     sortkey = list()

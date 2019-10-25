@@ -26,28 +26,30 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
 
         self.leftsideModel = QStandardItemModel()
         self.rightsideModel = QStandardItemModel()
-        
         self.before_checkstate = dict()
-
         # Module name will be changed at official release.
-        #current_dir = os.path.dirname(__file__)
-        self.APPMODE = True
-        if self.APPMODE is False:
-            userpath = os.getcwd()
+        #current_dir = os.path.dirname(__file__)        
+        self.INSTALLED = True
+
+        self.path_data_dict = dict()
+        self.path_data_dict.update(mcal_install_path = '')
+        self.path_data_dict.update(sortkey_path = os.path.join(os.getcwd(),"Database","sort_key.json" ))
+
+        if self.INSTALLED is False:
+            self.path_data_dict.update(appdata_path = os.getcwd())
         else:
-            userpath = pathcheck.windowinstallpathini('Smartcopy')
-        self.data_handling = dict()
-        self.data_handling.update(SORTKEY_PATH = os.path.join(os.getcwd(),"Database","sort_key.json" ))
-        self.data_handling.update(SORTKEYRESULT_PATH = os.path.join(userpath,"Database","data_key.json"))
-        self.data_handling.update(MCAL_PATH = '')
+            self.path_data_dict.update(appdata_path = pathcheck.windowinstallpathini('Smartcopy'))
+
+        self.path_data_dict.update(sortkey_result_path = os.path.join(self.path_data_dict['appdata_path'],"Database","data_key.json"))
+
 
         self.copylist = dict()
         self.CopyProcessValid = False
         self.CopyProcessValid_NoSelect = True
 
         # Call the folder list which were opened recently
-        userpath = os.path.join(userpath,'Mcal.ini')
-        handler = self.create_recent_handler(userpath, 5)
+        ini_path = os.path.join(self.path_data_dict['appdata_path'],'Mcal.ini')
+        handler = self.create_recent_handler(ini_path, 5)
         self.UpdateRecentOpenFile(self.McalComboBox, 'Mcal')
         self.UpdateRecentOpenFile(self.ModuleComboBox, 'Module')
         self.UpdateRecentOpenFile(self.SmoduleComboBox, 'Smodule')
@@ -55,7 +57,7 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
         self.UpdateRecentOpenFile(self.ClockXLComboBox, 'ClockXl')
         self.UpdateRecentOpenFile(self.McuXdmComboBox, 'McuXdm')
         
-        license_check = licensetime_check(handler, userpath)
+        license_check = licensetime_check(handler, ini_path)
 
         if license_check is True:
             #data_key_creation is called at here
@@ -74,8 +76,8 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
 
             #data_key_creation is called at here.
             self.McalComboBox.currentIndexChanged.connect(lambda: self.combobox_change(self.McalComboBox))
-            self.leftright_button.clicked.connect(lambda:self.left_tree_update(self.leftsideModel, self.rightsideModel))
-            self.rightleft_button.clicked.connect(lambda:self.right_tree_update(self.rightsideModel))
+            self.leftright_button.clicked.connect(lambda:self.rightside_tree_update(self.leftsideModel, self.rightsideModel))
+            self.rightleft_button.clicked.connect(lambda:self.leftside_tree_update(self.rightsideModel))
             self.CopyButton.clicked.connect(self.CopyProcess)
             self.ParsingButton.clicked.connect(self.ParsingProcess)
             
@@ -98,7 +100,7 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
         treeinform['row'] = cnt
         return treeinform
 
-    def right_tree_update(self,right_parent):
+    def leftside_tree_update(self,right_parent):
         if self.CopyProcessValid is True:
             self.progresstxt_source.clear()
             unchecked_item = dict()
@@ -169,7 +171,7 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
                     self.progresstxt_source.appendPlainText("All modules are unselected")
         return
 
-    def left_tree_update(self, left_parent, right_Parent):
+    def rightside_tree_update(self, left_parent, right_Parent):
         if self.CopyProcessValid is True:
             self.CopyProcessValid_NoSelect = False
             data_selected = dict()
@@ -183,8 +185,8 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
                     print('level_1_data:',level1['data'],'level_2_data:',level2['data'])                 
                 data_selected[level1['data']] = level_2_selected
             
-            sort_data = sort.import_data(self.data_handling['SORTKEY_PATH'], "SORTING")
-            sorkey_datas = sort.import_data(self.data_handling['SORTKEY_PATH'], "SORTINGKEY")
+            sort_data = sort.import_data(self.path_data_dict['sortkey_path'], "GENERAL_SORTING")
+            sorkey_datas = sort.import_data(self.path_data_dict['sortkey_path'], "SORTINGKEY")
             smodule_data = data_selected["SERVICEMODULE"]
             module_data = data_selected["MODULELIST"] + data_selected["BASICMODULE"]
             smodule_sort_result = sort.gen_c_h_dic(self.McalComboBox.currentText(), sort_data, smodule_data, True)
@@ -304,9 +306,9 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
         if combo_name.currentText() is not "":
             self.rightsideModel.clear()
             self.leftsideModel.clear()
-            self.data_handling['MCAL_PATH'] = combo_name.currentText()
-            result = self.data_key_creation(self.data_handling)            
-            self.BuildTree(result, self.data_handling['SORTKEYRESULT_PATH'])
+            self.path_data_dict['mcal_install_path'] = combo_name.currentText().replace('/', '\\')
+            result = self.data_key_creation(self.path_data_dict)            
+            self.BuildTree(result, self.path_data_dict['sortkey_result_path'])
         else:
             self.rightsideModel.clear()
             self.leftsideModel.clear()
@@ -416,21 +418,21 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
         return
     
     def data_key_creation(self, DATA_PATH):
-        QFile.remove(DATA_PATH['SORTKEYRESULT_PATH'])
-        sort_data = sort.import_data(DATA_PATH['SORTKEY_PATH'], "SORTING")
-        # module_data = import_data(DATA_PATH['SORTKEY_PATH'], "MODULE")
-        bmodule_data = sort.import_data(DATA_PATH['SORTKEY_PATH'], "BASICMODULE")
-        smodule_data = sort.import_data(DATA_PATH['SORTKEY_PATH'], "SERVICEMODULE")
+        QFile.remove(DATA_PATH['sortkey_result_path'])
+        sort_data = sort.import_data(DATA_PATH['sortkey_path'], "GENERAL_SORTING")
+        # module_data = import_data(DATA_PATH['sortkey_path'], "MODULE")
+        bmodule_data = sort.import_data(DATA_PATH['sortkey_path'], "BASICMODULE")
+        smodule_data = sort.import_data(DATA_PATH['sortkey_path'], "SERVICEMODULE")
         
         # data_key.json is created at here.
         data_key_templete = dict()
         data_key_templete["MODULEDATA"]={"BASICMODULE": bmodule_data, "SERVICEMODULE": smodule_data, "MODULELIST": []}
-        if self.APPMODE is False:
-            sort.moduledatashow(DATA_PATH['MCAL_PATH'], sort_data, data_key_templete)
+        if self.INSTALLED is False:
+            sort.moduledatashow(DATA_PATH['mcal_install_path'], sort_data, data_key_templete)
         else:
-            sort.moduledatashow(DATA_PATH['MCAL_PATH'], sort_data, data_key_templete,'Smartcopy')        
+            sort.moduledatashow(DATA_PATH['mcal_install_path'], sort_data, data_key_templete,'Smartcopy')        
 
-        if QFile.exists(DATA_PATH['SORTKEYRESULT_PATH']):
+        if QFile.exists(DATA_PATH['sortkey_result_path']):
             data_key_created = True
         else:
             data_key_created = False
