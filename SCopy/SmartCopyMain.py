@@ -26,11 +26,18 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
 
         self.leftsideModel = QStandardItemModel()
         self.rightsideModel = QStandardItemModel()
+        self.righttreeinform = dict()
+        self.lefttreeinform = dict()
+        self.ModelDict = {'LT':self.left_tree,'RT':self.right_tree}
+        self.ModelDict.update({'LI':self.leftsideModel,'RI':self.rightsideModel})
+        self.ModelDict.update({"LTinform":self.lefttreeinform,"RTinform":self.righttreeinform})           
+        
         self.before_checkstate = dict()
         # Module name will be changed at official release.
-        #current_dir = os.path.dirname(__file__)        
+        # current_dir = os.path.dirname(__file__)        
         self.INSTALLED = True
-
+        # Block the unintended McalComboBox_Hndl execution
+        self.McalDirbutton_active = False
         self.path_data_dict = dict()
         self.path_data_dict.update(mcal_install_path = '')
         self.path_data_dict.update(sortkey_path = os.path.join(os.getcwd(),"Database","sort_key.json" ))
@@ -41,7 +48,6 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
             self.path_data_dict.update(appdata_path = pathcheck.windowinstallpathini('Smartcopy'))
 
         self.path_data_dict.update(sortkey_result_path = os.path.join(self.path_data_dict['appdata_path'],"Database","data_key.json"))
-
 
         self.copylist = dict()
         self.CopyProcessValid = False
@@ -61,52 +67,90 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
 
         if license_check is True:
             #data_key_creation is called at here
-            self.McalDirButton.clicked.connect(
-                lambda: self.setExistingDirectory(self.McalComboBox, 'Mcal', True))
-            self.ModuleDirButton.clicked.connect(
-                lambda: self.setExistingDirectory(self.ModuleComboBox, 'Module', True))
-            self.SmoduleDirButton.clicked.connect(
-                lambda: self.setExistingDirectory(self.SmoduleComboBox, 'Smodule',True))
-            self.ProjectDirButton.clicked.connect(
-                lambda: self.setExistingDirectory(self.ProjectComboBox, 'PROJECT',True))
-            self.ClockXL_DirButton.clicked.connect(
-                lambda: self.setExistingfile(self.ClockXLComboBox, 'ClockXl'))
-            self.McuXdm_DirButton.clicked.connect(
-                lambda: self.setExistingfile(self.McuXdmComboBox, 'McuXdm'))            
-
+            self.McalDirButton.clicked.connect(lambda: self.McalDirbutton_Hndl())
+            self.ModuleDirButton.clicked.connect(lambda: self.ModuleDirButton_Hndl())
+            self.SmoduleDirButton.clicked.connect(lambda: self.SmoduleDirButton_Hndl())
+            self.ProjectDirButton.clicked.connect(lambda: self.ProjectDirButton_Hndl())
+            self.ClockXL_DirButton.clicked.connect(lambda: self.ClockXL_DirButton_Hndl())
+            self.McuXdm_DirButton.clicked.connect(lambda: self.McuXdm_DirButton_Hndl())
             #data_key_creation is called at here.
-            self.McalComboBox.currentIndexChanged.connect(lambda: self.combobox_change(self.McalComboBox))
-            self.leftright_button.clicked.connect(lambda:self.rightside_tree_update(self.leftsideModel, self.rightsideModel))
-            self.rightleft_button.clicked.connect(lambda:self.leftside_tree_update(self.rightsideModel))
+            # self.McalComboBox.currentIndexChanged.connect(lambda: self.combobox_change(self.McalComboBox))
+            self.McalComboBox.currentIndexChanged.connect(lambda: self.McalComboBox_Hndl())
+            self.leftright_button.clicked.connect(lambda:self.LtoR_button_Hndl(self.leftsideModel, self.rightsideModel, self.path_data_dict['sortkey_path'], self.copylist))
+            self.rightleft_button.clicked.connect(lambda:self.RtoL_button_Hndl(self.rightsideModel, self.progresstxt_source))
             self.CopyButton.clicked.connect(self.CopyProcess)
             self.ParsingButton.clicked.connect(self.ParsingProcess)
             
-            self.righttreeinform = 0
-            self.lefttreeinform = 0    
             self.rightsideModel.itemChanged.connect(lambda: self.right_checkbox_click(self.rightsideModel, self.righttreeinform))
             self.leftsideModel.itemChanged.connect(lambda: self.left_checkbox_click(self.leftsideModel, self.lefttreeinform))
         else:
             self.progresstxt_source.setPlainText("license is expired")
 
-    def tree_inform_setup(self, tree, cnt, *uppderidx):
-        treeinform = dict()
-        if not uppderidx:
-            treeinform['idx'] = tree.index(cnt, 0)
-        else:
-            treeinform['idx'] = tree.index(cnt, 0, *uppderidx)
-        treeinform['item'] = tree.itemFromIndex(treeinform['idx'])
-        treeinform['data'] = tree.data(treeinform['idx'])
-        treeinform['childcnts'] = tree.rowCount(treeinform['idx'])
-        treeinform['row'] = cnt
-        return treeinform
+    def McalDirbutton_Hndl(self):
+        self.McalDirbutton_active = True
+        self.setExistingDirectory(self.McalComboBox, 'Mcal')
+        self.BuildProc()
+        self.McalDirbutton_active = False
+        return
 
-    def leftside_tree_update(self,right_parent):
+    def McalComboBox_Hndl(self):
+        
+        if self.McalDirbutton_active is False:
+        # McalDirbutton path is connected with McalComboBox index.
+        # This procedure only can progress when user sets McalComboBox
+           self.BuildProc()
+        return
+
+    def ModuleDirButton_Hndl(self):
+        self.setExistingDirectory(self.ModuleComboBox, 'Module')
+        self.progresstxt_dest.setPlainText(self.ModuleComboBox.currentText())
+        return
+    def SmoduleDirButton_Hndl(self):
+        self.setExistingDirectory(self.SmoduleComboBox, 'Smodule')
+        self.progresstxt_dest.setPlainText(self.SmoduleComboBox.currentText())
+        return
+    def ProjectDirButton_Hndl(self):
+        self.setExistingDirectory(self.ProjectComboBox, 'PROJECT')
+        self.progresstxt_dest.setPlainText(self.ProjectComboBox.currentText())
+        return
+    def ClockXL_DirButton_Hndl(self):
+        self.setExistingfile(self.ClockXLComboBox, 'ClockXl')                
+        return
+    def McuXdm_DirButton_Hndl(self):
+        self.setExistingfile(self.McuXdmComboBox, 'McuXdm')       
+        return
+    def BuildProc(self):
+        self.rightsideModel.clear()
+        self.leftsideModel.clear()
+        self.path_data_dict['mcal_install_path'] = self.McalComboBox.currentText().replace('/', '\\')
+        ResultTmp = self.data_key_creation(self.path_data_dict)
+        if ResultTmp is True:
+
+            user_module_refined = sort.import_data(self.path_data_dict['sortkey_result_path'], "MODULEDATA")
+            #Remove the duplicate data between USER MODULE and BASIC MODULE, SRV MODULE
+            user_module_refined['USER_MODULE'] = set(user_module_refined['USER_MODULE'])-(set(user_module_refined['BASIC_MODULE'])|set(user_module_refined['SRV_MODULE']))
+            user_module_refined['USER_MODULE'] = sorted(user_module_refined['USER_MODULE'])
+
+            ResultTmp = self.BuildTree(user_module_refined, self.ModelDict)
+
+            if ResultTmp is True:
+                self.CopyProcessValid = True
+                self.progresstxt_source.setPlainText("Installed MCAL model is loaded successfully.")
+                self.progresstxt_source.appendPlainText(self.McalComboBox.currentText())
+            else:
+                self.CopyProcessValid = False
+        else:
+            self.progresstxt_source.setPlainText("No installed MCAL model.")
+            self.CopyProcessValid = False
+        return
+
+    def RtoL_button_Hndl(self,right_parent, progress_msg):
         if self.CopyProcessValid is True:
-            self.progresstxt_source.clear()
+            progress_msg.clear()
             unchecked_item = dict()
             level_1_rowcnts = right_parent.rowCount()
             for level1_cnt in range(0, level_1_rowcnts):                
-                uncheck_list = list()                       
+                uncheck_list = list()              
                 level1 = self.tree_inform_setup(right_parent, level1_cnt)
                 #DEBUG:
                 print(level1['data'],"here",level1_cnt)
@@ -135,17 +179,25 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
             self.item_remove(right_parent, unchecked_item)       
             self.tristate_view(right_parent)
         else:
-            self.progresstxt_source.setPlainText("Module is not yet loaded")
+            progress_msg.setPlainText("Module is not yet loaded")
         return
-
+    def tree_inform_setup(self, tree, cnt, *uppderidx):
+        treeinform = dict()
+        if not uppderidx:
+            treeinform['idx'] = tree.index(cnt, 0)
+        else:
+            treeinform['idx'] = tree.index(cnt, 0, *uppderidx)
+        treeinform['item'] = tree.itemFromIndex(treeinform['idx'])
+        treeinform['data'] = tree.data(treeinform['idx'])
+        treeinform['childcnts'] = tree.rowCount(treeinform['idx'])
+        treeinform['row'] = cnt
+        return treeinform
     def collect_uncheck_item(self, item, cnt, removelist, database):
         for database_item in database:
             if item['data'] in database[database_item]:
                 database[database_item].pop(item['data'])
                 removelist.append(cnt)
                 removelist.sort(reverse=True)
-                textremove = item['data'] +" is removed"
-                self.progresstxt_source.appendPlainText(textremove)
                 return removelist
 
     def item_remove(self, right_parent, unchecked_item):
@@ -171,37 +223,40 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
                     self.progresstxt_source.appendPlainText("All modules are unselected")
         return
 
-    def rightside_tree_update(self, left_parent, right_Parent):
+    def LtoR_button_Hndl(self, pLeft_P, pRight_P, sortkey_path, pCopylist):
         if self.CopyProcessValid is True:
             self.CopyProcessValid_NoSelect = False
-            data_selected = dict()
-            for cnt1 in range(0, left_parent.rowCount()):                
-                level1 = self.tree_inform_setup(left_parent, cnt1)
+            mod_sel = dict()
+            for cnt1 in range(0, pLeft_P.rowCount()):                
+                level1 = self.tree_inform_setup(pLeft_P, cnt1)
                 level_2_selected = list()
                 for cnt2 in range(0, level1['childcnts']):
-                    level2 = self.tree_inform_setup(left_parent, cnt2, level1['idx'])      
+                    level2 = self.tree_inform_setup(pLeft_P, cnt2, level1['idx'])      
                     if level1['item'].checkState() | level2['item'].checkState() == Qt.Checked:                        
                         level_2_selected.append(level2['data'])
                     print('level_1_data:',level1['data'],'level_2_data:',level2['data'])                 
-                data_selected[level1['data']] = level_2_selected
+                mod_sel[level1['data']] = level_2_selected
+        
+            general_sorting_key = sort.import_data(sortkey_path, "GENERAL_SORTING_KEY")
+            module_sorting_key = sort.import_data(sortkey_path, "MODULE_SORTING_KEY")
             
-            sort_data = sort.import_data(self.path_data_dict['sortkey_path'], "GENERAL_SORTING")
-            sorkey_datas = sort.import_data(self.path_data_dict['sortkey_path'], "SORTINGKEY")
-            smodule_data = data_selected["SERVICEMODULE"]
-            module_data = data_selected["MODULELIST"] + data_selected["BASICMODULE"]
-            smodule_sort_result = sort.gen_c_h_dic(self.McalComboBox.currentText(), sort_data, smodule_data, True)
-            module_sort_result = sort.gen_c_h_dic(self.McalComboBox.currentText(), sort_data, module_data)
-            refine_result = sort.gen_sort(module_sort_result, smodule_sort_result, sorkey_datas)
+            smodule_checked  = mod_sel["SRV_MODULE"]
+            module_checked = mod_sel["USER_MODULE"] + mod_sel["BASIC_MODULE"]
 
-            self.copylist['modulebaic'] = module_sort_result
-            self.copylist['service'] =  refine_result
+            smodule_sort_result = sort.gen_c_h_dic(self.McalComboBox.currentText(), general_sorting_key, smodule_checked, True)
+            module_sort_result = sort.gen_c_h_dic(self.McalComboBox.currentText(), general_sorting_key, module_checked)
+            smodule_sort_result2 = sort.gen_sort(module_sort_result, smodule_sort_result, module_sorting_key)
+
+            pCopylist['modulebaic'] = module_sort_result
+            pCopylist['service'] =  smodule_sort_result2
             
-            right_Parent.clear()
-            self.right_tree_build(right_Parent, data_selected)
+            pRight_P.clear()
+            self.right_tree_build(pRight_P, mod_sel)
             self.right_tree.expandAll()
         else:
             self.CopyProcessValid_NoSelect = True
             self.progresstxt_source.setPlainText("Modules are not yet loaded")
+        return
 
     def left_checkbox_click(self, parent, tree_inform):
         for j_basemodule in tree_inform:
@@ -252,12 +307,10 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
         self.rightsideModel.itemChanged.connect(lambda: self.right_checkbox_click(self.rightsideModel, self.righttreeinform))
         return    
 
-    def right_tree_build_child(self, item_perent, child_elements, checkstate, flag):
+    def child_tree_build(self, item_perent, child_elements, checkstate, flag):
         childcount = 0
-        for text2 in child_elements:
-            text = text2 +" is inserted"
-            self.progresstxt_source.appendPlainText(text)
-            item_child = QStandardItem(text2)
+        for childTmp in child_elements:
+            item_child = QStandardItem(childTmp)
             item_child.setCheckState(checkstate)
             item_child.setFlags(flag)
             item_perent.setChild(childcount, item_child)
@@ -265,7 +318,6 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
         return
 
     def right_tree_build(self, parent, elements):
-        self.progresstxt_source.clear()
         module_inform = dict()
         for module in elements:
             module_inform[module] = {'indexnum': 0}
@@ -277,13 +329,14 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
                 item_module.setCheckState(Qt.Checked)
                 checkvalue = Qt.Checked
                 option = Qt.ItemIsUserCheckable | Qt.ItemIsEnabled
-                self.right_tree_build_child(item_module, elements[module], checkvalue, option)
+                self.child_tree_build(item_module, elements[module], checkvalue, option)
             parent.appendRow(item_module)
             module_inform[module]['indexnum'] = parent.rowCount() - 1            
-            self.before_checkstate[module] =  item_module.checkState()
+            self.before_checkstate[module] =  item_module.checkState()        
         return module_inform
 
-    def left_tree_build(self, parent, elements, basemodule):
+    def left_tree_build(self, parent, elements):
+        basemodule = ['BASIC_MODULE', 'SRV_MODULE']
         module_inform = dict()
         for module in elements:
             module_inform[module] = {'indexnum': 0}
@@ -297,24 +350,11 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
                 item_module.setCheckState(Qt.Unchecked)
                 checkvalue = Qt.Unchecked
                 option = Qt.ItemIsUserCheckable | Qt.ItemIsEnabled
-            self.right_tree_build_child(item_module, elements[module], checkvalue, option)
+            self.child_tree_build(item_module, elements[module], checkvalue, option)
             parent.appendRow(item_module)
             module_inform[module]['indexnum'] = parent.rowCount() - 1
         return module_inform
 
-    def combobox_change(self, combo_name):
-        if combo_name.currentText() is not "":
-            self.rightsideModel.clear()
-            self.leftsideModel.clear()
-            self.path_data_dict['mcal_install_path'] = combo_name.currentText().replace('/', '\\')
-            result = self.data_key_creation(self.path_data_dict)            
-            self.BuildTree(result, self.path_data_dict['sortkey_result_path'])
-        else:
-            self.rightsideModel.clear()
-            self.leftsideModel.clear()
-            self.CopyProcessValid = False
-        return
-    
     def projecthierarchy(self, copypath2):        
         splitresult = list()     
         projectpath = copypath2.pop('PROJECT')
@@ -417,26 +457,28 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
                 "Warning: The modules are not configured.")
         return
     
-    def data_key_creation(self, DATA_PATH):
-        QFile.remove(DATA_PATH['sortkey_result_path'])
-        sort_data = sort.import_data(DATA_PATH['sortkey_path'], "GENERAL_SORTING")
-        # module_data = import_data(DATA_PATH['sortkey_path'], "MODULE")
-        bmodule_data = sort.import_data(DATA_PATH['sortkey_path'], "BASICMODULE")
-        smodule_data = sort.import_data(DATA_PATH['sortkey_path'], "SERVICEMODULE")
-        
-        # data_key.json is created at here.
-        data_key_templete = dict()
-        data_key_templete["MODULEDATA"]={"BASICMODULE": bmodule_data, "SERVICEMODULE": smodule_data, "MODULELIST": []}
-        if self.INSTALLED is False:
-            sort.moduledatashow(DATA_PATH['mcal_install_path'], sort_data, data_key_templete)
-        else:
-            sort.moduledatashow(DATA_PATH['mcal_install_path'], sort_data, data_key_templete,'Smartcopy')        
-
-        if QFile.exists(DATA_PATH['sortkey_result_path']):
-            data_key_created = True
-        else:
-            data_key_created = False
-        return data_key_created
+    def data_key_creation(self, DATA_PATH):        
+        try:
+            #Privious file remove.
+            QFile.remove(DATA_PATH['sortkey_result_path'])
+            sort_data = sort.import_data(DATA_PATH['sortkey_path'], "GENERAL_SORTING_KEY")            
+            bmodule_data = sort.import_data(DATA_PATH['sortkey_path'], "BASIC_MODULE")
+            smodule_data = sort.import_data(DATA_PATH['sortkey_path'], "SRV_MODULE")
+            
+            # data_key.json is created at here.
+            data_key_templete = dict()
+            data_key_templete["MODULEDATA"]={"BASIC_MODULE": bmodule_data, "SRV_MODULE": smodule_data, "USER_MODULE": []}
+            if self.INSTALLED is False:
+                sort.moduledatashow(DATA_PATH['mcal_install_path'], sort_data, data_key_templete)
+            else:
+                sort.moduledatashow(DATA_PATH['mcal_install_path'], sort_data, data_key_templete,'Smartcopy')        
+            if QFile.exists(DATA_PATH['sortkey_result_path']):
+                DataKeyCreated = True
+            else:
+                DataKeyCreated = False
+        except:
+            DataKeyCreated = False
+        return DataKeyCreated
 
     def right_tree_init(self, elements):
         righttree = dict()
@@ -444,30 +486,19 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
             righttree[module] = []
         return righttree
 
-    def BuildTree(self, data_key_created, DATA_PATH):
-        if data_key_created is True:
-            modulelist = sort.import_data(DATA_PATH, "MODULEDATA")
-            modulelist['MODULELIST'] = set(modulelist['MODULELIST'])-(set(modulelist['BASICMODULE'])|set(modulelist['SERVICEMODULE']))
-            modulelist['MODULELIST'] = sorted(modulelist['MODULELIST'])            
-            basemodule = ['BASICMODULE', 'SERVICEMODULE']
-            
-            self.lefttreeinform = self.left_tree_build(self.leftsideModel, modulelist, basemodule)           
-            self.left_tree.setModel(self.leftsideModel)            
-            self.left_tree.setHeaderHidden(True)            
-            self.left_tree.expandAll()
-    
-            self.righttreeinform = self.right_tree_build(self.rightsideModel, self.right_tree_init(modulelist))       
-            self.right_tree.setModel(self.rightsideModel)
-            self.right_tree.setHeaderHidden(True)
-
-            self.progresstxt_source.setPlainText("Installed MCAL model is loaded successfully.")
-            self.CopyProcessValid = True
-        else:
-            self.rightsideModel.clear()
-            self.leftsideModel.clear()
-            self.progresstxt_source.setPlainText("Loading failed for Installed MCAL model.")
-            self.CopyProcessValid = False
-        return self.CopyProcessValid
+    def BuildTree(self, user_moduletmp, model_P):        
+        try:           
+            model_P['LTinform'] = self.left_tree_build(model_P['LI'], user_moduletmp)
+            model_P['LT'].setModel(model_P['LI'])            
+            model_P['LT'].setHeaderHidden(True)            
+            model_P['LT'].expandAll()
+            model_P['RTinform'] = self.right_tree_build(model_P['RI'], self.right_tree_init(user_moduletmp))
+            model_P['RT'].setModel(model_P['RI'])
+            model_P['RT'].setHeaderHidden(True)
+            BuildProcResult = True
+        except:
+            BuildProcResult = False
+        return BuildProcResult
 
     def closeEvent(self, exits):
         """Close the application"""
@@ -494,6 +525,7 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
         msg.setStandardButtons(QMessageBox.Ok)     
         retval = msg.exec_()
         return
+
 if __name__ == "__main__":
     import sys
     app = QApplication(sys.argv)

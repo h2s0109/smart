@@ -16,7 +16,7 @@ class Class_UpdateCombo:
             hd_name, QtCore.QSettings.IniFormat)
         return self.settings
 
-    def setExistingDirectory(self, comboboxname, targetcombox, scopy=None):
+    def setExistingDirectory(self, comboboxname, targetcombox):
         """Select the directory and update the combobox"""
         tempfolder = self.settings.value(
             targetcombox + '/RECENTFOLDERLIST', [])
@@ -29,25 +29,9 @@ class Class_UpdateCombo:
         directory = QtWidgets.QFileDialog.getExistingDirectory(self, targetcombox,
                                                                open_folder, options=options)
         pathcheck_result = pathcheck.is_pathname_valid(directory)
-        if pathcheck_result is True:
-            if (scopy is None):
-                self.UpdateComboBox(comboboxname, directory,
-                                    tempfolder, targetcombox)
-            elif scopy is True:
-                if targetcombox == 'Mcal':
-                    self.data_handling['MCAL_PATH'] = directory
-                    result = self.data_key_creation(self.data_handling)
-                    if result is True:
-                        self.BuildTree(
-                            result, self.data_handling['SORTKEYRESULT_PATH'])
-                        self.UpdateComboBox(
-                            comboboxname, directory, tempfolder, targetcombox)
-                elif targetcombox == 'Module' or 'Smodule' or 'PROJECT':
-                    self.UpdateComboBox(
-                        comboboxname, directory, tempfolder, targetcombox)
-                    self.progresstxt_dest.setPlainText(
-                        comboboxname.currentText())
-        return
+        self.UpdateComboBox(comboboxname, directory, tempfolder, targetcombox)
+        return directory
+
     def setExistingfile(self, comboboxname, targetcombox):
         """Select the file and update the combobox"""
         tempfolder = self.settings.value(

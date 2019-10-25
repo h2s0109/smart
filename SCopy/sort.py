@@ -105,19 +105,19 @@ def moduledatashow(dir_arg, sort_data, module_data, *pjname):
     return data_creation_success
 
 
-def _installed_mcalfolder_print(modulelist, *pjname):
+def _installed_mcalfolder_print(USER_MODULE, *pjname):
     # To remove the duplicated folder name.
-    modulelist = set(modulelist)
-    modulelist = list(modulelist)
-    modulelist.sort()
+    USER_MODULE = set(USER_MODULE)
+    USER_MODULE = list(USER_MODULE)
+    USER_MODULE.sort()
     print("-" * 50, "sorting result", "-" * 50, "\n\r")
-    # pprint(modulelist)
+    # pprint(USER_MODULE)
     if not pjname:
-        export_data('jmodule_whole.json', modulelist)
+        export_data('jmodule_whole.json', USER_MODULE)
     else:
         userpath = pathcheck.windowinstallpathini(pjname[0])
         userpath = os.path.join(userpath, 'jmodule_whole.json')
-        export_data(userpath, modulelist)
+        export_data(userpath, USER_MODULE)
     return
 
 
@@ -148,7 +148,7 @@ def _no_moduledata(whole_module_list, module_data, *pjname):
     tmp3_whole_module_list = set(tmp3_whole_module_list)
     refine_whole_module_list = list(tmp3_whole_module_list)
     refine_whole_module_list.sort()
-    module_data["MODULEDATA"]["MODULELIST"] = refine_whole_module_list
+    module_data["MODULEDATA"]["USER_MODULE"] = refine_whole_module_list
     if not pjname:
         THIS_DIR = os.getcwd()
         THIS_DIR = os.path.realpath(

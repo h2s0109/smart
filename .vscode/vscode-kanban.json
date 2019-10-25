@@ -72,6 +72,20 @@
     },
     {
       "assignedTo": {
+        "name": "Sungsu"
+      },
+      "creation_time": "2019-10-25T14:19:12.707Z",
+      "description": {
+        "content": "McalComboBox_Hndl 의 경로 연동이 잘 이뤄지지않음.\n",
+        "mime": "text/markdown"
+      },
+      "id": "8",
+      "references": [],
+      "title": "McalDirbutton_Hndl 연동문제",
+      "type": "bug"
+    },
+    {
+      "assignedTo": {
         "name": "hansteve"
       },
       "category": "Compiler",
@@ -91,6 +105,20 @@
       "prio": 0,
       "references": [],
       "title": "MCAL.c 추가건"
+    },
+    {
+      "assignedTo": {
+        "name": "Sungsu"
+      },
+      "category": "확인",
+      "creation_time": "2019-10-25T17:33:51.277Z",
+      "description": {
+        "content": "left_checkbox_click\nright_checkbox_click의 역할이 뭐지? 확인할것.",
+        "mime": "text/markdown"
+      },
+      "id": "9",
+      "references": [],
+      "title": "left_checkbox_click"
     }
   ]
 }

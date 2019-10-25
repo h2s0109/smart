@@ -1,5 +1,5 @@
 {
-    "GENERAL_SORTING": {
+    "GENERAL_SORTING_KEY": {
         "EX_AND": [],
 
         "EX_OR": [
@@ -18,15 +18,14 @@
             "compiler"
         ]
     },
-    "MODULE": [],
-    "BASICMODULE": [
+    "BASIC_MODULE": [
         "port",
         "ecum",
         "mcu",
         "tricore_general",
         "general"
     ],
-    "SERVICEMODULE": [
+    "SRV_MODULE": [
         "integration_general",
         "irq"
     ],
@@ -63,8 +62,7 @@
         "hssl",
         "dsadc"
     ],
-    "USER_SELECT_MODULE": [],
-    "SORTINGKEY": {
+    "MODULE_SORTING_KEY": {
         "adc": [
             "Adc"
         ],
