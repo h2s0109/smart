@@ -28,15 +28,11 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
         self.RighItemModel = QStandardItemModel()
         self.RightTreeInform = dict()
         self.LeftTreeInform = dict()
-        # 아래코드는 조만간 삭제될 코드임.
-        # self.ModelDict = {'LT':self.left_tree,'RT':self.right_tree}
-        # self.ModelDict.update({'LI':self.LeftItemModel,'RI':self.RighItemModel})
-        # self.ModelDict.update({"LTinform":self.LeftTreeInform,"RTinform":self.RightTreeInform})           
 
         self.before_checkstate = dict()
         # Module name will be changed at official release.
         # current_dir = os.path.dirname(__file__)        
-        self.INSTALLED = True
+        self.INSTALLED = False
         # Block the unintended McalComboBox_Hndl execution
         self.McalDirbutton_active = False
         self.path_data_dict = dict()
@@ -51,8 +47,8 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
         self.path_data_dict.update(sortkey_result_path = os.path.join(self.path_data_dict['appdata_path'],"Database","data_key.json"))
 
         self.copylist = dict()
-        self.CopyProcessValid = False
-        self.CopyProcessValid_NoSelect = True
+        self.McalLoadValid = False
+        self.NoCopyitem = False
 
         # Call the folder list which were opened recently
         ini_path = os.path.join(self.path_data_dict['appdata_path'],'Mcal.ini')
@@ -67,40 +63,31 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
         license_check = licensetime_check(handler, ini_path)
 
         if license_check is True:
-            #data_key_creation is called at here
             self.McalDirButton.clicked.connect(lambda: self.McalDirbutton_Hndl())
             self.ModuleDirButton.clicked.connect(lambda: self.ModuleDirButton_Hndl())
             self.SmoduleDirButton.clicked.connect(lambda: self.SmoduleDirButton_Hndl())
             self.ProjectDirButton.clicked.connect(lambda: self.ProjectDirButton_Hndl())
             self.ClockXL_DirButton.clicked.connect(lambda: self.ClockXL_DirButton_Hndl())
             self.McuXdm_DirButton.clicked.connect(lambda: self.McuXdm_DirButton_Hndl())
-            #data_key_creation is called at here.
-            # self.McalComboBox.currentIndexChanged.connect(lambda: self.combobox_change(self.McalComboBox))
             self.McalComboBox.currentIndexChanged.connect(lambda: self.McalComboBox_Hndl())
-            # self.leftright_button.clicked.connect(lambda:self.LtoR_button_Hndl(self.LeftItemModel, self.RighItemModel, self.path_data_dict['sortkey_path'], self.copylist))
-            self.leftright_button.clicked.connect(lambda:self.LtoR_button_Hndl())
-            self.rightleft_button.clicked.connect(lambda:self.RtoL_button_Hndl(self.RighItemModel, self.progresstxt_source))
-            self.CopyButton.clicked.connect(self.CopyProcess)
-            self.ParsingButton.clicked.connect(self.ParsingProcess)
-            
+            self.leftright_button.clicked.connect(lambda: self.LtoR_button_Hndl())
+            self.rightleft_button.clicked.connect(lambda: self.RtoL_button_Hndl())
             self.RighItemModel.itemChanged.connect(lambda: self.right_checkbox_click(self.RighItemModel, self.RightTreeInform))
             self.LeftItemModel.itemChanged.connect(lambda: self.left_checkbox_click(self.LeftItemModel, self.LeftTreeInform))
+            self.CopyButton.clicked.connect(self.CopyProcess)
+            self.ParsingButton.clicked.connect(self.ParsingProcess)
         else:
             self.progresstxt_source.setPlainText("license is expired")
 
     def McalDirbutton_Hndl(self):
-        self.McalDirbutton_active = True
+        self.McalComboBox.currentIndexChanged.disconnect()
         self.setExistingDirectory(self.McalComboBox, 'Mcal')
         self.BuildProc()
-        self.McalDirbutton_active = False
+        self.McalComboBox.currentIndexChanged.connect(lambda: self.McalComboBox_Hndl())
         return
 
     def McalComboBox_Hndl(self):
-        
-        if self.McalDirbutton_active is False:
-        # McalDirbutton path is connected with McalComboBox index.
-        # This procedure only can progress when user sets McalComboBox
-           self.BuildProc()
+        self.BuildProc()
         return
 
     def ModuleDirButton_Hndl(self):
@@ -136,14 +123,14 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
             ResultTmp = self.BuildTree(user_module_refined)
 
             if ResultTmp is True:
-                self.CopyProcessValid = True
+                self.McalLoadValid = True
                 self.progresstxt_source.setPlainText("Installed MCAL model is loaded successfully.")
                 self.progresstxt_source.appendPlainText(self.McalComboBox.currentText())
             else:
-                self.CopyProcessValid = False
+                self.McalLoadValid = False
         else:
             self.progresstxt_source.setPlainText("No installed MCAL model.")
-            self.CopyProcessValid = False
+            self.McalLoadValid = False
         return
     def BuildTree(self, user_moduletmp):        
         try:
@@ -160,43 +147,49 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
             BuildProcResult = False
         return BuildProcResult
 
-    def RtoL_button_Hndl(self,right_parent, progress_msg):
-        if self.CopyProcessValid is True:
-            progress_msg.clear()
-            unchecked_item = dict()
-            level_1_rowcnts = right_parent.rowCount()
-            for level1_cnt in range(0, level_1_rowcnts):                
-                uncheck_list = list()              
-                level1 = self.TreeInformGet(right_parent, level1_cnt)
-                #DEBUG:
-                print(level1['data'],"here",level1_cnt)
-                #if Leve_1 checked whole item will be removed
-                if level1['item'].checkState() == Qt.Unchecked:
-                    #DEBUG:
-                    print(level1['data'],"will be removed")
-                    level1['item'].setCheckState(Qt.Checked)
-                    level1['item'].setFlags(Qt.ItemIsTristate)                                               
-                    for tmplevels_2_cnt in range(0,level1['childcnts']):        
-                        templevel2 = self.TreeInformGet(right_parent, tmplevels_2_cnt, level1['idx'])
-                        uncheck_list = self.collect_uncheck_item(templevel2, tmplevels_2_cnt, uncheck_list, self.copylist)
-                    unchecked_item[level1['idx']] = uncheck_list
-                else:
-                    print(level1['data'])                    
-                    for level2_cnt in range(0,level1['childcnts']):
-                        level2 = self.TreeInformGet(right_parent, level2_cnt, level1['idx'])
-                        #DEBUG:
-                        print(level1['data'], level2['data'], level1['childcnts'], level2_cnt)
-                        #if Leve_2 checked only selected item wil be removed
-                        if level2['item'].checkState() == Qt.Unchecked:
-                            #DEBUG:
-                            print(level2['data'],"will be removed")   
-                            uncheck_list = self.collect_uncheck_item(level2, level2_cnt,  uncheck_list, self.copylist)                     
-                            unchecked_item[level1['idx']] = uncheck_list
-            self.item_remove(right_parent, unchecked_item)       
-            self.tristate_view(right_parent)
+    def RtoL_button_Hndl(self):
+        if self.McalLoadValid is True:
+            unchecked_item = self.TreeFindUnchecked(self.RighItemModel)
+            self.item_remove(self.RighItemModel, unchecked_item)       
+            checkItemNull = self.tristate_view(self.RighItemModel)
+            if checkItemNull == True:
+                self.NoCopyitem = True
+                self.progresstxt_source.setPlainText("All modules are unselected")
         else:
-            progress_msg.setPlainText("Module is not yet loaded")
+            self.progresstxt_source.setPlainText("Module is not yet loaded")      
         return
+
+    def TreeFindUnchecked(self,right_parent):
+        unchecked_item = dict()
+        level_1_rowcnts = right_parent.rowCount()
+        for level1_cnt in range(0, level_1_rowcnts):                
+            uncheck_list = list()              
+            level1 = self.TreeInformGet(right_parent, level1_cnt)
+            #DEBUG:
+            print(level1['data'],"here",level1_cnt)
+            #if Leve_1 checked, whole item will be removed
+            if level1['item'].checkState() == Qt.Unchecked:
+                #DEBUG:
+                print(level1['data'],"will be removed")
+                level1['item'].setCheckState(Qt.Checked)
+                level1['item'].setFlags(Qt.ItemIsTristate)                                               
+                for tmplevels_2_cnt in range(0,level1['childcnts']):        
+                    templevel2 = self.TreeInformGet(right_parent, tmplevels_2_cnt, level1['idx'])
+                    uncheck_list = self.collect_uncheck_item(templevel2, tmplevels_2_cnt, uncheck_list, self.copylist)
+                unchecked_item[level1['idx']] = uncheck_list
+            else:
+                print(level1['data'])                    
+                for level2_cnt in range(0,level1['childcnts']):
+                    level2 = self.TreeInformGet(right_parent, level2_cnt, level1['idx'])
+                    #DEBUG:
+                    print(level1['data'], level2['data'], level1['childcnts'], level2_cnt)
+                    #if Leve_2 checked only selected item wil be removed
+                    if level2['item'].checkState() == Qt.Unchecked:
+                        #DEBUG:
+                        print(level2['data'],"will be removed")   
+                        uncheck_list = self.collect_uncheck_item(level2, level2_cnt,  uncheck_list, self.copylist)                     
+                        unchecked_item[level1['idx']] = uncheck_list     
+        return unchecked_item
 
     def TreeInformGet(self, tree, cnt, *uppderidx):
         treeinform = dict()
@@ -226,7 +219,8 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
 
     def tristate_view(self, right_parent):
         parentCount = right_parent.rowCount()
-        tempCount = 0            
+        tempCount = 0
+        checkItemNull = False            
         for k_num in range(0, parentCount):
             level1 = self.TreeInformGet(right_parent, k_num)
             if not right_parent.hasChildren(level1['idx']):
@@ -234,19 +228,17 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
                 level1['item'].setCheckState(Qt.Unchecked)
                 level1['item'].setFlags(Qt.ItemIsTristate)                
                 tempCount+=1
-                # if all module is selected, no more copy process progresses
-                if tempCount is parentCount:
-                    self.CopyProcessValid_NoSelect = True
-                    self.progresstxt_source.appendPlainText("All modules are unselected")
-        return
+                # if all module is selected, no more copy process can progresses
+        if tempCount is parentCount:
+            checkItemNull = True
+        return checkItemNull
 
     def LtoR_button_Hndl(self):
-        if self.CopyProcessValid is True:
-            self.CopyProcessValid_NoSelect = False
+        if self.McalLoadValid is True:
+            self.NoCopyitem = False
             LeftItemSel = self.LeftTreeAnalyze(self.LeftItemModel, self.RighItemModel)            
             self.GenCopylistLeft(LeftItemSel, self.path_data_dict['mcal_install_path'], self.path_data_dict['sortkey_path'], self.copylist)
         else:
-            self.CopyProcessValid_NoSelect = True
             self.progresstxt_source.setPlainText("Modules are not yet loaded")
         return
 
@@ -301,13 +293,14 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
         general_sorting_key = sort.import_data(sortkey_path, "GENERAL_SORTING_KEY")
         module_sorting_key = sort.import_data(sortkey_path, "MODULE_SORTING_KEY")
 
-        module_sort_result = sort.gen_c_h_dic(mcalpath, general_sorting_key, Module_Checked)
+        Module_Sort_Res = sort.gen_c_h_dic(mcalpath, general_sorting_key, Module_Checked)
 
         SrvModule_Sort_ResMid = sort.gen_c_h_dic(mcalpath, general_sorting_key, Srv_Checked, True)
-        #Remove the unrelated data from SrvModule_Sort_ResMid
-        SrvModule_Sort_ResFinal = sort.gen_sort(SrvModule_Sort_ResMid, Module_Checked, module_sorting_key)
+        SrvModule_SortKey = sort.Srv_SortKye_Gen(Module_Checked, module_sorting_key)
+        # Remove the unrelated module from SrvModule_Sort_ResMid
+        SrvModule_Sort_ResFinal = sort.gen_sort(SrvModule_Sort_ResMid, SrvModule_SortKey)
 
-        pCopylist['modulebasic'] = module_sort_result
+        pCopylist['modulebasic'] = Module_Sort_Res
         pCopylist['service'] =  SrvModule_Sort_ResFinal      
         return
 
@@ -425,10 +418,8 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
 
     def ParsingProcess(self):
         parsingpath = dict()
-        parsingpath['ClockXl'] = self.ClockXLComboBox.currentText()             
-        parsingpath['McuXdm'] = self.McuXdmComboBox.currentText()             
-        parsingpath['ClockXl'] = parsingpath['ClockXl'].replace('\\', '/')
-        parsingpath['McuXdm'] = parsingpath['McuXdm'].replace('\\', '/')
+        parsingpath['ClockXl'] = self.ClockXLComboBox.currentText().replace('\\', '/')             
+        parsingpath['McuXdm'] = self.McuXdmComboBox.currentText().replace('\\', '/')
         
         Pathchek_result = [pathcheck.is_pathname_valid(parsingpath[x]) for x in parsingpath]
         for temp_path in parsingpath:
@@ -449,15 +440,12 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
     def CopyProcess(self):        
         """File copy process"""
         self.progresstxt_dest.clear()
-        if self.CopyProcessValid is True and self.CopyProcessValid_NoSelect is False:
+        if self.NoCopyitem is False:
             copypath = dict()            
             if self.PorjectCheckBox.checkState() == Qt.Checked:
-                copypath['module'] = self.ModuleComboBox.currentText()
-                copypath['smodule'] = self.SmoduleComboBox.currentText()            
-                copypath['PROJECT'] = self.ProjectComboBox.currentText()                
-                copypath['module'] = copypath['module'].replace('\\', '/')
-                copypath['smodule'] = copypath['smodule'].replace('\\', '/')
-                copypath['PROJECT'] = copypath['PROJECT'].replace('\\', '/')
+                copypath['module'] = self.ModuleComboBox.currentText().replace('\\', '/')
+                copypath['smodule'] = self.SmoduleComboBox.currentText().replace('\\', '/')           
+                copypath['PROJECT'] = self.ProjectComboBox.currentText().replace('\\', '/')
                 Pathchek_result = [pathcheck.is_pathname_valid(copypath[x]) for x in copypath]
                 if not False in Pathchek_result:
                     import copy
@@ -489,10 +477,8 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
                     self.progresstxt_dest.setPlainText(
                         "Warning: The directory path has a problem.")                
             elif self.PorjectCheckBox.checkState() == Qt.Unchecked:
-                copypath['module'] = self.ModuleComboBox.currentText()
-                copypath['smodule'] = self.SmoduleComboBox.currentText()                            
-                copypath['module'] = copypath['module'].replace('\\', '/')
-                copypath['smodule'] = copypath['smodule'].replace('\\', '/')
+                copypath['module'] = self.ModuleComboBox.currentText().replace('\\', '/')
+                copypath['smodule'] = self.SmoduleComboBox.currentText().replace('\\', '/')                            
                 Pathchek_result = [pathcheck.is_pathname_valid(copypath[x]) for x in copypath]
                 if not False in Pathchek_result:
                     pathcheck.Copypath_creation(copypath)

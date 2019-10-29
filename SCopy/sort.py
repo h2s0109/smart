@@ -286,30 +286,48 @@ def copy_mcal2(src_result, dest_result):
     copy_file(src, dest_result, update=1)
     return None
 
+def Srv_SortKye_Gen(module_checked, sorkey_datas):
+    """To remove the unrelated module, the sorting key of modules that are selected by the user will be generated.
+        
+        Args:
+            module_checked: module which is selected by user
+            sorkey_datas: module sort keys for service module
 
-def gen_sort(smodule_sort_resultcopy, module_sort_result, sorkey_datas):
-    """Regenerate smodule_sort_resultcopy.
-    Remove the unsed item.
+        Returns:
+            sortkey_list: selected module sortkey
     """
     import itertools
-    # TODO: 대소문자가 구분안되는 문제
-    sortkey_list = [sorkey_datas[k] for k in module_sort_result]
+    sortkey_list = [sorkey_datas[k] for k in module_checked]
     sortkey_list.append(sorkey_datas["integration_general"])
+    #Remove the unused items
     sortkey_list = list(filter(None, sortkey_list))
+    #Convert the 2 dimensional array to 1 dimensional array
     sortkey_list = list(itertools.chain(*sortkey_list))
+    sortkey_list = list(set(sortkey_list))
     sortkey_list.sort()
-    smodule_for_copy = dict()
-    for j in smodule_sort_resultcopy:
-        smodule_for_copy.setdefault(j, {})
-        for k in smodule_sort_resultcopy[j]:
+    return sortkey_list
+
+def gen_sort(Srv_file_whole, SrvModule_SortKey):
+    """Regenerate Srv_file_whole.
+    Remove the unsed item.
+        Args:
+            Srv_file_whole: whole service file
+            SrvModule_SortKey: Selected module sortkey for service
+
+        Returns:
+            Srv_file_filtered: selected module service file
+    """
+    Srv_file_filtered = dict()
+    for j in Srv_file_whole:
+        Srv_file_filtered.setdefault(j, {})
+        for k in Srv_file_whole[j]:
             tmplist = dict()
-            smodule_for_copy[j].setdefault(k, {})
-            for sortkey_j2 in sortkey_list:
-                tmplist = super_sort(
-                    sortkey_j2, smodule_sort_resultcopy[j][k], tmplist)
-            smodule_for_copy[j].update({k: tmplist})
-    # pprint(smodule_for_copy)
-    return smodule_for_copy
+            Srv_file_filtered[j].setdefault(k, {})
+            for sortkey_j2 in SrvModule_SortKey:
+                super_sort(sortkey_j2, Srv_file_whole[j][k], tmplist)
+            Srv_file_filtered[j].update({k: tmplist})
+    # pprint(Srv_file_filtered)
+    return Srv_file_filtered
 
 
 def super_sort(sortkey_j_arg, unsorted_arg, tmplist_arg):
@@ -328,4 +346,4 @@ def super_sort(sortkey_j_arg, unsorted_arg, tmplist_arg):
                 break
             # super_sort(sortkey_j_arg, unsorted_arg, tmplist_arg)
             # break
-    return tmplist_arg
+    return
