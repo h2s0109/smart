@@ -287,26 +287,24 @@ def copy_mcal2(src_result, dest_result):
     return None
 
 
-def gen_sort(module_sort_result, smodule_sort_resultcopy, sorkey_datas):
+def gen_sort(smodule_sort_resultcopy, module_sort_result, sorkey_datas):
     """Regenerate smodule_sort_resultcopy.
     Remove the unsed item.
     """
-    modulekeys = module_sort_result.keys()
+    import itertools
     # TODO: 대소문자가 구분안되는 문제
-    sortkey_list = [sorkey_datas[k] for k in modulekeys]
+    sortkey_list = [sorkey_datas[k] for k in module_sort_result]
     sortkey_list.append(sorkey_datas["integration_general"])
-    sortkey = list()
-    for sortkey_j in sortkey_list:
-        for sortkey_k in sortkey_j:
-            sortkey.append(sortkey_k)
-            sortkey.sort()
+    sortkey_list = list(filter(None, sortkey_list))
+    sortkey_list = list(itertools.chain(*sortkey_list))
+    sortkey_list.sort()
     smodule_for_copy = dict()
     for j in smodule_sort_resultcopy:
         smodule_for_copy.setdefault(j, {})
         for k in smodule_sort_resultcopy[j]:
             tmplist = dict()
             smodule_for_copy[j].setdefault(k, {})
-            for sortkey_j2 in sortkey:
+            for sortkey_j2 in sortkey_list:
                 tmplist = super_sort(
                     sortkey_j2, smodule_sort_resultcopy[j][k], tmplist)
             smodule_for_copy[j].update({k: tmplist})
