@@ -32,7 +32,7 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
         self.before_checkstate = dict()
         # Module name will be changed at official release.
         # current_dir = os.path.dirname(__file__)        
-        self.INSTALLED = False
+        self.INSTALLED = True
         # Block the unintended McalComboBox_Hndl execution
         self.McalDirbutton_active = False
         self.path_data_dict = dict()
@@ -72,8 +72,10 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
             self.McalComboBox.currentIndexChanged.connect(lambda: self.McalComboBox_Hndl())
             self.leftright_button.clicked.connect(lambda: self.LtoR_button_Hndl())
             self.rightleft_button.clicked.connect(lambda: self.RtoL_button_Hndl())
-            self.RighItemModel.itemChanged.connect(lambda: self.right_checkbox_click(self.RighItemModel, self.RightTreeInform))
-            self.LeftItemModel.itemChanged.connect(lambda: self.left_checkbox_click(self.LeftItemModel, self.LeftTreeInform))
+            # self.RighItemModel.itemChanged.connect(lambda: self.right_checkbox_click(self.RighItemModel, self.RightTreeInform))
+            self.RighItemModel.itemChanged.connect(lambda: self.right_checkbox_Hndl())            
+            # self.LeftItemModel.itemChanged.connect(lambda: self.left_checkbox_click(self.LeftItemModel, self.LeftTreeInform))
+            self.LeftItemModel.itemChanged.connect(lambda: self.left_checkbox_Hndl())
             self.CopyButton.clicked.connect(self.CopyProcess)
             self.ParsingButton.clicked.connect(self.ParsingProcess)
         else:
@@ -139,7 +141,7 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
             self.left_tree.setHeaderHidden(True)
             self.left_tree.expandAll()
 
-            self.RightTreeInform= self.right_tree_build(self.RighItemModel, self.right_tree_init(user_moduletmp))
+            self.RightTreeInform = self.right_tree_build(self.RighItemModel, self.right_tree_init(user_moduletmp))
             self.right_tree.setModel(self.RighItemModel)
             self.right_tree.setHeaderHidden(True)
             BuildProcResult = True
@@ -266,7 +268,7 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
                     level2_checked.append(level2['data'])
                 print('level_1_data:',level1['data'],'level_2_data:',level2['data'])                 
             Module_Selected[level1['data']] = level2_checked
-            self.GenRightModel(pRightModel, Module_Selected)
+        self.GenRightModel(pRightModel, Module_Selected)
         return Module_Selected
 
     def GenRightModel(self, pRightModel, Sel_Item):
@@ -304,6 +306,10 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
         pCopylist['service'] =  SrvModule_Sort_ResFinal      
         return
 
+    def left_checkbox_Hndl(self):
+        self.left_checkbox_click(self.LeftItemModel, self.LeftTreeInform)
+        return
+
     def left_checkbox_click(self, parent, tree_inform):
         for j_basemodule in tree_inform:
             level1_cnt = tree_inform[j_basemodule]['indexnum']
@@ -317,40 +323,46 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
                 level2['item'].setFlags(flag)
         return
 
+    def right_checkbox_Hndl(self):
+        self.RighItemModel.itemChanged.disconnect() 
+        self.right_checkbox_click(self.RighItemModel, self.RightTreeInform)
+        self.RighItemModel.itemChanged.connect(lambda: self.right_checkbox_Hndl())
+        return
+
     def right_checkbox_click(self, parent, tree_inform):
-        self.RighItemModel.itemChanged.disconnect()    
+        #체크박스가 클릭되면 무조건 이안으로 들어오게 된다.
         for j_basemodule in tree_inform:
             level1_cnt = tree_inform[j_basemodule]['indexnum']
             level1 = self.TreeInformGet(parent, level1_cnt)   
             count_value = level1['childcnts']
-            if self.before_checkstate[j_basemodule] == level1['item'].checkState():
-                if level1['item'].checkState() == Qt.Unchecked:
-                    for level2_cnt in range(0, level1['childcnts']):
-                        level2 = self.TreeInformGet(parent, level2_cnt, level1['idx'])                         
-                        level2['item'].setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
-                        # child_item.setFlags(Qt.NoItemFlags)
-                elif level1['item'].checkState() == Qt.Checked:                    
-                    for level2_cnt in range(0, level1['childcnts']):
-                        level2 = self.TreeInformGet(parent, level2_cnt, level1['idx']) 
-                        level2['item'].setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
-                        if level2['item'].checkState() == Qt.Unchecked:
-                            count_value = count_value - 1
-                if count_value is 0:
-                    print(level1['data'])
-                    level1['item'].setCheckState(Qt.Unchecked)
-            else:
-                if level1['item'].checkState() == Qt.Unchecked:
-                    for level2_cnt in range(0, level1['childcnts']):
-                        level2 = self.TreeInformGet(parent, level2_cnt, level1['idx'])                        
-                        level2['item'].setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
-                        level2['item'].setCheckState(Qt.Unchecked)
-                elif level1['item'].checkState() == Qt.Checked:
-                    for level2_cnt in range(0, level1['childcnts']):
-                        level2 = self.TreeInformGet(parent, level2_cnt, level1['idx'])  
-                        level2['item'].setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
-                        level2['item'].setCheckState(Qt.Checked)
+            #이전이 체크 상태였다면
+            # if self.before_checkstate[j_basemodule] == level1['item'].checkState():
+            #     if level1['item'].checkState() == Qt.Unchecked:
+            #         for level2_cnt in range(0, level1['childcnts']):
+            #             level2 = self.TreeInformGet(parent, level2_cnt, level1['idx'])                         
+            #             level2['item'].setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
+            #             # child_item.setFlags(Qt.NoItemFlags)
+            #     elif level1['item'].checkState() == Qt.Checked:                    
+            #         for level2_cnt in range(0, level1['childcnts']):
+            #             level2 = self.TreeInformGet(parent, level2_cnt, level1['idx']) 
+            #             level2['item'].setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
+            #             if level2['item'].checkState() == Qt.Unchecked:
+            #                 count_value = count_value - 1
+            #     if count_value is 0:
+            #         print(level1['data'])
+            #         level1['item'].setCheckState(Qt.Unchecked)
+            # else:
+            if level1['item'].checkState() == Qt.Unchecked:
+                for level2_cnt in range(0, level1['childcnts']):
+                    level2 = self.TreeInformGet(parent, level2_cnt, level1['idx'])                        
+                    level2['item'].setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
+                    level2['item'].setCheckState(Qt.Unchecked)
+            elif level1['item'].checkState() == Qt.Checked:
+                for level2_cnt in range(0, level1['childcnts']):
+                    level2 = self.TreeInformGet(parent, level2_cnt, level1['idx'])  
+                    level2['item'].setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
+                    # level2['item'].setCheckState(Qt.Checked)
             self.before_checkstate[j_basemodule] = level1['item'].checkState()
-        self.RighItemModel.itemChanged.connect(lambda: self.right_checkbox_click(self.RighItemModel, self.RightTreeInform))
         return    
 
     def child_tree_build(self, item_perent, child_elements, checkstate, flag):
@@ -378,7 +390,7 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
                 self.child_tree_build(item_module, elements[module], checkvalue, option)
             parent.appendRow(item_module)
             module_inform[module]['indexnum'] = parent.rowCount() - 1            
-            self.before_checkstate[module] =  item_module.checkState()        
+            self.before_checkstate[module] =  item_module.checkState()
         return module_inform
 
     def left_tree_build(self, parent, elements):

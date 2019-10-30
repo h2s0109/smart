@@ -78,7 +78,7 @@ def moduledatashow(dir_arg, sort_data, module_data, *pjname):
         sort_data['EX_AND'], sort_data['EX_OR'])
     inc_classify_result = _sort_classify(
         sort_data['INC_AND'], sort_data['INC_OR'])
-    for tmp_dir, tmp_folder, tmp_file in os.walk(dir_arg):
+    for tmp_dir, tmp_folder, _ in os.walk(dir_arg):
         tmp_dir = tmp_dir.replace('\\', '/')
         ex_flag = _folder_check(tmp_dir, ex_classify_result, sort_data, 'EX')
         if ex_flag is True:
