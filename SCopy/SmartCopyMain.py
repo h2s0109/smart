@@ -27,18 +27,14 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
         # Set up the user interface from Designer
         self.setupUi(self)
 
-        self.LeftItemModel = QStandardItemModel()       
-        self.RighItemModel = QStandardItemModel()
-        self.LeftItemModel3 = QStandardItem()       
-        self.LeftItemModel4 = QStandardItem()       
-        self.integration = QStandardItemModel()
+        self.left_item_model = QStandardItemModel()       
+        self.right_item_model = QStandardItemModel()
         self.RightTreeInform = dict()
-        self.LeftTreeInform = dict()
 
         self.before_checkstate = dict()
         # Module name will be changed at official release.
         # current_dir = os.path.dirname(__file__)        
-        self.INSTALLED = True
+        self.INSTALLED = False
         # Block the unintended McalComboBox_Hndl execution
         self.McalDirbutton_active = False
         self.path_data_dict = dict()
@@ -61,7 +57,7 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
         handler = self.create_recent_handler(ini_path, 5)
         self.UpdateRecentOpenFile(self.McalComboBox, 'Mcal')
         self.UpdateRecentOpenFile(self.ModuleComboBox, 'Module')
-        self.UpdateRecentOpenFile(self.SmoduleComboBox, 'Smodule')
+        self.UpdateRecentOpenFile(self.SrvComboBox, 'Smodule')
         self.UpdateRecentOpenFile(self.ProjectComboBox, 'PROJECT')
         self.UpdateRecentOpenFile(self.ClockXLComboBox, 'ClockXl')
         self.UpdateRecentOpenFile(self.McuXdmComboBox, 'McuXdm')
@@ -78,12 +74,21 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
             self.McalComboBox.currentIndexChanged.connect(lambda: self.McalComboBox_Hndl())
             self.leftright_button.clicked.connect(lambda: self.LtoR_button_Hndl())
             self.rightleft_button.clicked.connect(lambda: self.RtoL_button_Hndl())
-            self.RighItemModel.itemChanged.connect(lambda: self.right_checkbox_Hndl())            
-            self.LeftItemModel.itemChanged.connect(lambda: self.left_checkbox_Hndl())
+            self.right_item_model.itemChanged.connect(lambda: self.right_checkbox_Hndl())            
+            self.left_item_model.itemChanged.connect(lambda: self.left_checkbox_Hndl())
             self.CopyButton.clicked.connect(self.CopyProcess)
             self.ParsingButton.clicked.connect(self.ParsingProcess)
         else:
             self.progresstxt_source.setPlainText("license is expired")
+
+        self.Test_McalDirbutton_Hndl()
+        
+        
+    def Test_McalDirbutton_Hndl(self):
+        self.tabWidget.setCurrentIndex(0)
+        self.McalComboBox.setItemText(0,"C:/Workspace/Smartcopy/Test/Mcal_file")
+        self.BuildProc()
+        return
 
     def McalDirbutton_Hndl(self):
         self.McalComboBox.currentIndexChanged.disconnect()
@@ -101,8 +106,8 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
         self.progresstxt_dest.setPlainText(self.ModuleComboBox.currentText())
         return
     def SmoduleDirButton_Hndl(self):
-        self.setExistingDirectory(self.SmoduleComboBox, 'Smodule')
-        self.progresstxt_dest.setPlainText(self.SmoduleComboBox.currentText())
+        self.setExistingDirectory(self.SrvComboBox, 'Smodule')
+        self.progresstxt_dest.setPlainText(self.SrvComboBox.currentText())
         return
     def ProjectDirButton_Hndl(self):
         self.setExistingDirectory(self.ProjectComboBox, 'PROJECT')
@@ -115,9 +120,10 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
         self.setExistingfile(self.McuXdmComboBox, 'McuXdm')       
         return
     def BuildProc(self):
-        self.RighItemModel.clear()
-        self.LeftItemModel.clear()
-        self.path_data_dict['mcal_install_path'] = self.McalComboBox.currentText().replace('/', '\\')
+        self.right_item_model.clear()
+        self.left_item_model.clear()
+        self.path_data_dict['mcal_install_path'] = self.McalComboBox.currentText().replace('\\', '/')
+        # self.path_data_dict['mcal_install_path'] = "C:/Workspace/Smartcopy/Test/Mcal_file"
         ResultTmp = self.data_key_creation(self.path_data_dict)
         if ResultTmp is True:
 
@@ -164,26 +170,13 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
 
     def BuildTree(self, user_moduletmp):        
         try:
-            self.LeftTreeInform = self.left_tree_build(self.LeftItemModel, user_moduletmp)
-            self.left_tree.setModel(self.LeftItemModel)
-            self.left_tree.setHeaderHidden(True)
-            self.left_tree.expandAll()
-            self.left_tree_build(self.LeftItemModel3, user_moduletmp)
-            self.left_tree_build(self.LeftItemModel4, user_moduletmp)
-            self.integration = QStandardItemModel()
-            # self.integration.appendRow(self.LeftItemModel3)
-            # self.integration.appendRow(self.LeftItemModel4)
-            self.LeftItemModel3(self.LeftItemModel4)
-            self.integration.appendRow(self.LeftItemModel3)
-            # self.integration.appendRow(self.LeftItemModel4)
-
-            self.left_tree.setModel(self.integration)
+            self.left_item_model_construct(self.left_item_model, user_moduletmp)
+            self.left_tree.setModel(self.left_item_model)
             self.left_tree.setHeaderHidden(True)
             self.left_tree.expandAll()
 
-
-            self.RightTreeInform = self.right_tree_build(self.RighItemModel, self.right_tree_init(user_moduletmp), self.before_checkstate)
-            self.right_tree.setModel(self.RighItemModel)
+            self.RightTreeInform = self.right_item_model_construct(self.right_item_model, self.right_tree_init(user_moduletmp), self.before_checkstate)
+            self.right_tree.setModel(self.right_item_model)
             self.right_tree.setHeaderHidden(True)
             self.right_tree.expandAll()
             BuildProcResult = True
@@ -193,9 +186,9 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
 
     def RtoL_button_Hndl(self):
         if self.McalLoadValid is True:
-            unchecked_item = self.TreeFindUnchecked(self.RighItemModel,self.copylist)
-            self.item_remove(self.RighItemModel, unchecked_item)       
-            checkItemNull = self.tristate_view(self.RighItemModel)
+            unchecked_item = self.TreeFindUnchecked(self.right_item_model,self.copylist)
+            self.item_remove(self.right_item_model, unchecked_item)       
+            checkItemNull = self.tristate_view(self.right_item_model)
             if checkItemNull == True:
                 self.NoCopyitem = True
                 self.progresstxt_source.setPlainText("All modules are unselected")
@@ -206,8 +199,8 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
     def LtoR_button_Hndl(self):
         if self.McalLoadValid is True:
             self.NoCopyitem = False
-            LeftItemSel = self.LeftTreeAnalyze(self.LeftItemModel)
-            self.right_tree_build(self.RighItemModel, LeftItemSel, self.before_checkstate)
+            LeftItemSel = self.LeftTreeAnalyze(self.left_item_model)
+            self.right_item_model_construct(self.right_item_model, LeftItemSel, self.before_checkstate)
             self.right_tree.expandAll()
             self.GenCopylistLeft(LeftItemSel, self.path_data_dict['mcal_install_path'], self.path_data_dict['sortkey_path'], self.copylist)
         else:
@@ -234,13 +227,15 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
         return
 
     def left_checkbox_Hndl(self):
-        self.left_checkbox_click(self.LeftItemModel, self.LeftTreeInform)
+        self.left_item_model.itemChanged.disconnect()
+        self.left_item_model_gen(self.left_item_model)
+        self.left_item_model.itemChanged.connect(lambda: self.left_checkbox_Hndl())
         return
 
     def right_checkbox_Hndl(self):
-        self.RighItemModel.itemChanged.disconnect() 
-        self.right_checkbox_click(self.RighItemModel, self.RightTreeInform, self.before_checkstate)
-        self.RighItemModel.itemChanged.connect(lambda: self.right_checkbox_Hndl())
+        self.right_item_model.itemChanged.disconnect() 
+        self.right_checkbox_click(self.right_item_model, self.RightTreeInform, self.before_checkstate)
+        self.right_item_model.itemChanged.connect(lambda: self.right_checkbox_Hndl())
         return
 
     def projecthierarchy(self, copypath2):        
@@ -286,7 +281,7 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
             copypath = dict()            
             if self.PorjectCheckBox.checkState() == Qt.Checked:
                 copypath['module'] = self.ModuleComboBox.currentText().replace('\\', '/')
-                copypath['smodule'] = self.SmoduleComboBox.currentText().replace('\\', '/')           
+                copypath['smodule'] = self.SrvComboBox.currentText().replace('\\', '/')           
                 copypath['PROJECT'] = self.ProjectComboBox.currentText().replace('\\', '/')
                 Pathchek_result = [pathcheck.is_pathname_valid(copypath[x]) for x in copypath]
                 if not False in Pathchek_result:
@@ -320,7 +315,7 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
                         "Warning: The directory path has a problem.")                
             elif self.PorjectCheckBox.checkState() == Qt.Unchecked:
                 copypath['module'] = self.ModuleComboBox.currentText().replace('\\', '/')
-                copypath['smodule'] = self.SmoduleComboBox.currentText().replace('\\', '/')                            
+                copypath['smodule'] = self.SrvComboBox.currentText().replace('\\', '/')                            
                 Pathchek_result = [pathcheck.is_pathname_valid(copypath[x]) for x in copypath]
                 if not False in Pathchek_result:
                     pathcheck.Copypath_creation(copypath)

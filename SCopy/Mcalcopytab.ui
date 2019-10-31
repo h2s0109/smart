@@ -461,7 +461,7 @@
             </property>
             <layout class="QGridLayout" name="gridLayout_7">
              <item row="0" column="0">
-              <widget class="QComboBox" name="SmoduleComboBox">
+              <widget class="QComboBox" name="SrvComboBox">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                  <horstretch>250</horstretch>
