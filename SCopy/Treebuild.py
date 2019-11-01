@@ -113,12 +113,12 @@ class Class_Treebuild:
             print("Error:left_item_model_gen")
         return
 
-    def LeftTreeAnalyze(self, pLeftModel):
+    def LeftTreeAnalyze2(self, parent):
         """Generate the selected item dictionary on left side
             It also generate the rightside tree based on leftsidetree selection.
             
             Args:
-            pLeftModel: Leftside item model.
+            parent: Leftside item model.
 
         Returns:
             dict(): selected module on leftside
@@ -126,16 +126,59 @@ class Class_Treebuild:
                         ,USER_MODULE:['dsadc','gpt'...]}
         """
         Module_Selected = dict()
-        for cnt1 in range(0, pLeftModel.rowCount()):                
-            level1 = self.item_info_get(pLeftModel, cnt1)
+        for cnt1 in range(0, parent.rowCount()):                
+            level1 = self.item_info_get(parent, cnt1)
             level2_checked = list()
             for cnt2 in range(0, level1['childcnts']):
-                level2 = self.item_info_get(pLeftModel, cnt2, level1['idx'])      
+                level2 = self.item_info_get(parent, cnt2, level1['idx'])      
                 if level1['item'].checkState() | level2['item'].checkState() == Qt.Checked:                        
                     level2_checked.append(level2['data'])
                 print('level_1_data:',level1['data'],'level_2_data:',level2['data'])                 
             Module_Selected[level1['data']] = level2_checked
         return Module_Selected
+
+    def LeftTreeAnalyze(self, parent):
+        """Generate the selected item dictionary on left side
+            It also generate the rightside tree based on leftsidetree selection.
+            
+            Args:
+            parent: Leftside item model.
+
+        Returns:
+            dict(): selected module on leftside
+        Module_Selected:{BASIC_MODULE:['port','ecum'...],SRV_MODULE:['integration','irq']
+                        ,USER_MODULE:['dsadc','gpt'...]}
+        """
+        Module_Selected = dict()
+        selection = QStandardItemModel()
+        for cnt1 in range(0, parent.rowCount()):                
+            level1 = self.item_info_get(parent, cnt1)
+            # selection.insertRows(cnt1,0,level1['item'])
+            m = parent.index(cnt1,0)
+            y = parent.itemFromIndex(m) 
+            selection.appendRow(y)
+            for cnt2 in range(0, level1['childcnts']):
+                level2 = self.item_info_get(parent, cnt2, level1['idx'])
+                # level3['item'].insertRows(cnt2,0,level2['item'])
+                selection.item(cnt1,0).appendRow(level2['item'])
+                if level2['item'].checkState() == Qt.Unchecked:
+                    # level2s = parent.item(0,0)
+                    # print("start:",level2s.child(0,0).text())
+                    # print("start:",level2s.child(1,0).text())
+                    # # level2s.takeChild(1,0)
+                    # # level2s.removeRow(1)
+                    # print("start:",level2s.child(0,0).text())
+                    # print("start:",level2s.child(1,0).text())
+                    # print("start:",level2s.child(2,0).text())
+                    # print(level1['item'].child(0,0).text())
+                    # print(level1['item'].child(1,0).text())
+                    # print(level1['item'].child(2,0).text())
+                    # print(level1['item'].child(cnt2,0).text()) 요년석
+                    level1['item'].takeChild(cnt2,0)
+                    # print(level1['item'].child(cnt2,0).text())
+            print(selection.item(0,0).rowCount())
+            selection = parent
+        return Module_Selected       
 
     def item_info_get(self, item, cnt, *uppderidx):
         item_info = dict()
