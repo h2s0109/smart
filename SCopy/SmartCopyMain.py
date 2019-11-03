@@ -176,7 +176,9 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
             self.left_tree.expandAll()
 
             self.RightTreeInform = self.right_item_model_construct(self.right_item_model, self.right_tree_init(user_moduletmp), self.before_checkstate)
+            self.RightTreeInform,LeftItemSel2 = self.LeftTreeAnalyze_copy(self.left_item_model)
             self.right_tree.setModel(self.right_item_model)
+            self.right_tree.setModel(LeftItemSel2)
             self.right_tree.setHeaderHidden(True)
             self.right_tree.expandAll()
             BuildProcResult = True
@@ -186,9 +188,14 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
 
     def RtoL_button_Hndl(self):
         if self.McalLoadValid is True:
-            unchecked_item = self.TreeFindUnchecked(self.right_item_model,self.copylist)
-            self.item_remove(self.right_item_model, unchecked_item)       
-            checkItemNull = self.tristate_view(self.right_item_model)
+            # unchecked_item = self.TreeFindUnchecked(self.right_item_model,self.copylist)
+            self.right_item_model = self.RightTreeAnalyze(self.right_item_model,self.copylist)
+            # self.item_remove(self.right_item_model, unchecked_item)       
+            # checkItemNull = self.tristate_view(self.right_item_model)
+            
+            self.right_tree.setModel(self.right_item_model)
+            self.right_tree.expandAll()
+            checkItemNull = False
             if checkItemNull == True:
                 self.NoCopyitem = True
                 self.progresstxt_source.setPlainText("All modules are unselected")
@@ -201,6 +208,9 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
             self.NoCopyitem = False
             LeftItemSel = self.LeftTreeAnalyze(self.left_item_model)
             self.right_item_model_construct(self.right_item_model, LeftItemSel, self.before_checkstate)
+            LeftItemSel,self.right_item_model = self.LeftTreeAnalyze_copy(self.left_item_model)
+            # self.right_item_model_construct_copy(self.right_item_model, LeftItemSel, self.before_checkstate,LeftItemSel2)
+            self.right_tree.setModel(self.right_item_model)
             self.right_tree.expandAll()
             self.GenCopylistLeft(LeftItemSel, self.path_data_dict['mcal_install_path'], self.path_data_dict['sortkey_path'], self.copylist)
         else:
