@@ -29,14 +29,11 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
 
         self.left_item_model = QStandardItemModel()       
         self.right_item_model = QStandardItemModel()
-        self.RightTreeInform = dict()
 
-        self.before_checkstate = dict()
         # Module name will be changed at official release.
         # current_dir = os.path.dirname(__file__)        
         self.INSTALLED = False
         # Block the unintended McalComboBox_Hndl execution
-        self.McalDirbutton_active = False
         self.path_data_dict = dict()
         self.path_data_dict.update(mcal_install_path = '')
         self.path_data_dict.update(sortkey_path = os.path.join(os.getcwd(),"Database","sort_key.json" ))
@@ -171,14 +168,15 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
     def BuildTree(self, user_moduletmp):        
         try:
             self.left_item_model_construct(self.left_item_model, user_moduletmp)
+            self.model_status_eval(self.left_item_model)
             self.left_tree.setModel(self.left_item_model)
             self.left_tree.setHeaderHidden(True)
             self.left_tree.expandAll()
 
-            self.RightTreeInform = self.right_item_model_construct(self.right_item_model, self.right_tree_init(user_moduletmp), self.before_checkstate)
-            self.RightTreeInform,LeftItemSel2 = self.LeftTreeAnalyze_copy(self.left_item_model)
+            self.right_item_model = self.model_Analyzation(self.left_item_model)
+            self.model_status_eval(self.right_item_model)
+            self.right_item_model.itemChanged.connect(lambda: self.right_checkbox_Hndl())
             self.right_tree.setModel(self.right_item_model)
-            self.right_tree.setModel(LeftItemSel2)
             self.right_tree.setHeaderHidden(True)
             self.right_tree.expandAll()
             BuildProcResult = True
@@ -188,11 +186,9 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
 
     def RtoL_button_Hndl(self):
         if self.McalLoadValid is True:
-            # unchecked_item = self.TreeFindUnchecked(self.right_item_model,self.copylist)
-            self.right_item_model = self.RightTreeAnalyze(self.right_item_model,self.copylist)
-            # self.item_remove(self.right_item_model, unchecked_item)       
-            # checkItemNull = self.tristate_view(self.right_item_model)
-            
+            self.right_item_model = self.model_Analyzation(self.right_item_model, self.copylist)
+            self.right_item_model.itemChanged.connect(lambda: self.right_checkbox_Hndl())
+            checkItemNull = self.tristate_view(self.right_item_model)
             self.right_tree.setModel(self.right_item_model)
             self.right_tree.expandAll()
             checkItemNull = False
@@ -207,12 +203,13 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
         if self.McalLoadValid is True:
             self.NoCopyitem = False
             LeftItemSel = self.LeftTreeAnalyze(self.left_item_model)
-            self.right_item_model_construct(self.right_item_model, LeftItemSel, self.before_checkstate)
-            LeftItemSel,self.right_item_model = self.LeftTreeAnalyze_copy(self.left_item_model)
-            # self.right_item_model_construct_copy(self.right_item_model, LeftItemSel, self.before_checkstate,LeftItemSel2)
+            self.GenCopylistLeft(LeftItemSel, self.path_data_dict['mcal_install_path'], self.path_data_dict['sortkey_path'], self.copylist)
+            
+            self.right_item_model = self.model_Analyzation(self.left_item_model)
+            self.model_status_eval(self.right_item_model)
+            self.right_item_model.itemChanged.connect(lambda: self.right_checkbox_Hndl())
             self.right_tree.setModel(self.right_item_model)
             self.right_tree.expandAll()
-            self.GenCopylistLeft(LeftItemSel, self.path_data_dict['mcal_install_path'], self.path_data_dict['sortkey_path'], self.copylist)
         else:
             self.progresstxt_source.setPlainText("Modules are not yet loaded")
         return
@@ -220,31 +217,35 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
     def GenCopylistLeft(self, Sel_Item, mcalpath, sortkey_path, pCopylist):
         # Seperate the selected module
         Srv_Checked  = Sel_Item["SRV_MODULE"]
-        Module_Checked = Sel_Item["BASIC_MODULE"] + Sel_Item["USER_MODULE"]
+        Basic_Checked = Sel_Item["BASIC_MODULE"]
+        Module_Checked = Sel_Item["USER_MODULE"]
 
         general_sorting_key = sort.import_data(sortkey_path, "GENERAL_SORTING_KEY")
         module_sorting_key = sort.import_data(sortkey_path, "MODULE_SORTING_KEY")
 
+        Basic_Sort_Res = sort.gen_c_h_dic(mcalpath, general_sorting_key, Basic_Checked)
         Module_Sort_Res = sort.gen_c_h_dic(mcalpath, general_sorting_key, Module_Checked)
-
         SrvModule_Sort_ResMid = sort.gen_c_h_dic(mcalpath, general_sorting_key, Srv_Checked, True)
         SrvModule_SortKey = sort.Srv_SortKye_Gen(Module_Checked, module_sorting_key)
+        SrvModule_SortKey += sort.Srv_SortKye_Gen(Basic_Checked, module_sorting_key)
         # Remove the unrelated module from SrvModule_Sort_ResMid
-        SrvModule_Sort_ResFinal = sort.gen_sort(SrvModule_Sort_ResMid, SrvModule_SortKey)
+        SrvModule_Sort_Res = sort.gen_sort(SrvModule_Sort_ResMid, SrvModule_SortKey)
 
-        pCopylist['modulebasic'] = Module_Sort_Res
-        pCopylist['service'] =  SrvModule_Sort_ResFinal      
+        pCopylist['BASIC_MODULE'] = Basic_Sort_Res
+        pCopylist['USER_MODULE'] = Module_Sort_Res
+        pCopylist['SRV_MODULE'] =  SrvModule_Sort_Res      
         return
 
     def left_checkbox_Hndl(self):
         self.left_item_model.itemChanged.disconnect()
-        self.left_item_model_gen(self.left_item_model)
+        self.model_status_eval(self.left_item_model)
         self.left_item_model.itemChanged.connect(lambda: self.left_checkbox_Hndl())
         return
 
     def right_checkbox_Hndl(self):
         self.right_item_model.itemChanged.disconnect() 
-        self.right_checkbox_click(self.right_item_model, self.RightTreeInform, self.before_checkstate)
+        self.model_status_eval(self.right_item_model)
+        self.tristate_view(self.right_item_model)
         self.right_item_model.itemChanged.connect(lambda: self.right_checkbox_Hndl())
         return
 
@@ -305,8 +306,9 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
                         xmlexist = os.path.exists(xmlpath)
                         if xmlexist is True:
                             pathcheck.Copypath_creation(deepcopypath)
-                            sort.copy_mcalmodule(self.copylist['service'], copypath['smodule'], True)
-                            sort.copy_mcalmodule(self.copylist['modulebasic'], copypath['module'])
+                            sort.copy_mcalmodule(self.copylist['SRV_MODULE'], copypath['smodule'], True)
+                            sort.copy_mcalmodule(self.copylist['BASIC_MODULE'], copypath['module'])
+                            sort.copy_mcalmodule(self.copylist['USER_MODULE'], copypath['module'])
                             includelist = self.Compiler_include2(self.ProjectComboBox.currentText())                
                             import XMLCompiler
                             XMLCompiler.parsing_includeTasking(copypath['PROJECT'], includelist)
@@ -329,8 +331,9 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
                 Pathchek_result = [pathcheck.is_pathname_valid(copypath[x]) for x in copypath]
                 if not False in Pathchek_result:
                     pathcheck.Copypath_creation(copypath)
-                    sort.copy_mcalmodule(self.copylist['service'], copypath['smodule'], True)
-                    sort.copy_mcalmodule(self.copylist['modulebasic'], copypath['module'])
+                    sort.copy_mcalmodule(self.copylist['SRV_MODULE'], copypath['smodule'], True)
+                    sort.copy_mcalmodule(self.copylist['BASIC_MODULE'], copypath['module'])
+                    sort.copy_mcalmodule(self.copylist['USER_MODULE'], copypath['module'])
                     includelist = self.Compiler_include(copypath['module'], copypath['smodule'])                
                     for k_list in includelist:
                         self.progresstxt_dest.appendPlainText(k_list)
