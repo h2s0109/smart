@@ -6,7 +6,6 @@ from PyQt5 import QtGui
 
 from PyQt5.QtWidgets import QTreeWidget, QTreeWidgetItem, QTreeView
 
-
 import os
 from license import licensetime_check
 import pathcheck
@@ -45,9 +44,11 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
 
         self.path_data_dict.update(sortkey_result_path = os.path.join(self.path_data_dict['appdata_path'],"Database","data_key.json"))
 
+        
+        self.icoPath = "Ico/smart.ico"
         self.copylist = dict()
         self.McalLoadValid = False
-        self.NoCopyitem = False
+        self.allEmpty = False
 
         # Call the folder list which were opened recently
         ini_path = os.path.join(self.path_data_dict['appdata_path'],'Mcal.ini')
@@ -84,6 +85,7 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
     def Test_McalDirbutton_Hndl(self):
         self.tabWidget.setCurrentIndex(0)
         self.McalComboBox.setItemText(0,"C:/Workspace/Smartcopy/Test/Mcal_file")
+        # self.McalComboBox.setItemText(0,"C:/Workspace/Smartcopy/Test/Mcal_file")
         self.BuildProc()
         return
 
@@ -188,37 +190,43 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
         if self.McalLoadValid is True:
             self.right_item_model = self.model_Analyzation(self.right_item_model, self.copylist)
             self.right_item_model.itemChanged.connect(lambda: self.right_checkbox_Hndl())
-            checkItemNull = self.tristate_view(self.right_item_model)
+            checkItemNull = self.model_status_eval(self.right_item_model)
             self.right_tree.setModel(self.right_item_model)
             self.right_tree.expandAll()
-            checkItemNull = False
             if checkItemNull == True:
-                self.NoCopyitem = True
+                self.allEmpty = True
                 self.progresstxt_source.setPlainText("All modules are unselected")
+            else:
+                self.allEmpty = False                
         else:
             self.progresstxt_source.setPlainText("Module is not yet loaded")      
         return
 
     def LtoR_button_Hndl(self):
         if self.McalLoadValid is True:
-            self.NoCopyitem = False
-            LeftItemSel = self.LeftTreeAnalyze(self.left_item_model)
-            self.GenCopylistLeft(LeftItemSel, self.path_data_dict['mcal_install_path'], self.path_data_dict['sortkey_path'], self.copylist)
-            
             self.right_item_model = self.model_Analyzation(self.left_item_model)
-            self.model_status_eval(self.right_item_model)
             self.right_item_model.itemChanged.connect(lambda: self.right_checkbox_Hndl())
+            self.copylist = self.copylist_Gen(self.right_item_model, self.path_data_dict)
+            checkItemNull = self.model_status_eval(self.right_item_model)
             self.right_tree.setModel(self.right_item_model)
             self.right_tree.expandAll()
+            if checkItemNull == True:
+                self.allEmpty = True
+                self.progresstxt_source.setPlainText("All modules are unselected")
+            else:
+                self.allEmpty = False
+                
         else:
             self.progresstxt_source.setPlainText("Modules are not yet loaded")
         return
 
-    def GenCopylistLeft(self, Sel_Item, mcalpath, sortkey_path, pCopylist):
+    def copylist_Gen(self, Sel_Item, path_data):
+        mcalpath = path_data['mcal_install_path']
+        sortkey_path = path_data['sortkey_path']
         # Seperate the selected module
-        Srv_Checked  = Sel_Item["SRV_MODULE"]
-        Basic_Checked = Sel_Item["BASIC_MODULE"]
-        Module_Checked = Sel_Item["USER_MODULE"]
+        Srv_Checked = self.FindChildrenItem(Sel_Item,"SRV_MODULE")
+        Basic_Checked = self.FindChildrenItem(Sel_Item,"BASIC_MODULE")
+        Module_Checked = self.FindChildrenItem(Sel_Item,"USER_MODULE")
 
         general_sorting_key = sort.import_data(sortkey_path, "GENERAL_SORTING_KEY")
         module_sorting_key = sort.import_data(sortkey_path, "MODULE_SORTING_KEY")
@@ -231,10 +239,11 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
         # Remove the unrelated module from SrvModule_Sort_ResMid
         SrvModule_Sort_Res = sort.gen_sort(SrvModule_Sort_ResMid, SrvModule_SortKey)
 
-        pCopylist['BASIC_MODULE'] = Basic_Sort_Res
-        pCopylist['USER_MODULE'] = Module_Sort_Res
-        pCopylist['SRV_MODULE'] =  SrvModule_Sort_Res      
-        return
+        Copylist = dict()
+        Copylist['BASIC_MODULE'] = Basic_Sort_Res
+        Copylist['USER_MODULE'] = Module_Sort_Res
+        Copylist['SRV_MODULE'] =  SrvModule_Sort_Res      
+        return Copylist
 
     def left_checkbox_Hndl(self):
         self.left_item_model.itemChanged.disconnect()
@@ -245,7 +254,6 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
     def right_checkbox_Hndl(self):
         self.right_item_model.itemChanged.disconnect() 
         self.model_status_eval(self.right_item_model)
-        self.tristate_view(self.right_item_model)
         self.right_item_model.itemChanged.connect(lambda: self.right_checkbox_Hndl())
         return
 
@@ -282,17 +290,17 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
             clockxl_result = self.clockxl_load(parsingpath['ClockXl'])
             self.parsing_pll(parsingpath['McuXdm'], clockxl_result)
             self.Clkprogresstxt.setPlainText("complete")
-            self.show_message_parsing()
+            self.show_message_new("Clock Configuration Success","Result",self.icoPath)
         return
 
     def CopyProcess(self):        
         """File copy process"""
         self.progresstxt_dest.clear()
-        if self.NoCopyitem is False:
+        if self.allEmpty is False:
             copypath = dict()            
             if self.PorjectCheckBox.checkState() == Qt.Checked:
-                copypath['module'] = self.ModuleComboBox.currentText().replace('\\', '/')
-                copypath['smodule'] = self.SrvComboBox.currentText().replace('\\', '/')           
+                copypath['MODULE'] = self.ModuleComboBox.currentText().replace('\\', '/')
+                copypath['SRV_MODULE'] = self.SrvComboBox.currentText().replace('\\', '/')           
                 copypath['PROJECT'] = self.ProjectComboBox.currentText().replace('\\', '/')
                 Pathchek_result = [pathcheck.is_pathname_valid(copypath[x]) for x in copypath]
                 if not False in Pathchek_result:
@@ -306,15 +314,15 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
                         xmlexist = os.path.exists(xmlpath)
                         if xmlexist is True:
                             pathcheck.Copypath_creation(deepcopypath)
-                            sort.copy_mcalmodule(self.copylist['SRV_MODULE'], copypath['smodule'], True)
-                            sort.copy_mcalmodule(self.copylist['BASIC_MODULE'], copypath['module'])
-                            sort.copy_mcalmodule(self.copylist['USER_MODULE'], copypath['module'])
+                            sort.copy_mcalmodule(self.copylist['SRV_MODULE'], copypath['SRV_MODULE'], True)
+                            sort.copy_mcalmodule(self.copylist['BASIC_MODULE'], copypath['MODULE'])
+                            sort.copy_mcalmodule(self.copylist['USER_MODULE'], copypath['MODULE'])
                             includelist = self.Compiler_include2(self.ProjectComboBox.currentText())                
                             import XMLCompiler
                             XMLCompiler.parsing_includeTasking(copypath['PROJECT'], includelist)
                             for k_list in includelist:
                                 self.progresstxt_dest.appendPlainText(k_list)
-                            self.show_message()
+                            self.show_message_new("Copy Success","Result",self.icoPath)
                         else:
                             self.progresstxt_dest.setPlainText(
                             "Warning:It can`t find .cproject.")
@@ -326,18 +334,18 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
                     self.progresstxt_dest.setPlainText(
                         "Warning: The directory path has a problem.")                
             elif self.PorjectCheckBox.checkState() == Qt.Unchecked:
-                copypath['module'] = self.ModuleComboBox.currentText().replace('\\', '/')
-                copypath['smodule'] = self.SrvComboBox.currentText().replace('\\', '/')                            
+                copypath['MODULE'] = self.ModuleComboBox.currentText().replace('\\', '/')
+                copypath['SRV_MODULE'] = self.SrvComboBox.currentText().replace('\\', '/')                            
                 Pathchek_result = [pathcheck.is_pathname_valid(copypath[x]) for x in copypath]
                 if not False in Pathchek_result:
                     pathcheck.Copypath_creation(copypath)
-                    sort.copy_mcalmodule(self.copylist['SRV_MODULE'], copypath['smodule'], True)
-                    sort.copy_mcalmodule(self.copylist['BASIC_MODULE'], copypath['module'])
-                    sort.copy_mcalmodule(self.copylist['USER_MODULE'], copypath['module'])
-                    includelist = self.Compiler_include(copypath['module'], copypath['smodule'])                
+                    sort.copy_mcalmodule(self.copylist['SRV_MODULE'], copypath['SRV_MODULE'], True)
+                    sort.copy_mcalmodule(self.copylist['BASIC_MODULE'], copypath['MODULE'])
+                    sort.copy_mcalmodule(self.copylist['USER_MODULE'], copypath['MODULE'])
+                    includelist = self.Compiler_include(copypath['MODULE'], copypath['SRV_MODULE'])                
                     for k_list in includelist:
                         self.progresstxt_dest.appendPlainText(k_list)
-                    self.show_message()
+                    self.show_message_new("Copy Success","Result",self.icoPath)
                 else:
                     self.progresstxt_dest.setPlainText(
                         "Warning: The directory path has a problem.")
@@ -349,26 +357,16 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
     def closeEvent(self, exits):
         """Close the application"""
         exits.accept()
-    
-    def show_message(self):
-        msg = QMessageBox()
-        msg.setIcon(QMessageBox.Information)
-        msg.setText("Copy Success")
-        msg.setWindowTitle("Result")
-        msg.setWindowIcon(QtGui.QIcon("Ico/smart.ico"))
-        msg.setStandardButtons(QMessageBox.Ok)     
-        msg.exec_()
-        return
 
-    def show_message_parsing(self):
+    def show_message_new(self,Text, Title, icoPath):
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Information)
-        msg.setText("Clock Configuration Success")
-        msg.setWindowTitle("Result")
-        msg.setWindowIcon(QtGui.QIcon("Ico/smart.ico"))
+        msg.setText(Text)
+        msg.setWindowTitle(Title)
+        msg.setWindowIcon(QtGui.QIcon(icoPath))
         msg.setStandardButtons(QMessageBox.Ok)
         msg.exec_()
-        return
+        return 
 
 if __name__ == "__main__":
     import sys

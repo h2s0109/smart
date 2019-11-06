@@ -9,12 +9,6 @@ class Class_Treebuild:
         super().__init__()
         return
 
-    def right_tree_init(self, elements):
-        righttree = dict()
-        for module in elements:            
-            righttree[module] = []
-        return righttree
-
     def left_item_model_construct(self, ItemModel, elements):
         basemodule = ['BASIC_MODULE', 'SRV_MODULE']
         for module in elements:
@@ -45,59 +39,41 @@ class Class_Treebuild:
     def model_status_eval(self, parent):
         try:
             #체크박스가 클릭되면 무조건 이안으로 들어오게 된다.
+            total =parent.rowCount()
+            checkItemNull = False
             for cnt1 in range(0, parent.rowCount()):                
                 level1 = self.item_info_get(parent, cnt1)
-                if level1['childcnts'] == 0:
-                    level1['item'].setFlags(Qt.ItemIsUserCheckable)
+                if not parent.hasChildren(level1['idx']):
+                    level1['item'].setFlags(Qt.ItemIsTristate)
+                    total-=1
+                    if total == 0:
+                        checkItemNull = True
                 else:
                     if level1['item'].checkState() == Qt.Checked:                
                         for cnt2 in range(0, level1['childcnts']):
-                            level2 = self.item_info_get(parent, cnt2, level1['idx'],cnt1)
+                            level2 = self.item_info_get(parent, cnt2, level1['idx'])
                             level2['item'].setCheckState(Qt.Checked)
-                            level2['item'].setFlags(Qt.ItemIsUserCheckable)
+                            level2['item'].setFlags(Qt.ItemIsTristate)
                     if level1['item'].checkState() == Qt.Unchecked:
                         for cnt2 in range(0, level1['childcnts']):
-                            level2 = self.item_info_get(parent, cnt2, level1['idx'],cnt1) 
+                            level2 = self.item_info_get(parent, cnt2, level1['idx']) 
                             level2['item'].setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
         except:
             print("Error:left_item_model_gen")
-        return
+        return checkItemNull
 
-    def LeftTreeAnalyze(self, parent):
-        
-        """Generate the selected item dictionary on left side
-            It also generate the rightside tree based on leftsidetree selection.
-            
-            Args:
-            parent: Leftside item model.
-
-        Returns:
-            dict(): selected module on leftside
-        Module_Selected:{BASIC_MODULE:['port','ecum'...],SRV_MODULE:['integration','irq']
-                        ,USER_MODULE:['dsadc','gpt'...]}
-        """
-        Module_Selected = dict()
-        for cnt1 in range(0, parent.rowCount()):                
-            level1 = self.item_info_get(parent, cnt1)
-            level2_checked = list()
-            for cnt2 in range(0, level1['childcnts']):
-                level2 = self.item_info_get(parent, cnt2, level1['idx'])      
-                if level1['item'].checkState() | level2['item'].checkState() == Qt.Checked:                        
-                    level2_checked.append(level2['data'])
-                print('level_1_data:',level1['data'],'level_2_data:',level2['data'])                 
-            Module_Selected[level1['data']] = level2_checked
-        return Module_Selected
-
-    def item_info_get(self, model, cnt, indx_up = None, cnt_up = 0):
+    def item_info_get(self, model, cnt = None, indx_up = None,item = None):
         item_info = dict()
         child = list()
-        if(indx_up is not None):
+        if indx_up is not None:
             item_info['idx'] = model.index(cnt,0,indx_up)
-            item_info['item1'] = model.item(cnt_up,0)
+        elif item is not None:
+            item_info['idx'] = model.indexFromItem(item)            
         else:
             item_info['idx'] = model.index(cnt, 0)
-        item_info['rownum'] = cnt
         item_info['item'] = model.itemFromIndex(item_info['idx'])
+        item_info['parents'] = item_info['item'].parent()
+        item_info['rownum'] = item_info['item'].row()
         item_info['data'] = model.data(item_info['idx'])
         item_info['text'] = item_info['item'].text()
         item_info['hasChildren'] = item_info['item'].hasChildren()  
@@ -111,23 +87,8 @@ class Class_Treebuild:
         item_info['childlist'] =  child
         return item_info
 
-    def tristate_view(self, right_parent):
-        parentCount = right_parent.rowCount()
-        tempCount = 0
-        checkItemNull = False            
-        for k_num in range(0, parentCount):
-            level1 = self.item_info_get(right_parent, k_num)
-            if not right_parent.hasChildren(level1['idx']):
-                print("Debug",level1['data'])
-                level1['item'].setCheckState(Qt.Unchecked)
-                level1['item'].setFlags(Qt.ItemIsTristate)                
-                tempCount+=1
-                # if all module is selected, no more copy process can progresses
-        if tempCount is parentCount:
-            checkItemNull = True
-        return checkItemNull
 
-    def model_Analyzation(self, parent, *copylist):
+    def model_Analyzation(self, parent, copylist = None):
             
         """Generate the selected item dictionary on left side
             It also generate the rightside tree based on leftsidetree selection.
@@ -150,15 +111,37 @@ class Class_Treebuild:
             level2_checked = list()
             check_cnt = 0
             for cnt2 in range(0, level1['childcnts']):
-                level2 = self.item_info_get(parent, cnt2, level1['idx'],cnt1)
+                level2 = self.item_info_get(parent, cnt2, level1['idx'])
                 if level1['item'].checkState() | level2['item'].checkState() == Qt.Checked:                                           
                     level2_checked.append(level2['data'])
                     level1_copy['item'].appendRow(level2['item'].clone())
-                    level2_copy = self.item_info_get(copymodel, check_cnt, level1_copy['idx'], cnt1)                    
+                    level2_copy = self.item_info_get(copymodel, check_cnt, level1_copy['idx'])                    
                     check_cnt += 1
                     print(level2_copy['data'])
                 elif level2['item'].checkState() == Qt.Unchecked:
-                    if len(copylist)>0:
-                        copylist[0][level1['data']].pop(level2['data'])
-                
+                    if copylist is not None:
+                        copylist[level1['data']].pop(level2['data'])
         return copymodel
+
+    def FindChildrenItem(self, parent, finditem):
+        
+        """Generate the selected item dictionary on left side
+            It also generate the rightside tree based on leftsidetree selection.
+            
+            Args:
+            parent: Leftside item model.
+
+        Returns:
+            dict(): selected module on leftside
+        Module_Selected:{BASIC_MODULE:['port','ecum'...],SRV_MODULE:['integration','irq']
+                        ,USER_MODULE:['dsadc','gpt'...]}
+        """
+        Module_Selected = dict()
+        itemvalue = parent.findItems(finditem)
+        level1 = self.item_info_get(parent,item = itemvalue[0])
+        level2_checked = list()
+        for cnt2 in range(0, level1['childcnts']):
+            level2 = self.item_info_get(parent, cnt2, level1['idx'])      
+            level2_checked.append(level2['data'])               
+        Module_Selected[level1['data']] = level2_checked
+        return Module_Selected[level1['data']]

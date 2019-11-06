@@ -364,7 +364,7 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "SmartCopy V2.0.0"))
+        Dialog.setWindowTitle(_translate("Dialog", "SmartCopy V3.0.0"))
         self.McalgroupBox.setTitle(_translate("Dialog", "MCAL Installed"))
         self.McalDirButton.setText(_translate("Dialog", "Directory"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabSource), _translate("Dialog", "Source"))
