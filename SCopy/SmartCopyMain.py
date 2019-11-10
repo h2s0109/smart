@@ -128,7 +128,7 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
 
             user_module_refined = sort.import_data(self.path_data_dict['sortkey_result_path'], "MODULEDATA")
             #Remove the duplicate data between USER MODULE and BASIC MODULE, SRV MODULE
-            user_module_refined['USER_MODULE'] = set(user_module_refined['USER_MODULE'])-(set(user_module_refined['BASIC_MODULE'])|set(user_module_refined['SRV_MODULE']))
+            user_module_refined['USER_MODULE'] = set(user_module_refined['USER_MODULE'])-(set(user_module_refined['BASIC_MODULE'])|set(user_module_refined['SRV_MODULE2']))
             user_module_refined['USER_MODULE'] = sorted(user_module_refined['USER_MODULE'])
 
             ResultTmp = self.BuildTree(user_module_refined)
@@ -151,10 +151,11 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
             sort_data = sort.import_data(DATA_PATH['sortkey_path'], "GENERAL_SORTING_KEY")            
             bmodule_data = sort.import_data(DATA_PATH['sortkey_path'], "BASIC_MODULE")
             smodule_data = sort.import_data(DATA_PATH['sortkey_path'], "SRV_MODULE")
+            smodule_data2 = sort.import_data(DATA_PATH['sortkey_path'], "SRV_MODULE2")
             
             # data_key.json is created at here.
             data_key_templete = dict()
-            data_key_templete["MODULEDATA"]={"BASIC_MODULE": bmodule_data, "SRV_MODULE": smodule_data, "USER_MODULE": []}
+            data_key_templete["MODULEDATA"]={"BASIC_MODULE": bmodule_data, "SRV_MODULE": smodule_data, "SRV_MODULE2": smodule_data2, "USER_MODULE": []}
             if self.INSTALLED is False:
                 sort.moduledatashow(DATA_PATH['mcal_install_path'], sort_data, data_key_templete)
             else:
@@ -230,12 +231,15 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
 
         general_sorting_key = sort.import_data(sortkey_path, "GENERAL_SORTING_KEY")
         module_sorting_key = sort.import_data(sortkey_path, "MODULE_SORTING_KEY")
+        module_sorting_key2 = sort.import_data(sortkey_path, "SRV_MODULE2")
+
+        SrvModule_SortKey = sort.Srv_SortKye_Gen(Srv_Checked, module_sorting_key)
+        SrvModule_SortKey += sort.Srv_SortKye_Gen(Module_Checked, module_sorting_key)
+        SrvModule_SortKey += sort.Srv_SortKye_Gen(Basic_Checked, module_sorting_key)
 
         Basic_Sort_Res = sort.gen_c_h_dic(mcalpath, general_sorting_key, Basic_Checked)
         Module_Sort_Res = sort.gen_c_h_dic(mcalpath, general_sorting_key, Module_Checked)
         SrvModule_Sort_ResMid = sort.gen_c_h_dic(mcalpath, general_sorting_key, Srv_Checked, True)
-        SrvModule_SortKey = sort.Srv_SortKye_Gen(Module_Checked, module_sorting_key)
-        SrvModule_SortKey += sort.Srv_SortKye_Gen(Basic_Checked, module_sorting_key)
         # Remove the unrelated module from SrvModule_Sort_ResMid
         SrvModule_Sort_Res = sort.gen_sort(SrvModule_Sort_ResMid, SrvModule_SortKey)
 

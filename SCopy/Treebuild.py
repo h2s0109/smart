@@ -10,7 +10,7 @@ class Class_Treebuild:
         return
 
     def left_item_model_construct(self, ItemModel, elements):
-        basemodule = ['BASIC_MODULE', 'SRV_MODULE']
+        basemodule = ['BASIC_MODULE', 'SRV_MODULE2']
         for module in elements:
             item_module = QStandardItem(module)
             item_module.setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
@@ -24,6 +24,20 @@ class Class_Treebuild:
                 option = Qt.ItemIsUserCheckable | Qt.ItemIsEnabled
             self.child_tree_build(item_module, elements[module], checkvalue, option)
             ItemModel.appendRow(item_module)
+        return
+
+    def left_item_construct(self, module):
+        item_module = QStandardItem(module)
+        item_module.setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
+        if()
+            item_module.setCheckState(Qt.Checked)
+            checkvalue = Qt.Checked
+            option = Qt.ItemIsUserCheckable
+        else:
+            item_module.setCheckState(Qt.Unchecked)
+            checkvalue = Qt.Unchecked
+            option = Qt.ItemIsUserCheckable | Qt.ItemIsEnabled
+        self.child_tree_build(item_module, elements[module], checkvalue, option)
         return
 
     def child_tree_build(self, item_perent, child_elements, checkstate, flag):

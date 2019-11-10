@@ -298,7 +298,6 @@ def Srv_SortKye_Gen(module_checked, sorkey_datas):
     """
     import itertools
     sortkey_list = [sorkey_datas[k] for k in module_checked]
-    sortkey_list.append(sorkey_datas["integration_general"])
     #Remove the unused items
     sortkey_list = list(filter(None, sortkey_list))
     #Convert the 2 dimensional array to 1 dimensional array
