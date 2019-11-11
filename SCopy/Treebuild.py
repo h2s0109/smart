@@ -9,43 +9,53 @@ class Class_Treebuild:
         super().__init__()
         return
 
-    def left_item_model_construct(self, ItemModel, elements):
-        basemodule = ['BASIC_MODULE', 'SRV_MODULE2']
-        for module in elements:
-            item_module = QStandardItem(module)
-            item_module.setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
-            if module in basemodule:
-                item_module.setCheckState(Qt.Checked)
-                checkvalue = Qt.Checked
-                option = Qt.ItemIsUserCheckable
-            else:
-                item_module.setCheckState(Qt.Unchecked)
-                checkvalue = Qt.Unchecked
-                option = Qt.ItemIsUserCheckable | Qt.ItemIsEnabled
-            self.child_tree_build(item_module, elements[module], checkvalue, option)
-            ItemModel.appendRow(item_module)
-        return
-
-    def left_item_construct(self, module):
-        item_module = QStandardItem(module)
+    def left_item_construct(self, module, key):
+        item_module = QStandardItem(key)
         item_module.setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
-        if()
-            item_module.setCheckState(Qt.Checked)
-            checkvalue = Qt.Checked
-            option = Qt.ItemIsUserCheckable
-        else:
-            item_module.setCheckState(Qt.Unchecked)
-            checkvalue = Qt.Unchecked
-            option = Qt.ItemIsUserCheckable | Qt.ItemIsEnabled
-        self.child_tree_build(item_module, elements[module], checkvalue, option)
-        return
-
-    def child_tree_build(self, item_perent, child_elements, checkstate, flag):
+        item_module.setCheckState(Qt.Unchecked)
+        self.child_tree_build(item_module,module[key])
+        return item_module
+    def child_tree_build(self, item_perent, child_elements):
         childcount = 0
         for childTmp in child_elements:
             item_child = QStandardItem(childTmp)
-            item_child.setCheckState(checkstate)
-            item_child.setFlags(flag)
+            item_child.setCheckState(Qt.Unchecked)
+            item_perent.setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
+            item_perent.setChild(childcount, item_child)
+            childcount += 1
+        return
+    def left_item_construct_special(self, module, key):
+        item_module = QStandardItem(key)
+        moduleitem = len(module[key])
+        item_dict =dict()
+        for tempItem in module[key]:
+            if module[key][tempItem] =='check':
+                moduleitem-=1
+                item_dict[tempItem]={'checkvalue':Qt.Checked}
+                item_dict[tempItem].update(option=Qt.ItemIsUserCheckable)
+            else:
+                item_module.setCheckState(Qt.Unchecked)
+                item_dict[tempItem]={'checkvalue':Qt.Unchecked}
+                item_dict[tempItem].update(option=Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
+        if moduleitem == 0:
+            item_module.setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
+            item_module.setCheckState(Qt.Checked)
+            self.child_tree_build_special(item_module, item_dict)
+        else:
+            item_module.setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
+            item_module.setCheckState(Qt.Unchecked)
+            self.child_tree_build_special(item_module,item_dict,flag=True)
+        return item_module
+
+    def child_tree_build_special(self, item_perent, child_elements, flag=False):
+        childcount = 0
+        for childTmp in child_elements.keys():
+            item_child = QStandardItem(childTmp)
+            item_child.setCheckState(child_elements[childTmp]['checkvalue'])
+            if flag==True:
+                item_child.setFlags(child_elements[childTmp]['option'])
+            else:
+                item_child.setFlags(Qt.ItemIsUserCheckable)
             item_perent.setChild(childcount, item_child)
             childcount += 1
         return

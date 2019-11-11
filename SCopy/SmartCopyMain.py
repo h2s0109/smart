@@ -48,7 +48,7 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
         self.icoPath = "Ico/smart.ico"
         self.copylist = dict()
         self.McalLoadValid = False
-        self.allEmpty = False
+        self.allEmpty = True
 
         # Call the folder list which were opened recently
         ini_path = os.path.join(self.path_data_dict['appdata_path'],'Mcal.ini')
@@ -128,7 +128,7 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
 
             user_module_refined = sort.import_data(self.path_data_dict['sortkey_result_path'], "MODULEDATA")
             #Remove the duplicate data between USER MODULE and BASIC MODULE, SRV MODULE
-            user_module_refined['USER_MODULE'] = set(user_module_refined['USER_MODULE'])-(set(user_module_refined['BASIC_MODULE'])|set(user_module_refined['SRV_MODULE2']))
+            user_module_refined['USER_MODULE'] = set(user_module_refined['USER_MODULE'])-(set(user_module_refined['BASIC_MODULE'])|set(user_module_refined['SRV_MODULE']))
             user_module_refined['USER_MODULE'] = sorted(user_module_refined['USER_MODULE'])
 
             ResultTmp = self.BuildTree(user_module_refined)
@@ -151,11 +151,10 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
             sort_data = sort.import_data(DATA_PATH['sortkey_path'], "GENERAL_SORTING_KEY")            
             bmodule_data = sort.import_data(DATA_PATH['sortkey_path'], "BASIC_MODULE")
             smodule_data = sort.import_data(DATA_PATH['sortkey_path'], "SRV_MODULE")
-            smodule_data2 = sort.import_data(DATA_PATH['sortkey_path'], "SRV_MODULE2")
             
             # data_key.json is created at here.
             data_key_templete = dict()
-            data_key_templete["MODULEDATA"]={"BASIC_MODULE": bmodule_data, "SRV_MODULE": smodule_data, "SRV_MODULE2": smodule_data2, "USER_MODULE": []}
+            data_key_templete["MODULEDATA"]={"BASIC_MODULE": bmodule_data, "SRV_MODULE": smodule_data, "USER_MODULE": []}
             if self.INSTALLED is False:
                 sort.moduledatashow(DATA_PATH['mcal_install_path'], sort_data, data_key_templete)
             else:
@@ -170,16 +169,23 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
 
     def BuildTree(self, user_moduletmp):        
         try:
-            self.left_item_model_construct(self.left_item_model, user_moduletmp)
+            # self.left_item_model_construct(self.left_item_model, user_moduletmp)
+            # self.left_item_construct(user_moduletmp)
+            basic_item = self.left_item_construct_special(user_moduletmp,'BASIC_MODULE')
+            self.left_item_model.appendRow(basic_item)
+            srv_item = self.left_item_construct_special(user_moduletmp,'SRV_MODULE')
+            self.left_item_model.appendRow(srv_item)
+            user_item = self.left_item_construct(user_moduletmp,'USER_MODULE')
+            self.left_item_model.appendRow(user_item)
             self.model_status_eval(self.left_item_model)
             self.left_tree.setModel(self.left_item_model)
             self.left_tree.setHeaderHidden(True)
             self.left_tree.expandAll()
 
-            self.right_item_model = self.model_Analyzation(self.left_item_model)
-            self.model_status_eval(self.right_item_model)
-            self.right_item_model.itemChanged.connect(lambda: self.right_checkbox_Hndl())
-            self.right_tree.setModel(self.right_item_model)
+            # self.right_item_model = self.model_Analyzation(self.left_item_model)
+            # self.model_status_eval(self.right_item_model)
+            # self.right_item_model.itemChanged.connect(lambda: self.right_checkbox_Hndl())
+            # self.right_tree.setModel(self.right_item_model)
             self.right_tree.setHeaderHidden(True)
             self.right_tree.expandAll()
             BuildProcResult = True
@@ -231,11 +237,18 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
 
         general_sorting_key = sort.import_data(sortkey_path, "GENERAL_SORTING_KEY")
         module_sorting_key = sort.import_data(sortkey_path, "MODULE_SORTING_KEY")
-        module_sorting_key2 = sort.import_data(sortkey_path, "SRV_MODULE2")
 
         SrvModule_SortKey = sort.Srv_SortKye_Gen(Srv_Checked, module_sorting_key)
         SrvModule_SortKey += sort.Srv_SortKye_Gen(Module_Checked, module_sorting_key)
         SrvModule_SortKey += sort.Srv_SortKye_Gen(Basic_Checked, module_sorting_key)
+    
+        # if "integration_general_safety" in Srv_Checked:
+        #     if "integration_general" in Srv_Checked:
+        #         # Srv_Checked.remove("integration_general_safety")
+        #         print("ok")
+        #     else:
+        #         # Srv_Checked.remove("integration_general_safety")
+        #         Srv_Checked.append("integration_general")
 
         Basic_Sort_Res = sort.gen_c_h_dic(mcalpath, general_sorting_key, Basic_Checked)
         Module_Sort_Res = sort.gen_c_h_dic(mcalpath, general_sorting_key, Module_Checked)
