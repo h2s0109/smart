@@ -84,8 +84,8 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
         
     def Test_McalDirbutton_Hndl(self):
         self.tabWidget.setCurrentIndex(0)
-        self.McalComboBox.setItemText(0,"C:/Workspace/Smartcopy/Test/Mcal_file")
-        # self.McalComboBox.setItemText(0,"C:/Workspace/Smartcopy/Test/Mcal_file")
+        #self.McalComboBox.setItemText(0,"C:/Workspace/Smartcopy/Test/Mcal_file")
+        self.McalComboBox.setItemText(0,"C:/D/Git/smart/Test/Mcal_file")
         self.BuildProc()
         return
 
@@ -151,10 +151,11 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
             sort_data = sort.import_data(DATA_PATH['sortkey_path'], "GENERAL_SORTING_KEY")            
             bmodule_data = sort.import_data(DATA_PATH['sortkey_path'], "BASIC_MODULE")
             smodule_data = sort.import_data(DATA_PATH['sortkey_path'], "SRV_MODULE")
-            
+            smodule_data2 = sort.import_data(DATA_PATH['sortkey_path'], "SRV_MODULE2")
+            # smodule_data.update(smodule_data2)
             # data_key.json is created at here.
             data_key_templete = dict()
-            data_key_templete["MODULEDATA"]={"BASIC_MODULE": bmodule_data, "SRV_MODULE": smodule_data, "USER_MODULE": []}
+            data_key_templete["MODULEDATA"]={"BASIC_MODULE": bmodule_data, "SRV_MODULE": smodule_data, "SRV_MODULE2": smodule_data2,"USER_MODULE": []}
             if self.INSTALLED is False:
                 sort.moduledatashow(DATA_PATH['mcal_install_path'], sort_data, data_key_templete)
             else:
@@ -175,6 +176,8 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
             self.left_item_model.appendRow(basic_item)
             srv_item = self.left_item_construct_special(user_moduletmp,'SRV_MODULE')
             self.left_item_model.appendRow(srv_item)
+            srv_item2 = self.left_item_construct_special(user_moduletmp,'SRV_MODULE2')
+            self.left_item_model.appendRow(srv_item2)
             user_item = self.left_item_construct(user_moduletmp,'USER_MODULE')
             self.left_item_model.appendRow(user_item)
             self.model_status_eval(self.left_item_model)
@@ -237,29 +240,30 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
 
         general_sorting_key = sort.import_data(sortkey_path, "GENERAL_SORTING_KEY")
         module_sorting_key = sort.import_data(sortkey_path, "MODULE_SORTING_KEY")
-
         SrvModule_SortKey = sort.Srv_SortKye_Gen(Srv_Checked, module_sorting_key)
         SrvModule_SortKey += sort.Srv_SortKye_Gen(Module_Checked, module_sorting_key)
         SrvModule_SortKey += sort.Srv_SortKye_Gen(Basic_Checked, module_sorting_key)
-    
-        # if "integration_general_safety" in Srv_Checked:
-        #     if "integration_general" in Srv_Checked:
-        #         # Srv_Checked.remove("integration_general_safety")
-        #         print("ok")
-        #     else:
-        #         # Srv_Checked.remove("integration_general_safety")
-        #         Srv_Checked.append("integration_general")
 
         Basic_Sort_Res = sort.gen_c_h_dic(mcalpath, general_sorting_key, Basic_Checked)
         Module_Sort_Res = sort.gen_c_h_dic(mcalpath, general_sorting_key, Module_Checked)
         SrvModule_Sort_ResMid = sort.gen_c_h_dic(mcalpath, general_sorting_key, Srv_Checked, True)
         # Remove the unrelated module from SrvModule_Sort_ResMid
         SrvModule_Sort_Res = sort.gen_sort(SrvModule_Sort_ResMid, SrvModule_SortKey)
-
+        # SrvModule_Sort_Res.update(SrvModule_Sort_Res2)
         Copylist = dict()
         Copylist['BASIC_MODULE'] = Basic_Sort_Res
         Copylist['USER_MODULE'] = Module_Sort_Res
-        Copylist['SRV_MODULE'] =  SrvModule_Sort_Res      
+        Copylist['SRV_MODULE'] =  SrvModule_Sort_Res
+
+        Srv_Checked2 = self.FindChildrenItem(Sel_Item,"SRV_MODULE2")
+        if "integration_general_safety" in Srv_Checked2:
+            SrvModule_SortKey2 = sort.Srv_SortKye_Gen(Srv_Checked2, module_sorting_key)
+            Srv_Checked2.append("integration_general")
+            Srv_Checked2.remove("integration_general_safety")
+            SrvModule_Sort_ResMid2 = sort.gen_c_h_dic(mcalpath, general_sorting_key, Srv_Checked2, True)
+            SrvModule_Sort_ResMid2["integration_general_safety"] = SrvModule_Sort_ResMid2.pop("integration_general")
+            SrvModule_Sort_Res2 = sort.gen_sort(SrvModule_Sort_ResMid2, SrvModule_SortKey2)
+            Copylist['SRV_MODULE2'] =  SrvModule_Sort_Res2
         return Copylist
 
     def left_checkbox_Hndl(self):
@@ -332,6 +336,7 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
                         if xmlexist is True:
                             pathcheck.Copypath_creation(deepcopypath)
                             sort.copy_mcalmodule(self.copylist['SRV_MODULE'], copypath['SRV_MODULE'], True)
+                            sort.copy_mcalmodule(self.copylist['SRV_MODULE2'], copypath['SRV_MODULE'], True)
                             sort.copy_mcalmodule(self.copylist['BASIC_MODULE'], copypath['MODULE'])
                             sort.copy_mcalmodule(self.copylist['USER_MODULE'], copypath['MODULE'])
                             includelist = self.Compiler_include2(self.ProjectComboBox.currentText())                
@@ -357,6 +362,7 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
                 if not False in Pathchek_result:
                     pathcheck.Copypath_creation(copypath)
                     sort.copy_mcalmodule(self.copylist['SRV_MODULE'], copypath['SRV_MODULE'], True)
+                    sort.copy_mcalmodule(self.copylist['SRV_MODULE2'], copypath['SRV_MODULE'], True)
                     sort.copy_mcalmodule(self.copylist['BASIC_MODULE'], copypath['MODULE'])
                     sort.copy_mcalmodule(self.copylist['USER_MODULE'], copypath['MODULE'])
                     includelist = self.Compiler_include(copypath['MODULE'], copypath['SRV_MODULE'])                

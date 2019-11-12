@@ -18,17 +18,20 @@
             "compiler"
         ]
     },
-    "BASIC_MODULE": [
-        "port",
-        "ecum",
-        "mcu",
-        "tricore_general",
-        "general"
-    ],
-    "SRV_MODULE": [
-        "integration_general",
-        "irq"
-    ],
+    "BASIC_MODULE":{
+        "port":"check",
+        "ecum":"check",
+        "mcu":"check",
+        "tricore_general":"check",
+        "general":"check"
+    },
+    "SRV_MODULE": {
+        "integration_general":"check",
+        "irq":"check"
+    },
+    "SRV_MODULE2": {
+        "integration_general_safety":"uncheck"
+    },
     "WHOLE_MODULE_PLACE_HOLDER": [
         "adc",
         "bfx",
@@ -107,15 +110,17 @@
             "Icu"
         ],
         "integration_general": [
-            "Dem",
-            "Det",
             "Test",
             "Os",
             "Mcal",
             "^Irq",
-            "SafetyReport",
             "SchM[^_]",
             "Gtm_"
+        ],
+        "integration_general_safety": [
+            "Dem",
+            "Det",
+            "SafetyReport"
         ],
         "iom": [],
         "irq": [],

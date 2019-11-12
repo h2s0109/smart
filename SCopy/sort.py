@@ -50,7 +50,7 @@ def gen_c_h_dic(dir_arg, sort_data, module_data, smodule=False):
                 # Classify procedure will be processed
                 tmp_result = dict()
                 for module_name in module_data:
-                    module_whole.append(tmp_dir)
+                    # module_whole.append(tmp_dir)
                     sort_key = sub('^.*/', '', tmp_dir)
                     if tmp_dir.find('/' + module_name) is not -1:
                         if smodule is False:
