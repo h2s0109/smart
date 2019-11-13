@@ -30,7 +30,14 @@ class Class_UpdateCombo:
                                                                open_folder, options=options)
         pathcheck_result = pathcheck.is_pathname_valid(directory)
         self.UpdateComboBox(comboboxname, directory, tempfolder, targetcombox)
-        return directory
+        return
+
+    def setDirectory(self, comboboxname, targetcombox):
+        tempfolder = self.settings.value(
+            targetcombox + '/RECENTFOLDERLIST', [])
+        directory = comboboxname.currentText()
+        self.UpdateComboBox(comboboxname, directory, tempfolder, targetcombox)
+        return
 
     def setExistingfile(self, comboboxname, targetcombox):
         """Select the file and update the combobox"""
@@ -49,8 +56,6 @@ class Class_UpdateCombo:
                                                                open_folder, "xdm files (*.xdm)", options=options)
         self.UpdateComboBox(
             comboboxname, directory[0], tempfolder, targetcombox)
-        self.Clkprogresstxt.setPlainText(
-            comboboxname.currentText())
         return
 
     def UpdateComboBox(self, comboboxname, directory, tempfolder, targetcombox):
@@ -58,6 +63,9 @@ class Class_UpdateCombo:
         # If there is no same folder name add the folder name
         if comboboxname.findText(directory) == -1:
             comboboxname.addItem(directory)
+            tempfolder.insert(0, directory)
+        else:
+            tempfolder.remove(directory)
             tempfolder.insert(0, directory)
         comboboxname.setCurrentIndex(comboboxname.findText(directory))
         # Delete the oldest folder name
@@ -73,7 +81,10 @@ class Class_UpdateCombo:
 
         numrecentfiles = min(len(files), self.MaxRecentFiles)
         comboboxname.addItem("")
+        # textlist =list()
         for i in range(numrecentfiles):
             text = "{}".format(files[i])
             comboboxname.addItem(text)
+            # textlist.append(text)
+        # comboboxname.setCurrentIndex(1)
         return

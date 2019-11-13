@@ -1,4 +1,4 @@
-from Mcalcopytab import Ui_Dialog
+from scopy_gui import Ui_Dialog
 from PyQt5.QtGui import QStandardItemModel, QStandardItem 
 from PyQt5.QtWidgets import QDialog, QApplication, QMessageBox
 from PyQt5.QtCore import Qt, QFile
@@ -71,6 +71,9 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
             self.ClockXL_DirButton.clicked.connect(lambda: self.ClockXL_DirButton_Hndl())
             self.McuXdm_DirButton.clicked.connect(lambda: self.McuXdm_DirButton_Hndl())
             self.McalComboBox.currentIndexChanged.connect(lambda: self.McalComboBox_Hndl())
+            self.ModuleComboBox.currentIndexChanged.connect(lambda: self.ModuleComboBox_Hndl())
+            self.SrvComboBox.currentIndexChanged.connect(lambda: self.SrvComboBox_Hndl())
+            self.ProjectComboBox.currentIndexChanged.connect(lambda: self.ProjectComboBox_Hndl())
             self.leftright_button.clicked.connect(lambda: self.LtoR_button_Hndl())
             self.rightleft_button.clicked.connect(lambda: self.RtoL_button_Hndl())
             self.right_item_model.itemChanged.connect(lambda: self.right_checkbox_Hndl())            
@@ -79,24 +82,16 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
             self.ParsingButton.clicked.connect(self.ParsingProcess)
         else:
             self.progresstxt_source.setPlainText("license is expired")
+        # self.Test_McalDirbutton_Hndl()
+        return
 
-        self.Test_McalDirbutton_Hndl()
-        
+    def __del__(self):
+        return
         
     def Test_McalDirbutton_Hndl(self):
         self.tabWidget.setCurrentIndex(0)
-        #self.McalComboBox.setItemText(0,"C:/Workspace/Smartcopy/Test/Mcal_file")
         self.McalComboBox.setItemText(0,"C:/D/Git/smart/Test/Mcal_file")
-        self.BuildProc()
-        # mcalpath= 'C:/Workspace/Smartcopy/Test/Mcal_file'
-        # sortkey_path = 'C:\\Workspace\\newsmart\\SCopy\\Database\\sort_key.json'
-        # general_sorting_key = sort.import_data(sortkey_path, "GENERAL_SORTING_KEY")
-        # Basic_Checked = list()
-        # Basic_Checked.append("Dem")
-        # Basic_Checked.append("Det")
-        # Basic_Checked.append("SafetyReport")
-        
-        # Basic_Sort_Rest = sort.gen_c_h_dic_files(mcalpath, general_sorting_key, "integration_general",Basic_Checked)
+        self.BuildProc()        
         return
 
     def McalDirbutton_Hndl(self):
@@ -107,20 +102,44 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
         return
 
     def McalComboBox_Hndl(self):
+        self.McalComboBox.currentIndexChanged.disconnect()
         self.BuildProc()
+        self.setDirectory(self.McalComboBox, 'Mcal')
+        self.McalComboBox.currentIndexChanged.connect(lambda: self.McalComboBox_Hndl())
+        return
+    def ModuleComboBox_Hndl(self):
+        self.ModuleComboBox.currentIndexChanged.disconnect()
+        self.setDirectory(self.ModuleComboBox, 'Module')
+        self.ModuleComboBox.currentIndexChanged.connect(lambda: self.ModuleComboBox_Hndl())
+        return    
+    def SrvComboBox_Hndl(self):
+        self.SrvComboBox.currentIndexChanged.disconnect()
+        self.setDirectory(self.SrvComboBox, 'Smodule')
+        self.SrvComboBox.currentIndexChanged.connect(lambda: self.SrvComboBox_Hndl())
+        return    
+    def ProjectComboBox_Hndl(self):
+        self.ProjectComboBox.currentIndexChanged.disconnect()
+        self.setDirectory(self.ProjectComboBox, 'PROJECT')
+        self.ProjectComboBox.currentIndexChanged.connect(lambda: self.ProjectComboBox_Hndl())
         return
 
     def ModuleDirButton_Hndl(self):
+        self.ModuleComboBox.currentIndexChanged.disconnect()
         self.setExistingDirectory(self.ModuleComboBox, 'Module')
         self.progresstxt_dest.setPlainText(self.ModuleComboBox.currentText())
+        self.ModuleComboBox.currentIndexChanged.connect(lambda: self.ModuleComboBox_Hndl())
         return
     def SmoduleDirButton_Hndl(self):
+        self.SrvComboBox.currentIndexChanged.disconnect()
         self.setExistingDirectory(self.SrvComboBox, 'Smodule')
         self.progresstxt_dest.setPlainText(self.SrvComboBox.currentText())
+        self.SrvComboBox.currentIndexChanged.connect(lambda: self.SrvComboBox_Hndl())
         return
     def ProjectDirButton_Hndl(self):
+        self.ProjectComboBox.currentIndexChanged.disconnect()
         self.setExistingDirectory(self.ProjectComboBox, 'PROJECT')
         self.progresstxt_dest.setPlainText(self.ProjectComboBox.currentText())
+        self.ProjectComboBox.currentIndexChanged.connect(lambda: self.ProjectComboBox_Hndl())
         return
     def ClockXL_DirButton_Hndl(self):
         self.setExistingfile(self.ClockXLComboBox, 'ClockXl')                
@@ -355,6 +374,9 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
                             for k_list in includelist:
                                 self.progresstxt_dest.appendPlainText(k_list)
                             self.show_message_new("Copy Success","Result",self.icoPath)
+                            self.ProjectComboBox_Hndl()
+                            self.SrvComboBox_Hndl()
+                            self.ModuleComboBox_Hndl()
                         else:
                             self.progresstxt_dest.setPlainText(
                             "Warning:It can`t find .cproject.")
@@ -379,6 +401,9 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
                     for k_list in includelist:
                         self.progresstxt_dest.appendPlainText(k_list)
                     self.show_message_new("Copy Success","Result",self.icoPath)
+                    self.ProjectComboBox_Hndl()
+                    self.SrvComboBox_Hndl()
+                    self.ModuleComboBox_Hndl()                    
                 else:
                     self.progresstxt_dest.setPlainText(
                         "Warning: The directory path has a problem.")
