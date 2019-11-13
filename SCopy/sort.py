@@ -67,6 +67,41 @@ def gen_c_h_dic(dir_arg, sort_data, module_data, smodule=False):
                 search_result = _concate_dic(search_result, tmp_result)
     return search_result
 
+def gen_c_h_dic_files(dir_arg, sort_data, module_data, filesort):
+    """Generate the dictionary including
+        {include:[file name,file path],source:[file name,file path]}"""
+    search_result = dict()
+    ex_classify_result = _sort_classify(
+        sort_data['EX_AND'], sort_data['EX_OR'])
+    inc_classify_result = _sort_classify(
+        sort_data['INC_AND'], sort_data['INC_OR'])
+    for tmp_dir, tmp_folder, tmp_file in os.walk(dir_arg):
+        tmp_dir = tmp_dir.replace('\\', '/')
+        ex_flag = _folder_check(tmp_dir, ex_classify_result, sort_data, 'EX')
+        if ex_flag is True:
+            # When the directory path has excluded folder, skip the directory path quickly.
+            tmp_folder[:] = [
+                remove_i for remove_i in tmp_folder if remove_i not in tmp_folder]
+        else:
+            inc_flag = _folder_check(
+                tmp_dir, inc_classify_result, sort_data, 'INC')
+            if inc_flag is True:
+                # Find the target directory path!!!!
+                # Classify procedure will be processed
+                tmp_result = dict()
+                sort_key = sub('^.*/', '', tmp_dir)                
+                if tmp_dir.find('/' + module_data) is not -1:
+                    temp_list = list()
+                    for fileitem in tmp_file:
+                        for tmpfilesort in filesort:
+                            if match(tmpfilesort,fileitem):
+                                temp_list.append(fileitem)
+                    temp_list.sort()
+                    tmppath = _gen_filefullpath(
+                            tmp_dir, temp_list, sort_key)
+                    tmp_result.update({module_data: tmppath})
+                search_result = _concate_dic(search_result, tmp_result)
+    return search_result
 
 def moduledatashow(dir_arg, sort_data, module_data, *pjname):
     """Generate the dictionary including

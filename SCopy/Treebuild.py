@@ -29,7 +29,7 @@ class Class_Treebuild:
         moduleitem = len(module[key])
         item_dict =dict()
         for tempItem in module[key]:
-            if module[key][tempItem] =='check':
+            if module[key][tempItem]["check_status"] =='check':
                 moduleitem-=1
                 item_dict[tempItem]={'checkvalue':Qt.Checked}
                 item_dict[tempItem].update(option=Qt.ItemIsUserCheckable)

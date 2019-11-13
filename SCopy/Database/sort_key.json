@@ -19,18 +19,41 @@
         ]
     },
     "BASIC_MODULE":{
-        "port":"check",
-        "ecum":"check",
-        "mcu":"check",
-        "tricore_general":"check",
-        "general":"check"
+        "port":
+        {
+            "check_status":"check"
+        },
+        "ecum":
+        {
+            "check_status":"check"
+        },
+        "mcu":
+        {
+            "check_status":"check"
+        },
+        "tricore_general":
+        {
+            "check_status":"check"
+        },
+        "general":
+        {
+            "check_status":"check"
+        }
+        
     },
     "SRV_MODULE": {
-        "integration_general":"check",
-        "irq":"check"
+        "integration_general":
+        {
+            "check_status":"check"
+        },
+        "irq":
+        {
+            "check_status":"check"
+        }
     },
-    "SRV_MODULE2": {
-        "integration_general_safety":"uncheck"
+    "SRV2_MODULE": {
+        "integration_safety":
+        {"check_status":"uncheck","module_name":"integration_general"}
     },
     "WHOLE_MODULE_PLACE_HOLDER": [
         "adc",
@@ -117,7 +140,7 @@
             "SchM[^_]",
             "Gtm_"
         ],
-        "integration_general_safety": [
+        "integration_safety": [
             "Dem",
             "Det",
             "SafetyReport"
