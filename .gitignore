@@ -1,0 +1,5 @@
+
+Output/**
+SCopy/__pycache__/**
+SCopy/Database/data_key.json
+SCopy/jmodule_whole.json

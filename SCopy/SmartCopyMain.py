@@ -19,7 +19,17 @@ import re
 from pathlib import Path
 import sys
 
-class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Class_Clock_config, Class_Treebuild):
+# from PyQt5 import QtCore, QtGui, QtWidgets
+# from UpdateCombo import Class_UpdateCombo
+# setExistingDirectory,UpdateRecentOpenFile
+from Mcopy import mcal_fastcopy
+# configcopystart
+# from license import licensetime_check
+# import pathcheck
+# import os
+
+
+class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Class_Clock_config, Class_Treebuild,mcal_fastcopy):
     def __init__(self):
         super().__init__()
 
@@ -39,12 +49,13 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
 
         if self.INSTALLED is False:
             self.path_data_dict.update(appdata_path = os.getcwd())
+            self.path_data_dict.update(cfg_path = os.getcwd())
         else:
             self.path_data_dict.update(appdata_path = pathcheck.windowinstallpathini('Smartcopy'))
+            # self.path_data_dict.update(cfg_path = pathcheck.windowinstallpathini('Autocopy'))
 
         self.path_data_dict.update(sortkey_result_path = os.path.join(self.path_data_dict['appdata_path'],"Database","data_key.json"))
-
-        
+   
         self.icoPath = "Ico/smart.ico"
         self.copylist = dict()
         self.McalLoadValid = False
@@ -53,7 +64,9 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
 
         # Call the folder list which were opened recently
         ini_path = os.path.join(self.path_data_dict['appdata_path'],'Mcal.ini')
+        cfgini_path = os.path.join(self.path_data_dict['appdata_path'],'cfgMcal.ini')
         handler = self.create_recent_handler(ini_path, 5)
+        self.create_recent_handler(cfgini_path, 5)
         self.UpdateRecentOpenFile(self.McalComboBox, 'Mcal')
         self.UpdateRecentOpenFile(self.ModuleComboBox, 'Module')
         self.UpdateRecentOpenFile(self.SrvComboBox, 'Smodule')
@@ -80,6 +93,16 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
             self.left_item_model.itemChanged.connect(lambda: self.left_checkbox_Hndl())
             self.CopyButton.clicked.connect(self.CopyProcess)
             self.ParsingButton.clicked.connect(self.ParsingProcess)
+
+            # self.actionAbout_Mcopy.triggered.connect(self.about)
+            self.CfgSourceButton.clicked.connect(
+                lambda: self.setExistingDirectory(self.CfgSourceCBox, 'Source'))
+            self.CfgDestButton.clicked.connect(lambda: self.setExistingDirectory(
+                self.CfgDestCBox, 'Destination'))
+            self.CfgCopyButton.clicked.connect(lambda: self.auto_copy(
+                self.CfgSourceCBox.currentText(), self.CfgDestCBox.currentText()))
+            self.UpdateRecentOpenFile(self.CfgSourceCBox, 'Source')
+            self.UpdateRecentOpenFile(self.CfgDestCBox, 'Destination')
         else:
             self.progresstxt_source.setPlainText("license is expired")
         # self.Test_McalDirbutton_Hndl()
