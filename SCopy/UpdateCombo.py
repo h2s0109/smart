@@ -60,18 +60,20 @@ class Class_UpdateCombo:
 
     def UpdateComboBox(self, comboboxname, directory, tempfolder, targetcombox):
         """Update the combobox and save Mcal.ini file"""
-        # If there is no same folder name add the folder name
-        if comboboxname.findText(directory) == -1:
-            comboboxname.addItem(directory)
-            tempfolder.insert(0, directory)
-        else:
-            tempfolder.remove(directory)
-            tempfolder.insert(0, directory)
-        comboboxname.setCurrentIndex(comboboxname.findText(directory))
-        # Delete the oldest folder name
-        del tempfolder[self.MaxRecentFiles:]
-        # Save Mcal.ini
-        self.settings.setValue(targetcombox + '/RECENTFOLDERLIST', tempfolder)
+        # If user not type ESC
+        if comboboxname.findText(directory) != 0:
+        # If there is no same folder name add the folder name        
+            if comboboxname.findText(directory) == -1:
+                comboboxname.addItem(directory)
+                tempfolder.insert(0, directory)
+            else:
+                tempfolder.remove(directory)
+                tempfolder.insert(0, directory)
+            comboboxname.setCurrentIndex(comboboxname.findText(directory))
+            # Delete the oldest folder name
+            del tempfolder[self.MaxRecentFiles:]
+            # Save Mcal.ini
+            self.settings.setValue(targetcombox + '/RECENTFOLDERLIST', tempfolder)
         return
 
     def UpdateRecentOpenFile(self, comboboxname, targetcombox):

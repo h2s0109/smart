@@ -77,32 +77,29 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
         license_check = licensetime_check(handler, ini_path)
 
         if license_check is True:
-            self.McalDirButton.clicked.connect(lambda: self.McalDirbutton_Hndl())
-            self.ModuleDirButton.clicked.connect(lambda: self.ModuleDirButton_Hndl())
-            self.SmoduleDirButton.clicked.connect(lambda: self.SmoduleDirButton_Hndl())
-            self.ProjectDirButton.clicked.connect(lambda: self.ProjectDirButton_Hndl())
-            self.ClockXL_DirButton.clicked.connect(lambda: self.ClockXL_DirButton_Hndl())
-            self.McuXdm_DirButton.clicked.connect(lambda: self.McuXdm_DirButton_Hndl())
-            self.McalComboBox.currentIndexChanged.connect(lambda: self.McalComboBox_Hndl())
-            self.ModuleComboBox.currentIndexChanged.connect(lambda: self.ModuleComboBox_Hndl())
-            self.SrvComboBox.currentIndexChanged.connect(lambda: self.SrvComboBox_Hndl())
-            self.ProjectComboBox.currentIndexChanged.connect(lambda: self.ProjectComboBox_Hndl())
-            self.leftright_button.clicked.connect(lambda: self.LtoR_button_Hndl())
-            self.rightleft_button.clicked.connect(lambda: self.RtoL_button_Hndl())
-            self.right_item_model.itemChanged.connect(lambda: self.right_checkbox_Hndl())            
-            self.left_item_model.itemChanged.connect(lambda: self.left_checkbox_Hndl())
+            self.McalDirButton.clicked.connect(self.McalDirbutton_Hndl)
+            self.ModuleDirButton.clicked.connect(self.ModuleDirButton_Hndl)
+            self.SmoduleDirButton.clicked.connect(self.SmoduleDirButton_Hndl)
+            self.ProjectDirButton.clicked.connect(self.ProjectDirButton_Hndl)
+            self.ClockXL_DirButton.clicked.connect(self.ClockXL_DirButton_Hndl)
+            self.McuXdm_DirButton.clicked.connect(self.McuXdm_DirButton_Hndl)
+            self.McalComboBox.currentIndexChanged.connect(self.McalComboBox_Hndl)
+            self.ModuleComboBox.currentIndexChanged.connect(self.ModuleComboBox_Hndl)
+            self.SrvComboBox.currentIndexChanged.connect(self.SrvComboBox_Hndl)
+            self.ProjectComboBox.currentIndexChanged.connect(self.ProjectComboBox_Hndl)
+            self.leftright_button.clicked.connect(self.LtoR_button_Hndl)
+            self.rightleft_button.clicked.connect(self.RtoL_button_Hndl)
+            self.right_item_model.itemChanged.connect(self.right_checkbox_Hndl)            
+            self.left_item_model.itemChanged.connect(self.left_checkbox_Hndl)
             self.CopyButton.clicked.connect(self.CopyProcess)
             self.ParsingButton.clicked.connect(self.ParsingProcess)
 
-            # self.actionAbout_Mcopy.triggered.connect(self.about)
-            self.CfgSourceButton.clicked.connect(
-                lambda: self.setExistingDirectory(self.CfgSourceCBox, 'Source'))
-            self.CfgDestButton.clicked.connect(lambda: self.setExistingDirectory(
-                self.CfgDestCBox, 'Destination'))
-            self.CfgCopyButton.clicked.connect(lambda: self.auto_copy(
-                self.CfgSourceCBox.currentText(), self.CfgDestCBox.currentText()))
+            self.CfgSourceButton.clicked.connect(self.CfgSourceButton_Hndl)
+            self.CfgDestButton.clicked.connect(self.CfgDestButton_Hndl)
+            self.CfgCopyButton.clicked.connect(self.CfgCopyButton_Hndl)
             self.UpdateRecentOpenFile(self.CfgSourceCBox, 'Source')
             self.UpdateRecentOpenFile(self.CfgDestCBox, 'Destination')
+            self.tabWidget.tabBarClicked.connect(self.hello_Hndl)
         else:
             self.progresstxt_source.setPlainText("license is expired")
         # self.Test_McalDirbutton_Hndl()
@@ -110,9 +107,23 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
 
     def __del__(self):
         return
-        
+    def hello_Hndl(self):
+        a = self.tabWidget.currentIndex()
+        print("current value is", a)
+        return
+    def CfgSourceButton_Hndl(self):
+        self.setExistingDirectory(self.CfgSourceCBox, 'Source')
+        return
+    def CfgDestButton_Hndl(self):
+        self.setExistingDirectory(self.CfgDestCBox, 'Destination')
+        return
+    def CfgCopyButton_Hndl(self):
+        self.auto_copy(self.CfgSourceCBox.currentText(), self.CfgDestCBox.currentText())        
+        return
+
     def Test_McalDirbutton_Hndl(self):
         self.tabWidget.setCurrentIndex(0)
+        
         self.McalComboBox.setItemText(0,"C:/D/Git/smart/Test/Mcal_file")
         self.BuildProc()        
         return
@@ -121,48 +132,48 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
         self.McalComboBox.currentIndexChanged.disconnect()
         self.setExistingDirectory(self.McalComboBox, 'Mcal')
         self.BuildProc()
-        self.McalComboBox.currentIndexChanged.connect(lambda: self.McalComboBox_Hndl())
+        self.McalComboBox.currentIndexChanged.connect(self.McalComboBox_Hndl)
         return
 
     def McalComboBox_Hndl(self):
         self.McalComboBox.currentIndexChanged.disconnect()
         self.BuildProc()
         self.setDirectory(self.McalComboBox, 'Mcal')
-        self.McalComboBox.currentIndexChanged.connect(lambda: self.McalComboBox_Hndl())
+        self.McalComboBox.currentIndexChanged.connect(self.McalComboBox_Hndl)
         return
     def ModuleComboBox_Hndl(self):
         self.ModuleComboBox.currentIndexChanged.disconnect()
         self.setDirectory(self.ModuleComboBox, 'Module')
-        self.ModuleComboBox.currentIndexChanged.connect(lambda: self.ModuleComboBox_Hndl())
+        self.ModuleComboBox.currentIndexChanged.connect(self.ModuleComboBox_Hndl)
         return    
     def SrvComboBox_Hndl(self):
         self.SrvComboBox.currentIndexChanged.disconnect()
         self.setDirectory(self.SrvComboBox, 'Smodule')
-        self.SrvComboBox.currentIndexChanged.connect(lambda: self.SrvComboBox_Hndl())
+        self.SrvComboBox.currentIndexChanged.connect(self.SrvComboBox_Hndl)
         return    
     def ProjectComboBox_Hndl(self):
         self.ProjectComboBox.currentIndexChanged.disconnect()
         self.setDirectory(self.ProjectComboBox, 'PROJECT')
-        self.ProjectComboBox.currentIndexChanged.connect(lambda: self.ProjectComboBox_Hndl())
+        self.ProjectComboBox.currentIndexChanged.connect(self.ProjectComboBox_Hndl)
         return
 
     def ModuleDirButton_Hndl(self):
         self.ModuleComboBox.currentIndexChanged.disconnect()
         self.setExistingDirectory(self.ModuleComboBox, 'Module')
         self.progresstxt_dest.setPlainText(self.ModuleComboBox.currentText())
-        self.ModuleComboBox.currentIndexChanged.connect(lambda: self.ModuleComboBox_Hndl())
+        self.ModuleComboBox.currentIndexChanged.connect(self.ModuleComboBox_Hndl)
         return
     def SmoduleDirButton_Hndl(self):
         self.SrvComboBox.currentIndexChanged.disconnect()
         self.setExistingDirectory(self.SrvComboBox, 'Smodule')
         self.progresstxt_dest.setPlainText(self.SrvComboBox.currentText())
-        self.SrvComboBox.currentIndexChanged.connect(lambda: self.SrvComboBox_Hndl())
+        self.SrvComboBox.currentIndexChanged.connect(self.SrvComboBox_Hndl)
         return
     def ProjectDirButton_Hndl(self):
         self.ProjectComboBox.currentIndexChanged.disconnect()
         self.setExistingDirectory(self.ProjectComboBox, 'PROJECT')
         self.progresstxt_dest.setPlainText(self.ProjectComboBox.currentText())
-        self.ProjectComboBox.currentIndexChanged.connect(lambda: self.ProjectComboBox_Hndl())
+        self.ProjectComboBox.currentIndexChanged.connect(self.ProjectComboBox_Hndl)
         return
     def ClockXL_DirButton_Hndl(self):
         self.setExistingfile(self.ClockXLComboBox, 'ClockXl')                
@@ -240,7 +251,7 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
 
             # self.right_item_model = self.model_Analyzation(self.left_item_model)
             # self.model_status_eval(self.right_item_model)
-            # self.right_item_model.itemChanged.connect(lambda: self.right_checkbox_Hndl())
+            # self.right_item_model.itemChanged.connect(self.right_checkbox_Hndl())
             # self.right_tree.setModel(self.right_item_model)
             self.right_tree.setHeaderHidden(True)
             self.right_tree.expandAll()
@@ -252,7 +263,7 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
     def RtoL_button_Hndl(self):
         if self.McalLoadValid is True:
             self.right_item_model = self.model_Analyzation(self.right_item_model, self.copylist)
-            self.right_item_model.itemChanged.connect(lambda: self.right_checkbox_Hndl())
+            self.right_item_model.itemChanged.connect(self.right_checkbox_Hndl())
             checkItemNull = self.model_status_eval(self.right_item_model)
             self.right_tree.setModel(self.right_item_model)
             self.right_tree.expandAll()
@@ -268,7 +279,7 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
     def LtoR_button_Hndl(self):
         if self.McalLoadValid is True:
             self.right_item_model = self.model_Analyzation(self.left_item_model)
-            self.right_item_model.itemChanged.connect(lambda: self.right_checkbox_Hndl())
+            self.right_item_model.itemChanged.connect(self.right_checkbox_Hndl())
             self.copylist = self.copylist_Gen(self.right_item_model, self.path_data_dict)
             checkItemNull = self.model_status_eval(self.right_item_model)
             self.right_tree.setModel(self.right_item_model)
@@ -321,13 +332,13 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
     def left_checkbox_Hndl(self):
         self.left_item_model.itemChanged.disconnect()
         self.model_status_eval(self.left_item_model)
-        self.left_item_model.itemChanged.connect(lambda: self.left_checkbox_Hndl())
+        self.left_item_model.itemChanged.connect(self.left_checkbox_Hndl())
         return
 
     def right_checkbox_Hndl(self):
         self.right_item_model.itemChanged.disconnect() 
         self.model_status_eval(self.right_item_model)
-        self.right_item_model.itemChanged.connect(lambda: self.right_checkbox_Hndl())
+        self.right_item_model.itemChanged.connect(self.right_checkbox_Hndl())
         return
 
     def projecthierarchy(self, copypath2):        
