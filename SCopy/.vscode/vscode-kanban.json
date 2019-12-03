@@ -30,6 +30,18 @@
     },
     {
       "assignedTo": {
+        "name": "hansteve"
+      },
+      "category": "Compiler",
+      "creation_time": "2019-10-22T02:36:27.962Z",
+      "id": "1",
+      "prio": 0,
+      "references": [],
+      "title": "includePaths 못찾는 문제",
+      "type": "bug"
+    },
+    {
+      "assignedTo": {
         "name": "Sungsu"
       },
       "creation_time": "2019-10-25T14:19:12.707Z",
@@ -58,22 +70,6 @@
     },
     {
       "assignedTo": {
-        "name": "hansteve"
-      },
-      "category": "Compiler",
-      "creation_time": "2019-10-22T02:36:27.962Z",
-      "id": "1",
-      "prio": 0,
-      "references": [],
-      "title": "includePaths 못찾는 문제",
-      "type": "bug"
-    }
-  ],
-  "in-progress": [],
-  "testing": [],
-  "todo": [
-    {
-      "assignedTo": {
         "name": "Sungsu"
       },
       "category": "Clock configuration",
@@ -86,7 +82,11 @@
       "references": [],
       "title": "ErayPll incorrect configuration",
       "type": "bug"
-    },
+    }
+  ],
+  "in-progress": [],
+  "testing": [],
+  "todo": [
     {
       "assignedTo": {
         "name": "hansteve"

@@ -230,6 +230,7 @@ class mcal_fastcopy:
             src_dir_arg: Source directory
             dest_dir_arg: Destination directory
         """
+        message = None
         # Compatibitity check
         src_dir_compatible = self._path_compatibility(src_dir_arg)
         dest_dir_compatible = self._path_compatibility(dest_dir_arg)
@@ -281,13 +282,13 @@ class mcal_fastcopy:
                     shutil.copy(src_h_items[tmp_none], dest_dir_hc[0])
                 for tmp_none in match_c['None']:
                     shutil.copy(src_c_items[tmp_none], dest_dir_hc[1])
-                print("Copy process is done succefully")
-                # self.statusBar().showMessage("Copy process is done succefully")
+                message = "Copy process is done succefully!!!"
+                return message
             else:
                 # raise NotADirectoryError("source path doesn`t exsit")
-                # self.statusBar().showMessage("source path doesn`t exsit")
-                print("temp")
+                message = "source path doesn`t exsit!!!"
+                return message
         else:
-            # self.statusBar().showMessage("The directory path has a problem")
-            print("temp")
-        return None
+            message = "The directory path has a problem!!!"
+            return message            
+        return message
