@@ -24,25 +24,8 @@ def export_data(filepath_arg, data_arg):
     with open(filepath_arg, 'w') as data_file:
         json.dump(data_arg, data_file, indent=1)
     return
-def findfile(dir_arg, module_data):
-    for tmp_dir, tmp_folder, tmp_file in os.walk(dir_arg):
-        tmp_dir = tmp_dir.replace('\\', '/')
-        if tmp_dir.find(module_data) is not -1:
-            print("find")
-                #         if smodule is False:
-                #             if match('general', module_name):
-                #                 sort_key = sub(
-                #                     '^.*' + module_name + '.*?/', '', tmp_dir)
-                #             tmppath = _gen_dirpath(tmp_dir, sort_key)
-                #         elif smodule is True:
-                #             tmp_file.sort()
-                #             tmppath = _gen_filefullpath(
-                #                 tmp_dir, tmp_file, sort_key)
-                #         tmp_result.update({module_name: tmppath})
-                #         break
-                # search_result = _concate_dic(search_result, tmp_result)
-    return
-def findfile2(dir_arg, sort_data, module_data):
+
+def findfile(dir_arg, sort_data, module_data):
     """Generate the dictionary including
         {include:[file name,file path],source:[file name,file path]}"""
     search_result = dict()
@@ -59,12 +42,16 @@ def findfile2(dir_arg, sort_data, module_data):
             tmp_folder[:] = [
                 remove_i for remove_i in tmp_folder if remove_i not in tmp_folder]
         else:
-            if tmp_dir.find(module_data) is not -1:
-                inc_flag = _folder_check(
-                    tmp_dir, inc_classify_result, sort_data, 'INC')
-                if inc_flag is True:
-                    print("tmp_dir")
-    return
+            inc_flag = _folder_check(
+                tmp_dir, inc_classify_result, sort_data, 'INC')
+            if inc_flag is True:
+                for target in tmp_file:
+                    if target == module_data:
+                        path = os.path.join(tmp_dir,module_data)
+                        path = path.replace('\\', '/')
+                        print(path)
+                        return
+
 def gen_c_h_dic(dir_arg, sort_data, module_data, smodule=False):
     """Generate the dictionary including
         {include:[file name,file path],source:[file name,file path]}"""

@@ -313,8 +313,7 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
 
         Basic_Sort_Res = sort.gen_c_h_dic(mcalpath, general_sorting_key, Basic_Checked)
         Module_Sort_Res = sort.gen_c_h_dic(mcalpath, general_sorting_key, Module_Checked)
-        # Basic_Sort_Res2 = sort.findfile(mcalpath,'Loadable_bin')
-        Basic_Sort_Res2 = sort.findfile2(mcalpath,general_sorting_key2,'Loadable_bin')
+        Basic_Sort_Res2 = sort.findfile(mcalpath,general_sorting_key2,'_mcal_pjt.lsl')
         SrvModule_Sort_ResMid = sort.gen_c_h_dic(mcalpath, general_sorting_key, Srv_Checked, True)
         # Remove the unrelated module from SrvModule_Sort_ResMid
         SrvModule_Sort_Res = sort.gen_sort(SrvModule_Sort_ResMid, SrvModule_SortKey)
