@@ -264,7 +264,7 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
     def RtoL_button_Hndl(self):
         if self.McalLoadValid is True:
             self.right_item_model = self.model_Analyzation(self.right_item_model, self.copylist)
-            self.right_item_model.itemChanged.connect(self.right_checkbox_Hndl())
+            self.right_item_model.itemChanged.connect(self.right_checkbox_Hndl)
             checkItemNull = self.model_status_eval(self.right_item_model)
             self.right_tree.setModel(self.right_item_model)
             self.right_tree.expandAll()
@@ -280,7 +280,7 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
     def LtoR_button_Hndl(self):
         if self.McalLoadValid is True:
             self.right_item_model = self.model_Analyzation(self.left_item_model)
-            self.right_item_model.itemChanged.connect(self.right_checkbox_Hndl())
+            self.right_item_model.itemChanged.connect(self.right_checkbox_Hndl)
             self.copylist = self.copylist_Gen(self.right_item_model, self.path_data_dict)
             checkItemNull = self.model_status_eval(self.right_item_model)
             self.right_tree.setModel(self.right_item_model)
@@ -333,13 +333,13 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
     def left_checkbox_Hndl(self):
         self.left_item_model.itemChanged.disconnect()
         self.model_status_eval(self.left_item_model)
-        self.left_item_model.itemChanged.connect(self.left_checkbox_Hndl())
+        self.left_item_model.itemChanged.connect(self.left_checkbox_Hndl)
         return
 
     def right_checkbox_Hndl(self):
         self.right_item_model.itemChanged.disconnect() 
         self.model_status_eval(self.right_item_model)
-        self.right_item_model.itemChanged.connect(self.right_checkbox_Hndl())
+        self.right_item_model.itemChanged.connect(self.right_checkbox_Hndl)
         return
 
     def projecthierarchy(self, copypath2):        
