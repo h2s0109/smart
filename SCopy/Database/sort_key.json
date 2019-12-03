@@ -18,6 +18,30 @@
             "compiler"
         ]
     },
+    "GENERAL_SORTING_KEY_LINKER": {
+        "EX_AND": [],
+
+        "EX_OR": [
+            "cfg1",
+            "demo",
+            "mak",
+            "tools",
+            "inc",
+            "src",
+            "compiler",
+            "Selectable_bin"
+        ],
+        "INC_AND": [
+            "Aurix_MC-ISAR",
+            "demoapp"
+        ],
+        "INC_OR": [
+            "Loadable_bin"
+        ]
+    },
+    "TEMP_MODULE":{
+        "_mcal_pjt":[]
+    },
     "BASIC_MODULE":{
         "port":
         {

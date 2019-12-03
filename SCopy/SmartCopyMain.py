@@ -305,6 +305,7 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
         Module_Checked = self.FindChildrenItem(Sel_Item,"USER_MODULE")
 
         general_sorting_key = sort.import_data(sortkey_path, "GENERAL_SORTING_KEY")
+        general_sorting_key2 = sort.import_data(sortkey_path, "GENERAL_SORTING_KEY_LINKER")
         module_sorting_key = sort.import_data(sortkey_path, "MODULE_SORTING_KEY")
         SrvModule_SortKey = sort.Srv_SortKye_Gen(Srv_Checked, module_sorting_key)
         SrvModule_SortKey += sort.Srv_SortKye_Gen(Module_Checked, module_sorting_key)
@@ -312,6 +313,8 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
 
         Basic_Sort_Res = sort.gen_c_h_dic(mcalpath, general_sorting_key, Basic_Checked)
         Module_Sort_Res = sort.gen_c_h_dic(mcalpath, general_sorting_key, Module_Checked)
+        # Basic_Sort_Res2 = sort.findfile(mcalpath,'Loadable_bin')
+        Basic_Sort_Res2 = sort.findfile2(mcalpath,general_sorting_key2,'Loadable_bin')
         SrvModule_Sort_ResMid = sort.gen_c_h_dic(mcalpath, general_sorting_key, Srv_Checked, True)
         # Remove the unrelated module from SrvModule_Sort_ResMid
         SrvModule_Sort_Res = sort.gen_sort(SrvModule_Sort_ResMid, SrvModule_SortKey)
