@@ -67,8 +67,9 @@ class Class_UpdateCombo:
                 comboboxname.addItem(directory)
                 tempfolder.insert(0, directory)
             else:
-                tempfolder.remove(directory)
-                tempfolder.insert(0, directory)
+                if directory in tempfolder:
+                    tempfolder.remove(directory)
+                tempfolder.insert(0, directory)                
             comboboxname.setCurrentIndex(comboboxname.findText(directory))
             # Delete the oldest folder name
             del tempfolder[self.MaxRecentFiles:]
