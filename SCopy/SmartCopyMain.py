@@ -432,6 +432,8 @@ class ImageDialog(QDialog, Ui_Dialog, Class_UpdateCombo, Class_comiler_path, Cla
                     pathcheck.Copypath_creation(copypath)
                     sort.copy_mcalmodule(self.copylist['SRV_MODULE'], copypath['SRV_MODULE'], True)
                     sort.copy_mcalmodule(self.copylist['SRV2_MODULE'], copypath['SRV_MODULE'], True)
+                    sort.copy_mcalmodule(self.copylist['BASIC_MODULE'], copypath['MODULE'])
+                    sort.copy_mcalmodule(self.copylist['USER_MODULE'], copypath['MODULE'])
                     includelist = self.Compiler_include(copypath['MODULE'], copypath['SRV_MODULE'])                
                     for k_list in includelist:
                         self.progresstxt_dest.appendPlainText(k_list)
